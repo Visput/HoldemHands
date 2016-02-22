@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9F45B9E11C766BFA0042FA4E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45B9E01C766BFA0042FA4E /* MainView.swift */; };
+		9F45B9E31C766CF00042FA4E /* HandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45B9E21C766CF00042FA4E /* HandCell.swift */; };
+		9F45B9E51C76851A0042FA4E /* OddsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45B9E41C76851A0042FA4E /* OddsCalculator.swift */; };
+		9F45B9E71C7686930042FA4E /* HandOdds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45B9E61C7686930042FA4E /* HandOdds.swift */; };
+		9F45BA261C77AD840042FA4E /* HandCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA251C77AD840042FA4E /* HandCellItem.swift */; };
+		9F45BA281C7820530042FA4E /* HighCardRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA271C7820530042FA4E /* HighCardRank.swift */; };
+		9F45BA2A1C78206A0042FA4E /* PairRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA291C78206A0042FA4E /* PairRank.swift */; };
+		9F45BA2C1C78207B0042FA4E /* TwoPairsRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA2B1C78207B0042FA4E /* TwoPairsRank.swift */; };
+		9F45BA2E1C7820A00042FA4E /* ThreeOfKindRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA2D1C7820A00042FA4E /* ThreeOfKindRank.swift */; };
+		9F45BA301C7820A60042FA4E /* StraightRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA2F1C7820A60042FA4E /* StraightRank.swift */; };
+		9F45BA321C7820D10042FA4E /* FlushRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA311C7820D10042FA4E /* FlushRank.swift */; };
+		9F45BA341C7820EE0042FA4E /* FullHouseRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA331C7820EE0042FA4E /* FullHouseRank.swift */; };
+		9F45BA361C7821200042FA4E /* FourOfKindRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA351C7821200042FA4E /* FourOfKindRank.swift */; };
+		9F45BA381C7821380042FA4E /* StraightFlushRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA371C7821380042FA4E /* StraightFlushRank.swift */; };
+		9F45BA3A1C78F6DC0042FA4E /* HandRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA391C78F6DC0042FA4E /* HandRank.swift */; };
+		9F45BA3C1C7ABC4B0042FA4E /* OrderedCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA3B1C7ABC4B0042FA4E /* OrderedCards.swift */; };
+		9FACAACD1C72BCC20051A435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACAACC1C72BCC20051A435 /* AppDelegate.swift */; };
+		9FACAACF1C72BCC20051A435 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACAACE1C72BCC20051A435 /* MainScreen.swift */; };
+		9FACAAD21C72BCC20051A435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FACAAD01C72BCC20051A435 /* Main.storyboard */; };
+		9FACAAD41C72BCC20051A435 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FACAAD31C72BCC20051A435 /* Assets.xcassets */; };
+		9FACAAD71C72BCC20051A435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FACAAD51C72BCC20051A435 /* LaunchScreen.storyboard */; };
+		9FACAAE21C72BCC20051A435 /* PokerHandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACAAE11C72BCC20051A435 /* PokerHandTests.swift */; };
+		9FBFEE1B1C75717E00BBD9E1 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBFEE1A1C75717E00BBD9E1 /* Hand.swift */; };
+		9FBFEE1D1C7571BA00BBD9E1 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBFEE1C1C7571BA00BBD9E1 /* Card.swift */; };
+		9FBFEE1F1C75721B00BBD9E1 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBFEE1E1C75721B00BBD9E1 /* Suit.swift */; };
+		9FBFEE211C75724600BBD9E1 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBFEE201C75724600BBD9E1 /* Rank.swift */; };
+		9FBFEE231C7573ED00BBD9E1 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBFEE221C7573ED00BBD9E1 /* Deck.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9FACAADE1C72BCC20051A435 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FACAAC11C72BCC20051A435 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FACAAC81C72BCC20051A435;
+			remoteInfo = PokerHand;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9F45B9E01C766BFA0042FA4E /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		9F45B9E21C766CF00042FA4E /* HandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandCell.swift; sourceTree = "<group>"; };
+		9F45B9E41C76851A0042FA4E /* OddsCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OddsCalculator.swift; sourceTree = "<group>"; };
+		9F45B9E61C7686930042FA4E /* HandOdds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandOdds.swift; sourceTree = "<group>"; };
+		9F45BA251C77AD840042FA4E /* HandCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandCellItem.swift; sourceTree = "<group>"; };
+		9F45BA271C7820530042FA4E /* HighCardRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighCardRank.swift; sourceTree = "<group>"; };
+		9F45BA291C78206A0042FA4E /* PairRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairRank.swift; sourceTree = "<group>"; };
+		9F45BA2B1C78207B0042FA4E /* TwoPairsRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoPairsRank.swift; sourceTree = "<group>"; };
+		9F45BA2D1C7820A00042FA4E /* ThreeOfKindRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeOfKindRank.swift; sourceTree = "<group>"; };
+		9F45BA2F1C7820A60042FA4E /* StraightRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StraightRank.swift; sourceTree = "<group>"; };
+		9F45BA311C7820D10042FA4E /* FlushRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlushRank.swift; sourceTree = "<group>"; };
+		9F45BA331C7820EE0042FA4E /* FullHouseRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullHouseRank.swift; sourceTree = "<group>"; };
+		9F45BA351C7821200042FA4E /* FourOfKindRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourOfKindRank.swift; sourceTree = "<group>"; };
+		9F45BA371C7821380042FA4E /* StraightFlushRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StraightFlushRank.swift; sourceTree = "<group>"; };
+		9F45BA391C78F6DC0042FA4E /* HandRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandRank.swift; sourceTree = "<group>"; };
+		9F45BA3B1C7ABC4B0042FA4E /* OrderedCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedCards.swift; sourceTree = "<group>"; };
+		9FACAAC91C72BCC20051A435 /* PokerHand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerHand.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FACAACC1C72BCC20051A435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9FACAACE1C72BCC20051A435 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		9FACAAD11C72BCC20051A435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9FACAAD31C72BCC20051A435 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9FACAAD61C72BCC20051A435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9FACAAD81C72BCC20051A435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FACAADD1C72BCC20051A435 /* PokerHandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokerHandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FACAAE11C72BCC20051A435 /* PokerHandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerHandTests.swift; sourceTree = "<group>"; };
+		9FACAAE31C72BCC20051A435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FBFEE1A1C75717E00BBD9E1 /* Hand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
+		9FBFEE1C1C7571BA00BBD9E1 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		9FBFEE1E1C75721B00BBD9E1 /* Suit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
+		9FBFEE201C75724600BBD9E1 /* Rank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		9FBFEE221C7573ED00BBD9E1 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9FACAAC61C72BCC20051A435 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FACAADA1C72BCC20051A435 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9F45B9B61C75770D0042FA4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9FBFEE201C75724600BBD9E1 /* Rank.swift */,
+				9FBFEE1E1C75721B00BBD9E1 /* Suit.swift */,
+				9FBFEE1C1C7571BA00BBD9E1 /* Card.swift */,
+				9FBFEE1A1C75717E00BBD9E1 /* Hand.swift */,
+				9FBFEE221C7573ED00BBD9E1 /* Deck.swift */,
+				9F45B9E41C76851A0042FA4E /* OddsCalculator.swift */,
+				9F45B9E61C7686930042FA4E /* HandOdds.swift */,
+				9F45BA271C7820530042FA4E /* HighCardRank.swift */,
+				9F45BA291C78206A0042FA4E /* PairRank.swift */,
+				9F45BA2B1C78207B0042FA4E /* TwoPairsRank.swift */,
+				9F45BA2D1C7820A00042FA4E /* ThreeOfKindRank.swift */,
+				9F45BA2F1C7820A60042FA4E /* StraightRank.swift */,
+				9F45BA311C7820D10042FA4E /* FlushRank.swift */,
+				9F45BA331C7820EE0042FA4E /* FullHouseRank.swift */,
+				9F45BA351C7821200042FA4E /* FourOfKindRank.swift */,
+				9F45BA371C7821380042FA4E /* StraightFlushRank.swift */,
+				9F45BA391C78F6DC0042FA4E /* HandRank.swift */,
+				9F45BA3B1C7ABC4B0042FA4E /* OrderedCards.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9F45B9DD1C766B820042FA4E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9FACAACE1C72BCC20051A435 /* MainScreen.swift */,
+				9F45B9E01C766BFA0042FA4E /* MainView.swift */,
+				9F45B9E21C766CF00042FA4E /* HandCell.swift */,
+				9F45BA251C77AD840042FA4E /* HandCellItem.swift */,
+				9FACAAD01C72BCC20051A435 /* Main.storyboard */,
+				9FACAAD51C72BCC20051A435 /* LaunchScreen.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		9F45B9DE1C766B960042FA4E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9FACAAD31C72BCC20051A435 /* Assets.xcassets */,
+				9FACAAD81C72BCC20051A435 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9F45B9DF1C766BC80042FA4E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9FACAACC1C72BCC20051A435 /* AppDelegate.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		9FACAAC01C72BCC20051A435 = {
+			isa = PBXGroup;
+			children = (
+				9FACAACB1C72BCC20051A435 /* PokerHand */,
+				9FACAAE01C72BCC20051A435 /* PokerHandTests */,
+				9FACAACA1C72BCC20051A435 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9FACAACA1C72BCC20051A435 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9FACAAC91C72BCC20051A435 /* PokerHand.app */,
+				9FACAADD1C72BCC20051A435 /* PokerHandTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9FACAACB1C72BCC20051A435 /* PokerHand */ = {
+			isa = PBXGroup;
+			children = (
+				9F45B9B61C75770D0042FA4E /* Model */,
+				9F45B9DD1C766B820042FA4E /* UI */,
+				9F45B9DF1C766BC80042FA4E /* Main */,
+				9F45B9DE1C766B960042FA4E /* Resources */,
+			);
+			path = PokerHand;
+			sourceTree = "<group>";
+		};
+		9FACAAE01C72BCC20051A435 /* PokerHandTests */ = {
+			isa = PBXGroup;
+			children = (
+				9FACAAE11C72BCC20051A435 /* PokerHandTests.swift */,
+				9FACAAE31C72BCC20051A435 /* Info.plist */,
+			);
+			path = PokerHandTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9FACAAC81C72BCC20051A435 /* PokerHand */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FACAAE61C72BCC20051A435 /* Build configuration list for PBXNativeTarget "PokerHand" */;
+			buildPhases = (
+				9FACAAC51C72BCC20051A435 /* Sources */,
+				9FACAAC61C72BCC20051A435 /* Frameworks */,
+				9FACAAC71C72BCC20051A435 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PokerHand;
+			productName = PokerHand;
+			productReference = 9FACAAC91C72BCC20051A435 /* PokerHand.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9FACAADC1C72BCC20051A435 /* PokerHandTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FACAAE91C72BCC20051A435 /* Build configuration list for PBXNativeTarget "PokerHandTests" */;
+			buildPhases = (
+				9FACAAD91C72BCC20051A435 /* Sources */,
+				9FACAADA1C72BCC20051A435 /* Frameworks */,
+				9FACAADB1C72BCC20051A435 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9FACAADF1C72BCC20051A435 /* PBXTargetDependency */,
+			);
+			name = PokerHandTests;
+			productName = PokerHandTests;
+			productReference = 9FACAADD1C72BCC20051A435 /* PokerHandTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9FACAAC11C72BCC20051A435 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Visput;
+				TargetAttributes = {
+					9FACAAC81C72BCC20051A435 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = YVSH49GYZ4;
+					};
+					9FACAADC1C72BCC20051A435 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = YVSH49GYZ4;
+						TestTargetID = 9FACAAC81C72BCC20051A435;
+					};
+				};
+			};
+			buildConfigurationList = 9FACAAC41C72BCC20051A435 /* Build configuration list for PBXProject "PokerHand" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9FACAAC01C72BCC20051A435;
+			productRefGroup = 9FACAACA1C72BCC20051A435 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FACAAC81C72BCC20051A435 /* PokerHand */,
+				9FACAADC1C72BCC20051A435 /* PokerHandTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9FACAAC71C72BCC20051A435 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FACAAD71C72BCC20051A435 /* LaunchScreen.storyboard in Resources */,
+				9FACAAD41C72BCC20051A435 /* Assets.xcassets in Resources */,
+				9FACAAD21C72BCC20051A435 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FACAADB1C72BCC20051A435 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9FACAAC51C72BCC20051A435 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F45BA301C7820A60042FA4E /* StraightRank.swift in Sources */,
+				9F45B9E71C7686930042FA4E /* HandOdds.swift in Sources */,
+				9FBFEE231C7573ED00BBD9E1 /* Deck.swift in Sources */,
+				9F45B9E31C766CF00042FA4E /* HandCell.swift in Sources */,
+				9F45B9E11C766BFA0042FA4E /* MainView.swift in Sources */,
+				9F45BA281C7820530042FA4E /* HighCardRank.swift in Sources */,
+				9F45BA3A1C78F6DC0042FA4E /* HandRank.swift in Sources */,
+				9F45BA3C1C7ABC4B0042FA4E /* OrderedCards.swift in Sources */,
+				9F45BA341C7820EE0042FA4E /* FullHouseRank.swift in Sources */,
+				9FACAACF1C72BCC20051A435 /* MainScreen.swift in Sources */,
+				9F45BA321C7820D10042FA4E /* FlushRank.swift in Sources */,
+				9FBFEE1F1C75721B00BBD9E1 /* Suit.swift in Sources */,
+				9F45BA361C7821200042FA4E /* FourOfKindRank.swift in Sources */,
+				9FBFEE1B1C75717E00BBD9E1 /* Hand.swift in Sources */,
+				9FBFEE211C75724600BBD9E1 /* Rank.swift in Sources */,
+				9F45BA2C1C78207B0042FA4E /* TwoPairsRank.swift in Sources */,
+				9F45BA2A1C78206A0042FA4E /* PairRank.swift in Sources */,
+				9FACAACD1C72BCC20051A435 /* AppDelegate.swift in Sources */,
+				9FBFEE1D1C7571BA00BBD9E1 /* Card.swift in Sources */,
+				9F45BA381C7821380042FA4E /* StraightFlushRank.swift in Sources */,
+				9F45B9E51C76851A0042FA4E /* OddsCalculator.swift in Sources */,
+				9F45BA261C77AD840042FA4E /* HandCellItem.swift in Sources */,
+				9F45BA2E1C7820A00042FA4E /* ThreeOfKindRank.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FACAAD91C72BCC20051A435 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FACAAE21C72BCC20051A435 /* PokerHandTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9FACAADF1C72BCC20051A435 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FACAAC81C72BCC20051A435 /* PokerHand */;
+			targetProxy = 9FACAADE1C72BCC20051A435 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9FACAAD01C72BCC20051A435 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FACAAD11C72BCC20051A435 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9FACAAD51C72BCC20051A435 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FACAAD61C72BCC20051A435 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9FACAAE41C72BCC20051A435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9FACAAE51C72BCC20051A435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9FACAAE71C72BCC20051A435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PokerHand/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.visput.PokerHand;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9FACAAE81C72BCC20051A435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PokerHand/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.visput.PokerHand;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9FACAAEA1C72BCC20051A435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PokerHandTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.visput.PokerHandTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PokerHand.app/PokerHand";
+			};
+			name = Debug;
+		};
+		9FACAAEB1C72BCC20051A435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PokerHandTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.visput.PokerHandTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PokerHand.app/PokerHand";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9FACAAC41C72BCC20051A435 /* Build configuration list for PBXProject "PokerHand" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FACAAE41C72BCC20051A435 /* Debug */,
+				9FACAAE51C72BCC20051A435 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FACAAE61C72BCC20051A435 /* Build configuration list for PBXNativeTarget "PokerHand" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FACAAE71C72BCC20051A435 /* Debug */,
+				9FACAAE81C72BCC20051A435 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FACAAE91C72BCC20051A435 /* Build configuration list for PBXNativeTarget "PokerHandTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FACAAEA1C72BCC20051A435 /* Debug */,
+				9FACAAEB1C72BCC20051A435 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9FACAAC11C72BCC20051A435 /* Project object */;
+}
