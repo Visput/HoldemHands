@@ -29,7 +29,12 @@ struct OddsCalculator {
     }
     
     func calculateOdds() {
-        for 
+        let boardSize = 5
+        
+        iterateSubArraysOfSize(boardSize, inArray: deck.cards, iterationHandler: { subArray in
+            
+        })
+        
         guard handsOdds == nil else { return }
     }
 }
@@ -38,5 +43,44 @@ extension OddsCalculator {
     
     private func compareHand(lhs: OrderedCards, withHand rhs: OrderedCards) -> NSComparisonResult  {
         return .OrderedAscending
+    }
+}
+
+extension OddsCalculator {
+    
+    private func iterateSubArraysOfSize(subArraySize: Int,
+        inArray array: [Card],
+        iterationHandler: (subArray: [Card]) -> Void) {
+            
+            var emptyArray = [Card]()
+            
+            iterateArray(array,
+                fromIndex: 0,
+                toIndex: array.count - subArraySize,
+                subArray: &emptyArray,
+                iterationHandler: iterationHandler)
+    }
+    
+    private func iterateArray(array: [Card],
+        fromIndex: Int,
+        toIndex: Int,
+        inout subArray: [Card],
+        iterationHandler: (subArray: [Card]) -> Void) {
+            
+            if toIndex < array.count {
+                for index in fromIndex ... toIndex {
+                    subArray.append(array[index])
+                    
+                    iterateArray(array,
+                        fromIndex: index + 1,
+                        toIndex: toIndex + 1,
+                        subArray: &subArray,
+                        iterationHandler: iterationHandler)
+                    
+                    subArray.removeLast()
+                }
+            } else {
+                iterationHandler(subArray: subArray)
+            }
     }
 }
