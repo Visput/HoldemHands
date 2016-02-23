@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F00CC221C7D18B600AC63CC /* HandRankCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F00CC211C7D18B600AC63CC /* HandRankCalculator.swift */; };
 		9F45B9E11C766BFA0042FA4E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45B9E01C766BFA0042FA4E /* MainView.swift */; };
 		9F45B9E31C766CF00042FA4E /* HandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45B9E21C766CF00042FA4E /* HandCell.swift */; };
 		9F45B9E51C76851A0042FA4E /* OddsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45B9E41C76851A0042FA4E /* OddsCalculator.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F00CC211C7D18B600AC63CC /* HandRankCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandRankCalculator.swift; sourceTree = "<group>"; };
 		9F45B9E01C766BFA0042FA4E /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9F45B9E21C766CF00042FA4E /* HandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandCell.swift; sourceTree = "<group>"; };
 		9F45B9E41C76851A0042FA4E /* OddsCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OddsCalculator.swift; sourceTree = "<group>"; };
@@ -106,7 +108,6 @@
 				9FBFEE1C1C7571BA00BBD9E1 /* Card.swift */,
 				9FBFEE1A1C75717E00BBD9E1 /* Hand.swift */,
 				9FBFEE221C7573ED00BBD9E1 /* Deck.swift */,
-				9F45B9E41C76851A0042FA4E /* OddsCalculator.swift */,
 				9F45B9E61C7686930042FA4E /* HandOdds.swift */,
 				9F45BA271C7820530042FA4E /* HighCardRank.swift */,
 				9F45BA291C78206A0042FA4E /* PairRank.swift */,
@@ -119,6 +120,8 @@
 				9F45BA371C7821380042FA4E /* StraightFlushRank.swift */,
 				9F45BA391C78F6DC0042FA4E /* HandRank.swift */,
 				9F45BA3B1C7ABC4B0042FA4E /* OrderedCards.swift */,
+				9F00CC211C7D18B600AC63CC /* HandRankCalculator.swift */,
+				9F45B9E41C76851A0042FA4E /* OddsCalculator.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				9FACAACD1C72BCC20051A435 /* AppDelegate.swift in Sources */,
 				9FBFEE1D1C7571BA00BBD9E1 /* Card.swift in Sources */,
 				9F45BA381C7821380042FA4E /* StraightFlushRank.swift in Sources */,
+				9F00CC221C7D18B600AC63CC /* HandRankCalculator.swift in Sources */,
 				9F45B9E51C76851A0042FA4E /* OddsCalculator.swift in Sources */,
 				9F45BA261C77AD840042FA4E /* HandCellItem.swift in Sources */,
 				9F45BA2E1C7820A00042FA4E /* ThreeOfKindRank.swift in Sources */,
@@ -443,6 +447,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = PokerHand/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.visput.PokerHand;

@@ -11,14 +11,13 @@ import Foundation
 struct HandOdds {
     
     let hand: Hand
-    let winningCombinationsCount: Int
-    let tieCombinationsCount: Int
     let totalCombinationsCount: Int
     
-    init(hand: Hand, winningCombinationsCount: Int, tieCombinationsCount: Int, totalCombinationsCount: Int) {
+    var winningCombinationsCount: Int = 0
+    var tieCombinationsCount: Int = 0
+    
+    init(hand: Hand, totalCombinationsCount: Int) {
         self.hand = hand
-        self.winningCombinationsCount = winningCombinationsCount
-        self.tieCombinationsCount = tieCombinationsCount
         self.totalCombinationsCount = totalCombinationsCount
     }
 }

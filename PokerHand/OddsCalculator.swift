@@ -28,21 +28,40 @@ struct OddsCalculator {
         self.deck = deck
     }
     
-    func calculateOdds() {
+    mutating func calculateOdds() {
         let boardSize = 5
+        let deckSize = 52
+        let handSize = 2
+        let numberOfCombinations = numberOfSubArraysOfSize(boardSize, inArrayOfSize: deckSize - (hands.count * handSize))
         
+        var handsOdds = [HandOdds]()
+        for hand in hands {
+            handsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
+        }
+        
+        let time = CFAbsoluteTimeGetCurrent()
+        var count = 0
         iterateSubArraysOfSize(boardSize, inArray: deck.cards, iterationHandler: { subArray in
+            count += 1
+            if count == numberOfCombinations {
+                print(CFAbsoluteTimeGetCurrent() - time)
+            }
             
+            guard !HandRankComparator<StraightFlushRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
+            guard !HandRankComparator<FourOfKindRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
+            guard !HandRankComparator<FullHouseRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
+            guard !HandRankComparator<FlushRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
+            guard !HandRankComparator<StraightRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
+            guard !HandRankComparator<ThreeOfKindRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
+            guard !HandRankComparator<TwoPairsRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
+            guard !HandRankComparator<PairRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
+            guard !HandRankComparator<HighCardRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
         })
         
-        guard handsOdds == nil else { return }
-    }
-}
-
-extension OddsCalculator {
-    
-    private func compareHand(lhs: OrderedCards, withHand rhs: OrderedCards) -> NSComparisonResult  {
-        return .OrderedAscending
+        self.handsOdds = handsOdds
+        self.sortedHandsOdds = handsOdds.sort({ (lhs, rhs) -> Bool in
+            return lhs.winningCombinationsCount > rhs.winningCombinationsCount
+        })
     }
 }
 
@@ -82,5 +101,17 @@ extension OddsCalculator {
             } else {
                 iterationHandler(subArray: subArray)
             }
+    }
+    
+    private func numberOfSubArraysOfSize(subArraySize: Int, inArrayOfSize arraySize: Int) -> Int {
+        var result = 1
+        for index in arraySize - subArraySize + 1 ... arraySize {
+            result *= index
+        }
+        for index in 2 ... subArraySize {
+            result /= index
+        }
+        
+        return result
     }
 }

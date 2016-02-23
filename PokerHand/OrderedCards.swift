@@ -13,8 +13,8 @@ struct OrderedCards {
     private(set) var cards: [Card]
     
     init(cards: [Card]) {
-        self.cards = cards.sort({ (card1: Card, card2: Card) -> Bool in
-            return card1.rank > card2.rank
+        self.cards = cards.sort({ (lhs, rhs) -> Bool in
+            return lhs.rank > rhs.rank
         })
     }
     
