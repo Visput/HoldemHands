@@ -18,16 +18,29 @@ struct Deck {
             for var rank = Rank.Two.rawValue; rank <= Rank.Ace.rawValue; rank++ {
                 let card = Card(rank: Rank(rawValue: rank)!, suit: Suit(rawValue: suit)!)
                 cards.append(card)
-                shuffle()
             }
         }
+        shuffleCards()
     }
     
     mutating func nextHand() -> Hand {
-        return Hand(firstCard: cards.removeFirst(), secondCard: cards.removeFirst())
+        let firstCard = cards.removeFirst()
+        let secondCard = cards.removeFirst()
+        
+        if firstCard.rank > secondCard.rank {
+            return Hand(firstCard: firstCard, secondCard: secondCard)
+        } else {
+            return Hand(firstCard: secondCard, secondCard: firstCard)
+        }
     }
     
-    private mutating func shuffle() {
+    mutating func sortCards() {
+        cards.sortInPlace({ (lhs, rhs) -> Bool in
+            lhs.rank > rhs.rank
+        })
+    }
+    
+    private mutating func shuffleCards() {
         let count = cards.count
         for i in 0 ..< count - 1 {
             let j = Int(arc4random_uniform(UInt32(count - i))) + i

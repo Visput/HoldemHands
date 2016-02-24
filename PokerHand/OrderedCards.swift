@@ -12,10 +12,36 @@ struct OrderedCards {
     
     private(set) var cards: [Card]
     
-    init(cards: [Card]) {
-        self.cards = cards.sort({ (lhs, rhs) -> Bool in
-            return lhs.rank > rhs.rank
-        })
+    init(hand: Hand, boardCards: [Card]) {
+        cards = boardCards
+        
+        var firstCardInserted = false
+        for (index, card) in boardCards.enumerate() {
+            if !firstCardInserted {
+                if card.rank < hand.firstCard.rank {
+                    firstCardInserted = true
+                    
+                    cards.insert(hand.firstCard, atIndex: index)
+                    if card.rank < hand.secondCard.rank {
+                        cards.insert(hand.secondCard, atIndex: index + 1)
+                        break
+                    }
+                    
+                } else if index == boardCards.count - 1 {
+                    cards.append(hand.firstCard)
+                    cards.append(hand.secondCard)
+                }
+                
+            } else {
+                if card.rank < hand.secondCard.rank {
+                    cards.insert(hand.secondCard, atIndex: index + 1)
+                    break
+                    
+                } else if index == boardCards.count - 1 {
+                    cards.append(hand.secondCard)
+                }
+            }
+        }
     }
     
     mutating func removeAtIndex(index: Int) -> Card {

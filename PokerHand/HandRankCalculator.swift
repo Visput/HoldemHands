@@ -10,45 +10,35 @@ import Foundation
 
 struct HandRankComparator<HandRankType: HandRank> {
     
-    static func compareHands(inout handsOdds: [HandOdds], boardCards: [Card]) -> Bool {
-        var firstHandOdds = handsOdds[0]
-        var secondHandOdds = handsOdds[1]
+    static func compareHands(inout handsOdds: [HandOdds], orderedBoards: [OrderedCards]) -> Bool {
+        let firstHandRank = HandRankType(orderedCards: orderedBoards[0])
+        let secondHandRank = HandRankType(orderedCards: orderedBoards[1])
         
-        var firstCards = boardCards
-        firstCards.appendContentsOf([firstHandOdds.hand.firstCard, firstHandOdds.hand.secondCard])
-        let firstOrderedCards = OrderedCards(cards: firstCards)
-        let firstHandRank = HandRankType(orderedCards: firstOrderedCards)
-        
-        var secondCards = boardCards
-        secondCards.appendContentsOf([secondHandOdds.hand.firstCard, secondHandOdds.hand.secondCard])
-        let secondOrderedCards = OrderedCards(cards: secondCards)
-        let secondHandRank = HandRankType(orderedCards: secondOrderedCards)
-        
-        if firstHandRank != nil && secondHandRank != nil {
+        if firstHandRank == nil && secondHandRank == nil {
+            return false
+            
+        } else if firstHandRank != nil && secondHandRank != nil {
             if firstHandRank == secondHandRank {
-                firstHandOdds.tieCombinationsCount += 1
-                secondHandOdds.tieCombinationsCount += 1
+                handsOdds[0].tieCombinationsCount += 1
+                handsOdds[1].tieCombinationsCount += 1
                 return true
                 
             } else if firstHandRank > secondHandRank {
-                firstHandOdds.winningCombinationsCount += 1
+                handsOdds[0].winningCombinationsCount += 1
                 return true
                 
             } else {
-                secondHandOdds.winningCombinationsCount += 1
+                handsOdds[1].winningCombinationsCount += 1
                 return true
             }
             
         } else if firstHandRank != nil {
-            firstHandOdds.winningCombinationsCount += 1
-            return true
-            
-        } else if secondHandRank != nil {
-            secondHandOdds.winningCombinationsCount += 1
+            handsOdds[0].winningCombinationsCount += 1
             return true
             
         } else {
-            return false
+            handsOdds[1].winningCombinationsCount += 1
+            return true
         }
     }
 }

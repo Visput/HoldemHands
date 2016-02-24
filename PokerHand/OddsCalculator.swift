@@ -21,18 +21,14 @@ struct OddsCalculator {
         for _ in 0 ..< numberOfHands {
             hands.append(deck.nextHand())
         }
-    }
-    
-    init(hands: [Hand], deck: Deck) {
-        self.hands = hands
-        self.deck = deck
+        deck.sortCards()
     }
     
     mutating func calculateOdds() {
         let boardSize = 5
         let deckSize = 52
         let handSize = 2
-        let numberOfCombinations = numberOfSubArraysOfSize(boardSize, inArrayOfSize: deckSize - (hands.count * handSize))
+        let numberOfCombinations = numberOfBoardsWithSize(boardSize, inDeckOfSize: deckSize - (hands.count * handSize))
         
         var handsOdds = [HandOdds]()
         for hand in hands {
@@ -40,25 +36,26 @@ struct OddsCalculator {
         }
         
         let time = CFAbsoluteTimeGetCurrent()
-        var count = 0
-        iterateSubArraysOfSize(boardSize, inArray: deck.cards, iterationHandler: { subArray in
-            count += 1
-            if count == numberOfCombinations {
-                print(CFAbsoluteTimeGetCurrent() - time)
+        iterateBoardsOfSize(boardSize, inDeck: deck, iterationHandler: { boardCards in
+            var orderedBoards = [OrderedCards]()
+            for handOdds in handsOdds {
+                orderedBoards.append(OrderedCards(hand: handOdds.hand, boardCards: boardCards))
             }
             
-            guard !HandRankComparator<StraightFlushRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
-            guard !HandRankComparator<FourOfKindRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
-            guard !HandRankComparator<FullHouseRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
-            guard !HandRankComparator<FlushRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
-            guard !HandRankComparator<StraightRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
-            guard !HandRankComparator<ThreeOfKindRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
-            guard !HandRankComparator<TwoPairsRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
-            guard !HandRankComparator<PairRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
-            guard !HandRankComparator<HighCardRank>.compareHands(&handsOdds, boardCards: subArray) else { return }
+            guard !HandRankComparator<StraightFlushRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<FourOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<FullHouseRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<FlushRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<StraightRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<ThreeOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<TwoPairsRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<PairRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<HighCardRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
         })
+        print(CFAbsoluteTimeGetCurrent() - time)
         
         self.handsOdds = handsOdds
+        print(self.handsOdds)
         self.sortedHandsOdds = handsOdds.sort({ (lhs, rhs) -> Bool in
             return lhs.winningCombinationsCount > rhs.winningCombinationsCount
         })
@@ -67,48 +64,48 @@ struct OddsCalculator {
 
 extension OddsCalculator {
     
-    private func iterateSubArraysOfSize(subArraySize: Int,
-        inArray array: [Card],
-        iterationHandler: (subArray: [Card]) -> Void) {
+    private func iterateBoardsOfSize(boardSize: Int,
+        inDeck deck: Deck,
+        iterationHandler: (boardCards: [Card]) -> Void) {
             
-            var emptyArray = [Card]()
+            var emptyBoard = [Card]()
             
-            iterateArray(array,
+            iterateDeckCards(deck.cards,
                 fromIndex: 0,
-                toIndex: array.count - subArraySize,
-                subArray: &emptyArray,
+                toIndex: deck.cards.count - boardSize,
+                boardCards: &emptyBoard,
                 iterationHandler: iterationHandler)
     }
     
-    private func iterateArray(array: [Card],
+    private func iterateDeckCards(deckCards: [Card],
         fromIndex: Int,
         toIndex: Int,
-        inout subArray: [Card],
-        iterationHandler: (subArray: [Card]) -> Void) {
+        inout boardCards: [Card],
+        iterationHandler: (boardCards: [Card]) -> Void) {
             
-            if toIndex < array.count {
+            if toIndex < deckCards.count {
                 for index in fromIndex ... toIndex {
-                    subArray.append(array[index])
+                    boardCards.append(deckCards[index])
                     
-                    iterateArray(array,
+                    iterateDeckCards(deckCards,
                         fromIndex: index + 1,
                         toIndex: toIndex + 1,
-                        subArray: &subArray,
+                        boardCards: &boardCards,
                         iterationHandler: iterationHandler)
                     
-                    subArray.removeLast()
+                    boardCards.removeLast()
                 }
             } else {
-                iterationHandler(subArray: subArray)
+                iterationHandler(boardCards: boardCards)
             }
     }
     
-    private func numberOfSubArraysOfSize(subArraySize: Int, inArrayOfSize arraySize: Int) -> Int {
+    private func numberOfBoardsWithSize(boardSize: Int, inDeckOfSize deckSize: Int) -> Int {
         var result = 1
-        for index in arraySize - subArraySize + 1 ... arraySize {
+        for index in deckSize - boardSize + 1 ... deckSize {
             result *= index
         }
-        for index in 2 ... subArraySize {
+        for index in 2 ... boardSize {
             result /= index
         }
         
