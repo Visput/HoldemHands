@@ -31,6 +31,11 @@ struct StraightFlushRank: HandRank {
                         if fourthCard.rank.rawValue == fifthCard.rank.rawValue + 1 && fourthCard.suit == fifthCard.suit {
                             rankCards = [firstCard, secondCard, thirdCard, fourthCard, fifthCard]
                             break
+                            
+                        } else if fourthCard.rank == .Two && orderedCards.cards[0].rank == .Ace && fourthCard.suit == orderedCards.cards[0].suit {
+                            // Steel Wheel.
+                            rankCards = [firstCard, secondCard, thirdCard, fourthCard, orderedCards.cards[0]]
+                            break
                         }
                     }
                 }

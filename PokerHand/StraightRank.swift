@@ -27,9 +27,14 @@ struct StraightRank: HandRank {
                     
                     if thirdCard.rank.rawValue == fourthCard.rank.rawValue + 1 {
                         let fifthCard = orderedCards.cards[index + 4]
-                    
+                        
                         if fourthCard.rank.rawValue == fifthCard.rank.rawValue + 1 {
                             rankCards = [firstCard, secondCard, thirdCard, fourthCard, fifthCard]
+                            break
+                            
+                        } else if fourthCard.rank == .Two && orderedCards.cards[0].rank == .Ace {
+                            // Wheel Straight.
+                            rankCards = [firstCard, secondCard, thirdCard, fourthCard, orderedCards.cards[0]]
                             break
                         }
                     }

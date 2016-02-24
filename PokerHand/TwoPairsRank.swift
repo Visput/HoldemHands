@@ -33,16 +33,16 @@ struct TwoPairsRank: HandRank {
 }
 
 func ==(lhs: TwoPairsRank, rhs: TwoPairsRank) -> Bool {
-    return lhs.highPairRank.rankCard == rhs.highPairRank.rankCard &&
-        lhs.lowPairRank.rankCard == rhs.lowPairRank.rankCard &&
+    return lhs.highPairRank.rankCard.rank == rhs.highPairRank.rankCard.rank &&
+        lhs.lowPairRank.rankCard.rank == rhs.lowPairRank.rankCard.rank &&
         lhs.highCardRank == rhs.highCardRank
 }
 
 func <(lhs: TwoPairsRank, rhs: TwoPairsRank) -> Bool {
-    return (lhs.highPairRank.rankCard == rhs.highPairRank.rankCard &&
-        lhs.lowPairRank.rankCard == rhs.lowPairRank.rankCard &&
+    return (lhs.highPairRank.rankCard.rank == rhs.highPairRank.rankCard.rank &&
+        lhs.lowPairRank.rankCard.rank == rhs.lowPairRank.rankCard.rank &&
         lhs.highCardRank < rhs.highCardRank) ||
-        (lhs.highPairRank.rankCard == rhs.highPairRank.rankCard &&
-            lhs.lowPairRank.rankCard < rhs.lowPairRank.rankCard) ||
-        (lhs.highPairRank.rankCard < rhs.highPairRank.rankCard)
+        (lhs.highPairRank.rankCard.rank == rhs.highPairRank.rankCard.rank &&
+            lhs.lowPairRank.rankCard.rank < rhs.lowPairRank.rankCard.rank) ||
+        (lhs.highPairRank.rankCard.rank < rhs.highPairRank.rankCard.rank)
 }

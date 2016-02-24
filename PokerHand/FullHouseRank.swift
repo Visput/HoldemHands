@@ -30,12 +30,12 @@ struct FullHouseRank: HandRank {
 }
 
 func ==(lhs: FullHouseRank, rhs: FullHouseRank) -> Bool {
-    return lhs.threeOfKindRank.rankCard == rhs.threeOfKindRank.rankCard &&
-        lhs.pairRank.rankCard == rhs.pairRank.rankCard
+    return lhs.threeOfKindRank.rankCard.rank == rhs.threeOfKindRank.rankCard.rank &&
+        lhs.pairRank.rankCard.rank == rhs.pairRank.rankCard.rank
 }
 
 func <(lhs: FullHouseRank, rhs: FullHouseRank) -> Bool {
-    return (lhs.threeOfKindRank.rankCard == rhs.threeOfKindRank.rankCard &&
-        lhs.pairRank.rankCard < rhs.pairRank.rankCard) ||
-        (lhs.threeOfKindRank.rankCard < rhs.threeOfKindRank.rankCard)
+    return (lhs.threeOfKindRank.rankCard.rank == rhs.threeOfKindRank.rankCard.rank &&
+        lhs.pairRank.rankCard.rank < rhs.pairRank.rankCard.rank) ||
+        (lhs.threeOfKindRank.rankCard.rank < rhs.threeOfKindRank.rankCard.rank)
 }
