@@ -44,6 +44,10 @@ struct OrderedCards {
         }
     }
     
+    init(orderedCards: [Card]) {
+        self.cards = orderedCards
+    }
+    
     mutating func removeAtIndex(index: Int) -> Card {
         return cards.removeAtIndex(index)
     }

@@ -13,37 +13,26 @@ struct StraightFlushRank: HandRank {
     let rankCards: [Card]
     
     init?(orderedCards: OrderedCards) {
-        var rankCards: [Card]? = nil
+        var cardsArray = [[Card](), [Card](), [Card](), [Card]()]
         
-        for index in 0 ... orderedCards.cards.count - 5 {
-            let firstCard = orderedCards.cards[index]
-            let secondCard = orderedCards.cards[index + 1]
-            
-            if firstCard.rank.rawValue == secondCard.rank.rawValue + 1 && firstCard.suit == secondCard.suit {
-                let thirdCard = orderedCards.cards[index + 2]
-                
-                if secondCard.rank.rawValue == thirdCard.rank.rawValue + 1 && secondCard.suit == thirdCard.suit {
-                    let fourthCard = orderedCards.cards[index + 3]
-                    
-                    if thirdCard.rank.rawValue == fourthCard.rank.rawValue + 1 && thirdCard.suit == fourthCard.suit {
-                        let fifthCard = orderedCards.cards[index + 4]
-                        
-                        if fourthCard.rank.rawValue == fifthCard.rank.rawValue + 1 && fourthCard.suit == fifthCard.suit {
-                            rankCards = [firstCard, secondCard, thirdCard, fourthCard, fifthCard]
-                            break
-                            
-                        } else if fourthCard.rank == .Two && orderedCards.cards[0].rank == .Ace && fourthCard.suit == orderedCards.cards[0].suit {
-                            // Steel Wheel.
-                            rankCards = [firstCard, secondCard, thirdCard, fourthCard, orderedCards.cards[0]]
-                            break
-                        }
-                    }
-                }
+        for card in orderedCards.cards {
+            let suitIndex = card.suit.rawValue
+            cardsArray[suitIndex].append(card)
+        }
+        
+        var suitedCards = cardsArray[0]
+        for index in 1 ..< cardsArray.count {
+            if cardsArray[index].count > suitedCards.count {
+                suitedCards = cardsArray[index]
             }
         }
         
-        if rankCards != nil {
-            self.rankCards = rankCards!
+        if suitedCards.count >= 5 {
+            if let straightRank = StraightRank(orderedCards: OrderedCards(orderedCards: suitedCards)) {
+                self.rankCards = straightRank.rankCards
+            } else {
+                return nil
+            }
         } else {
             return nil
         }

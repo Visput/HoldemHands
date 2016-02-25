@@ -17,19 +17,14 @@ struct ThreeOfKindRank: HandRank {
         var rankCard: Card? = nil
         
         for index in 0 ... orderedCards.cards.count - 3 {
-            let firstCard = orderedCards.cards[index]
-            let secondCard = orderedCards.cards[index + 1]
-            
-            if firstCard.rank == secondCard.rank {
-                let thirdCard = orderedCards.cards[index + 2]
-                
-                if firstCard.rank == thirdCard.rank {
-                    rankCard = firstCard
+            if orderedCards.cards[index].rank == orderedCards.cards[index + 1].rank &&
+                orderedCards.cards[index].rank == orderedCards.cards[index + 2].rank {
+                    
+                    rankCard = orderedCards.cards[index]
                     orderedCards.removeAtIndex(index + 2)
                     orderedCards.removeAtIndex(index + 1)
                     orderedCards.removeAtIndex(index)
                     break
-                }
             }
         }
         

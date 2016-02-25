@@ -17,11 +17,8 @@ struct PairRank: HandRank {
         var rankCard: Card? = nil
         
         for index in 0 ... orderedCards.cards.count - 2 {
-            let firstCard = orderedCards.cards[index]
-            let secondCard = orderedCards.cards[index + 1]
-            
-            if firstCard.rank == secondCard.rank {
-                rankCard = firstCard
+            if orderedCards.cards[index].rank == orderedCards.cards[index + 1].rank {
+                rankCard = orderedCards.cards[index]
                 orderedCards.removeAtIndex(index + 1)
                 orderedCards.removeAtIndex(index)
                 break

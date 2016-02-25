@@ -13,37 +13,36 @@ struct StraightRank: HandRank {
     let rankCards: [Card]
     
     init?(orderedCards: OrderedCards) {
-        var rankCards: [Card]? = nil
+        var rankCards = [Card]()
         
-        for index in 0 ... orderedCards.cards.count - 5 {
-            let firstCard = orderedCards.cards[index]
-            let secondCard = orderedCards.cards[index + 1]
-            
-            if firstCard.rank.rawValue == secondCard.rank.rawValue + 1 {
-                let thirdCard = orderedCards.cards[index + 2]
-                
-                if secondCard.rank.rawValue == thirdCard.rank.rawValue + 1 {
-                    let fourthCard = orderedCards.cards[index + 3]
+        mainLoop: for index in 0 ... orderedCards.cards.count - 5 {
+            subLoop: for subIndex in index ..< orderedCards.cards.count {
+                if rankCards.count == 0 {
+                    rankCards.append(orderedCards.cards[subIndex])
                     
-                    if thirdCard.rank.rawValue == fourthCard.rank.rawValue + 1 {
-                        let fifthCard = orderedCards.cards[index + 4]
+                } else if rankCards.last!.rank.rawValue == orderedCards.cards[subIndex].rank.rawValue + 1 {
+                    rankCards.append(orderedCards.cards[subIndex])
+                    
+                    if rankCards.count == 4 && rankCards.last!.rank == .Two && orderedCards.cards[0].rank == .Ace {
+                        // Wheel Straight.
+                        rankCards.append(orderedCards.cards[0])
+                        break mainLoop
                         
-                        if fourthCard.rank.rawValue == fifthCard.rank.rawValue + 1 {
-                            rankCards = [firstCard, secondCard, thirdCard, fourthCard, fifthCard]
-                            break
-                            
-                        } else if fourthCard.rank == .Two && orderedCards.cards[0].rank == .Ace {
-                            // Wheel Straight.
-                            rankCards = [firstCard, secondCard, thirdCard, fourthCard, orderedCards.cards[0]]
-                            break
-                        }
+                    } else if rankCards.count == 5 {
+                        break mainLoop
                     }
+                    
+                } else if rankCards.last!.rank.rawValue > orderedCards.cards[subIndex].rank.rawValue + 1  {
+                    rankCards.removeAll()
+                    break subLoop 
                 }
             }
+            
+            rankCards.removeAll()
         }
         
-        if rankCards != nil {
-            self.rankCards = rankCards!
+        if rankCards.count == 5 {
+            self.rankCards = rankCards
         } else {
             return nil
         }

@@ -17,24 +17,16 @@ struct FourOfKindRank: HandRank {
         var rankCard: Card? = nil
         
         for index in 0 ... orderedCards.cards.count - 4 {
-            let firstCard = orderedCards.cards[index]
-            let secondCard = orderedCards.cards[index + 1]
-            
-            if firstCard.rank == secondCard.rank {
-                let thirdCard = orderedCards.cards[index + 2]
-                
-                if firstCard.rank == thirdCard.rank {
-                    let fourthCard = orderedCards.cards[index + 3]
+            if orderedCards.cards[index].rank == orderedCards.cards[index + 1].rank &&
+                orderedCards.cards[index].rank == orderedCards.cards[index + 2].rank &&
+                orderedCards.cards[index].rank == orderedCards.cards[index + 3].rank{
                     
-                    if firstCard.rank == fourthCard.rank {
-                        rankCard = firstCard
-                        orderedCards.removeAtIndex(index + 3)
-                        orderedCards.removeAtIndex(index + 2)
-                        orderedCards.removeAtIndex(index + 1)
-                        orderedCards.removeAtIndex(index)
-                        break
-                    }
-                }
+                    rankCard = orderedCards.cards[index]
+                    orderedCards.removeAtIndex(index + 3)
+                    orderedCards.removeAtIndex(index + 2)
+                    orderedCards.removeAtIndex(index + 1)
+                    orderedCards.removeAtIndex(index)
+                    break
             }
         }
         
