@@ -11,34 +11,39 @@ import Foundation
 struct HandRankComparator<HandRankType: HandRank> {
     
     static func compareHands(inout handsOdds: [HandOdds], orderedBoards: [OrderedCards]) -> Bool {
-        let firstHandRank = HandRankType(orderedCards: orderedBoards[0])
-        let secondHandRank = HandRankType(orderedCards: orderedBoards[1])
-        
-        if firstHandRank == nil && secondHandRank == nil {
-            return false
-            
-        } else if firstHandRank != nil && secondHandRank != nil {
-            if firstHandRank! == secondHandRank! {
-                handsOdds[0].tieCombinationsCount += 1
-                handsOdds[1].tieCombinationsCount += 1
-                return true
-                
-            } else if firstHandRank! > secondHandRank! {
-                handsOdds[0].winningCombinationsCount += 1
-                return true
-                
-            } else {
-                handsOdds[1].winningCombinationsCount += 1
-                return true
+        typealias HandData = (handRank: HandRankType, handOddsIndex: Int)
+        var handsData: [HandData] = []
+        for (index, orderedBoard) in orderedBoards.enumerate() {
+            if let handRank = HandRankType(orderedCards: orderedBoard) {
+                handsData.append((handRank: handRank, handOddsIndex: index))
             }
-            
-        } else if firstHandRank != nil {
-            handsOdds[0].winningCombinationsCount += 1
-            return true
+        }
+        
+        guard handsData.count != 0 else { return false }
+        
+        var winningHandsData: [HandData] = []
+        for handData in handsData {
+            if winningHandsData.count == 0 {
+                winningHandsData.append(handData)
+                
+            } else if winningHandsData.last!.handRank == handData.handRank {
+                winningHandsData.append(handData)
+                
+            } else if winningHandsData.last!.handRank < handData.handRank {
+                winningHandsData.removeAll()
+                winningHandsData.append(handData)
+            }
+        }
+        
+        if winningHandsData.count == 1 {
+            handsOdds[winningHandsData.first!.handOddsIndex].winningCombinationsCount += 1
             
         } else {
-            handsOdds[1].winningCombinationsCount += 1
-            return true
+            for winningHandData in winningHandsData {
+                handsOdds[winningHandData.handOddsIndex].tieCombinationsCount += 1
+            }
         }
+        
+        return true
     }
 }
