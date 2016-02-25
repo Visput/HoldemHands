@@ -158,7 +158,7 @@ class PokerHandTests: XCTestCase {
         XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[0].winningProbability(), 2.17, accuracy: 0.01)
         XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[0].tieProbability(), 95.65, accuracy: 0.01)
         
-        XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[1].winningProbability(), 2.19, accuracy: 0.01)
+        XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[1].winningProbability(), 2.17, accuracy: 0.01)
         XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[1].tieProbability(), 95.65, accuracy: 0.01)
     }
     
