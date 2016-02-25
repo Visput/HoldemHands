@@ -55,7 +55,8 @@ struct OddsCalculator {
         print(CFAbsoluteTimeGetCurrent() - time)
         
         self.handsOdds = handsOdds
-        print(self.handsOdds)
+        print("\(self.handsOdds[0].hand)\nWins: \(Double(100 * self.handsOdds[0].winningCombinationsCount) / Double(self.handsOdds[0].totalCombinationsCount))\nTie: \(Double(100 * self.handsOdds[0].tieCombinationsCount) / Double(self.handsOdds[0].totalCombinationsCount))")
+        print("\(self.handsOdds[1].hand)\nWins: \(Double(100 * self.handsOdds[1].winningCombinationsCount) / Double(self.handsOdds[1].totalCombinationsCount))\nTie: \(Double(100 * self.handsOdds[1].tieCombinationsCount) / Double(self.handsOdds[1].totalCombinationsCount))")
         self.sortedHandsOdds = handsOdds.sort({ (lhs, rhs) -> Bool in
             return lhs.winningCombinationsCount > rhs.winningCombinationsCount
         })

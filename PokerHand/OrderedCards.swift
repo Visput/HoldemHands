@@ -25,6 +25,9 @@ struct OrderedCards {
                     if card.rank < hand.secondCard.rank {
                         cards.insert(hand.secondCard, atIndex: index + 1)
                         break
+                        
+                    } else if index == boardCards.count - 1 {
+                        cards.append(hand.secondCard)
                     }
                     
                 } else if index == boardCards.count - 1 {

@@ -11,26 +11,29 @@ import XCTest
 
 class PokerHandTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testOrderedCards() {
+        let boardCards = [
+            Card(rank: .Ace, suit: .Diamonds),
+            Card(rank: .Ace, suit: .Spades),
+            Card(rank: .Ace, suit: .Hearts),
+            Card(rank: .Ace, suit: .Clubs),
+            Card(rank: .Ten, suit: .Spades)
+        ]
+        
+        let hand = Hand(firstCard: Card(rank: .Jack, suit: .Hearts), secondCard: Card(rank: .Seven, suit: .Hearts))
+        
+        let orderedCards = OrderedCards(hand: hand, boardCards: boardCards)
+        let expectedCards = [
+            Card(rank: .Ace, suit: .Diamonds),
+            Card(rank: .Ace, suit: .Spades),
+            Card(rank: .Ace, suit: .Hearts),
+            Card(rank: .Ace, suit: .Clubs),
+            Card(rank: .Jack, suit: .Hearts),
+            Card(rank: .Ten, suit: .Spades),
+            Card(rank: .Seven, suit: .Hearts)
+        ]
+        
+        XCTAssertEqual(orderedCards.cards, expectedCards)
     }
     
 }

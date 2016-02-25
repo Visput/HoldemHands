@@ -72,6 +72,9 @@
                             <constraint firstItem="foO-GZ-eAy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="jmA-OO-2Em"/>
                             <constraint firstItem="kUo-2W-y7t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="wJW-3g-KTD"/>
                         </constraints>
+                        <connections>
+                            <outlet property="handsCollectionView" destination="kUo-2W-y7t" id="P4a-9I-R9u"/>
+                        </connections>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
