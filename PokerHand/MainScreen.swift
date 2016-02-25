@@ -15,7 +15,7 @@ final class MainScreen: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        generateNextHand()
+        //generateNextHand()
         
     }
     
@@ -31,12 +31,20 @@ final class MainScreen: UIViewController {
     private func generateNextHand() {
         let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
         let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
+
         var deck = Deck()
         deck.removeHand(firstHand)
         deck.removeHand(secondHand)
         
         var oddsCalculator = OddsCalculator(hands: [firstHand, secondHand], deck: deck)
+        let time = CFAbsoluteTimeGetCurrent()
         oddsCalculator.calculateOdds()
+        print(CFAbsoluteTimeGetCurrent() - time)
+        
+        print("\(oddsCalculator.handsOdds[0].hand)\nWins: \(oddsCalculator.handsOdds[0].winningProbability())\nTie: \(oddsCalculator.handsOdds[0].tieProbability())")
+        print("\(oddsCalculator.handsOdds[0].hand)\nWins: \(oddsCalculator.handsOdds[1].winningProbability())\nTie: \(oddsCalculator.handsOdds[1].tieProbability())")
+        
+        
         mainView.handsCollectionView.reloadData()
     }
     

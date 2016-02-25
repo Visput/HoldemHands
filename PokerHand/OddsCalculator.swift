@@ -41,7 +41,6 @@ struct OddsCalculator {
             handsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
         }
         
-        let time = CFAbsoluteTimeGetCurrent()
         iterateBoardsOfSize(boardSize, inDeck: deck, iterationHandler: { boardCards in
             var orderedBoards = [OrderedCards]()
             for handOdds in handsOdds {
@@ -58,11 +57,8 @@ struct OddsCalculator {
             guard !HandRankComparator<PairRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
             guard !HandRankComparator<HighCardRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
         })
-        print(CFAbsoluteTimeGetCurrent() - time)
         
         self.handsOdds = handsOdds
-        print("\(self.handsOdds[0].hand)\nWins: \(self.handsOdds[0].winningProbability())\nTie: \(self.handsOdds[0].tieProbability())")
-        print("\(self.handsOdds[0].hand)\nWins: \(self.handsOdds[1].winningProbability())\nTie: \(self.handsOdds[1].tieProbability())")
         self.sortedHandsOdds = handsOdds.sort({ (lhs, rhs) -> Bool in
             return lhs.winningCombinationsCount > rhs.winningCombinationsCount
         })

@@ -15,7 +15,7 @@ struct StraightRank: HandRank {
     init?(orderedCards: OrderedCards) {
         var rankCards = [Card]()
         
-        mainLoop: for index in 0 ... orderedCards.cards.count - 5 {
+        mainLoop: for index in 0 ... orderedCards.cards.count - 4 {
             subLoop: for subIndex in index ..< orderedCards.cards.count {
                 if rankCards.count == 0 {
                     rankCards.append(orderedCards.cards[subIndex])
