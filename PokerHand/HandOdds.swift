@@ -20,4 +20,12 @@ struct HandOdds {
         self.hand = hand
         self.totalCombinationsCount = totalCombinationsCount
     }
+    
+    func winningProbability() -> Double {
+        return Double(100 * winningCombinationsCount) / Double(totalCombinationsCount)
+    }
+    
+    func tieProbability() -> Double {
+        return Double(100 * tieCombinationsCount) / Double(totalCombinationsCount)
+    }
 }

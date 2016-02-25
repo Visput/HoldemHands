@@ -34,6 +34,11 @@ struct Deck {
         }
     }
     
+    mutating func removeHand(hand: Hand) {
+        cards.removeAtIndex(cards.indexOf(hand.firstCard)!)
+        cards.removeAtIndex(cards.indexOf(hand.secondCard)!)
+    }
+    
     mutating func sortCards() {
         cards.sortInPlace({ (lhs, rhs) -> Bool in
             lhs.rank > rhs.rank

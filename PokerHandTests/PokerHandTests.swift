@@ -36,4 +36,21 @@ class PokerHandTests: XCTestCase {
         XCTAssertEqual(orderedCards.cards, expectedCards)
     }
     
+    func testOddsCalculator() {
+        var deck = Deck()
+        let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
+        let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
+        deck.removeHand(firstHand)
+        deck.removeHand(secondHand)
+        
+        var oddsCalculator = OddsCalculator(hands: [firstHand, secondHand], deck: deck)
+        oddsCalculator.calculateOdds()
+        
+        XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[0].winningProbability(), 65.27, accuracy: 0.01)
+        XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[0].tieProbability(), 0.38, accuracy: 0.01)
+        
+        XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[1].winningProbability(), 34.35, accuracy: 0.01)
+        XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[1].tieProbability(), 0.38, accuracy: 0.01)
+    }
+    
 }

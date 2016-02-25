@@ -29,7 +29,13 @@ final class MainScreen: UIViewController {
     }
     
     private func generateNextHand() {
-        oddsCalculator = OddsCalculator(numberOfHands: numberOfHands)
+        let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
+        let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
+        var deck = Deck()
+        deck.removeHand(firstHand)
+        deck.removeHand(secondHand)
+        
+        var oddsCalculator = OddsCalculator(hands: [firstHand, secondHand], deck: deck)
         oddsCalculator.calculateOdds()
         mainView.handsCollectionView.reloadData()
     }
