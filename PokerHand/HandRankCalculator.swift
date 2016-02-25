@@ -18,12 +18,12 @@ struct HandRankComparator<HandRankType: HandRank> {
             return false
             
         } else if firstHandRank != nil && secondHandRank != nil {
-            if firstHandRank == secondHandRank {
+            if firstHandRank! == secondHandRank! {
                 handsOdds[0].tieCombinationsCount += 1
                 handsOdds[1].tieCombinationsCount += 1
                 return true
                 
-            } else if firstHandRank > secondHandRank {
+            } else if firstHandRank! > secondHandRank! {
                 handsOdds[0].winningCombinationsCount += 1
                 return true
                 
