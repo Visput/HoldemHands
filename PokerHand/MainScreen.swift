@@ -13,10 +13,9 @@ final class MainScreen: UIViewController {
     let numberOfHands: Int = 2
     var oddsCalculator: OddsCalculator!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //generateNextHand()
-        
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        generateNextHand()
     }
     
     override func viewDidLayoutSubviews() {
@@ -29,14 +28,7 @@ final class MainScreen: UIViewController {
     }
     
     private func generateNextHand() {
-        let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
-        let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
-
-        var deck = Deck()
-        deck.removeHand(firstHand)
-        deck.removeHand(secondHand)
-        
-        var oddsCalculator = OddsCalculator(hands: [firstHand, secondHand], deck: deck)
+        oddsCalculator = OddsCalculator(numberOfHands: 2)
         let time = CFAbsoluteTimeGetCurrent()
         oddsCalculator.calculateOdds()
         print(CFAbsoluteTimeGetCurrent() - time)
@@ -44,7 +36,8 @@ final class MainScreen: UIViewController {
         print("\(oddsCalculator.handsOdds[0].hand)\nWins: \(oddsCalculator.handsOdds[0].winningProbability())\nTie: \(oddsCalculator.handsOdds[0].tieProbability())")
         print("\(oddsCalculator.handsOdds[0].hand)\nWins: \(oddsCalculator.handsOdds[1].winningProbability())\nTie: \(oddsCalculator.handsOdds[1].tieProbability())")
         
-        
+        mainView.handsCollectionView.delegate = self
+        mainView.handsCollectionView.dataSource = self
         mainView.handsCollectionView.reloadData()
     }
     
@@ -77,11 +70,16 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! HandCell
+        let currentCell = collectionView.cellForItemAtIndexPath(indexPath) as! HandCell
         
-        let isSuccessState = cell.item.handOdds.hand == oddsCalculator.sortedHandsOdds[0].hand
-        let item = HandCellItem(handOdds: cell.item.handOdds, needsShowOdds: true, isSuccessSate: isSuccessState)
-        cell.fillWithItem(item)
+        for cell in collectionView.visibleCells() as! [HandCell] {
+            var isSuccessState: Bool? = nil
+            if currentCell == cell {
+                isSuccessState = oddsCalculator.isWinningHandOdds(cell.item.handOdds)
+            }
+            let item = HandCellItem(handOdds: cell.item.handOdds, needsShowOdds: true, isSuccessSate: isSuccessState)
+            cell.fillWithItem(item)
+        }
     }
 }
 

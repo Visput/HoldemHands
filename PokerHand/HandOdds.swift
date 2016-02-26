@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct HandOdds {
+struct HandOdds: Equatable {
     
     let hand: Hand
     let totalCombinationsCount: Int
@@ -21,6 +21,10 @@ struct HandOdds {
         self.totalCombinationsCount = totalCombinationsCount
     }
     
+    func totalWinningCombinationsCount() -> Double {
+        return Double(winningCombinationsCount) + Double(tieCombinationsCount) / 2.0
+    }
+    
     func winningProbability() -> Double {
         return Double(100 * winningCombinationsCount) / Double(totalCombinationsCount)
     }
@@ -28,4 +32,15 @@ struct HandOdds {
     func tieProbability() -> Double {
         return Double(100 * tieCombinationsCount) / Double(totalCombinationsCount)
     }
+    
+    func totalWinningProbability() -> Double {
+        return 100.0 * totalWinningCombinationsCount() / Double(totalCombinationsCount)
+    }
+}
+
+func ==(lhs: HandOdds, rhs: HandOdds) -> Bool {
+    return lhs.hand == rhs.hand &&
+        lhs.winningCombinationsCount == rhs.winningCombinationsCount &&
+        lhs.tieCombinationsCount == rhs.tieCombinationsCount &&
+        lhs.totalCombinationsCount == rhs.totalCombinationsCount
 }

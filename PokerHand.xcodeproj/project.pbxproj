@@ -24,6 +24,7 @@
 		9F45BA381C7821380042FA4E /* StraightFlushRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA371C7821380042FA4E /* StraightFlushRank.swift */; };
 		9F45BA3A1C78F6DC0042FA4E /* HandRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA391C78F6DC0042FA4E /* HandRank.swift */; };
 		9F45BA3C1C7ABC4B0042FA4E /* OrderedCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F45BA3B1C7ABC4B0042FA4E /* OrderedCards.swift */; };
+		9FA0D2861C7FFEB70036A9B2 /* UIColor+AppPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0D2851C7FFEB70036A9B2 /* UIColor+AppPalette.swift */; };
 		9FACAACD1C72BCC20051A435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACAACC1C72BCC20051A435 /* AppDelegate.swift */; };
 		9FACAACF1C72BCC20051A435 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACAACE1C72BCC20051A435 /* MainScreen.swift */; };
 		9FACAAD21C72BCC20051A435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FACAAD01C72BCC20051A435 /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 		9F45BA371C7821380042FA4E /* StraightFlushRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StraightFlushRank.swift; sourceTree = "<group>"; };
 		9F45BA391C78F6DC0042FA4E /* HandRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandRank.swift; sourceTree = "<group>"; };
 		9F45BA3B1C7ABC4B0042FA4E /* OrderedCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedCards.swift; sourceTree = "<group>"; };
+		9FA0D2851C7FFEB70036A9B2 /* UIColor+AppPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AppPalette.swift"; sourceTree = "<group>"; };
 		9FACAAC91C72BCC20051A435 /* PokerHand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerHand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FACAACC1C72BCC20051A435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FACAACE1C72BCC20051A435 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		9F45B9DD1C766B820042FA4E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9FA0D2851C7FFEB70036A9B2 /* UIColor+AppPalette.swift */,
 				9FACAACE1C72BCC20051A435 /* MainScreen.swift */,
 				9F45B9E01C766BFA0042FA4E /* MainView.swift */,
 				9F45B9E21C766CF00042FA4E /* HandCell.swift */,
@@ -317,6 +320,7 @@
 				9FACAACD1C72BCC20051A435 /* AppDelegate.swift in Sources */,
 				9FBFEE1D1C7571BA00BBD9E1 /* Card.swift in Sources */,
 				9F45BA381C7821380042FA4E /* StraightFlushRank.swift in Sources */,
+				9FA0D2861C7FFEB70036A9B2 /* UIColor+AppPalette.swift in Sources */,
 				9F00CC221C7D18B600AC63CC /* HandRankCalculator.swift in Sources */,
 				9F45B9E51C76851A0042FA4E /* OddsCalculator.swift in Sources */,
 				9F45BA261C77AD840042FA4E /* HandCellItem.swift in Sources */,

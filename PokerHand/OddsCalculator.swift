@@ -13,7 +13,7 @@ struct OddsCalculator {
     private(set) var hands: [Hand]
     private(set) var deck: Deck
     private(set) var handsOdds: [HandOdds]!
-    private(set) var sortedHandsOdds: [HandOdds]!
+    private(set) var winningHandsOdds: [HandOdds]!
     
     init(numberOfHands: Int) {
         deck = Deck()
@@ -59,9 +59,25 @@ struct OddsCalculator {
         })
         
         self.handsOdds = handsOdds
-        self.sortedHandsOdds = handsOdds.sort({ (lhs, rhs) -> Bool in
-            return lhs.winningCombinationsCount > rhs.winningCombinationsCount
-        })
+        
+        winningHandsOdds = []
+        
+        for handOdds in handsOdds {
+            if winningHandsOdds.count == 0 {
+                winningHandsOdds.append(handOdds)
+                
+            } else if winningHandsOdds.last!.totalWinningCombinationsCount() == handOdds.totalWinningCombinationsCount() {
+                winningHandsOdds.append(handOdds)
+                
+            } else if winningHandsOdds.last!.totalWinningCombinationsCount() < handOdds.totalWinningCombinationsCount() {
+                winningHandsOdds.removeAll()
+                winningHandsOdds.append(handOdds)
+            }
+        }
+    }
+    
+    func isWinningHandOdds(handOdds: HandOdds) -> Bool {
+        return winningHandsOdds.indexOf(handOdds) != nil
     }
 }
 

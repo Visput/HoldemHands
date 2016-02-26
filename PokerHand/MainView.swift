@@ -19,7 +19,7 @@ final class MainView: UIView {
         collectionViewLayout.sectionInset.bottom = 0.0
 
         let contentWidth = handsCollectionView.frame.size.width
-        let spacing =  contentWidth * (1.0 - CGFloat(numberOfCells) / CGFloat(numberOfCells + 1)) / CGFloat(numberOfCells + 1)
+        let spacing = contentWidth / CGFloat((numberOfCells + 1) * (numberOfCells + 1))
         
         collectionViewLayout.minimumLineSpacing = spacing
         collectionViewLayout.minimumInteritemSpacing = spacing
