@@ -67,10 +67,10 @@ class OddsCalculator {
                 if self.winningHandsOdds.count == 0 {
                     self.winningHandsOdds.append(handOdds)
                     
-                } else if self.winningHandsOdds.last!.totalWinningCombinationsCount() == handOdds.totalWinningCombinationsCount() {
+                } else if self.winningHandsOdds.last!.winningCombinationsCount == handOdds.winningCombinationsCount {
                     self.winningHandsOdds.append(handOdds)
                     
-                } else if self.winningHandsOdds.last!.totalWinningCombinationsCount() < handOdds.totalWinningCombinationsCount() {
+                } else if self.winningHandsOdds.last!.winningCombinationsCount < handOdds.winningCombinationsCount {
                     self.winningHandsOdds.removeAll()
                     self.winningHandsOdds.append(handOdds)
                 }

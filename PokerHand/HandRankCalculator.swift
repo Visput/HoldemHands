@@ -40,7 +40,7 @@ struct HandRankComparator<HandRankType: HandRank> {
             
         } else {
             for winningHandData in winningHandsData {
-                handsOdds[winningHandData.handOddsIndex].tieCombinationsCount += 1
+                handsOdds[winningHandData.handOddsIndex].winningCombinationsCount += 1.0 / Double(winningHandsData.count)
             }
         }
         

@@ -29,7 +29,7 @@ final class MainScreen: UIViewController {
     
     private func generateNextHand() {
         oddsCalculator = OddsCalculator(numberOfHands: numberOfHands)
-        
+//        
 //        let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
 //        let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
 //        var deck = Deck()
@@ -47,7 +47,7 @@ final class MainScreen: UIViewController {
             print(CFAbsoluteTimeGetCurrent() - time)
             
             for handOdds in self.oddsCalculator.handsOdds {
-                print("\(handOdds.hand)\nWins: \(handOdds.winningProbability())\nTie: \(handOdds.tieProbability())")
+                print("\(handOdds.hand)\nWins: \(handOdds.winningProbability())")
             }
             
             self.mainView.handsCollectionView.delegate = self

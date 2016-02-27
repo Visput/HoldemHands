@@ -29,7 +29,7 @@ final class HandCell: UICollectionViewCell {
         self.item = item
         
         winningProbabilityLabel.hidden = !item.needsShowOdds
-        winningProbabilityLabel.text = NSString(format: "Win: %.2f%%", item.handOdds.totalWinningProbability()) as String
+        winningProbabilityLabel.text = NSString(format: "Win: %.2f%%", item.handOdds.winningProbability()) as String
         
         firstCardTopLabel.text = titleForCard(item.handOdds.hand.firstCard)
         firstCardTopLabel.textColor = colorForCard(item.handOdds.hand.firstCard)
