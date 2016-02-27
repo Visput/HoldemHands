@@ -8,11 +8,11 @@
 
 import Foundation
 
-private var staticRankCards = SevenItemsArray<Card>()
+private var staticRankCards = QuickArray<Card>()
 
 struct StraightRank: HandRank {
     
-    let rankCards: SevenItemsArray<Card>
+    let rankCards: QuickArray<Card>
     
     init?(orderedCards: OrderedCards) {
         staticRankCards.removeAll()

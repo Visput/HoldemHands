@@ -1,5 +1,5 @@
 //
-//  SevenItemsArray.swift
+//  QuickArray.swift
 //  PokerHand
 //
 //  Created by Uladzimir Papko on 2/26/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SevenItemsArray<ItemType: Equatable>: Equatable {
+struct QuickArray<ItemType: Equatable>: Equatable {
     
     private var itemOne: ItemType?
     private var itemTwo: ItemType?
@@ -17,6 +17,9 @@ struct SevenItemsArray<ItemType: Equatable>: Equatable {
     private var itemFive: ItemType?
     private var itemSix: ItemType?
     private var itemSeven: ItemType?
+    private var itemEight: ItemType?
+    private var itemNine: ItemType?
+    private var itemTen: ItemType?
     
     private(set) var count: Int = 0
     
@@ -92,6 +95,12 @@ struct SevenItemsArray<ItemType: Equatable>: Equatable {
             return itemSix
         } else if index == 6 {
             return itemSeven
+        } else if index == 7 {
+            return itemEight
+        } else if index == 8 {
+            return itemNine
+        } else if index == 9 {
+            return itemTen
         } else {
             fatalError("Index \(index) is out of array bounds")
         }
@@ -112,13 +121,19 @@ struct SevenItemsArray<ItemType: Equatable>: Equatable {
             itemSix = item
         } else if index == 6 {
             itemSeven = item
+        } else if index == 7 {
+            itemEight = item
+        } else if index == 8 {
+            itemNine = item
+        } else if index == 9 {
+            itemTen = item
         } else {
             fatalError("Index \(index) is out of array bounds")
         }
     }
 }
 
-func ==<ItemType: Equatable>(lhs: SevenItemsArray<ItemType>, rhs: SevenItemsArray<ItemType>) -> Bool {
+func ==<ItemType: Equatable>(lhs: QuickArray<ItemType>, rhs: QuickArray<ItemType>) -> Bool {
     if lhs.count != rhs.count {
         return false
     } else {

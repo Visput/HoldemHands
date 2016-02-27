@@ -15,7 +15,7 @@ import XCTest
 class PokerHandTests: XCTestCase {
     
     func testOrderedCards1() {
-        var boardCards = SevenItemsArray<Card>()
+        var boardCards = QuickArray<Card>()
         boardCards.append(Card(rank: .Ace, suit: .Diamonds))
         boardCards.append(Card(rank: .Ace, suit: .Spades))
         boardCards.append(Card(rank: .Ace, suit: .Hearts))
@@ -25,7 +25,7 @@ class PokerHandTests: XCTestCase {
         let hand = Hand(firstCard: Card(rank: .Jack, suit: .Hearts), secondCard: Card(rank: .Seven, suit: .Hearts))
         
         let orderedCards = OrderedCards(hand: hand, boardCards: boardCards)
-        var expectedCards = SevenItemsArray<Card>()
+        var expectedCards = QuickArray<Card>()
         expectedCards.append(Card(rank: .Ace, suit: .Diamonds))
         expectedCards.append(Card(rank: .Ace, suit: .Spades))
         expectedCards.append(Card(rank: .Ace, suit: .Hearts))
@@ -38,7 +38,7 @@ class PokerHandTests: XCTestCase {
     }
     
     func testStraightRank1() {
-        var boardCards = SevenItemsArray<Card>()
+        var boardCards = QuickArray<Card>()
         boardCards.append(Card(rank: .Ace, suit: .Diamonds))
         boardCards.append(Card(rank: .Ace, suit: .Spades))
         boardCards.append(Card(rank: .Ace, suit: .Hearts))
@@ -52,7 +52,7 @@ class PokerHandTests: XCTestCase {
     }
     
     func testStraightRank2() {
-        var boardCards = SevenItemsArray<Card>()
+        var boardCards = QuickArray<Card>()
         boardCards.append(Card(rank: .Ace, suit: .Spades))
         boardCards.append(Card(rank: .King, suit: .Hearts))
         boardCards.append(Card(rank: .Ten, suit: .Diamonds))
@@ -66,7 +66,7 @@ class PokerHandTests: XCTestCase {
     }
     
     func testStraightRank3() {
-        var boardCards = SevenItemsArray<Card>()
+        var boardCards = QuickArray<Card>()
         boardCards.append(Card(rank: .Ace, suit: .Spades))
         boardCards.append(Card(rank: .Ace, suit: .Hearts))
         boardCards.append(Card(rank: .Five, suit: .Diamonds))
@@ -80,7 +80,7 @@ class PokerHandTests: XCTestCase {
     }
     
     func testStraightRank4() {
-        var boardCards = SevenItemsArray<Card>()
+        var boardCards = QuickArray<Card>()
         boardCards.append(Card(rank: .Ace, suit: .Spades))
         boardCards.append(Card(rank: .Ace, suit: .Hearts))
         boardCards.append(Card(rank: .Seven, suit: .Diamonds))
@@ -94,7 +94,7 @@ class PokerHandTests: XCTestCase {
     }
     
     func testStraightRank5() {
-        var boardCards = SevenItemsArray<Card>()
+        var boardCards = QuickArray<Card>()
         boardCards.append(Card(rank: .Ace, suit: .Spades))
         boardCards.append(Card(rank: .Ace, suit: .Hearts))
         boardCards.append(Card(rank: .Five, suit: .Diamonds))
@@ -108,7 +108,7 @@ class PokerHandTests: XCTestCase {
     }
     
     func testStraightFlushRank1() {
-        var boardCards = SevenItemsArray<Card>()
+        var boardCards = QuickArray<Card>()
         boardCards.append(Card(rank: .Ace, suit: .Spades))
         boardCards.append(Card(rank: .Ace, suit: .Hearts))
         boardCards.append(Card(rank: .Five, suit: .Spades))

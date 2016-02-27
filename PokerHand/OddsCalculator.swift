@@ -42,21 +42,34 @@ class OddsCalculator {
                 handsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
             }
             
+            var straightFlushComparator = HandRankComparator<StraightFlushRank>()
+            var fourOfKindComparator = HandRankComparator<FourOfKindRank>()
+            var fullHouseComparator = HandRankComparator<FullHouseRank>()
+            var flushComparator = HandRankComparator<FlushRank>()
+            var straightComparator = HandRankComparator<StraightRank>()
+            var threeOfKindComparator = HandRankComparator<ThreeOfKindRank>()
+            var twoPairsComparator = HandRankComparator<TwoPairsRank>()
+            var pairComparator = HandRankComparator<PairRank>()
+            var highCardComparator = HandRankComparator<HighCardRank>()
+            
+            var orderedBoards = QuickArray<OrderedCards>()
+            
             self.iterateBoardsOfSize(boardSize, inDeck: self.deck, iterationHandler: { boardCards in
-                var orderedBoards = [OrderedCards]()
+                
+                orderedBoards.removeAll()
                 for handOdds in handsOdds {
                     orderedBoards.append(OrderedCards(hand: handOdds.hand, boardCards: boardCards))
                 }
                 
-                guard !HandRankComparator<StraightFlushRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-                guard !HandRankComparator<FourOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-                guard !HandRankComparator<FullHouseRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-                guard !HandRankComparator<FlushRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-                guard !HandRankComparator<StraightRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-                guard !HandRankComparator<ThreeOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-                guard !HandRankComparator<TwoPairsRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-                guard !HandRankComparator<PairRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-                guard !HandRankComparator<HighCardRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+                guard !straightFlushComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
+                guard !fourOfKindComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
+                guard !fullHouseComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
+                guard !flushComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
+                guard !straightComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
+                guard !threeOfKindComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
+                guard !twoPairsComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
+                guard !pairComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
+                guard !highCardComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
             })
             
             self.handsOdds = handsOdds
@@ -80,8 +93,6 @@ class OddsCalculator {
                 completion()
             })
         })
-        
-        
     }
     
     func isWinningHandOdds(handOdds: HandOdds) -> Bool {
@@ -93,9 +104,9 @@ extension OddsCalculator {
     
     private func iterateBoardsOfSize(boardSize: Int,
         inDeck deck: Deck,
-        iterationHandler: (boardCards: SevenItemsArray<Card>) -> Void) {
+        iterationHandler: (boardCards: QuickArray<Card>) -> Void) {
             
-            var emptyBoard = SevenItemsArray<Card>()
+            var emptyBoard = QuickArray<Card>()
             
             iterateDeckCards(deck.cards,
                 fromIndex: 0,
@@ -107,8 +118,8 @@ extension OddsCalculator {
     private func iterateDeckCards(deckCards: [Card],
         fromIndex: Int,
         toIndex: Int,
-        inout boardCards: SevenItemsArray<Card>,
-        iterationHandler: (boardCards: SevenItemsArray<Card>) -> Void) {
+        inout boardCards: QuickArray<Card>,
+        iterationHandler: (boardCards: QuickArray<Card>) -> Void) {
             
             if toIndex < deckCards.count {
                 for index in fromIndex ... toIndex {

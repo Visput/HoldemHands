@@ -8,14 +8,14 @@
 
 import Foundation
 
-private var cardsStaticArray = [SevenItemsArray<Card>(), SevenItemsArray<Card>(), SevenItemsArray<Card>(), SevenItemsArray<Card>()]
+private var cardsStaticArray = [QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>()]
 
 struct FlushRank: HandRank {
     
-    let rankCards: SevenItemsArray<Card>
+    let rankCards: QuickArray<Card>
     
     init?(orderedCards: OrderedCards) {
-        var rankCards: SevenItemsArray<Card>? = nil
+        var rankCards: QuickArray<Card>? = nil
         
         for index in 0 ..< cardsStaticArray.count {
             cardsStaticArray[index].removeAll()

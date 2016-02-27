@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct OrderedCards {
+struct OrderedCards: Equatable {
     
-    private(set) var cards: SevenItemsArray<Card>
+    private(set) var cards: QuickArray<Card>
     
-    init(hand: Hand, boardCards: SevenItemsArray<Card>) {
+    init(hand: Hand, boardCards: QuickArray<Card>) {
         cards = boardCards
         
         var firstCardInserted = false
@@ -48,11 +48,15 @@ struct OrderedCards {
         }
     }
     
-    init(orderedCards: SevenItemsArray<Card>) {
+    init(orderedCards: QuickArray<Card>) {
         self.cards = orderedCards
     }
     
     mutating func removeAtIndex(index: Int) {
         cards.removeAtIndex(index)
     }
+}
+
+func ==(lhs: OrderedCards, rhs: OrderedCards) -> Bool {
+    return lhs.cards == rhs.cards
 }

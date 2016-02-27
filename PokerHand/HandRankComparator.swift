@@ -1,5 +1,5 @@
 //
-//  HandRankCalculator.swift
+//  HandRankComparator.swift
 //  PokerHand
 //
 //  Created by Uladzimir Papko on 2/23/16.
@@ -10,19 +10,27 @@ import Foundation
 
 struct HandRankComparator<HandRankType: HandRank> {
     
-    static func compareHands(inout handsOdds: [HandOdds], orderedBoards: [OrderedCards]) -> Bool {
-        typealias HandData = (handRank: HandRankType, handOddsIndex: Int)
-        var handsData: [HandData] = []
-        for (index, orderedBoard) in orderedBoards.enumerate() {
+    private var handsData = QuickArray<HandRankComparatorItem<HandRankType>>()
+    private var winningHandsData = QuickArray<HandRankComparatorItem<HandRankType>>()
+    
+    mutating func compareHands(inout handsOdds: [HandOdds], inout orderedBoards: QuickArray<OrderedCards>) -> Bool {
+        
+        handsData.removeAll()
+        
+        for index in 0 ..< orderedBoards.count {
+            let orderedBoard = orderedBoards[index]
             if let handRank = HandRankType(orderedCards: orderedBoard) {
-                handsData.append((handRank: handRank, handOddsIndex: index))
+                handsData.append(HandRankComparatorItem(handRank: handRank, handOddsIndex: index))
             }
         }
         
         guard handsData.count != 0 else { return false }
         
-        var winningHandsData: [HandData] = []
-        for handData in handsData {
+        winningHandsData.removeAll()
+        
+        for index in 0 ..< handsData.count {
+            let handData = handsData[index]
+            
             if winningHandsData.count == 0 {
                 winningHandsData.append(handData)
                 
@@ -39,7 +47,8 @@ struct HandRankComparator<HandRankType: HandRank> {
             handsOdds[winningHandsData.first!.handOddsIndex].winningCombinationsCount += 1
             
         } else {
-            for winningHandData in winningHandsData {
+            for index in 0 ..< winningHandsData.count {
+                let winningHandData = winningHandsData[index]
                 handsOdds[winningHandData.handOddsIndex].winningCombinationsCount += 1.0 / Double(winningHandsData.count)
             }
         }

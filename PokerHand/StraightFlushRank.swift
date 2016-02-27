@@ -8,11 +8,11 @@
 
 import Foundation
 
-private var cardsStaticArray = [SevenItemsArray<Card>(), SevenItemsArray<Card>(), SevenItemsArray<Card>(), SevenItemsArray<Card>()]
+private var cardsStaticArray = [QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>()]
 
 struct StraightFlushRank: HandRank {
     
-    let rankCards: SevenItemsArray<Card>
+    let rankCards: QuickArray<Card>
     
     init?(orderedCards: OrderedCards) {
         for index in 0 ..< cardsStaticArray.count {
