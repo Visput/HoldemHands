@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SevenItemsArray<ItemType> {
+struct SevenItemsArray<ItemType: Equatable>: Equatable {
     
     private(set) var itemOne: ItemType?
     private(set) var itemTwo: ItemType?
@@ -20,21 +20,64 @@ struct SevenItemsArray<ItemType> {
     
     private(set) var count: Int = 0
     
-    mutating func removeAllUnsafe() {
-        count = 0
-    }
-    
     mutating func append(item: ItemType) {
         setItem(item, atIndex: count)
         count += 1
     }
     
+    mutating func insert(item: ItemType, atIndex index: Int) {
+        var newItem: ItemType? = item
+        for subIndex in index ... count {
+            let oldItem = itemAtIndex(subIndex)
+            setItem(newItem!, atIndex: subIndex)
+            newItem = oldItem
+        }
+        count += 1
+    }
+    
+    mutating func removeAtIndex(index: Int) {
+        if index <= count - 2 {
+            for subIndex in index ... count - 2 {
+                setItem(itemAtIndex(subIndex + 1)!, atIndex: subIndex)
+            }
+        }
+        count -= 1
+    }
+    
+    mutating func removeLast() {
+        count -= 1
+    }
+    
+    mutating func removeAll() {
+        count = 0
+    }
+    
     subscript(index: Int) -> ItemType {
         get {
-            return itemAtIndex(index)
+            return itemAtIndex(index)!
         }
         set(newValue) {
             setItem(newValue, atIndex: index)
+        }
+    }
+    
+    func itemAtIndex(index: Int) -> ItemType? {
+        if index == 0 {
+            return itemOne
+        } else if index == 1 {
+            return itemTwo
+        } else if index == 2 {
+            return itemThree
+        } else if index == 3 {
+            return itemFour
+        } else if index == 4 {
+            return itemFive
+        } else if index == 5 {
+            return itemSix
+        } else if index == 6 {
+            return itemSeven
+        } else {
+            fatalError("Index \(index) is out of array bounds")
         }
     }
     
@@ -57,24 +100,17 @@ struct SevenItemsArray<ItemType> {
             fatalError("Index \(index) is out of array bounds")
         }
     }
-    
-    private func itemAtIndex(index: Int) -> ItemType {
-        if index == 0 {
-            return itemOne!
-        } else if index == 1 {
-            return itemTwo!
-        } else if index == 2 {
-            return itemThree!
-        } else if index == 3 {
-            return itemFour!
-        } else if index == 4 {
-            return itemFive!
-        } else if index == 5 {
-            return itemSix!
-        } else if index == 6 {
-            return itemSeven!
-        } else {
-            fatalError("Index \(index) is out of array bounds")
+}
+
+func ==<ItemType: Equatable>(lhs: SevenItemsArray<ItemType>, rhs: SevenItemsArray<ItemType>) -> Bool {
+    if lhs.count != rhs.count {
+        return false
+    } else {
+        for index in 0 ..< lhs.count {
+            if lhs[index] != rhs[index] {
+                return false
+            }
         }
     }
+    return true
 }

@@ -18,10 +18,11 @@ struct FlushRank: HandRank {
         var rankCards: SevenItemsArray<Card>? = nil
         
         for index in 0 ..< cardsStaticArray.count {
-            cardsStaticArray[index].removeAllUnsafe()
+            cardsStaticArray[index].removeAll()
         }
         
-        for card in orderedCards.cards {
+        for index in 0 ..< orderedCards.cards.count {
+            let card = orderedCards.cards.itemAtIndex(index)!
             let suitIndex = card.suit.rawValue
             cardsStaticArray[suitIndex].append(card)
             

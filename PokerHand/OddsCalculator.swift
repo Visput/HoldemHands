@@ -47,15 +47,15 @@ struct OddsCalculator {
                 orderedBoards.append(OrderedCards(hand: handOdds.hand, boardCards: boardCards))
             }
             
-//            guard !HandRankComparator<StraightFlushRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-//            guard !HandRankComparator<FourOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-//            guard !HandRankComparator<FullHouseRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<StraightFlushRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<FourOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<FullHouseRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
             guard !HandRankComparator<FlushRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-//            guard !HandRankComparator<StraightRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-//            guard !HandRankComparator<ThreeOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-//            guard !HandRankComparator<TwoPairsRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-//            guard !HandRankComparator<PairRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-//            guard !HandRankComparator<HighCardRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<StraightRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<ThreeOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<TwoPairsRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<PairRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+            guard !HandRankComparator<HighCardRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
         })
         
         self.handsOdds = handsOdds
@@ -85,9 +85,9 @@ extension OddsCalculator {
     
     private func iterateBoardsOfSize(boardSize: Int,
         inDeck deck: Deck,
-        iterationHandler: (boardCards: [Card]) -> Void) {
+        iterationHandler: (boardCards: SevenItemsArray<Card>) -> Void) {
             
-            var emptyBoard = [Card]()
+            var emptyBoard = SevenItemsArray<Card>()
             
             iterateDeckCards(deck.cards,
                 fromIndex: 0,
@@ -99,8 +99,8 @@ extension OddsCalculator {
     private func iterateDeckCards(deckCards: [Card],
         fromIndex: Int,
         toIndex: Int,
-        inout boardCards: [Card],
-        iterationHandler: (boardCards: [Card]) -> Void) {
+        inout boardCards: SevenItemsArray<Card>,
+        iterationHandler: (boardCards: SevenItemsArray<Card>) -> Void) {
             
             if toIndex < deckCards.count {
                 for index in fromIndex ... toIndex {

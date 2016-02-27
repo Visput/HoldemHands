@@ -10,14 +10,14 @@ import Foundation
 
 struct OrderedCards {
     
-    private(set) var cards: [Card]
+    private(set) var cards: SevenItemsArray<Card>
     
-    init(hand: Hand, boardCards: [Card]) {
+    init(hand: Hand, boardCards: SevenItemsArray<Card>) {
         cards = boardCards
-        cards.reserveCapacity(boardCards.count + 2)
         
         var firstCardInserted = false
-        for (index, card) in boardCards.enumerate() {
+        for index in 0 ..< boardCards.count {
+            let card = boardCards.itemAtIndex(index)!
             if !firstCardInserted {
                 if card.rank < hand.firstCard.rank {
                     firstCardInserted = true
@@ -48,11 +48,11 @@ struct OrderedCards {
         }
     }
     
-    init(orderedCards: [Card]) {
+    init(orderedCards: SevenItemsArray<Card>) {
         self.cards = orderedCards
     }
     
-    mutating func removeAtIndex(index: Int) -> Card {
-        return cards.removeAtIndex(index)
+    mutating func removeAtIndex(index: Int) {
+        cards.removeAtIndex(index)
     }
 }

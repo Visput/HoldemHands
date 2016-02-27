@@ -15,7 +15,7 @@ final class MainScreen: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        generateNextHand()
+        //generateNextHand()
     }
     
     override func viewDidLayoutSubviews() {

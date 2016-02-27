@@ -8,22 +8,27 @@
 
 import Foundation
 
+private var cardsStaticArray = [SevenItemsArray<Card>(), SevenItemsArray<Card>(), SevenItemsArray<Card>(), SevenItemsArray<Card>()]
+
 struct StraightFlushRank: HandRank {
     
     let rankCards: [Card]
     
     init?(orderedCards: OrderedCards) {
-        var cardsArray = [[Card](), [Card](), [Card](), [Card]()]
-        
-        for card in orderedCards.cards {
-            let suitIndex = card.suit.rawValue
-            cardsArray[suitIndex].append(card)
+        for index in 0 ..< cardsStaticArray.count {
+            cardsStaticArray[index].removeAll()
         }
         
-        var suitedCards = cardsArray[0]
-        for index in 1 ..< cardsArray.count {
-            if cardsArray[index].count > suitedCards.count {
-                suitedCards = cardsArray[index]
+        for index in 0 ..< orderedCards.cards.count {
+            let card = orderedCards.cards.itemAtIndex(index)!
+            let suitIndex = card.suit.rawValue
+            cardsStaticArray[suitIndex].append(card)
+        }
+        
+        var suitedCards = cardsStaticArray[0]
+        for index in 1 ..< cardsStaticArray.count {
+            if cardsStaticArray[index].count > suitedCards.count {
+                suitedCards = cardsStaticArray[index]
             }
         }
         
