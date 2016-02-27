@@ -10,7 +10,7 @@ import UIKit
 
 final class MainScreen: UIViewController {
     
-    let numberOfHands: Int = 2
+    let numberOfHands: Int = 3
     var oddsCalculator: OddsCalculator!
     
     override func viewDidAppear(animated: Bool) {
@@ -28,25 +28,32 @@ final class MainScreen: UIViewController {
     }
     
     private func generateNextHand() {
-        //        oddsCalculator = OddsCalculator(numberOfHands: 2)
+        oddsCalculator = OddsCalculator(numberOfHands: numberOfHands)
         
-        let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
-        let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
-        var deck = Deck()
-        deck.removeHand(firstHand)
-        deck.removeHand(secondHand)
-        oddsCalculator = OddsCalculator(hands: [firstHand, secondHand], deck: deck)
+//        let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
+//        let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
+//        var deck = Deck()
+//        deck.removeHand(firstHand)
+//        deck.removeHand(secondHand)
+//        oddsCalculator = OddsCalculator(hands: [firstHand, secondHand], deck: deck)
         
         let time = CFAbsoluteTimeGetCurrent()
-        oddsCalculator.calculateOdds()
-        print(CFAbsoluteTimeGetCurrent() - time)
+        mainView.nextHandButton.enabled = false
+        mainView.nextHandButton.alpha = 0.4
         
-        print("\(oddsCalculator.handsOdds[0].hand)\nWins: \(oddsCalculator.handsOdds[0].winningProbability())\nTie: \(oddsCalculator.handsOdds[0].tieProbability())")
-        print("\(oddsCalculator.handsOdds[1].hand)\nWins: \(oddsCalculator.handsOdds[1].winningProbability())\nTie: \(oddsCalculator.handsOdds[1].tieProbability())")
-        
-        mainView.handsCollectionView.delegate = self
-        mainView.handsCollectionView.dataSource = self
-        mainView.handsCollectionView.reloadData()
+        oddsCalculator.calculateOdds({
+            self.mainView.nextHandButton.enabled = true
+            self.mainView.nextHandButton.alpha = 1.0
+            print(CFAbsoluteTimeGetCurrent() - time)
+            
+            for handOdds in self.oddsCalculator.handsOdds {
+                print("\(handOdds.hand)\nWins: \(handOdds.winningProbability())\nTie: \(handOdds.tieProbability())")
+            }
+            
+            self.mainView.handsCollectionView.delegate = self
+            self.mainView.handsCollectionView.dataSource = self
+            self.mainView.handsCollectionView.reloadData()
+        })
     }
     
     @IBAction private func nextHandButtonDidPress(sender: AnyObject) {

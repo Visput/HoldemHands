@@ -76,7 +76,7 @@ extension HandCell {
         case .Seven: return "7"
         case .Eight: return "8"
         case .Nine: return "9"
-        case .Ten: return "T"
+        case .Ten: return "10"
         case .Jack: return "J"
         case .Queen: return "Q"
         case .King: return "K"
