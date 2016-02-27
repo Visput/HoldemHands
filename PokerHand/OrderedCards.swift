@@ -14,6 +14,7 @@ struct OrderedCards {
     
     init(hand: Hand, boardCards: [Card]) {
         cards = boardCards
+        cards.reserveCapacity(boardCards.count + 2)
         
         var firstCardInserted = false
         for (index, card) in boardCards.enumerate() {

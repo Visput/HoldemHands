@@ -47,15 +47,15 @@ struct OddsCalculator {
                 orderedBoards.append(OrderedCards(hand: handOdds.hand, boardCards: boardCards))
             }
             
-            guard !HandRankComparator<StraightFlushRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-            guard !HandRankComparator<FourOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-            guard !HandRankComparator<FullHouseRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+//            guard !HandRankComparator<StraightFlushRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+//            guard !HandRankComparator<FourOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+//            guard !HandRankComparator<FullHouseRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
             guard !HandRankComparator<FlushRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-            guard !HandRankComparator<StraightRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-            guard !HandRankComparator<ThreeOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-            guard !HandRankComparator<TwoPairsRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-            guard !HandRankComparator<PairRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
-            guard !HandRankComparator<HighCardRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+//            guard !HandRankComparator<StraightRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+//            guard !HandRankComparator<ThreeOfKindRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+//            guard !HandRankComparator<TwoPairsRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+//            guard !HandRankComparator<PairRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
+//            guard !HandRankComparator<HighCardRank>.compareHands(&handsOdds, orderedBoards: orderedBoards) else { return }
         })
         
         self.handsOdds = handsOdds

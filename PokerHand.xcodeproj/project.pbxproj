@@ -36,6 +36,7 @@
 		9FBFEE1F1C75721B00BBD9E1 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBFEE1E1C75721B00BBD9E1 /* Suit.swift */; };
 		9FBFEE211C75724600BBD9E1 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBFEE201C75724600BBD9E1 /* Rank.swift */; };
 		9FBFEE231C7573ED00BBD9E1 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBFEE221C7573ED00BBD9E1 /* Deck.swift */; };
+		9FC956741C8133AB00093698 /* SevenItemsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC956731C8133AB00093698 /* SevenItemsArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		9FBFEE1E1C75721B00BBD9E1 /* Suit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
 		9FBFEE201C75724600BBD9E1 /* Rank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		9FBFEE221C7573ED00BBD9E1 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		9FC956731C8133AB00093698 /* SevenItemsArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenItemsArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				9F45BA3B1C7ABC4B0042FA4E /* OrderedCards.swift */,
 				9F00CC211C7D18B600AC63CC /* HandRankCalculator.swift */,
 				9F45B9E41C76851A0042FA4E /* OddsCalculator.swift */,
+				9FC956731C8133AB00093698 /* SevenItemsArray.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				9F45B9E31C766CF00042FA4E /* HandCell.swift in Sources */,
 				9F45B9E11C766BFA0042FA4E /* MainView.swift in Sources */,
 				9F45BA281C7820530042FA4E /* HighCardRank.swift in Sources */,
+				9FC956741C8133AB00093698 /* SevenItemsArray.swift in Sources */,
 				9F45BA3A1C78F6DC0042FA4E /* HandRank.swift in Sources */,
 				9F45BA3C1C7ABC4B0042FA4E /* OrderedCards.swift in Sources */,
 				9F45BA341C7820EE0042FA4E /* FullHouseRank.swift in Sources */,

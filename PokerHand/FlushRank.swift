@@ -8,20 +8,25 @@
 
 import Foundation
 
+private var cardsStaticArray = [SevenItemsArray<Card>(), SevenItemsArray<Card>(), SevenItemsArray<Card>(), SevenItemsArray<Card>()]
+
 struct FlushRank: HandRank {
     
-    let rankCards: [Card]
+    let rankCards: SevenItemsArray<Card>
     
     init?(orderedCards: OrderedCards) {
-        var rankCards: [Card]? = nil
-        var cardsArray = [[Card](), [Card](), [Card](), [Card]()]
+        var rankCards: SevenItemsArray<Card>? = nil
+        
+        for index in 0 ..< cardsStaticArray.count {
+            cardsStaticArray[index].removeAllUnsafe()
+        }
         
         for card in orderedCards.cards {
             let suitIndex = card.suit.rawValue
-            cardsArray[suitIndex].append(card)
+            cardsStaticArray[suitIndex].append(card)
             
-            if cardsArray[suitIndex].count == 5 {
-                rankCards = cardsArray[suitIndex]
+            if cardsStaticArray[suitIndex].count == 5 {
+                rankCards = cardsStaticArray[suitIndex]
                 break
             }
         }

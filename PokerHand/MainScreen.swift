@@ -12,7 +12,7 @@ final class MainScreen: UIViewController {
     
     let numberOfHands: Int = 2
     var oddsCalculator: OddsCalculator!
-
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         generateNextHand()
@@ -28,13 +28,21 @@ final class MainScreen: UIViewController {
     }
     
     private func generateNextHand() {
-        oddsCalculator = OddsCalculator(numberOfHands: 2)
+        //        oddsCalculator = OddsCalculator(numberOfHands: 2)
+        
+        let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
+        let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
+        var deck = Deck()
+        deck.removeHand(firstHand)
+        deck.removeHand(secondHand)
+        oddsCalculator = OddsCalculator(hands: [firstHand, secondHand], deck: deck)
+        
         let time = CFAbsoluteTimeGetCurrent()
         oddsCalculator.calculateOdds()
         print(CFAbsoluteTimeGetCurrent() - time)
         
         print("\(oddsCalculator.handsOdds[0].hand)\nWins: \(oddsCalculator.handsOdds[0].winningProbability())\nTie: \(oddsCalculator.handsOdds[0].tieProbability())")
-        print("\(oddsCalculator.handsOdds[0].hand)\nWins: \(oddsCalculator.handsOdds[1].winningProbability())\nTie: \(oddsCalculator.handsOdds[1].tieProbability())")
+        print("\(oddsCalculator.handsOdds[1].hand)\nWins: \(oddsCalculator.handsOdds[1].winningProbability())\nTie: \(oddsCalculator.handsOdds[1].tieProbability())")
         
         mainView.handsCollectionView.delegate = self
         mainView.handsCollectionView.dataSource = self
@@ -55,7 +63,7 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HandCell",
             forIndexPath: indexPath) as! HandCell
-
+        
         let item = HandCellItem(handOdds: oddsCalculator.handsOdds[indexPath.item], needsShowOdds: false, isSuccessSate: nil)
         cell.fillWithItem(item)
         
