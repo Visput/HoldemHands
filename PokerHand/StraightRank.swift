@@ -8,41 +8,43 @@
 
 import Foundation
 
+private var staticRankCards = SevenItemsArray<Card>()
+
 struct StraightRank: HandRank {
     
-    let rankCards: [Card]
+    let rankCards: SevenItemsArray<Card>
     
     init?(orderedCards: OrderedCards) {
-        var rankCards = [Card]()
+        staticRankCards.removeAll()
         
         mainLoop: for index in 0 ... orderedCards.cards.count - 4 {
             subLoop: for subIndex in index ..< orderedCards.cards.count {
-                if rankCards.count == 0 {
-                    rankCards.append(orderedCards.cards[subIndex])
+                if staticRankCards.count == 0 {
+                    staticRankCards.append(orderedCards.cards[subIndex])
                     
-                } else if rankCards.last!.rank.rawValue == orderedCards.cards[subIndex].rank.rawValue + 1 {
-                    rankCards.append(orderedCards.cards[subIndex])
+                } else if staticRankCards.last!.rank.rawValue == orderedCards.cards[subIndex].rank.rawValue + 1 {
+                    staticRankCards.append(orderedCards.cards[subIndex])
                     
-                    if rankCards.count == 4 && rankCards.last!.rank == .Two && orderedCards.cards[0].rank == .Ace {
+                    if staticRankCards.count == 4 && staticRankCards.last!.rank == .Two && orderedCards.cards.first!.rank == .Ace {
                         // Wheel Straight.
-                        rankCards.append(orderedCards.cards[0])
+                        staticRankCards.append(orderedCards.cards.first!)
                         break mainLoop
                         
-                    } else if rankCards.count == 5 {
+                    } else if staticRankCards.count == 5 {
                         break mainLoop
                     }
                     
-                } else if rankCards.last!.rank.rawValue > orderedCards.cards[subIndex].rank.rawValue + 1  {
-                    rankCards.removeAll()
+                } else if staticRankCards.last!.rank.rawValue > orderedCards.cards[subIndex].rank.rawValue + 1  {
+                    staticRankCards.removeAll()
                     break subLoop 
                 }
             }
             
-            rankCards.removeAll()
+            staticRankCards.removeAll()
         }
         
-        if rankCards.count == 5 {
-            self.rankCards = rankCards
+        if staticRankCards.count == 5 {
+            self.rankCards = staticRankCards
         } else {
             return nil
         }

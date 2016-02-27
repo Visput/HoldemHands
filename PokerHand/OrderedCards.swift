@@ -17,7 +17,7 @@ struct OrderedCards {
         
         var firstCardInserted = false
         for index in 0 ..< boardCards.count {
-            let card = boardCards.itemAtIndex(index)!
+            let card = boardCards[index]
             if !firstCardInserted {
                 if card.rank < hand.firstCard.rank {
                     firstCardInserted = true

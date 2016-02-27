@@ -12,7 +12,7 @@ private var cardsStaticArray = [SevenItemsArray<Card>(), SevenItemsArray<Card>()
 
 struct StraightFlushRank: HandRank {
     
-    let rankCards: [Card]
+    let rankCards: SevenItemsArray<Card>
     
     init?(orderedCards: OrderedCards) {
         for index in 0 ..< cardsStaticArray.count {
@@ -20,7 +20,7 @@ struct StraightFlushRank: HandRank {
         }
         
         for index in 0 ..< orderedCards.cards.count {
-            let card = orderedCards.cards.itemAtIndex(index)!
+            let card = orderedCards.cards[index]
             let suitIndex = card.suit.rawValue
             cardsStaticArray[suitIndex].append(card)
         }

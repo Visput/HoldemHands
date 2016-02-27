@@ -10,15 +10,31 @@ import Foundation
 
 struct SevenItemsArray<ItemType: Equatable>: Equatable {
     
-    private(set) var itemOne: ItemType?
-    private(set) var itemTwo: ItemType?
-    private(set) var itemThree: ItemType?
-    private(set) var itemFour: ItemType?
-    private(set) var itemFive: ItemType?
-    private(set) var itemSix: ItemType?
-    private(set) var itemSeven: ItemType?
+    private var itemOne: ItemType?
+    private var itemTwo: ItemType?
+    private var itemThree: ItemType?
+    private var itemFour: ItemType?
+    private var itemFive: ItemType?
+    private var itemSix: ItemType?
+    private var itemSeven: ItemType?
     
     private(set) var count: Int = 0
+    
+    var last: ItemType? {
+        if count == 0 {
+            return nil
+        } else {
+            return itemAtIndex(count - 1)
+        }
+    }
+    
+    var first: ItemType? {
+        if count == 0 {
+            return nil
+        } else {
+            return itemOne
+        }
+    }
     
     mutating func append(item: ItemType) {
         setItem(item, atIndex: count)
@@ -61,7 +77,7 @@ struct SevenItemsArray<ItemType: Equatable>: Equatable {
         }
     }
     
-    func itemAtIndex(index: Int) -> ItemType? {
+    private func itemAtIndex(index: Int) -> ItemType? {
         if index == 0 {
             return itemOne
         } else if index == 1 {

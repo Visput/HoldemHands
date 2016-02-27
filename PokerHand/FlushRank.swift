@@ -22,7 +22,7 @@ struct FlushRank: HandRank {
         }
         
         for index in 0 ..< orderedCards.cards.count {
-            let card = orderedCards.cards.itemAtIndex(index)!
+            let card = orderedCards.cards[index]
             let suitIndex = card.suit.rawValue
             cardsStaticArray[suitIndex].append(card)
             
