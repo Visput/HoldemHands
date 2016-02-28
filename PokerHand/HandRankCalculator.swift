@@ -14,8 +14,7 @@ struct HandRankCalculator: Equatable, Comparable {
     
     private var handRank: HandRank!
     
-    private var flushCards = QuickArray<Card>()
-    private var straightCards = QuickArray<Card>()
+    private var straightOrFlashCards = QuickArray<Card>()
     private var fourOfKindCard: Card!
     private var threeOfKindCard: Card!
     private var highPairCard: Card!
@@ -36,8 +35,7 @@ struct HandRankCalculator: Equatable, Comparable {
         for index in 0 ..< cardsArray.count {
             cardsArray[index].removeAll()
         }
-        flushCards.removeAll()
-        straightCards.removeAll()
+        straightOrFlashCards.removeAll()
         fourOfKindCard = nil
         threeOfKindCard = nil
         highPairCard = nil
@@ -116,38 +114,38 @@ struct HandRankCalculator: Equatable, Comparable {
         if suitedCards.count >= 5 {
             mainLoop: for index in 0 ... suitedCards.count - 4 {
                 subLoop: for subIndex in index ..< suitedCards.count {
-                    if flushCards.count == 0 {
-                        flushCards.append(suitedCards[subIndex])
+                    if straightOrFlashCards.count == 0 {
+                        straightOrFlashCards.append(suitedCards[subIndex])
                         
-                    } else if flushCards.last!.rank.rawValue == suitedCards[subIndex].rank.rawValue + 1 {
-                        flushCards.append(suitedCards[subIndex])
+                    } else if straightOrFlashCards.last!.rank.rawValue == suitedCards[subIndex].rank.rawValue + 1 {
+                        straightOrFlashCards.append(suitedCards[subIndex])
                         
-                        if flushCards.count == 4 && flushCards.last!.rank == .Two && suitedCards.first!.rank == .Ace {
+                        if straightOrFlashCards.count == 4 && straightOrFlashCards.last!.rank == .Two && suitedCards.first!.rank == .Ace {
                             // Steel Wheel.
-                            flushCards.append(suitedCards.first!)
+                            straightOrFlashCards.append(suitedCards.first!)
                             break mainLoop
                             
-                        } else if flushCards.count == 5 {
+                        } else if straightOrFlashCards.count == 5 {
                             break mainLoop
                         }
                         
-                    } else if flushCards.last!.rank.rawValue > suitedCards[subIndex].rank.rawValue + 1  {
-                        flushCards.removeAll()
+                    } else if straightOrFlashCards.last!.rank.rawValue > suitedCards[subIndex].rank.rawValue + 1  {
+                        straightOrFlashCards.removeAll()
                         break subLoop
                     }
                 }
                 
-                flushCards.removeAll()
+                straightOrFlashCards.removeAll()
             }
             
-            if flushCards.count == 5 {
+            if straightOrFlashCards.count == 5 {
                 
                 handRank = .StraightFlush
                 return
                 
             } else {
-                flushCards = suitedCards
-                flushCards.removeLast(flushCards.count - 5)
+                straightOrFlashCards = suitedCards
+                straightOrFlashCards.removeLast(straightOrFlashCards.count - 5)
                 
                 handRank = .Flush
                 return
@@ -156,31 +154,31 @@ struct HandRankCalculator: Equatable, Comparable {
         } else {
             mainLoop: for index in 0 ... cards.count - 4 {
                 subLoop: for subIndex in index ..< cards.count {
-                    if straightCards.count == 0 {
-                        straightCards.append(cards[subIndex])
+                    if straightOrFlashCards.count == 0 {
+                        straightOrFlashCards.append(cards[subIndex])
                         
-                    } else if straightCards.last!.rank.rawValue == cards[subIndex].rank.rawValue + 1 {
-                        straightCards.append(cards[subIndex])
+                    } else if straightOrFlashCards.last!.rank.rawValue == cards[subIndex].rank.rawValue + 1 {
+                        straightOrFlashCards.append(cards[subIndex])
                         
-                        if straightCards.count == 4 && straightCards.last!.rank == .Two && cards.first!.rank == .Ace {
+                        if straightOrFlashCards.count == 4 && straightOrFlashCards.last!.rank == .Two && cards.first!.rank == .Ace {
                             // Wheel Straight.
-                            straightCards.append(cards.first!)
+                            straightOrFlashCards.append(cards.first!)
                             break mainLoop
                             
-                        } else if straightCards.count == 5 {
+                        } else if straightOrFlashCards.count == 5 {
                             break mainLoop
                         }
                         
-                    } else if straightCards.last!.rank.rawValue > cards[subIndex].rank.rawValue + 1  {
-                        straightCards.removeAll()
+                    } else if straightOrFlashCards.last!.rank.rawValue > cards[subIndex].rank.rawValue + 1  {
+                        straightOrFlashCards.removeAll()
                         break subLoop
                     }
                 }
                 
-                straightCards.removeAll()
+                straightOrFlashCards.removeAll()
             }
             
-            guard straightCards.count != 5 else {
+            guard straightOrFlashCards.count != 5 else {
                 
                 handRank = .Straight
                 return
@@ -279,11 +277,11 @@ func ==(lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
         }
         
     case .Straight:
-        return lhs.straightCards.first!.rank == rhs.straightCards.first!.rank
+        return lhs.straightOrFlashCards.first!.rank == rhs.straightOrFlashCards.first!.rank
         
     case .Flush:
         for index in 0 ..< 5 {
-            if lhs.flushCards[index].rank != rhs.flushCards[index].rank {
+            if lhs.straightOrFlashCards[index].rank != rhs.straightOrFlashCards[index].rank {
                 return false
             }
         }
@@ -309,7 +307,7 @@ func ==(lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
         }
         
     case .StraightFlush:
-        return lhs.flushCards.first!.rank == rhs.flushCards.first!.rank
+        return lhs.straightOrFlashCards.first!.rank == rhs.straightOrFlashCards.first!.rank
     }
     
     return true
@@ -403,13 +401,13 @@ func <(lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
         }
         
     case .Straight:
-        return lhs.straightCards.first!.rank < rhs.straightCards.first!.rank
+        return lhs.straightOrFlashCards.first!.rank < rhs.straightOrFlashCards.first!.rank
         
     case .Flush:
         for index in 0 ..< 5 {
-            if lhs.flushCards[index].rank < rhs.flushCards[index].rank {
+            if lhs.straightOrFlashCards[index].rank < rhs.straightOrFlashCards[index].rank {
                 return true
-            } else if lhs.flushCards[index].rank > rhs.flushCards[index].rank {
+            } else if lhs.straightOrFlashCards[index].rank > rhs.straightOrFlashCards[index].rank {
                 return false
             }
         }
@@ -449,7 +447,7 @@ func <(lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
         }
         
     case .StraightFlush:
-        return lhs.flushCards.first!.rank < rhs.flushCards.first!.rank
+        return lhs.straightOrFlashCards.first!.rank < rhs.straightOrFlashCards.first!.rank
     }
     
     return false
