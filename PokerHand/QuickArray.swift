@@ -18,8 +18,6 @@ struct QuickArray<ItemType: Equatable>: Equatable {
     private var itemSix: ItemType?
     private var itemSeven: ItemType?
     private var itemEight: ItemType?
-    private var itemNine: ItemType?
-    private var itemTen: ItemType?
     
     private(set) var count: Int = 0
     
@@ -101,10 +99,6 @@ struct QuickArray<ItemType: Equatable>: Equatable {
             return itemSeven
         } else if index == 7 {
             return itemEight
-        } else if index == 8 {
-            return itemNine
-        } else if index == 9 {
-            return itemTen
         } else {
             fatalError("Index \(index) is out of array bounds")
         }
@@ -127,10 +121,6 @@ struct QuickArray<ItemType: Equatable>: Equatable {
             itemSeven = item
         } else if index == 7 {
             itemEight = item
-        } else if index == 8 {
-            itemNine = item
-        } else if index == 9 {
-            itemTen = item
         } else {
             fatalError("Index \(index) is out of array bounds")
         }
