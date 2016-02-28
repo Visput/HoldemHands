@@ -128,8 +128,8 @@ class PokerHandTests: XCTestCase {
         ]
         
         let oddsResults: [OddsResult] = [
-            (win: 65.27, tie: 0.38),
-            (win: 34.35, tie: 0.38)
+            (winProbability: 65.46, winCount: 1120951.5),
+            (winProbability: 34.53, winCount: 591352.5)
         ]
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)
@@ -142,8 +142,8 @@ class PokerHandTests: XCTestCase {
         ]
         
         let oddsResults: [OddsResult] = [
-            (win: 2.17, tie: 95.65),
-            (win: 2.17, tie: 95.65)
+            (winProbability: 50.0, winCount: 856152.0),
+            (winProbability: 50.0, winCount: 856152.0)
         ]
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)
@@ -157,9 +157,9 @@ class PokerHandTests: XCTestCase {
         ]
        
         let oddsResults: [OddsResult] = [
-            (win: 50.62, tie: 1.20),
-            (win: 35.04, tie: 0.42),
-            (win: 13.13, tie: 1.20)
+            (winProbability: 51.15, winCount: 701202.17),
+            (winProbability: 35.18, winCount: 482273.67),
+            (winProbability: 13.66, winCount: 187278.17)
         ]
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)
@@ -180,16 +180,16 @@ class PokerHandTests: XCTestCase {
         ]
         
         let oddsResults: [OddsResult] = [
-            (win: 11.90, tie: 1.09),
-            (win: 5.82, tie: 0.83),
-            (win: 2.59, tie: 0.95),
-            (win: 14.04, tie: 0.47),
-            (win: 10.00, tie: 1.76),
-            (win: 6.99, tie: 2.51),
-            (win: 10.63, tie: 0.74),
-            (win: 17.88, tie: 0.07),
-            (win: 8.72, tie: 0.74),
-            (win: 6.84, tie: 0.61)
+            (winProbability: 12.41, winCount: 24998.00),
+            (winProbability: 6.20, winCount: 12493.5),
+            (winProbability: 3.04, winCount: 6115.00),
+            (winProbability: 14.25, winCount: 28686.50),
+            (winProbability: 10.85, winCount: 21857.50),
+            (winProbability: 8.21, winCount: 16538.00),
+            (winProbability: 10.97, winCount: 22087.00),
+            (winProbability: 17.88, winCount: 36024.00),
+            (winProbability: 9.06, winCount: 18245.00),
+            (winProbability: 7.12, winCount: 14331.50)
         ]
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)
@@ -198,7 +198,7 @@ class PokerHandTests: XCTestCase {
 
 extension PokerHandTests {
     
-    typealias OddsResult = (win: Double, tie: Double)
+    typealias OddsResult = (winProbability: Double, winCount: Double)
     
     private func testOddsCalculatorWithHands(hands: [Hand], expectedOddsResults: [OddsResult]) {
         var deck = Deck()
@@ -206,17 +206,22 @@ extension PokerHandTests {
             deck.removeHand(hand)
         }
         
-        var oddsCalculator = OddsCalculator(hands: hands, deck: deck)
-        oddsCalculator.calculateOdds()
+        let calculationExpecation = expectationWithDescription("calculationExpecation")
         
-        for index in 0 ..< hands.count {
-            XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[index].winningProbability(),
-                expectedOddsResults[index].win,
-                accuracy: 0.01)
-            
-            XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[index].tieProbability(),
-                expectedOddsResults[index].tie,
-                accuracy: 0.01)
-        }
+        let oddsCalculator = OddsCalculator(hands: hands, deck: deck)
+        oddsCalculator.calculateOdds({
+            for index in 0 ..< hands.count {
+                XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[index].winningProbability(),
+                    expectedOddsResults[index].winProbability,
+                    accuracy: 0.01)
+                
+                XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[index].winningCombinationsCount,
+                    expectedOddsResults[index].winCount,
+                    accuracy: 0.01)
+            }
+            calculationExpecation.fulfill()
+        })
+        
+        waitForExpectationsWithTimeout(300, handler: nil)
     }
 }
