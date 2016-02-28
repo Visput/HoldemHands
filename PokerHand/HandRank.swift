@@ -10,5 +10,7 @@ import Foundation
 
 protocol HandRank: Equatable, Comparable {
     
-    init?(orderedCards: OrderedCards)
+    init()
+    
+    mutating func validateCards(orderedCards: OrderedCards) -> Bool
 }

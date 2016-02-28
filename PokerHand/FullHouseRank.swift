@@ -10,21 +10,20 @@ import Foundation
 
 struct FullHouseRank: HandRank {
     
-    let threeOfKindRank: ThreeOfKindRank
-    let pairRank: PairRank
+    private(set) var threeOfKindRank = ThreeOfKindRank()
+    private(set) var pairRank = PairRank()
     
-    init?(orderedCards: OrderedCards) {
-        if let threeOfKindRank = ThreeOfKindRank(orderedCards: orderedCards) {
-            if let pairRank = PairRank(orderedCards: threeOfKindRank.highCardRank.orderedRankCards) {
-                self.threeOfKindRank = threeOfKindRank
-                self.pairRank = pairRank
+    mutating func validateCards(orderedCards: OrderedCards) -> Bool {
+        if threeOfKindRank.validateCards(orderedCards) {
+            if pairRank.validateCards(threeOfKindRank.highCardRank.orderedRankCards) {
+                return true
                 
             } else {
-                return nil
+                return false
             }
             
         } else {
-            return nil
+            return false
         }
     }
 }

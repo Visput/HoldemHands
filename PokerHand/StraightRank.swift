@@ -8,45 +8,44 @@
 
 import Foundation
 
-private var staticRankCards = QuickArray<Card>()
-
 struct StraightRank: HandRank {
     
-    let rankCards: QuickArray<Card>
+    private(set) var rankCards = QuickArray<Card>()
     
-    init?(orderedCards: OrderedCards) {
-        staticRankCards.removeAll()
+    mutating func validateCards(orderedCards: OrderedCards) -> Bool {
+        rankCards.removeAll()
         
         mainLoop: for index in 0 ... orderedCards.cards.count - 4 {
             subLoop: for subIndex in index ..< orderedCards.cards.count {
-                if staticRankCards.count == 0 {
-                    staticRankCards.append(orderedCards.cards[subIndex])
+                if rankCards.count == 0 {
+                    rankCards.append(orderedCards.cards[subIndex])
                     
-                } else if staticRankCards.last!.rank.rawValue == orderedCards.cards[subIndex].rank.rawValue + 1 {
-                    staticRankCards.append(orderedCards.cards[subIndex])
+                } else if rankCards.last!.rank.rawValue == orderedCards.cards[subIndex].rank.rawValue + 1 {
+                    rankCards.append(orderedCards.cards[subIndex])
                     
-                    if staticRankCards.count == 4 && staticRankCards.last!.rank == .Two && orderedCards.cards.first!.rank == .Ace {
+                    if rankCards.count == 4 && rankCards.last!.rank == .Two && orderedCards.cards.first!.rank == .Ace {
                         // Wheel Straight.
-                        staticRankCards.append(orderedCards.cards.first!)
+                        rankCards.append(orderedCards.cards.first!)
                         break mainLoop
                         
-                    } else if staticRankCards.count == 5 {
+                    } else if rankCards.count == 5 {
                         break mainLoop
                     }
                     
-                } else if staticRankCards.last!.rank.rawValue > orderedCards.cards[subIndex].rank.rawValue + 1  {
-                    staticRankCards.removeAll()
+                } else if rankCards.last!.rank.rawValue > orderedCards.cards[subIndex].rank.rawValue + 1  {
+                    rankCards.removeAll()
                     break subLoop 
                 }
             }
             
-            staticRankCards.removeAll()
+            rankCards.removeAll()
         }
         
-        if staticRankCards.count == 5 {
-            self.rankCards = staticRankCards
+        if rankCards.count == 5 {
+            return true
+            
         } else {
-            return nil
+            return false
         }
     }
 }

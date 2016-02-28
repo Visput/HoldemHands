@@ -10,24 +10,22 @@ import Foundation
 
 struct TwoPairsRank: HandRank {
     
-    let highPairRank: PairRank
-    let lowPairRank: PairRank
-    let highCardRank: HighCardRank
+    private(set) var highPairRank = PairRank()
+    private(set) var lowPairRank = PairRank()
+    private(set) var highCardRank = HighCardRank()
     
-    init?(orderedCards: OrderedCards) {
-        if let highPairRank = PairRank(orderedCards: orderedCards) {
-            if let lowPairRank = PairRank(orderedCards: highPairRank.highCardRank.orderedRankCards) {
-                self.highPairRank = highPairRank
-                self.lowPairRank = lowPairRank
-                self.highCardRank = HighCardRank(orderedCards: lowPairRank.highCardRank.orderedRankCards,
-                    numberOfSignificantCards: 1)
+    mutating func validateCards(orderedCards: OrderedCards) -> Bool {
+        if highPairRank.validateCards(orderedCards) {
+            if lowPairRank.validateCards(highPairRank.highCardRank.orderedRankCards) {
+                highCardRank.validateCards(lowPairRank.highCardRank.orderedRankCards, numberOfSignificantCards: 1)
+                return true
                 
             } else {
-                return nil
+                return false
             }
             
         } else {
-            return nil
+            return false
         }
     }
 }

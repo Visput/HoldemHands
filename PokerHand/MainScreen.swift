@@ -10,7 +10,7 @@ import UIKit
 
 final class MainScreen: UIViewController {
     
-    let numberOfHands: Int = 3
+    let numberOfHands: Int = 2
     var oddsCalculator: OddsCalculator!
     
     override func viewDidAppear(animated: Bool) {
@@ -29,7 +29,7 @@ final class MainScreen: UIViewController {
     
     private func generateNextHand() {
 //        oddsCalculator = OddsCalculator(numberOfHands: numberOfHands)
-//        
+        
         let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
         let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
         var deck = Deck()

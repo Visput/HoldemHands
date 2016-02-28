@@ -129,7 +129,7 @@ class PokerHandTests: XCTestCase {
         
         let oddsResults: [OddsResult] = [
             (winProbability: 65.46, winCount: 1120951.5),
-            (winProbability: 34.53, winCount: 591352.5)
+            (winProbability: 34.54, winCount: 591352.5)
         ]
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)

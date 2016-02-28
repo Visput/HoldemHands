@@ -10,17 +10,19 @@ import Foundation
 
 struct HighCardRank: HandRank {
     
-    let orderedRankCards: OrderedCards
-    let numberOfSignificantCards: Int
+    private(set) var orderedRankCards: OrderedCards!
+    private(set) var numberOfSignificantCards: Int!
     
-    init?(orderedCards: OrderedCards) {
+    mutating func validateCards(orderedCards: OrderedCards) -> Bool {
         self.orderedRankCards = orderedCards
         self.numberOfSignificantCards = 5
+        return true
     }
     
-    init(orderedCards: OrderedCards, numberOfSignificantCards: Int) {
+    mutating func validateCards(orderedCards: OrderedCards, numberOfSignificantCards: Int) -> Bool {
         self.orderedRankCards = orderedCards
         self.numberOfSignificantCards = numberOfSignificantCards
+        return true
     }
 }
 

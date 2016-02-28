@@ -8,34 +8,34 @@
 
 import Foundation
 
-private var cardsStaticArray = [QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>()]
-
 struct FlushRank: HandRank {
     
-    let rankCards: QuickArray<Card>
+    private(set) var rankCards: QuickArray<Card>!
+    private var cardsArray = [QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>()]
     
-    init?(orderedCards: OrderedCards) {
-        var rankCards: QuickArray<Card>? = nil
+    mutating func validateCards(orderedCards: OrderedCards) -> Bool {
+        rankCards = nil
         
-        for index in 0 ..< cardsStaticArray.count {
-            cardsStaticArray[index].removeAll()
+        for index in 0 ..< cardsArray.count {
+            cardsArray[index].removeAll()
         }
         
         for index in 0 ..< orderedCards.cards.count {
             let card = orderedCards.cards[index]
             let suitIndex = card.suit.rawValue
-            cardsStaticArray[suitIndex].append(card)
+            cardsArray[suitIndex].append(card)
             
-            if cardsStaticArray[suitIndex].count == 5 {
-                rankCards = cardsStaticArray[suitIndex]
+            if cardsArray[suitIndex].count == 5 {
+                rankCards = cardsArray[suitIndex]
                 break
             }
         }
         
         if rankCards != nil {
-            self.rankCards = rankCards!
+            return true
+            
         } else {
-            return nil
+            return false
         }
     }
 }

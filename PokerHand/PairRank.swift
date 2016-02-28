@@ -10,11 +10,11 @@ import Foundation
 
 struct PairRank: HandRank {
     
-    let rankCard: Card
-    let highCardRank: HighCardRank
+    private(set) var rankCard: Card!
+    private(set) var highCardRank = HighCardRank()
     
-    init?(var orderedCards: OrderedCards) {
-        var rankCard: Card? = nil
+    mutating func validateCards(var orderedCards: OrderedCards) -> Bool {
+        rankCard = nil
         
         for index in 0 ... orderedCards.cards.count - 2 {
             if orderedCards.cards[index].rank == orderedCards.cards[index + 1].rank {
@@ -26,11 +26,11 @@ struct PairRank: HandRank {
         }
         
         if rankCard != nil {
-            self.rankCard = rankCard!
-            self.highCardRank = HighCardRank(orderedCards: orderedCards, numberOfSignificantCards: 3)
+            highCardRank.validateCards(orderedCards, numberOfSignificantCards: 3)
+            return true
             
         } else {
-            return nil
+            return false
         }
     }
 }

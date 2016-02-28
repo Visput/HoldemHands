@@ -42,15 +42,15 @@ class OddsCalculator {
                 handsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
             }
             
-            var straightFlushComparator = HandRankComparator<StraightFlushRank>()
-            var fourOfKindComparator = HandRankComparator<FourOfKindRank>()
-            var fullHouseComparator = HandRankComparator<FullHouseRank>()
-            var flushComparator = HandRankComparator<FlushRank>()
-            var straightComparator = HandRankComparator<StraightRank>()
-            var threeOfKindComparator = HandRankComparator<ThreeOfKindRank>()
-            var twoPairsComparator = HandRankComparator<TwoPairsRank>()
-            var pairComparator = HandRankComparator<PairRank>()
-            var highCardComparator = HandRankComparator<HighCardRank>()
+            var straightFlushComparator = HandRankComparator<StraightFlushRank>(numberOfHands: self.hands.count)
+            var fourOfKindComparator = HandRankComparator<FourOfKindRank>(numberOfHands: self.hands.count)
+            var fullHouseComparator = HandRankComparator<FullHouseRank>(numberOfHands: self.hands.count)
+            var flushComparator = HandRankComparator<FlushRank>(numberOfHands: self.hands.count)
+            var straightComparator = HandRankComparator<StraightRank>(numberOfHands: self.hands.count)
+            var threeOfKindComparator = HandRankComparator<ThreeOfKindRank>(numberOfHands: self.hands.count)
+            var twoPairsComparator = HandRankComparator<TwoPairsRank>(numberOfHands: self.hands.count)
+            var pairComparator = HandRankComparator<PairRank>(numberOfHands: self.hands.count)
+            var highCardComparator = HandRankComparator<HighCardRank>(numberOfHands: self.hands.count)
             
             var orderedBoards = QuickArray<OrderedCards>()
             

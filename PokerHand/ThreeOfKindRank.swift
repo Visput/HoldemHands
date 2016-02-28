@@ -10,11 +10,11 @@ import Foundation
 
 struct ThreeOfKindRank: HandRank {
     
-    let rankCard: Card
-    let highCardRank: HighCardRank
+    private(set) var rankCard: Card!
+    private(set) var highCardRank = HighCardRank()
     
-    init?(var orderedCards: OrderedCards) {
-        var rankCard: Card? = nil
+    mutating func validateCards(var orderedCards: OrderedCards) -> Bool {
+        rankCard = nil
         
         for index in 0 ... orderedCards.cards.count - 3 {
             if orderedCards.cards[index].rank == orderedCards.cards[index + 1].rank &&
@@ -29,11 +29,11 @@ struct ThreeOfKindRank: HandRank {
         }
         
         if rankCard != nil {
-            self.rankCard = rankCard!
-            self.highCardRank = HighCardRank(orderedCards: orderedCards, numberOfSignificantCards: 2)
+            highCardRank.validateCards(orderedCards, numberOfSignificantCards: 2)
+            return true
             
         } else {
-            return nil
+            return false
         }
     }
 }

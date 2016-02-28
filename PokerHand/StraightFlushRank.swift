@@ -8,46 +8,48 @@
 
 import Foundation
 
-private var cardsStaticArray = [QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>()]
-
 struct StraightFlushRank: HandRank {
     
-    let rankCards: QuickArray<Card>
+    private(set) var straightRank = StraightRank()
+    private var cardsArray = [QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>()]
     
-    init?(orderedCards: OrderedCards) {
-        for index in 0 ..< cardsStaticArray.count {
-            cardsStaticArray[index].removeAll()
+    
+    mutating func validateCards(orderedCards: OrderedCards) -> Bool {
+        for index in 0 ..< cardsArray.count {
+            cardsArray[index].removeAll()
         }
         
         for index in 0 ..< orderedCards.cards.count {
             let card = orderedCards.cards[index]
             let suitIndex = card.suit.rawValue
-            cardsStaticArray[suitIndex].append(card)
+            cardsArray[suitIndex].append(card)
         }
         
-        var suitedCards = cardsStaticArray[0]
-        for index in 1 ..< cardsStaticArray.count {
-            if cardsStaticArray[index].count > suitedCards.count {
-                suitedCards = cardsStaticArray[index]
+        var suitedCards = cardsArray[0]
+        for index in 1 ..< cardsArray.count {
+            if cardsArray[index].count > suitedCards.count {
+                suitedCards = cardsArray[index]
             }
         }
         
         if suitedCards.count >= 5 {
-            if let straightRank = StraightRank(orderedCards: OrderedCards(orderedCards: suitedCards)) {
-                self.rankCards = straightRank.rankCards
+            if straightRank.validateCards(OrderedCards(orderedCards: suitedCards)) {
+                return true
+                
             } else {
-                return nil
+                return false
             }
+            
         } else {
-            return nil
+            return false
         }
     }
 }
 
 func ==(lhs: StraightFlushRank, rhs: StraightFlushRank) -> Bool {
-    return lhs.rankCards.first!.rank == rhs.rankCards.first!.rank
+    return lhs.straightRank.rankCards.first!.rank == rhs.straightRank.rankCards.first!.rank
 }
 
 func <(lhs: StraightFlushRank, rhs: StraightFlushRank) -> Bool {
-    return lhs.rankCards.first!.rank < rhs.rankCards.first!.rank
+    return lhs.straightRank.rankCards.first!.rank < rhs.straightRank.rankCards.first!.rank
 }
