@@ -104,32 +104,33 @@ extension OddsCalculator {
     
     private func iterateBoardsOfSize(boardSize: Int,
         inDeck deck: Deck,
-        iterationHandler: (boardCards: QuickArray<Card>) -> Void) {
+        var iterationHandler: (boardCards: QuickArray<Card>) -> Void) {
             
             var emptyBoard = QuickArray<Card>()
+            var cards = deck.cards
             
-            iterateDeckCards(deck.cards,
+            iterateDeckCards(&cards,
                 fromIndex: 0,
                 toIndex: deck.cards.count - boardSize,
                 boardCards: &emptyBoard,
-                iterationHandler: iterationHandler)
+                iterationHandler: &iterationHandler)
     }
     
-    private func iterateDeckCards(deckCards: [Card],
+    private func iterateDeckCards(inout deckCards: [Card],
         fromIndex: Int,
         toIndex: Int,
         inout boardCards: QuickArray<Card>,
-        iterationHandler: (boardCards: QuickArray<Card>) -> Void) {
+        inout iterationHandler: (boardCards: QuickArray<Card>) -> Void) {
             
             if toIndex < deckCards.count {
                 for index in fromIndex ... toIndex {
                     boardCards.append(deckCards[index])
                     
-                    iterateDeckCards(deckCards,
+                    iterateDeckCards(&deckCards,
                         fromIndex: index + 1,
                         toIndex: toIndex + 1,
                         boardCards: &boardCards,
-                        iterationHandler: iterationHandler)
+                        iterationHandler: &iterationHandler)
                     
                     boardCards.removeLast()
                 }
