@@ -8,10 +8,20 @@
 
 import Foundation
 
+private var cardsArray = QuickArray<QuickArray<Card>>()
+
 struct FlushRank: HandRank {
     
     private(set) var rankCards: QuickArray<Card>!
-    private var cardsArray = [QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>()]
+    
+    init() {
+        if cardsArray.count == 0 {
+            cardsArray.append(QuickArray<Card>())
+            cardsArray.append(QuickArray<Card>())
+            cardsArray.append(QuickArray<Card>())
+            cardsArray.append(QuickArray<Card>())
+        }
+    }
     
     mutating func validateCards(orderedCards: OrderedCards) -> Bool {
         rankCards = nil

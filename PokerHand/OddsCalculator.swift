@@ -8,7 +8,7 @@
 
 import Foundation
 
-class OddsCalculator {
+final class OddsCalculator {
     
     private(set) var hands: [Hand]
     private(set) var deck: Deck

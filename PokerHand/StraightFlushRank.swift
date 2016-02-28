@@ -8,11 +8,20 @@
 
 import Foundation
 
+private var cardsArray = QuickArray<QuickArray<Card>>()
+
 struct StraightFlushRank: HandRank {
-    
+
     private(set) var straightRank = StraightRank()
-    private var cardsArray = [QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>(), QuickArray<Card>()]
     
+    init() {
+        if cardsArray.count == 0 {
+            cardsArray.append(QuickArray<Card>())
+            cardsArray.append(QuickArray<Card>())
+            cardsArray.append(QuickArray<Card>())
+            cardsArray.append(QuickArray<Card>())
+        }
+    }
     
     mutating func validateCards(orderedCards: OrderedCards) -> Bool {
         for index in 0 ..< cardsArray.count {
