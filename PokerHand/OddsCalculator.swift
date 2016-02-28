@@ -37,22 +37,13 @@ final class OddsCalculator {
             let handSize = 2
             let numberOfCombinations = self.numberOfBoardsWithSize(boardSize, inDeckOfSize: deckSize - (self.hands.count * handSize))
             
+            var orderedBoards = QuickArray<OrderedCards>()
             var handsOdds = [HandOdds]()
             for hand in self.hands {
                 handsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
             }
             
-            var straightFlushComparator = HandRankComparator<StraightFlushRank>(numberOfHands: self.hands.count)
-            var fourOfKindComparator = HandRankComparator<FourOfKindRank>(numberOfHands: self.hands.count)
-            var fullHouseComparator = HandRankComparator<FullHouseRank>(numberOfHands: self.hands.count)
-            var flushComparator = HandRankComparator<FlushRank>(numberOfHands: self.hands.count)
-            var straightComparator = HandRankComparator<StraightRank>(numberOfHands: self.hands.count)
-            var threeOfKindComparator = HandRankComparator<ThreeOfKindRank>(numberOfHands: self.hands.count)
-            var twoPairsComparator = HandRankComparator<TwoPairsRank>(numberOfHands: self.hands.count)
-            var pairComparator = HandRankComparator<PairRank>(numberOfHands: self.hands.count)
-            var highCardComparator = HandRankComparator<HighCardRank>(numberOfHands: self.hands.count)
-            
-            var orderedBoards = QuickArray<OrderedCards>()
+            var handRankComparator = HandRankComparator(numberOfHands: self.hands.count)
             
             self.iterateBoardsOfSize(boardSize, inDeck: self.deck, iterationHandler: { boardCards in
                 
@@ -61,15 +52,7 @@ final class OddsCalculator {
                     orderedBoards.append(OrderedCards(hand: handOdds.hand, boardCards: boardCards))
                 }
                 
-                guard !straightFlushComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
-                guard !fourOfKindComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
-                guard !fullHouseComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
-                guard !flushComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
-                guard !straightComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
-                guard !threeOfKindComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
-                guard !twoPairsComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
-                guard !pairComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
-                guard !highCardComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards) else { return }
+                handRankComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards)
             })
             
             self.handsOdds = handsOdds

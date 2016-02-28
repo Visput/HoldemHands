@@ -67,6 +67,10 @@ struct QuickArray<ItemType: Equatable>: Equatable {
         count -= 1
     }
     
+    mutating func removeLast(numberOfItems: Int) {
+        count -= numberOfItems
+    }
+    
     mutating func removeAll() {
         count = 0
     }

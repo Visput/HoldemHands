@@ -8,45 +8,37 @@
 
 import Foundation
 
-struct HandRankComparator<HandRankType: HandRank> {
+struct HandRankComparator {
     
-    private var handRanks = QuickArray<HandRankType>()
-    private var validHandRanksIndexes = QuickArray<Int>()
+    private var handRanks = QuickArray<HandRankCalculator>()
     private var winningHandRanksIndexes  = QuickArray<Int>()
     
     init(numberOfHands: Int) {
         for _ in 0 ..< numberOfHands {
-            handRanks.append(HandRankType())
+            handRanks.append(HandRankCalculator())
         }
     }
     
     mutating func compareHands(inout handsOdds: [HandOdds], inout orderedBoards: QuickArray<OrderedCards>) -> Bool {
         
-        validHandRanksIndexes.removeAll()
-        
-        for index in 0 ..< orderedBoards.count {
-            let orderedBoard = orderedBoards[index]
-            if handRanks[index].validateCards(orderedBoard) {
-                validHandRanksIndexes.append(index)
-            }
-        }
-        
-        guard validHandRanksIndexes.count != 0 else { return false }
-        
         winningHandRanksIndexes.removeAll()
         
-        for index in 0 ..< validHandRanksIndexes.count {
-            let validHandRankIndex = validHandRanksIndexes[index]
+        for index in 0 ..< orderedBoards.count {
+            handRanks[index].calculateRankForCards(&orderedBoards[index])
+        }
+        
+        for index in 0 ..< handRanks.count {
+            let handRank = handRanks[index]
             
             if winningHandRanksIndexes.count == 0 {
-                winningHandRanksIndexes.append(validHandRankIndex)
+                winningHandRanksIndexes.append(index)
                 
-            } else if handRanks[winningHandRanksIndexes.last!] == handRanks[validHandRankIndex] {
-                winningHandRanksIndexes.append(validHandRankIndex)
+            } else if handRanks[winningHandRanksIndexes.last!] == handRank {
+                winningHandRanksIndexes.append(index)
                 
-            } else if handRanks[winningHandRanksIndexes.last!] < handRanks[validHandRankIndex] {
+            } else if handRanks[winningHandRanksIndexes.last!] < handRank {
                 winningHandRanksIndexes.removeAll()
-                winningHandRanksIndexes.append(validHandRankIndex)
+                winningHandRanksIndexes.append(index)
             }
         }
         
