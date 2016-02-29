@@ -57,6 +57,6 @@ struct OrderedCards: Equatable {
     }
 }
 
-func ==(lhs: OrderedCards, rhs: OrderedCards) -> Bool {
+func == (lhs: OrderedCards, rhs: OrderedCards) -> Bool {
     return lhs.cards == rhs.cards
 }

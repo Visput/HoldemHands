@@ -8,6 +8,8 @@
 
 import Foundation
 
+// swiftlint:disable cyclomatic_complexity
+
 private var cardsArray = QuickArray<QuickArray<Card>>()
 
 struct HandRankCalculator: Equatable, Comparable {
@@ -128,7 +130,7 @@ struct HandRankCalculator: Equatable, Comparable {
                             break mainLoop
                         }
                         
-                    } else if straightOrFlashCards.last!.rank.rawValue > suitedCards[subIndex].rank.rawValue + 1  {
+                    } else if straightOrFlashCards.last!.rank.rawValue > suitedCards[subIndex].rank.rawValue + 1 {
                         straightOrFlashCards.removeAll()
                         break subLoop
                     }
@@ -168,7 +170,7 @@ struct HandRankCalculator: Equatable, Comparable {
                             break mainLoop
                         }
                         
-                    } else if straightOrFlashCards.last!.rank.rawValue > cards[subIndex].rank.rawValue + 1  {
+                    } else if straightOrFlashCards.last!.rank.rawValue > cards[subIndex].rank.rawValue + 1 {
                         straightOrFlashCards.removeAll()
                         break subLoop
                     }
@@ -210,7 +212,7 @@ struct HandRankCalculator: Equatable, Comparable {
     }
 }
 
-func ==(lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
+func == (lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
     guard lhs.handRank == rhs.handRank else { return false }
     
     switch lhs.handRank! {
@@ -312,7 +314,7 @@ func ==(lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
     return true
 }
 
-func <(lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
+func < (lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
     guard lhs.handRank == rhs.handRank else {
         return lhs.handRank < rhs.handRank
     }
@@ -439,7 +441,7 @@ func <(lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
             if card.rank != lhs.fourOfKindCard.rank {
                 if card.rank < rhs.cards[index].rank {
                     return true
-                } else  {
+                } else {
                     return false
                 }
             }
@@ -451,3 +453,5 @@ func <(lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
     
     return false
 }
+
+// swiftlint:enable cyclomatic_complexity

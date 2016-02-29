@@ -1,0 +1,14 @@
+line_length: 150
+function_body_length: 150
+function_parameter_count: 11
+cyclomatic_complexity: 15
+file_length: 600
+
+disabled_rules:
+- trailing_whitespace
+- force_cast
+- force_try
+
+excluded:
+- Pods
+

@@ -25,7 +25,7 @@ struct HandOdds: Equatable {
     }
 }
 
-func ==(lhs: HandOdds, rhs: HandOdds) -> Bool {
+func == (lhs: HandOdds, rhs: HandOdds) -> Bool {
     return lhs.hand == rhs.hand &&
         lhs.winningCombinationsCount == rhs.winningCombinationsCount &&
         lhs.totalCombinationsCount == rhs.totalCombinationsCount

@@ -24,6 +24,6 @@ enum Rank: Int, Comparable {
     case Ace = 12
 }
 
-func <(lhs: Rank, rhs: Rank) -> Bool {
+func < (lhs: Rank, rhs: Rank) -> Bool {
     return lhs.rawValue < rhs.rawValue
 }

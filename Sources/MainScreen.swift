@@ -97,4 +97,3 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         }
     }
 }
-
