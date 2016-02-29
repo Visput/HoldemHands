@@ -243,9 +243,9 @@
 				9FACAAC51C72BCC20051A435 /* Sources */,
 				9FACAAC61C72BCC20051A435 /* Frameworks */,
 				9FACAAC71C72BCC20051A435 /* Resources */,
-				9F44D22E1C84B55B00640046 /* Run Swift Lint */,
 				FBC9944723AC72372E27FA4E /* Embed Pods Frameworks */,
 				897A0C323FA46B8AB41EACB1 /* Copy Pods Resources */,
+				9F44D22E1C84B55B00640046 /* Run Swift Lint */,
 			);
 			buildRules = (
 			);
