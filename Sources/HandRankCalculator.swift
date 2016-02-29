@@ -10,7 +10,10 @@ import Foundation
 
 // swiftlint:disable cyclomatic_complexity
 
-private var cardsArray = QuickArray<QuickArray<Card>>()
+private var spadesCards = QuickArray<Card>()
+private var heartsCards = QuickArray<Card>()
+private var diamondsCards = QuickArray<Card>()
+private var clubsCards = QuickArray<Card>()
 
 struct HandRankCalculator: Equatable, Comparable {
     
@@ -23,20 +26,13 @@ struct HandRankCalculator: Equatable, Comparable {
     private var lowPairCard: Card!
     private var cards: QuickArray<Card>!
     
-    init() {
-        if cardsArray.count == 0 {
-            cardsArray.append(QuickArray<Card>())
-            cardsArray.append(QuickArray<Card>())
-            cardsArray.append(QuickArray<Card>())
-            cardsArray.append(QuickArray<Card>())
-        }
-    }
-    
     mutating func calculateRankForCards(inout orderedCards: OrderedCards) {        
         // Reset data.
-        for index in 0 ..< cardsArray.count {
-            cardsArray[index].removeAll()
-        }
+        spadesCards.removeAll()
+        heartsCards.removeAll()
+        diamondsCards.removeAll()
+        clubsCards.removeAll()
+        
         straightOrFlashCards.removeAll()
         fourOfKindCard = nil
         threeOfKindCard = nil
@@ -48,7 +44,16 @@ struct HandRankCalculator: Equatable, Comparable {
         // Calculate rank.
         for index in 0 ..< cards.count {
             let card1 = cards[index]
-            cardsArray[card1.suit.rawValue].append(card1)
+            
+            if card1.suit == .Spades {
+                spadesCards.append(card1)
+            } else if card1.suit == .Hearts {
+                heartsCards.append(card1)
+            } else if card1.suit == .Diamonds {
+                diamondsCards.append(card1)
+            } else {
+                clubsCards.append(card1)
+            }
             
             if index < cards.count - 1 {
                 let card2 = cards[index + 1]
@@ -105,11 +110,15 @@ struct HandRankCalculator: Equatable, Comparable {
             return
         }
         
-        var suitedCards = cardsArray.first!
-        for index in 1 ..< cardsArray.count {
-            if cardsArray[index].count > suitedCards.count {
-                suitedCards = cardsArray[index]
-            }
+        var suitedCards = spadesCards
+        if suitedCards.count < heartsCards.count {
+            suitedCards = heartsCards
+        }
+        if suitedCards.count < diamondsCards.count {
+            suitedCards = diamondsCards
+        }
+        if suitedCards.count < clubsCards.count {
+            suitedCards = clubsCards
         }
         
         if suitedCards.count >= 5 {
