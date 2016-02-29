@@ -46,8 +46,7 @@ struct HandRankCalculator: Equatable, Comparable {
         // Calculate rank.
         for index in 0 ..< cards.count {
             let card1 = cards[index]
-            let suitIndex = card1.suit.rawValue
-            cardsArray[suitIndex].append(card1)
+            cardsArray[card1.suit.rawValue].append(card1)
             
             if index < cards.count - 1 {
                 let card2 = cards[index + 1]
