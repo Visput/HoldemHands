@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class GameScreen: UIViewController {
+final class GameScreen: BaseScreen {
     
     let numberOfHands: Int = 2
     var oddsCalculator: OddsCalculator!
@@ -68,7 +68,7 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HandCell",
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HandCell.className(),
             forIndexPath: indexPath) as! HandCell
         
         let item = HandCellItem(handOdds: oddsCalculator.handsOdds[indexPath.item], needsShowOdds: false, isSuccessSate: nil)

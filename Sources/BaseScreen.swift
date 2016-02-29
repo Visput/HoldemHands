@@ -1,5 +1,5 @@
 //
-//  MenuScreen.swift
+//  BaseScreen.swift
 //  PokerHand
 //
 //  Created by Uladzimir Papko on 2/29/16.
@@ -8,9 +8,7 @@
 
 import UIKit
 
-final class MenuScreen: BaseScreen {
+class BaseScreen: UIViewController {
 
-    private var menuView: MenuView {
-        return view as! MenuView
-    }
+    let modelProvider = ModelProvider.provider
 }

@@ -33,6 +33,12 @@
 		9F44D2281C84B22400640046 /* PokerHandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2261C84B22400640046 /* PokerHandTests.swift */; };
 		9F44D2321C84BAA900640046 /* MenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2311C84BAA900640046 /* MenuScreen.swift */; };
 		9F44D2341C84BAC700640046 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2331C84BAC700640046 /* MenuView.swift */; };
+		9F44D23D1C84C61900640046 /* BaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D23C1C84C61900640046 /* BaseScreen.swift */; };
+		9F44D2431C84C63900640046 /* AnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D23E1C84C63900640046 /* AnalyticsTracker.swift */; };
+		9F44D2441C84C63900640046 /* ModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D23F1C84C63900640046 /* ModelProvider.swift */; };
+		9F44D2451C84C63900640046 /* NSObject+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2401C84C63900640046 /* NSObject+Utils.swift */; };
+		9F44D2461C84C63900640046 /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2411C84C63900640046 /* ObserverSet.swift */; };
+		9F44D2471C84C63900640046 /* UIScreen+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2421C84C63900640046 /* UIScreen+Size.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +80,12 @@
 		9F44D2261C84B22400640046 /* PokerHandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokerHandTests.swift; sourceTree = "<group>"; };
 		9F44D2311C84BAA900640046 /* MenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScreen.swift; sourceTree = "<group>"; };
 		9F44D2331C84BAC700640046 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		9F44D23C1C84C61900640046 /* BaseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScreen.swift; sourceTree = "<group>"; };
+		9F44D23E1C84C63900640046 /* AnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTracker.swift; sourceTree = "<group>"; };
+		9F44D23F1C84C63900640046 /* ModelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelProvider.swift; sourceTree = "<group>"; };
+		9F44D2401C84C63900640046 /* NSObject+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Utils.swift"; sourceTree = "<group>"; };
+		9F44D2411C84C63900640046 /* ObserverSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverSet.swift; sourceTree = "<group>"; };
+		9F44D2421C84C63900640046 /* UIScreen+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Size.swift"; sourceTree = "<group>"; };
 		9FACAAC91C72BCC20051A435 /* PokerHand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerHand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FACAADD1C72BCC20051A435 /* PokerHandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokerHandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77C71BFF06C1B554EEEC53C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +136,7 @@
 			children = (
 				9F44D2291C84B29500640046 /* Core */,
 				9F44D22C1C84B3BC00640046 /* Main */,
+				9F44D2481C84C66300640046 /* Model */,
 				9F44D22A1C84B3A400640046 /* UI */,
 				9F44D22B1C84B3AA00640046 /* Utils */,
 			);
@@ -161,6 +174,7 @@
 		9F44D22A1C84B3A400640046 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9F44D23B1C84C60100640046 /* BaseScreen */,
 				9F44D22F1C84B94800640046 /* MenuScreen */,
 				9F44D22D1C84B4B300640046 /* GameScreen */,
 			);
@@ -170,6 +184,10 @@
 		9F44D22B1C84B3AA00640046 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9F44D23E1C84C63900640046 /* AnalyticsTracker.swift */,
+				9F44D2401C84C63900640046 /* NSObject+Utils.swift */,
+				9F44D2411C84C63900640046 /* ObserverSet.swift */,
+				9F44D2421C84C63900640046 /* UIScreen+Size.swift */,
 				9F44D20D1C84B21A00640046 /* UIColor+AppPalette.swift */,
 			);
 			name = Utils;
@@ -201,6 +219,22 @@
 				9F44D2331C84BAC700640046 /* MenuView.swift */,
 			);
 			name = MenuScreen;
+			sourceTree = "<group>";
+		};
+		9F44D23B1C84C60100640046 /* BaseScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9F44D23C1C84C61900640046 /* BaseScreen.swift */,
+			);
+			name = BaseScreen;
+			sourceTree = "<group>";
+		};
+		9F44D2481C84C66300640046 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9F44D23F1C84C63900640046 /* ModelProvider.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		9FACAAC01C72BCC20051A435 = {
@@ -464,18 +498,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F44D2461C84C63900640046 /* ObserverSet.swift in Sources */,
 				9F44D2191C84B21A00640046 /* HandRank.swift in Sources */,
+				9F44D2471C84C63900640046 /* UIScreen+Size.swift in Sources */,
 				9F44D2211C84B21A00640046 /* Rank.swift in Sources */,
+				9F44D23D1C84C61900640046 /* BaseScreen.swift in Sources */,
+				9F44D2451C84C63900640046 /* NSObject+Utils.swift in Sources */,
 				9F44D2321C84BAA900640046 /* MenuScreen.swift in Sources */,
 				9F44D21D1C84B21A00640046 /* GameView.swift in Sources */,
 				9F44D2151C84B21A00640046 /* Hand.swift in Sources */,
 				9F44D2341C84BAC700640046 /* MenuView.swift in Sources */,
 				9F44D2181C84B21A00640046 /* HandOdds.swift in Sources */,
 				9F44D21C1C84B21A00640046 /* GameScreen.swift in Sources */,
+				9F44D2431C84C63900640046 /* AnalyticsTracker.swift in Sources */,
 				9F44D21F1C84B21A00640046 /* OrderedCards.swift in Sources */,
 				9F44D2141C84B21A00640046 /* Deck.swift in Sources */,
 				9F44D21B1C84B21A00640046 /* HandRankComparator.swift in Sources */,
 				9F44D2231C84B21A00640046 /* UIColor+AppPalette.swift in Sources */,
+				9F44D2441C84C63900640046 /* ModelProvider.swift in Sources */,
 				9F44D2221C84B21A00640046 /* Suit.swift in Sources */,
 				9F44D2201C84B21A00640046 /* QuickArray.swift in Sources */,
 				9F44D2121C84B21A00640046 /* AppDelegate.swift in Sources */,
