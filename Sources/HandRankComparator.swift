@@ -33,17 +33,17 @@ struct HandRankComparator {
             if winningHandRanksIndexes.count == 0 {
                 winningHandRanksIndexes.append(index)
                 
-            } else if handRanks[winningHandRanksIndexes.last!] == handRank {
+            } else if handRanks[winningHandRanksIndexes.last] == handRank {
                 winningHandRanksIndexes.append(index)
                 
-            } else if handRanks[winningHandRanksIndexes.last!] < handRank {
+            } else if handRanks[winningHandRanksIndexes.last] < handRank {
                 winningHandRanksIndexes.removeAll()
                 winningHandRanksIndexes.append(index)
             }
         }
         
         if winningHandRanksIndexes.count == 1 {
-            handsOdds[winningHandRanksIndexes.first!].winningCombinationsCount += 1
+            handsOdds[winningHandRanksIndexes.first].winningCombinationsCount += 1
             
         } else {
             for index in 0 ..< winningHandRanksIndexes.count {

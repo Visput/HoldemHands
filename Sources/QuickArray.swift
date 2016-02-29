@@ -21,20 +21,12 @@ struct QuickArray<ItemType: Equatable>: Equatable {
     
     private(set) var count: Int = 0
     
-    var last: ItemType? {
-        if count == 0 {
-            return nil
-        } else {
-            return itemAtIndex(count - 1)
-        }
+    var last: ItemType {
+        return itemAtIndex(count - 1)!
     }
     
-    var first: ItemType? {
-        if count == 0 {
-            return nil
-        } else {
-            return itemOne
-        }
+    var first: ItemType {
+        return itemOne!
     }
     
     mutating func append(item: ItemType) {
