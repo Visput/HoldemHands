@@ -10,23 +10,19 @@ import Foundation
 
 struct QuickArray<ItemType: Equatable>: Equatable {
     
-    private var itemOne: ItemType?
-    private var itemTwo: ItemType?
-    private var itemThree: ItemType?
-    private var itemFour: ItemType?
-    private var itemFive: ItemType?
-    private var itemSix: ItemType?
-    private var itemSeven: ItemType?
-    private var itemEight: ItemType?
+    private(set) var first: ItemType?
+    private var second: ItemType?
+    private var third: ItemType?
+    private var fourth: ItemType?
+    private var fifth: ItemType?
+    private var six: ItemType?
+    private var seven: ItemType?
+    private var eight: ItemType?
     
     private(set) var count: Int = 0
     
-    var last: ItemType {
-        return itemAtIndex(count - 1)!
-    }
-    
-    var first: ItemType {
-        return itemOne!
+    var last: ItemType? {
+        return itemAtIndex(count - 1)
     }
     
     mutating func append(item: ItemType) {
@@ -76,45 +72,41 @@ struct QuickArray<ItemType: Equatable>: Equatable {
     
     private func itemAtIndex(index: Int) -> ItemType? {
         if index == 0 {
-            return itemOne
+            return first
         } else if index == 1 {
-            return itemTwo
+            return second
         } else if index == 2 {
-            return itemThree
+            return third
         } else if index == 3 {
-            return itemFour
+            return fourth
         } else if index == 4 {
-            return itemFive
+            return fifth
         } else if index == 5 {
-            return itemSix
+            return six
         } else if index == 6 {
-            return itemSeven
-        } else if index == 7 {
-            return itemEight
+            return seven
         } else {
-            fatalError("Index \(index) is out of array bounds")
+            return eight
         }
     }
     
     private mutating func setItem(item: ItemType, atIndex index: Int) {
         if index == 0 {
-            itemOne = item
+            first = item
         } else if index == 1 {
-            itemTwo = item
+            second = item
         } else if index == 2 {
-            itemThree = item
+            third = item
         } else if index == 3 {
-            itemFour = item
+            fourth = item
         } else if index == 4 {
-            itemFive = item
+            fifth = item
         } else if index == 5 {
-            itemSix = item
+            six = item
         } else if index == 6 {
-            itemSeven = item
-        } else if index == 7 {
-            itemEight = item
+            seven = item
         } else {
-            fatalError("Index \(index) is out of array bounds")
+            eight = item
         }
     }
 }

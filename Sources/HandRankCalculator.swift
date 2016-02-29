@@ -129,19 +129,19 @@ struct HandRankCalculator: Equatable, Comparable {
                     if straightOrFlashCards.count == 0 {
                         straightOrFlashCards.append(flushCard)
                         
-                    } else if straightOrFlashCards.last.rank.rawValue == flushCard.rank.rawValue + 1 {
+                    } else if straightOrFlashCards.last!.rank.rawValue == flushCard.rank.rawValue + 1 {
                         straightOrFlashCards.append(flushCard)
                         
-                        if straightOrFlashCards.count == 4 && straightOrFlashCards.last.rank == .Two && suitedCards.first.rank == .Ace {
+                        if straightOrFlashCards.count == 4 && straightOrFlashCards.last!.rank == .Two && suitedCards.first!.rank == .Ace {
                             // Steel Wheel.
-                            straightOrFlashCards.append(suitedCards.first)
+                            straightOrFlashCards.append(suitedCards.first!)
                             break mainLoop
                             
                         } else if straightOrFlashCards.count == 5 {
                             break mainLoop
                         }
                         
-                    } else if straightOrFlashCards.last.rank.rawValue > flushCard.rank.rawValue + 1 {
+                    } else if straightOrFlashCards.last!.rank.rawValue > flushCard.rank.rawValue + 1 {
                         straightOrFlashCards.removeAll()
                         break subLoop
                     }
@@ -171,19 +171,19 @@ struct HandRankCalculator: Equatable, Comparable {
                     if straightOrFlashCards.count == 0 {
                         straightOrFlashCards.append(straightCard)
                         
-                    } else if straightOrFlashCards.last.rank.rawValue == straightCard.rank.rawValue + 1 {
+                    } else if straightOrFlashCards.last!.rank.rawValue == straightCard.rank.rawValue + 1 {
                         straightOrFlashCards.append(straightCard)
                         
-                        if straightOrFlashCards.count == 4 && straightOrFlashCards.last.rank == .Two && cards.first.rank == .Ace {
+                        if straightOrFlashCards.count == 4 && straightOrFlashCards.last!.rank == .Two && cards.first!.rank == .Ace {
                             // Wheel Straight.
-                            straightOrFlashCards.append(cards.first)
+                            straightOrFlashCards.append(cards.first!)
                             break mainLoop
                             
                         } else if straightOrFlashCards.count == 5 {
                             break mainLoop
                         }
                         
-                    } else if straightOrFlashCards.last.rank.rawValue > straightCard.rank.rawValue + 1 {
+                    } else if straightOrFlashCards.last!.rank.rawValue > straightCard.rank.rawValue + 1 {
                         straightOrFlashCards.removeAll()
                         break subLoop
                     }
@@ -291,7 +291,7 @@ func == (lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
         }
         
     case .Straight:
-        return lhs.straightOrFlashCards.first.rank == rhs.straightOrFlashCards.first.rank
+        return lhs.straightOrFlashCards.first!.rank == rhs.straightOrFlashCards.first!.rank
         
     case .Flush:
         for index in 0 ..< 5 {
@@ -321,7 +321,7 @@ func == (lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
         }
         
     case .StraightFlush:
-        return lhs.straightOrFlashCards.first.rank == rhs.straightOrFlashCards.first.rank
+        return lhs.straightOrFlashCards.first!.rank == rhs.straightOrFlashCards.first!.rank
     }
     
     return true
@@ -415,7 +415,7 @@ func < (lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
         }
         
     case .Straight:
-        return lhs.straightOrFlashCards.first.rank < rhs.straightOrFlashCards.first.rank
+        return lhs.straightOrFlashCards.first!.rank < rhs.straightOrFlashCards.first!.rank
         
     case .Flush:
         for index in 0 ..< 5 {
@@ -461,7 +461,7 @@ func < (lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
         }
         
     case .StraightFlush:
-        return lhs.straightOrFlashCards.first.rank < rhs.straightOrFlashCards.first.rank
+        return lhs.straightOrFlashCards.first!.rank < rhs.straightOrFlashCards.first!.rank
     }
     
     return false
