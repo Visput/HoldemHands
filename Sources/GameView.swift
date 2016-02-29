@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  GameView.swift
 //  PokerHand
 //
 //  Created by Uladzimir Papko on 2/18/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MainView: UIView {
+final class GameView: UIView {
     
     @IBOutlet private(set) weak var handsCollectionView: UICollectionView!
     @IBOutlet private(set) weak var nextHandButton: UIButton!

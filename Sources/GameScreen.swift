@@ -1,5 +1,5 @@
 //
-//  MainScreen.swift
+//  GameScreen.swift
 //  PokerHand
 //
 //  Created by Uladzimir Papko on 2/15/16.
@@ -8,10 +8,14 @@
 
 import UIKit
 
-final class MainScreen: UIViewController {
+final class GameScreen: UIViewController {
     
     let numberOfHands: Int = 2
     var oddsCalculator: OddsCalculator!
+    
+    private var gameView: GameView {
+        return view as! GameView
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -20,11 +24,7 @@ final class MainScreen: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        mainView.updateCollectionViewLayoutForNumberOfCells(numberOfHands)
-    }
-    
-    private var mainView: MainView {
-        return view as! MainView
+        gameView.updateCollectionViewLayoutForNumberOfCells(numberOfHands)
     }
     
     private func generateNextHand() {
@@ -38,21 +38,21 @@ final class MainScreen: UIViewController {
         oddsCalculator = OddsCalculator(hands: [firstHand, secondHand], deck: deck)
         
         let time = CFAbsoluteTimeGetCurrent()
-        mainView.nextHandButton.enabled = false
-        mainView.nextHandButton.alpha = 0.4
+        gameView.nextHandButton.enabled = false
+        gameView.nextHandButton.alpha = 0.4
         
         oddsCalculator.calculateOdds({
-            self.mainView.nextHandButton.enabled = true
-            self.mainView.nextHandButton.alpha = 1.0
+            self.gameView.nextHandButton.enabled = true
+            self.gameView.nextHandButton.alpha = 1.0
             print(CFAbsoluteTimeGetCurrent() - time)
             
             for handOdds in self.oddsCalculator.handsOdds {
                 print("\(handOdds.hand)\nWins: \(handOdds.winningProbability())")
             }
             
-            self.mainView.handsCollectionView.delegate = self
-            self.mainView.handsCollectionView.dataSource = self
-            self.mainView.handsCollectionView.reloadData()
+            self.gameView.handsCollectionView.delegate = self
+            self.gameView.handsCollectionView.dataSource = self
+            self.gameView.handsCollectionView.reloadData()
         })
     }
     
@@ -61,7 +61,7 @@ final class MainScreen: UIViewController {
     }
 }
 
-extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return oddsCalculator.hands.count
@@ -81,7 +81,7 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
             
-            return mainView.cellSizeForNumberOfCells(numberOfHands)
+            return gameView.cellSizeForNumberOfCells(numberOfHands)
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

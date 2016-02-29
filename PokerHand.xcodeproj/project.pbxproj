@@ -22,8 +22,8 @@
 		9F44D2191C84B21A00640046 /* HandRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2031C84B21A00640046 /* HandRank.swift */; };
 		9F44D21A1C84B21A00640046 /* HandRankCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2041C84B21A00640046 /* HandRankCalculator.swift */; };
 		9F44D21B1C84B21A00640046 /* HandRankComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2051C84B21A00640046 /* HandRankComparator.swift */; };
-		9F44D21C1C84B21A00640046 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2061C84B21A00640046 /* MainScreen.swift */; };
-		9F44D21D1C84B21A00640046 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2071C84B21A00640046 /* MainView.swift */; };
+		9F44D21C1C84B21A00640046 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2061C84B21A00640046 /* GameScreen.swift */; };
+		9F44D21D1C84B21A00640046 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2071C84B21A00640046 /* GameView.swift */; };
 		9F44D21E1C84B21A00640046 /* OddsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2081C84B21A00640046 /* OddsCalculator.swift */; };
 		9F44D21F1C84B21A00640046 /* OrderedCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2091C84B21A00640046 /* OrderedCards.swift */; };
 		9F44D2201C84B21A00640046 /* QuickArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20A1C84B21A00640046 /* QuickArray.swift */; };
@@ -31,6 +31,8 @@
 		9F44D2221C84B21A00640046 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20C1C84B21A00640046 /* Suit.swift */; };
 		9F44D2231C84B21A00640046 /* UIColor+AppPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20D1C84B21A00640046 /* UIColor+AppPalette.swift */; };
 		9F44D2281C84B22400640046 /* PokerHandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2261C84B22400640046 /* PokerHandTests.swift */; };
+		9F44D2321C84BAA900640046 /* MenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2311C84BAA900640046 /* MenuScreen.swift */; };
+		9F44D2341C84BAC700640046 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2331C84BAC700640046 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +62,8 @@
 		9F44D2031C84B21A00640046 /* HandRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandRank.swift; sourceTree = "<group>"; };
 		9F44D2041C84B21A00640046 /* HandRankCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandRankCalculator.swift; sourceTree = "<group>"; };
 		9F44D2051C84B21A00640046 /* HandRankComparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandRankComparator.swift; sourceTree = "<group>"; };
-		9F44D2061C84B21A00640046 /* MainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
-		9F44D2071C84B21A00640046 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		9F44D2061C84B21A00640046 /* GameScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
+		9F44D2071C84B21A00640046 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		9F44D2081C84B21A00640046 /* OddsCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OddsCalculator.swift; sourceTree = "<group>"; };
 		9F44D2091C84B21A00640046 /* OrderedCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedCards.swift; sourceTree = "<group>"; };
 		9F44D20A1C84B21A00640046 /* QuickArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickArray.swift; sourceTree = "<group>"; };
@@ -70,6 +72,8 @@
 		9F44D20D1C84B21A00640046 /* UIColor+AppPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AppPalette.swift"; sourceTree = "<group>"; };
 		9F44D2251C84B22400640046 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F44D2261C84B22400640046 /* PokerHandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokerHandTests.swift; sourceTree = "<group>"; };
+		9F44D2311C84BAA900640046 /* MenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScreen.swift; sourceTree = "<group>"; };
+		9F44D2331C84BAC700640046 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		9FACAAC91C72BCC20051A435 /* PokerHand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerHand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FACAADD1C72BCC20051A435 /* PokerHandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokerHandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77C71BFF06C1B554EEEC53C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,7 +161,8 @@
 		9F44D22A1C84B3A400640046 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				9F44D22D1C84B4B300640046 /* MainScreen */,
+				9F44D22F1C84B94800640046 /* MenuScreen */,
+				9F44D22D1C84B4B300640046 /* GameScreen */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -178,15 +183,24 @@
 			name = Main;
 			sourceTree = "<group>";
 		};
-		9F44D22D1C84B4B300640046 /* MainScreen */ = {
+		9F44D22D1C84B4B300640046 /* GameScreen */ = {
 			isa = PBXGroup;
 			children = (
-				9F44D2061C84B21A00640046 /* MainScreen.swift */,
-				9F44D2071C84B21A00640046 /* MainView.swift */,
+				9F44D2061C84B21A00640046 /* GameScreen.swift */,
+				9F44D2071C84B21A00640046 /* GameView.swift */,
 				9F44D2001C84B21A00640046 /* HandCell.swift */,
 				9F44D2011C84B21A00640046 /* HandCellItem.swift */,
 			);
-			name = MainScreen;
+			name = GameScreen;
+			sourceTree = "<group>";
+		};
+		9F44D22F1C84B94800640046 /* MenuScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9F44D2311C84BAA900640046 /* MenuScreen.swift */,
+				9F44D2331C84BAC700640046 /* MenuView.swift */,
+			);
+			name = MenuScreen;
 			sourceTree = "<group>";
 		};
 		9FACAAC01C72BCC20051A435 = {
@@ -437,10 +451,12 @@
 			files = (
 				9F44D2191C84B21A00640046 /* HandRank.swift in Sources */,
 				9F44D2211C84B21A00640046 /* Rank.swift in Sources */,
-				9F44D21D1C84B21A00640046 /* MainView.swift in Sources */,
+				9F44D2321C84BAA900640046 /* MenuScreen.swift in Sources */,
+				9F44D21D1C84B21A00640046 /* GameView.swift in Sources */,
 				9F44D2151C84B21A00640046 /* Hand.swift in Sources */,
+				9F44D2341C84BAC700640046 /* MenuView.swift in Sources */,
 				9F44D2181C84B21A00640046 /* HandOdds.swift in Sources */,
-				9F44D21C1C84B21A00640046 /* MainScreen.swift in Sources */,
+				9F44D21C1C84B21A00640046 /* GameScreen.swift in Sources */,
 				9F44D21F1C84B21A00640046 /* OrderedCards.swift in Sources */,
 				9F44D2141C84B21A00640046 /* Deck.swift in Sources */,
 				9F44D21B1C84B21A00640046 /* HandRankComparator.swift in Sources */,
