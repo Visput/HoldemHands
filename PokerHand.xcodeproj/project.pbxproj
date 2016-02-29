@@ -91,18 +91,18 @@
 		9F45B9B61C75770D0042FA4E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9FC956731C8133AB00093698 /* QuickArray.swift */,
 				9FBFEE201C75724600BBD9E1 /* Rank.swift */,
 				9FBFEE1E1C75721B00BBD9E1 /* Suit.swift */,
 				9FBFEE1C1C7571BA00BBD9E1 /* Card.swift */,
 				9FBFEE1A1C75717E00BBD9E1 /* Hand.swift */,
 				9FBFEE221C7573ED00BBD9E1 /* Deck.swift */,
-				9F45B9E61C7686930042FA4E /* HandOdds.swift */,
-				9F45BA391C78F6DC0042FA4E /* HandRankCalculator.swift */,
-				9F411C901C83BCAE00889DC9 /* HandRank.swift */,
 				9F45BA3B1C7ABC4B0042FA4E /* OrderedCards.swift */,
+				9F411C901C83BCAE00889DC9 /* HandRank.swift */,
+				9F45BA391C78F6DC0042FA4E /* HandRankCalculator.swift */,
 				9F00CC211C7D18B600AC63CC /* HandRankComparator.swift */,
+				9F45B9E61C7686930042FA4E /* HandOdds.swift */,
 				9F45B9E41C76851A0042FA4E /* OddsCalculator.swift */,
-				9FC956731C8133AB00093698 /* QuickArray.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
