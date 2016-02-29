@@ -90,9 +90,7 @@ class PokerHandTests: XCTestCase {
             Hand(firstCard: Card(rank: .Ten, suit: .Spades), secondCard: Card(rank: .Ten, suit: .Clubs)),
             Hand(firstCard: Card(rank: .Ten, suit: .Diamonds), secondCard: Card(rank: .Nine, suit: .Clubs)),
             Hand(firstCard: Card(rank: .Queen, suit: .Spades), secondCard: Card(rank: .Seven, suit: .Spades)),
-            Hand(firstCard: Card(rank: .Six, suit: .Spades), secondCard: Card(rank: .Six, suit: .Clubs)),
-            Hand(firstCard: Card(rank: .Queen, suit: .Hearts), secondCard: Card(rank: .Jack, suit: .Clubs)),
-            Hand(firstCard: Card(rank: .Ace, suit: .Spades), secondCard: Card(rank: .Four, suit: .Clubs))
+            Hand(firstCard: Card(rank: .Six, suit: .Spades), secondCard: Card(rank: .Six, suit: .Clubs))
         ]
         
         let oddsResults: [OddsResult] = [
@@ -103,9 +101,7 @@ class PokerHandTests: XCTestCase {
             (winProbability: 10.85, winCount: 21857.50),
             (winProbability: 8.21, winCount: 16538.00),
             (winProbability: 10.97, winCount: 22087.00),
-            (winProbability: 17.88, winCount: 36024.00),
-            (winProbability: 9.06, winCount: 18245.00),
-            (winProbability: 7.12, winCount: 14331.50)
+            (winProbability: 17.88, winCount: 36024.00)
         ]
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)

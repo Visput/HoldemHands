@@ -47,8 +47,7 @@ struct HandRankComparator {
             
         } else {
             for index in 0 ..< winningHandRanksIndexes.count {
-                let winningHandRankIndex = winningHandRanksIndexes[index]
-                handsOdds[winningHandRankIndex].winningCombinationsCount += 1.0 / Double(winningHandRanksIndexes.count)
+                handsOdds[winningHandRanksIndexes[index]].winningCombinationsCount += 1.0 / Double(winningHandRanksIndexes.count)
             }
         }
         
