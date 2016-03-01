@@ -11,13 +11,16 @@ import Foundation
 struct HandOdds: Equatable {
     
     var hand: Hand
-    let totalCombinationsCount: Int
-    
+    var totalCombinationsCount: Int = 0
     var winningCombinationsCount: Double = 0
     
     init(hand: Hand, totalCombinationsCount: Int) {
         self.hand = hand
         self.totalCombinationsCount = totalCombinationsCount
+    }
+    
+    init(hand: Hand) {
+        self.hand = hand
     }
     
     func winningProbability() -> Double {

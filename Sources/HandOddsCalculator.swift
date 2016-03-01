@@ -31,29 +31,53 @@ final class HandOddsCalculator {
     }
     
     func calculateOdds(completion: () -> Void) {
-        dispatch_async(dispatch_queue_create("odds_calculation", nil), {
-            let boardSize = 5
-            let deckSize = 52
-            let handSize = 2
-            let numberOfCombinations = self.numberOfBoardsWithSize(boardSize, inDeckOfSize: deckSize - (self.hands.count * handSize))
-            
-            var handsOdds = [HandOdds]()
-            for hand in self.hands {
-                handsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
-            }
-            
-            var handRankComparator = HandRankComparator(numberOfHands: self.hands.count)
-            var boardCards = QuickArray<Card>(5)
-            
-            self.iterateBoardsOfSize(boardSize, inDeck: self.deck, boardCards: &boardCards, iterationHandler: {
-                handRankComparator.compareHands(&handsOdds, boardCards: &boardCards)
+        let numberOfThreads = 1
+        
+        let boardSize = 5
+        let deckSize = 52
+        let handSize = 2
+        let numberOfCombinations = numberOfBoardsWithSize(boardSize, inDeckOfSize: deckSize - (self.hands.count * handSize))
+        
+        var handsOdds = [HandOdds]()
+        for hand in hands {
+            handsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
+        }
+        
+        let group = dispatch_group_create()
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        
+        for _ in 0 ..< numberOfThreads {
+            dispatch_group_async(group, queue, {
+                
+                var subHandsOdds = [HandOdds]()
+                for hand in self.hands {
+                    subHandsOdds.append(HandOdds(hand: hand))
+                }
+
+                var handRankComparator = HandRankComparator(numberOfHands: self.hands.count)
+                var boardCards = QuickArray<Card>(5)
+                var iterationHandler: () -> Void = {
+                    handRankComparator.compareHands(&handsOdds, boardCards: &boardCards)
+                }
+                
+                self.iterateDeckCards(&self.deck.cards,
+                    fromIndex: 0,
+                    toIndex: self.deck.cards.count - boardSize,
+                    boardCards: &boardCards,
+                    iterationHandler: &iterationHandler)
+                
+                handRankComparator.destroy()
+                boardCards.destroy()
+                
+                for (index, subHandOdds) in subHandsOdds.enumerate() {
+                    handsOdds[index].winningCombinationsCount += subHandOdds.winningCombinationsCount
+                }
             })
-            
-            handRankComparator.destroy()
-            boardCards.destroy()
+        }
+        
+        dispatch_group_notify(group, queue, {
             
             self.handsOdds = handsOdds
-            
             self.winningHandsOdds = []
             
             for handOdds in handsOdds {
@@ -81,18 +105,6 @@ final class HandOddsCalculator {
 }
 
 extension HandOddsCalculator {
-    
-    private func iterateBoardsOfSize(boardSize: Int,
-        var inDeck deck: Deck,
-        inout boardCards: QuickArray<Card>,
-        var iterationHandler: () -> Void) {
-            
-            iterateDeckCards(&deck.cards,
-                fromIndex: 0,
-                toIndex: deck.cards.count - boardSize,
-                boardCards: &boardCards,
-                iterationHandler: &iterationHandler)
-    }
     
     private func iterateDeckCards(inout deckCards: [Card],
         fromIndex: Int,
