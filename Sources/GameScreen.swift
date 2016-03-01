@@ -10,7 +10,7 @@ import UIKit
 
 final class GameScreen: BaseScreen {
     
-    let numberOfHands: Int = 2
+    let numberOfHands: Int = 5
     var handOddsCalculator: HandOddsCalculator!
     
     private var gameView: GameView {
@@ -28,14 +28,14 @@ final class GameScreen: BaseScreen {
     }
     
     private func generateNextHand() {
-//        HandOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands)
+        handOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands)
         
-        let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
-        let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
-        var deck = Deck()
-        deck.removeHand(firstHand)
-        deck.removeHand(secondHand)
-        handOddsCalculator = HandOddsCalculator(hands: [firstHand, secondHand], deck: deck)
+//        let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
+//        let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
+//        var deck = Deck()
+//        deck.removeHand(firstHand)
+//        deck.removeHand(secondHand)
+//        handOddsCalculator = HandOddsCalculator(hands: [firstHand, secondHand], deck: deck)
         
         let time = CFAbsoluteTimeGetCurrent()
         gameView.nextHandButton.enabled = false
