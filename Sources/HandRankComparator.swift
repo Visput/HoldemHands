@@ -29,7 +29,7 @@ struct HandRankComparator {
         winningHandsRanksIndexes.destroy()
     }
     
-    mutating func compareHands(inout handsOdds: [HandOdds], inout boardCards: QuickArray<Card>) -> Bool {
+    @inline(__always) mutating func compareHands(inout handsOdds: [HandOdds], inout boardCards: QuickArray<Card>) {
         
         winningHandsRanksIndexes.removeAll()
         
@@ -60,7 +60,5 @@ struct HandRankComparator {
                 handsOdds[winningHandsRanksIndexes[index]].winningCombinationsCount += 1.0 / Double(winningHandsRanksIndexes.count)
             }
         }
-        
-        return true
     }
 }

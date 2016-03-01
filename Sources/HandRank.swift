@@ -20,6 +20,6 @@ enum HandRank: Int, Comparable {
     case StraightFlush = 8
 }
 
-func < (lhs: HandRank, rhs: HandRank) -> Bool {
+@inline(__always) func < (lhs: HandRank, rhs: HandRank) -> Bool {
     return lhs.rawValue < rhs.rawValue
 }

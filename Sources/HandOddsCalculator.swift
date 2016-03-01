@@ -101,7 +101,7 @@ final class HandOddsCalculator {
         })
     }
     
-    private func iterateDeckCards(inout deckCards: [Card],
+    @inline(__always) private func iterateDeckCards(inout deckCards: [Card],
         inout boardCards: QuickArray<Card>,
         inout handRankComparator: HandRankComparator,
         inout handsOdds: [HandOdds],

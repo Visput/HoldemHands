@@ -42,7 +42,7 @@ struct HandRankCalculator: Equatable, Comparable {
         suitedCardsArray.destroy()
     }
     
-    mutating func calculateRankForHand(inout hand: Hand, inout boardCards: QuickArray<Card>) {
+    @inline(__always) mutating func calculateRankForHand(inout hand: Hand, inout boardCards: QuickArray<Card>) {
         // Reset data.
         fourOfKindCard = nil
         threeOfKindCard = nil
@@ -271,7 +271,7 @@ struct HandRankCalculator: Equatable, Comparable {
     }
 }
 
-func == (lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
+@inline(__always) func == (lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
     guard lhs.handRank == rhs.handRank else { return false }
     
     switch lhs.handRank! {
@@ -373,7 +373,7 @@ func == (lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
     return true
 }
 
-func < (lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
+@inline(__always) func < (lhs: HandRankCalculator, rhs: HandRankCalculator) -> Bool {
     guard lhs.handRank == rhs.handRank else {
         return lhs.handRank < rhs.handRank
     }

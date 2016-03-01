@@ -31,20 +31,20 @@ struct QuickArray<ItemType: Equatable>: Equatable {
         buffer.baseAddress.dealloc(buffer.count)
     }
     
-    mutating func append(item: ItemType) {
+    @inline(__always) mutating func append(item: ItemType) {
         buffer[count] = item
         count += 1
     }
     
-    mutating func removeLast() {
+    @inline(__always) mutating func removeLast() {
         count -= 1
     }
     
-    mutating func removeAll() {
+    @inline(__always) mutating func removeAll() {
         count = 0
     }
     
-    mutating func insert(item: ItemType, atIndex index: Int) {
+    @inline(__always) mutating func insert(item: ItemType, atIndex index: Int) {
         var newItem: ItemType? = item
         for subIndex in index ... count {
             let oldItem = buffer[subIndex]
@@ -54,11 +54,11 @@ struct QuickArray<ItemType: Equatable>: Equatable {
         count += 1
     }
     
-    mutating func removeFirst() -> ItemType {
+    @inline(__always) mutating func removeFirst() -> ItemType {
         return removeAtIndex(0)
     }
     
-    mutating func removeAtIndex(index: Int) -> ItemType {
+    @inline(__always) mutating func removeAtIndex(index: Int) -> ItemType {
         let item = buffer[index]
         if index <= count - 2 {
             for subIndex in index ... count - 2 {
@@ -70,25 +70,25 @@ struct QuickArray<ItemType: Equatable>: Equatable {
         return item
     }
     
-    func indexOf(item: ItemType) -> Int? {
+    @inline(__always) func indexOf(item: ItemType) -> Int? {
         return buffer.indexOf(item)
     }
     
-    mutating func sortInPlace(@noescape isOrderedBefore: (ItemType, ItemType) -> Bool) {
+    @inline(__always) mutating func sortInPlace(@noescape isOrderedBefore: (ItemType, ItemType) -> Bool) {
         return buffer.sortInPlace(isOrderedBefore)
     }
     
     subscript(index: Int) -> ItemType {
-        get {
+        @inline(__always) get {
             return buffer[index]
         }
-        set(newValue) {
+        @inline(__always) set(newValue) {
             buffer[index] = newValue
         }
     }
 }
 
-func ==<ItemType: Equatable>(lhs: QuickArray<ItemType>, rhs: QuickArray<ItemType>) -> Bool {
+@inline(__always) func ==<ItemType: Equatable>(lhs: QuickArray<ItemType>, rhs: QuickArray<ItemType>) -> Bool {
     if lhs.count != rhs.count {
         return false
     } else {

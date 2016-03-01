@@ -19,10 +19,10 @@ struct Card: Equatable, Comparable {
     }
 }
 
-func == (lhs: Card, rhs: Card) -> Bool {
+@inline(__always) func == (lhs: Card, rhs: Card) -> Bool {
     return lhs.rank == rhs.rank && lhs.suit == rhs.suit
 }
 
-func < (lhs: Card, rhs: Card) -> Bool {
+@inline(__always) func < (lhs: Card, rhs: Card) -> Bool {
     return lhs.rank < lhs.rank
 }

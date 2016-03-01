@@ -19,6 +19,6 @@ struct Hand: Equatable {
     }
 }
 
-func == (lhs: Hand, rhs: Hand) -> Bool {
+@inline(__always) func == (lhs: Hand, rhs: Hand) -> Bool {
     return lhs.firstCard == rhs.firstCard && lhs.secondCard == rhs.secondCard
 }
