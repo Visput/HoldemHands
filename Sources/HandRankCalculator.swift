@@ -62,41 +62,45 @@ struct HandRankCalculator: Equatable, Comparable {
         
         // TODO: One cycle for sorting, suited cards filtering and rank calculation.
         
-        // Sort cards.
-        for index in 0 ..< boardCards.count {
-            cards.append(boardCards[index])
-        }
-        
+        // Sort hand cards with board cards.
         var firstCardInserted = false
+        var secondCardInserted = false
         for index in 0 ..< boardCards.count {
             let card = boardCards[index]
             if !firstCardInserted {
                 if card.rank < hand.firstCard.rank {
                     firstCardInserted = true
+                    cards.append(hand.firstCard)
                     
-                    cards.insert(hand.firstCard, atIndex: index)
                     if card.rank < hand.secondCard.rank {
-                        cards.insert(hand.secondCard, atIndex: index + 1)
-                        break
+                        secondCardInserted = true
+                        cards.append(hand.secondCard)
                         
                     } else if index == boardCards.count - 1 {
+                        cards.append(card)
                         cards.append(hand.secondCard)
+                        break
                     }
                     
                 } else if index == boardCards.count - 1 {
+                    cards.append(card)
                     cards.append(hand.firstCard)
                     cards.append(hand.secondCard)
+                    break
                 }
                 
-            } else {
+            } else if !secondCardInserted {
                 if card.rank < hand.secondCard.rank {
-                    cards.insert(hand.secondCard, atIndex: index + 1)
-                    break
+                    secondCardInserted = true
+                    cards.append(hand.secondCard)
                     
                 } else if index == boardCards.count - 1 {
+                    cards.append(card)
                     cards.append(hand.secondCard)
+                    break
                 }
             }
+            cards.append(card)
         }
         
         // Calculate rank.

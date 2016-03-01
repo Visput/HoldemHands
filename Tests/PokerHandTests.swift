@@ -9,33 +9,7 @@
 import XCTest
 @testable import PokerHand
 
-/// Note: Expected results for odds calculator were provided by online calculator: 
-/// http://www.cardplayer.com/poker-tools/odds-calculator/texas-holdem
-
 class PokerHandTests: XCTestCase {
-    
-    func testOrderedCards1() {
-        var boardCards = QuickArray<Card>()
-        boardCards.append(Card(rank: .Ace, suit: .Diamonds))
-        boardCards.append(Card(rank: .Ace, suit: .Spades))
-        boardCards.append(Card(rank: .Ace, suit: .Hearts))
-        boardCards.append(Card(rank: .Ace, suit: .Clubs))
-        boardCards.append(Card(rank: .Ten, suit: .Spades))
-        
-        let hand = Hand(firstCard: Card(rank: .Jack, suit: .Hearts), secondCard: Card(rank: .Seven, suit: .Hearts))
-        
-        let orderedCards = OrderedCards(hand: hand, boardCards: boardCards)
-        var expectedCards = QuickArray<Card>()
-        expectedCards.append(Card(rank: .Ace, suit: .Diamonds))
-        expectedCards.append(Card(rank: .Ace, suit: .Spades))
-        expectedCards.append(Card(rank: .Ace, suit: .Hearts))
-        expectedCards.append(Card(rank: .Ace, suit: .Clubs))
-        expectedCards.append(Card(rank: .Jack, suit: .Hearts))
-        expectedCards.append(Card(rank: .Ten, suit: .Spades))
-        expectedCards.append(Card(rank: .Seven, suit: .Hearts))
-        
-        XCTAssertTrue(orderedCards.cards == expectedCards)
-    }
     
     func testOddsCalculator1() {
         let hands = [
