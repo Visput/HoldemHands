@@ -37,22 +37,18 @@ struct HandRankComparator {
             handsRanks[index].calculateRankForHand(&handsOdds[index].hand, boardCards: &boardCards)
         }
         
-        var lastWinningIndex: Int! = nil
         for index in 0 ..< handsRanks.count {
             let handRank = handsRanks[index]
             
             if winningHandsRanksIndexes.count == 0 {
                 winningHandsRanksIndexes.append(index)
-                lastWinningIndex = index
                 
-            } else if handsRanks[lastWinningIndex] == handRank {
+            } else if handsRanks[winningHandsRanksIndexes.last!] == handRank {
                 winningHandsRanksIndexes.append(index)
-                lastWinningIndex = index
                 
-            } else if handsRanks[lastWinningIndex] < handRank {
+            } else if handsRanks[winningHandsRanksIndexes.last!] < handRank {
                 winningHandsRanksIndexes.removeAll()
                 winningHandsRanksIndexes.append(index)
-                lastWinningIndex = index
             }
         }
         

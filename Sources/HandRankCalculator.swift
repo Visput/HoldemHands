@@ -180,20 +180,17 @@ struct HandRankCalculator: Equatable, Comparable {
         }
         
         if suitedCards.count >= 5 {
-            var lastFlushCard: Card! = nil
             mainLoop: for index in 0 ... suitedCards.count - 4 {
                 subLoop: for subIndex in index ..< suitedCards.count {
                     let flushCard = suitedCards[subIndex]
                     
                     if straightOrFlashCards.count == 0 {
                         straightOrFlashCards.append(flushCard)
-                        lastFlushCard = flushCard
                         
-                    } else if lastFlushCard.rank.rawValue == flushCard.rank.rawValue + 1 {
+                    } else if straightOrFlashCards.last!.rank.rawValue == flushCard.rank.rawValue + 1 {
                         straightOrFlashCards.append(flushCard)
-                        lastFlushCard = flushCard
                         
-                        if straightOrFlashCards.count == 4 && lastFlushCard.rank == .Two && suitedCards.first!.rank == .Ace {
+                        if straightOrFlashCards.count == 4 && straightOrFlashCards.last!.rank == .Two && suitedCards.first!.rank == .Ace {
                             // Steel Wheel.
                             straightOrFlashCards.append(suitedCards.first!)
                             break mainLoop
@@ -202,7 +199,7 @@ struct HandRankCalculator: Equatable, Comparable {
                             break mainLoop
                         }
                         
-                    } else if lastFlushCard.rank.rawValue > flushCard.rank.rawValue + 1 {
+                    } else if straightOrFlashCards.last!.rank.rawValue > flushCard.rank.rawValue + 1 {
                         straightOrFlashCards.removeAll()
                         break subLoop
                     }
@@ -227,20 +224,17 @@ struct HandRankCalculator: Equatable, Comparable {
             }
             
         } else {
-            var lastStraightCard: Card! = nil
             mainLoop: for index in 0 ... cards.count - 4 {
                 subLoop: for subIndex in index ..< cards.count {
                     let straightCard = cards[subIndex]
                     
                     if straightOrFlashCards.count == 0 {
                         straightOrFlashCards.append(straightCard)
-                        lastStraightCard = straightCard
                         
-                    } else if lastStraightCard.rank.rawValue == straightCard.rank.rawValue + 1 {
+                    } else if straightOrFlashCards.last!.rank.rawValue == straightCard.rank.rawValue + 1 {
                         straightOrFlashCards.append(straightCard)
-                        lastStraightCard = straightCard
                         
-                        if straightOrFlashCards.count == 4 && lastStraightCard.rank == .Two && cards.first!.rank == .Ace {
+                        if straightOrFlashCards.count == 4 && straightOrFlashCards.last!.rank == .Two && cards.first!.rank == .Ace {
                             // Wheel Straight.
                             straightOrFlashCards.append(cards.first!)
                             break mainLoop
@@ -249,7 +243,7 @@ struct HandRankCalculator: Equatable, Comparable {
                             break mainLoop
                         }
                         
-                    } else if lastStraightCard.rank.rawValue > straightCard.rank.rawValue + 1 {
+                    } else if straightOrFlashCards.last!.rank.rawValue > straightCard.rank.rawValue + 1 {
                         straightOrFlashCards.removeAll()
                         break subLoop
                     }
