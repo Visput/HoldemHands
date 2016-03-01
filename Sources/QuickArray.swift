@@ -15,9 +15,9 @@ struct QuickArray<ItemType: Equatable>: Equatable {
     private var third: ItemType?
     private var fourth: ItemType?
     private var fifth: ItemType?
-    private var six: ItemType?
-    private var seven: ItemType?
-    private var eight: ItemType?
+    private var sixth: ItemType?
+    private var seventh: ItemType?
+    private var eighth: ItemType?
     
     private(set) var count: Int = 0
     
@@ -82,11 +82,11 @@ struct QuickArray<ItemType: Equatable>: Equatable {
         } else if index == 4 {
             return fifth
         } else if index == 5 {
-            return six
+            return sixth
         } else if index == 6 {
-            return seven
+            return seventh
         } else {
-            return eight
+            return eighth
         }
     }
     
@@ -102,11 +102,11 @@ struct QuickArray<ItemType: Equatable>: Equatable {
         } else if index == 4 {
             fifth = item
         } else if index == 5 {
-            six = item
+            sixth = item
         } else if index == 6 {
-            seven = item
+            seventh = item
         } else {
-            eight = item
+            eighth = item
         }
     }
 }
