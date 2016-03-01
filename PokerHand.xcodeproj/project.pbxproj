@@ -24,7 +24,7 @@
 		9F44D21B1C84B21A00640046 /* HandRankComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2051C84B21A00640046 /* HandRankComparator.swift */; };
 		9F44D21C1C84B21A00640046 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2061C84B21A00640046 /* GameScreen.swift */; };
 		9F44D21D1C84B21A00640046 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2071C84B21A00640046 /* GameView.swift */; };
-		9F44D21E1C84B21A00640046 /* OddsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2081C84B21A00640046 /* OddsCalculator.swift */; };
+		9F44D21E1C84B21A00640046 /* HandOddsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2081C84B21A00640046 /* HandOddsCalculator.swift */; };
 		9F44D2201C84B21A00640046 /* QuickArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20A1C84B21A00640046 /* QuickArray.swift */; };
 		9F44D2211C84B21A00640046 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20B1C84B21A00640046 /* Rank.swift */; };
 		9F44D2221C84B21A00640046 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20C1C84B21A00640046 /* Suit.swift */; };
@@ -69,7 +69,7 @@
 		9F44D2051C84B21A00640046 /* HandRankComparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandRankComparator.swift; sourceTree = "<group>"; };
 		9F44D2061C84B21A00640046 /* GameScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		9F44D2071C84B21A00640046 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		9F44D2081C84B21A00640046 /* OddsCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OddsCalculator.swift; sourceTree = "<group>"; };
+		9F44D2081C84B21A00640046 /* HandOddsCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandOddsCalculator.swift; sourceTree = "<group>"; };
 		9F44D20A1C84B21A00640046 /* QuickArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickArray.swift; sourceTree = "<group>"; };
 		9F44D20B1C84B21A00640046 /* Rank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		9F44D20C1C84B21A00640046 /* Suit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 				9F44D2041C84B21A00640046 /* HandRankCalculator.swift */,
 				9F44D2051C84B21A00640046 /* HandRankComparator.swift */,
 				9F44D2021C84B21A00640046 /* HandOdds.swift */,
-				9F44D2081C84B21A00640046 /* OddsCalculator.swift */,
+				9F44D2081C84B21A00640046 /* HandOddsCalculator.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -517,7 +517,7 @@
 				9F44D2121C84B21A00640046 /* AppDelegate.swift in Sources */,
 				9F44D21A1C84B21A00640046 /* HandRankCalculator.swift in Sources */,
 				9F44D2131C84B21A00640046 /* Card.swift in Sources */,
-				9F44D21E1C84B21A00640046 /* OddsCalculator.swift in Sources */,
+				9F44D21E1C84B21A00640046 /* HandOddsCalculator.swift in Sources */,
 				9F44D2161C84B21A00640046 /* HandCell.swift in Sources */,
 				9F44D2171C84B21A00640046 /* HandCellItem.swift in Sources */,
 			);

@@ -11,7 +11,7 @@ import UIKit
 final class GameScreen: BaseScreen {
     
     let numberOfHands: Int = 2
-    var oddsCalculator: OddsCalculator!
+    var handOddsCalculator: HandOddsCalculator!
     
     private var gameView: GameView {
         return view as! GameView
@@ -28,25 +28,25 @@ final class GameScreen: BaseScreen {
     }
     
     private func generateNextHand() {
-//        oddsCalculator = OddsCalculator(numberOfHands: numberOfHands)
+//        HandOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands)
         
         let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
         let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
         var deck = Deck()
         deck.removeHand(firstHand)
         deck.removeHand(secondHand)
-        oddsCalculator = OddsCalculator(hands: [firstHand, secondHand], deck: deck)
+        handOddsCalculator = HandOddsCalculator(hands: [firstHand, secondHand], deck: deck)
         
         let time = CFAbsoluteTimeGetCurrent()
         gameView.nextHandButton.enabled = false
         gameView.nextHandButton.alpha = 0.4
         
-        oddsCalculator.calculateOdds({
+        handOddsCalculator.calculateOdds({
             self.gameView.nextHandButton.enabled = true
             self.gameView.nextHandButton.alpha = 1.0
             print(CFAbsoluteTimeGetCurrent() - time)
             
-            for handOdds in self.oddsCalculator.handsOdds {
+            for handOdds in self.handOddsCalculator.handsOdds {
                 print("\(handOdds.hand)\nWins: \(handOdds.winningProbability())")
             }
             
@@ -64,14 +64,14 @@ final class GameScreen: BaseScreen {
 extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return oddsCalculator.hands.count
+        return handOddsCalculator.hands.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HandCell.className(),
             forIndexPath: indexPath) as! HandCell
         
-        let item = HandCellItem(handOdds: oddsCalculator.handsOdds[indexPath.item], needsShowOdds: false, isSuccessSate: nil)
+        let item = HandCellItem(handOdds: handOddsCalculator.handsOdds[indexPath.item], needsShowOdds: false, isSuccessSate: nil)
         cell.fillWithItem(item)
         
         return cell
@@ -90,7 +90,7 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         for cell in collectionView.visibleCells() as! [HandCell] {
             var isSuccessState: Bool? = nil
             if currentCell == cell {
-                isSuccessState = oddsCalculator.isWinningHandOdds(cell.item.handOdds)
+                isSuccessState = handOddsCalculator.isWinningHandOdds(cell.item.handOdds)
             }
             let item = HandCellItem(handOdds: cell.item.handOdds, needsShowOdds: true, isSuccessSate: isSuccessState)
             cell.fillWithItem(item)

@@ -1,5 +1,5 @@
 //
-//  OddsCalculator.swift
+//  HandOddsCalculator.swift
 //  PokerHand
 //
 //  Created by Uladzimir Papko on 2/18/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class OddsCalculator {
+final class HandOddsCalculator {
     
     private(set) var hands: [Hand]
     private(set) var deck: Deck
@@ -80,7 +80,7 @@ final class OddsCalculator {
     }
 }
 
-extension OddsCalculator {
+extension HandOddsCalculator {
     
     private func iterateBoardsOfSize(boardSize: Int,
         var inDeck deck: Deck,
