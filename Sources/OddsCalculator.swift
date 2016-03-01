@@ -37,23 +37,20 @@ final class OddsCalculator {
             let handSize = 2
             let numberOfCombinations = self.numberOfBoardsWithSize(boardSize, inDeckOfSize: deckSize - (self.hands.count * handSize))
             
-            var orderedBoards = QuickArray<OrderedCards>()
             var handsOdds = [HandOdds]()
             for hand in self.hands {
                 handsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
             }
             
             var handRankComparator = HandRankComparator(numberOfHands: self.hands.count)
+            var boardCards = QuickArray<Card>(5)
             
-            self.iterateBoardsOfSize(boardSize, inDeck: self.deck, iterationHandler: { boardCards in
-                
-                orderedBoards.removeAll()
-                for handOdds in handsOdds {
-                    orderedBoards.append(OrderedCards(hand: handOdds.hand, boardCards: boardCards))
-                }
-                
-                handRankComparator.compareHands(&handsOdds, orderedBoards: &orderedBoards)
+            self.iterateBoardsOfSize(boardSize, inDeck: self.deck, boardCards: &boardCards, iterationHandler: {
+                handRankComparator.compareHands(&handsOdds, boardCards: &boardCards)
             })
+            
+            handRankComparator.destroy()
+            boardCards.destroy()
             
             self.handsOdds = handsOdds
             
@@ -86,16 +83,14 @@ final class OddsCalculator {
 extension OddsCalculator {
     
     private func iterateBoardsOfSize(boardSize: Int,
-        inDeck deck: Deck,
-        var iterationHandler: (boardCards: QuickArray<Card>) -> Void) {
+        var inDeck deck: Deck,
+        inout boardCards: QuickArray<Card>,
+        var iterationHandler: () -> Void) {
             
-            var emptyBoard = QuickArray<Card>()
-            var cards = deck.cards
-            
-            iterateDeckCards(&cards,
+            iterateDeckCards(&deck.cards,
                 fromIndex: 0,
                 toIndex: deck.cards.count - boardSize,
-                boardCards: &emptyBoard,
+                boardCards: &boardCards,
                 iterationHandler: &iterationHandler)
     }
     
@@ -103,7 +98,7 @@ extension OddsCalculator {
         fromIndex: Int,
         toIndex: Int,
         inout boardCards: QuickArray<Card>,
-        inout iterationHandler: (boardCards: QuickArray<Card>) -> Void) {
+        inout iterationHandler: () -> Void) {
             
             if toIndex < deckCards.count {
                 for index in fromIndex ... toIndex {
@@ -118,7 +113,7 @@ extension OddsCalculator {
                     boardCards.removeLast()
                 }
             } else {
-                iterationHandler(boardCards: boardCards)
+                iterationHandler()
             }
     }
     

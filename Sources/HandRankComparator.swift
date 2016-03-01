@@ -9,49 +9,59 @@
 import Foundation
 
 struct HandRankComparator {
-    
-    private var handRanks = QuickArray<HandRankCalculator>()
-    private var winningHandRanksIndexes  = QuickArray<Int>()
+ 
+    private var handsRanks: QuickArray<HandRankCalculator>
+    private var winningHandsRanksIndexes: QuickArray<Int>
     
     init(numberOfHands: Int) {
+        handsRanks = QuickArray<HandRankCalculator>(numberOfHands)
+        winningHandsRanksIndexes  = QuickArray<Int>(numberOfHands)
         for _ in 0 ..< numberOfHands {
-            handRanks.append(HandRankCalculator())
+            handsRanks.append(HandRankCalculator())
         }
     }
     
-    mutating func compareHands(inout handsOdds: [HandOdds], inout orderedBoards: QuickArray<OrderedCards>) -> Bool {
+    func destroy() {
+        for index in 0 ..< handsRanks.count {
+            handsRanks[index].destroy()
+        }
+        handsRanks.destroy()
+        winningHandsRanksIndexes.destroy()
+    }
+    
+    mutating func compareHands(inout handsOdds: [HandOdds], inout boardCards: QuickArray<Card>) -> Bool {
         
-        winningHandRanksIndexes.removeAll()
+        winningHandsRanksIndexes.removeAll()
         
-        for index in 0 ..< orderedBoards.count {
-            handRanks[index].calculateRankForCards(&orderedBoards[index])
+        for index in 0 ..< handsOdds.count {
+            handsRanks[index].calculateRankForHand(&handsOdds[index].hand, boardCards: &boardCards)
         }
         
         var lastWinningIndex: Int! = nil
-        for index in 0 ..< handRanks.count {
-            let handRank = handRanks[index]
+        for index in 0 ..< handsRanks.count {
+            let handRank = handsRanks[index]
             
-            if winningHandRanksIndexes.count == 0 {
-                winningHandRanksIndexes.append(index)
+            if winningHandsRanksIndexes.count == 0 {
+                winningHandsRanksIndexes.append(index)
                 lastWinningIndex = index
                 
-            } else if handRanks[lastWinningIndex] == handRank {
-                winningHandRanksIndexes.append(index)
+            } else if handsRanks[lastWinningIndex] == handRank {
+                winningHandsRanksIndexes.append(index)
                 lastWinningIndex = index
                 
-            } else if handRanks[lastWinningIndex] < handRank {
-                winningHandRanksIndexes.removeAll()
-                winningHandRanksIndexes.append(index)
+            } else if handsRanks[lastWinningIndex] < handRank {
+                winningHandsRanksIndexes.removeAll()
+                winningHandsRanksIndexes.append(index)
                 lastWinningIndex = index
             }
         }
         
-        if winningHandRanksIndexes.count == 1 {
-            handsOdds[winningHandRanksIndexes.first!].winningCombinationsCount += 1
+        if winningHandsRanksIndexes.count == 1 {
+            handsOdds[winningHandsRanksIndexes.first!].winningCombinationsCount += 1
             
         } else {
-            for index in 0 ..< winningHandRanksIndexes.count {
-                handsOdds[winningHandRanksIndexes[index]].winningCombinationsCount += 1.0 / Double(winningHandRanksIndexes.count)
+            for index in 0 ..< winningHandsRanksIndexes.count {
+                handsOdds[winningHandsRanksIndexes[index]].winningCombinationsCount += 1.0 / Double(winningHandsRanksIndexes.count)
             }
         }
         

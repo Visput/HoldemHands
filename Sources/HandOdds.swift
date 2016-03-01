@@ -10,7 +10,7 @@ import Foundation
 
 struct HandOdds: Equatable {
     
-    let hand: Hand
+    var hand: Hand
     let totalCombinationsCount: Int
     
     var winningCombinationsCount: Double = 0

@@ -10,36 +10,94 @@ import Foundation
 
 // swiftlint:disable cyclomatic_complexity
 
-private var spadesCards = QuickArray<Card>()
-private var heartsCards = QuickArray<Card>()
-private var diamondsCards = QuickArray<Card>()
-private var clubsCards = QuickArray<Card>()
-
 struct HandRankCalculator: Equatable, Comparable {
     
     private var handRank: HandRank!
-    
-    private var straightOrFlashCards = QuickArray<Card>()
+
     private var fourOfKindCard: Card!
     private var threeOfKindCard: Card!
     private var highPairCard: Card!
     private var lowPairCard: Card!
-    private var cards: QuickArray<Card>!
+    private var straightOrFlashCards: QuickArray<Card>
     
-    mutating func calculateRankForCards(inout orderedCards: OrderedCards) {        
+    private var cards: QuickArray<Card>
+    private var spadesCards: QuickArray<Card>
+    private var heartsCards: QuickArray<Card>
+    private var diamondsCards: QuickArray<Card>
+    private var clubsCards: QuickArray<Card>
+    
+    init() {
+        straightOrFlashCards = QuickArray<Card>(5)
+        
+        let numberOfCards = 7
+        cards = QuickArray<Card>(numberOfCards)
+        spadesCards = QuickArray<Card>(numberOfCards)
+        heartsCards = QuickArray<Card>(numberOfCards)
+        diamondsCards = QuickArray<Card>(numberOfCards)
+        clubsCards = QuickArray<Card>(numberOfCards)
+    }
+    
+    func destroy() {
+        straightOrFlashCards.destroy()
+        cards.destroy()
+        spadesCards.destroy()
+        heartsCards.destroy()
+        diamondsCards.destroy()
+        clubsCards.destroy()
+    }
+    
+    mutating func calculateRankForHand(inout hand: Hand, inout boardCards: QuickArray<Card>) {
         // Reset data.
+        fourOfKindCard = nil
+        threeOfKindCard = nil
+        highPairCard = nil
+        lowPairCard = nil
+        straightOrFlashCards.removeAll()
+        
+        cards.removeAll()
         spadesCards.removeAll()
         heartsCards.removeAll()
         diamondsCards.removeAll()
         clubsCards.removeAll()
         
-        straightOrFlashCards.removeAll()
-        fourOfKindCard = nil
-        threeOfKindCard = nil
-        highPairCard = nil
-        lowPairCard = nil
+        // TODO: One cycle for sorting, suited cards filtering and rank calculation.
         
-        cards = orderedCards.cards
+        // Sort cards.
+        for index in 0 ..< boardCards.count {
+            cards.append(boardCards[index])
+        }
+        
+        var firstCardInserted = false
+        for index in 0 ..< boardCards.count {
+            let card = boardCards[index]
+            if !firstCardInserted {
+                if card.rank < hand.firstCard.rank {
+                    firstCardInserted = true
+                    
+                    cards.insert(hand.firstCard, atIndex: index)
+                    if card.rank < hand.secondCard.rank {
+                        cards.insert(hand.secondCard, atIndex: index + 1)
+                        break
+                        
+                    } else if index == boardCards.count - 1 {
+                        cards.append(hand.secondCard)
+                    }
+                    
+                } else if index == boardCards.count - 1 {
+                    cards.append(hand.firstCard)
+                    cards.append(hand.secondCard)
+                }
+                
+            } else {
+                if card.rank < hand.secondCard.rank {
+                    cards.insert(hand.secondCard, atIndex: index + 1)
+                    break
+                    
+                } else if index == boardCards.count - 1 {
+                    cards.append(hand.secondCard)
+                }
+            }
+        }
         
         // Calculate rank.
         for index in 0 ..< cards.count {
@@ -159,8 +217,10 @@ struct HandRankCalculator: Equatable, Comparable {
                 return
                 
             } else {
-                straightOrFlashCards = suitedCards
-                straightOrFlashCards.removeLast(straightOrFlashCards.count - 5)
+                straightOrFlashCards.removeAll()
+                for index in 0 ..< 5 {
+                    straightOrFlashCards.append(suitedCards[index])
+                }
                 
                 handRank = .Flush
                 return
