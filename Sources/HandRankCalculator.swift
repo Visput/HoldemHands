@@ -55,9 +55,7 @@ struct HandRankCalculator: Equatable, Comparable {
             suitedCardsArray[index].removeAll()
         }
         
-        // TODO: One cycle for sorting, suited cards filtering and rank calculation.
-        
-        // Sort hand cards with board cards.
+        // Mix hand cards with board cards to build sorted array.
         var firstCardInserted = false
         var secondCardInserted = false
         for index in 0 ..< boardCards.count {
