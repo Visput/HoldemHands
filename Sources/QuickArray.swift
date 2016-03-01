@@ -36,6 +36,14 @@ struct QuickArray<ItemType> {
         count += 1
     }
     
+    mutating func removeLast() {
+        count -= 1
+    }
+    
+    mutating func removeAll() {
+        count = 0
+    }
+    
     mutating func insert(item: ItemType, atIndex index: Int) {
         var newItem: ItemType? = item
         for subIndex in index ... count {
@@ -53,14 +61,6 @@ struct QuickArray<ItemType> {
             }
         }
         count -= 1
-    }
-    
-    mutating func removeLast() {
-        count -= 1
-    }
-    
-    mutating func removeAll() {
-        count = 0
     }
     
     subscript(index: Int) -> ItemType {
