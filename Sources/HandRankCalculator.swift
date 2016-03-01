@@ -21,29 +21,25 @@ struct HandRankCalculator: Equatable, Comparable {
     private var straightOrFlashCards: QuickArray<Card>
     
     private var cards: QuickArray<Card>
-    private var spadesCards: QuickArray<Card>
-    private var heartsCards: QuickArray<Card>
-    private var diamondsCards: QuickArray<Card>
-    private var clubsCards: QuickArray<Card>
+    private var suitedCardsArray: QuickArray<QuickArray<Card>>
     
     init() {
         straightOrFlashCards = QuickArray<Card>(5)
-        
-        let numberOfCards = 7
-        cards = QuickArray<Card>(numberOfCards)
-        spadesCards = QuickArray<Card>(numberOfCards)
-        heartsCards = QuickArray<Card>(numberOfCards)
-        diamondsCards = QuickArray<Card>(numberOfCards)
-        clubsCards = QuickArray<Card>(numberOfCards)
+        cards = QuickArray<Card>(7)
+        suitedCardsArray = QuickArray<QuickArray<Card>>(4)
+        for _ in 0 ..< 4 {
+            suitedCardsArray.append(QuickArray<Card>(7))
+        }
     }
     
     func destroy() {
         straightOrFlashCards.destroy()
         cards.destroy()
-        spadesCards.destroy()
-        heartsCards.destroy()
-        diamondsCards.destroy()
-        clubsCards.destroy()
+        
+        for index in 0 ..< suitedCardsArray.count {
+            suitedCardsArray[index].destroy()
+        }
+        suitedCardsArray.destroy()
     }
     
     mutating func calculateRankForHand(inout hand: Hand, inout boardCards: QuickArray<Card>) {
@@ -55,10 +51,9 @@ struct HandRankCalculator: Equatable, Comparable {
         straightOrFlashCards.removeAll()
         
         cards.removeAll()
-        spadesCards.removeAll()
-        heartsCards.removeAll()
-        diamondsCards.removeAll()
-        clubsCards.removeAll()
+        for index in 0 ..< suitedCardsArray.count {
+            suitedCardsArray[index].removeAll()
+        }
         
         // TODO: One cycle for sorting, suited cards filtering and rank calculation.
         
@@ -107,15 +102,7 @@ struct HandRankCalculator: Equatable, Comparable {
         for index in 0 ..< cards.count {
             let card1 = cards[index]
             
-            if card1.suit == .Spades {
-                spadesCards.append(card1)
-            } else if card1.suit == .Hearts {
-                heartsCards.append(card1)
-            } else if card1.suit == .Diamonds {
-                diamondsCards.append(card1)
-            } else {
-                clubsCards.append(card1)
-            }
+            suitedCardsArray[card1.suit.rawValue].append(card1)
             
             if index < cards.count - 1 {
                 let card2 = cards[index + 1]
@@ -172,15 +159,12 @@ struct HandRankCalculator: Equatable, Comparable {
             return
         }
         
-        var suitedCards = spadesCards
-        if suitedCards.count < heartsCards.count {
-            suitedCards = heartsCards
-        }
-        if suitedCards.count < diamondsCards.count {
-            suitedCards = diamondsCards
-        }
-        if suitedCards.count < clubsCards.count {
-            suitedCards = clubsCards
+        var suitedCards = suitedCardsArray.first!
+        for index in 1 ..< suitedCardsArray.count {
+            let aSuitedCards = suitedCardsArray[index]
+            if aSuitedCards.count > suitedCards.count {
+                suitedCards = aSuitedCards
+            }
         }
         
         if suitedCards.count >= 5 {
