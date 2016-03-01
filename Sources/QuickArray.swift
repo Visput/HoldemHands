@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct QuickArray<ItemType> {
+struct QuickArray<ItemType: Equatable>: Equatable {
     
     private(set) var count: Int = 0
     
     var first: ItemType? {
-        return buffer[0]
+        return buffer.first
     }
     
     var last: ItemType? {
@@ -54,13 +54,28 @@ struct QuickArray<ItemType> {
         count += 1
     }
     
-    mutating func removeAtIndex(index: Int) {
+    mutating func removeFirst() -> ItemType {
+        return removeAtIndex(0)
+    }
+    
+    mutating func removeAtIndex(index: Int) -> ItemType {
+        let item = buffer[index]
         if index <= count - 2 {
             for subIndex in index ... count - 2 {
                 buffer[subIndex] = buffer[subIndex + 1]
             }
         }
         count -= 1
+        
+        return item
+    }
+    
+    func indexOf(item: ItemType) -> Int? {
+        return buffer.indexOf(item)
+    }
+    
+    mutating func sortInPlace(@noescape isOrderedBefore: (ItemType, ItemType) -> Bool) {
+        return buffer.sortInPlace(isOrderedBefore)
     }
     
     subscript(index: Int) -> ItemType {
@@ -71,4 +86,17 @@ struct QuickArray<ItemType> {
             buffer[index] = newValue
         }
     }
+}
+
+func ==<ItemType: Equatable>(lhs: QuickArray<ItemType>, rhs: QuickArray<ItemType>) -> Bool {
+    if lhs.count != rhs.count {
+        return false
+    } else {
+        for index in 0 ..< lhs.count {
+            if lhs[index] != rhs[index] {
+                return false
+            }
+        }
+    }
+    return true
 }
