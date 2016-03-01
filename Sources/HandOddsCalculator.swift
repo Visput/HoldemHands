@@ -30,13 +30,17 @@ final class HandOddsCalculator {
         self.deck.sortCards()
     }
     
+    func isWinningHandOdds(handOdds: HandOdds) -> Bool {
+        return winningHandsOdds.indexOf(handOdds) != nil
+    }
+    
     func calculateOdds(completion: () -> Void) {
         let numberOfThreads = 1
         
         let boardSize = 5
         let deckSize = 52
         let handSize = 2
-        let numberOfCombinations = numberOfBoardsWithSize(boardSize, inDeckOfSize: deckSize - (self.hands.count * handSize))
+        let numberOfCombinations = numberOfBoardsWithSize(boardSize, inDeckOfSize: deckSize - (hands.count * handSize))
         
         var handsOdds = [HandOdds]()
         for hand in hands {
@@ -56,15 +60,13 @@ final class HandOddsCalculator {
 
                 var handRankComparator = HandRankComparator(numberOfHands: self.hands.count)
                 var boardCards = QuickArray<Card>(5)
-                var iterationHandler: () -> Void = {
-                    handRankComparator.compareHands(&handsOdds, boardCards: &boardCards)
-                }
                 
                 self.iterateDeckCards(&self.deck.cards,
-                    fromIndex: 0,
-                    toIndex: self.deck.cards.count - boardSize,
                     boardCards: &boardCards,
-                    iterationHandler: &iterationHandler)
+                    handRankComparator: &handRankComparator,
+                    handsOdds: &subHandsOdds,
+                    fromIndex: 0,
+                    toIndex: self.deck.cards.count - boardSize)
                 
                 handRankComparator.destroy()
                 boardCards.destroy()
@@ -99,33 +101,28 @@ final class HandOddsCalculator {
         })
     }
     
-    func isWinningHandOdds(handOdds: HandOdds) -> Bool {
-        return winningHandsOdds.indexOf(handOdds) != nil
-    }
-}
-
-extension HandOddsCalculator {
-    
     private func iterateDeckCards(inout deckCards: [Card],
-        fromIndex: Int,
-        toIndex: Int,
         inout boardCards: QuickArray<Card>,
-        inout iterationHandler: () -> Void) {
+        inout handRankComparator: HandRankComparator,
+        inout handsOdds: [HandOdds],
+        fromIndex: Int,
+        toIndex: Int) {
             
             if toIndex < deckCards.count {
                 for index in fromIndex ... toIndex {
                     boardCards.append(deckCards[index])
                     
                     iterateDeckCards(&deckCards,
-                        fromIndex: index + 1,
-                        toIndex: toIndex + 1,
                         boardCards: &boardCards,
-                        iterationHandler: &iterationHandler)
+                        handRankComparator: &handRankComparator,
+                        handsOdds: &handsOdds,
+                        fromIndex: index + 1,
+                        toIndex: toIndex + 1)
                     
                     boardCards.removeLast()
                 }
             } else {
-                iterationHandler()
+                handRankComparator.compareHands(&handsOdds, boardCards: &boardCards)
             }
     }
     
