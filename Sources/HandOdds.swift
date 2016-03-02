@@ -13,6 +13,7 @@ struct HandOdds: Equatable {
     var hand: Hand
     var totalCombinationsCount: Int = 0
     var winningCombinationsCount: Double = 0
+    var wins: Bool = false
     
     init(hand: Hand, totalCombinationsCount: Int) {
         self.hand = hand

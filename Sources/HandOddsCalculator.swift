@@ -13,7 +13,6 @@ final class HandOddsCalculator {
     private(set) var hands: [Hand]
     private(set) var deck: Deck
     private(set) var handsOdds: [HandOdds]!
-    private(set) var winningHandsOdds: [HandOdds]!
     
     init(numberOfHands: Int) {
         deck = Deck()
@@ -30,13 +29,7 @@ final class HandOddsCalculator {
         self.deck.sortCards()
     }
     
-    func isWinningHandOdds(handOdds: HandOdds) -> Bool {
-        return winningHandsOdds.indexOf(handOdds) != nil
-    }
-    
     func calculateOdds(completion: () -> Void) {
-        let numberOfThreads = 1
-        
         let boardSize = 5
         let deckSize = 52
         let handSize = 2
@@ -49,8 +42,9 @@ final class HandOddsCalculator {
         
         let group = dispatch_group_create()
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        let iterationIndexes = [(0, 5), (6, self.deck.cards.count - boardSize)]
         
-        for _ in 0 ..< numberOfThreads {
+        for index in 0 ..< iterationIndexes.count {
             dispatch_group_async(group, queue, {
                 
                 var subHandsOdds = [HandOdds]()
@@ -65,7 +59,8 @@ final class HandOddsCalculator {
                     boardCards: &boardCards,
                     handRankComparator: &handRankComparator,
                     handsOdds: &subHandsOdds,
-                    fromIndex: 0,
+                    minIndex: iterationIndexes[index].0,
+                    maxIndex: iterationIndexes[index].1,
                     toIndex: self.deck.cards.count - boardSize)
                 
                 handRankComparator.destroy()
@@ -79,26 +74,55 @@ final class HandOddsCalculator {
         
         dispatch_group_notify(group, queue, {
             
+            // Calculate winning hands.
             self.handsOdds = handsOdds
-            self.winningHandsOdds = []
+            var winningHandsOddsIndexes = [Int]()
             
-            for handOdds in handsOdds {
-                if self.winningHandsOdds.count == 0 {
-                    self.winningHandsOdds.append(handOdds)
+            for index in 0 ..< self.handsOdds.count {
+                let handOdds = self.handsOdds[index]
+                
+                if winningHandsOddsIndexes.count == 0 {
+                    winningHandsOddsIndexes.append(index)
                     
-                } else if self.winningHandsOdds.last!.winningCombinationsCount == handOdds.winningCombinationsCount {
-                    self.winningHandsOdds.append(handOdds)
+                } else if handsOdds[winningHandsOddsIndexes.last!].winningCombinationsCount == handOdds.winningCombinationsCount {
+                    winningHandsOddsIndexes.append(index)
                     
-                } else if self.winningHandsOdds.last!.winningCombinationsCount < handOdds.winningCombinationsCount {
-                    self.winningHandsOdds.removeAll()
-                    self.winningHandsOdds.append(handOdds)
+                } else if handsOdds[winningHandsOddsIndexes.last!].winningCombinationsCount < handOdds.winningCombinationsCount {
+                    winningHandsOddsIndexes.removeAll()
+                    winningHandsOddsIndexes.append(index)
                 }
+            }
+            
+            for index in winningHandsOddsIndexes {
+                self.handsOdds[index].wins = true
             }
             
             dispatch_async(dispatch_get_main_queue(), {
                 completion()
             })
         })
+    }
+    
+    @inline(__always) private func iterateDeckCards(inout deckCards: [Card],
+        inout boardCards: QuickArray<Card>,
+        inout handRankComparator: HandRankComparator,
+        inout handsOdds: [HandOdds],
+        minIndex: Int,
+        maxIndex: Int,
+        toIndex: Int) {
+            
+            for index in minIndex ... maxIndex {
+                boardCards.append(deckCards[index])
+                
+                iterateDeckCards(&deckCards,
+                    boardCards: &boardCards,
+                    handRankComparator: &handRankComparator,
+                    handsOdds: &handsOdds,
+                    fromIndex: index + 1,
+                    toIndex: toIndex + 1)
+                
+                boardCards.removeLast()
+            }
     }
     
     @inline(__always) private func iterateDeckCards(inout deckCards: [Card],

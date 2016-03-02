@@ -90,7 +90,7 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         for cell in collectionView.visibleCells() as! [HandCell] {
             var isSuccessState: Bool? = nil
             if currentCell == cell {
-                isSuccessState = handOddsCalculator.isWinningHandOdds(cell.item.handOdds)
+                isSuccessState = cell.item.handOdds.wins
             }
             let item = HandCellItem(handOdds: cell.item.handOdds, needsShowOdds: true, isSuccessSate: isSuccessState)
             cell.fillWithItem(item)
