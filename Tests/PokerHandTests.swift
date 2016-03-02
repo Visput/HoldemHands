@@ -68,14 +68,14 @@ class PokerHandTests: XCTestCase {
         ]
         
         let oddsResults: [OddsResult] = [
-            (winProbability: 12.41, winCount: 24998.00),
-            (winProbability: 6.20, winCount: 12493.5),
-            (winProbability: 3.04, winCount: 6115.00),
-            (winProbability: 14.25, winCount: 28686.50),
-            (winProbability: 10.85, winCount: 21857.50),
-            (winProbability: 8.21, winCount: 16538.00),
-            (winProbability: 10.97, winCount: 22087.00),
-            (winProbability: 17.88, winCount: 36024.00)
+            (winProbability: 18.13, winCount: 68359.25),
+            (winProbability: 5.70, winCount: 21470.75),
+            (winProbability: 2.70, winCount: 10181.25),
+            (winProbability: 14.94, winCount: 56313.75),
+            (winProbability: 14.92, winCount: 56259.75),
+            (winProbability: 9.01, winCount: 33976.75),
+            (winProbability: 17.48, winCount: 65881.75),
+            (winProbability: 17.12, winCount: 64548.75)
         ]
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)
@@ -94,14 +94,14 @@ extension PokerHandTests {
         
         let calculationExpecation = expectationWithDescription("calculationExpecation")
         
-        let oddsCalculator = OddsCalculator(hands: hands, deck: deck)
-        oddsCalculator.calculateOdds({
+        let oddsCalculator = HandOddsCalculator(hands: hands, deck: deck)
+        oddsCalculator.calculateOdds({ handsOdds in
             for index in 0 ..< hands.count {
-                XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[index].winningProbability(),
+                XCTAssertEqualWithAccuracy(handsOdds[index].winningProbability(),
                     expectedOddsResults[index].winProbability,
                     accuracy: 0.01)
                 
-                XCTAssertEqualWithAccuracy(oddsCalculator.handsOdds[index].winningCombinationsCount,
+                XCTAssertEqualWithAccuracy(handsOdds[index].winningCombinationsCount,
                     expectedOddsResults[index].winCount,
                     accuracy: 0.01)
             }
