@@ -41,12 +41,12 @@ final class GameScreen: BaseScreen {
         gameView.nextHandButton.enabled = false
         gameView.nextHandButton.alpha = 0.4
         
-        handOddsCalculator.calculateOdds({
+        handOddsCalculator.calculateOdds({ handsOdds in
             self.gameView.nextHandButton.enabled = true
             self.gameView.nextHandButton.alpha = 1.0
             print(CFAbsoluteTimeGetCurrent() - time)
             
-            for handOdds in self.handOddsCalculator.handsOdds {
+            for handOdds in handsOdds {
                 print("\(handOdds.hand)\nWins: \(handOdds.winningProbability())")
             }
             

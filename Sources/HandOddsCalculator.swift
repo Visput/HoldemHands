@@ -29,12 +29,15 @@ final class HandOddsCalculator {
         self.deck.sortCards()
     }
     
-    func calculateOdds(completion: () -> Void) {
+    func calculateOdds(completion: (handsOdds: [HandOdds]) -> Void) {
         let boardSize = 5
         let deckSize = 52
         let handSize = 2
         let numberOfCombinations = numberOfBoardsWithSize(boardSize, inDeckOfSize: deckSize - (hands.count * handSize))
         
+        let splitIndex = deckSplitIndexForNumberOfHands(hands.count)
+        let iterationIndexes: [(minIdex: Int, maxIndex: Int)] = [(0, splitIndex), (splitIndex + 1, deck.cards.count - boardSize)]
+    
         var handsOdds = [HandOdds]()
         for hand in hands {
             handsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
@@ -42,7 +45,6 @@ final class HandOddsCalculator {
         
         let group = dispatch_group_create()
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        let iterationIndexes = [(0, 5), (6, self.deck.cards.count - boardSize)]
         
         for index in 0 ..< iterationIndexes.count {
             dispatch_group_async(group, queue, {
@@ -59,8 +61,8 @@ final class HandOddsCalculator {
                     boardCards: &boardCards,
                     handRankComparator: &handRankComparator,
                     handsOdds: &subHandsOdds,
-                    minIndex: iterationIndexes[index].0,
-                    maxIndex: iterationIndexes[index].1,
+                    minIndex: iterationIndexes[index].minIdex,
+                    maxIndex: iterationIndexes[index].maxIndex,
                     toIndex: self.deck.cards.count - boardSize)
                 
                 handRankComparator.destroy()
@@ -98,7 +100,7 @@ final class HandOddsCalculator {
             }
             
             dispatch_async(dispatch_get_main_queue(), {
-                completion()
+                completion(handsOdds: self.handsOdds)
             })
         })
     }
@@ -160,5 +162,18 @@ final class HandOddsCalculator {
         }
         
         return result
+    }
+    
+    private func deckSplitIndexForNumberOfHands(numberOfHands: Int) -> Int {
+        // Below numbers were calculated empirically.
+        if numberOfHands < 4 {
+            return 5
+        } else if numberOfHands < 7 {
+            return 4
+        } else if numberOfHands < 9 {
+            return 3
+        } else {
+            return 2
+        }
     }
 }
