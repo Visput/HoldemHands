@@ -11,4 +11,12 @@ import Foundation
 struct ModelProvider {
     
     static let provider = ModelProvider()
+    
+    let gameLevelsProvider: GameLevelsProvider
+    let accountManager: AccountManager
+    
+    init() {
+        accountManager = AccountManager()
+        gameLevelsProvider = GameLevelsProvider()
+    }
 }

@@ -9,6 +9,7 @@
 import Foundation
 
 enum Rank: Int, Comparable {
+    
     case Two = 0
     case Three = 1
     case Four = 2

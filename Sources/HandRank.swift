@@ -9,6 +9,7 @@
 import Foundation
 
 enum HandRank: Int, Comparable {
+    
     case HighCard = 0
     case Pair = 1
     case TwoPairs = 2

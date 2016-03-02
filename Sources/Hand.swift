@@ -12,11 +12,6 @@ struct Hand: Equatable {
     
     let firstCard: Card
     let secondCard: Card
-    
-    init(firstCard: Card, secondCard: Card) {
-        self.firstCard = firstCard
-        self.secondCard = secondCard
-    }
 }
 
 @inline(__always) func == (lhs: Hand, rhs: Hand) -> Bool {

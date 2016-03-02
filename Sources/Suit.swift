@@ -9,6 +9,7 @@
 import Foundation
 
 enum Suit: Int {
+    
     case Spades = 0
     case Hearts = 1
     case Diamonds = 2
