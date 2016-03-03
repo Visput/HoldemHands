@@ -10,5 +10,5 @@ import UIKit
 
 class BaseScreen: UIViewController {
 
-    let modelProvider = ModelProvider.provider
+    let model = ModelProvider.provider
 }

@@ -15,5 +15,4 @@ struct Player {
     init() {
         levelProgressItems = [GameLevelProgress]()
     }
-    
 }
