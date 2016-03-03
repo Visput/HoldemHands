@@ -12,11 +12,11 @@ struct ModelProvider {
     
     static let provider = ModelProvider()
     
-    let gameLevelsProvider: GameLevelsProvider
-    let accountManager: AccountManager
+    let levelsProvider: GameLevelsProvider
+    let playerManager: PlayerManager
     
     init() {
-        accountManager = AccountManager()
-        gameLevelsProvider = GameLevelsProvider()
+        levelsProvider = GameLevelsProvider()
+        playerManager = PlayerManager(levelsProvider: levelsProvider)
     }
 }

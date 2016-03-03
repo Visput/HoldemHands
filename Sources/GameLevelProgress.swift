@@ -40,7 +40,7 @@ struct GameLevelProgress {
 
 extension GameLevelProgress {
     
-    func statsByIncrementingNumberOfWins() -> GameLevelProgress {
+    func levelProgressByIncrementingNumberOfWins() -> GameLevelProgress {
         return self.dynamicType.init(level: level,
             maxNumberOfWinsInRow: max(currentNumberOfWinsInRow + 1, maxNumberOfWinsInRow),
             currentNumberOfWinsInRow: currentNumberOfWinsInRow + 1,
@@ -48,7 +48,7 @@ extension GameLevelProgress {
             numberOfLosses: numberOfLosses)
     }
     
-    func statsByIncrementingNumberOfLosses() -> GameLevelProgress {
+    func levelProgressByIncrementingNumberOfLosses() -> GameLevelProgress {
         return self.dynamicType.init(level: level,
             maxNumberOfWinsInRow: maxNumberOfWinsInRow,
             currentNumberOfWinsInRow: 0,

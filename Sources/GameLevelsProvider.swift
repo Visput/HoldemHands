@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GameLevelsProvider {
+class GameLevelsProvider {
     
     let levels: [GameLevel]
     
@@ -21,8 +21,8 @@ struct GameLevelsProvider {
             identifier: 1))
         
         levels.append(GameLevel(numberOfHands: 3,
-            numberOfWinsInRowToComplete: 20, comment: ""),
-            name: NSLocalizedString("Level 2",
+            numberOfWinsInRowToComplete: 20,
+            name: NSLocalizedString("Level 2", comment: ""),
             identifier: 2))
         
         levels.append(GameLevel(numberOfHands: 4,
