@@ -19,6 +19,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         Fabric.with([Crashlytics(), Twitter()])
+        
+        let model = ModelProvider.provider
+        model.navigationManager.window = window
+        model.navigationManager.setMenuScreenAsRootAnimated(false)
+        
         return true
     }
 

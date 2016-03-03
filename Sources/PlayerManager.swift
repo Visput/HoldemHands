@@ -16,7 +16,7 @@ class PlayerManager {
     private var player: Player!
     
     private let levelsProvider: GameLevelsProvider
-    private var autoSaveTimer: NSTimer!
+    private var autoSaveTimer: NSTimer?
     private let autoSaveTimerInterval = 300.0 // Secs.
     
     init(levelsProvider: GameLevelsProvider) {
@@ -26,6 +26,10 @@ class PlayerManager {
     
     deinit {
         unregisterFromAppLifeCycleNotifications()
+    }
+    
+    func isAuthenticated() -> Bool {
+        return player != nil
     }
     
     func isUnlockedLevel(level: GameLevel) -> Bool {
@@ -105,7 +109,7 @@ extension PlayerManager {
     }
     
     private func stopAutoSaveTimer() {
-        autoSaveTimer.invalidate()
+        autoSaveTimer?.invalidate()
     }
     
     @objc private func autoSaveTimerDidFire() {

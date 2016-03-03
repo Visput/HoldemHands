@@ -10,8 +10,9 @@ import UIKit
 
 final class GameScreen: BaseScreen {
     
+    var level: GameLevel!
     let numberOfHands: Int = 2
-    var handOddsCalculator: HandOddsCalculator!
+    private var handOddsCalculator: HandOddsCalculator!
     
     private var gameView: GameView {
         return view as! GameView

@@ -14,9 +14,11 @@ struct ModelProvider {
     
     let levelsProvider: GameLevelsProvider
     let playerManager: PlayerManager
+    let navigationManager: NavigationManager
     
     init() {
         levelsProvider = GameLevelsProvider()
         playerManager = PlayerManager(levelsProvider: levelsProvider)
+        navigationManager = NavigationManager()
     }
 }
