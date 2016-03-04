@@ -32,7 +32,111 @@
                     <view key="view" contentMode="scaleToFill" id="xgc-0v-nLd" customClass="MenuView" customModule="PokerHand" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b4G-V4-063">
+                                <rect key="frame" x="0.0" y="62" width="667" height="251"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="16" id="rY2-ZN-BW8">
+                                    <size key="itemSize" width="268" height="251"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameLevelCell" id="QDv-1s-Wtf" customClass="GameLevelCell" customModule="PokerHand" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="0.0" width="268" height="251"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="268" height="251"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sA7-9C-x28">
+                                                    <rect key="frame" x="99" y="16" width="70" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="5Do-aS-X3Z"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4E-t4-ft2">
+                                                    <rect key="frame" x="117" y="109" width="34" height="34"/>
+                                                    <state key="normal" title="Play"/>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.12941176469999999" green="0.80784313730000001" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="H4E-t4-ft2" firstAttribute="centerX" secondItem="QDv-1s-Wtf" secondAttribute="centerX" id="5jJ-Ks-6Mw"/>
+                                            <constraint firstItem="H4E-t4-ft2" firstAttribute="centerY" secondItem="QDv-1s-Wtf" secondAttribute="centerY" id="EwH-n8-dmz"/>
+                                            <constraint firstItem="sA7-9C-x28" firstAttribute="centerX" secondItem="QDv-1s-Wtf" secondAttribute="centerX" id="kfq-AA-mh4"/>
+                                            <constraint firstItem="sA7-9C-x28" firstAttribute="top" secondItem="QDv-1s-Wtf" secondAttribute="top" constant="16" id="qtm-tv-oZG"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="levelLabel" destination="sA7-9C-x28" id="ECL-Rm-ph9"/>
+                                            <outlet property="playButton" destination="H4E-t4-ft2" id="c8J-zV-krQ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="P8v-C8-9Zi" id="enh-y8-vbl"/>
+                                    <outlet property="delegate" destination="P8v-C8-9Zi" id="bMI-Xw-0Ba"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQm-Rd-hks">
+                                <rect key="frame" x="225.5" y="329" width="67" height="30"/>
+                                <state key="normal" title="Facebook"/>
+                                <connections>
+                                    <action selector="facebookButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="Pm0-JF-2KO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEf-Nj-7gF">
+                                <rect key="frame" x="309" y="329" width="48" height="30"/>
+                                <state key="normal" title="Twitter"/>
+                                <connections>
+                                    <action selector="twitterButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="gdO-dK-yM0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXU-rz-kmg">
+                                <rect key="frame" x="372.5" y="329" width="69" height="30"/>
+                                <state key="normal" title="Instagram"/>
+                                <connections>
+                                    <action selector="instagramButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="hak-gz-fXc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PokerHand" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oig-8P-j3Y">
+                                <rect key="frame" x="274.5" y="16" width="117.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="S9c-0c-yri"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oig-8P-j3Y" firstAttribute="top" secondItem="8aH-Lx-sfy" secondAttribute="bottom" constant="16" id="2cw-dv-iNR"/>
+                            <constraint firstItem="bXU-rz-kmg" firstAttribute="top" secondItem="b4G-V4-063" secondAttribute="bottom" constant="16" id="3gY-GV-Q4h"/>
+                            <constraint firstItem="b4G-V4-063" firstAttribute="leading" secondItem="xgc-0v-nLd" secondAttribute="leading" id="IhH-9h-4xz"/>
+                            <constraint firstAttribute="trailing" secondItem="b4G-V4-063" secondAttribute="trailing" id="MPP-hJ-PA5"/>
+                            <constraint firstItem="oig-8P-j3Y" firstAttribute="centerX" secondItem="xgc-0v-nLd" secondAttribute="centerX" id="MZy-Wu-CAR"/>
+                            <constraint firstItem="PaV-UT-frg" firstAttribute="top" secondItem="eQm-Rd-hks" secondAttribute="bottom" constant="16" id="NAP-9n-Wh0"/>
+                            <constraint firstItem="pEf-Nj-7gF" firstAttribute="leading" secondItem="eQm-Rd-hks" secondAttribute="trailing" constant="16" id="TZM-gb-Y2T"/>
+                            <constraint firstItem="bXU-rz-kmg" firstAttribute="leading" secondItem="pEf-Nj-7gF" secondAttribute="trailing" constant="16" id="VIW-ix-ako"/>
+                            <constraint firstItem="pEf-Nj-7gF" firstAttribute="centerX" secondItem="xgc-0v-nLd" secondAttribute="centerX" id="Xk9-4a-mxf"/>
+                            <constraint firstItem="PaV-UT-frg" firstAttribute="top" secondItem="bXU-rz-kmg" secondAttribute="bottom" constant="16" id="Zhd-QT-Vlg"/>
+                            <constraint firstItem="PaV-UT-frg" firstAttribute="top" secondItem="pEf-Nj-7gF" secondAttribute="bottom" constant="16" id="plv-TH-UVH"/>
+                            <constraint firstItem="b4G-V4-063" firstAttribute="top" secondItem="oig-8P-j3Y" secondAttribute="bottom" constant="16" id="y7l-Mc-UXB"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="levelsCollectionView" destination="b4G-V4-063" id="4Tt-9G-ZJn"/>
+                        </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -245,6 +349,13 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextHandButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b5q-tR-3cQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JT-vw-cgT">
+                                <rect key="frame" x="16" y="8" width="46" height="30"/>
+                                <state key="normal" title="Menu"/>
+                                <connections>
+                                    <action selector="menuButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XSX-TW-UdX"/>
                                 </connections>
                             </button>
                         </subviews>

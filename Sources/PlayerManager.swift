@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PlayerManager {
+final class PlayerManager {
     
     let observers = ObserverSet<PlayerManagerObserving>()
     

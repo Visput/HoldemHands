@@ -8,17 +8,19 @@
 
 import Foundation
 
-struct ModelProvider {
+final class ModelProvider {
     
     static let provider = ModelProvider()
     
     let levelsProvider: GameLevelsProvider
     let playerManager: PlayerManager
     let navigationManager: NavigationManager
+    let sharingManager: SharingManager
     
     init() {
         levelsProvider = GameLevelsProvider()
         playerManager = PlayerManager(levelsProvider: levelsProvider)
         navigationManager = NavigationManager()
+        sharingManager = SharingManager()
     }
 }

@@ -11,32 +11,24 @@ import UIKit
 final class GameScreen: BaseScreen {
     
     var level: GameLevel!
-    let numberOfHands: Int = 2
     private var handOddsCalculator: HandOddsCalculator!
     
     private var gameView: GameView {
         return view as! GameView
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         generateNextHand()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        gameView.updateCollectionViewLayoutForNumberOfCells(numberOfHands)
+        gameView.updateCollectionViewLayoutForNumberOfCells(level.numberOfHands)
     }
     
     private func generateNextHand() {
-//        handOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands)
-        
-        let firstHand = Hand(firstCard: Card(rank: .Ace, suit: .Diamonds), secondCard: Card(rank: .King, suit: .Hearts))
-        let secondHand = Hand(firstCard: Card(rank: .Nine, suit: .Spades), secondCard: Card(rank: .Five, suit: .Clubs))
-        var deck = Deck()
-        deck.removeHand(firstHand)
-        deck.removeHand(secondHand)
-        handOddsCalculator = HandOddsCalculator(hands: [firstHand, secondHand], deck: deck)
+        handOddsCalculator = HandOddsCalculator(numberOfHands: level.numberOfHands)
         
         let time = CFAbsoluteTimeGetCurrent()
         gameView.nextHandButton.enabled = false
@@ -47,18 +39,21 @@ final class GameScreen: BaseScreen {
             self.gameView.nextHandButton.alpha = 1.0
             print(CFAbsoluteTimeGetCurrent() - time)
             
-            for handOdds in handsOdds {
-                print("\(handOdds.hand)\nWins: \(handOdds.winningProbability())")
-            }
-            
             self.gameView.handsCollectionView.delegate = self
             self.gameView.handsCollectionView.dataSource = self
             self.gameView.handsCollectionView.reloadData()
         })
     }
+}
+
+extension GameScreen {
     
     @IBAction private func nextHandButtonDidPress(sender: AnyObject) {
         generateNextHand()
+    }
+    
+    @IBAction private func menuButtonDidPress(sender: AnyObject) {
+        model.navigationManager.dismissScreenAnimated(true)
     }
 }
 
@@ -82,7 +77,7 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
             
-            return gameView.cellSizeForNumberOfCells(numberOfHands)
+            return gameView.cellSizeForNumberOfCells(level.numberOfHands)
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GameLevelsProvider {
+final class GameLevelsProvider {
     
     let levels: [GameLevel]
     
