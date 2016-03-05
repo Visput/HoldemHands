@@ -10,9 +10,11 @@ import Foundation
 
 struct Player {
     
-    var levelProgressItems: [GameLevelProgress]!
+    var levelProgressItems: [GameLevelProgress]
+    var score: Int
     
     init() {
         levelProgressItems = [GameLevelProgress]()
+        score = 0
     }
 }

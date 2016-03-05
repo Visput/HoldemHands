@@ -13,6 +13,11 @@ final class MenuScreen: BaseScreen {
     private var menuView: MenuView {
         return view as! MenuView
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        menuView.levelsCollectionView.reloadData()
+    }
 }
 
 extension MenuScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -30,6 +35,7 @@ extension MenuScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             unlocked: model.playerManager.isUnlockedLevel(level),
             buttonsTag: indexPath.item)
         cell.fillWithItem(item)
+        cell.playButton.addTarget(self, action: Selector("playButtonDidPress:"), forControlEvents: .TouchUpInside)
         
         return cell
     }
@@ -43,7 +49,7 @@ extension MenuScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
 extension MenuScreen {
     
     @objc private func playButtonDidPress(sender: UIButton) {
-        let cell = menuView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(index: sender.tag)) as! GameLevelCell
+        let cell = menuView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! GameLevelCell
         if cell.item.unlocked {
             model.navigationManager.presentGameScreenWithLevel(cell.item.level, animated: true)
         }

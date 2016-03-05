@@ -20,6 +20,7 @@ final class GameScreen: BaseScreen {
     override func viewDidLoad() {
         super.viewDidLoad()
         generateNextHand()
+        updateScorePoints()
     }
     
     override func viewDidLayoutSubviews() {
@@ -43,6 +44,12 @@ final class GameScreen: BaseScreen {
             self.gameView.handsCollectionView.dataSource = self
             self.gameView.handsCollectionView.reloadData()
         })
+    }
+    
+    private func updateScorePoints() {
+        gameView.scorePointsLabel.text = NSString(format: NSLocalizedString("Chips: %d  Wins: %d", comment: ""),
+        model.playerManager.player.score,
+        model.playerManager.progressForLevel(level).currentNumberOfWinsInRow) as String
     }
 }
 
@@ -87,6 +94,12 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             var isSuccessState: Bool? = nil
             if currentCell == cell {
                 isSuccessState = cell.item.handOdds.wins
+                if isSuccessState! {
+                    model.playerManager.trackNewWinInLevel(level)
+                } else {
+                    model.playerManager.trackNewLossInLevel(level)
+                }
+                updateScorePoints()
             }
             let item = HandCellItem(handOdds: cell.item.handOdds, needsShowOdds: true, isSuccessSate: isSuccessState)
             cell.fillWithItem(item)

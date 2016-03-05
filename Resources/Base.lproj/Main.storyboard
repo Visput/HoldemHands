@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7nD-Mj-70O">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -33,8 +34,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b4G-V4-063">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b4G-V4-063">
                                 <rect key="frame" x="0.0" y="62" width="667" height="251"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="16" id="rY2-ZN-BW8">
                                     <size key="itemSize" width="268" height="251"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -335,7 +337,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gh9-Ke-K1d">
-                                <rect key="frame" x="233.5" y="327" width="200" height="32"/>
+                                <rect key="frame" x="233" y="327" width="200" height="32"/>
                                 <color key="backgroundColor" red="0.086274509799999996" green="0.83137254900000002" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="0pH-Wl-aBT"/>
@@ -358,9 +360,24 @@
                                     <action selector="menuButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XSX-TW-UdX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chips: 15  Wins: 5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAS-LT-5r8">
+                                <rect key="frame" x="537" y="8" width="113.5" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gTu-YQ-rHT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="gTu-YQ-rHT"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.9529411792755127" green="0.96078431606292725" blue="0.9686274528503418" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="pAS-LT-5r8" secondAttribute="trailing" constant="16" id="0Cr-wE-x7Y"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kUo-2W-y7t" secondAttribute="bottom" constant="60" id="9s3-gq-Z2o"/>
                             <constraint firstItem="foO-GZ-eAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EJ8-Bo-riM"/>
                             <constraint firstAttribute="trailing" secondItem="kUo-2W-y7t" secondAttribute="trailing" constant="16" id="PbI-AK-x2A"/>
@@ -368,11 +385,13 @@
                             <constraint firstItem="gh9-Ke-K1d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vf3-Td-Dl4"/>
                             <constraint firstItem="kUo-2W-y7t" firstAttribute="top" secondItem="foO-GZ-eAy" secondAttribute="bottom" constant="20" id="izS-AC-xiD"/>
                             <constraint firstItem="foO-GZ-eAy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="jmA-OO-2Em"/>
+                            <constraint firstItem="pAS-LT-5r8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="khu-rg-3eb"/>
                             <constraint firstItem="kUo-2W-y7t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="wJW-3g-KTD"/>
                         </constraints>
                         <connections>
                             <outlet property="handsCollectionView" destination="kUo-2W-y7t" id="P4a-9I-R9u"/>
                             <outlet property="nextHandButton" destination="gh9-Ke-K1d" id="FV4-hq-56o"/>
+                            <outlet property="scorePointsLabel" destination="pAS-LT-5r8" id="BFk-a4-OiA"/>
                         </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>

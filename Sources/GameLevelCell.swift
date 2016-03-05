@@ -19,6 +19,7 @@ final class GameLevelCell: UICollectionViewCell {
         self.item = item
         
         levelLabel.text = item.level.name
+        playButton.tag = item.buttonsTag
         if item.unlocked {
             playButton.enabled = true
             playButton.setTitle(NSLocalizedString("Play", comment: ""), forState: .Normal)

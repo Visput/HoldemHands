@@ -13,7 +13,7 @@ final class PlayerManager {
     
     let observers = ObserverSet<PlayerManagerObserving>()
     
-    private var player: Player!
+    private(set) var player: Player!
     
     private let levelsProvider: GameLevelsProvider
     private var autoSaveTimer: NSTimer?
@@ -65,6 +65,9 @@ final class PlayerManager {
             }
             
             player.levelProgressItems[index] = newLevelProgress
+            player.score += 1
+            
+            break
         }
     }
     
@@ -75,7 +78,21 @@ final class PlayerManager {
             let newLevelProgress = levelProgress.levelProgressByIncrementingNumberOfLosses()
             
             player.levelProgressItems[index] = newLevelProgress
+            player.score -= 1
+            
+            break
         }
+    }
+    
+    func progressForLevel(level: GameLevel) -> GameLevelProgress {
+        var progress: GameLevelProgress! = nil
+        for levelProgress in player.levelProgressItems {
+            if levelProgress.level == level {
+                progress = levelProgress
+                break
+            }
+        }
+        return progress
     }
 }
 
