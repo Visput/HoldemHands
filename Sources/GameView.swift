@@ -12,7 +12,7 @@ final class GameView: UIView {
     
     @IBOutlet private(set) weak var handsCollectionView: UICollectionView!
     @IBOutlet private(set) weak var nextHandButton: UIButton!
-    @IBOutlet private(set) weak var scorePointsLabel: UILabel!
+    @IBOutlet private(set) weak var chipsCountLabel: UILabel!
     
     func updateCollectionViewLayoutForNumberOfCells(numberOfCells: Int) {
         let collectionViewLayout = handsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout

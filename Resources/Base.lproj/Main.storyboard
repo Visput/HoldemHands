@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7nD-Mj-70O">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -25,12 +24,12 @@
         <!--Menu Screen-->
         <scene sceneID="SXZ-Wh-Obh">
             <objects>
-                <viewController storyboardIdentifier="MenuScreen" id="P8v-C8-9Zi" customClass="MenuScreen" customModule="PokerHand" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuScreen" id="P8v-C8-9Zi" customClass="MenuScreen" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aH-Lx-sfy"/>
                         <viewControllerLayoutGuide type="bottom" id="PaV-UT-frg"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xgc-0v-nLd" customClass="MenuView" customModule="PokerHand" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="xgc-0v-nLd" customClass="MenuView" customModule="HoldemHands" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -44,7 +43,7 @@
                                     <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameLevelCell" id="QDv-1s-Wtf" customClass="GameLevelCell" customModule="PokerHand" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameLevelCell" id="QDv-1s-Wtf" customClass="GameLevelCell" customModule="HoldemHands" customModuleProvider="target">
                                         <rect key="frame" x="16" y="0.0" width="268" height="251"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -91,7 +90,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQm-Rd-hks">
-                                <rect key="frame" x="225.5" y="329" width="67" height="30"/>
+                                <rect key="frame" x="226" y="329" width="67" height="30"/>
                                 <state key="normal" title="Facebook"/>
                                 <connections>
                                     <action selector="facebookButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="Pm0-JF-2KO"/>
@@ -105,14 +104,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXU-rz-kmg">
-                                <rect key="frame" x="372.5" y="329" width="69" height="30"/>
+                                <rect key="frame" x="373" y="329" width="69" height="30"/>
                                 <state key="normal" title="Instagram"/>
                                 <connections>
                                     <action selector="instagramButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="hak-gz-fXc"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HoldemHands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oig-8P-j3Y">
-                                <rect key="frame" x="274.5" y="16" width="117.5" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HoldemHands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oig-8P-j3Y">
+                                <rect key="frame" x="257.5" y="16" width="151.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="S9c-0c-yri"/>
                                 </constraints>
@@ -151,12 +150,12 @@
         <!--Game Screen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="GameScreen" id="BYZ-38-t0r" customClass="GameScreen" customModule="PokerHand" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameScreen" id="BYZ-38-t0r" customClass="GameScreen" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GameView" customModule="PokerHand" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GameView" customModule="HoldemHands" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -170,7 +169,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HandCell" id="z6N-GK-9x6" customClass="HandCell" customModule="PokerHand" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HandCell" id="z6N-GK-9x6" customClass="HandCell" customModule="HoldemHands" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="173"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -360,8 +359,8 @@
                                     <action selector="menuButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XSX-TW-UdX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chips: 15  Wins: 5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAS-LT-5r8">
-                                <rect key="frame" x="537" y="8" width="113.5" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chips: 15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAS-LT-5r8">
+                                <rect key="frame" x="592" y="8" width="58.5" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="gTu-YQ-rHT"/>
                                 </constraints>
@@ -389,9 +388,9 @@
                             <constraint firstItem="kUo-2W-y7t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="wJW-3g-KTD"/>
                         </constraints>
                         <connections>
+                            <outlet property="chipsCountLabel" destination="pAS-LT-5r8" id="BFk-a4-OiA"/>
                             <outlet property="handsCollectionView" destination="kUo-2W-y7t" id="P4a-9I-R9u"/>
                             <outlet property="nextHandButton" destination="gh9-Ke-K1d" id="FV4-hq-56o"/>
-                            <outlet property="scorePointsLabel" destination="pAS-LT-5r8" id="BFk-a4-OiA"/>
                         </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>

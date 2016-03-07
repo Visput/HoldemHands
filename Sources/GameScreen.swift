@@ -20,7 +20,7 @@ final class GameScreen: BaseScreen {
     override func viewDidLoad() {
         super.viewDidLoad()
         generateNextHand()
-        updateScorePoints()
+        updateChipsCountLabel()
     }
     
     override func viewDidLayoutSubviews() {
@@ -46,10 +46,9 @@ final class GameScreen: BaseScreen {
         })
     }
     
-    private func updateScorePoints() {
-        gameView.scorePointsLabel.text = NSString(format: NSLocalizedString("Chips: %d  Wins: %d", comment: ""),
-        model.playerManager.player.score,
-        model.playerManager.progressForLevel(level).currentNumberOfWinsInRow) as String
+    private func updateChipsCountLabel() {
+        gameView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %d", comment: ""),
+        model.playerManager.player.chipsCount) as String
     }
 }
 
@@ -99,7 +98,7 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
                 } else {
                     model.playerManager.trackNewLossInLevel(level)
                 }
-                updateScorePoints()
+                updateChipsCountLabel()
             }
             let item = HandCellItem(handOdds: cell.item.handOdds, needsShowOdds: true, isSuccessSate: isSuccessState)
             cell.fillWithItem(item)

@@ -32,67 +32,63 @@ final class PlayerManager {
         return player != nil
     }
     
-    func isUnlockedLevel(level: GameLevel) -> Bool {
-        // Level is unlocked if previous level is completed or if it's first level.
-        var isUnlocked = false
-        for (index, levelProgress) in player.levelProgressItems.enumerate() {
-            if levelProgress.level == level {
-                if index == 0 {
-                    isUnlocked = true
-                } else {
-                    let previousLevelProgress = player.levelProgressItems[index - 1]
-                    isUnlocked = previousLevelProgress.maxNumberOfWinsInRow >= previousLevelProgress.level.numberOfWinsInRowToComplete
-                }
-                break
-            }
-        }
+    func isLockedLevel(level: GameLevel) -> Bool {
+        let progress = progressItemForLevel(level).progress
+        return progress.locked
+    }
+    
+    func canUnlockLevel(level: GameLevel) -> Bool {
+        return player.chipsCount >= level.chipsToUnlock
+    }
+    
+    func unlockLevel(level: GameLevel) {
+        precondition(isLockedLevel(level))
+        precondition(canUnlockLevel(level))
         
-        return isUnlocked
+        let progressItem = progressItemForLevel(level)
+        player.levelProgressItems[progressItem.index] = progressItem.progress.levelProgressBySettingUnlocked()
     }
     
     func trackNewWinInLevel(level: GameLevel) {
-        for (index, levelProgress) in player.levelProgressItems.enumerate() {
-            guard levelProgress.level == level else { continue }
-            
-            let newLevelProgress = levelProgress.levelProgressByIncrementingNumberOfWins()
-            
-            if newLevelProgress.maxNumberOfWinsInRow > levelProgress.maxNumberOfWinsInRow {
-                notifyObserversDidSetNewWinRecordForLevel(newLevelProgress)
-            }
-            
-            if newLevelProgress.currentNumberOfWinsInRow == newLevelProgress.level.numberOfWinsInRowToComplete {
-                notifyObserversDidCompleteLevel(newLevelProgress)
-            }
-            
-            player.levelProgressItems[index] = newLevelProgress
-            player.score += 1
-            
-            break
+        let progressItem = progressItemForLevel(level)
+        
+        let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfWins()
+        player.levelProgressItems[progressItem.index] = newLevelProgress
+        player.chipsCount += level.chipsPerWin * Int(pow(2, Double(newLevelProgress.currentNumberOfWinsInRow / level.winsInRowToDoubleChips)))
+        
+        if newLevelProgress.maxNumberOfWinsInRow > progressItem.progress.maxNumberOfWinsInRow {
+            notifyObserversDidSetNewWinRecordForLevel(newLevelProgress)
+        }
+        
+        guard progressItem.index < player.levelProgressItems.count - 1 else { return }
+        var nextLevelProgress = player.levelProgressItems[progressItem.index + 1]
+        if nextLevelProgress.locked &&
+            !nextLevelProgress.notifiedToUnlock &&
+            nextLevelProgress.level.chipsToUnlock <= player.chipsCount {
+                
+                nextLevelProgress = nextLevelProgress.levelProgressBySettingNotifiedToUnlock()
+                player.levelProgressItems[progressItem.index + 1] = nextLevelProgress
+                notifyObserversDidEarnChipsToUnlockLevel(nextLevelProgress)
         }
     }
     
     func trackNewLossInLevel(level: GameLevel) {
-        for (index, levelProgress) in player.levelProgressItems.enumerate() {
-            guard levelProgress.level == level else { continue }
-            
-            let newLevelProgress = levelProgress.levelProgressByIncrementingNumberOfLosses()
-            
-            player.levelProgressItems[index] = newLevelProgress
-            player.score -= 1
-            
-            break
-        }
+        let progressItem = progressItemForLevel(level)
+        
+        let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfLosses()
+        player.levelProgressItems[progressItem.index] = newLevelProgress
     }
     
-    func progressForLevel(level: GameLevel) -> GameLevelProgress {
-        var progress: GameLevelProgress! = nil
-        for levelProgress in player.levelProgressItems {
-            if levelProgress.level == level {
-                progress = levelProgress
+    private func progressItemForLevel(level: GameLevel) -> (index: Int, progress: GameLevelProgress) {
+        var progressItem: (Int, GameLevelProgress)! = nil
+        for (index, progress) in player.levelProgressItems.enumerate() {
+            if progress.level == level {
+                progressItem = (index, progress)
                 break
             }
         }
-        return progress
+        
+        return progressItem
     }
 }
 
@@ -157,9 +153,9 @@ extension PlayerManager {
 
 extension PlayerManager {
     
-    private func notifyObserversDidCompleteLevel(levelProgress: GameLevelProgress) {
+    private func notifyObserversDidEarnChipsToUnlockLevel(levelProgress: GameLevelProgress) {
         for observer in observers {
-            observer.playerManager(self, didCompleteLevel: levelProgress)
+            observer.playerManager(self, didEarnChipsToUnlockLevel: levelProgress)
         }
     }
     
@@ -178,7 +174,7 @@ extension PlayerManager {
 
 protocol PlayerManagerObserving: AnyObject {
     
-    func playerManager(manager: PlayerManager, didCompleteLevel levelProgress: GameLevelProgress)
+    func playerManager(manager: PlayerManager, didEarnChipsToUnlockLevel levelProgress: GameLevelProgress)
     func playerManager(manager: PlayerManager, didSetNewWinRecordForLevel levelProgress: GameLevelProgress)
     func playerManagerDidAuthenticateNewPlayer(manager: PlayerManager)
 }

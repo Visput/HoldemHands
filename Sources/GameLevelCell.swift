@@ -20,14 +20,15 @@ final class GameLevelCell: UICollectionViewCell {
         
         levelLabel.text = item.level.name
         playButton.tag = item.buttonsTag
-        if item.unlocked {
-            playButton.enabled = true
-            playButton.setTitle(NSLocalizedString("Play", comment: ""), forState: .Normal)
-            backgroundColor = UIColor.primaryColor()
-        } else {
+        if item.locked {
             playButton.enabled = false
             playButton.setTitle(NSLocalizedString("Locked", comment: ""), forState: .Normal)
             backgroundColor = UIColor.secondaryTextColor()
+            
+        } else {
+            playButton.enabled = true
+            playButton.setTitle(NSLocalizedString("Play", comment: ""), forState: .Normal)
+            backgroundColor = UIColor.primaryColor()
         }
     }
 }

@@ -11,6 +11,6 @@ import Foundation
 struct GameLevelCellItem {
     
     let level: GameLevel
-    let unlocked: Bool
+    let locked: Bool
     let buttonsTag: Int
 }

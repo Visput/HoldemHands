@@ -32,7 +32,7 @@ extension MenuScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         
         let level = model.levelsProvider.levels[indexPath.item]
         let item = GameLevelCellItem(level: level,
-            unlocked: model.playerManager.isUnlockedLevel(level),
+            locked: model.playerManager.isLockedLevel(level),
             buttonsTag: indexPath.item)
         cell.fillWithItem(item)
         cell.playButton.addTarget(self, action: Selector("playButtonDidPress:"), forControlEvents: .TouchUpInside)
@@ -50,7 +50,7 @@ extension MenuScreen {
     
     @objc private func playButtonDidPress(sender: UIButton) {
         let cell = menuView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! GameLevelCell
-        if cell.item.unlocked {
+        if !cell.item.locked {
             model.navigationManager.presentGameScreenWithLevel(cell.item.level, animated: true)
         }
     }
