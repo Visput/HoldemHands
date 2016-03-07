@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  PokerHand
+//  HoldemHands
 //
 //  Created by Uladzimir Papko on 2/15/16.
 //  Copyright © 2016 Visput. All rights reserved.

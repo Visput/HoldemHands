@@ -3,7 +3,7 @@ platform :ios, "9.0"
 use_frameworks!
 inhibit_all_warnings!
 
-link_with ['PokerHand', 'PokerHandTests']
+link_with ['HoldemHands', 'HoldemHandsTests']
 
 pod 'Flurry-iOS-SDK/FlurrySDK'
 

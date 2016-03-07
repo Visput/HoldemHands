@@ -1,6 +1,6 @@
 //
 //  HandCellItem.swift
-//  PokerHand
+//  HoldemHands
 //
 //  Created by Uladzimir Papko on 2/19/16.
 //  Copyright © 2016 Visput. All rights reserved.

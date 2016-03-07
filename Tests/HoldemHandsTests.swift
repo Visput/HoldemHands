@@ -1,15 +1,15 @@
 //
-//  PokerHandTests.swift
-//  PokerHandTests
+//  HoldemHandsTests.swift
+//  HoldemHandsTests
 //
 //  Created by Uladzimir Papko on 2/15/16.
 //  Copyright © 2016 Visput. All rights reserved.
 //
 
 import XCTest
-@testable import PokerHand
+@testable import HoldemHands
 
-class PokerHandTests: XCTestCase {
+class HoldemHandsTests: XCTestCase {
     
     func testOddsCalculator1() {
         let hands = [
@@ -82,7 +82,7 @@ class PokerHandTests: XCTestCase {
     }
 }
 
-extension PokerHandTests {
+extension HoldemHandsTests {
     
     typealias OddsResult = (winProbability: Double, winCount: Double)
     
