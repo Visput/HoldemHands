@@ -23,43 +23,43 @@ final class GameLevelsProvider {
             identifier: 1))
         
         levels.append(GameLevel(numberOfHands: 3,
-            chipsToUnlock: 100,
-            chipsPerWin: 10,
+            chipsToUnlock: 50,
+            chipsPerWin: 2,
             winsInRowToDoubleChips: 10,
             name: NSLocalizedString("Level 2", comment: ""),
             identifier: 2))
         
         levels.append(GameLevel(numberOfHands: 4,
-            chipsToUnlock: 1000,
-            chipsPerWin: 100,
+            chipsToUnlock: 2500,
+            chipsPerWin: 10,
             winsInRowToDoubleChips: 10,
             name: NSLocalizedString("Level 3", comment: ""),
             identifier: 3))
         
         levels.append(GameLevel(numberOfHands: 5,
-            chipsToUnlock: 10000,
-            chipsPerWin: 1000,
+            chipsToUnlock: 1000,
+            chipsPerWin: 50,
             winsInRowToDoubleChips: 10,
             name: NSLocalizedString("Level 4", comment: ""),
             identifier: 4))
         
         levels.append(GameLevel(numberOfHands: 6,
-            chipsToUnlock: 100000,
-            chipsPerWin: 10000,
+            chipsToUnlock: 5000,
+            chipsPerWin: 250,
             winsInRowToDoubleChips: 10,
             name: NSLocalizedString("Level 5", comment: ""),
             identifier: 5))
         
         levels.append(GameLevel(numberOfHands: 7,
-            chipsToUnlock: 1000000,
-            chipsPerWin: 100000,
+            chipsToUnlock: 25000,
+            chipsPerWin: 1000,
             winsInRowToDoubleChips: 10,
             name: NSLocalizedString("Level 6", comment: ""),
             identifier: 6))
         
         levels.append(GameLevel(numberOfHands: 8,
-            chipsToUnlock: 10000000,
-            chipsPerWin: 1000000,
+            chipsToUnlock: 100000,
+            chipsPerWin: 5000,
             winsInRowToDoubleChips: 10,
             name: NSLocalizedString("Level 7", comment: ""),
             identifier: 7))
