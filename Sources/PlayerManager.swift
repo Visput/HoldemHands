@@ -45,8 +45,11 @@ final class PlayerManager {
         precondition(isLockedLevel(level))
         precondition(canUnlockLevel(level))
         
+        player.chipsCount -= level.chipsToUnlock
         let progressItem = progressItemForLevel(level)
         player.levelProgressItems[progressItem.index] = progressItem.progress.levelProgressBySettingUnlocked()
+        
+        savePlayer()
     }
     
     func trackNewWinInLevel(level: GameLevel) {
