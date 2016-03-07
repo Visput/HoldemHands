@@ -54,7 +54,7 @@ final class PlayerManager {
         
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfWins()
         player.levelProgressItems[progressItem.index] = newLevelProgress
-        player.chipsCount += level.chipsPerWin * Int(pow(2, Double(newLevelProgress.currentNumberOfWinsInRow / level.winsInRowToDoubleChips)))
+        player.chipsCount += level.chipsPerWin * Int(pow(2, Double(progressItem.progress.currentNumberOfWinsInRow / level.winsInRowToDoubleChips)))
         
         if newLevelProgress.maxNumberOfWinsInRow > progressItem.progress.maxNumberOfWinsInRow {
             notifyObserversDidSetNewWinRecordForLevel(newLevelProgress)
@@ -100,6 +100,7 @@ extension PlayerManager {
             for level in levelsProvider.levels {
                 player.levelProgressItems.append(GameLevelProgress(level: level))
             }
+            unlockLevel(player.levelProgressItems[0].level)
         }
         
         startAutoSaveTimer()
