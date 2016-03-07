@@ -54,7 +54,7 @@ final class PlayerManager {
         
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfWins()
         player.levelProgressItems[progressItem.index] = newLevelProgress
-        player.chipsCount += level.chipsPerWin * Int(pow(2, Double(progressItem.progress.currentNumberOfWinsInRow / level.winsInRowToDoubleChips)))
+        player.chipsCount += level.chipsPerWin * pow(2, Double(progressItem.progress.currentNumberOfWinsInRow / level.winsInRowToDoubleChips))
         
         if newLevelProgress.maxNumberOfWinsInRow > progressItem.progress.maxNumberOfWinsInRow {
             notifyObserversDidSetNewWinRecordForLevel(newLevelProgress)

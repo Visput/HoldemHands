@@ -11,7 +11,7 @@ import Foundation
 struct Player {
     
     var levelProgressItems: [GameLevelProgress]
-    var chipsCount: Int
+    var chipsCount: Double
     
     init() {
         levelProgressItems = [GameLevelProgress]()

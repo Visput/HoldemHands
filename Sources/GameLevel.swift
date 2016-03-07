@@ -11,8 +11,8 @@ import Foundation
 struct GameLevel: Equatable {
     
     let numberOfHands: Int
-    let chipsToUnlock: Int
-    let chipsPerWin: Int
+    let chipsToUnlock: Double
+    let chipsPerWin: Double
     let winsInRowToDoubleChips: Int
     let name: String
     let identifier: Int
