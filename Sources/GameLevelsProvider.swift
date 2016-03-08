@@ -30,7 +30,7 @@ final class GameLevelsProvider {
             identifier: 2))
         
         levels.append(GameLevel(numberOfHands: 4,
-            chipsToUnlock: 2500,
+            chipsToUnlock: 250,
             chipsPerWin: 10,
             winsInRowToDoubleChips: 10,
             name: NSLocalizedString("Level 3", comment: ""),

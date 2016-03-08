@@ -33,9 +33,11 @@ extension MenuScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         let level = model.levelsProvider.levels[indexPath.item]
         let item = GameLevelCellItem(level: level,
             locked: model.playerManager.isLockedLevel(level),
+            canUnlock: model.playerManager.canUnlockLevel(level),
             buttonsTag: indexPath.item)
         cell.fillWithItem(item)
         cell.playButton.addTarget(self, action: Selector("playButtonDidPress:"), forControlEvents: .TouchUpInside)
+        cell.unlockButton.addTarget(self, action: Selector("unlockButtonDidPress:"), forControlEvents: .TouchUpInside)
         
         return cell
     }
@@ -53,6 +55,12 @@ extension MenuScreen {
         if !cell.item.locked {
             model.navigationManager.presentGameScreenWithLevel(cell.item.level, animated: true)
         }
+    }
+    
+    @objc private func unlockButtonDidPress(sender: UIButton) {
+        let cell = menuView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! GameLevelCell
+        model.playerManager.unlockLevel(cell.item.level)
+        menuView.levelsCollectionView.reloadData()
     }
     
     @IBAction private func facebookButtonDidPress(sender: AnyObject) {

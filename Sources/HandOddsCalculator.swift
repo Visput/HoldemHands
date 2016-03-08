@@ -12,7 +12,7 @@ final class HandOddsCalculator {
     
     private(set) var hands: [Hand]
     private(set) var deck: Deck
-    private(set) var handsOdds: [HandOdds]!
+    private(set) var handsOdds: [HandOdds]?
     
     init(numberOfHands: Int) {
         deck = Deck()
@@ -82,8 +82,8 @@ final class HandOddsCalculator {
             self.handsOdds = handsOdds
             var winningHandsOddsIndexes = [Int]()
             
-            for index in 0 ..< self.handsOdds.count {
-                let handOdds = self.handsOdds[index]
+            for index in 0 ..< self.handsOdds!.count {
+                let handOdds = self.handsOdds![index]
                 
                 if winningHandsOddsIndexes.count == 0 {
                     winningHandsOddsIndexes.append(index)
@@ -98,12 +98,12 @@ final class HandOddsCalculator {
             }
             
             for index in winningHandsOddsIndexes {
-                self.handsOdds[index].wins = true
+                self.handsOdds![index].wins = true
             }
             
             dispatch_async(dispatch_get_main_queue(), {
                 print(CFAbsoluteTimeGetCurrent() - time)
-                completion(handsOdds: self.handsOdds)
+                completion(handsOdds: self.handsOdds!)
             })
         })
     }

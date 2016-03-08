@@ -53,11 +53,11 @@ final class PlayerManager {
     }
     
     func trackNewWinInLevel(level: GameLevel) {
-        let progressItem = progressItemForLevel(level)
+        player.chipsCount += level.chipsPerWin * chipsMultiplierForLevel(level)
         
+        let progressItem = progressItemForLevel(level)
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfWins()
         player.levelProgressItems[progressItem.index] = newLevelProgress
-        player.chipsCount += level.chipsPerWin * pow(2, Double(progressItem.progress.currentNumberOfWinsInRow / level.winsInRowToDoubleChips))
         
         if newLevelProgress.maxNumberOfWinsInRow > progressItem.progress.maxNumberOfWinsInRow {
             notifyObserversDidSetNewWinRecordForLevel(newLevelProgress)
@@ -80,6 +80,11 @@ final class PlayerManager {
         
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfLosses()
         player.levelProgressItems[progressItem.index] = newLevelProgress
+    }
+    
+    func chipsMultiplierForLevel(level: GameLevel) -> Double {
+        let progressItem = progressItemForLevel(level)
+        return pow(2, Double(progressItem.progress.currentNumberOfWinsInRow / level.winsInRowToDoubleChips))
     }
     
     private func progressItemForLevel(level: GameLevel) -> (index: Int, progress: GameLevelProgress) {

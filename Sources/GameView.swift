@@ -13,6 +13,7 @@ final class GameView: UIView {
     @IBOutlet private(set) weak var handsCollectionView: UICollectionView!
     @IBOutlet private(set) weak var chipsCountLabel: UILabel!
     @IBOutlet private(set) weak var swipeRecognizer: UISwipeGestureRecognizer!
+    @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
     
     func updateCollectionViewLayoutForNumberOfCells(numberOfCells: Int) {
         let collectionViewLayout = handsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout

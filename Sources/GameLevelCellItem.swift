@@ -12,5 +12,6 @@ struct GameLevelCellItem {
     
     let level: GameLevel
     let locked: Bool
+    let canUnlock: Bool
     let buttonsTag: Int
 }

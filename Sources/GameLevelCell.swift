@@ -12,6 +12,9 @@ final class GameLevelCell: UICollectionViewCell {
     
     @IBOutlet private(set) weak var levelLabel: UILabel!
     @IBOutlet private(set) weak var playButton: UIButton!
+    @IBOutlet private(set) weak var unlockButton: UIButton!
+    @IBOutlet private(set) weak var lockedLabel: UILabel!
+    @IBOutlet private(set) weak var priceLabel: UILabel!
     
     private(set) var item: GameLevelCellItem!
     
@@ -20,14 +23,27 @@ final class GameLevelCell: UICollectionViewCell {
         
         levelLabel.text = item.level.name
         playButton.tag = item.buttonsTag
+        unlockButton.tag = item.buttonsTag
+        priceLabel.text = NSString(format: NSLocalizedString("Chips: %.0f", comment: ""), item.level.chipsToUnlock) as String
         if item.locked {
-            playButton.enabled = false
-            playButton.setTitle(NSLocalizedString("Locked", comment: ""), forState: .Normal)
+            if item.canUnlock {
+                unlockButton.hidden = false
+                lockedLabel.hidden = true
+                priceLabel.hidden = false
+            } else {
+                unlockButton.hidden = true
+                lockedLabel.hidden = false
+                priceLabel.hidden = false
+            }
+            
+            playButton.hidden = true
             backgroundColor = UIColor.secondaryTextColor()
             
         } else {
-            playButton.enabled = true
-            playButton.setTitle(NSLocalizedString("Play", comment: ""), forState: .Normal)
+            playButton.hidden = false
+            unlockButton.hidden = true
+            lockedLabel.hidden = true
+            priceLabel.hidden = true
             backgroundColor = UIColor.primaryColor()
         }
     }

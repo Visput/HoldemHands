@@ -32,33 +32,44 @@ final class GameScreen: BaseScreen {
     }
     
     private func generateNextHand() {
+        gameView.swipeRecognizer.enabled = false
+        gameView.tapRecognizer.enabled = false
+        
         if currentHandOddsCalculator == nil {
+            gameView.handsCollectionView.userInteractionEnabled = false
+            
             currentHandOddsCalculator = HandOddsCalculator(numberOfHands: level.numberOfHands)
             currentHandOddsCalculator.calculateOdds({ handsOdds in
-                self.gameView.handsCollectionView.delegate = self
-                self.gameView.handsCollectionView.dataSource = self
                 self.gameView.handsCollectionView.reloadData()
+                self.gameView.handsCollectionView.userInteractionEnabled = true
                 
                 self.needsShowNextHandImmediately = false
                 self.generateNextHand()
             })
         } else if nextHandOddsCalculator?.handsOdds == nil {
-            guard !needsShowNextHandImmediately else { return }
-            nextHandOddsCalculator = HandOddsCalculator(numberOfHands: level.numberOfHands)
-            nextHandOddsCalculator.calculateOdds({ handsOdds in
-                if self.needsShowNextHandImmediately {
-                    self.currentHandOddsCalculator = self.nextHandOddsCalculator
-                    self.nextHandOddsCalculator = nil
-                    self.gameView.handsCollectionView.reloadData()
-                    
-                    self.needsShowNextHandImmediately = false
-                    self.generateNextHand()
-                }
-            })
+            if !needsShowNextHandImmediately {
+                nextHandOddsCalculator = HandOddsCalculator(numberOfHands: level.numberOfHands)
+                nextHandOddsCalculator.calculateOdds({ handsOdds in
+                    if self.needsShowNextHandImmediately {
+                        self.currentHandOddsCalculator = self.nextHandOddsCalculator
+                        self.nextHandOddsCalculator = nil
+                        self.gameView.handsCollectionView.reloadData()
+                        self.gameView.handsCollectionView.userInteractionEnabled = true
+                        
+                        self.needsShowNextHandImmediately = false
+                        self.generateNextHand()
+                    }
+                })
+            } else {
+                currentHandOddsCalculator = nextHandOddsCalculator
+                gameView.handsCollectionView.reloadData()
+                gameView.handsCollectionView.userInteractionEnabled = false
+            }
         } else {
             currentHandOddsCalculator = nextHandOddsCalculator
             nextHandOddsCalculator = nil
             gameView.handsCollectionView.reloadData()
+            gameView.handsCollectionView.userInteractionEnabled = true
             
             self.needsShowNextHandImmediately = false
             self.generateNextHand()
@@ -66,8 +77,9 @@ final class GameScreen: BaseScreen {
     }
     
     private func updateChipsCountLabel() {
-        gameView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %.0f", comment: ""),
-        model.playerManager.player.chipsCount) as String
+        gameView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %.0f   x%.0f", comment: ""),
+            model.playerManager.player.chipsCount,
+            model.playerManager.chipsMultiplierForLevel(level)) as String
     }
 }
 
@@ -93,7 +105,7 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HandCell.className(),
             forIndexPath: indexPath) as! HandCell
         
-        let item = HandCellItem(handOdds: currentHandOddsCalculator.handsOdds[indexPath.item], needsShowOdds: false, isSuccessSate: nil)
+        let item = HandCellItem(handOdds: currentHandOddsCalculator.handsOdds?[indexPath.item], needsShowOdds: false, isSuccessSate: nil)
         cell.fillWithItem(item)
         
         return cell
@@ -112,7 +124,7 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         for cell in collectionView.visibleCells() as! [HandCell] {
             var isSuccessState: Bool? = nil
             if currentCell == cell {
-                isSuccessState = cell.item.handOdds.wins
+                isSuccessState = cell.item.handOdds!.wins
                 if isSuccessState! {
                     model.playerManager.trackNewWinInLevel(level)
                 } else {
@@ -123,5 +135,9 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             let item = HandCellItem(handOdds: cell.item.handOdds, needsShowOdds: true, isSuccessSate: isSuccessState)
             cell.fillWithItem(item)
         }
+        
+        gameView.swipeRecognizer.enabled = true
+        gameView.tapRecognizer.enabled = true
+        gameView.handsCollectionView.userInteractionEnabled = false
     }
 }

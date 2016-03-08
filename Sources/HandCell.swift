@@ -28,29 +28,40 @@ final class HandCell: UICollectionViewCell {
     func fillWithItem(item: HandCellItem) {
         self.item = item
         
-        winningProbabilityLabel.hidden = !item.needsShowOdds
-        winningProbabilityLabel.text = NSString(format: "Win: %.2f%%", item.handOdds.winningProbability()) as String
-        
-        firstCardTopLabel.text = titleForCard(item.handOdds.hand.firstCard)
-        firstCardTopLabel.textColor = colorForCard(item.handOdds.hand.firstCard)
-        firstCardCenterLabel.text = firstCardTopLabel.text
-        firstCardCenterLabel.textColor = firstCardTopLabel.textColor
-        firstCardBottomLabel.text = firstCardTopLabel.text
-        firstCardBottomLabel.textColor = firstCardTopLabel.textColor
-        
-        secondCardTopLabel.text = titleForCard(item.handOdds.hand.secondCard)
-        secondCardTopLabel.textColor = colorForCard(item.handOdds.hand.secondCard)
-        secondCardCenterLabel.text = secondCardTopLabel.text
-        secondCardCenterLabel.textColor = secondCardTopLabel.textColor
-        secondCardBottomLabel.text = secondCardTopLabel.text
-        secondCardBottomLabel.textColor = secondCardTopLabel.textColor
-        
-        if item.isSuccessSate == nil {
+        if item.handOdds == nil {
+            firstCardTopLabel.text = ""
+            firstCardCenterLabel.text = ""
+            firstCardBottomLabel.text = ""
+            secondCardTopLabel.text = ""
+            secondCardCenterLabel.text = ""
+            secondCardBottomLabel.text = ""
+            winningProbabilityLabel.hidden = true
             backgroundColor = UIColor.backgroundColor()
-        } else if item.isSuccessSate! {
-            backgroundColor = UIColor.lightPrimaryColor()
         } else {
-            backgroundColor = UIColor.lightSecondaryColor()
+            winningProbabilityLabel.hidden = !item.needsShowOdds
+            winningProbabilityLabel.text = NSString(format: "Win: %.2f%%", item.handOdds!.winningProbability()) as String
+            
+            firstCardTopLabel.text = titleForCard(item.handOdds!.hand.firstCard)
+            firstCardTopLabel.textColor = colorForCard(item.handOdds!.hand.firstCard)
+            firstCardCenterLabel.text = firstCardTopLabel.text
+            firstCardCenterLabel.textColor = firstCardTopLabel.textColor
+            firstCardBottomLabel.text = firstCardTopLabel.text
+            firstCardBottomLabel.textColor = firstCardTopLabel.textColor
+            
+            secondCardTopLabel.text = titleForCard(item.handOdds!.hand.secondCard)
+            secondCardTopLabel.textColor = colorForCard(item.handOdds!.hand.secondCard)
+            secondCardCenterLabel.text = secondCardTopLabel.text
+            secondCardCenterLabel.textColor = secondCardTopLabel.textColor
+            secondCardBottomLabel.text = secondCardTopLabel.text
+            secondCardBottomLabel.textColor = secondCardTopLabel.textColor
+            
+            if item.isSuccessSate == nil {
+                backgroundColor = UIColor.backgroundColor()
+            } else if item.isSuccessSate! {
+                backgroundColor = UIColor.lightPrimaryColor()
+            } else {
+                backgroundColor = UIColor.lightSecondaryColor()
+            }
         }
     }
 }
