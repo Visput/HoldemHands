@@ -30,6 +30,8 @@ final class HandOddsCalculator {
     }
     
     func calculateOdds(completion: (handsOdds: [HandOdds]) -> Void) {
+        let time = CFAbsoluteTimeGetCurrent()
+        
         let boardSize = 5
         let deckSize = 52
         let handSize = 2
@@ -100,6 +102,7 @@ final class HandOddsCalculator {
             }
             
             dispatch_async(dispatch_get_main_queue(), {
+                print(CFAbsoluteTimeGetCurrent() - time)
                 completion(handsOdds: self.handsOdds)
             })
         })

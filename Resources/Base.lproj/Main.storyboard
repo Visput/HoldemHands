@@ -160,7 +160,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kUo-2W-y7t">
-                                <rect key="frame" x="16" y="82" width="635" height="233"/>
+                                <rect key="frame" x="16" y="82" width="635" height="277"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9tq-wP-FWK">
                                     <size key="itemSize" width="300" height="173"/>
@@ -335,23 +335,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gh9-Ke-K1d">
-                                <rect key="frame" x="233" y="327" width="200" height="32"/>
-                                <color key="backgroundColor" red="0.086274509799999996" green="0.83137254900000002" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="0pH-Wl-aBT"/>
-                                    <constraint firstAttribute="height" constant="32" id="AMx-v6-LI3"/>
-                                </constraints>
-                                <state key="normal" title="Next Hand"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="nextHandButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b5q-tR-3cQ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JT-vw-cgT">
                                 <rect key="frame" x="16" y="8" width="46" height="30"/>
                                 <state key="normal" title="Menu"/>
@@ -375,13 +358,12 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.9529411792755127" green="0.96078431606292725" blue="0.9686274528503418" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="pAS-LT-5r8" secondAttribute="trailing" constant="16" id="0Cr-wE-x7Y"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kUo-2W-y7t" secondAttribute="bottom" constant="60" id="9s3-gq-Z2o"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kUo-2W-y7t" secondAttribute="bottom" constant="16" id="9s3-gq-Z2o"/>
                             <constraint firstItem="foO-GZ-eAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EJ8-Bo-riM"/>
                             <constraint firstAttribute="trailing" secondItem="kUo-2W-y7t" secondAttribute="trailing" constant="16" id="PbI-AK-x2A"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gh9-Ke-K1d" secondAttribute="bottom" constant="16" id="TNT-G8-wV4"/>
-                            <constraint firstItem="gh9-Ke-K1d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vf3-Td-Dl4"/>
                             <constraint firstItem="kUo-2W-y7t" firstAttribute="top" secondItem="foO-GZ-eAy" secondAttribute="bottom" constant="20" id="izS-AC-xiD"/>
                             <constraint firstItem="foO-GZ-eAy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="jmA-OO-2Em"/>
                             <constraint firstItem="pAS-LT-5r8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="khu-rg-3eb"/>
@@ -390,7 +372,7 @@
                         <connections>
                             <outlet property="chipsCountLabel" destination="pAS-LT-5r8" id="BFk-a4-OiA"/>
                             <outlet property="handsCollectionView" destination="kUo-2W-y7t" id="P4a-9I-R9u"/>
-                            <outlet property="nextHandButton" destination="gh9-Ke-K1d" id="FV4-hq-56o"/>
+                            <outletCollection property="gestureRecognizers" destination="3Ck-2q-YGx" appends="YES" id="p9z-W8-SzU"/>
                         </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -398,6 +380,11 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="3Ck-2q-YGx">
+                    <connections>
+                        <action selector="nextHandGestureDidSwipe:" destination="BYZ-38-t0r" id="hMz-jo-fkr"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-274.5" y="1038.5"/>
         </scene>

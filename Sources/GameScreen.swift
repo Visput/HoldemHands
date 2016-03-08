@@ -11,7 +11,10 @@ import UIKit
 final class GameScreen: BaseScreen {
     
     var level: GameLevel!
-    private var handOddsCalculator: HandOddsCalculator!
+    
+    private var currentHandOddsCalculator: HandOddsCalculator!
+    private var nextHandOddsCalculator: HandOddsCalculator!
+    private var needsShowNextHandImmediately: Bool = true
     
     private var gameView: GameView {
         return view as! GameView
@@ -29,21 +32,37 @@ final class GameScreen: BaseScreen {
     }
     
     private func generateNextHand() {
-        handOddsCalculator = HandOddsCalculator(numberOfHands: level.numberOfHands)
-        
-        let time = CFAbsoluteTimeGetCurrent()
-        gameView.nextHandButton.enabled = false
-        gameView.nextHandButton.alpha = 0.4
-        
-        handOddsCalculator.calculateOdds({ handsOdds in
-            self.gameView.nextHandButton.enabled = true
-            self.gameView.nextHandButton.alpha = 1.0
-            print(CFAbsoluteTimeGetCurrent() - time)
+        if currentHandOddsCalculator == nil {
+            currentHandOddsCalculator = HandOddsCalculator(numberOfHands: level.numberOfHands)
+            currentHandOddsCalculator.calculateOdds({ handsOdds in
+                self.gameView.handsCollectionView.delegate = self
+                self.gameView.handsCollectionView.dataSource = self
+                self.gameView.handsCollectionView.reloadData()
+                
+                self.needsShowNextHandImmediately = false
+                self.generateNextHand()
+            })
+        } else if nextHandOddsCalculator?.handsOdds == nil {
+            guard !needsShowNextHandImmediately else { return }
+            nextHandOddsCalculator = HandOddsCalculator(numberOfHands: level.numberOfHands)
+            nextHandOddsCalculator.calculateOdds({ handsOdds in
+                if self.needsShowNextHandImmediately {
+                    self.currentHandOddsCalculator = self.nextHandOddsCalculator
+                    self.nextHandOddsCalculator = nil
+                    self.gameView.handsCollectionView.reloadData()
+                    
+                    self.needsShowNextHandImmediately = false
+                    self.generateNextHand()
+                }
+            })
+        } else {
+            currentHandOddsCalculator = nextHandOddsCalculator
+            nextHandOddsCalculator = nil
+            gameView.handsCollectionView.reloadData()
             
-            self.gameView.handsCollectionView.delegate = self
-            self.gameView.handsCollectionView.dataSource = self
-            self.gameView.handsCollectionView.reloadData()
-        })
+            self.needsShowNextHandImmediately = false
+            self.generateNextHand()
+        }
     }
     
     private func updateChipsCountLabel() {
@@ -54,7 +73,8 @@ final class GameScreen: BaseScreen {
 
 extension GameScreen {
     
-    @IBAction private func nextHandButtonDidPress(sender: AnyObject) {
+    @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
+        needsShowNextHandImmediately = true
         generateNextHand()
     }
     
@@ -66,14 +86,14 @@ extension GameScreen {
 extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return handOddsCalculator.hands.count
+        return currentHandOddsCalculator.hands.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HandCell.className(),
             forIndexPath: indexPath) as! HandCell
         
-        let item = HandCellItem(handOdds: handOddsCalculator.handsOdds[indexPath.item], needsShowOdds: false, isSuccessSate: nil)
+        let item = HandCellItem(handOdds: currentHandOddsCalculator.handsOdds[indexPath.item], needsShowOdds: false, isSuccessSate: nil)
         cell.fillWithItem(item)
         
         return cell
