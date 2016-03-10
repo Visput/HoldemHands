@@ -36,31 +36,43 @@ extension MenuScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             canUnlock: model.playerManager.canUnlockLevel(level),
             buttonsTag: indexPath.item)
         cell.fillWithItem(item)
-        cell.playButton.addTarget(self, action: Selector("playButtonDidPress:"), forControlEvents: .TouchUpInside)
-        cell.unlockButton.addTarget(self, action: Selector("unlockButtonDidPress:"), forControlEvents: .TouchUpInside)
+        cell.playButton.addTarget(self, action: Selector("startLevelButtonDidPress:"), forControlEvents: .TouchUpInside)
+        cell.unlockButton.addTarget(self, action: Selector("unlockLevelButtonDidPress:"), forControlEvents: .TouchUpInside)
         
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = menuView.levelsCollectionView.cellForItemAtIndexPath(indexPath) as! GameLevelCell
-        playButtonDidPress(cell.playButton)
+        startLevelButtonDidPress(cell.playButton)
     }
 }
 
 extension MenuScreen {
     
-    @objc private func playButtonDidPress(sender: UIButton) {
+    @objc private func startLevelButtonDidPress(sender: UIButton) {
         let cell = menuView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! GameLevelCell
         if !cell.item.locked {
             model.navigationManager.presentGameScreenWithLevel(cell.item.level, animated: true)
         }
     }
     
-    @objc private func unlockButtonDidPress(sender: UIButton) {
+    @objc private func unlockLevelButtonDidPress(sender: UIButton) {
         let cell = menuView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! GameLevelCell
         model.playerManager.unlockLevel(cell.item.level)
         menuView.levelsCollectionView.reloadData()
+    }
+    
+    @IBAction private func menuButtonDidPress(sender: AnyObject) {
+        menuView.scrollToMenuView()
+    }
+    
+    @IBAction private func playButtonDidPress(sender: AnyObject) {
+        menuView.scrollToLevelsView()
+    }
+    
+    @IBAction private func statsButtonDidPress(sender: AnyObject) {
+        
     }
     
     @IBAction private func facebookButtonDidPress(sender: AnyObject) {
