@@ -1,5 +1,5 @@
 //
-//  MenuView.swift
+//  MainView.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 2/29/16.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-final class MenuView: UIView {
+final class MainView: UIView {
     
     @IBOutlet private(set) weak var levelsCollectionView: UICollectionView!
+    @IBOutlet private(set) weak var chipsCountLabel: UILabel!
     @IBOutlet private(set) weak var contentScrollView: UIScrollView!
 
     override func layoutSubviews() {
@@ -23,7 +24,7 @@ final class MenuView: UIView {
         collectionViewLayout.sectionInset.bottom = collectionViewLayout.sectionInset.top
     }
     
-    func scrollToMenuView() {
+    func scrollToMainView() {
         contentScrollView.setContentOffset(CGPoint(x: 0.0, y: 0.0), animated: true)
     }
     

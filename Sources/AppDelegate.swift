@@ -22,7 +22,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let model = ModelProvider.provider
         model.navigationManager.window = window
-        model.navigationManager.setMenuScreenAsRootAnimated(false)
+        model.navigationManager.setMainScreenAsRootAnimated(false)
         
         return true
     }

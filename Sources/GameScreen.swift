@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class GameScreen: BaseScreen {
+final class GameScreen: BaseViewController {
     
     var level: GameLevel!
     

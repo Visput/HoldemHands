@@ -1,5 +1,5 @@
 //
-//  MenuScreen.swift
+//  MainScreen.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 2/29/16.
@@ -8,19 +8,19 @@
 
 import UIKit
 
-final class MenuScreen: BaseScreen {
+final class MainScreen: BaseViewController {
 
-    private var menuView: MenuView {
-        return view as! MenuView
+    private var mainView: MainView {
+        return view as! MainView
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        menuView.levelsCollectionView.reloadData()
+        fillViewsWithModel()
     }
 }
 
-extension MenuScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return model.levelsProvider.levels.count
@@ -43,36 +43,36 @@ extension MenuScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = menuView.levelsCollectionView.cellForItemAtIndexPath(indexPath) as! GameLevelCell
+        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(indexPath) as! GameLevelCell
         startLevelButtonDidPress(cell.playButton)
     }
 }
 
-extension MenuScreen {
+extension MainScreen {
     
     @objc private func startLevelButtonDidPress(sender: UIButton) {
-        let cell = menuView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! GameLevelCell
+        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! GameLevelCell
         if !cell.item.locked {
             model.navigationManager.presentGameScreenWithLevel(cell.item.level, animated: true)
         }
     }
     
     @objc private func unlockLevelButtonDidPress(sender: UIButton) {
-        let cell = menuView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! GameLevelCell
+        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! GameLevelCell
         model.playerManager.unlockLevel(cell.item.level)
-        menuView.levelsCollectionView.reloadData()
+        mainView.levelsCollectionView.reloadData()
     }
     
     @IBAction private func menuButtonDidPress(sender: AnyObject) {
-        menuView.scrollToMenuView()
+        mainView.scrollToMainView()
     }
     
     @IBAction private func playButtonDidPress(sender: AnyObject) {
-        menuView.scrollToLevelsView()
+        mainView.scrollToLevelsView()
     }
     
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
-        
+        model.navigationManager.presentStatsScreenAnimated(true)
     }
     
     @IBAction private func facebookButtonDidPress(sender: AnyObject) {
@@ -85,5 +85,14 @@ extension MenuScreen {
     
     @IBAction private func instagramButtonDidPress(sender: AnyObject) {
         
+    }
+}
+
+extension MainScreen {
+    
+    private func fillViewsWithModel() {
+        mainView.levelsCollectionView.reloadData()
+        mainView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %.0f", comment: ""),
+            model.playerManager.player.chipsCount) as String
     }
 }

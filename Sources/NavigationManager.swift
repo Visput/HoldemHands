@@ -22,14 +22,19 @@ final class NavigationManager {
         return window.rootViewController!.storyboard!
     }
     
-    func setMenuScreenAsRootAnimated(animated: Bool) {
-        let screen = storyboard.instantiateViewControllerWithIdentifier(MenuScreen.className()) as! MenuScreen
+    func setMainScreenAsRootAnimated(animated: Bool) {
+        let screen = storyboard.instantiateViewControllerWithIdentifier(MainScreen.className()) as! MainScreen
         navigationController.setViewControllers([screen], animated: animated)
     }
     
     func presentGameScreenWithLevel(level: GameLevel, animated: Bool) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(GameScreen.className()) as! GameScreen
         screen.level = level
+        navigationController.presentViewController(screen, animated: animated, completion: nil)
+    }
+    
+    func presentStatsScreenAnimated(animated: Bool) {
+        let screen = storyboard.instantiateViewControllerWithIdentifier(StatsScreen.className()) as! StatsScreen
         navigationController.presentViewController(screen, animated: animated, completion: nil)
     }
     

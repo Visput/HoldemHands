@@ -1,5 +1,5 @@
 //
-//  BaseScreen.swift
+//  BaseViewController.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 2/29/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseScreen: UIViewController {
+class BaseViewController: UIViewController {
 
     let model = ModelProvider.provider
 }
