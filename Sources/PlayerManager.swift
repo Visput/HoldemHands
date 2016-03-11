@@ -180,10 +180,3 @@ extension PlayerManager {
         }
     }
 }
-
-protocol PlayerManagerObserving: AnyObject {
-    
-    func playerManager(manager: PlayerManager, didEarnChipsToUnlockLevel levelProgress: GameLevelProgress)
-    func playerManager(manager: PlayerManager, didSetNewWinRecordForLevel levelProgress: GameLevelProgress)
-    func playerManagerDidAuthenticateNewPlayer(manager: PlayerManager)
-}

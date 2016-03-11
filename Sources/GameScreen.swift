@@ -24,6 +24,8 @@ final class GameScreen: BaseViewController {
         super.viewDidLoad()
         generateNextHand()
         updateChipsCountLabel()
+        
+        model.playerManager.observers.addObserver(self)
     }
     
     override func viewDidLayoutSubviews() {
@@ -139,5 +141,18 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         gameView.swipeRecognizer.enabled = true
         gameView.tapRecognizer.enabled = true
         gameView.handsCollectionView.userInteractionEnabled = false
+    }
+}
+
+extension GameScreen: PlayerManagerObserving {
+    
+    func playerManager(manager: PlayerManager, didEarnChipsToUnlockLevel levelProgress: GameLevelProgress) {
+        let levelName = levelProgress.level.name
+        let text =  NSString(format: NSLocalizedString("Congratulations. You earned enough chips to unlock %@", comment: ""), levelName)
+        model.navigationManager.showBannerWithText(text as String)
+    }
+    
+    func playerManagerDidAuthenticateNewPlayer(manager: PlayerManager) {
+        model.navigationManager.dismissScreenAnimated(true)
     }
 }

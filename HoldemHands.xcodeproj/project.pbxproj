@@ -16,6 +16,11 @@
 		9F1DDD291C8D0B27005F1D72 /* HoldemHandsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD281C8D0B27005F1D72 /* HoldemHandsTests.swift */; };
 		9F3C4B721C91E3C800B37939 /* StatsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4B711C91E3C800B37939 /* StatsScreen.swift */; };
 		9F3C4B741C91E40800B37939 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4B731C91E40800B37939 /* StatsView.swift */; };
+		9F3C4BDF1C9251E700B37939 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BDE1C9251E700B37939 /* BannerView.swift */; };
+		9F3C4BE21C92586800B37939 /* TextBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE11C92586800B37939 /* TextBannerView.swift */; };
+		9F3C4BE41C9258F200B37939 /* TextBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE31C9258F200B37939 /* TextBannerView.xib */; };
+		9F3C4BE61C925A7A00B37939 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE51C925A7A00B37939 /* UIView+Nib.swift */; };
+		9F3C4BE81C925BDA00B37939 /* PlayerManagerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */; };
 		9F44D20E1C84B21A00640046 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F51C84B21A00640046 /* Assets.xcassets */; };
 		9F44D20F1C84B21A00640046 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F61C84B21A00640046 /* LaunchScreen.storyboard */; };
 		9F44D2101C84B21A00640046 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F81C84B21A00640046 /* Main.storyboard */; };
@@ -71,6 +76,11 @@
 		9F1DDD281C8D0B27005F1D72 /* HoldemHandsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoldemHandsTests.swift; sourceTree = "<group>"; };
 		9F3C4B711C91E3C800B37939 /* StatsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsScreen.swift; sourceTree = "<group>"; };
 		9F3C4B731C91E40800B37939 /* StatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		9F3C4BDE1C9251E700B37939 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		9F3C4BE11C92586800B37939 /* TextBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextBannerView.swift; sourceTree = "<group>"; };
+		9F3C4BE31C9258F200B37939 /* TextBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextBannerView.xib; sourceTree = "<group>"; };
+		9F3C4BE51C925A7A00B37939 /* UIView+Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
+		9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerManagerObserver.swift; sourceTree = "<group>"; };
 		9F44D1F51C84B21A00640046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F44D1F71C84B21A00640046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F44D1F91C84B21A00640046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,6 +159,23 @@
 			name = StatsScreen;
 			sourceTree = "<group>";
 		};
+		9F3C4BDD1C9251B500B37939 /* BannerView */ = {
+			isa = PBXGroup;
+			children = (
+				9F3C4BDE1C9251E700B37939 /* BannerView.swift */,
+			);
+			name = BannerView;
+			sourceTree = "<group>";
+		};
+		9F3C4BE01C92555500B37939 /* TextBannerView */ = {
+			isa = PBXGroup;
+			children = (
+				9F3C4BE11C92586800B37939 /* TextBannerView.swift */,
+				9F3C4BE31C9258F200B37939 /* TextBannerView.xib */,
+			);
+			name = TextBannerView;
+			sourceTree = "<group>";
+		};
 		9F44D1F41C84B21A00640046 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +229,8 @@
 		9F44D22A1C84B3A400640046 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9F3C4BE01C92555500B37939 /* TextBannerView */,
+				9F3C4BDD1C9251B500B37939 /* BannerView */,
 				9F44D23B1C84C60100640046 /* BaseViewController */,
 				9F44D22F1C84B94800640046 /* MainScreen */,
 				9F3C4B701C91E39900B37939 /* StatsScreen */,
@@ -218,6 +247,7 @@
 				9F44D2411C84C63900640046 /* ObserverSet.swift */,
 				9F44D2421C84C63900640046 /* UIScreen+Size.swift */,
 				9F44D20D1C84B21A00640046 /* UIColor+AppPalette.swift */,
+				9F3C4BE51C925A7A00B37939 /* UIView+Nib.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -266,9 +296,10 @@
 				9F95E1581C875CEA00D6F368 /* DTO */,
 				9F44D23F1C84C63900640046 /* ModelProvider.swift */,
 				9F95E15B1C87602D00D6F368 /* GameLevelsProvider.swift */,
-				9F95E1611C879B3100D6F368 /* PlayerManager.swift */,
 				9F1DDD081C89022A005F1D72 /* NavigationManager.swift */,
 				9F1DDD221C8A130E005F1D72 /* SharingManager.swift */,
+				9F95E1611C879B3100D6F368 /* PlayerManager.swift */,
+				9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -404,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F44D2101C84B21A00640046 /* Main.storyboard in Resources */,
+				9F3C4BE41C9258F200B37939 /* TextBannerView.xib in Resources */,
 				9F44D20E1C84B21A00640046 /* Assets.xcassets in Resources */,
 				9F44D20F1C84B21A00640046 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -546,12 +578,15 @@
 			files = (
 				9F44D2461C84C63900640046 /* ObserverSet.swift in Sources */,
 				9F95E15C1C87602D00D6F368 /* GameLevelsProvider.swift in Sources */,
+				9F3C4BDF1C9251E700B37939 /* BannerView.swift in Sources */,
 				9F44D2191C84B21A00640046 /* HandRank.swift in Sources */,
 				9F1DDD271C8A13C7005F1D72 /* GameLevelCellItem.swift in Sources */,
+				9F3C4BE61C925A7A00B37939 /* UIView+Nib.swift in Sources */,
 				9F44D2471C84C63900640046 /* UIScreen+Size.swift in Sources */,
 				9F44D2211C84B21A00640046 /* Rank.swift in Sources */,
 				9F95E1621C879B3100D6F368 /* PlayerManager.swift in Sources */,
 				9F44D23D1C84C61900640046 /* BaseViewController.swift in Sources */,
+				9F3C4BE21C92586800B37939 /* TextBannerView.swift in Sources */,
 				9F3C4B741C91E40800B37939 /* StatsView.swift in Sources */,
 				9F44D2451C84C63900640046 /* NSObject+Utils.swift in Sources */,
 				9F44D2321C84BAA900640046 /* MainScreen.swift in Sources */,
@@ -571,6 +606,7 @@
 				9F44D2441C84C63900640046 /* ModelProvider.swift in Sources */,
 				9F1DDD251C8A13B3005F1D72 /* GameLevelCell.swift in Sources */,
 				9F1DDD231C8A130E005F1D72 /* SharingManager.swift in Sources */,
+				9F3C4BE81C925BDA00B37939 /* PlayerManagerObserver.swift in Sources */,
 				9F44D2221C84B21A00640046 /* Suit.swift in Sources */,
 				9F44D2201C84B21A00640046 /* QuickArray.swift in Sources */,
 				9F44D2121C84B21A00640046 /* AppDelegate.swift in Sources */,

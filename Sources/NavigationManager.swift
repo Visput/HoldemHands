@@ -41,4 +41,9 @@ final class NavigationManager {
     func dismissScreenAnimated(animated: Bool) {
         navigationController.dismissViewControllerAnimated(animated, completion: nil)
     }
+    
+    func showBannerWithText(text: String, duration: NSTimeInterval = 5.0) {
+        let banner: TextBannerView = TextBannerView.fromNib()
+        banner.showInView(window, withText: text, duration: duration)
+    }
 }
