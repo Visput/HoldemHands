@@ -25,10 +25,20 @@ final class MainView: UIView {
     }
     
     func scrollToMainView() {
-        contentScrollView.setContentOffset(CGPoint(x: 0.0, y: 0.0), animated: true)
+        UIView.animateWithDuration(0.6,
+            delay: 0.0,
+            options: .CurveEaseInOut,
+            animations: { () -> Void in
+                self.contentScrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
+            }, completion: nil)
     }
     
     func scrollToLevelsView() {
-        contentScrollView.setContentOffset(CGPoint(x: contentScrollView.bounds.size.width, y: 0.0), animated: true)
+        UIView.animateWithDuration(0.6,
+            delay: 0.0,
+            options: .CurveEaseInOut,
+            animations: { () -> Void in
+                self.contentScrollView.contentOffset = CGPoint(x: self.contentScrollView.bounds.size.width, y: 0.0)
+            }, completion: nil)
     }
 }

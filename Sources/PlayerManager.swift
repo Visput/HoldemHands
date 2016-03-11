@@ -21,6 +21,7 @@ final class PlayerManager {
     
     init(levelsProvider: GameLevelsProvider) {
         self.levelsProvider = levelsProvider
+        loadPlayer()
         registerForAppLifeCycleNotifications()
     }
     
