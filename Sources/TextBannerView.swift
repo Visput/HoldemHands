@@ -12,8 +12,12 @@ final class TextBannerView: BannerView {
     
     @IBOutlet private(set) weak var textLabel: UILabel!
     
-    func showInView(view: UIView, withText text: String, duration: NSTimeInterval = 0.0) {
-        textLabel.text = text
-        super.showInView(view, duration: duration)
+    func showInView(view: UIView, withText
+        text: String,
+        duration: NSTimeInterval = 0.0,
+        tapAction: (() -> Void)? = nil) {
+            
+            textLabel.text = text
+            super.showInView(view, duration: duration, tapAction: tapAction)
     }
 }
