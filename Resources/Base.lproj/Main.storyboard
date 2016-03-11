@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="-274" y="155"/>
         </scene>
-        <!--Menu Screen-->
+        <!--Main Screen-->
         <scene sceneID="SXZ-Wh-Obh">
             <objects>
-                <viewController storyboardIdentifier="MenuScreen" id="P8v-C8-9Zi" customClass="MenuScreen" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainScreen" id="P8v-C8-9Zi" customClass="MainScreen" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aH-Lx-sfy"/>
                         <viewControllerLayoutGuide type="bottom" id="PaV-UT-frg"/>
@@ -75,7 +75,6 @@
                                                         <state key="normal" title="Play"/>
                                                         <connections>
                                                             <action selector="playButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="GKd-KF-5cO"/>
-                                                            <action selector="statsButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="rWS-sD-5Rw"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7L-2W-AQU">
@@ -87,6 +86,9 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <state key="normal" title="Stats"/>
+                                                        <connections>
+                                                            <action selector="statsButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="ezm-XM-1ZJ"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9uh-Sl-VEJ">
                                                         <rect key="frame" x="287.5" y="283" width="91.5" height="30"/>
