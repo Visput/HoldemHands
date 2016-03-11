@@ -17,6 +17,7 @@ struct GameLevelProgress {
     let currentNumberOfWinsInRow: Int
     let numberOfWins: Int
     let numberOfLosses: Int
+    let chipsCount: Double
     
     init(level: GameLevel) {
         self.level = level
@@ -26,6 +27,7 @@ struct GameLevelProgress {
         self.currentNumberOfWinsInRow = 0
         self.numberOfWins = 0
         self.numberOfLosses = 0
+        self.chipsCount = 0
     }
     
     init(level: GameLevel,
@@ -34,7 +36,8 @@ struct GameLevelProgress {
         maxNumberOfWinsInRow: Int,
         currentNumberOfWinsInRow: Int,
         numberOfWins: Int,
-        numberOfLosses: Int) {
+        numberOfLosses: Int,
+        chipsCount: Double) {
         
             self.level = level
             self.locked = locked
@@ -43,29 +46,32 @@ struct GameLevelProgress {
             self.currentNumberOfWinsInRow = currentNumberOfWinsInRow
             self.numberOfWins = numberOfWins
             self.numberOfLosses = numberOfLosses
+            self.chipsCount = chipsCount
     }
 }
 
 extension GameLevelProgress {
     
-    func levelProgressByIncrementingNumberOfWins() -> GameLevelProgress {
+    func levelProgressByIncrementingNumberOfWins(chipsWon chipsWon: Double) -> GameLevelProgress {
         return self.dynamicType.init(level: level,
             locked: locked,
             notifiedToUnlock: notifiedToUnlock,
             maxNumberOfWinsInRow: max(currentNumberOfWinsInRow + 1, maxNumberOfWinsInRow),
             currentNumberOfWinsInRow: currentNumberOfWinsInRow + 1,
             numberOfWins: numberOfWins + 1,
-            numberOfLosses: numberOfLosses)
+            numberOfLosses: numberOfLosses,
+            chipsCount: chipsCount + chipsWon)
     }
     
-    func levelProgressByIncrementingNumberOfLosses() -> GameLevelProgress {
+    func levelProgressByIncrementingNumberOfLosses(chipsLost chipsLost: Double) -> GameLevelProgress {
         return self.dynamicType.init(level: level,
             locked: locked,
             notifiedToUnlock: notifiedToUnlock,
             maxNumberOfWinsInRow: maxNumberOfWinsInRow,
             currentNumberOfWinsInRow: 0,
             numberOfWins: numberOfWins,
-            numberOfLosses: numberOfLosses + 1)
+            numberOfLosses: numberOfLosses + 1,
+            chipsCount: chipsCount - chipsLost)
     }
     
     func levelProgressBySettingNotifiedToUnlock() -> GameLevelProgress {
@@ -75,7 +81,8 @@ extension GameLevelProgress {
             maxNumberOfWinsInRow: maxNumberOfWinsInRow,
             currentNumberOfWinsInRow: currentNumberOfWinsInRow,
             numberOfWins: numberOfWins,
-            numberOfLosses: numberOfLosses)
+            numberOfLosses: numberOfLosses,
+            chipsCount: chipsCount)
     }
     
     func levelProgressBySettingUnlocked() -> GameLevelProgress {
@@ -85,6 +92,7 @@ extension GameLevelProgress {
             maxNumberOfWinsInRow: maxNumberOfWinsInRow,
             currentNumberOfWinsInRow: currentNumberOfWinsInRow,
             numberOfWins: numberOfWins,
-            numberOfLosses: numberOfLosses)
+            numberOfLosses: numberOfLosses,
+            chipsCount: chipsCount)
     }
 }
