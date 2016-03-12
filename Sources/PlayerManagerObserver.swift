@@ -10,15 +10,15 @@ import Foundation
 
 protocol PlayerManagerObserving: AnyObject {
     
-    func playerManager(manager: PlayerManager, didEarnChipsToUnlockLevel levelProgress: GameLevelProgress)
-    func playerManager(manager: PlayerManager, didSetNewWinRecordForLevel levelProgress: GameLevelProgress)
+    func playerManager(manager: PlayerManager, didEarnChipsToUnlockLevel levelProgress: LevelProgress)
+    func playerManager(manager: PlayerManager, didSetNewWinRecordForLevel levelProgress: LevelProgress)
     func playerManagerDidAuthenticateNewPlayer(manager: PlayerManager)
 }
 
 // Use empty implementations to make methods optional.
 extension PlayerManagerObserving {
     
-    func playerManager(manager: PlayerManager, didEarnChipsToUnlockLevel levelProgress: GameLevelProgress) {}
-    func playerManager(manager: PlayerManager, didSetNewWinRecordForLevel levelProgress: GameLevelProgress) {}
+    func playerManager(manager: PlayerManager, didEarnChipsToUnlockLevel levelProgress: LevelProgress) {}
+    func playerManager(manager: PlayerManager, didSetNewWinRecordForLevel levelProgress: LevelProgress) {}
     func playerManagerDidAuthenticateNewPlayer(manager: PlayerManager) {}
 }

@@ -27,7 +27,7 @@ final class NavigationManager {
         navigationController.setViewControllers([screen], animated: animated)
     }
     
-    func presentGameScreenWithLevel(level: GameLevel, animated: Bool) {
+    func presentGameScreenWithLevel(level: Level, animated: Bool) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(GameScreen.className()) as! GameScreen
         screen.level = level
         navigationController.presentViewController(screen, animated: animated, completion: nil)

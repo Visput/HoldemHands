@@ -1,5 +1,5 @@
 //
-//  GameLevel.swift
+//  Level.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 3/2/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GameLevel: Equatable {
+struct Level: Equatable {
     
     let numberOfHands: Int
     let chipsToUnlock: Double
@@ -18,6 +18,6 @@ struct GameLevel: Equatable {
     let identifier: Int
 }
 
-func == (lhs: GameLevel, rhs: GameLevel) -> Bool {
+func == (lhs: Level, rhs: Level) -> Bool {
     return lhs.identifier == rhs.identifier
 }

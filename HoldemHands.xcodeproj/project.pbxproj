@@ -12,8 +12,8 @@
 		9F1BD3561C93701C00020AAA /* SharingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1BD3551C93701C00020AAA /* SharingItem.swift */; };
 		9F1DDD091C89022A005F1D72 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD081C89022A005F1D72 /* NavigationManager.swift */; };
 		9F1DDD231C8A130E005F1D72 /* SharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD221C8A130E005F1D72 /* SharingManager.swift */; };
-		9F1DDD251C8A13B3005F1D72 /* GameLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD241C8A13B3005F1D72 /* GameLevelCell.swift */; };
-		9F1DDD271C8A13C7005F1D72 /* GameLevelCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD261C8A13C7005F1D72 /* GameLevelCellItem.swift */; };
+		9F1DDD251C8A13B3005F1D72 /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD241C8A13B3005F1D72 /* LevelCell.swift */; };
+		9F1DDD271C8A13C7005F1D72 /* LevelCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD261C8A13C7005F1D72 /* LevelCellItem.swift */; };
 		9F1DDD291C8D0B27005F1D72 /* HoldemHandsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD281C8D0B27005F1D72 /* HoldemHandsTests.swift */; };
 		9F3C4B721C91E3C800B37939 /* StatsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4B711C91E3C800B37939 /* StatsScreen.swift */; };
 		9F3C4B741C91E40800B37939 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4B731C91E40800B37939 /* StatsView.swift */; };
@@ -50,11 +50,15 @@
 		9F44D2451C84C63900640046 /* NSObject+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2401C84C63900640046 /* NSObject+Utils.swift */; };
 		9F44D2461C84C63900640046 /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2411C84C63900640046 /* ObserverSet.swift */; };
 		9F44D2471C84C63900640046 /* UIScreen+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2421C84C63900640046 /* UIScreen+Size.swift */; };
-		9F95E15A1C875D0100D6F368 /* GameLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1591C875D0100D6F368 /* GameLevel.swift */; };
-		9F95E15C1C87602D00D6F368 /* GameLevelsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15B1C87602D00D6F368 /* GameLevelsProvider.swift */; };
-		9F95E15E1C8761C700D6F368 /* GameLevelProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15D1C8761C700D6F368 /* GameLevelProgress.swift */; };
+		9F95E15A1C875D0100D6F368 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1591C875D0100D6F368 /* Level.swift */; };
+		9F95E15C1C87602D00D6F368 /* LevelsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15B1C87602D00D6F368 /* LevelsProvider.swift */; };
+		9F95E15E1C8761C700D6F368 /* LevelProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15D1C8761C700D6F368 /* LevelProgress.swift */; };
 		9F95E1601C879A9D00D6F368 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15F1C879A9D00D6F368 /* Player.swift */; };
 		9F95E1621C879B3100D6F368 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1611C879B3100D6F368 /* PlayerManager.swift */; };
+		9FE888E31C93F53400A39C2C /* StatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E21C93F53400A39C2C /* StatsCell.swift */; };
+		9FE888E51C93F54F00A39C2C /* StatsCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */; };
+		9FE888E71C93F62700A39C2C /* PlayerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E61C93F62700A39C2C /* PlayerProgress.swift */; };
+		9FE888E91C93F76B00A39C2C /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E81C93F76B00A39C2C /* Progress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +77,8 @@
 		9F1BD3551C93701C00020AAA /* SharingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingItem.swift; sourceTree = "<group>"; };
 		9F1DDD081C89022A005F1D72 /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		9F1DDD221C8A130E005F1D72 /* SharingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingManager.swift; sourceTree = "<group>"; };
-		9F1DDD241C8A13B3005F1D72 /* GameLevelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLevelCell.swift; sourceTree = "<group>"; };
-		9F1DDD261C8A13C7005F1D72 /* GameLevelCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLevelCellItem.swift; sourceTree = "<group>"; };
+		9F1DDD241C8A13B3005F1D72 /* LevelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
+		9F1DDD261C8A13C7005F1D72 /* LevelCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCellItem.swift; sourceTree = "<group>"; };
 		9F1DDD281C8D0B27005F1D72 /* HoldemHandsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoldemHandsTests.swift; sourceTree = "<group>"; };
 		9F3C4B711C91E3C800B37939 /* StatsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsScreen.swift; sourceTree = "<group>"; };
 		9F3C4B731C91E40800B37939 /* StatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
@@ -113,13 +117,17 @@
 		9F44D2401C84C63900640046 /* NSObject+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Utils.swift"; sourceTree = "<group>"; };
 		9F44D2411C84C63900640046 /* ObserverSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverSet.swift; sourceTree = "<group>"; };
 		9F44D2421C84C63900640046 /* UIScreen+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Size.swift"; sourceTree = "<group>"; };
-		9F95E1591C875D0100D6F368 /* GameLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLevel.swift; sourceTree = "<group>"; };
-		9F95E15B1C87602D00D6F368 /* GameLevelsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLevelsProvider.swift; sourceTree = "<group>"; };
-		9F95E15D1C8761C700D6F368 /* GameLevelProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLevelProgress.swift; sourceTree = "<group>"; };
+		9F95E1591C875D0100D6F368 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		9F95E15B1C87602D00D6F368 /* LevelsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsProvider.swift; sourceTree = "<group>"; };
+		9F95E15D1C8761C700D6F368 /* LevelProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelProgress.swift; sourceTree = "<group>"; };
 		9F95E15F1C879A9D00D6F368 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		9F95E1611C879B3100D6F368 /* PlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 		9FACAAC91C72BCC20051A435 /* HoldemHands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FACAADD1C72BCC20051A435 /* HoldemHandsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoldemHandsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FE888E21C93F53400A39C2C /* StatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCell.swift; sourceTree = "<group>"; };
+		9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCellItem.swift; sourceTree = "<group>"; };
+		9FE888E61C93F62700A39C2C /* PlayerProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgress.swift; sourceTree = "<group>"; };
+		9FE888E81C93F76B00A39C2C /* Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		B77C71BFF06C1B554EEEC53C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -152,13 +160,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9F1BD3511C936FC600020AAA /* GameLevelsProvider */ = {
+		9F1BD3511C936FC600020AAA /* LevelsProvider */ = {
 			isa = PBXGroup;
 			children = (
-				9F95E15B1C87602D00D6F368 /* GameLevelsProvider.swift */,
-				9F95E1591C875D0100D6F368 /* GameLevel.swift */,
+				9F95E15B1C87602D00D6F368 /* LevelsProvider.swift */,
+				9F95E1591C875D0100D6F368 /* Level.swift */,
 			);
-			name = GameLevelsProvider;
+			name = LevelsProvider;
 			sourceTree = "<group>";
 		};
 		9F1BD3521C936FDC00020AAA /* NavigationManager */ = {
@@ -175,7 +183,9 @@
 				9F95E1611C879B3100D6F368 /* PlayerManager.swift */,
 				9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */,
 				9F95E15F1C879A9D00D6F368 /* Player.swift */,
-				9F95E15D1C8761C700D6F368 /* GameLevelProgress.swift */,
+				9F95E15D1C8761C700D6F368 /* LevelProgress.swift */,
+				9FE888E61C93F62700A39C2C /* PlayerProgress.swift */,
+				9FE888E81C93F76B00A39C2C /* Progress.swift */,
 			);
 			name = PlayerManager;
 			sourceTree = "<group>";
@@ -194,6 +204,8 @@
 			children = (
 				9F3C4B711C91E3C800B37939 /* StatsScreen.swift */,
 				9F3C4B731C91E40800B37939 /* StatsView.swift */,
+				9FE888E21C93F53400A39C2C /* StatsCell.swift */,
+				9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */,
 			);
 			name = StatsScreen;
 			sourceTree = "<group>";
@@ -315,8 +327,8 @@
 			children = (
 				9F44D2311C84BAA900640046 /* MainScreen.swift */,
 				9F44D2331C84BAC700640046 /* MainView.swift */,
-				9F1DDD241C8A13B3005F1D72 /* GameLevelCell.swift */,
-				9F1DDD261C8A13C7005F1D72 /* GameLevelCellItem.swift */,
+				9F1DDD241C8A13B3005F1D72 /* LevelCell.swift */,
+				9F1DDD261C8A13C7005F1D72 /* LevelCellItem.swift */,
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
@@ -335,7 +347,7 @@
 				9F44D23F1C84C63900640046 /* ModelProvider.swift */,
 				9F1BD3531C936FED00020AAA /* PlayerManager */,
 				9F1BD3521C936FDC00020AAA /* NavigationManager */,
-				9F1BD3511C936FC600020AAA /* GameLevelsProvider */,
+				9F1BD3511C936FC600020AAA /* LevelsProvider */,
 				9F1BD3541C93700E00020AAA /* SharingManager */,
 			);
 			name = Model;
@@ -604,10 +616,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F44D2461C84C63900640046 /* ObserverSet.swift in Sources */,
-				9F95E15C1C87602D00D6F368 /* GameLevelsProvider.swift in Sources */,
+				9F95E15C1C87602D00D6F368 /* LevelsProvider.swift in Sources */,
 				9F3C4BDF1C9251E700B37939 /* BannerView.swift in Sources */,
+				9FE888E31C93F53400A39C2C /* StatsCell.swift in Sources */,
 				9F44D2191C84B21A00640046 /* HandRank.swift in Sources */,
-				9F1DDD271C8A13C7005F1D72 /* GameLevelCellItem.swift in Sources */,
+				9F1DDD271C8A13C7005F1D72 /* LevelCellItem.swift in Sources */,
 				9F3C4BE61C925A7A00B37939 /* UIView+Nib.swift in Sources */,
 				9F44D2471C84C63900640046 /* UIScreen+Size.swift in Sources */,
 				9F44D2211C84B21A00640046 /* Rank.swift in Sources */,
@@ -620,7 +633,7 @@
 				9F44D2321C84BAA900640046 /* MainScreen.swift in Sources */,
 				9F1DDD091C89022A005F1D72 /* NavigationManager.swift in Sources */,
 				9F95E1601C879A9D00D6F368 /* Player.swift in Sources */,
-				9F95E15E1C8761C700D6F368 /* GameLevelProgress.swift in Sources */,
+				9F95E15E1C8761C700D6F368 /* LevelProgress.swift in Sources */,
 				9F44D21D1C84B21A00640046 /* GameView.swift in Sources */,
 				9F44D2151C84B21A00640046 /* Hand.swift in Sources */,
 				9F44D2341C84BAC700640046 /* MainView.swift in Sources */,
@@ -631,18 +644,21 @@
 				9F44D21B1C84B21A00640046 /* HandRankComparator.swift in Sources */,
 				9F3C4B721C91E3C800B37939 /* StatsScreen.swift in Sources */,
 				9F44D2231C84B21A00640046 /* UIColor+AppPalette.swift in Sources */,
+				9FE888E71C93F62700A39C2C /* PlayerProgress.swift in Sources */,
+				9FE888E51C93F54F00A39C2C /* StatsCellItem.swift in Sources */,
 				9F44D2441C84C63900640046 /* ModelProvider.swift in Sources */,
-				9F1DDD251C8A13B3005F1D72 /* GameLevelCell.swift in Sources */,
+				9F1DDD251C8A13B3005F1D72 /* LevelCell.swift in Sources */,
 				9F1DDD231C8A130E005F1D72 /* SharingManager.swift in Sources */,
 				9F3C4BE81C925BDA00B37939 /* PlayerManagerObserver.swift in Sources */,
 				9F44D2221C84B21A00640046 /* Suit.swift in Sources */,
+				9FE888E91C93F76B00A39C2C /* Progress.swift in Sources */,
 				9F44D2201C84B21A00640046 /* QuickArray.swift in Sources */,
 				9F44D2121C84B21A00640046 /* AppDelegate.swift in Sources */,
 				9F44D21A1C84B21A00640046 /* HandRankCalculator.swift in Sources */,
 				9F44D2131C84B21A00640046 /* Card.swift in Sources */,
 				9F44D21E1C84B21A00640046 /* HandOddsCalculator.swift in Sources */,
 				9F44D2161C84B21A00640046 /* HandCell.swift in Sources */,
-				9F95E15A1C875D0100D6F368 /* GameLevel.swift in Sources */,
+				9F95E15A1C875D0100D6F368 /* Level.swift in Sources */,
 				9F44D2171C84B21A00640046 /* HandCellItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

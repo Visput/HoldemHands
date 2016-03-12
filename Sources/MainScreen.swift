@@ -27,11 +27,11 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GameLevelCell.className(),
-            forIndexPath: indexPath) as! GameLevelCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(LevelCell.className(),
+            forIndexPath: indexPath) as! LevelCell
         
         let level = model.levelsProvider.levels[indexPath.item]
-        let item = GameLevelCellItem(level: level,
+        let item = LevelCellItem(level: level,
             locked: model.playerManager.isLockedLevel(level),
             canUnlock: model.playerManager.canUnlockLevel(level),
             buttonsTag: indexPath.item)
@@ -43,7 +43,7 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(indexPath) as! GameLevelCell
+        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(indexPath) as! LevelCell
         startLevelButtonDidPress(cell.playButton)
     }
 }
@@ -51,14 +51,14 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
 extension MainScreen {
     
     @objc private func startLevelButtonDidPress(sender: UIButton) {
-        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! GameLevelCell
+        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! LevelCell
         if !cell.item.locked {
             model.navigationManager.presentGameScreenWithLevel(cell.item.level, animated: true)
         }
     }
     
     @objc private func unlockLevelButtonDidPress(sender: UIButton) {
-        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! GameLevelCell
+        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! LevelCell
         model.playerManager.unlockLevel(cell.item.level)
         mainView.levelsCollectionView.reloadData()
     }

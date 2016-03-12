@@ -10,7 +10,7 @@ import UIKit
 
 final class GameScreen: BaseViewController {
     
-    var level: GameLevel!
+    var level: Level!
     
     private var currentHandOddsCalculator: HandOddsCalculator!
     private var nextHandOddsCalculator: HandOddsCalculator!
@@ -146,7 +146,7 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
 
 extension GameScreen: PlayerManagerObserving {
     
-    func playerManager(manager: PlayerManager, didEarnChipsToUnlockLevel levelProgress: GameLevelProgress) {
+    func playerManager(manager: PlayerManager, didEarnChipsToUnlockLevel levelProgress: LevelProgress) {
         let levelName = levelProgress.level.name
         let text =  NSString(format: NSLocalizedString("Congratulations. You earned enough chips to unlock %@", comment: ""), levelName)
         model.navigationManager.showBannerWithText(text as String, tapAction: { [unowned self] in

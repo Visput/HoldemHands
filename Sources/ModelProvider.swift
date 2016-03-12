@@ -12,13 +12,13 @@ final class ModelProvider {
     
     static let provider = ModelProvider()
     
-    let levelsProvider: GameLevelsProvider
+    let levelsProvider: LevelsProvider
     let playerManager: PlayerManager
     let navigationManager: NavigationManager
     let sharingManager: SharingManager
     
     init() {
-        levelsProvider = GameLevelsProvider()
+        levelsProvider = LevelsProvider()
         playerManager = PlayerManager(levelsProvider: levelsProvider)
         navigationManager = NavigationManager()
         sharingManager = SharingManager()

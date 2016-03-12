@@ -1,5 +1,5 @@
 //
-//  GameLevelCell.swift
+//  LevelCell.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 3/4/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class GameLevelCell: UICollectionViewCell {
+final class LevelCell: UICollectionViewCell {
     
     @IBOutlet private(set) weak var levelLabel: UILabel!
     @IBOutlet private(set) weak var playButton: UIButton!
@@ -16,9 +16,9 @@ final class GameLevelCell: UICollectionViewCell {
     @IBOutlet private(set) weak var lockedLabel: UILabel!
     @IBOutlet private(set) weak var priceLabel: UILabel!
     
-    private(set) var item: GameLevelCellItem!
+    private(set) var item: LevelCellItem!
     
-    func fillWithItem(item: GameLevelCellItem) {
+    func fillWithItem(item: LevelCellItem) {
         self.item = item
         
         levelLabel.text = item.level.name

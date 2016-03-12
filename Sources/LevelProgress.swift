@@ -1,5 +1,5 @@
 //
-//  GameLevelStats.swift
+//  LevelStats.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 3/2/16.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct GameLevelProgress {
+struct LevelProgress: Progress {
     
-    let level: GameLevel
+    let level: Level
     let locked: Bool
     let notifiedToUnlock: Bool
     let maxNumberOfWinsInRow: Int
@@ -19,7 +19,7 @@ struct GameLevelProgress {
     let numberOfLosses: Int
     let chipsCount: Double
     
-    init(level: GameLevel) {
+    init(level: Level) {
         self.level = level
         self.locked = true
         self.notifiedToUnlock = false
@@ -30,7 +30,7 @@ struct GameLevelProgress {
         self.chipsCount = 0
     }
     
-    init(level: GameLevel,
+    init(level: Level,
         locked: Bool,
         notifiedToUnlock: Bool,
         maxNumberOfWinsInRow: Int,
@@ -48,11 +48,15 @@ struct GameLevelProgress {
             self.numberOfLosses = numberOfLosses
             self.chipsCount = chipsCount
     }
+    
+    func title() -> String? {
+        return level.name
+    }
 }
 
-extension GameLevelProgress {
+extension LevelProgress {
     
-    func levelProgressByIncrementingNumberOfWins(chipsWon chipsWon: Double) -> GameLevelProgress {
+    func levelProgressByIncrementingNumberOfWins(chipsWon chipsWon: Double) -> LevelProgress {
         return self.dynamicType.init(level: level,
             locked: locked,
             notifiedToUnlock: notifiedToUnlock,
@@ -63,7 +67,7 @@ extension GameLevelProgress {
             chipsCount: chipsCount + chipsWon)
     }
     
-    func levelProgressByIncrementingNumberOfLosses(chipsLost chipsLost: Double) -> GameLevelProgress {
+    func levelProgressByIncrementingNumberOfLosses(chipsLost chipsLost: Double) -> LevelProgress {
         return self.dynamicType.init(level: level,
             locked: locked,
             notifiedToUnlock: notifiedToUnlock,
@@ -74,7 +78,7 @@ extension GameLevelProgress {
             chipsCount: chipsCount - chipsLost)
     }
     
-    func levelProgressBySettingNotifiedToUnlock() -> GameLevelProgress {
+    func levelProgressBySettingNotifiedToUnlock() -> LevelProgress {
         return self.dynamicType.init(level: level,
             locked: locked,
             notifiedToUnlock: true,
@@ -85,7 +89,7 @@ extension GameLevelProgress {
             chipsCount: chipsCount)
     }
     
-    func levelProgressBySettingUnlocked() -> GameLevelProgress {
+    func levelProgressBySettingUnlocked() -> LevelProgress {
         return self.dynamicType.init(level: level,
             locked: false,
             notifiedToUnlock: notifiedToUnlock,

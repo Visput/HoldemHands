@@ -1,5 +1,5 @@
 //
-//  GameLevelCellItem.swift
+//  LevelCellItem.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 3/4/16.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct GameLevelCellItem {
+struct LevelCellItem {
     
-    let level: GameLevel
+    let level: Level
     let locked: Bool
     let canUnlock: Bool
     let buttonsTag: Int

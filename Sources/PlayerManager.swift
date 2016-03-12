@@ -15,11 +15,11 @@ final class PlayerManager {
     
     private(set) var player: Player!
     
-    private let levelsProvider: GameLevelsProvider
+    private let levelsProvider: LevelsProvider
     private var autoSaveTimer: NSTimer?
     private let autoSaveTimerInterval = 300.0 // Secs.
     
-    init(levelsProvider: GameLevelsProvider) {
+    init(levelsProvider: LevelsProvider) {
         self.levelsProvider = levelsProvider
         loadPlayer()
         registerForAppLifeCycleNotifications()
@@ -33,16 +33,16 @@ final class PlayerManager {
         return player != nil
     }
     
-    func isLockedLevel(level: GameLevel) -> Bool {
+    func isLockedLevel(level: Level) -> Bool {
         let progress = progressItemForLevel(level).progress
         return progress.locked
     }
     
-    func canUnlockLevel(level: GameLevel) -> Bool {
+    func canUnlockLevel(level: Level) -> Bool {
         return player.chipsCount >= level.chipsToUnlock
     }
     
-    func unlockLevel(level: GameLevel) {
+    func unlockLevel(level: Level) {
         precondition(isLockedLevel(level))
         precondition(canUnlockLevel(level))
         
@@ -53,7 +53,7 @@ final class PlayerManager {
         savePlayer()
     }
     
-    func trackNewWinInLevel(level: GameLevel) {
+    func trackNewWinInLevel(level: Level) {
         let chipsWon = level.chipsPerWin * chipsMultiplierForLevel(level)
         player.chipsCount += chipsWon
         
@@ -77,7 +77,7 @@ final class PlayerManager {
         }
     }
     
-    func trackNewLossInLevel(level: GameLevel) {
+    func trackNewLossInLevel(level: Level) {
         let chipsLost = level.chipsPerWin
         // Total chips count can not be less than zero.
         player.chipsCount = max(0.0, player.chipsCount - chipsLost)
@@ -88,14 +88,37 @@ final class PlayerManager {
         player.levelProgressItems[progressItem.index] = newLevelProgress
     }
     
-    func chipsMultiplierForLevel(level: GameLevel) -> Double {
+    func chipsMultiplierForLevel(level: Level) -> Double {
         let progressItem = progressItemForLevel(level)
         return pow(2, Double(progressItem.progress.currentNumberOfWinsInRow / level.winsInRowToDoubleChips))
     }
     
-    private func progressItemForLevel(level: GameLevel) -> (index: Int, progress: GameLevelProgress) {
-        var progressItem: (Int, GameLevelProgress)! = nil
-        for (index, progress) in player.levelProgressItems.enumerate() {
+    func levelProgressItems() -> [LevelProgress] {
+        return player.levelProgressItems
+    }
+    
+    func playerProgress() -> PlayerProgress {
+        var maxNumberOfWinsInRow = 0
+        var numberOfWins = 0
+        var numberOfLosses = 0
+        var chipsCount = 0.0
+        
+        for levelProgress in levelProgressItems() {
+            maxNumberOfWinsInRow = max(maxNumberOfWinsInRow, levelProgress.maxNumberOfWinsInRow)
+            numberOfWins += levelProgress.numberOfWins
+            numberOfLosses += levelProgress.numberOfLosses
+            chipsCount += levelProgress.chipsCount
+        }
+        
+        return PlayerProgress(maxNumberOfWinsInRow: maxNumberOfWinsInRow,
+            numberOfWins: numberOfWins,
+            numberOfLosses: numberOfLosses,
+            chipsCount: chipsCount)
+    }
+    
+    private func progressItemForLevel(level: Level) -> (index: Int, progress: LevelProgress) {
+        var progressItem: (Int, LevelProgress)! = nil
+        for (index, progress) in levelProgressItems().enumerate() {
             if progress.level == level {
                 progressItem = (index, progress)
                 break
@@ -112,7 +135,7 @@ extension PlayerManager {
         if player == nil {
             player = Player()
             for level in levelsProvider.levels {
-                player.levelProgressItems.append(GameLevelProgress(level: level))
+                player.levelProgressItems.append(LevelProgress(level: level))
             }
             unlockLevel(player.levelProgressItems[0].level)
         }
@@ -168,13 +191,13 @@ extension PlayerManager {
 
 extension PlayerManager {
     
-    private func notifyObserversDidEarnChipsToUnlockLevel(levelProgress: GameLevelProgress) {
+    private func notifyObserversDidEarnChipsToUnlockLevel(levelProgress: LevelProgress) {
         for observer in observers {
             observer.playerManager(self, didEarnChipsToUnlockLevel: levelProgress)
         }
     }
     
-    private func notifyObserversDidSetNewWinRecordForLevel(levelProgress: GameLevelProgress) {
+    private func notifyObserversDidSetNewWinRecordForLevel(levelProgress: LevelProgress) {
         for observer in observers {
             observer.playerManager(self, didSetNewWinRecordForLevel: levelProgress)
         }
