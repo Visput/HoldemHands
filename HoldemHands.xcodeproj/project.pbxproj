@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08CF424122F5D177FE38852F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77C71BFF06C1B554EEEC53C /* Pods.framework */; };
 		7A81F60957113DF73385C2B0 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77C71BFF06C1B554EEEC53C /* Pods.framework */; };
+		9F1BD3561C93701C00020AAA /* SharingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1BD3551C93701C00020AAA /* SharingItem.swift */; };
 		9F1DDD091C89022A005F1D72 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD081C89022A005F1D72 /* NavigationManager.swift */; };
 		9F1DDD231C8A130E005F1D72 /* SharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD221C8A130E005F1D72 /* SharingManager.swift */; };
 		9F1DDD251C8A13B3005F1D72 /* GameLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD241C8A13B3005F1D72 /* GameLevelCell.swift */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		25C523273D3C4AF45346EF9E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		38F1C5899B0FDC694E47BE96 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9F1BD3551C93701C00020AAA /* SharingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingItem.swift; sourceTree = "<group>"; };
 		9F1DDD081C89022A005F1D72 /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		9F1DDD221C8A130E005F1D72 /* SharingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingManager.swift; sourceTree = "<group>"; };
 		9F1DDD241C8A13B3005F1D72 /* GameLevelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLevelCell.swift; sourceTree = "<group>"; };
@@ -148,6 +150,43 @@
 				25C523273D3C4AF45346EF9E /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9F1BD3511C936FC600020AAA /* GameLevelsProvider */ = {
+			isa = PBXGroup;
+			children = (
+				9F95E15B1C87602D00D6F368 /* GameLevelsProvider.swift */,
+				9F95E1591C875D0100D6F368 /* GameLevel.swift */,
+			);
+			name = GameLevelsProvider;
+			sourceTree = "<group>";
+		};
+		9F1BD3521C936FDC00020AAA /* NavigationManager */ = {
+			isa = PBXGroup;
+			children = (
+				9F1DDD081C89022A005F1D72 /* NavigationManager.swift */,
+			);
+			name = NavigationManager;
+			sourceTree = "<group>";
+		};
+		9F1BD3531C936FED00020AAA /* PlayerManager */ = {
+			isa = PBXGroup;
+			children = (
+				9F95E1611C879B3100D6F368 /* PlayerManager.swift */,
+				9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */,
+				9F95E15F1C879A9D00D6F368 /* Player.swift */,
+				9F95E15D1C8761C700D6F368 /* GameLevelProgress.swift */,
+			);
+			name = PlayerManager;
+			sourceTree = "<group>";
+		};
+		9F1BD3541C93700E00020AAA /* SharingManager */ = {
+			isa = PBXGroup;
+			children = (
+				9F1DDD221C8A130E005F1D72 /* SharingManager.swift */,
+				9F1BD3551C93701C00020AAA /* SharingItem.swift */,
+			);
+			name = SharingManager;
 			sourceTree = "<group>";
 		};
 		9F3C4B701C91E39900B37939 /* StatsScreen */ = {
@@ -293,25 +332,13 @@
 		9F44D2481C84C66300640046 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9F95E1581C875CEA00D6F368 /* DTO */,
 				9F44D23F1C84C63900640046 /* ModelProvider.swift */,
-				9F95E15B1C87602D00D6F368 /* GameLevelsProvider.swift */,
-				9F1DDD081C89022A005F1D72 /* NavigationManager.swift */,
-				9F1DDD221C8A130E005F1D72 /* SharingManager.swift */,
-				9F95E1611C879B3100D6F368 /* PlayerManager.swift */,
-				9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */,
+				9F1BD3531C936FED00020AAA /* PlayerManager */,
+				9F1BD3521C936FDC00020AAA /* NavigationManager */,
+				9F1BD3511C936FC600020AAA /* GameLevelsProvider */,
+				9F1BD3541C93700E00020AAA /* SharingManager */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		9F95E1581C875CEA00D6F368 /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				9F95E1591C875D0100D6F368 /* GameLevel.swift */,
-				9F95E15D1C8761C700D6F368 /* GameLevelProgress.swift */,
-				9F95E15F1C879A9D00D6F368 /* Player.swift */,
-			);
-			name = DTO;
 			sourceTree = "<group>";
 		};
 		9FACAAC01C72BCC20051A435 = {
@@ -587,6 +614,7 @@
 				9F95E1621C879B3100D6F368 /* PlayerManager.swift in Sources */,
 				9F44D23D1C84C61900640046 /* BaseViewController.swift in Sources */,
 				9F3C4BE21C92586800B37939 /* TextBannerView.swift in Sources */,
+				9F1BD3561C93701C00020AAA /* SharingItem.swift in Sources */,
 				9F3C4B741C91E40800B37939 /* StatsView.swift in Sources */,
 				9F44D2451C84C63900640046 /* NSObject+Utils.swift in Sources */,
 				9F44D2321C84BAA900640046 /* MainScreen.swift in Sources */,

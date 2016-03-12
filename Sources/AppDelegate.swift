@@ -10,21 +10,24 @@ import UIKit
 import Fabric
 import Crashlytics
 import TwitterKit
+import FBSDKCoreKit
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        Fabric.with([Crashlytics(), Twitter()])
-        
-        let model = ModelProvider.provider
-        model.navigationManager.window = window
-        model.navigationManager.setMainScreenAsRootAnimated(false)
-        
-        return true
+    func application(application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+            
+            FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+            Fabric.with([Crashlytics(), Twitter()])
+            
+            let model = ModelProvider.provider
+            model.navigationManager.window = window
+            model.navigationManager.setMainScreenAsRootAnimated(false)
+            
+            return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -40,10 +43,21 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(application: UIApplication) {
 
+    }
+    
+    func application(application: UIApplication,
+        openURL url: NSURL,
+        sourceApplication: String?,
+        annotation: AnyObject) -> Bool {
+            
+            return FBSDKApplicationDelegate.sharedInstance().application(application,
+                openURL: url,
+                sourceApplication: sourceApplication,
+                annotation: annotation)
     }
 }
