@@ -41,7 +41,7 @@ extension StatsScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         if indexPath.item == 0 {
             progressItem = model.playerManager.playerProgress()
         } else {
-            progressItem = model.playerManager.levelProgressItems()[indexPath.item + 1]
+            progressItem = model.playerManager.levelProgressItems()[indexPath.item - 1]
         }
         let item = StatsCellItem(progressItem: progressItem)
         cell.fillWithItem(item)

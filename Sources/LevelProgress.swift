@@ -19,6 +19,10 @@ struct LevelProgress: Progress {
     let numberOfLosses: Int
     let chipsCount: Double
     
+    var title: String? {
+        return level.name
+    }
+    
     init(level: Level) {
         self.level = level
         self.locked = true
@@ -47,10 +51,6 @@ struct LevelProgress: Progress {
             self.numberOfWins = numberOfWins
             self.numberOfLosses = numberOfLosses
             self.chipsCount = chipsCount
-    }
-    
-    func title() -> String? {
-        return level.name
     }
 }
 

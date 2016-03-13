@@ -15,7 +15,7 @@ struct PlayerProgress: Progress {
     let numberOfLosses: Int
     let chipsCount: Double
     
-    func title() -> String? {
+    var title: String? {
         return nil
     }
 }

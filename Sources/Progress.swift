@@ -15,5 +15,18 @@ protocol Progress {
     var numberOfLosses: Int { get }
     var chipsCount: Double { get }
     
-    func title() -> String?
+    var title: String? { get }
+    var winPercent: Double { get }
+    var handsCount: Int { get }
+}
+
+extension Progress {
+    
+    var winPercent: Double {
+        return Double(numberOfWins) / Double(numberOfWins + numberOfLosses)
+    }
+    
+    var handsCount: Int {
+        return numberOfWins + numberOfLosses
+    }
 }
