@@ -122,7 +122,7 @@ extension MainScreen {
     
     private func fillViewsWithModel() {
         mainView.levelsCollectionView.reloadData()
-        mainView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %.0f", comment: ""),
-            model.playerManager.player.chipsCount) as String
+        mainView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %@", comment: ""),
+            model.playerManager.player.chipsCount.formattedChipsCountString) as String
     }
 }

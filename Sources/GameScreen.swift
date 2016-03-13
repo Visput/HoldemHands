@@ -79,8 +79,8 @@ final class GameScreen: BaseViewController {
     }
     
     private func updateChipsCountLabel() {
-        gameView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %.0f   x%.0f", comment: ""),
-            model.playerManager.player.chipsCount,
+        gameView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %@   x%.0f", comment: ""),
+            model.playerManager.player.chipsCount.formattedChipsCountString,
             model.playerManager.chipsMultiplierForLevel(level)) as String
     }
 }

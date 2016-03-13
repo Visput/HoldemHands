@@ -23,7 +23,7 @@ protocol Progress {
 extension Progress {
     
     var winPercent: Double {
-        return Double(numberOfWins) / Double(numberOfWins + numberOfLosses)
+        return Double(100 * numberOfWins) / Double(numberOfWins + numberOfLosses)
     }
     
     var handsCount: Int {

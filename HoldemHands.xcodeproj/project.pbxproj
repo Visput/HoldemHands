@@ -59,6 +59,7 @@
 		9FE888E51C93F54F00A39C2C /* StatsCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */; };
 		9FE888E71C93F62700A39C2C /* PlayerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E61C93F62700A39C2C /* PlayerProgress.swift */; };
 		9FE888E91C93F76B00A39C2C /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E81C93F76B00A39C2C /* Progress.swift */; };
+		9FE888EB1C94F6A000A39C2C /* Double+Chips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888EA1C94F6A000A39C2C /* Double+Chips.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCellItem.swift; sourceTree = "<group>"; };
 		9FE888E61C93F62700A39C2C /* PlayerProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgress.swift; sourceTree = "<group>"; };
 		9FE888E81C93F76B00A39C2C /* Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
+		9FE888EA1C94F6A000A39C2C /* Double+Chips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Chips.swift"; sourceTree = "<group>"; };
 		B77C71BFF06C1B554EEEC53C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -299,6 +301,7 @@
 				9F44D2421C84C63900640046 /* UIScreen+Size.swift */,
 				9F44D20D1C84B21A00640046 /* UIColor+AppPalette.swift */,
 				9F3C4BE51C925A7A00B37939 /* UIView+Nib.swift */,
+				9FE888EA1C94F6A000A39C2C /* Double+Chips.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				9F3C4B741C91E40800B37939 /* StatsView.swift in Sources */,
 				9F44D2451C84C63900640046 /* NSObject+Utils.swift in Sources */,
 				9F44D2321C84BAA900640046 /* MainScreen.swift in Sources */,
+				9FE888EB1C94F6A000A39C2C /* Double+Chips.swift in Sources */,
 				9F1DDD091C89022A005F1D72 /* NavigationManager.swift in Sources */,
 				9F95E1601C879A9D00D6F368 /* Player.swift in Sources */,
 				9F95E15E1C8761C700D6F368 /* LevelProgress.swift in Sources */,
