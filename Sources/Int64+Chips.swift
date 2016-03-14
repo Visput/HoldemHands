@@ -11,6 +11,10 @@ import Foundation
 extension Int64 {
     
     var formattedChipsCountString: String {
-        return NSString(format: "%lld$", self) as String
+        let formatter =  NSNumberFormatter()
+        formatter.groupingSize = 3
+        formatter.groupingSeparator = " "
+        formatter.currencySymbol = "$"
+        return formatter.stringFromNumber(NSNumber(longLong: self))!
     }
 }
