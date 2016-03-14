@@ -42,8 +42,7 @@ final class SharingManager: NSObject {
         }
         
         let imageData = UIImageJPEGRepresentation(item.image!, 1.0)
-        let documentsDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as NSString
-        let imagePath = documentsDirectory.stringByAppendingPathComponent(instagramImageFileName)
+        let imagePath = instagramImageFileName.pathInDocumentsDirectory()
         NSFileManager.defaultManager().createFileAtPath(imagePath, contents: imageData, attributes: nil)
         let imageURL = NSURL(fileURLWithPath: imagePath)
         

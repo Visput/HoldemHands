@@ -33,7 +33,7 @@ final class StatsCell: UICollectionViewCell {
             statsContentView.hidden = false
             noStatsView.hidden = true
             
-            chipsCountLabel.text = NSString(format: "%@", item.progressItem.chipsCount.formattedChipsCountString) as String
+            chipsCountLabel.text = item.progressItem.chipsCount.formattedChipsCountString
             winPercentLabel.text = NSString(format: "%.2f%%", item.progressItem.winPercent) as String
             winsInRowLabel.text = NSString(format: "%d", item.progressItem.maxNumberOfWinsInRow) as String
             handsCountLabel.text = NSString(format: "%d", item.progressItem.handsCount) as String

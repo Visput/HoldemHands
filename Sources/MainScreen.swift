@@ -23,14 +23,14 @@ final class MainScreen: BaseViewController {
 extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.levelsProvider.levels.count
+        return model.playerManager.playerData.levelProgressItems.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(LevelCell.className(),
             forIndexPath: indexPath) as! LevelCell
         
-        let level = model.levelsProvider.levels[indexPath.item]
+        let level = model.playerManager.playerData.levelProgressItems[indexPath.item].level
         let item = LevelCellItem(level: level,
             locked: model.playerManager.isLockedLevel(level),
             canUnlock: model.playerManager.canUnlockLevel(level),
@@ -123,6 +123,6 @@ extension MainScreen {
     private func fillViewsWithModel() {
         mainView.levelsCollectionView.reloadData()
         mainView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %@", comment: ""),
-            model.playerManager.player.chipsCount.formattedChipsCountString) as String
+            model.playerManager.playerData.chipsCount.formattedChipsCountString) as String
     }
 }

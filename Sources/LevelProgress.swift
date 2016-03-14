@@ -7,31 +7,21 @@
 //
 
 import Foundation
+import ObjectMapper
 
-struct LevelProgress: Progress {
+struct LevelProgress: Progress, Mappable {
     
-    let level: Level
-    let locked: Bool
-    let notifiedToUnlock: Bool
-    let maxNumberOfWinsInRow: Int
-    let currentNumberOfWinsInRow: Int
-    let numberOfWins: Int
-    let numberOfLosses: Int
-    let chipsCount: Double
+    private(set) var level: Level!
+    private(set) var locked: Bool!
+    private(set) var notifiedToUnlock: Bool!
+    private(set) var maxNumberOfWinsInRow: Int!
+    private(set) var currentNumberOfWinsInRow: Int!
+    private(set) var numberOfWins: Int!
+    private(set) var numberOfLosses: Int!
+    private(set) var chipsCount: Int64!
     
     var title: String? {
         return level.name
-    }
-    
-    init(level: Level) {
-        self.level = level
-        self.locked = true
-        self.notifiedToUnlock = false
-        self.maxNumberOfWinsInRow = 0
-        self.currentNumberOfWinsInRow = 0
-        self.numberOfWins = 0
-        self.numberOfLosses = 0
-        self.chipsCount = 0
     }
     
     init(level: Level,
@@ -41,7 +31,7 @@ struct LevelProgress: Progress {
         currentNumberOfWinsInRow: Int,
         numberOfWins: Int,
         numberOfLosses: Int,
-        chipsCount: Double) {
+        chipsCount: Int64) {
         
             self.level = level
             self.locked = locked
@@ -52,11 +42,24 @@ struct LevelProgress: Progress {
             self.numberOfLosses = numberOfLosses
             self.chipsCount = chipsCount
     }
+    
+    init?(_ map: Map) {}
+    
+    mutating func mapping(map: Map) {
+        level <- map["level"]
+        locked <- map["locked"]
+        notifiedToUnlock <- map["notifiedToUnlock"]
+        maxNumberOfWinsInRow <- map["maxNumberOfWinsInRow"]
+        currentNumberOfWinsInRow <- map["currentNumberOfWinsInRow"]
+        numberOfWins <- map["numberOfWins"]
+        numberOfLosses <- map["numberOfLosses"]
+        chipsCount <- map["chipsCount"]
+    }
 }
 
 extension LevelProgress {
     
-    func levelProgressByIncrementingNumberOfWins(chipsWon chipsWon: Double) -> LevelProgress {
+    func levelProgressByIncrementingNumberOfWins(chipsWon chipsWon: Int64) -> LevelProgress {
         return self.dynamicType.init(level: level,
             locked: locked,
             notifiedToUnlock: notifiedToUnlock,
@@ -67,7 +70,7 @@ extension LevelProgress {
             chipsCount: chipsCount + chipsWon)
     }
     
-    func levelProgressByIncrementingNumberOfLosses(chipsLost chipsLost: Double) -> LevelProgress {
+    func levelProgressByIncrementingNumberOfLosses(chipsLost chipsLost: Int64) -> LevelProgress {
         return self.dynamicType.init(level: level,
             locked: locked,
             notifiedToUnlock: notifiedToUnlock,

@@ -1,5 +1,5 @@
 //
-//  Double+Chips.swift
+//  Int64+Chips.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 3/12/16.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension Double {
+extension Int64 {
     
     var formattedChipsCountString: String {
-        return NSString(format: "%.0f$", self) as String
+        return NSString(format: "%lld$", self) as String
     }
 }

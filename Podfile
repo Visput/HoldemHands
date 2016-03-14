@@ -14,3 +14,5 @@ pod 'TwitterKit'
 
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
+
+pod 'ObjectMapper'

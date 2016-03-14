@@ -10,10 +10,10 @@ import Foundation
 
 protocol Progress {
     
-    var maxNumberOfWinsInRow: Int { get }
-    var numberOfWins: Int { get }
-    var numberOfLosses: Int { get }
-    var chipsCount: Double { get }
+    var maxNumberOfWinsInRow: Int! { get }
+    var numberOfWins: Int! { get }
+    var numberOfLosses: Int! { get }
+    var chipsCount: Int64! { get }
     
     var title: String? { get }
     var winPercent: Double { get }

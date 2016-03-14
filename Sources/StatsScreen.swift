@@ -30,7 +30,7 @@ extension StatsScreen {
 extension StatsScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.playerManager.levelProgressItems().count + 1 // + 1 for overall progress.
+        return model.playerManager.playerData.levelProgressItems.count + 1 // + 1 for overall progress.
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -41,7 +41,7 @@ extension StatsScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         if indexPath.item == 0 {
             progressItem = model.playerManager.playerProgress()
         } else {
-            progressItem = model.playerManager.levelProgressItems()[indexPath.item - 1]
+            progressItem = model.playerManager.playerData.levelProgressItems[indexPath.item - 1]
         }
         let item = StatsCellItem(progressItem: progressItem)
         cell.fillWithItem(item)

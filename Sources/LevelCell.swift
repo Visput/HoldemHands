@@ -24,7 +24,7 @@ final class LevelCell: UICollectionViewCell {
         levelLabel.text = item.level.name
         playButton.tag = item.buttonsTag
         unlockButton.tag = item.buttonsTag
-        priceLabel.text = NSString(format: NSLocalizedString("Chips: %.0f", comment: ""), item.level.chipsToUnlock) as String
+        priceLabel.text = NSString(format: NSLocalizedString("Chips: %lld", comment: ""), item.level.chipsToUnlock) as String
         if item.locked {
             if item.canUnlock {
                 unlockButton.hidden = false

@@ -22,6 +22,14 @@ final class NavigationManager {
         return window.rootViewController!.storyboard!
     }
     
+    func presentScreen(screen: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
+        navigationController.presentViewController(screen, animated: animated, completion: completion)
+    }
+    
+    func dismissScreenAnimated(animated: Bool) {
+        navigationController.dismissViewControllerAnimated(animated, completion: nil)
+    }
+    
     func setMainScreenAsRootAnimated(animated: Bool) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(MainScreen.className()) as! MainScreen
         navigationController.setViewControllers([screen], animated: animated)
@@ -36,10 +44,6 @@ final class NavigationManager {
     func presentStatsScreenAnimated(animated: Bool) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(StatsScreen.className()) as! StatsScreen
         navigationController.presentViewController(screen, animated: animated, completion: nil)
-    }
-    
-    func dismissScreenAnimated(animated: Bool) {
-        navigationController.dismissViewControllerAnimated(animated, completion: nil)
     }
     
     func showBannerWithText(text: String, duration: NSTimeInterval = 5.0, tapAction: (() -> Void)? = nil) -> BannerView {

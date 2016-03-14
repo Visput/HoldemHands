@@ -10,10 +10,10 @@ import Foundation
 
 struct PlayerProgress: Progress {
     
-    let maxNumberOfWinsInRow: Int
-    let numberOfWins: Int
-    let numberOfLosses: Int
-    let chipsCount: Double
+    let maxNumberOfWinsInRow: Int!
+    let numberOfWins: Int!
+    let numberOfLosses: Int!
+    let chipsCount: Int64!
     
     var title: String? {
         return nil
