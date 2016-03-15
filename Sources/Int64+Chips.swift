@@ -12,8 +12,6 @@ extension Int64 {
     
     var formattedChipsCountString: String {
         let formatter =  NSNumberFormatter()
-        formatter.groupingSize = 3
-        formatter.groupingSeparator = " "
         formatter.currencySymbol = "$"
         formatter.numberStyle = .CurrencyStyle
         formatter.maximumFractionDigits = 0
