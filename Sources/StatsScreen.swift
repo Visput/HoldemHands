@@ -10,6 +10,8 @@ import UIKit
 
 final class StatsScreen: BaseViewController {
     
+    private var progressItems: [Progress]!
+    
     private var statsView: StatsView {
         return view as! StatsView
     }
@@ -25,24 +27,23 @@ extension StatsScreen {
     @IBAction private func closeButtonDidPress(sender: AnyObject) {
         model.navigationManager.dismissScreenAnimated(true)
     }
+    
+    @IBAction private func leaderboardsButtonDidPress(sender: AnyObject) {
+        model.navigationManager.presentLeaderboardWithID(nil, animated: true)
+    }
 }
 
 extension StatsScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.playerManager.playerData.levelProgressItems.count + 1 // + 1 for overall progress.
+        return progressItems.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(StatsCell.className(),
             forIndexPath: indexPath) as! StatsCell
         
-        var progressItem: Progress! = nil
-        if indexPath.item == 0 {
-            progressItem = model.playerManager.playerProgress()
-        } else {
-            progressItem = model.playerManager.playerData.levelProgressItems[indexPath.item - 1]
-        }
+        let progressItem: Progress = progressItems[indexPath.item]
         let item = StatsCellItem(progressItem: progressItem)
         cell.fillWithItem(item)
         
@@ -60,6 +61,8 @@ extension StatsScreen: PlayerManagerObserving {
 extension StatsScreen {
     
     private func fillViewsWithModel() {
+        progressItems = model.playerManager.progressItems()
         statsView.statsCollectionView.reloadData()
+        statsView.leaderboardsButton.hidden = !model.playerManager.authenticated
     }
 }

@@ -24,6 +24,10 @@ final class PlayerManager {
     private let autoSaveTimerInterval = 60.0 // Secs.
     private let playerIdentifierKey = "PlayerIdentifier"
     
+    var authenticated: Bool {
+        return player.authenticated
+    }
+    
     init(navigationManager: NavigationManager) {
         self.navigationManager = navigationManager
         loadPlayer()
@@ -112,6 +116,14 @@ final class PlayerManager {
             numberOfWins: numberOfWins,
             numberOfLosses: numberOfLosses,
             chipsCount: playerData.chipsCount)
+    }
+    
+    func progressItems() -> [Progress] {
+        var progressItems: [Progress] = [playerProgress()]
+        for levelProgressItem in playerData.levelProgressItems {
+            progressItems.append(levelProgressItem)
+        }
+        return progressItems
     }
     
     private func progressItemForLevel(level: Level) -> (index: Int, progress: LevelProgress) {

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GameKit
 
-final class NavigationManager {
+final class NavigationManager: NSObject {
     
     var window: UIWindow! {
         didSet {
@@ -46,9 +47,24 @@ final class NavigationManager {
         navigationController.presentViewController(screen, animated: animated, completion: nil)
     }
     
+    func presentLeaderboardWithID(leaderboardID: String?, animated: Bool) {
+        let screen = GKGameCenterViewController()
+        screen.leaderboardIdentifier = leaderboardID
+        screen.viewState = .Leaderboards
+        screen.delegate = self
+        navigationController.presentViewController(screen, animated: animated, completion: nil)
+    }
+    
     func showBannerWithText(text: String, duration: NSTimeInterval = 5.0, tapAction: (() -> Void)? = nil) -> BannerView {
         let banner: TextBannerView = TextBannerView.fromNib()
         banner.showInView(window, withText: text, duration: duration, tapAction: tapAction)
         return banner
+    }
+}
+
+extension NavigationManager: GKGameCenterControllerDelegate, UINavigationControllerDelegate {
+    
+    @objc func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+        dismissScreenAnimated(true)
     }
 }
