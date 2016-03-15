@@ -24,10 +24,6 @@ final class PlayerManager {
     private let autoSaveTimerInterval = 60.0 // Secs.
     private let playerIdentifierKey = "PlayerIdentifier"
     
-    var authenticated: Bool {
-        return player.authenticated
-    }
-    
     init(navigationManager: NavigationManager) {
         self.navigationManager = navigationManager
         loadPlayer()
@@ -61,6 +57,8 @@ final class PlayerManager {
         let chipsWon = level.chipsPerWin * chipsMultiplierForLevel(level)
         playerData.chipsCount! += chipsWon
         
+        reportScore(playerData.chipsCount, toLeaderboardWithID: nil)
+        
         let progressItem = progressItemForLevel(level)
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfWins(chipsWon: chipsWon)
         playerData.levelProgressItems[progressItem.index] = newLevelProgress
@@ -85,6 +83,8 @@ final class PlayerManager {
         let chipsLost = level.chipsPerWin
         // Total chips count can not be less than zero.
         playerData.chipsCount = max(Int64(0), playerData.chipsCount - chipsLost)
+        
+        reportScore(playerData.chipsCount, toLeaderboardWithID: nil)
         
         let progressItem = progressItemForLevel(level)
         
@@ -124,6 +124,21 @@ final class PlayerManager {
         }
         
         return progressItem
+    }
+    
+    private func reportScore(scoreValue: Int64, toLeaderboardWithID leaderboardID: String? = nil) {
+        if player.authenticated {
+            let score = GKScore()
+            if leaderboardID != nil {
+                score.leaderboardIdentifier = leaderboardID!
+            }
+            score.value = scoreValue
+            GKScore.reportScores([score], withCompletionHandler: { error in
+                if error != nil {
+                    Crashlytics.sharedInstance().recordError(error!)
+                }
+            })
+        }
     }
 }
 
