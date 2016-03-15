@@ -14,6 +14,11 @@ final class MainScreen: BaseViewController {
         return view as! MainView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        model.playerManager.observers.addObserver(self)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         fillViewsWithModel()
@@ -115,6 +120,13 @@ extension MainScreen {
         }
         
         model.sharingManager.shareWithInstagram(item, inView: mainView)
+    }
+}
+
+extension MainScreen: PlayerManagerObserving {
+    
+    func playerManagerDidAuthenticateNewPlayer(manager: PlayerManager) {
+        fillViewsWithModel()
     }
 }
 

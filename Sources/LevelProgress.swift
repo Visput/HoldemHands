@@ -46,14 +46,16 @@ struct LevelProgress: Progress, Mappable {
     init?(_ map: Map) {}
     
     mutating func mapping(map: Map) {
+        let transformOfInt64 = TransformOf<Int64, NSNumber>(fromJSON: { $0?.longLongValue }, toJSON: { $0.map { NSNumber(longLong: $0) } })
+        
         level <- map["level"]
         locked <- map["locked"]
-        notifiedToUnlock <- map["notifiedToUnlock"]
-        maxNumberOfWinsInRow <- map["maxNumberOfWinsInRow"]
-        currentNumberOfWinsInRow <- map["currentNumberOfWinsInRow"]
-        numberOfWins <- map["numberOfWins"]
-        numberOfLosses <- map["numberOfLosses"]
-        chipsCount <- map["chipsCount"]
+        notifiedToUnlock <- map["notified_to_unlock"]
+        maxNumberOfWinsInRow <- map["max_number_of_wins_in_row"]
+        currentNumberOfWinsInRow <- map["current_number_of_wins_in_row"]
+        numberOfWins <- map["number_of_wins"]
+        numberOfLosses <- map["number_of_losses"]
+        chipsCount <- (map["chips_count"], transformOfInt64)
     }
 }
 

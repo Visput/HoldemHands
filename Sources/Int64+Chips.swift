@@ -15,6 +15,8 @@ extension Int64 {
         formatter.groupingSize = 3
         formatter.groupingSeparator = " "
         formatter.currencySymbol = "$"
+        formatter.numberStyle = .CurrencyStyle
+        formatter.maximumFractionDigits = 0
         return formatter.stringFromNumber(NSNumber(longLong: self))!
     }
 }

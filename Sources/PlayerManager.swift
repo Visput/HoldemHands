@@ -21,12 +21,16 @@ final class PlayerManager {
 
     private let navigationManager: NavigationManager
     private var autoSaveTimer: NSTimer?
-    private let autoSaveTimerInterval = 300.0 // Secs.
+    private let autoSaveTimerInterval = 60.0 // Secs.
+    private let playerIdentifierKey = "PlayerIdentifier"
+    
+    var authenticated: Bool {
+        return player.authenticated
+    }
     
     init(navigationManager: NavigationManager) {
         self.navigationManager = navigationManager
         loadPlayer()
-        registerForAppLifeCycleNotifications()
     }
     
     deinit {
@@ -97,19 +101,17 @@ final class PlayerManager {
         var maxNumberOfWinsInRow = 0
         var numberOfWins = 0
         var numberOfLosses = 0
-        var chipsCount: Int64 = 0
         
         for levelProgress in playerData.levelProgressItems {
             maxNumberOfWinsInRow = max(maxNumberOfWinsInRow, levelProgress.maxNumberOfWinsInRow)
             numberOfWins += levelProgress.numberOfWins
             numberOfLosses += levelProgress.numberOfLosses
-            chipsCount += levelProgress.chipsCount
         }
         
         return PlayerProgress(maxNumberOfWinsInRow: maxNumberOfWinsInRow,
             numberOfWins: numberOfWins,
             numberOfLosses: numberOfLosses,
-            chipsCount: chipsCount)
+            chipsCount: playerData.chipsCount)
     }
     
     private func progressItemForLevel(level: Level) -> (index: Int, progress: LevelProgress) {
@@ -128,11 +130,22 @@ final class PlayerManager {
 extension PlayerManager {
     
     private func loadPlayer() {
-        let currentPlayer: GKLocalPlayer? = player
+        let oldPlayer: GKLocalPlayer? = player
         
         player = GKLocalPlayer.localPlayer()
+        
+        // Use last saved data while actual data is loading from GameCenter.
+        loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: true)
+        
+        // Authenticate current user and load data from GameCenter.
         player.authenticateHandler = { [unowned self] (viewController: UIViewController?, error: NSError?) in
+            
+            // Register for notifications when `authenticateHandler` executed at least once.
+            // This prevents from calling authentication twice when app is launched.
+            self.registerForAppLifeCycleNotifications()
+            
             if viewController != nil {
+                // Present authentication screen.
                 self.navigationManager.presentScreen(viewController!, animated: true)
             } else {
                 if error != nil {
@@ -140,51 +153,51 @@ extension PlayerManager {
                 }
                 
                 if self.player.authenticated {
-                    Crashlytics.sharedInstance().setUserName(self.player.displayName)
+                    Crashlytics.sharedInstance().setUserName(self.player.alias)
                     Crashlytics.sharedInstance().setUserIdentifier(self.player.playerID)
                     
+                    // Load GKSavedGame objects for authenticated player.
                     self.player.fetchSavedGamesWithCompletionHandler({ (savedGames: [GKSavedGame]?, error: NSError?) in
                         if error != nil {
                             Crashlytics.sharedInstance().recordError(error!)
-                            self.loadPlayerDataFromLocalStorage()
                             
-                            if self.player.playerID != currentPlayer?.playerID {
-                                self.notifyObserversDidAuthenticateNewPlayer()
-                            }
+                            // Load local data for authenticated player.
+                            self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
+                            self.notifyObserversDidAuthenticatePlayer(oldPlayer, newPlayer: self.player)
                             
                         } else {
                             if let savedGame = savedGames?.last {
+                                
+                                // Load GameCenter data for authenticated player.
                                 savedGame.loadDataWithCompletionHandler({ (data: NSData?, error: NSError?) in
                                     if error != nil {
+                                        
+                                        // Load local data for authenticated player.
                                         Crashlytics.sharedInstance().recordError(error!)
-                                        self.loadPlayerDataFromLocalStorage()
+                                        self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
                                         
                                     } else {
+                                        
+                                        // Initialize player data with GameCenter data.
                                         let playerDataJSON = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
                                         self.playerData = Mapper<PlayerData>().map(playerDataJSON)
                                     }
                                     
-                                    if self.player.playerID != currentPlayer?.playerID {
-                                        self.notifyObserversDidAuthenticateNewPlayer()
-                                    }
+                                    self.notifyObserversDidAuthenticatePlayer(oldPlayer, newPlayer: self.player)
                                 })
                                 
                             } else {
-                                self.loadPlayerDataFromLocalStorage()
-                                
-                                if self.player.playerID != currentPlayer?.playerID {
-                                    self.notifyObserversDidAuthenticateNewPlayer()
-                                }
+                                // Load default data for authenticated player.
+                                self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
+                                self.notifyObserversDidAuthenticatePlayer(oldPlayer, newPlayer: self.player)
                             }
                         }
                     })
                     
                 } else {
-                    self.loadPlayerDataFromLocalStorage()
-                    
-                    if currentPlayer == nil || currentPlayer!.playerID != nil {
-                        self.notifyObserversDidAuthenticateNewPlayer()
-                    }
+                    // Load local data for guest player.
+                    self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
+                    self.notifyObserversDidAuthenticatePlayer(oldPlayer, newPlayer: self.player)
                 }
             }
         }
@@ -197,6 +210,7 @@ extension PlayerManager {
         
         guard playerData != nil else { return }
         
+        let userDefaults = NSUserDefaults.standardUserDefaults()
         let keys = playerDataKeys()
         let key = player.authenticated ? keys.authenticatedKey! : keys.guestKey
         
@@ -205,6 +219,9 @@ extension PlayerManager {
         
         playerDataBytes.writeToFile(key.pathInDocumentsDirectory(), atomically: true)
         
+        userDefaults.setObject(key, forKey: playerIdentifierKey)
+        userDefaults.synchronize()
+        
         player.saveGameData(playerDataBytes, withName: key, completionHandler: { (savedGame: GKSavedGame?, error: NSError?) in
             if error != nil {
                 Crashlytics.sharedInstance().recordError(error!)
@@ -212,20 +229,29 @@ extension PlayerManager {
         })
     }
     
-    private func loadPlayerDataFromLocalStorage() {
+    private func loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded useLastPlayerIfNeeded: Bool) {
         let defaultPlayerDataFileName = "DefaultPlayerData.json"
         
         let keys = playerDataKeys()
         let fileManager = NSFileManager.defaultManager()
         var playerDataFilePath: String! = nil
         
+        // Load data for currently authenticated player.
         playerDataFilePath = keys.authenticatedKey?.pathInDocumentsDirectory() ?? ""
         if !fileManager.fileExistsAtPath(playerDataFilePath) {
             
-            playerDataFilePath = keys.guestKey.pathInDocumentsDirectory()
-            if !fileManager.fileExistsAtPath(playerDataFilePath) {
+            // Load data for last authenticated player.
+            if useLastPlayerIfNeeded && keys.lastSavedKey != nil {
+                playerDataFilePath = keys.lastSavedKey!.pathInDocumentsDirectory()
                 
-                playerDataFilePath = defaultPlayerDataFileName.pathInResourcesBundle()
+            } else {
+                // Load data for guest player.
+                playerDataFilePath = keys.guestKey.pathInDocumentsDirectory()
+                if !fileManager.fileExistsAtPath(playerDataFilePath) {
+                    
+                    // Load default data.
+                    playerDataFilePath = defaultPlayerDataFileName.pathInResourcesBundle()
+                }
             }
         }
         
@@ -233,17 +259,19 @@ extension PlayerManager {
         playerData = Mapper<PlayerData>().map(playerDataJSON)
     }
     
-    private func playerDataKeys() -> (authenticatedKey: String?, guestKey: String) {
-        let playerDataKeyPrefix = "PlayerData"
+    typealias PlayerDataKeys = (authenticatedKey: String?, guestKey: String, lastSavedKey: String?)
+    private func playerDataKeys() -> PlayerDataKeys {
         let guestPlayerID = "Guest"
         let authenticatedPlayerID = player.playerID
+        let userDefaults = NSUserDefaults.standardUserDefaults()
         
-        var keys: (authenticatedKey: String?, guestKey: String) = (authenticatedKey: nil, guestKey: "")
+        var keys: PlayerDataKeys = (authenticatedKey: nil, guestKey: "", lastSavedKey: nil)
         
         if player.authenticated {
-            keys.authenticatedKey = playerDataKeyPrefix + authenticatedPlayerID!
+            keys.authenticatedKey = authenticatedPlayerID!
         }
-        keys.guestKey = playerDataKeyPrefix + guestPlayerID
+        keys.guestKey = guestPlayerID
+        keys.lastSavedKey = userDefaults.stringForKey(playerIdentifierKey)
         
         return keys
     }
@@ -304,9 +332,11 @@ extension PlayerManager {
         }
     }
     
-    private func notifyObserversDidAuthenticateNewPlayer() {
-        for observer in observers {
-            observer.playerManagerDidAuthenticateNewPlayer(self)
+    private func notifyObserversDidAuthenticatePlayer(oldPlayer: GKLocalPlayer?, newPlayer: GKLocalPlayer) {
+        if oldPlayer == nil || newPlayer.playerID != oldPlayer!.playerID {
+            for observer in observers {
+                observer.playerManagerDidAuthenticateNewPlayer(self)
+            }
         }
     }
 }

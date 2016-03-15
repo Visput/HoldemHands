@@ -155,6 +155,10 @@ extension GameScreen: PlayerManagerObserving {
     }
     
     func playerManagerDidAuthenticateNewPlayer(manager: PlayerManager) {
-        model.navigationManager.dismissScreenAnimated(true)
+        if manager.isLockedLevel(level) {
+            model.navigationManager.dismissScreenAnimated(true)
+        } else {
+            updateChipsCountLabel()
+        }
     }
 }
