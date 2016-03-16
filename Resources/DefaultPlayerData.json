@@ -1,5 +1,6 @@
 {
   "chips_count" : 25,
+  "rank" : null,
   "level_progress_items" : [
     {
       "locked" : false,
@@ -13,10 +14,12 @@
         "chips_to_unlock" : 0,
         "name" : "Level 1",
         "identifier" : 0,
-        "chips_per_win" : 1
+        "chips_per_win" : 1,
+        "leaderboard_id" : "level1"                            
       },
       "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0
+      "max_number_of_wins_in_row" : 0,
+      "rank" : null
     },
     {
       "locked" : true,
@@ -30,10 +33,12 @@
         "chips_to_unlock" : 50,
         "name" : "Level 2",
         "identifier" : 1,
-        "chips_per_win" : 2
+        "chips_per_win" : 2,
+        "leaderboard_id" : "level2"
       },
       "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0
+      "max_number_of_wins_in_row" : 0,
+      "rank" : null
     },
     {
       "locked" : true,
@@ -47,10 +52,12 @@
         "chips_to_unlock" : 250,
         "name" : "Level 3",
         "identifier" : 2,
-        "chips_per_win" : 10
+        "chips_per_win" : 10,
+        "leaderboard_id" : "level3"
       },
       "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0
+      "max_number_of_wins_in_row" : 0,
+      "rank" : null
     },
     {
       "locked" : true,
@@ -64,10 +71,12 @@
         "chips_to_unlock" : 1000,
         "name" : "Level 4",
         "identifier" : 3,
-        "chips_per_win" : 50
+        "chips_per_win" : 50,
+        "leaderboard_id" : "level4"
       },
       "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0
+      "max_number_of_wins_in_row" : 0,
+      "rank" : null
     },
     {
       "locked" : true,
@@ -81,10 +90,12 @@
         "chips_to_unlock" : 5000,
         "name" : "Level 5",
         "identifier" : 4,
-        "chips_per_win" : 250
+        "chips_per_win" : 250,
+        "leaderboard_id" : "level5"
       },
       "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0
+      "max_number_of_wins_in_row" : 0,
+      "rank" : null
     },
     {
       "locked" : true,
@@ -98,10 +109,12 @@
         "chips_to_unlock" : 25000,
         "name" : "Level 6",
         "identifier" : 5,
-        "chips_per_win" : 1000
+        "chips_per_win" : 1000,
+        "leaderboard_id" : "level6"
       },
       "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0
+      "max_number_of_wins_in_row" : 0,
+      "rank" : null
     },
     {
       "locked" : true,
@@ -115,10 +128,12 @@
         "chips_to_unlock" : 100000,
         "name" : "Level 7",
         "identifier" : 6,
-        "chips_per_win" : 5000
+        "chips_per_win" : 5000,
+        "leaderboard_id" : "level7"
       },
       "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0
+      "max_number_of_wins_in_row" : 0,
+      "rank" : null
     }
   ]
 }

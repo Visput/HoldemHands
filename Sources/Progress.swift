@@ -14,6 +14,7 @@ protocol Progress {
     var numberOfWins: Int! { get }
     var numberOfLosses: Int! { get }
     var chipsCount: Int64! { get }
+    var rank: Int? { get }
     
     var title: String? { get }
     var winPercent: Double { get }

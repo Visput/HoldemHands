@@ -116,7 +116,8 @@ final class PlayerManager {
         return PlayerProgress(maxNumberOfWinsInRow: maxNumberOfWinsInRow,
             numberOfWins: numberOfWins,
             numberOfLosses: numberOfLosses,
-            chipsCount: playerData.chipsCount)
+            chipsCount: playerData.chipsCount,
+            rank: playerData.rank)
     }
     
     func progressItems() -> [Progress] {

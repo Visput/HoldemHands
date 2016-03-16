@@ -17,6 +17,7 @@ struct Level: Equatable, Mappable {
     private(set) var winsInRowToDoubleChips: Int!
     private(set) var name: String!
     private(set) var identifier: Int!
+    private(set) var leaderboardID: String!
     
     init?(_ map: Map) {}
     
@@ -29,6 +30,7 @@ struct Level: Equatable, Mappable {
         winsInRowToDoubleChips <- map["wins_in_row_to_double_chips"]
         name <- map["name"]
         identifier <- map["identifier"]
+        leaderboardID <- map["leaderboard_id"]
     }
 }
 

@@ -19,6 +19,7 @@ struct LevelProgress: Progress, Mappable {
     private(set) var numberOfWins: Int!
     private(set) var numberOfLosses: Int!
     private(set) var chipsCount: Int64!
+    private(set) var rank: Int?
     
     var title: String? {
         return level.name
@@ -31,7 +32,8 @@ struct LevelProgress: Progress, Mappable {
         currentNumberOfWinsInRow: Int,
         numberOfWins: Int,
         numberOfLosses: Int,
-        chipsCount: Int64) {
+        chipsCount: Int64,
+        rank: Int?) {
         
             self.level = level
             self.locked = locked
@@ -41,6 +43,7 @@ struct LevelProgress: Progress, Mappable {
             self.numberOfWins = numberOfWins
             self.numberOfLosses = numberOfLosses
             self.chipsCount = chipsCount
+            self.rank = rank
     }
     
     init?(_ map: Map) {}
@@ -56,6 +59,7 @@ struct LevelProgress: Progress, Mappable {
         numberOfWins <- map["number_of_wins"]
         numberOfLosses <- map["number_of_losses"]
         chipsCount <- (map["chips_count"], transformOfInt64)
+        rank <- map["rank"]
     }
 }
 
@@ -69,7 +73,8 @@ extension LevelProgress {
             currentNumberOfWinsInRow: currentNumberOfWinsInRow + 1,
             numberOfWins: numberOfWins + 1,
             numberOfLosses: numberOfLosses,
-            chipsCount: chipsCount + chipsWon)
+            chipsCount: chipsCount + chipsWon,
+            rank: rank)
     }
     
     func levelProgressByIncrementingNumberOfLosses(chipsLost chipsLost: Int64) -> LevelProgress {
@@ -80,7 +85,8 @@ extension LevelProgress {
             currentNumberOfWinsInRow: 0,
             numberOfWins: numberOfWins,
             numberOfLosses: numberOfLosses + 1,
-            chipsCount: chipsCount - chipsLost)
+            chipsCount: chipsCount - chipsLost,
+            rank: rank)
     }
     
     func levelProgressBySettingNotifiedToUnlock() -> LevelProgress {
@@ -91,7 +97,8 @@ extension LevelProgress {
             currentNumberOfWinsInRow: currentNumberOfWinsInRow,
             numberOfWins: numberOfWins,
             numberOfLosses: numberOfLosses,
-            chipsCount: chipsCount)
+            chipsCount: chipsCount,
+            rank: rank)
     }
     
     func levelProgressBySettingUnlocked() -> LevelProgress {
@@ -102,6 +109,19 @@ extension LevelProgress {
             currentNumberOfWinsInRow: currentNumberOfWinsInRow,
             numberOfWins: numberOfWins,
             numberOfLosses: numberOfLosses,
-            chipsCount: chipsCount)
+            chipsCount: chipsCount,
+            rank: rank)
+    }
+    
+    func levelProgressBySettingRank(rank: Int) -> LevelProgress {
+        return self.dynamicType.init(level: level,
+            locked: locked,
+            notifiedToUnlock: notifiedToUnlock,
+            maxNumberOfWinsInRow: maxNumberOfWinsInRow,
+            currentNumberOfWinsInRow: currentNumberOfWinsInRow,
+            numberOfWins: numberOfWins,
+            numberOfLosses: numberOfLosses,
+            chipsCount: chipsCount,
+            rank: rank)
     }
 }

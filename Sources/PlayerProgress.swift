@@ -14,6 +14,7 @@ struct PlayerProgress: Progress {
     let numberOfWins: Int!
     let numberOfLosses: Int!
     let chipsCount: Int64!
+    let rank: Int?
     
     var title: String? {
         return nil
