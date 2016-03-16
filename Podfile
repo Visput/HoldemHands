@@ -16,3 +16,4 @@ pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
 
 pod 'ObjectMapper'
+pod 'KeychainSwift'

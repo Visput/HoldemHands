@@ -88,6 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/FBSDKCoreKit.framework"
   install_framework "Pods/FBSDKShareKit.framework"
   install_framework "Pods/Flurry_iOS_SDK.framework"
+  install_framework "Pods/KeychainSwift.framework"
   install_framework "Pods/ObjectMapper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +96,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/FBSDKCoreKit.framework"
   install_framework "Pods/FBSDKShareKit.framework"
   install_framework "Pods/Flurry_iOS_SDK.framework"
+  install_framework "Pods/KeychainSwift.framework"
   install_framework "Pods/ObjectMapper.framework"
 fi

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import GameKit
 import ObjectMapper
+import KeychainSwift
 
 final class PlayerManager {
     
@@ -22,6 +23,7 @@ final class PlayerManager {
     private var autoSaveTimer: NSTimer?
     private let autoSaveTimerInterval = 60.0 // Secs.
     private let playerIdentifierKey = "PlayerIdentifier"
+    private let keychain = KeychainSwift()
     
     var authenticated: Bool {
         return player.authenticated
@@ -232,17 +234,18 @@ extension PlayerManager {
         
         guard playerData != nil else { return }
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
         let keys = playerDataKeys()
         let key = player.authenticated ? keys.authenticatedKey! : keys.guestKey
         
         let playerDataJSON = Mapper().toJSONString(playerData, prettyPrint: true)!
         let playerDataBytes = playerDataJSON.dataUsingEncoding(NSUTF8StringEncoding)!
         
-        playerDataBytes.writeToFile(key.pathInDocumentsDirectory(), atomically: true)
-        
-        userDefaults.setObject(key, forKey: playerIdentifierKey)
-        userDefaults.synchronize()
+        if !keychain.set(playerDataJSON, forKey: key) {
+            Analytics.error(NSError(domain: String(KeychainSwift.self), code: Int(keychain.lastResultCode), userInfo: nil))
+        }
+        if !keychain.set(key, forKey: playerIdentifierKey) {
+            Analytics.error(NSError(domain: String(KeychainSwift.self), code: Int(keychain.lastResultCode), userInfo: nil))
+        }
         
         player.saveGameData(playerDataBytes, withName: key, completionHandler: { (savedGame, error) in
             Analytics.error(error!)
@@ -253,29 +256,31 @@ extension PlayerManager {
         let defaultPlayerDataFileName = "DefaultPlayerData.json"
         
         let keys = playerDataKeys()
-        let fileManager = NSFileManager.defaultManager()
-        var playerDataFilePath: String! = nil
+        var playerDataJSON: String! = nil
         
         // Load data for currently authenticated player.
-        playerDataFilePath = keys.authenticatedKey?.pathInDocumentsDirectory() ?? ""
-        if !fileManager.fileExistsAtPath(playerDataFilePath) {
-            
+        if keys.authenticatedKey != nil {
+            playerDataJSON = keychain.get(keys.authenticatedKey!)
+        }
+        
+        if playerDataJSON == nil {
             // Load data for last authenticated player.
             if useLastPlayerIfNeeded && keys.lastSavedKey != nil {
-                playerDataFilePath = keys.lastSavedKey!.pathInDocumentsDirectory()
-                
-            } else {
-                // Load data for guest player.
-                playerDataFilePath = keys.guestKey.pathInDocumentsDirectory()
-                if !fileManager.fileExistsAtPath(playerDataFilePath) {
-                    
-                    // Load default data.
-                    playerDataFilePath = defaultPlayerDataFileName.pathInResourcesBundle()
-                }
+                playerDataJSON = keychain.get(keys.lastSavedKey!)
             }
         }
         
-        let playerDataJSON = try! NSString(contentsOfFile: playerDataFilePath, encoding: NSUTF8StringEncoding) as String
+        if playerDataJSON == nil {
+            // Load data for guest player.
+            playerDataJSON = keychain.get(keys.guestKey)
+        }
+        
+        if playerDataJSON == nil {
+            // Load default data.
+            playerDataJSON = try! NSString(contentsOfFile: defaultPlayerDataFileName.pathInResourcesBundle(),
+                encoding: NSUTF8StringEncoding) as String
+        }
+
         playerData = Mapper<PlayerData>().map(playerDataJSON)
     }
     
@@ -283,7 +288,6 @@ extension PlayerManager {
     private func playerDataKeys() -> PlayerDataKeys {
         let guestPlayerID = "Guest"
         let authenticatedPlayerID = player.playerID
-        let userDefaults = NSUserDefaults.standardUserDefaults()
         
         var keys: PlayerDataKeys = (authenticatedKey: nil, guestKey: "", lastSavedKey: nil)
         
@@ -291,7 +295,7 @@ extension PlayerManager {
             keys.authenticatedKey = authenticatedPlayerID!
         }
         keys.guestKey = guestPlayerID
-        keys.lastSavedKey = userDefaults.stringForKey(playerIdentifierKey)
+        keys.lastSavedKey = keychain.get(playerIdentifierKey)
         
         return keys
     }

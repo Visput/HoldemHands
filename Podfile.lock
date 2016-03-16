@@ -13,6 +13,7 @@ PODS:
   - FBSDKShareKit (4.10.0):
     - FBSDKCoreKit
   - Flurry-iOS-SDK/FlurrySDK (7.5.1)
+  - KeychainSwift (3.0.11)
   - ObjectMapper (1.1.5)
   - TwitterCore (1.15.1):
     - Fabric
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKShareKit
   - Flurry-iOS-SDK/FlurrySDK
+  - KeychainSwift
   - ObjectMapper
   - TwitterCore
   - TwitterKit
@@ -36,6 +38,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 13bec8373fb3af94d44daf2aa1e0958687897fbd
   FBSDKShareKit: 54587b4624706ace1e810cf83412a918141f807a
   Flurry-iOS-SDK: c0c162b6be03b259ca51fd91a026e6b8fb5ae97e
+  KeychainSwift: 0a4214c910423543a42b0f30f25987d46178b6a5
   ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
   TwitterCore: 12983a7464e34afbbf18881347898a9db526ac71
   TwitterKit: b5821570887ec2d77650fa232eaec175665dc443
