@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Crashlytics
 import GameKit
 import ObjectMapper
 
@@ -146,9 +145,7 @@ final class PlayerManager {
             }
             score.value = scoreValue
             GKScore.reportScores([score], withCompletionHandler: { error in
-                if error != nil {
-                    Crashlytics.sharedInstance().recordError(error!)
-                }
+                Analytics.error(error!)
             })
         }
     }
@@ -175,18 +172,16 @@ extension PlayerManager {
                 // Present authentication screen.
                 self.navigationManager.presentScreen(viewController!, animated: true)
             } else {
-                if error != nil {
-                    Crashlytics.sharedInstance().recordError(error!)
-                }
+                Analytics.error(error!)
                 
                 if self.player.authenticated {
-                    Crashlytics.sharedInstance().setUserName(self.player.alias)
-                    Crashlytics.sharedInstance().setUserIdentifier(self.player.playerID)
+                    Analytics.userName(self.player.alias!)
+                    Analytics.userID(self.player.playerID!)
                     
                     // Load GKSavedGame objects for authenticated player.
                     self.player.fetchSavedGamesWithCompletionHandler({ (savedGames: [GKSavedGame]?, error: NSError?) in
                         if error != nil {
-                            Crashlytics.sharedInstance().recordError(error!)
+                            Analytics.error(error!)
                             
                             // Load local data for authenticated player.
                             self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
@@ -200,7 +195,7 @@ extension PlayerManager {
                                     if error != nil {
                                         
                                         // Load local data for authenticated player.
-                                        Crashlytics.sharedInstance().recordError(error!)
+                                        Analytics.error(error!)
                                         self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
                                         
                                     } else {
@@ -249,10 +244,8 @@ extension PlayerManager {
         userDefaults.setObject(key, forKey: playerIdentifierKey)
         userDefaults.synchronize()
         
-        player.saveGameData(playerDataBytes, withName: key, completionHandler: { (savedGame: GKSavedGame?, error: NSError?) in
-            if error != nil {
-                Crashlytics.sharedInstance().recordError(error!)
-            }
+        player.saveGameData(playerDataBytes, withName: key, completionHandler: { (savedGame, error) in
+            Analytics.error(error!)
         })
     }
     

@@ -28,16 +28,19 @@ final class SharingManager: NSObject {
     private var facebookSharingItem: SharingItem!
     
     func shareWithInstagram(item: SharingItem, inView view: UIView) {
+        Analytics.instagramSharingInitiated()
+        
         let instagramUTI = "com.instagram.exclusivegram"
         let instagramCaptionKey = "InstagramCaption"
         let instagramImageFileName = "HoldemHands.igo"
         let instagramURL = NSURL(string: "instagram://app")!
-        
+
         guard UIApplication.sharedApplication().canOpenURL(instagramURL) else {
             let error = NSError(domain: errorDomain,
                 code: ErrorCode.SharingAcountNotExist.rawValue,
                 userInfo: [NSLocalizedDescriptionKey: "Unable to locate Instagram app."])
             didFailToShareAction?(item: item, error: error)
+            Analytics.instagramSharingFailed(error)
             return
         }
         
@@ -52,15 +55,21 @@ final class SharingManager: NSObject {
         instagramDocumentController.presentOpenInMenuFromRect(CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0), inView: view, animated: true)
 
         didCompleteShareAction?(item: item)
+        
+        Analytics.instagramSharingCompleted()
     }
 
     func shareWithFacebook(item: SharingItem, inViewController viewController: UIViewController) {
+        Analytics.facebookSharingInitiated()
+        
         let sharingDialog = FBSDKShareDialog()
         guard sharingDialog.canShow() else {
             let error = NSError(domain: errorDomain,
                 code: ErrorCode.SharingAcountNotExist.rawValue,
                 userInfo: [NSLocalizedDescriptionKey: "Unable to locate Facebook account."])
             didFailToShareAction?(item: item, error: error)
+            Analytics.facebookSharingFailed(error)
+            
             return
         }
         
@@ -80,11 +89,15 @@ final class SharingManager: NSObject {
     }
 
     func shareWithTwitter(item: SharingItem, inViewController viewController: UIViewController) {
+        Analytics.twitterSharingInitiated()
+        
         guard SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) else {
             let error = NSError(domain: errorDomain,
                 code: ErrorCode.SharingAcountNotExist.rawValue,
                 userInfo: [NSLocalizedDescriptionKey: "Unable to locate Twitter account."])
             didFailToShareAction?(item: item, error: error)
+            Analytics.twitterSharingFailed(error)
+            
             return
         }
         
@@ -95,8 +108,10 @@ final class SharingManager: NSObject {
         composer.completionHandler = { [unowned self] result in
             if result == .Done {
                 self.didCompleteShareAction?(item: item)
+                Analytics.twitterSharingCompleted()
             } else {
                 self.didCancelShareAction?(item: item)
+                Analytics.twitterSharingCanceled()
             }
             
             if viewController.presentedViewController != nil {
@@ -113,11 +128,13 @@ extension SharingManager: FBSDKSharingDelegate {
     @objc func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
         didCompleteShareAction?(item: facebookSharingItem)
         facebookSharingItem = nil
+        Analytics.facebookSharingCompleted()
     }
     
     @objc func sharerDidCancel(sharer: FBSDKSharing!) {
         didCancelShareAction?(item: facebookSharingItem)
         facebookSharingItem = nil
+        Analytics.facebookSharingCanceled()
     }
     
     @objc func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
@@ -131,5 +148,6 @@ extension SharingManager: FBSDKSharingDelegate {
         
         didFailToShareAction?(item: facebookSharingItem, error: sharingError)
         facebookSharingItem = nil
+        Analytics.facebookSharingFailed(error)
     }
 }

@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
-import TwitterKit
 import FBSDKCoreKit
 
 @UIApplicationMain
@@ -21,7 +18,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
             
             FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-            Fabric.with([Crashlytics(), Twitter()])
+            Analytics.startSession()
             
             let model = ModelProvider.provider
             model.navigationManager.window = window
@@ -43,7 +40,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        FBSDKAppEvents.activateApp()
+        Analytics.appDidBecomeActive()
     }
 
     func applicationWillTerminate(application: UIApplication) {
