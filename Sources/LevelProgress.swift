@@ -25,6 +25,10 @@ struct LevelProgress: Progress, Mappable {
         return level.name
     }
     
+    var leaderboardID: String? {
+        return level.leaderboardID
+    }
+    
     init(level: Level,
         locked: Bool,
         notifiedToUnlock: Bool,

@@ -19,4 +19,8 @@ struct PlayerProgress: Progress {
     var title: String? {
         return nil
     }
+    
+    var leaderboardID: String? {
+        return nil
+    }
 }

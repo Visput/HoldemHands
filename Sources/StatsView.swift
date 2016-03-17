@@ -11,7 +11,6 @@ import UIKit
 final class StatsView: UIView {
     
     @IBOutlet private(set) weak var statsCollectionView: UICollectionView!
-    @IBOutlet private(set) weak var leaderboardsButton: UIButton!
     
     override func layoutSubviews() {
         super.layoutSubviews()

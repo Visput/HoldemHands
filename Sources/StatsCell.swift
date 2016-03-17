@@ -17,11 +17,15 @@ final class StatsCell: UICollectionViewCell {
     @IBOutlet private(set) weak var winPercentLabel: UILabel!
     @IBOutlet private(set) weak var winsInRowLabel: UILabel!
     @IBOutlet private(set) weak var handsCountLabel: UILabel!
+    @IBOutlet private(set) weak var rankLabel: UILabel!
+    @IBOutlet private(set) weak var leaderboardButton: UIButton!
  
     private(set) var item: StatsCellItem!
     
     func fillWithItem(item: StatsCellItem) {
         self.item = item
+        
+        leaderboardButton.tag = item.index
         
         if let title = item.progressItem.title {
             nameLabel.text = title
@@ -35,8 +39,9 @@ final class StatsCell: UICollectionViewCell {
             
             chipsCountLabel.text = item.progressItem.chipsCount.formattedChipsCountString
             winPercentLabel.text = NSString(format: "%.2f%%", item.progressItem.winPercent) as String
-            winsInRowLabel.text = NSString(format: "%d", item.progressItem.maxNumberOfWinsInRow) as String
-            handsCountLabel.text = NSString(format: "%d", item.progressItem.handsCount) as String
+            winsInRowLabel.text = String(item.progressItem.maxNumberOfWinsInRow)
+            handsCountLabel.text = String(item.progressItem.handsCount)
+            rankLabel.text = item.progressItem.rank != nil ? String(item.progressItem.rank!) : "-"
         } else {
             statsContentView.hidden = true
             noStatsView.hidden = false

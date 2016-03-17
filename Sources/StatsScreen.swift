@@ -28,8 +28,9 @@ extension StatsScreen {
         model.navigationManager.dismissScreenAnimated(true)
     }
     
-    @IBAction private func leaderboardsButtonDidPress(sender: AnyObject) {
-        model.navigationManager.presentLeaderboardWithID(nil, animated: true)
+    @objc private func leaderboardButtonDidPress(sender: UIButton) {
+        let progressItem = progressItems[sender.tag]
+        model.navigationManager.presentLeaderboardWithID(progressItem.leaderboardID, animated: true)
     }
 }
 
@@ -44,8 +45,9 @@ extension StatsScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
             forIndexPath: indexPath) as! StatsCell
         
         let progressItem: Progress = progressItems[indexPath.item]
-        let item = StatsCellItem(progressItem: progressItem)
+        let item = StatsCellItem(progressItem: progressItem, index: indexPath.item)
         cell.fillWithItem(item)
+        cell.leaderboardButton.addTarget(self, action: Selector("leaderboardButtonDidPress:"), forControlEvents: .TouchUpInside)
         
         return cell
     }

@@ -17,6 +17,7 @@ protocol Progress {
     var rank: Int? { get }
     
     var title: String? { get }
+    var leaderboardID: String? { get }
     var winPercent: Double { get }
     var handsCount: Int { get }
 }
