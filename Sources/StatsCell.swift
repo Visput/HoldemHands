@@ -27,11 +27,7 @@ final class StatsCell: UICollectionViewCell {
         
         leaderboardButton.tag = item.index
         
-        if let title = item.progressItem.title {
-            nameLabel.text = title
-        } else {
-            nameLabel.text = NSLocalizedString("Overall", comment: "")
-        }
+        nameLabel.text = item.progressItem.title
         
         if item.progressItem.handsCount != 0 {
             statsContentView.hidden = false

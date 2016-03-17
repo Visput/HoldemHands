@@ -14,6 +14,13 @@ import KeychainSwift
 
 final class PlayerManager {
     
+    enum ErrorCode: Int {
+        case PlayerNotAuthenticated
+        case FailedToLoadRankFromGameCenter
+    }
+    
+    let errorDomain = "PlayerManagerErrorDomain"
+    
     let observers = ObserverSet<PlayerManagerObserving>()
     
     private(set) var playerData: PlayerData!
@@ -24,10 +31,6 @@ final class PlayerManager {
     private let autoSaveTimerInterval = 60.0 // Secs.
     private let playerIdentifierKey = "PlayerIdentifier"
     private let keychain = KeychainSwift()
-    
-    var authenticated: Bool {
-        return player.authenticated
-    }
     
     init(navigationManager: NavigationManager) {
         self.navigationManager = navigationManager
@@ -67,10 +70,6 @@ final class PlayerManager {
         let progressItem = progressItemForLevel(level)
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfWins(chipsWon: chipsWon)
         playerData.levelProgressItems[progressItem.index] = newLevelProgress
-        
-        if newLevelProgress.maxNumberOfWinsInRow > progressItem.progress.maxNumberOfWinsInRow {
-            notifyObserversDidSetNewWinRecordForLevel(newLevelProgress)
-        }
         
         guard progressItem.index < playerData.levelProgressItems.count - 1 else { return }
         var nextLevelProgress = playerData.levelProgressItems[progressItem.index + 1]
@@ -117,6 +116,7 @@ final class PlayerManager {
             numberOfWins: numberOfWins,
             numberOfLosses: numberOfLosses,
             chipsCount: playerData.chipsCount,
+            leaderboardID: playerData.overallLeaderboardID,
             rank: playerData.rank)
     }
     
@@ -126,6 +126,43 @@ final class PlayerManager {
             progressItems.append(levelProgressItem)
         }
         return progressItems
+    }
+    
+    func loadProgressItemsIncludingRank(completionHandler: (progressItems: [Progress]?, error: NSError?) -> Void) {
+        guard player.authenticated else {
+            let error = NSError(domain: errorDomain, code: ErrorCode.PlayerNotAuthenticated.rawValue, userInfo: nil)
+            Analytics.error(error)
+            completionHandler(progressItems: nil, error: error)
+            return
+        }
+        
+        let leaderboard = GKLeaderboard(players: [player])
+        leaderboard.loadScoresWithCompletionHandler({ scores, error in
+            guard error == nil else {
+                let resultError = NSError(domain: self.errorDomain,
+                    code: ErrorCode.FailedToLoadRankFromGameCenter.rawValue,
+                    userInfo: [NSUnderlyingErrorKey: error!])
+                Analytics.error(resultError)
+                completionHandler(progressItems: nil, error: resultError)
+                return
+            }
+            
+            for score in scores! {
+                if score.leaderboardIdentifier == self.playerData.overallLeaderboardID {
+                    self.playerData.rank = score.rank
+                } else {
+                    for (index, progress) in self.playerData.levelProgressItems.enumerate() {
+                        if progress.leaderboardID == score.leaderboardIdentifier {
+                            self.playerData.levelProgressItems[index] = progress.levelProgressBySettingRank(score.rank)
+                            break
+                        }
+                    }
+                }
+            }
+            
+            completionHandler(progressItems: self.progressItems(), error: nil)
+        })
+        
     }
     
     private func progressItemForLevel(level: Level) -> (index: Int, progress: LevelProgress) {
@@ -348,12 +385,6 @@ extension PlayerManager {
     private func notifyObserversDidEarnChipsToUnlockLevel(levelProgress: LevelProgress) {
         for observer in observers {
             observer.playerManager(self, didEarnChipsToUnlockLevel: levelProgress)
-        }
-    }
-    
-    private func notifyObserversDidSetNewWinRecordForLevel(levelProgress: LevelProgress) {
-        for observer in observers {
-            observer.playerManager(self, didSetNewWinRecordForLevel: levelProgress)
         }
     }
     

@@ -19,6 +19,7 @@ final class StatsScreen: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         model.playerManager.observers.addObserver(self)
+        fillViewsWithModel()
     }
 }
 
@@ -65,6 +66,11 @@ extension StatsScreen {
     private func fillViewsWithModel() {
         progressItems = model.playerManager.progressItems()
         statsView.statsCollectionView.reloadData()
-        statsView.leaderboardsButton.hidden = !model.playerManager.authenticated
+        
+        model.playerManager.loadProgressItemsIncludingRank({ progressItems, error in
+            guard error == nil else { return }
+            self.progressItems = progressItems
+            self.statsView.statsCollectionView.reloadData()
+        })
     }
 }

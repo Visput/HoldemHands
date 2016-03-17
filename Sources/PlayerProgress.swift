@@ -14,13 +14,10 @@ struct PlayerProgress: Progress {
     let numberOfWins: Int!
     let numberOfLosses: Int!
     let chipsCount: Int64!
+    let leaderboardID: String
     let rank: Int?
     
-    var title: String? {
-        return nil
-    }
-    
-    var leaderboardID: String? {
-        return nil
+    var title: String {
+        return NSLocalizedString("Overall", comment: "")
     }
 }

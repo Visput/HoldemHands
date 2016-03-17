@@ -21,11 +21,11 @@ struct LevelProgress: Progress, Mappable {
     private(set) var chipsCount: Int64!
     private(set) var rank: Int?
     
-    var title: String? {
+    var title: String {
         return level.name
     }
     
-    var leaderboardID: String? {
+    var leaderboardID: String {
         return level.leaderboardID
     }
     
