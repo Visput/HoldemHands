@@ -28,7 +28,7 @@ final class PlayerManager {
 
     private let navigationManager: NavigationManager
     private var autoSaveTimer: NSTimer?
-    private let autoSaveTimerInterval = 60.0 // Secs.
+    private let autoSaveTimerInterval = 120.0 // Secs.
     private let playerIdentifierKey = "PlayerIdentifier"
     private let keychain = KeychainSwift()
     
@@ -287,7 +287,7 @@ extension PlayerManager {
         startAutoSaveTimer()
     }
     
-    private func savePlayer() {
+    func savePlayer() {
         stopAutoSaveTimer()
         
         guard playerData != nil else { return }
@@ -363,7 +363,7 @@ extension PlayerManager {
     
     private func startAutoSaveTimer() {
         stopAutoSaveTimer()
-        autoSaveTimer = NSTimer(timeInterval: autoSaveTimerInterval,
+        autoSaveTimer = NSTimer.scheduledTimerWithTimeInterval(autoSaveTimerInterval,
             target: self,
             selector: Selector("autoSaveTimerDidFire"),
             userInfo: nil,

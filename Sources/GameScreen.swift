@@ -28,6 +28,11 @@ final class GameScreen: BaseViewController {
         model.playerManager.observers.addObserver(self)
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        model.playerManager.savePlayer()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gameView.updateCollectionViewLayoutForNumberOfCells(level.numberOfHands)
