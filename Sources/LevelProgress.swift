@@ -117,7 +117,7 @@ extension LevelProgress {
             rank: rank)
     }
     
-    func levelProgressBySettingRank(rank: Int) -> LevelProgress {
+    func levelProgressBySettingRank(rank: Int?) -> LevelProgress {
         return self.dynamicType.init(level: level,
             locked: locked,
             notifiedToUnlock: notifiedToUnlock,

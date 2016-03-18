@@ -138,34 +138,53 @@ final class PlayerManager {
             return
         }
         
-        let leaderboard = GKLeaderboard(players: [player])
-        leaderboard.identifier = playerData.highscoreLeaderboardID
-        leaderboard.loadScoresWithCompletionHandler({ scores, error in
-            guard error == nil else {
-                let resultError = NSError(domain: self.errorDomain,
-                    code: ErrorCode.FailedToLoadRankFromGameCenter.rawValue,
-                    userInfo: [NSUnderlyingErrorKey: error!])
-                Analytics.error(resultError)
-                completionHandler(progressItems: nil, error: resultError)
-                return
+        var leaderboards = [GKLeaderboard]()
+        for progress in progressItems() {
+            let leaderboard = GKLeaderboard(players: [player])
+            leaderboard.identifier = progress.leaderboardID
+            leaderboards.append(leaderboard)
+        }
+        
+        func handleProcessedLeaderboard(leaderboard: GKLeaderboard?, error: NSError?) {
+            guard leaderboards.count != 0 else { return }
+            if error != nil {
+                // Handle only first error.
+                leaderboards.removeAll()
+                Analytics.error(error)
+                completionHandler(progressItems: nil, error: error)
+            } else {
+                leaderboards.removeAtIndex(leaderboards.indexOf(leaderboard!)!)
+                if leaderboards.count == 0 {
+                    completionHandler(progressItems: self.progressItems(), error: nil)
+                }
             }
-            
-            for score in scores! {
-                if score.leaderboardIdentifier == self.playerData.highscoreLeaderboardID {
-                    self.playerData.rank = score.rank
+        }
+        
+        for leaderboard in leaderboards {
+            leaderboard.loadScoresWithCompletionHandler({ _, error in
+                guard error == nil else {
+                    let resultError = NSError(domain: self.errorDomain,
+                        code: ErrorCode.FailedToLoadRankFromGameCenter.rawValue,
+                        userInfo: [NSUnderlyingErrorKey: error!])
+                    handleProcessedLeaderboard(nil, error: resultError)
+                    return
+                }
+                
+                if leaderboard.identifier == self.playerData.highscoreLeaderboardID {
+                    self.playerData.rank = leaderboard.localPlayerScore?.rank
+                    handleProcessedLeaderboard(leaderboard, error: nil)
+                    
                 } else {
                     for (index, progress) in self.playerData.levelProgressItems.enumerate() {
-                        if progress.leaderboardID == score.leaderboardIdentifier {
-                            self.playerData.levelProgressItems[index] = progress.levelProgressBySettingRank(score.rank)
+                        if progress.leaderboardID == leaderboard.identifier {
+                            self.playerData.levelProgressItems[index] = progress.levelProgressBySettingRank(leaderboard.localPlayerScore?.rank)
+                            handleProcessedLeaderboard(leaderboard, error: nil)
                             break
                         }
                     }
                 }
-            }
-            
-            completionHandler(progressItems: self.progressItems(), error: nil)
-        })
-        
+            })
+        }
     }
     
     private func progressItemForLevel(level: Level) -> (index: Int, progress: LevelProgress) {
