@@ -18,7 +18,7 @@ final class Analytics {
     class func startSession() {
         let flurryKey = NSBundle.mainBundle().objectForInfoDictionaryKey("FlurryKey") as! String
         #if DEBUG
-            Flurry.setLogLevel(FlurryLogLevelDebug)
+            Flurry.setLogLevel(FlurryLogLevelCriticalOnly)
         #endif
         Flurry.startSession(flurryKey)
         Fabric.with([Crashlytics(), Twitter()])
