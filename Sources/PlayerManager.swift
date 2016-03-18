@@ -38,7 +38,7 @@ final class PlayerManager {
     
     init(navigationManager: NavigationManager) {
         self.navigationManager = navigationManager
-        loadPlayer()
+        loadPlayerData()
     }
     
     deinit {
@@ -62,7 +62,7 @@ final class PlayerManager {
         let progressItem = progressItemForLevel(level)
         playerData.levelProgressItems[progressItem.index] = progressItem.progress.levelProgressBySettingUnlocked()
         
-        savePlayer()
+        savePlayerData()
     }
     
     func trackNewWinInLevel(level: Level) {
@@ -217,7 +217,7 @@ final class PlayerManager {
 
 extension PlayerManager {
     
-    private func loadPlayer() {
+    private func loadPlayerData() {
         let oldPlayer: GKLocalPlayer? = player
         
         player = GKLocalPlayer.localPlayer()
@@ -287,13 +287,9 @@ extension PlayerManager {
                 }
             }
         }
-        
-        startAutoSaveTimer()
     }
     
-    func savePlayer() {
-        stopAutoSaveTimer()
-        
+    func savePlayerData() {
         guard playerData != nil else { return }
         
         let keys = playerDataKeys()
@@ -379,7 +375,7 @@ extension PlayerManager {
     }
     
     @objc private func autoSaveTimerDidFire() {
-        savePlayer()
+        savePlayerData()
     }
 }
 
@@ -397,11 +393,13 @@ extension PlayerManager {
     }
     
     @objc private func appWillResignActive(notification: NSNotification) {
-        savePlayer()
+        savePlayerData()
+        stopAutoSaveTimer()
     }
     
     @objc private func appDidBecomeActive(notification: NSNotification) {
-        loadPlayer()
+        loadPlayerData()
+        startAutoSaveTimer()
     }
 }
 
