@@ -50,6 +50,7 @@
 		9F44D2451C84C63900640046 /* NSObject+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2401C84C63900640046 /* NSObject+Utils.swift */; };
 		9F44D2461C84C63900640046 /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2411C84C63900640046 /* ObserverSet.swift */; };
 		9F44D2471C84C63900640046 /* UIScreen+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2421C84C63900640046 /* UIScreen+Size.swift */; };
+		9F73D1C81C9BA2D900EA72A7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F73D1C71C9BA2D900EA72A7 /* GameKit.framework */; };
 		9F93B4821C9750760092CBCB /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F93B4811C9750760092CBCB /* String+Path.swift */; };
 		9F93B4841C9760700092CBCB /* DefaultPlayerData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F93B4831C9760700092CBCB /* DefaultPlayerData.json */; };
 		9F95E15A1C875D0100D6F368 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1591C875D0100D6F368 /* Level.swift */; };
@@ -119,6 +120,8 @@
 		9F44D2401C84C63900640046 /* NSObject+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Utils.swift"; sourceTree = "<group>"; };
 		9F44D2411C84C63900640046 /* ObserverSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverSet.swift; sourceTree = "<group>"; };
 		9F44D2421C84C63900640046 /* UIScreen+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Size.swift"; sourceTree = "<group>"; };
+		9F73D1C71C9BA2D900EA72A7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		9F73D1C91C9BA9D200EA72A7 /* HoldemHands.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HoldemHands.entitlements; sourceTree = "<group>"; };
 		9F93B4811C9750760092CBCB /* String+Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		9F93B4831C9760700092CBCB /* DefaultPlayerData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultPlayerData.json; sourceTree = "<group>"; };
 		9F95E1591C875D0100D6F368 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08CF424122F5D177FE38852F /* Pods.framework in Frameworks */,
+				9F73D1C81C9BA2D900EA72A7 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +230,7 @@
 		9F44D1F41C84B21A00640046 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9F73D1C91C9BA9D200EA72A7 /* HoldemHands.entitlements */,
 				9F44D1F51C84B21A00640046 /* Assets.xcassets */,
 				9F44D1F61C84B21A00640046 /* LaunchScreen.storyboard */,
 				9F44D1F81C84B21A00640046 /* Main.storyboard */,
@@ -383,6 +388,7 @@
 		E4E4B045AA5B890F9E9E0F7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F73D1C71C9BA2D900EA72A7 /* GameKit.framework */,
 				B77C71BFF06C1B554EEEC53C /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -447,6 +453,14 @@
 					9FACAAC81C72BCC20051A435 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = WP3CPF8Q52;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					9FACAADC1C72BCC20051A435 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -795,6 +809,7 @@
 			baseConfigurationReference = 38F1C5899B0FDC694E47BE96 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Resources/HoldemHands.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -815,6 +830,7 @@
 			baseConfigurationReference = 25C523273D3C4AF45346EF9E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Resources/HoldemHands.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_OPTIMIZATION_LEVEL = s;
