@@ -26,6 +26,7 @@ final class StatsCell: UICollectionViewCell {
         self.item = item
         
         leaderboardButton.tag = item.index
+        leaderboardButton.hidden = !item.playerAuthenticated
         
         nameLabel.text = item.progressItem.title
         

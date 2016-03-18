@@ -32,6 +32,10 @@ final class PlayerManager {
     private let playerIdentifierKey = "PlayerIdentifier"
     private let keychain = KeychainSwift()
     
+    var authenticated: Bool {
+        return player.authenticated
+    }
+    
     init(navigationManager: NavigationManager) {
         self.navigationManager = navigationManager
         loadPlayer()
