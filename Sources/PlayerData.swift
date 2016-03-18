@@ -15,6 +15,7 @@ struct PlayerData: Mappable {
     var chipsCount: Int64!
     var highscoreLeaderboardID: String!
     var rank: Int?
+    private(set) var revision: String!
     
     init() {
         levelProgressItems = [LevelProgress]()
@@ -30,5 +31,10 @@ struct PlayerData: Mappable {
         chipsCount <- (map["chips_count"], transformOfInt64)
         highscoreLeaderboardID <- map["highscore_leaderboard_id"]
         rank <- map["rank"]
+        revision <- map["revision"]
+    }
+    
+    mutating func generateNewRevision() {
+        revision = NSUUID().UUIDString as String
     }
 }

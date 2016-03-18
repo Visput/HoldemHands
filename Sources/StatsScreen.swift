@@ -56,7 +56,7 @@ extension StatsScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
 
 extension StatsScreen: PlayerManagerObserving {
     
-    func playerManagerDidAuthenticateNewPlayer(manager: PlayerManager) {
+    func playerManager(manager: PlayerManager, didLoadPlayerData playerData: PlayerData) {
         fillViewsWithModel()
     }
 }

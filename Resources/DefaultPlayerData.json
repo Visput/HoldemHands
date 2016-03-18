@@ -2,6 +2,7 @@
   "chips_count" : 25,
   "highscore_leaderboard_id" : "highscore",
   "rank" : null,
+  "revision" : "0",
   "level_progress_items" : [
     {
       "locked" : false,

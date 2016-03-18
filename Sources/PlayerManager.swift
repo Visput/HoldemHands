@@ -12,7 +12,7 @@ import GameKit
 import ObjectMapper
 import KeychainSwift
 
-final class PlayerManager {
+final class PlayerManager: NSObject {
     
     enum ErrorCode: Int {
         case PlayerNotAuthenticated
@@ -24,7 +24,7 @@ final class PlayerManager {
     let observers = ObserverSet<PlayerManagerObserving>()
     
     private(set) var playerData: PlayerData!
-    private var player: GKLocalPlayer!
+    private var player: GKLocalPlayer
 
     private let navigationManager: NavigationManager
     private var autoSaveTimer: NSTimer?
@@ -38,6 +38,9 @@ final class PlayerManager {
     
     init(navigationManager: NavigationManager) {
         self.navigationManager = navigationManager
+        player = GKLocalPlayer.localPlayer()
+        super.init()
+        player.registerListener(self)
         loadPlayerData()
     }
     
@@ -181,7 +184,8 @@ final class PlayerManager {
                 } else {
                     for (index, progress) in self.playerData.levelProgressItems.enumerate() {
                         if progress.leaderboardID == leaderboard.identifier {
-                            self.playerData.levelProgressItems[index] = progress.levelProgressBySettingRank(leaderboard.localPlayerScore?.rank)
+                            let progressItemWithRank = progress.levelProgressBySettingRank(leaderboard.localPlayerScore?.rank)
+                            self.playerData.levelProgressItems[index] = progressItemWithRank
                             handleProcessedLeaderboard(leaderboard, error: nil)
                             break
                         }
@@ -218,74 +222,63 @@ final class PlayerManager {
 extension PlayerManager {
     
     private func loadPlayerData() {
-        let oldPlayer: GKLocalPlayer? = player
-        
-        player = GKLocalPlayer.localPlayer()
-        
         // Use last saved data while actual data is loading from GameCenter.
-        loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: true)
+        loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: true)
         
         // Authenticate current user and load data from GameCenter.
-        player.authenticateHandler = { [unowned self] (viewController: UIViewController?, error: NSError?) in
+        player.authenticateHandler = { [unowned self] viewController, error in
             
             // Register for notifications when `authenticateHandler` executed at least once.
             // This prevents from calling authentication twice when app is launched.
             self.registerForAppLifeCycleNotifications()
             
-            if viewController != nil {
+            guard viewController == nil else {
                 // Present authentication screen.
                 self.navigationManager.presentScreen(viewController!, animated: true)
-            } else {
+                return
+            }
+            
+            guard self.player.authenticated else {
                 Analytics.error(error)
                 
-                if self.player.authenticated {
-                    Analytics.userName(self.player.alias!)
-                    Analytics.userID(self.player.playerID!)
-                    
-                    // Load GKSavedGame objects for authenticated player.
-                    self.player.fetchSavedGamesWithCompletionHandler({ (savedGames: [GKSavedGame]?, error: NSError?) in
-                        if error != nil {
-                            Analytics.error(error)
-                            
-                            // Load local data for authenticated player.
-                            self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
-                            self.notifyObserversDidAuthenticatePlayer(oldPlayer, newPlayer: self.player)
-                            
-                        } else {
-                            if let savedGame = savedGames?.last {
-                                
-                                // Load GameCenter data for authenticated player.
-                                savedGame.loadDataWithCompletionHandler({ (data: NSData?, error: NSError?) in
-                                    if error != nil {
-                                        
-                                        // Load local data for authenticated player.
-                                        Analytics.error(error)
-                                        self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
-                                        
-                                    } else {
-                                        
-                                        // Initialize player data with GameCenter data.
-                                        let playerDataJSON = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
-                                        self.playerData = Mapper<PlayerData>().map(playerDataJSON)
-                                    }
-                                    
-                                    self.notifyObserversDidAuthenticatePlayer(oldPlayer, newPlayer: self.player)
-                                })
-                                
-                            } else {
-                                // Load default data for authenticated player.
-                                self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
-                                self.notifyObserversDidAuthenticatePlayer(oldPlayer, newPlayer: self.player)
-                            }
-                        }
-                    })
-                    
-                } else {
-                    // Load local data for guest player.
-                    self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
-                    self.notifyObserversDidAuthenticatePlayer(oldPlayer, newPlayer: self.player)
-                }
+                // Load local data for guest player.
+                self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false)
+                return
             }
+            
+            Analytics.userName(self.player.alias!)
+            Analytics.userID(self.player.playerID!)
+            
+            // Load GKSavedGame objects for authenticated player.
+            self.player.fetchSavedGamesWithCompletionHandler({ savedGames, error in
+                guard error == nil else {
+                    Analytics.error(error)
+                    
+                    // Load local data for authenticated player.
+                    self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false)
+                    return
+                }
+                
+                guard let recentSavedGame = self.mostRecentSavedGameInGames(savedGames) else {
+                    // Load default data for authenticated player.
+                    self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false)
+                    return
+                }
+                
+                // Load GameCenter data for authenticated player.
+                recentSavedGame.loadDataWithCompletionHandler({ data, error in
+                    guard error == nil else {
+                        Analytics.error(error)
+                        
+                        // Load local data for authenticated player.
+                        self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false)
+                        return
+                    }
+                    
+                    // Initialize player data with GameCenter data.
+                    self.initializePlayerDataWithJSONData(data!)
+                })
+            })
         }
     }
     
@@ -295,6 +288,7 @@ extension PlayerManager {
         let keys = playerDataKeys()
         let key = player.authenticated ? keys.authenticatedKey! : keys.guestKey
         
+        playerData.generateNewRevision()
         let playerDataJSON = Mapper().toJSONString(playerData, prettyPrint: true)!
         let playerDataBytes = playerDataJSON.dataUsingEncoding(NSUTF8StringEncoding)!
         
@@ -310,7 +304,7 @@ extension PlayerManager {
         })
     }
     
-    private func loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded useLastPlayerIfNeeded: Bool) {
+    private func loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded useLastPlayerIfNeeded: Bool) {
         let defaultPlayerDataFileName = "DefaultPlayerData.json"
         
         let keys = playerDataKeys()
@@ -339,7 +333,20 @@ extension PlayerManager {
                 encoding: NSUTF8StringEncoding) as String
         }
 
-        playerData = Mapper<PlayerData>().map(playerDataJSON)
+        initializePlayerDataWithJSONString(playerDataJSON)
+    }
+    
+    private func initializePlayerDataWithJSONData(jsonData: NSData) {
+        let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
+        initializePlayerDataWithJSONString(jsonString)
+    }
+    
+    private func initializePlayerDataWithJSONString(jsonString: String) {
+        let newPlayerData = Mapper<PlayerData>().map(jsonString)
+        if playerData?.revision != newPlayerData!.revision {
+            playerData = newPlayerData
+            notifyObserversDidLoadPlayerData()
+        }
     }
     
     typealias PlayerDataKeys = (authenticatedKey: String?, guestKey: String, lastSavedKey: String?)
@@ -356,6 +363,47 @@ extension PlayerManager {
         keys.lastSavedKey = keychain.get(playerIdentifierKey)
         
         return keys
+    }
+    
+    private func mostRecentSavedGameInGames(savedGames: [GKSavedGame]?) -> GKSavedGame? {
+        guard var recentSavedGame = savedGames?.first else { return nil }
+        
+        for index in 1 ..< savedGames!.count {
+            if savedGames![index].modificationDate!.compare(recentSavedGame.modificationDate!) == .OrderedDescending {
+                recentSavedGame = savedGames![index]
+            }
+        }
+        
+        return recentSavedGame
+    }
+}
+
+extension PlayerManager: GKLocalPlayerListener {
+    
+    func player(player: GKPlayer, didModifySavedGame savedGame: GKSavedGame) {
+        loadPlayerData()
+    }
+    
+    func player(player: GKPlayer, hasConflictingSavedGames savedGames: [GKSavedGame]) {
+        let recentSavedGame = mostRecentSavedGameInGames(savedGames)!
+        recentSavedGame.loadDataWithCompletionHandler({ data, error in
+            guard error == nil else {
+                Analytics.error(error)
+                return
+            }
+            
+            self.player.resolveConflictingSavedGames(savedGames,
+                withData: data!,
+                completionHandler: { savedGame, error in
+                    guard error == nil else {
+                        Analytics.error(error)
+                        return
+                    }
+                    
+                    // Initialize player data with most recent GameCenter data.
+                    self.initializePlayerDataWithJSONData(data!)
+            })
+        })
     }
 }
 
@@ -384,8 +432,14 @@ extension PlayerManager {
     private func registerForAppLifeCycleNotifications() {
         unregisterFromAppLifeCycleNotifications()
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector("appWillResignActive:"), name: UIApplicationWillResignActiveNotification, object: nil)
-        notificationCenter.addObserver(self, selector: Selector("appDidBecomeActive:"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        notificationCenter.addObserver(self,
+            selector: Selector("appWillResignActive:"),
+            name: UIApplicationWillResignActiveNotification,
+            object: nil)
+        notificationCenter.addObserver(self,
+            selector: Selector("appDidBecomeActive:"),
+            name: UIApplicationDidBecomeActiveNotification,
+            object: nil)
     }
     
     private func unregisterFromAppLifeCycleNotifications() {
@@ -411,11 +465,9 @@ extension PlayerManager {
         }
     }
     
-    private func notifyObserversDidAuthenticatePlayer(oldPlayer: GKLocalPlayer?, newPlayer: GKLocalPlayer) {
-        if oldPlayer == nil || newPlayer.playerID != oldPlayer!.playerID {
-            for observer in observers {
-                observer.playerManagerDidAuthenticateNewPlayer(self)
-            }
+    private func notifyObserversDidLoadPlayerData() {
+        for observer in observers {
+            observer.playerManager(self, didLoadPlayerData: playerData)
         }
     }
 }

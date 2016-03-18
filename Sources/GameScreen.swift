@@ -159,7 +159,7 @@ extension GameScreen: PlayerManagerObserving {
         })
     }
     
-    func playerManagerDidAuthenticateNewPlayer(manager: PlayerManager) {
+    func playerManager(manager: PlayerManager, didLoadPlayerData playerData: PlayerData) {
         if manager.isLockedLevel(level) {
             model.navigationManager.dismissScreenAnimated(true)
         } else {
