@@ -23,12 +23,16 @@ final class NavigationManager: NSObject {
         return window.rootViewController!.storyboard!
     }
     
-    func presentScreen(screen: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
-        navigationController.presentViewController(screen, animated: animated, completion: completion)
+    func presentScreen(screen: UIViewController, animated: Bool) {
+        let presentingViewController = navigationController.presentedViewController ?? navigationController
+        presentingViewController!.presentViewController(screen, animated: animated, completion: nil)
     }
     
     func dismissScreenAnimated(animated: Bool) {
-        navigationController.dismissViewControllerAnimated(animated, completion: nil)
+        let presentedViewController = navigationController.presentedViewController?.presentedViewController ??
+            navigationController.presentedViewController
+        let presentingViewController = presentedViewController?.presentingViewController
+        presentingViewController?.dismissViewControllerAnimated(animated, completion: nil)
     }
     
     func setMainScreenAsRootAnimated(animated: Bool) {
@@ -39,20 +43,20 @@ final class NavigationManager: NSObject {
     func presentGameScreenWithLevel(level: Level, animated: Bool) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(GameScreen.className()) as! GameScreen
         screen.level = level
-        navigationController.presentViewController(screen, animated: animated, completion: nil)
+        presentScreen(screen, animated: animated)
     }
     
     func presentStatsScreenAnimated(animated: Bool) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(StatsScreen.className()) as! StatsScreen
-        navigationController.presentViewController(screen, animated: animated, completion: nil)
+        presentScreen(screen, animated: animated)
     }
     
     func presentLeaderboardWithID(leaderboardID: String?, animated: Bool) {
         let screen = GKGameCenterViewController()
         screen.leaderboardIdentifier = leaderboardID
         screen.viewState = .Leaderboards
-        screen.delegate = self
-        navigationController.presentViewController(screen, animated: animated, completion: nil)
+        screen.gameCenterDelegate = self
+        presentScreen(screen, animated: animated)
     }
     
     func showBannerWithText(text: String, duration: NSTimeInterval = 5.0, tapAction: (() -> Void)? = nil) -> BannerView {
@@ -62,9 +66,9 @@ final class NavigationManager: NSObject {
     }
 }
 
-extension NavigationManager: GKGameCenterControllerDelegate, UINavigationControllerDelegate {
+extension NavigationManager: GKGameCenterControllerDelegate {
     
-    @objc func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
         dismissScreenAnimated(true)
     }
 }

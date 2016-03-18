@@ -13,7 +13,7 @@ struct PlayerData: Mappable {
     
     var levelProgressItems: [LevelProgress]!
     var chipsCount: Int64!
-    var overallLeaderboardID: String!
+    var highscoreLeaderboardID: String!
     var rank: Int?
     
     init() {
@@ -28,7 +28,7 @@ struct PlayerData: Mappable {
         
         levelProgressItems <- map["level_progress_items"]
         chipsCount <- (map["chips_count"], transformOfInt64)
-        overallLeaderboardID <- map["overall_leaderboard_id"]
+        highscoreLeaderboardID <- map["highscore_leaderboard_id"]
         rank <- map["rank"]
     }
 }

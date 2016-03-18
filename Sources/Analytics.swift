@@ -17,7 +17,9 @@ final class Analytics {
     
     class func startSession() {
         let flurryKey = NSBundle.mainBundle().objectForInfoDictionaryKey("FlurryKey") as! String
-        Flurry.setLogLevel(FlurryLogLevelAll)
+        #if DEBUG
+            Flurry.setLogLevel(FlurryLogLevelCriticalOnly)
+        #endif
         Flurry.startSession(flurryKey)
         Fabric.with([Crashlytics(), Twitter()])
     }
@@ -28,6 +30,7 @@ final class Analytics {
     
     class func error(error: NSError?) {
         guard error != nil else { return }
+        print(error)
         Crashlytics.sharedInstance().recordError(error!)
     }
     

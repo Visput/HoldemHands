@@ -65,11 +65,12 @@ final class PlayerManager {
         let chipsWon = level.chipsPerWin * chipsMultiplierForLevel(level)
         playerData.chipsCount! += chipsWon
         
-        reportScore(playerData.chipsCount, toLeaderboardWithID: nil)
-        
         let progressItem = progressItemForLevel(level)
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfWins(chipsWon: chipsWon)
         playerData.levelProgressItems[progressItem.index] = newLevelProgress
+        
+        reportScore(playerData.chipsCount, toLeaderboardWithID: playerData.highscoreLeaderboardID)
+        reportScore(newLevelProgress.chipsCount, toLeaderboardWithID: newLevelProgress.level.leaderboardID)
         
         guard progressItem.index < playerData.levelProgressItems.count - 1 else { return }
         var nextLevelProgress = playerData.levelProgressItems[progressItem.index + 1]
@@ -87,13 +88,14 @@ final class PlayerManager {
         let chipsLost = level.chipsPerWin
         // Total chips count can not be less than zero.
         playerData.chipsCount = max(Int64(0), playerData.chipsCount - chipsLost)
-        
-        reportScore(playerData.chipsCount, toLeaderboardWithID: nil)
-        
+
         let progressItem = progressItemForLevel(level)
         
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfLosses(chipsLost: chipsLost)
         playerData.levelProgressItems[progressItem.index] = newLevelProgress
+        
+        reportScore(playerData.chipsCount, toLeaderboardWithID: playerData.highscoreLeaderboardID)
+        reportScore(newLevelProgress.chipsCount, toLeaderboardWithID: newLevelProgress.level.leaderboardID)
     }
     
     func chipsMultiplierForLevel(level: Level) -> Int64 {
@@ -116,7 +118,7 @@ final class PlayerManager {
             numberOfWins: numberOfWins,
             numberOfLosses: numberOfLosses,
             chipsCount: playerData.chipsCount,
-            leaderboardID: playerData.overallLeaderboardID,
+            leaderboardID: playerData.highscoreLeaderboardID,
             rank: playerData.rank)
     }
     
@@ -137,6 +139,7 @@ final class PlayerManager {
         }
         
         let leaderboard = GKLeaderboard(players: [player])
+        leaderboard.identifier = playerData.highscoreLeaderboardID
         leaderboard.loadScoresWithCompletionHandler({ scores, error in
             guard error == nil else {
                 let resultError = NSError(domain: self.errorDomain,
@@ -148,7 +151,7 @@ final class PlayerManager {
             }
             
             for score in scores! {
-                if score.leaderboardIdentifier == self.playerData.overallLeaderboardID {
+                if score.leaderboardIdentifier == self.playerData.highscoreLeaderboardID {
                     self.playerData.rank = score.rank
                 } else {
                     for (index, progress) in self.playerData.levelProgressItems.enumerate() {
@@ -177,15 +180,13 @@ final class PlayerManager {
         return progressItem
     }
     
-    private func reportScore(scoreValue: Int64, toLeaderboardWithID leaderboardID: String? = nil) {
+    private func reportScore(scoreValue: Int64, toLeaderboardWithID leaderboardID: String) {
         if player.authenticated {
             let score = GKScore()
-            if leaderboardID != nil {
-                score.leaderboardIdentifier = leaderboardID!
-            }
+            score.leaderboardIdentifier = leaderboardID
             score.value = scoreValue
             GKScore.reportScores([score], withCompletionHandler: { error in
-                Analytics.error(error!)
+                Analytics.error(error)
             })
         }
     }
@@ -212,7 +213,7 @@ extension PlayerManager {
                 // Present authentication screen.
                 self.navigationManager.presentScreen(viewController!, animated: true)
             } else {
-                Analytics.error(error!)
+                Analytics.error(error)
                 
                 if self.player.authenticated {
                     Analytics.userName(self.player.alias!)
@@ -221,7 +222,7 @@ extension PlayerManager {
                     // Load GKSavedGame objects for authenticated player.
                     self.player.fetchSavedGamesWithCompletionHandler({ (savedGames: [GKSavedGame]?, error: NSError?) in
                         if error != nil {
-                            Analytics.error(error!)
+                            Analytics.error(error)
                             
                             // Load local data for authenticated player.
                             self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
@@ -235,7 +236,7 @@ extension PlayerManager {
                                     if error != nil {
                                         
                                         // Load local data for authenticated player.
-                                        Analytics.error(error!)
+                                        Analytics.error(error)
                                         self.loadPlayerDataFromLocalStorage(userLastPlayerIfNeeded: false)
                                         
                                     } else {
@@ -286,7 +287,7 @@ extension PlayerManager {
         }
         
         player.saveGameData(playerDataBytes, withName: key, completionHandler: { (savedGame, error) in
-            Analytics.error(error!)
+            Analytics.error(error)
         })
     }
     
@@ -362,6 +363,7 @@ extension PlayerManager {
 extension PlayerManager {
     
     private func registerForAppLifeCycleNotifications() {
+        unregisterFromAppLifeCycleNotifications()
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: Selector("appWillResignActive:"), name: UIApplicationWillResignActiveNotification, object: nil)
         notificationCenter.addObserver(self, selector: Selector("appDidBecomeActive:"), name: UIApplicationDidBecomeActiveNotification, object: nil)

@@ -1,6 +1,6 @@
 {
   "chips_count" : 25,
-  "overall_leaderboard_id" : "overall",
+  "highscore_leaderboard_id" : "highscore",
   "rank" : null,
   "level_progress_items" : [
     {
