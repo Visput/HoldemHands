@@ -60,7 +60,7 @@ extension Analytics {
     
     class func facebookSharingFailed(error: NSError) {
         self.error(error)
-        Flurry.endTimedEvent("sharing_facebook", withParameters: ["action" : "failed", "reason" : error.debugDescription])
+        Flurry.endTimedEvent("sharing_facebook", withParameters: ["action" : "failed"])
     }
     
     class func twitterSharingInitiated() {
@@ -77,7 +77,7 @@ extension Analytics {
     
     class func twitterSharingFailed(error: NSError) {
         self.error(error)
-        Flurry.endTimedEvent("sharing_twitter", withParameters: ["action" : "failed", "reason" : error.debugDescription])
+        Flurry.endTimedEvent("sharing_twitter", withParameters: ["action" : "failed"])
     }
     
     class func instagramSharingInitiated() {
@@ -85,11 +85,11 @@ extension Analytics {
     }
     
     class func instagramSharingCompleted() {
-        Flurry.endTimedEvent("sharing_instagram", withParameters: ["action" : "canceled"])
+        Flurry.endTimedEvent("sharing_instagram", withParameters: ["action" : "completed"])
     }
     
     class func instagramSharingFailed(error: NSError) {
         self.error(error)
-        Flurry.endTimedEvent("sharing_instagram", withParameters: ["action" : "failed", "reason" : error.debugDescription])
+        Flurry.endTimedEvent("sharing_instagram", withParameters: ["action" : "failed"])
     }
 }
