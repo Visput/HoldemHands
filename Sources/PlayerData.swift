@@ -15,12 +15,7 @@ struct PlayerData: Mappable {
     var chipsCount: Int64!
     var highscoreLeaderboardID: String!
     var rank: Int?
-    private(set) var revision: String!
-    
-    init() {
-        levelProgressItems = [LevelProgress]()
-        chipsCount = 0
-    }
+    private(set) var timestamp: Double!
     
     init?(_ map: Map) {}
     
@@ -31,10 +26,10 @@ struct PlayerData: Mappable {
         chipsCount <- (map["chips_count"], transformOfInt64)
         highscoreLeaderboardID <- map["highscore_leaderboard_id"]
         rank <- map["rank"]
-        revision <- map["revision"]
+        timestamp <- map["timestamp"]
     }
     
-    mutating func generateNewRevision() {
-        revision = NSUUID().UUIDString as String
+    mutating func generateTimestamp() {
+        timestamp = NSDate().timeIntervalSince1970
     }
 }

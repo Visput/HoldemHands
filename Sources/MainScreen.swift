@@ -65,7 +65,7 @@ extension MainScreen {
     @objc private func unlockLevelButtonDidPress(sender: UIButton) {
         let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! LevelCell
         model.playerManager.unlockLevel(cell.item.level)
-        mainView.levelsCollectionView.reloadData()
+        fillViewsWithModel()
     }
     
     @IBAction private func menuButtonDidPress(sender: AnyObject) {

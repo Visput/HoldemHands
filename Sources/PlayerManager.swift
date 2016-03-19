@@ -288,7 +288,7 @@ extension PlayerManager {
         let keys = playerDataKeys()
         let key = player.authenticated ? keys.authenticatedKey! : keys.guestKey
         
-        playerData.generateNewRevision()
+        playerData.generateTimestamp()
         let playerDataJSON = Mapper().toJSONString(playerData, prettyPrint: true)!
         let playerDataBytes = playerDataJSON.dataUsingEncoding(NSUTF8StringEncoding)!
         
@@ -343,7 +343,7 @@ extension PlayerManager {
     
     private func initializePlayerDataWithJSONString(jsonString: String) {
         let newPlayerData = Mapper<PlayerData>().map(jsonString)
-        if playerData?.revision != newPlayerData!.revision {
+        if playerData?.timestamp < newPlayerData!.timestamp {
             playerData = newPlayerData
             notifyObserversDidLoadPlayerData()
         }
