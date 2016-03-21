@@ -53,41 +53,23 @@ final class PlayerManager: NSObject {
         return progress.locked
     }
     
-    func canUnlockLevel(level: Level) -> Bool {
-        return playerData.chipsCount >= level.chipsToUnlock
-    }
-    
-    func unlockLevel(level: Level) {
-        precondition(isLockedLevel(level))
-        precondition(canUnlockLevel(level))
-        
-        playerData.chipsCount! -= level.chipsToUnlock
-        let progressItem = progressItemForLevel(level)
-        playerData.levelProgressItems[progressItem.index] = progressItem.progress.levelProgressBySettingUnlocked()
-        
-        savePlayerData()
-    }
-    
     func trackNewWinInLevel(level: Level) {
         let chipsWon = level.chipsPerWin * chipsMultiplierForLevel(level)
         playerData.chipsCount! += chipsWon
         
         let progressItem = progressItemForLevel(level)
-        let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfWins(chipsWon: chipsWon)
+        let newLevelProgress = progressItem.progress.levelProgressByIncrementingWinsCount(chipsWon: chipsWon)
         playerData.levelProgressItems[progressItem.index] = newLevelProgress
-        
-        reportScore(playerData.chipsCount, toLeaderboardWithID: playerData.highscoreLeaderboardID)
-        reportScore(newLevelProgress.chipsCount, toLeaderboardWithID: newLevelProgress.level.leaderboardID)
         
         guard progressItem.index < playerData.levelProgressItems.count - 1 else { return }
         var nextLevelProgress = playerData.levelProgressItems[progressItem.index + 1]
         if nextLevelProgress.locked! &&
-            !nextLevelProgress.notifiedToUnlock! &&
             nextLevelProgress.level.chipsToUnlock <= playerData.chipsCount {
                 
-                nextLevelProgress = nextLevelProgress.levelProgressBySettingNotifiedToUnlock()
+                nextLevelProgress = nextLevelProgress.levelProgressBySettingUnlocked()
                 playerData.levelProgressItems[progressItem.index + 1] = nextLevelProgress
-                notifyObserversDidEarnChipsToUnlockLevel(nextLevelProgress)
+                notifyObserversDidUnlockLevel(nextLevelProgress)
+                savePlayerData()
         }
     }
     
@@ -98,34 +80,31 @@ final class PlayerManager: NSObject {
 
         let progressItem = progressItemForLevel(level)
         
-        let newLevelProgress = progressItem.progress.levelProgressByIncrementingNumberOfLosses(chipsLost: chipsLost)
+        let newLevelProgress = progressItem.progress.levelProgressByIncrementingLossesCount(chipsLost: chipsLost)
         playerData.levelProgressItems[progressItem.index] = newLevelProgress
-        
-        reportScore(playerData.chipsCount, toLeaderboardWithID: playerData.highscoreLeaderboardID)
-        reportScore(newLevelProgress.chipsCount, toLeaderboardWithID: newLevelProgress.level.leaderboardID)
     }
     
     func chipsMultiplierForLevel(level: Level) -> Int64 {
         let progressItem = progressItemForLevel(level)
-        return Int64(pow(2, Double(progressItem.progress.currentNumberOfWinsInRow / level.winsInRowToDoubleChips)))
+        return Int64(pow(2, Double(progressItem.progress.currentWinsCountInRow / level.winsInRowToDoubleChips)))
     }
     
     func playerProgress() -> PlayerProgress {
-        var maxNumberOfWinsInRow = 0
-        var numberOfWins = 0
-        var numberOfLosses = 0
+        var maxWinsCountInRow = 0
+        var winsCount = 0
+        var lossesCount = 0
         
         for levelProgress in playerData.levelProgressItems {
-            maxNumberOfWinsInRow = max(maxNumberOfWinsInRow, levelProgress.maxNumberOfWinsInRow)
-            numberOfWins += levelProgress.numberOfWins
-            numberOfLosses += levelProgress.numberOfLosses
+            maxWinsCountInRow = max(maxWinsCountInRow, levelProgress.maxWinsCountInRow)
+            winsCount += levelProgress.winsCount
+            lossesCount += levelProgress.lossesCount
         }
         
-        return PlayerProgress(maxNumberOfWinsInRow: maxNumberOfWinsInRow,
-            numberOfWins: numberOfWins,
-            numberOfLosses: numberOfLosses,
+        return PlayerProgress(maxWinsCountInRow: maxWinsCountInRow,
+            winsCount: winsCount,
+            lossesCount: lossesCount,
             chipsCount: playerData.chipsCount,
-            leaderboardID: playerData.highscoreLeaderboardID,
+            leaderboardID: playerData.overallLeaderboardID,
             rank: playerData.rank)
     }
     
@@ -177,7 +156,7 @@ final class PlayerManager: NSObject {
                     return
                 }
                 
-                if leaderboard.identifier == self.playerData.highscoreLeaderboardID {
+                if leaderboard.identifier == self.playerData.overallLeaderboardID {
                     self.playerData.rank = leaderboard.localPlayerScore?.rank
                     handleProcessedLeaderboard(leaderboard, error: nil)
                     
@@ -207,15 +186,39 @@ final class PlayerManager: NSObject {
         return progressItem
     }
     
-    private func reportScore(scoreValue: Int64, toLeaderboardWithID leaderboardID: String) {
-        if player.authenticated {
+    private func scoreForLevelProgress(progress: LevelProgress) -> Int64 {
+        let score = Int64(round(Double(progress.handsCount) *
+            Double(progress.level.chipsPerWin) *
+            pow(Double(progress.wonChipsCount + progress.level.chipsPerWin) /
+                (Double(progress.lostChipsCount + progress.level.chipsPerWin) * Double(progress.handsCount)),
+                1.0 / 3.0)))
+        
+        return score
+    }
+    
+    private func reportScores() {
+        guard player.authenticated else { return }
+        
+        var scores = [GKScore]()
+        var overallScore: Int64 = 0
+        
+        for progress in playerData.levelProgressItems {
             let score = GKScore()
-            score.leaderboardIdentifier = leaderboardID
-            score.value = scoreValue
-            GKScore.reportScores([score], withCompletionHandler: { error in
-                Analytics.error(error)
-            })
+            score.value = scoreForLevelProgress(progress)
+            score.leaderboardIdentifier = progress.level.leaderboardID
+            
+            overallScore += score.value
+            scores.append(score)
         }
+        
+        let score = GKScore()
+        score.value = overallScore
+        score.leaderboardIdentifier = playerData.overallLeaderboardID
+        scores.append(score)
+
+        GKScore.reportScores([score], withCompletionHandler: { error in
+            Analytics.error(error)
+        })
     }
 }
 
@@ -302,6 +305,8 @@ extension PlayerManager {
         player.saveGameData(playerDataBytes, withName: key, completionHandler: { (savedGame, error) in
             Analytics.error(error)
         })
+        
+        reportScores()
     }
     
     private func loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded useLastPlayerIfNeeded: Bool) {
@@ -342,9 +347,24 @@ extension PlayerManager {
     }
     
     private func initializePlayerDataWithJSONString(jsonString: String) {
+        let levelsDataFileName = "GameLevels.json"
+        
         let newPlayerData = Mapper<PlayerData>().map(jsonString)
         if playerData?.timestamp < newPlayerData!.timestamp {
             playerData = newPlayerData
+            
+            // Fill progress items with levels data.
+            let levelsJSON = try! NSString(contentsOfFile: levelsDataFileName.pathInResourcesBundle(),
+                encoding: NSUTF8StringEncoding) as String
+            let levels = Mapper<Level>().mapArray(levelsJSON)!
+            for (index, progress) in playerData.levelProgressItems.enumerate() {
+                for level in levels {
+                    guard progress.levelID == level.identifier else { continue }
+                    playerData.levelProgressItems[index] = progress.levelProgressBySettingLevel(level)
+                    break
+                }
+            }
+            
             notifyObserversDidLoadPlayerData()
         }
     }
@@ -375,6 +395,11 @@ extension PlayerManager {
         }
         
         return recentSavedGame
+    }
+    
+    private func clearAllData() {
+        keychain.clear()
+        player.deleteSavedGamesWithName(playerDataKeys().authenticatedKey!, completionHandler: nil)
     }
 }
 
@@ -459,9 +484,9 @@ extension PlayerManager {
 
 extension PlayerManager {
     
-    private func notifyObserversDidEarnChipsToUnlockLevel(levelProgress: LevelProgress) {
+    private func notifyObserversDidUnlockLevel(levelProgress: LevelProgress) {
         for observer in observers {
-            observer.playerManager(self, didEarnChipsToUnlockLevel: levelProgress)
+            observer.playerManager(self, didUnlockLevel: levelProgress)
         }
     }
     

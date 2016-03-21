@@ -12,6 +12,5 @@ struct LevelCellItem {
     
     let level: Level
     let locked: Bool
-    let canUnlock: Bool
     let buttonsTag: Int
 }

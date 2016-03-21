@@ -155,10 +155,6 @@
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfE-Eu-eQE">
-                                                                            <rect key="frame" x="105" y="109" width="57" height="34"/>
-                                                                            <state key="normal" title="Unlock"/>
-                                                                        </button>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT1-YY-8f3">
                                                                             <rect key="frame" x="104" y="115" width="59" height="21.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -173,12 +169,10 @@
                                                                     <constraint firstItem="H4E-t4-ft2" firstAttribute="centerX" secondItem="QDv-1s-Wtf" secondAttribute="centerX" id="5jJ-Ks-6Mw"/>
                                                                     <constraint firstItem="FT1-YY-8f3" firstAttribute="centerX" secondItem="QDv-1s-Wtf" secondAttribute="centerX" id="DAb-n3-sdm"/>
                                                                     <constraint firstItem="H4E-t4-ft2" firstAttribute="centerY" secondItem="QDv-1s-Wtf" secondAttribute="centerY" id="EwH-n8-dmz"/>
-                                                                    <constraint firstItem="NfE-Eu-eQE" firstAttribute="centerY" secondItem="QDv-1s-Wtf" secondAttribute="centerY" id="N8E-s7-bTs"/>
                                                                     <constraint firstItem="h9T-zK-6Za" firstAttribute="centerX" secondItem="QDv-1s-Wtf" secondAttribute="centerX" id="OTA-um-2PP"/>
                                                                     <constraint firstAttribute="bottom" secondItem="h9T-zK-6Za" secondAttribute="bottom" constant="16" id="T9a-bz-jRh"/>
                                                                     <constraint firstItem="FT1-YY-8f3" firstAttribute="centerY" secondItem="QDv-1s-Wtf" secondAttribute="centerY" id="Wh1-YZ-RRb"/>
                                                                     <constraint firstItem="sA7-9C-x28" firstAttribute="centerX" secondItem="QDv-1s-Wtf" secondAttribute="centerX" id="kfq-AA-mh4"/>
-                                                                    <constraint firstItem="NfE-Eu-eQE" firstAttribute="centerX" secondItem="QDv-1s-Wtf" secondAttribute="centerX" id="oF1-HG-fUF"/>
                                                                     <constraint firstItem="h9T-zK-6Za" firstAttribute="top" secondItem="H4E-t4-ft2" secondAttribute="bottom" constant="16" id="qIp-1B-BmR"/>
                                                                     <constraint firstItem="sA7-9C-x28" firstAttribute="top" secondItem="QDv-1s-Wtf" secondAttribute="top" constant="16" id="qtm-tv-oZG"/>
                                                                 </constraints>
@@ -197,7 +191,6 @@
                                                                     <outlet property="lockedLabel" destination="FT1-YY-8f3" id="1xw-NO-LCK"/>
                                                                     <outlet property="playButton" destination="H4E-t4-ft2" id="c8J-zV-krQ"/>
                                                                     <outlet property="priceLabel" destination="h9T-zK-6Za" id="4ZB-Gz-4qe"/>
-                                                                    <outlet property="unlockButton" destination="NfE-Eu-eQE" id="XJa-cB-qlp"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>

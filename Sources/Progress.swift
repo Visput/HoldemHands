@@ -10,12 +10,12 @@ import Foundation
 
 protocol Progress {
     
-    var maxNumberOfWinsInRow: Int! { get }
-    var numberOfWins: Int! { get }
-    var numberOfLosses: Int! { get }
-    var chipsCount: Int64! { get }
+    var maxWinsCountInRow: Int! { get }
+    var winsCount: Int! { get }
+    var lossesCount: Int! { get }
     var rank: Int? { get }
     
+    var chipsCount: Int64 { get }
     var title: String { get }
     var leaderboardID: String { get }
     
@@ -26,10 +26,10 @@ protocol Progress {
 extension Progress {
     
     var winPercent: Double {
-        return Double(100 * numberOfWins) / Double(numberOfWins + numberOfLosses)
+        return Double(100 * winsCount) / Double(winsCount + lossesCount)
     }
     
     var handsCount: Int {
-        return numberOfWins + numberOfLosses
+        return winsCount + lossesCount
     }
 }

@@ -51,6 +51,7 @@
 		9F44D2461C84C63900640046 /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2411C84C63900640046 /* ObserverSet.swift */; };
 		9F44D2471C84C63900640046 /* UIScreen+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2421C84C63900640046 /* UIScreen+Size.swift */; };
 		9F73D1C81C9BA2D900EA72A7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F73D1C71C9BA2D900EA72A7 /* GameKit.framework */; };
+		9F73D1D51CA04FF900EA72A7 /* GameLevels.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F73D1D41CA04FF900EA72A7 /* GameLevels.json */; };
 		9F93B4821C9750760092CBCB /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F93B4811C9750760092CBCB /* String+Path.swift */; };
 		9F93B4841C9760700092CBCB /* DefaultPlayerData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F93B4831C9760700092CBCB /* DefaultPlayerData.json */; };
 		9F95E15A1C875D0100D6F368 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1591C875D0100D6F368 /* Level.swift */; };
@@ -122,6 +123,7 @@
 		9F44D2421C84C63900640046 /* UIScreen+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Size.swift"; sourceTree = "<group>"; };
 		9F73D1C71C9BA2D900EA72A7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		9F73D1C91C9BA9D200EA72A7 /* HoldemHands.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HoldemHands.entitlements; sourceTree = "<group>"; };
+		9F73D1D41CA04FF900EA72A7 /* GameLevels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameLevels.json; sourceTree = "<group>"; };
 		9F93B4811C9750760092CBCB /* String+Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		9F93B4831C9760700092CBCB /* DefaultPlayerData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultPlayerData.json; sourceTree = "<group>"; };
 		9F95E1591C875D0100D6F368 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				9F44D1F81C84B21A00640046 /* Main.storyboard */,
 				9F44D1FA1C84B21A00640046 /* Info.plist */,
 				9F93B4831C9760700092CBCB /* DefaultPlayerData.json */,
+				9F73D1D41CA04FF900EA72A7 /* GameLevels.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				9F44D2101C84B21A00640046 /* Main.storyboard in Resources */,
 				9F3C4BE41C9258F200B37939 /* TextBannerView.xib in Resources */,
 				9F44D20E1C84B21A00640046 /* Assets.xcassets in Resources */,
+				9F73D1D51CA04FF900EA72A7 /* GameLevels.json in Resources */,
 				9F44D20F1C84B21A00640046 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

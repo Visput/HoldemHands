@@ -151,9 +151,9 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
 
 extension GameScreen: PlayerManagerObserving {
     
-    func playerManager(manager: PlayerManager, didEarnChipsToUnlockLevel levelProgress: LevelProgress) {
+    func playerManager(manager: PlayerManager, didUnlockLevel levelProgress: LevelProgress) {
         let levelName = levelProgress.level.name
-        let text =  NSString(format: NSLocalizedString("Congratulations. You earned enough chips to unlock %@", comment: ""), levelName)
+        let text =  NSString(format: NSLocalizedString("Congratulations. %@ is unlocked now!", comment: ""), levelName)
         model.navigationManager.showBannerWithText(text as String, tapAction: { [unowned self] in
             self.model.navigationManager.dismissScreenAnimated(true)
         })

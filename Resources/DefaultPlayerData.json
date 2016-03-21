@@ -1,141 +1,85 @@
 {
+  "overall_leaderboard_id" : "highscore",
   "chips_count" : 25,
-  "highscore_leaderboard_id" : "highscore",
-  "rank" : null,
   "timestamp" : 0,
+  "rank" : null,
   "level_progress_items" : [
     {
       "locked" : false,
-      "number_of_wins" : 0,
-      "number_of_losses" : 0,
-      "chips_count" : 0,
-      "notified_to_unlock" : true,
-      "level" : {
-        "wins_in_row_to_double_chips" : 10,
-        "number_of_hands" : 2,
-        "chips_to_unlock" : 0,
-        "name" : "Level 1",
-        "identifier" : 0,
-        "chips_per_win" : 1,
-        "leaderboard_id" : "level1"                            
-      },
-      "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0,
-      "rank" : null
+      "losses_count" : 0,
+      "lost_chips_count" : 0,
+      "won_chips_count" : 0,
+      "level_id" : 0,
+      "wins_count" : 0,
+      "wins_count_in_row" : 0,
+      "rank" : null,
+      "max_wins_count_in_row" : 0
     },
     {
       "locked" : true,
-      "number_of_wins" : 0,
-      "number_of_losses" : 0,
-      "chips_count" : 0,
-      "notified_to_unlock" : false,
-      "level" : {
-        "wins_in_row_to_double_chips" : 10,
-        "number_of_hands" : 3,
-        "chips_to_unlock" : 50,
-        "name" : "Level 2",
-        "identifier" : 1,
-        "chips_per_win" : 2,
-        "leaderboard_id" : "level2"
-      },
-      "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0,
-      "rank" : null
+      "losses_count" : 0,
+      "lost_chips_count" : 0,
+      "won_chips_count" : 0,
+      "level_id" : 1,
+      "wins_count" : 0,
+      "wins_count_in_row" : 0,
+      "rank" : null,
+      "max_wins_count_in_row" : 0
     },
     {
       "locked" : true,
-      "number_of_wins" : 0,
-      "number_of_losses" : 0,
-      "chips_count" : 0,
-      "notified_to_unlock" : false,
-      "level" : {
-        "wins_in_row_to_double_chips" : 10,
-        "number_of_hands" : 4,
-        "chips_to_unlock" : 250,
-        "name" : "Level 3",
-        "identifier" : 2,
-        "chips_per_win" : 10,
-        "leaderboard_id" : "level3"
-      },
-      "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0,
-      "rank" : null
+      "losses_count" : 0,
+      "lost_chips_count" : 0,
+      "won_chips_count" : 0,
+      "level_id" : 2,
+      "wins_count" : 0,
+      "wins_count_in_row" : 0,
+      "rank" : null,
+      "max_wins_count_in_row" : 0
     },
     {
       "locked" : true,
-      "number_of_wins" : 0,
-      "number_of_losses" : 0,
-      "chips_count" : 0,
-      "notified_to_unlock" : false,
-      "level" : {
-        "wins_in_row_to_double_chips" : 10,
-        "number_of_hands" : 5,
-        "chips_to_unlock" : 1000,
-        "name" : "Level 4",
-        "identifier" : 3,
-        "chips_per_win" : 50,
-        "leaderboard_id" : "level4"
-      },
-      "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0,
-      "rank" : null
+      "losses_count" : 0,
+      "lost_chips_count" : 0,
+      "won_chips_count" : 0,
+      "level_id" : 3,
+      "wins_count" : 0,
+      "wins_count_in_row" : 0,
+      "rank" : null,
+      "max_wins_count_in_row" : 0
     },
     {
       "locked" : true,
-      "number_of_wins" : 0,
-      "number_of_losses" : 0,
-      "chips_count" : 0,
-      "notified_to_unlock" : false,
-      "level" : {
-        "wins_in_row_to_double_chips" : 10,
-        "number_of_hands" : 6,
-        "chips_to_unlock" : 5000,
-        "name" : "Level 5",
-        "identifier" : 4,
-        "chips_per_win" : 250,
-        "leaderboard_id" : "level5"
-      },
-      "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0,
-      "rank" : null
+      "losses_count" : 0,
+      "lost_chips_count" : 0,
+      "won_chips_count" : 0,
+      "level_id" : 4,
+      "wins_count" : 0,
+      "wins_count_in_row" : 0,
+      "rank" : null,
+      "max_wins_count_in_row" : 0
     },
     {
       "locked" : true,
-      "number_of_wins" : 0,
-      "number_of_losses" : 0,
-      "chips_count" : 0,
-      "notified_to_unlock" : false,
-      "level" : {
-        "wins_in_row_to_double_chips" : 10,
-        "number_of_hands" : 7,
-        "chips_to_unlock" : 25000,
-        "name" : "Level 6",
-        "identifier" : 5,
-        "chips_per_win" : 1000,
-        "leaderboard_id" : "level6"
-      },
-      "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0,
-      "rank" : null
+      "losses_count" : 0,
+      "lost_chips_count" : 0,
+      "won_chips_count" : 0,
+      "level_id" : 5,
+      "wins_count" : 0,
+      "wins_count_in_row" : 0,
+      "rank" : null,
+      "max_wins_count_in_row" : 0
     },
     {
       "locked" : true,
-      "number_of_wins" : 0,
-      "number_of_losses" : 0,
-      "chips_count" : 0,
-      "notified_to_unlock" : false,
-      "level" : {
-        "wins_in_row_to_double_chips" : 10,
-        "number_of_hands" : 8,
-        "chips_to_unlock" : 100000,
-        "name" : "Level 7",
-        "identifier" : 6,
-        "chips_per_win" : 5000,
-        "leaderboard_id" : "level7"
-      },
-      "current_number_of_wins_in_row" : 0,
-      "max_number_of_wins_in_row" : 0,
-      "rank" : null
+      "losses_count" : 0,
+      "lost_chips_count" : 0,
+      "won_chips_count" : 0,
+      "level_id" : 6,
+      "wins_count" : 0,
+      "wins_count_in_row" : 0,
+      "rank" : null,
+      "max_wins_count_in_row" : 0
     }
   ]
 }

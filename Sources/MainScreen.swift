@@ -38,11 +38,9 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         let level = model.playerManager.playerData.levelProgressItems[indexPath.item].level
         let item = LevelCellItem(level: level,
             locked: model.playerManager.isLockedLevel(level),
-            canUnlock: model.playerManager.canUnlockLevel(level),
             buttonsTag: indexPath.item)
         cell.fillWithItem(item)
         cell.playButton.addTarget(self, action: Selector("startLevelButtonDidPress:"), forControlEvents: .TouchUpInside)
-        cell.unlockButton.addTarget(self, action: Selector("unlockLevelButtonDidPress:"), forControlEvents: .TouchUpInside)
         
         return cell
     }
@@ -60,12 +58,6 @@ extension MainScreen {
         if !cell.item.locked {
             model.navigationManager.presentGameScreenWithLevel(cell.item.level, animated: true)
         }
-    }
-    
-    @objc private func unlockLevelButtonDidPress(sender: UIButton) {
-        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! LevelCell
-        model.playerManager.unlockLevel(cell.item.level)
-        fillViewsWithModel()
     }
     
     @IBAction private func menuButtonDidPress(sender: AnyObject) {

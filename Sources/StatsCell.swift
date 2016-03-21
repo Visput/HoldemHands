@@ -36,7 +36,7 @@ final class StatsCell: UICollectionViewCell {
             
             chipsCountLabel.text = item.progressItem.chipsCount.formattedChipsCountString
             winPercentLabel.text = NSString(format: "%.2f%%", item.progressItem.winPercent) as String
-            winsInRowLabel.text = String(item.progressItem.maxNumberOfWinsInRow)
+            winsInRowLabel.text = String(item.progressItem.maxWinsCountInRow)
             handsCountLabel.text = String(item.progressItem.handsCount)
             rankLabel.text = item.progressItem.rank != nil ? String(item.progressItem.rank!) : "-"
         } else {

@@ -1,0 +1,65 @@
+[
+  {
+    "id" : 0,
+    "wins_in_row_to_double_chips" : 10,
+    "leaderboard_id" : "level1",
+    "chips_per_win" : 1,
+    "chips_to_unlock" : 0,
+    "hands_count" : 2,
+    "name" : "Level 1"
+  },
+  {
+    "id" : 1,
+    "wins_in_row_to_double_chips" : 10,
+    "leaderboard_id" : "level2",
+    "chips_per_win" : 2,
+    "chips_to_unlock" : 50,
+    "hands_count" : 3,
+    "name" : "Level 2"
+  },
+  {
+    "id" : 2,
+    "wins_in_row_to_double_chips" : 10,
+    "leaderboard_id" : "level3",
+    "chips_per_win" : 10,
+    "chips_to_unlock" : 250,
+    "hands_count" : 4,
+    "name" : "Level 3"
+  },
+  {
+    "id" : 3,
+    "wins_in_row_to_double_chips" : 10,
+    "leaderboard_id" : "level4",
+    "chips_per_win" : 50,
+    "chips_to_unlock" : 1000,
+    "hands_count" : 5,
+    "name" : "Level 4"
+  },
+  {
+    "id" : 4,
+    "wins_in_row_to_double_chips" : 10,
+    "leaderboard_id" : "level5",
+    "chips_per_win" : 250,
+    "chips_to_unlock" : 5000,
+    "hands_count" : 6,
+    "name" : "Level 5"
+  },
+  {
+    "id" : 5,
+    "wins_in_row_to_double_chips" : 10,
+    "leaderboard_id" : "level6",
+    "chips_per_win" : 1000,
+    "chips_to_unlock" : 25000,
+    "hands_count" : 7,
+    "name" : "Level 6"
+  },
+  {
+    "id" : 6,
+    "wins_in_row_to_double_chips" : 10,
+    "leaderboard_id" : "level7",
+    "chips_per_win" : 5000,
+    "chips_to_unlock" : 100000,
+    "hands_count" : 8,
+    "name" : "Level 7"
+  }
+]
