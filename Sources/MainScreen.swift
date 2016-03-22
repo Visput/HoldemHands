@@ -35,10 +35,8 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(LevelCell.className(),
             forIndexPath: indexPath) as! LevelCell
         
-        let level = model.playerManager.playerData.levelProgressItems[indexPath.item].level
-        let item = LevelCellItem(level: level,
-            locked: model.playerManager.isLockedLevel(level),
-            buttonsTag: indexPath.item)
+        let levelProgress = model.playerManager.playerData.levelProgressItems[indexPath.item]
+        let item = LevelCellItem(levelProgress: levelProgress, buttonsTag: indexPath.item)
         cell.fillWithItem(item)
         cell.playButton.addTarget(self, action: #selector(MainScreen.startLevelButtonDidPress(_:)), forControlEvents: .TouchUpInside)
         
@@ -55,24 +53,29 @@ extension MainScreen {
     
     @objc private func startLevelButtonDidPress(sender: UIButton) {
         let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! LevelCell
-        if !cell.item.locked {
-            model.navigationManager.presentGameScreenWithLevel(cell.item.level, animated: true)
+        Analytics.levelClickedInLevels(cell.item.levelProgress)
+        if !cell.item.levelProgress.locked {
+            model.navigationManager.presentGameScreenWithLevel(cell.item.levelProgress.level, animated: true)
         }
     }
     
     @IBAction private func menuButtonDidPress(sender: AnyObject) {
+        Analytics.menuClickedInLevels()
         mainView.scrollToMainView()
     }
     
     @IBAction private func playButtonDidPress(sender: AnyObject) {
+        Analytics.playClickedInMenu()
         mainView.scrollToLevelsView()
     }
     
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
+        Analytics.statsClickedInMenu()
         model.navigationManager.presentStatsScreenAnimated(true)
     }
     
     @IBAction private func facebookButtonDidPress(sender: AnyObject) {
+        Analytics.facebookClickedInMenu()
         let item = SharingItem(title: NSLocalizedString("HoldemHands", comment: ""),
             message: NSLocalizedString("Check this out", comment: ""),
             linkURL: NSURL(string: "https://apple.com"),
@@ -87,6 +90,7 @@ extension MainScreen {
     }
     
     @IBAction private func twitterButtonDidPress(sender: AnyObject) {
+        Analytics.twitterClickedInMenu()
         let item = SharingItem(title: nil,
             message: NSLocalizedString("Check this out: HoldemHands", comment: ""),
             linkURL: NSURL(string: "https://apple.com"),
@@ -101,6 +105,7 @@ extension MainScreen {
     }
     
     @IBAction private func instagramButtonDidPress(sender: AnyObject) {
+        Analytics.instagramClickedInMenu()
         let item = SharingItem(title: nil,
             message: NSLocalizedString("Check this out: #HoldemHands", comment: ""),
             linkURL: nil,

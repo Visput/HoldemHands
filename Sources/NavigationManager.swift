@@ -51,7 +51,7 @@ final class NavigationManager: NSObject {
         presentScreen(screen, animated: animated)
     }
     
-    func presentLeaderboardWithID(leaderboardID: String?, animated: Bool) {
+    func presentLeaderboardScreenWithLeaderboardID(leaderboardID: String?, animated: Bool) {
         let screen = GKGameCenterViewController()
         screen.leaderboardIdentifier = leaderboardID
         screen.viewState = .Leaderboards

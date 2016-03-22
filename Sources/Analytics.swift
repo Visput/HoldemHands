@@ -21,7 +21,7 @@ final class Analytics {
             Flurry.setLogLevel(FlurryLogLevelCriticalOnly)
         #endif
         Flurry.startSession(flurryKey)
-        Fabric.with([Crashlytics(), Twitter()])
+        Fabric.with([Crashlytics(), Twitter(), Answers()])
     }
     
     class func appDidBecomeActive() {
@@ -134,5 +134,16 @@ extension Analytics {
     
     class func doneClickedInGame() {
         Flurry.logEvent("game_click_done")
+    }
+}
+
+extension Analytics {
+    
+    class func unlockBannerShownInGame(progress: LevelProgress) {
+        Flurry.logEvent("game_show_unlock_banner", withParameters: ["id" : progress.levelID])
+    }
+    
+    class func unlockBannerClickedInGame(progress: LevelProgress) {
+        Flurry.logEvent("game_click_unlock_banner", withParameters: ["id" : progress.levelID])
     }
 }

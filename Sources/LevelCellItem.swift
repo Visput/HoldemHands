@@ -10,7 +10,6 @@ import Foundation
 
 struct LevelCellItem {
     
-    let level: Level
-    let locked: Bool
+    let levelProgress: LevelProgress
     let buttonsTag: Int
 }

@@ -26,12 +26,14 @@ final class StatsScreen: BaseViewController {
 extension StatsScreen {
     
     @IBAction private func closeButtonDidPress(sender: AnyObject) {
+        Analytics.doneClickedInStats()
         model.navigationManager.dismissScreenAnimated(true)
     }
     
-    @objc private func leaderboardButtonDidPress(sender: UIButton) {
-        let progressItem = progressItems[sender.tag]
-        model.navigationManager.presentLeaderboardWithID(progressItem.leaderboardID, animated: true)
+    @IBAction private func leaderboardsButtonDidPress(sender: UIButton) {
+        let leaderboardID = model.playerManager.playerData.overallLeaderboardID
+        Analytics.leaderboardClickedInStats(leaderboardID)
+        model.navigationManager.presentLeaderboardScreenWithLeaderboardID(leaderboardID, animated: true)
     }
 }
 
@@ -46,11 +48,17 @@ extension StatsScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
             forIndexPath: indexPath) as! StatsCell
         
         let progressItem: Progress = progressItems[indexPath.item]
-        let item = StatsCellItem(progressItem: progressItem, index: indexPath.item, playerAuthenticated: model.playerManager.authenticated)
+        let item = StatsCellItem(progressItem: progressItem)
         cell.fillWithItem(item)
-        cell.leaderboardButton.addTarget(self, action: #selector(StatsScreen.leaderboardButtonDidPress(_:)), forControlEvents: .TouchUpInside)
         
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! StatsCell!
+        let leaderboardID = cell.item.progressItem.leaderboardID
+        Analytics.leaderboardClickedInStats(leaderboardID)
+        model.navigationManager.presentLeaderboardScreenWithLeaderboardID(leaderboardID, animated: true)
     }
 }
 
@@ -66,6 +74,7 @@ extension StatsScreen {
     private func fillViewsWithModel() {
         progressItems = model.playerManager.progressItems()
         statsView.statsCollectionView.reloadData()
+        statsView.leaderboardsButton.hidden = !model.playerManager.authenticated
         
         model.playerManager.loadProgressItemsIncludingRank({ progressItems, error in
             guard error == nil else { return }

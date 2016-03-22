@@ -11,6 +11,4 @@ import Foundation
 struct StatsCellItem {
 
     let progressItem: Progress
-    let index: Int
-    let playerAuthenticated: Bool
 }

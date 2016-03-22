@@ -20,10 +20,10 @@ final class LevelCell: UICollectionViewCell {
     func fillWithItem(item: LevelCellItem) {
         self.item = item
         
-        levelLabel.text = item.level.name
+        levelLabel.text = item.levelProgress.level.name
         playButton.tag = item.buttonsTag
-        priceLabel.text = NSString(format: NSLocalizedString("Chips: %lld", comment: ""), item.level.chipsToUnlock) as String
-        if item.locked {
+        priceLabel.text = NSString(format: NSLocalizedString("Chips: %lld", comment: ""), item.levelProgress.level.chipsToUnlock) as String
+        if item.levelProgress.locked! {
             lockedLabel.hidden = false
             priceLabel.hidden = false
             

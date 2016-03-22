@@ -18,15 +18,11 @@ final class StatsCell: UICollectionViewCell {
     @IBOutlet private(set) weak var winsInRowLabel: UILabel!
     @IBOutlet private(set) weak var handsCountLabel: UILabel!
     @IBOutlet private(set) weak var rankLabel: UILabel!
-    @IBOutlet private(set) weak var leaderboardButton: UIButton!
  
     private(set) var item: StatsCellItem!
     
     func fillWithItem(item: StatsCellItem) {
         self.item = item
-        
-        leaderboardButton.tag = item.index
-        leaderboardButton.hidden = !item.playerAuthenticated
         
         nameLabel.text = item.progressItem.title
         

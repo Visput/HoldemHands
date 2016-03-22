@@ -248,7 +248,7 @@ extension PlayerManager {
         
         // Authenticate current user and load data from GameCenter.
         player.authenticateHandler = { [unowned self] viewController, error in
-
+            
             // Register for notifications when `authenticateHandler` executed at least once.
             // This prevents from calling authentication twice when app is launched.
             self.registerForAppLifeCycleNotifications()

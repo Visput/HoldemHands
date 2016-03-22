@@ -98,6 +98,7 @@ extension GameScreen {
     }
     
     @IBAction private func menuButtonDidPress(sender: AnyObject) {
+        Analytics.doneClickedInGame()
         model.navigationManager.dismissScreenAnimated(true)
     }
 }
@@ -154,7 +155,10 @@ extension GameScreen: PlayerManagerObserving {
     func playerManager(manager: PlayerManager, didUnlockLevel levelProgress: LevelProgress) {
         let levelName = levelProgress.level.name
         let text =  NSString(format: NSLocalizedString("Congratulations. %@ is unlocked now!", comment: ""), levelName)
+        
+        Analytics.unlockBannerShownInGame(levelProgress)
         model.navigationManager.showBannerWithText(text as String, tapAction: { [unowned self] in
+            Analytics.unlockBannerClickedInGame(levelProgress)
             self.model.navigationManager.dismissScreenAnimated(true)
         })
     }
