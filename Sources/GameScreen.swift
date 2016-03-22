@@ -157,9 +157,9 @@ extension GameScreen: PlayerManagerObserving {
         let levelName = levelProgress.level.name
         let text =  NSString(format: NSLocalizedString("Congratulations. %@ is unlocked now!", comment: ""), levelName)
         
-        Analytics.unlockBannerShownInGame(levelProgress)
+        Analytics.unlockBannerShownInGame(levelProgress.level)
         model.navigationManager.showBannerWithText(text as String, tapAction: { [unowned self] in
-            Analytics.unlockBannerClickedInGame(levelProgress)
+            Analytics.unlockBannerClickedInGame(levelProgress.level)
             self.model.navigationManager.dismissScreenAnimated(true)
         })
     }

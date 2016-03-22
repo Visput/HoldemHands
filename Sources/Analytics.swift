@@ -16,6 +16,7 @@ import FBSDKCoreKit
 final class Analytics {
     
     private static var gameRoundsCount = 0
+    typealias Event = (name: String, params: [String : AnyObject])
     
     class func startSession() {
         let flurryKey = NSBundle.mainBundle().objectForInfoDictionaryKey("FlurryKey") as! String
@@ -51,18 +52,24 @@ extension Analytics {
     class func facebookSharingInitiated() {
         Flurry.logEvent("sharing_facebook", timed: true)
     }
-    
+
     class func facebookSharingCanceled() {
-        Flurry.endTimedEvent("sharing_facebook", withParameters: ["action" : "canceled"])
+        let event = (name: "sharing_facebook", params: ["action" : "canceled"])
+        Flurry.endTimedEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func facebookSharingCompleted() {
-        Flurry.endTimedEvent("sharing_facebook", withParameters: ["action" : "completed"])
+        let event = (name: "sharing_facebook", params: ["action" : "completed"])
+        Flurry.endTimedEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func facebookSharingFailed(error: NSError) {
         self.error(error)
-        Flurry.endTimedEvent("sharing_facebook", withParameters: ["action" : "failed"])
+        let event = (name: "sharing_facebook", params: ["action" : "failed"])
+        Flurry.endTimedEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func twitterSharingInitiated() {
@@ -70,16 +77,22 @@ extension Analytics {
     }
     
     class func twitterSharingCanceled() {
-        Flurry.endTimedEvent("sharing_twitter", withParameters: ["action" : "canceled"])
+        let event = (name: "sharing_twitter", params: ["action" : "canceled"])
+        Flurry.endTimedEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func twitterSharingCompleted() {
-        Flurry.endTimedEvent("sharing_twitter", withParameters: ["action" : "completed"])
+        let event = (name: "sharing_twitter", params: ["action" : "completed"])
+        Flurry.endTimedEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func twitterSharingFailed(error: NSError) {
         self.error(error)
-        Flurry.endTimedEvent("sharing_twitter", withParameters: ["action" : "failed"])
+        let event = (name: "sharing_twitter", params: ["action" : "failed"])
+        Flurry.endTimedEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func instagramSharingInitiated() {
@@ -87,59 +100,83 @@ extension Analytics {
     }
     
     class func instagramSharingCompleted() {
-        Flurry.endTimedEvent("sharing_instagram", withParameters: ["action" : "completed"])
+        let event = (name: "sharing_instagram", params: ["action" : "completed"])
+        Flurry.endTimedEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func instagramSharingFailed(error: NSError) {
         self.error(error)
-        Flurry.endTimedEvent("sharing_instagram", withParameters: ["action" : "failed"])
+        let event = (name: "sharing_instagram", params: ["action" : "failed"])
+        Flurry.endTimedEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
 }
 
 extension Analytics {
     
     class func playClickedInMenu() {
-        Flurry.logEvent("click_menu_play")
+        let event = (name: "click_menu_play", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
     }
     
     class func statsClickedInMenu() {
-        Flurry.logEvent("click_menu_stats")
+        let event = (name: "click_menu_stats", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
     }
     
     class func facebookClickedInMenu() {
-        Flurry.logEvent("click_menu_facebook")
+        let event = (name: "click_menu_facebook", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
     }
     
     class func twitterClickedInMenu() {
-        Flurry.logEvent("click_menu_twitter")
+        let event = (name: "click_menu_twitter", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
     }
     
     class func instagramClickedInMenu() {
-        Flurry.logEvent("click_menu_instagram")
+        let event = (name: "click_menu_instagram", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
     }
     
     class func leaderboardClickedInStats(leaderboardID: String) {
-        Flurry.logEvent("click_stats_leaderboard", withParameters: ["id" : leaderboardID])
+        let event = (name: "click_stats_leaderboard", params: ["id" : leaderboardID])
+        Flurry.logEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func doneClickedInStats() {
-        Flurry.logEvent("click_stats_done")
+        let event = (name: "click_stats_done", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
     }
     
     class func menuClickedInLevels() {
-        Flurry.logEvent("click_levels_menu")
+        let event = (name: "click_levels_menu", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
         levelsDisappeared()
         menuAppeared()
     }
     
     class func levelClickedInLevels(progress: LevelProgress) {
-        Flurry.logEvent("click_levels_level", withParameters: ["id" : progress.levelID, "locked" : progress.locked])
+        let event = (name: "click_levels_level", params: ["id" : progress.levelID, "locked" : progress.locked])
+        Flurry.logEvent(event.name, withParameters: event.params as [NSObject : AnyObject])
+        Answers.logCustomEventWithName(event.name, customAttributes: (event.params as! [String : AnyObject]))
         menuDisappeared()
         levelsAppeared()
     }
     
     class func doneClickedInGame() {
-        Flurry.logEvent("click_game_done")
+        let event = (name: "click_game_done", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
     }
 }
 
@@ -179,6 +216,7 @@ extension Analytics {
     
     class func gameAppeared(level: Level) {
         Flurry.logEvent("screen_game_\(level.identifier)", timed: true)
+        Answers.logLevelStart("level_\(level.identifier)", customAttributes: nil)
     }
     
     class func gameRoundPlayed() {
@@ -187,17 +225,22 @@ extension Analytics {
     
     class func gameDisappeared(level: Level) {
         Flurry.endTimedEvent("screen_game_\(level.identifier)", withParameters: ["rounds" : gameRoundsCount])
+        Answers.logLevelEnd("level_\(level.identifier)", score: gameRoundsCount, success: true, customAttributes: nil)
         gameRoundsCount = 0
     }
 }
 
 extension Analytics {
     
-    class func unlockBannerShownInGame(progress: LevelProgress) {
-        Flurry.logEvent("show_game_unlock_banner", withParameters: ["id" : progress.levelID])
+    class func unlockBannerShownInGame(level: Level) {
+        let event = (name: "show_game_unlock_banner", params: ["id" : level.identifier])
+        Flurry.logEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
-    class func unlockBannerClickedInGame(progress: LevelProgress) {
-        Flurry.logEvent("click_game_unlock_banner", withParameters: ["id" : progress.levelID])
+    class func unlockBannerClickedInGame(level: Level) {
+        let event = (name: "click_game_unlock_banner", params: ["id" : level.identifier])
+        Flurry.logEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
 }
