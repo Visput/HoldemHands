@@ -37,7 +37,7 @@ final class ObserverSet<ObserverType>: SequenceType {
     
     func generate() -> AnyGenerator<ObserverType> {
         let enumerator = weakStorage.objectEnumerator()
-        return anyGenerator {
+        return AnyGenerator {
             return enumerator.nextObject() as! ObserverType?
         }
     }

@@ -48,7 +48,7 @@ extension StatsScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         let progressItem: Progress = progressItems[indexPath.item]
         let item = StatsCellItem(progressItem: progressItem, index: indexPath.item, playerAuthenticated: model.playerManager.authenticated)
         cell.fillWithItem(item)
-        cell.leaderboardButton.addTarget(self, action: Selector("leaderboardButtonDidPress:"), forControlEvents: .TouchUpInside)
+        cell.leaderboardButton.addTarget(self, action: #selector(StatsScreen.leaderboardButtonDidPress(_:)), forControlEvents: .TouchUpInside)
         
         return cell
     }

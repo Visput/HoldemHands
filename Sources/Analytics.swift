@@ -93,3 +93,46 @@ extension Analytics {
         Flurry.endTimedEvent("sharing_instagram", withParameters: ["action" : "failed"])
     }
 }
+
+extension Analytics {
+    
+    class func playClickedInMenu() {
+        Flurry.logEvent("menu_click_play")
+    }
+    
+    class func statsClickedInMenu() {
+        Flurry.logEvent("menu_click_stats")
+    }
+    
+    class func facebookClickedInMenu() {
+        Flurry.logEvent("menu_click_facebook")
+    }
+    
+    class func twitterClickedInMenu() {
+        Flurry.logEvent("menu_click_twitter")
+    }
+    
+    class func instagramClickedInMenu() {
+        Flurry.logEvent("menu_click_instagram")
+    }
+    
+    class func leaderboardClickedInStats(leaderboardID: String) {
+        Flurry.logEvent("stats_click_leaderboard", withParameters: ["id" : leaderboardID])
+    }
+    
+    class func doneClickedInStats() {
+        Flurry.logEvent("stats_click_done")
+    }
+    
+    class func menuClickedInLevels() {
+        Flurry.logEvent("levels_click_menu")
+    }
+    
+    class func levelClickedInLevels(progress: LevelProgress) {
+        Flurry.logEvent("levels_click_level", withParameters: ["id" : progress.levelID, "locked" : progress.locked])
+    }
+    
+    class func doneClickedInGame() {
+        Flurry.logEvent("game_click_done")
+    }
+}

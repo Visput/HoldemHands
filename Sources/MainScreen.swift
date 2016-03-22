@@ -40,7 +40,7 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             locked: model.playerManager.isLockedLevel(level),
             buttonsTag: indexPath.item)
         cell.fillWithItem(item)
-        cell.playButton.addTarget(self, action: Selector("startLevelButtonDidPress:"), forControlEvents: .TouchUpInside)
+        cell.playButton.addTarget(self, action: #selector(MainScreen.startLevelButtonDidPress(_:)), forControlEvents: .TouchUpInside)
         
         return cell
     }

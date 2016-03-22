@@ -14,8 +14,8 @@ struct Deck {
     
     init() {
         cards = [Card]()
-        for var suit = Suit.Spades.rawValue; suit <= Suit.Clubs.rawValue; suit++ {
-            for var rank = Rank.Two.rawValue; rank <= Rank.Ace.rawValue; rank++ {
+        for suit in Suit.Spades.rawValue ... Suit.Clubs.rawValue {
+            for rank in Rank.Two.rawValue ... Rank.Ace.rawValue {
                 let card = Card(rank: Rank(rawValue: rank)!, suit: Suit(rawValue: suit)!)
                 cards.append(card)
             }

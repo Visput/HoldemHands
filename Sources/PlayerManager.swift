@@ -456,7 +456,7 @@ extension PlayerManager {
         stopAutoSaveTimer()
         autoSaveTimer = NSTimer.scheduledTimerWithTimeInterval(autoSaveTimerInterval,
             target: self,
-            selector: Selector("autoSaveTimerDidFire"),
+            selector: #selector(PlayerManager.autoSaveTimerDidFire),
             userInfo: nil,
             repeats: true)
     }
@@ -476,11 +476,11 @@ extension PlayerManager {
         unregisterFromAppLifeCycleNotifications()
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self,
-            selector: Selector("appWillResignActive:"),
+            selector: #selector(PlayerManager.appWillResignActive(_:)),
             name: UIApplicationWillResignActiveNotification,
             object: nil)
         notificationCenter.addObserver(self,
-            selector: Selector("appDidBecomeActive:"),
+            selector: #selector(PlayerManager.appDidBecomeActive(_:)),
             name: UIApplicationDidBecomeActiveNotification,
             object: nil)
     }

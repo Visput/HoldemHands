@@ -49,7 +49,7 @@ class BannerView: UIControl {
                     if duration != 0.0 {
                         self.timer = NSTimer.scheduledTimerWithTimeInterval(duration,
                             target: self,
-                            selector: Selector("dismiss"),
+                            selector: #selector(BannerView.dismiss),
                             userInfo: nil,
                             repeats: false)
                     }
@@ -77,10 +77,10 @@ class BannerView: UIControl {
 extension BannerView {
     
     private func initialize() {
-        swipeRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("dismiss"))
+        swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(BannerView.dismiss))
         swipeRecognizer.direction = .Up
         
-        addTarget(self, action: Selector("bannerDidTap:"), forControlEvents: .TouchUpInside)
+        addTarget(self, action: #selector(BannerView.bannerDidTap(_:)), forControlEvents: .TouchUpInside)
     }
     
     @objc private func bannerDidTap(sender: AnyObject) {
