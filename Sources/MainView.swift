@@ -14,6 +14,10 @@ final class MainView: UIView {
     @IBOutlet private(set) weak var chipsCountLabel: UILabel!
     @IBOutlet private(set) weak var contentScrollView: UIScrollView!
 
+    var isMenuShown: Bool {
+        return contentScrollView.contentOffset.x == 0.0
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -24,7 +28,7 @@ final class MainView: UIView {
         collectionViewLayout.sectionInset.bottom = collectionViewLayout.sectionInset.top
     }
     
-    func scrollToMainView() {
+    func scrollToMenuView() {
         UIView.animateWithDuration(0.6,
             delay: 0.0,
             options: .CurveEaseInOut,

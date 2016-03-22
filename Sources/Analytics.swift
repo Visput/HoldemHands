@@ -15,6 +15,8 @@ import FBSDKCoreKit
 
 final class Analytics {
     
+    private static var gameRoundsCount = 0
+    
     class func startSession() {
         let flurryKey = NSBundle.mainBundle().objectForInfoDictionaryKey("FlurryKey") as! String
         #if DEBUG
@@ -97,53 +99,105 @@ extension Analytics {
 extension Analytics {
     
     class func playClickedInMenu() {
-        Flurry.logEvent("menu_click_play")
+        Flurry.logEvent("click_menu_play")
     }
     
     class func statsClickedInMenu() {
-        Flurry.logEvent("menu_click_stats")
+        Flurry.logEvent("click_menu_stats")
     }
     
     class func facebookClickedInMenu() {
-        Flurry.logEvent("menu_click_facebook")
+        Flurry.logEvent("click_menu_facebook")
     }
     
     class func twitterClickedInMenu() {
-        Flurry.logEvent("menu_click_twitter")
+        Flurry.logEvent("click_menu_twitter")
     }
     
     class func instagramClickedInMenu() {
-        Flurry.logEvent("menu_click_instagram")
+        Flurry.logEvent("click_menu_instagram")
     }
     
     class func leaderboardClickedInStats(leaderboardID: String) {
-        Flurry.logEvent("stats_click_leaderboard", withParameters: ["id" : leaderboardID])
+        Flurry.logEvent("click_stats_leaderboard", withParameters: ["id" : leaderboardID])
     }
     
     class func doneClickedInStats() {
-        Flurry.logEvent("stats_click_done")
+        Flurry.logEvent("click_stats_done")
     }
     
     class func menuClickedInLevels() {
-        Flurry.logEvent("levels_click_menu")
+        Flurry.logEvent("click_levels_menu")
+        levelsDisappeared()
+        menuAppeared()
     }
     
     class func levelClickedInLevels(progress: LevelProgress) {
-        Flurry.logEvent("levels_click_level", withParameters: ["id" : progress.levelID, "locked" : progress.locked])
+        Flurry.logEvent("click_levels_level", withParameters: ["id" : progress.levelID, "locked" : progress.locked])
+        menuDisappeared()
+        levelsAppeared()
     }
     
     class func doneClickedInGame() {
-        Flurry.logEvent("game_click_done")
+        Flurry.logEvent("click_game_done")
+    }
+}
+
+extension Analytics {
+    
+    class func menuAppeared() {
+        Flurry.logEvent("screen_menu", timed: true)
+    }
+    
+    class func menuDisappeared() {
+        Flurry.endTimedEvent("screen_menu", withParameters: [:])
+    }
+    
+    class func levelsAppeared() {
+        Flurry.logEvent("screen_levels", timed: true)
+    }
+    
+    class func levelsDisappeared() {
+        Flurry.endTimedEvent("screen_levels", withParameters: [:])
+    }
+    
+    class func statsAppeared() {
+        Flurry.logEvent("screen_stats", timed: true)
+    }
+    
+    class func statsDisappeared() {
+        Flurry.endTimedEvent("screen_stats", withParameters: [:])
+    }
+    
+    class func leaderboardsAppeared() {
+        Flurry.logEvent("screen_leaderboards", timed: true)
+    }
+    
+    class func leaderboardsDisappeared() {
+        Flurry.endTimedEvent("screen_leaderboards", withParameters: [:])
+    }
+    
+    class func gameAppeared(level: Level) {
+        Flurry.logEvent("screen_game_\(level.identifier)", timed: true)
+    }
+    
+    class func gameRoundPlayed() {
+        gameRoundsCount += 1
+    }
+    
+    class func gameDisappeared(level: Level) {
+        Flurry.endTimedEvent("screen_game_\(level.identifier)", withParameters: ["rounds" : gameRoundsCount])
+        gameRoundsCount = 0
     }
 }
 
 extension Analytics {
     
     class func unlockBannerShownInGame(progress: LevelProgress) {
-        Flurry.logEvent("game_show_unlock_banner", withParameters: ["id" : progress.levelID])
+        Flurry.logEvent("show_game_unlock_banner", withParameters: ["id" : progress.levelID])
     }
     
     class func unlockBannerClickedInGame(progress: LevelProgress) {
-        Flurry.logEvent("game_click_unlock_banner", withParameters: ["id" : progress.levelID])
+        Flurry.logEvent("click_game_unlock_banner", withParameters: ["id" : progress.levelID])
     }
 }

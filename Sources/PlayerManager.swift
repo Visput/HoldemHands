@@ -174,7 +174,7 @@ final class PlayerManager: NSObject {
         }
     }
     
-    private func progressItemForLevel(level: Level) -> (index: Int, progress: LevelProgress) {
+    func progressItemForLevel(level: Level) -> (index: Int, progress: LevelProgress) {
         var progressItem: (Int, LevelProgress)! = nil
         for (index, progress) in playerData.levelProgressItems.enumerate() {
             if progress.level == level {

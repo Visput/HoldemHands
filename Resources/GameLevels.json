@@ -1,6 +1,6 @@
 [
   {
-    "id" : 0,
+    "id" : 1,
     "wins_in_row_to_double_chips" : 10,
     "leaderboard_id" : "level1",
     "chips_per_win" : 1,
@@ -9,7 +9,7 @@
     "name" : "Level 1"
   },
   {
-    "id" : 1,
+    "id" : 2,
     "wins_in_row_to_double_chips" : 10,
     "leaderboard_id" : "level2",
     "chips_per_win" : 2,
@@ -18,7 +18,7 @@
     "name" : "Level 2"
   },
   {
-    "id" : 2,
+    "id" : 3,
     "wins_in_row_to_double_chips" : 10,
     "leaderboard_id" : "level3",
     "chips_per_win" : 10,
@@ -27,7 +27,7 @@
     "name" : "Level 3"
   },
   {
-    "id" : 3,
+    "id" : 4,
     "wins_in_row_to_double_chips" : 10,
     "leaderboard_id" : "level4",
     "chips_per_win" : 50,
@@ -36,7 +36,7 @@
     "name" : "Level 4"
   },
   {
-    "id" : 4,
+    "id" : 5,
     "wins_in_row_to_double_chips" : 10,
     "leaderboard_id" : "level5",
     "chips_per_win" : 250,
@@ -45,7 +45,7 @@
     "name" : "Level 5"
   },
   {
-    "id" : 5,
+    "id" : 6,
     "wins_in_row_to_double_chips" : 10,
     "leaderboard_id" : "level6",
     "chips_per_win" : 1000,
@@ -54,7 +54,7 @@
     "name" : "Level 6"
   },
   {
-    "id" : 6,
+    "id" : 7,
     "wins_in_row_to_double_chips" : 10,
     "leaderboard_id" : "level7",
     "chips_per_win" : 5000,

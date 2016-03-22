@@ -93,6 +93,7 @@ final class GameScreen: BaseViewController {
 extension GameScreen {
     
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
+        Analytics.gameRoundPlayed()
         needsShowNextHandImmediately = true
         generateNextHand()
     }
@@ -169,5 +170,18 @@ extension GameScreen: PlayerManagerObserving {
         } else {
             updateChipsCountLabel()
         }
+    }
+}
+
+extension GameScreen {
+    
+    override func viewDidShow() {
+        super.viewDidShow()
+        Analytics.gameAppeared(level)
+    }
+    
+    override func viewDidHide() {
+        super.viewDidHide()
+        Analytics.gameDisappeared(level)
     }
 }

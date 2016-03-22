@@ -83,3 +83,16 @@ extension StatsScreen {
         })
     }
 }
+
+extension StatsScreen {
+    
+    override func viewDidShow() {
+        super.viewDidShow()
+        Analytics.statsAppeared()
+    }
+    
+    override func viewDidHide() {
+        super.viewDidHide()
+        Analytics.statsDisappeared()
+    }
+}

@@ -61,7 +61,7 @@ extension MainScreen {
     
     @IBAction private func menuButtonDidPress(sender: AnyObject) {
         Analytics.menuClickedInLevels()
-        mainView.scrollToMainView()
+        mainView.scrollToMenuView()
     }
     
     @IBAction private func playButtonDidPress(sender: AnyObject) {
@@ -133,5 +133,26 @@ extension MainScreen {
         mainView.levelsCollectionView.reloadData()
         mainView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %@", comment: ""),
             model.playerManager.playerData.chipsCount.formattedChipsCountString) as String
+    }
+}
+
+extension MainScreen {
+    
+    override func viewDidShow() {
+        super.viewDidShow()
+        if mainView.isMenuShown {
+            Analytics.menuAppeared()
+        } else {
+            Analytics.levelsAppeared()
+        }
+    }
+    
+    override func viewDidHide() {
+        super.viewDidHide()
+        if mainView.isMenuShown {
+            Analytics.menuDisappeared()
+        } else {
+            Analytics.levelsDisappeared()
+        }
     }
 }
