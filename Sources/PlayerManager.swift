@@ -417,6 +417,7 @@ extension PlayerManager {
     
     private func clearPlayerData() {
         keychain.clear()
+        guard player.authenticated else { return }
         player.deleteSavedGamesWithName(playerDataKeys().authenticatedKey!, completionHandler: nil)
     }
 }

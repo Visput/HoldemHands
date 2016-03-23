@@ -119,6 +119,8 @@ extension Analytics {
         let event = (name: "click_menu_play", params: [:])
         Flurry.logEvent(event.name)
         Answers.logCustomEventWithName(event.name, customAttributes: nil)
+        menuDisappeared()
+        levelsAppeared()
     }
     
     class func statsClickedInMenu() {
@@ -169,8 +171,6 @@ extension Analytics {
         let event = (name: "click_levels_level", params: ["id" : progress.levelID, "locked" : progress.locked])
         Flurry.logEvent(event.name, withParameters: event.params as [NSObject : AnyObject])
         Answers.logCustomEventWithName(event.name, customAttributes: (event.params as! [String : AnyObject]))
-        menuDisappeared()
-        levelsAppeared()
     }
     
     class func doneClickedInGame() {

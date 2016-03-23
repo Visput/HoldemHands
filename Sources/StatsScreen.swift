@@ -21,6 +21,16 @@ final class StatsScreen: BaseViewController {
         model.playerManager.observers.addObserver(self)
         fillViewsWithModel()
     }
+    
+    override func viewDidShow() {
+        super.viewDidShow()
+        Analytics.statsAppeared()
+    }
+    
+    override func viewDidHide() {
+        super.viewDidHide()
+        Analytics.statsDisappeared()
+    }
 }
 
 extension StatsScreen {
@@ -81,18 +91,5 @@ extension StatsScreen {
             self.progressItems = progressItems
             self.statsView.statsCollectionView.reloadData()
         })
-    }
-}
-
-extension StatsScreen {
-    
-    override func viewDidShow() {
-        super.viewDidShow()
-        Analytics.statsAppeared()
-    }
-    
-    override func viewDidHide() {
-        super.viewDidHide()
-        Analytics.statsDisappeared()
     }
 }

@@ -38,6 +38,16 @@ final class GameScreen: BaseViewController {
         gameView.updateCollectionViewLayoutForNumberOfCells(level.numberOfHands)
     }
     
+    override func viewDidShow() {
+        super.viewDidShow()
+        Analytics.gameAppeared(level)
+    }
+    
+    override func viewDidHide() {
+        super.viewDidHide()
+        Analytics.gameDisappeared(level)
+    }
+    
     private func generateNextHand() {
         gameView.swipeRecognizer.enabled = false
         gameView.tapRecognizer.enabled = false
@@ -170,18 +180,5 @@ extension GameScreen: PlayerManagerObserving {
         } else {
             updateChipsCountLabel()
         }
-    }
-}
-
-extension GameScreen {
-    
-    override func viewDidShow() {
-        super.viewDidShow()
-        Analytics.gameAppeared(level)
-    }
-    
-    override func viewDidHide() {
-        super.viewDidHide()
-        Analytics.gameDisappeared(level)
     }
 }

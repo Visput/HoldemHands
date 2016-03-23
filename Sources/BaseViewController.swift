@@ -15,11 +15,11 @@ class BaseViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         viewDidShow()
-        self.registerForAppLifeCycleNotifications()
+        registerForAppLifeCycleNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.unregisterFromAppLifeCycleNotifications()
+        unregisterFromAppLifeCycleNotifications()
         viewDidHide()
         super.viewWillDisappear(animated)
     }
@@ -53,10 +53,10 @@ extension BaseViewController {
     }
     
     @objc private func appWillResignActive(notification: NSNotification) {
-        viewDidShow()
+        viewDidHide()
     }
     
     @objc private func appDidBecomeActive(notification: NSNotification) {
-        viewDidHide()
+        viewDidShow()
     }
 }
