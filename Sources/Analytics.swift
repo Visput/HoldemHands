@@ -12,11 +12,16 @@ import Fabric
 import Crashlytics
 import TwitterKit
 import FBSDKCoreKit
+import AdSupport
 
 final class Analytics {
     
     private static var gameRoundsCount = 0
-    typealias Event = (name: String, params: [String : AnyObject])
+    private static var screenAppearTime = 0.0
+    private static var screenDisappearTime: Double {
+        return CFAbsoluteTimeGetCurrent() - screenAppearTime
+    }
+    private typealias Event = (name: String, params: [String : AnyObject])
     
     class func startSession() {
         let flurryKey = NSBundle.mainBundle().objectForInfoDictionaryKey("FlurryKey") as! String
@@ -184,39 +189,52 @@ extension Analytics {
     
     class func menuAppeared() {
         Flurry.logEvent("screen_menu", timed: true)
+        screenAppearTime = CFAbsoluteTimeGetCurrent()
     }
     
     class func menuDisappeared() {
-        Flurry.endTimedEvent("screen_menu", withParameters: [:])
+        let event = (name: "screen_menu", params: ["time" : screenDisappearTime])
+        Flurry.endTimedEvent(event.name, withParameters: [:])
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func levelsAppeared() {
         Flurry.logEvent("screen_levels", timed: true)
+        screenAppearTime = CFAbsoluteTimeGetCurrent()
     }
     
     class func levelsDisappeared() {
-        Flurry.endTimedEvent("screen_levels", withParameters: [:])
+        let event = (name: "screen_levels", params: ["time" : screenDisappearTime])
+        Flurry.endTimedEvent(event.name, withParameters: [:])
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func statsAppeared() {
         Flurry.logEvent("screen_stats", timed: true)
+        screenAppearTime = CFAbsoluteTimeGetCurrent()
     }
     
     class func statsDisappeared() {
-        Flurry.endTimedEvent("screen_stats", withParameters: [:])
+        let event = (name: "screen_stats", params: ["time" : screenDisappearTime])
+        Flurry.endTimedEvent(event.name, withParameters: [:])
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func leaderboardsAppeared() {
         Flurry.logEvent("screen_leaderboards", timed: true)
+        screenAppearTime = CFAbsoluteTimeGetCurrent()
     }
     
     class func leaderboardsDisappeared() {
-        Flurry.endTimedEvent("screen_leaderboards", withParameters: [:])
+        let event = (name: "screen_leaderboards", params: ["time" : screenDisappearTime])
+        Flurry.endTimedEvent(event.name, withParameters: [:])
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func gameAppeared(level: Level) {
         Flurry.logEvent("screen_game_\(level.identifier)", timed: true)
         Answers.logLevelStart("level_\(level.identifier)", customAttributes: nil)
+        screenAppearTime = CFAbsoluteTimeGetCurrent()
     }
     
     class func gameRoundPlayed() {
@@ -225,7 +243,13 @@ extension Analytics {
     
     class func gameDisappeared(level: Level) {
         Flurry.endTimedEvent("screen_game_\(level.identifier)", withParameters: ["rounds" : gameRoundsCount])
-        Answers.logLevelEnd("level_\(level.identifier)", score: gameRoundsCount, success: true, customAttributes: nil)
+        Answers.logCustomEventWithName("screen_game_\(level.identifier)",
+                                       customAttributes: ["rounds" : gameRoundsCount, "time" : screenDisappearTime])
+        
+        Answers.logLevelEnd("level_\(level.identifier)",
+                            score: gameRoundsCount,
+                            success: true,
+                            customAttributes: ["time" : screenDisappearTime])
         gameRoundsCount = 0
     }
 }
