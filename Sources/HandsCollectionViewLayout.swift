@@ -27,29 +27,48 @@ final class HandsCollectionViewLayout: UICollectionViewFlowLayout {
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let contentSize = collectionView!.frame.size
-        let spacing: CGFloat = 16.0
+        
         let linesCount: CGFloat = numberOfHands < 4 ? 1.0 : 2.0
         let cellsPerLine = CGFloat(ceilf(Float(CGFloat(numberOfHands) / linesCount)))
-        let maxCellSize: CGFloat = contentSize.height / 2
+        let maxCellHeight: CGFloat = contentSize.height / 2.0
+        let minSpacing: CGFloat = 24.0
+        let cellSizeRatio: CGFloat = 1.4
         
-        var verticalSpacing = spacing
-        var cellSize = (contentSize.height - verticalSpacing * (linesCount + 1.0)) / linesCount
-        if cellSize > maxCellSize {
-            cellSize = maxCellSize
-            verticalSpacing = (contentSize.height - cellSize * linesCount) / (linesCount + 1.0)
+        // Calculate layout based on screen height.
+        var verticalSpacing = minSpacing
+        var cellHeight = (contentSize.height - verticalSpacing * (linesCount + 1.0)) / linesCount
+        if cellHeight > maxCellHeight {
+            cellHeight = maxCellHeight
+            verticalSpacing = (contentSize.height - cellHeight * linesCount) / (linesCount + 1.0)
         }
-        let horizontalSpacing = (contentSize.width - cellSize * cellsPerLine) / (cellsPerLine + 1.0)
+        var cellWidth = cellHeight * cellSizeRatio
+        var horizontalSpacing = (contentSize.width - cellWidth * cellsPerLine) / (cellsPerLine + 1.0)
         
-        itemSize.width = cellSize
-        itemSize.height = cellSize
+        if horizontalSpacing < minSpacing {
+            // Calculate layout based on screen width.
+            horizontalSpacing = minSpacing
+            cellWidth = (contentSize.width - horizontalSpacing * (cellsPerLine + 1.0)) / cellsPerLine
+            cellHeight = cellWidth / cellSizeRatio
+            verticalSpacing = (contentSize.height - cellHeight * linesCount) / (linesCount + 1.0)
+        }
         
-        if linesCount == 1 {
-            minimumInteritemSpacing = horizontalSpacing
-            minimumLineSpacing = horizontalSpacing
+        // Make vertical and horizontal spacing equal.
+        var cellSpacing: CGFloat = 0.0
+        if horizontalSpacing > verticalSpacing {
+            cellSpacing = verticalSpacing
+            let totalInteritemSpacing = cellSpacing * (cellsPerLine - 1)
+            horizontalSpacing = (contentSize.width - totalInteritemSpacing - cellWidth * cellsPerLine) / 2.0
         } else {
-            minimumInteritemSpacing = verticalSpacing
-            minimumLineSpacing = verticalSpacing
+            cellSpacing = horizontalSpacing
+            let totalLineSpacing = cellSpacing * (linesCount - 1)
+            verticalSpacing = (contentSize.height - totalLineSpacing - cellHeight * linesCount) / 2.0
         }
+        
+        itemSize.width = cellWidth
+        itemSize.height = cellHeight
+        
+        minimumInteritemSpacing = cellSpacing
+        minimumLineSpacing = cellSpacing
         
         sectionInset.left = horizontalSpacing
         sectionInset.right = horizontalSpacing
@@ -57,7 +76,17 @@ final class HandsCollectionViewLayout: UICollectionViewFlowLayout {
         sectionInset.top = verticalSpacing
         sectionInset.bottom = verticalSpacing
         
-        let attributes = super.layoutAttributesForElementsInRect(rect)
+        var attributes = super.layoutAttributesForElementsInRect(rect)!
+        
+        // Center items for second line if it's not full.
+        if attributes.count == 5 || attributes.count == 7 {
+            let cellsInLine = cellsPerLine - 1.0
+            let spacesInLine = cellsInLine - 1.0
+            let shift = (contentSize.width - spacesInLine * cellSpacing - cellsInLine * cellWidth) / 2.0 - horizontalSpacing
+            attributes[3].frame.origin.x += shift
+            attributes[4].frame.origin.x += shift
+        }
+        
         return attributes
     }
 }
