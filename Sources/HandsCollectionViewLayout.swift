@@ -31,7 +31,7 @@ final class HandsCollectionViewLayout: UICollectionViewFlowLayout {
         let linesCount: CGFloat = numberOfHands < 4 ? 1.0 : 2.0
         let cellsPerLine = CGFloat(ceilf(Float(CGFloat(numberOfHands) / linesCount)))
         let maxCellHeight: CGFloat = contentSize.height / 2.0
-        let minSpacing: CGFloat = 24.0
+        let minSpacing: CGFloat = 16.0
         let cellSizeRatio: CGFloat = 1.4
         
         // Calculate layout based on screen height.
@@ -83,8 +83,10 @@ final class HandsCollectionViewLayout: UICollectionViewFlowLayout {
             let cellsInLine = cellsPerLine - 1.0
             let spacesInLine = cellsInLine - 1.0
             let shift = (contentSize.width - spacesInLine * cellSpacing - cellsInLine * cellWidth) / 2.0 - horizontalSpacing
-            attributes[3].frame.origin.x += shift
-            attributes[4].frame.origin.x += shift
+            
+            for index in attributes.count - Int(cellsInLine) ..< attributes.count {
+                attributes[index].frame.origin.x += shift
+            }
         }
         
         return attributes

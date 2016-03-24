@@ -61,16 +61,7 @@ final class PlayerManager: NSObject {
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingWinsCount(chipsWon: chipsWon)
         playerData.levelProgressItems[progressItem.index] = newLevelProgress
         
-        guard progressItem.index < playerData.levelProgressItems.count - 1 else { return }
-        var nextLevelProgress = playerData.levelProgressItems[progressItem.index + 1]
-        if nextLevelProgress.locked! &&
-            nextLevelProgress.level.chipsToUnlock <= playerData.chipsCount {
-                
-                nextLevelProgress = nextLevelProgress.levelProgressBySettingUnlocked()
-                playerData.levelProgressItems[progressItem.index + 1] = nextLevelProgress
-                notifyObserversDidUnlockLevel(nextLevelProgress)
-                savePlayerData()
-        }
+        updateLockStateForLevels()
     }
     
     func trackNewLossInLevel(level: Level) {
@@ -238,6 +229,25 @@ final class PlayerManager: NSObject {
             Analytics.error(error)
         })
     }
+    
+    private func updateLockStateForLevels() {
+        var didUnlock = false
+        for index in playerData.levelProgressItems.count.stride(through: 0, by: -1) {
+            var levelProgress = playerData.levelProgressItems[index]
+            if levelProgress.locked! && levelProgress.level.chipsToUnlock <= playerData.chipsCount {
+                levelProgress = levelProgress.levelProgressBySettingUnlocked()
+                playerData.levelProgressItems[index] = levelProgress
+                
+                if !didUnlock {
+                    notifyObserversDidUnlockLevel(levelProgress)
+                    didUnlock = true
+                }
+            }
+        }
+        if didUnlock {
+            savePlayerData()
+        }
+    }
 }
 
 extension PlayerManager {
@@ -382,6 +392,7 @@ extension PlayerManager {
                     break
                 }
             }
+            updateLockStateForLevels()
             
             notifyObserversDidLoadPlayerData()
         }

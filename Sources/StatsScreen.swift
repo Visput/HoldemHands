@@ -70,6 +70,15 @@ extension StatsScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         Analytics.leaderboardClickedInStats(leaderboardID)
         model.navigationManager.presentLeaderboardScreenWithLeaderboardID(leaderboardID, animated: true)
     }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        statsView.scrollToNearestStats()
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard !decelerate else { return }
+        statsView.scrollToNearestStats()
+    }
 }
 
 extension StatsScreen: PlayerManagerObserving {
