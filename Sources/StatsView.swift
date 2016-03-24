@@ -29,7 +29,7 @@ final class StatsView: UIView {
     func scrollToNearestStats() {
         let offset = statsCollectionView.contentOffset.x
         let levelDecimalIndex = offset / (statsCollectionLayout.itemSize.width + statsCollectionLayout.minimumInteritemSpacing)
-        let levelIndex = Int(roundf(Float(levelDecimalIndex)))
+        let levelIndex = Int(round(levelDecimalIndex))
         
         statsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: levelIndex, inSection: 0),
                                                     atScrollPosition: .CenteredHorizontally,

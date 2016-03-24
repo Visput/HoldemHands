@@ -52,7 +52,7 @@ final class MainView: UIView {
     func scrollToNearestLevel() {
         let offset = levelsCollectionView.contentOffset.x
         let levelDecimalIndex = offset / (levelsCollectionLayout.itemSize.width + levelsCollectionLayout.minimumInteritemSpacing)
-        let levelIndex = Int(roundf(Float(levelDecimalIndex)))
+        let levelIndex = Int(round(levelDecimalIndex))
     
         levelsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: levelIndex, inSection: 0),
                                                      atScrollPosition: .CenteredHorizontally,
