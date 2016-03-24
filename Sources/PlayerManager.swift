@@ -232,7 +232,7 @@ final class PlayerManager: NSObject {
     
     private func updateLockStateForLevels() {
         var didUnlock = false
-        for index in playerData.levelProgressItems.count.stride(through: 0, by: -1) {
+        for index in (playerData.levelProgressItems.count - 1).stride(through: 0, by: -1) {
             var levelProgress = playerData.levelProgressItems[index]
             if levelProgress.locked! && levelProgress.level.chipsToUnlock <= playerData.chipsCount {
                 levelProgress = levelProgress.levelProgressBySettingUnlocked()
