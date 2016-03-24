@@ -65,6 +65,15 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(indexPath) as! LevelCell
         startLevelButtonDidPress(cell.playButton)
     }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        mainView.scrollToNearestLevel()
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard !decelerate else { return }
+        mainView.scrollToNearestLevel()
+    }
 }
 
 extension MainScreen {

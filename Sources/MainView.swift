@@ -14,6 +14,10 @@ final class MainView: UIView {
     @IBOutlet private(set) weak var chipsCountLabel: UILabel!
     @IBOutlet private(set) weak var contentScrollView: UIScrollView!
 
+    private var levelsCollectionLayout: UICollectionViewFlowLayout {
+        return levelsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+    }
+    
     var isMenuShown: Bool {
         return contentScrollView.contentOffset.x == 0.0
     }
@@ -21,11 +25,10 @@ final class MainView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let collectionViewLayout = levelsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        collectionViewLayout.itemSize.width = levelsCollectionView.frame.size.width / CGFloat(1.5)
-        collectionViewLayout.itemSize.height = collectionViewLayout.itemSize.width / CGFloat(1.8)
-        collectionViewLayout.sectionInset.top = (levelsCollectionView.frame.size.height - collectionViewLayout.itemSize.height) / CGFloat(2.0)
-        collectionViewLayout.sectionInset.bottom = collectionViewLayout.sectionInset.top
+        levelsCollectionLayout.itemSize.width = levelsCollectionView.frame.size.width / CGFloat(1.5)
+        levelsCollectionLayout.itemSize.height = levelsCollectionLayout.itemSize.width / CGFloat(1.8)
+        levelsCollectionLayout.sectionInset.top = (levelsCollectionView.frame.size.height - levelsCollectionLayout.itemSize.height) / CGFloat(2.0)
+        levelsCollectionLayout.sectionInset.bottom = levelsCollectionLayout.sectionInset.top
     }
     
     func scrollToMenuView() {
@@ -44,5 +47,15 @@ final class MainView: UIView {
             animations: { () -> Void in
                 self.contentScrollView.contentOffset = CGPoint(x: self.contentScrollView.bounds.size.width, y: 0.0)
             }, completion: nil)
+    }
+    
+    func scrollToNearestLevel() {
+        let offset = levelsCollectionView.contentOffset.x
+        let levelDecimalIndex = offset / (levelsCollectionLayout.itemSize.width + levelsCollectionLayout.minimumInteritemSpacing)
+        let levelIndex = Int(roundf(Float(levelDecimalIndex)))
+    
+        levelsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: levelIndex, inSection: 0),
+                                                     atScrollPosition: .CenteredHorizontally,
+                                                     animated: true)
     }
 }
