@@ -76,7 +76,7 @@ final class HandsCollectionViewLayout: UICollectionViewFlowLayout {
         sectionInset.top = verticalSpacing
         sectionInset.bottom = verticalSpacing
         
-        var attributes = super.layoutAttributesForElementsInRect(rect)!
+        var attributes = Array(super.layoutAttributesForElementsInRect(rect)!)
         
         // Center items for second line if it's not full.
         if attributes.count == 5 || attributes.count == 7 {

@@ -137,6 +137,10 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
                     model.playerManager.trackNewLossInLevel(level)
                 }
                 updateChipsCountLabel()
+            } else {
+                if cell.item.handOdds!.wins {
+                    isSuccessState = true
+                }
             }
             let item = HandCellItem(handOdds: cell.item.handOdds, needsShowOdds: true, isSuccessSate: isSuccessState)
             cell.fillWithItem(item)
