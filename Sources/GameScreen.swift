@@ -22,20 +22,15 @@ final class GameScreen: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        gameView.configureCollectionViewLayoutForNumberOfHands(level.numberOfHands)
         generateNextHand()
         updateChipsCountLabel()
-        
         model.playerManager.observers.addObserver(self)
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         model.playerManager.savePlayerData()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        gameView.updateCollectionViewLayoutForNumberOfCells(level.numberOfHands)
     }
     
     override func viewDidShow() {
@@ -103,7 +98,6 @@ final class GameScreen: BaseViewController {
 extension GameScreen {
     
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
-        Analytics.gameRoundPlayed()
         needsShowNextHandImmediately = true
         generateNextHand()
     }
@@ -130,13 +124,6 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            
-            return gameView.cellSizeForNumberOfCells(level.numberOfHands)
-    }
-    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let currentCell = collectionView.cellForItemAtIndexPath(indexPath) as! HandCell
         
@@ -158,6 +145,7 @@ extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         gameView.swipeRecognizer.enabled = true
         gameView.tapRecognizer.enabled = true
         gameView.handsCollectionView.userInteractionEnabled = false
+        Analytics.gameRoundPlayed()
     }
 }
 

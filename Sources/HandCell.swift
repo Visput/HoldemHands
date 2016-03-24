@@ -57,10 +57,13 @@ final class HandCell: UICollectionViewCell {
             
             if item.isSuccessSate == nil {
                 backgroundColor = UIColor.backgroundColor()
+                winningProbabilityLabel.backgroundColor = UIColor.darkGrayColor()
             } else if item.isSuccessSate! {
                 backgroundColor = UIColor.lightPrimaryColor()
+                winningProbabilityLabel.backgroundColor = UIColor.lightPrimaryColor()
             } else {
                 backgroundColor = UIColor.lightSecondaryColor()
+                winningProbabilityLabel.backgroundColor = UIColor.lightSecondaryColor()
             }
         }
     }
