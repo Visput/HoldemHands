@@ -191,25 +191,30 @@ final class PlayerManager: NSObject {
     private func reportScores() {
         guard player.authenticated else { return }
         
-        var scores = [GKScore]()
         var overallScore: Int64 = 0
         
         for progress in playerData.levelProgressItems {
+            guard progress.handsCount > 0 else { continue }
+            
             let score = GKScore()
             score.value = scoreForLevelProgress(progress)
             overallScore += score.value
             score.leaderboardIdentifier = progress.level.leaderboardID
-            scores.append(score)
+            
+            GKScore.reportScores([score], withCompletionHandler: { error in
+                Analytics.error(error)
+            })
         }
+        
+        guard playerProgress().handsCount > 0 else { return }
         
         let score = GKScore()
         score.value = overallScore
         score.leaderboardIdentifier = playerData.overallLeaderboardID
-        scores.append(score)
-
+        
         GKScore.reportScores([score], withCompletionHandler: { error in
             Analytics.error(error)
-        })
+        })   
     }
     
     private func updateLockStateForLevels() {
