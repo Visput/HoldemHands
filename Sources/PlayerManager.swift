@@ -177,28 +177,8 @@ final class PlayerManager: NSObject {
         return progressItem
     }
     
-    private func overallScore() -> Int64 {
-        var numerator = 0.0
-        var denominator = 0.0
-        var handsCount = 0
-        for progress in playerData.levelProgressItems {
-            guard progress.handsCount > 0 else { continue }
-            
-            numerator += Double(progress.level.chipsPerWin) * Double(progress.wonChipsCount + progress.level.chipsPerWin)
-            denominator += Double(progress.wonChipsCount + progress.lostChipsCount + progress.level.chipsPerWin)
-            handsCount += progress.handsCount
-        }
-        
-        guard numerator > 0 && denominator > 0 else { return 0 }
-        
-        let decimalScore = pow(Double(handsCount), 0.8) * numerator / denominator
-        let score = Int64(round(decimalScore))
-        
-        return score
-    }
-    
     private func scoreForLevelProgress(progress: LevelProgress) -> Int64 {
-        let decimalScore = pow(Double(progress.handsCount), 0.8) *
+        let decimalScore = pow(Double(progress.handsCount), 0.7) *
             Double(progress.level.chipsPerWin) *
             Double(progress.wonChipsCount + progress.level.chipsPerWin) /
             Double(progress.wonChipsCount + progress.lostChipsCount + progress.level.chipsPerWin)
@@ -212,16 +192,18 @@ final class PlayerManager: NSObject {
         guard player.authenticated else { return }
         
         var scores = [GKScore]()
+        var overallScore: Int64 = 0
         
         for progress in playerData.levelProgressItems {
             let score = GKScore()
             score.value = scoreForLevelProgress(progress)
+            overallScore += score.value
             score.leaderboardIdentifier = progress.level.leaderboardID
             scores.append(score)
         }
         
         let score = GKScore()
-        score.value = overallScore()
+        score.value = overallScore
         score.leaderboardIdentifier = playerData.overallLeaderboardID
         scores.append(score)
 
