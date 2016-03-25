@@ -148,6 +148,6 @@ extension SharingManager: FBSDKSharingDelegate {
         
         didFailToShareAction?(item: facebookSharingItem, error: sharingError)
         facebookSharingItem = nil
-        Analytics.facebookSharingFailed(error)
+        Analytics.facebookSharingFailed(sharingError)
     }
 }

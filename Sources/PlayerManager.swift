@@ -15,7 +15,6 @@ import KeychainSwift
 final class PlayerManager: NSObject {
     
     enum ErrorCode: Int {
-        case PlayerNotAuthenticated
         case FailedToLoadRankFromGameCenter
     }
     
@@ -109,9 +108,7 @@ final class PlayerManager: NSObject {
     
     func loadProgressItemsIncludingRank(completionHandler: (progressItems: [Progress]?, error: NSError?) -> Void) {
         guard player.authenticated else {
-            let error = NSError(domain: errorDomain, code: ErrorCode.PlayerNotAuthenticated.rawValue, userInfo: nil)
-            Analytics.error(error)
-            completionHandler(progressItems: nil, error: error)
+            completionHandler(progressItems: progressItems(), error: nil)
             return
         }
         
@@ -317,11 +314,13 @@ extension PlayerManager {
             Analytics.error(NSError(domain: String(KeychainSwift.self), code: Int(keychain.lastResultCode), userInfo: nil))
         }
         
-        player.saveGameData(playerDataBytes, withName: key, completionHandler: { (savedGame, error) in
-            Analytics.error(error)
-        })
-        
-        reportScores()
+        if player.authenticated {
+            player.saveGameData(playerDataBytes, withName: key, completionHandler: { (savedGame, error) in
+                Analytics.error(error)
+            })
+            
+            reportScores()
+        }
     }
     
     private func loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded useLastPlayerIfNeeded: Bool) {
