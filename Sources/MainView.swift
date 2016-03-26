@@ -24,12 +24,23 @@ final class MainView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        let spacing: CGFloat = UIScreen.mainScreen().sizeType == .iPhone4 ? 32.0 : 48.0
+        let widthRatio: CGFloat = 1.4
+        let heightRatio: CGFloat = 2.0
         
-        levelsCollectionLayout.itemSize.width = floor(levelsCollectionView.frame.size.width / CGFloat(1.4))
-        levelsCollectionLayout.itemSize.height = floor(levelsCollectionLayout.itemSize.width / CGFloat(2.0))
+        levelsCollectionLayout.itemSize.width = floor(levelsCollectionView.frame.size.width / widthRatio)
+        levelsCollectionLayout.itemSize.height = floor(levelsCollectionLayout.itemSize.width / heightRatio)
+        
         levelsCollectionLayout.sectionInset.top = floor((levelsCollectionView.frame.size.height -
-            levelsCollectionLayout.itemSize.height) / CGFloat(2.0))
+            levelsCollectionLayout.itemSize.height) / 2.0)
         levelsCollectionLayout.sectionInset.bottom = levelsCollectionLayout.sectionInset.top
+        
+        levelsCollectionLayout.sectionInset.left = floor((levelsCollectionView.frame.size.width -
+            levelsCollectionLayout.itemSize.width) / 2.0)
+        levelsCollectionLayout.sectionInset.right = levelsCollectionLayout.sectionInset.left
+        
+        levelsCollectionLayout.minimumLineSpacing = spacing
+        levelsCollectionLayout.minimumInteritemSpacing = spacing
     }
     
     func scrollToMenuView() {

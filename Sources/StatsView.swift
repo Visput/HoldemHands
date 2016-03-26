@@ -20,18 +20,32 @@ final class StatsView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        statsCollectionLayout.itemSize.width = floor(statsCollectionView.frame.size.width / CGFloat(1.4))
-        statsCollectionLayout.itemSize.height = floor(statsCollectionLayout.itemSize.width / CGFloat(2.0))
-        statsCollectionLayout.sectionInset.top = floor((statsCollectionView.frame.size.height - statsCollectionLayout.itemSize.height) / CGFloat(2.0))
+        super.layoutSubviews()
+        let spacing: CGFloat = UIScreen.mainScreen().sizeType == .iPhone4 ? 32.0 : 48.0
+        let widthRatio: CGFloat = 1.4
+        let heightRatio: CGFloat = 2.0
+        
+        statsCollectionLayout.itemSize.width = floor(statsCollectionView.frame.size.width / widthRatio)
+        statsCollectionLayout.itemSize.height = floor(statsCollectionLayout.itemSize.width / heightRatio)
+        
+        statsCollectionLayout.sectionInset.top = floor((statsCollectionView.frame.size.height -
+            statsCollectionLayout.itemSize.height) / 2.0)
         statsCollectionLayout.sectionInset.bottom = statsCollectionLayout.sectionInset.top
+        
+        statsCollectionLayout.sectionInset.left = floor((statsCollectionView.frame.size.width -
+            statsCollectionLayout.itemSize.width) / 2.0)
+        statsCollectionLayout.sectionInset.right = statsCollectionLayout.sectionInset.left
+        
+        statsCollectionLayout.minimumLineSpacing = spacing
+        statsCollectionLayout.minimumInteritemSpacing = spacing
     }
     
     func scrollToNearestStats() {
         let offset = statsCollectionView.contentOffset.x
-        let levelDecimalIndex = offset / (statsCollectionLayout.itemSize.width + statsCollectionLayout.minimumInteritemSpacing)
-        let levelIndex = Int(round(levelDecimalIndex))
+        let statDecimalIndex = offset / (statsCollectionLayout.itemSize.width + statsCollectionLayout.minimumInteritemSpacing)
+        let statIndex = Int(round(statDecimalIndex))
         
-        statsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: levelIndex, inSection: 0),
+        statsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: statIndex, inSection: 0),
                                                     atScrollPosition: .CenteredHorizontally,
                                                     animated: true)
     }
