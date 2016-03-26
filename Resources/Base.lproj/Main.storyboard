@@ -121,15 +121,15 @@
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b4G-V4-063">
                                                         <rect key="frame" x="0.0" y="54" width="736" height="352"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="64" minimumInteritemSpacing="64" id="rY2-ZN-BW8">
+                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="64" minimumInteritemSpacing="32" id="rY2-ZN-BW8">
                                                             <size key="itemSize" width="268" height="251"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                            <inset key="sectionInset" minX="64" minY="0.0" maxX="64" maxY="0.0"/>
+                                                            <inset key="sectionInset" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
                                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LevelCell" id="QDv-1s-Wtf" customClass="LevelCell" customModule="HoldemHands" customModuleProvider="target">
-                                                                <rect key="frame" x="64" y="50.5" width="268" height="251"/>
+                                                                <rect key="frame" x="32" y="50.5" width="268" height="251"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                     <rect key="frame" x="0.0" y="0.0" width="268" height="251"/>
@@ -635,15 +635,15 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N1z-B1-EU6">
                                 <rect key="frame" x="0.0" y="59" width="736" height="307"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="64" minimumInteritemSpacing="64" id="5WR-hD-MN8">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="64" minimumInteritemSpacing="32" id="5WR-hD-MN8">
                                     <size key="itemSize" width="268" height="260"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="64" minY="0.0" maxX="64" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StatsCell" id="8Ao-Uu-koo" customClass="StatsCell" customModule="HoldemHands" customModuleProvider="target">
-                                        <rect key="frame" x="64" y="23.5" width="268" height="260"/>
+                                        <rect key="frame" x="32" y="23.5" width="268" height="260"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="268" height="260"/>
@@ -885,6 +885,6 @@
     </scenes>
     <resources>
         <image name="background_levels_blue" width="736" height="414"/>
-        <image name="background_table_green" width="490" height="227"/>
+        <image name="background_table_green" width="490" height="236"/>
     </resources>
 </document>

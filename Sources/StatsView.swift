@@ -20,8 +20,8 @@ final class StatsView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        statsCollectionLayout.itemSize.width = floor(statsCollectionView.frame.size.width / CGFloat(1.5))
-        statsCollectionLayout.itemSize.height = floor(statsCollectionLayout.itemSize.width / CGFloat(2.158))
+        statsCollectionLayout.itemSize.width = floor(statsCollectionView.frame.size.width / CGFloat(1.4))
+        statsCollectionLayout.itemSize.height = floor(statsCollectionLayout.itemSize.width / CGFloat(2.0))
         statsCollectionLayout.sectionInset.top = floor((statsCollectionView.frame.size.height - statsCollectionLayout.itemSize.height) / CGFloat(2.0))
         statsCollectionLayout.sectionInset.bottom = statsCollectionLayout.sectionInset.top
     }
