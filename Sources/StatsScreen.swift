@@ -100,5 +100,8 @@ extension StatsScreen {
             self.progressItems = progressItems
             self.statsView.statsCollectionView.reloadData()
         })
+        
+        statsView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %@", comment: ""),
+                                                 model.playerManager.playerData.chipsCount.formattedChipsCountString) as String
     }
 }

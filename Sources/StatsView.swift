@@ -12,6 +12,7 @@ final class StatsView: UIView {
     
     @IBOutlet private(set) weak var statsCollectionView: UICollectionView!
     @IBOutlet private(set) weak var leaderboardsButton: UIButton!
+    @IBOutlet private(set) weak var chipsCountLabel: UILabel!
     
     private var statsCollectionLayout: UICollectionViewFlowLayout {
         return statsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout

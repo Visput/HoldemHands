@@ -13,7 +13,6 @@ final class StatsCell: UICollectionViewCell {
     @IBOutlet private(set) weak var statsContentView: UIView!
     @IBOutlet private(set) weak var noStatsView: UIView!
     @IBOutlet private(set) weak var nameLabel: UILabel!
-    @IBOutlet private(set) weak var chipsCountLabel: UILabel!
     @IBOutlet private(set) weak var winPercentLabel: UILabel!
     @IBOutlet private(set) weak var winsInRowLabel: UILabel!
     @IBOutlet private(set) weak var handsCountLabel: UILabel!
@@ -29,8 +28,7 @@ final class StatsCell: UICollectionViewCell {
         if item.progressItem.handsCount != 0 {
             statsContentView.hidden = false
             noStatsView.hidden = true
-            
-            chipsCountLabel.text = item.progressItem.chipsCount.formattedChipsCountString
+
             winPercentLabel.text = NSString(format: "%.2f%%", item.progressItem.winPercent) as String
             winsInRowLabel.text = String(item.progressItem.maxWinsCountInRow)
             handsCountLabel.text = String(item.progressItem.handsCount)
