@@ -28,13 +28,11 @@ final class LevelCell: UICollectionViewCell {
             priceLabel.hidden = false
             
             playButton.hidden = true
-            backgroundColor = UIColor.secondaryTextColor()
             
         } else {
             playButton.hidden = false
             lockedLabel.hidden = true
             priceLabel.hidden = true
-            backgroundColor = UIColor.primaryColor()
         }
     }
 }

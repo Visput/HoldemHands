@@ -25,9 +25,10 @@ final class MainView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        levelsCollectionLayout.itemSize.width = levelsCollectionView.frame.size.width / CGFloat(1.5)
-        levelsCollectionLayout.itemSize.height = levelsCollectionLayout.itemSize.width / CGFloat(1.8)
-        levelsCollectionLayout.sectionInset.top = (levelsCollectionView.frame.size.height - levelsCollectionLayout.itemSize.height) / CGFloat(2.0)
+        levelsCollectionLayout.itemSize.width = floor(levelsCollectionView.frame.size.width / CGFloat(1.5))
+        levelsCollectionLayout.itemSize.height = floor(levelsCollectionLayout.itemSize.width / CGFloat(2.158))
+        levelsCollectionLayout.sectionInset.top = floor((levelsCollectionView.frame.size.height -
+            levelsCollectionLayout.itemSize.height) / CGFloat(2.0))
         levelsCollectionLayout.sectionInset.bottom = levelsCollectionLayout.sectionInset.top
     }
     
