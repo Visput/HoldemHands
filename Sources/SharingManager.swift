@@ -38,7 +38,7 @@ final class SharingManager: NSObject {
         guard UIApplication.sharedApplication().canOpenURL(instagramURL) else {
             let error = NSError(domain: errorDomain,
                 code: ErrorCode.SharingAcountNotExist.rawValue,
-                userInfo: [NSLocalizedDescriptionKey: "Unable to locate Instagram app."])
+                userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Unable to locate Instagram app.", comment: "")])
             didFailToShareAction?(item: item, error: error)
             Analytics.instagramSharingFailed(error)
             return
@@ -66,7 +66,7 @@ final class SharingManager: NSObject {
         guard sharingDialog.canShow() else {
             let error = NSError(domain: errorDomain,
                 code: ErrorCode.SharingAcountNotExist.rawValue,
-                userInfo: [NSLocalizedDescriptionKey: "Unable to locate Facebook account."])
+                userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Unable to locate Facebook account.", comment: "")])
             didFailToShareAction?(item: item, error: error)
             Analytics.facebookSharingFailed(error)
             
@@ -94,7 +94,7 @@ final class SharingManager: NSObject {
         guard SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) else {
             let error = NSError(domain: errorDomain,
                 code: ErrorCode.SharingAcountNotExist.rawValue,
-                userInfo: [NSLocalizedDescriptionKey: "Unable to locate Twitter account."])
+                userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Unable to locate Twitter account.", comment: "")])
             didFailToShareAction?(item: item, error: error)
             Analytics.twitterSharingFailed(error)
             
@@ -138,7 +138,7 @@ extension SharingManager: FBSDKSharingDelegate {
     }
     
     @objc func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
-        var userInfo: [String: AnyObject] = [NSLocalizedDescriptionKey: "Failed to share with Facebook."]
+        var userInfo: [String: AnyObject] = [NSLocalizedDescriptionKey: NSLocalizedString("Failed to share with Facebook.", comment: "")]
         if error != nil {
             userInfo[NSUnderlyingErrorKey] = error
         }
