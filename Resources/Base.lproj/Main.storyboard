@@ -384,25 +384,39 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3f-2a-fTu" customClass="EndlessScrollView" customModule="HoldemHands" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="62" width="667" height="313"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhA-HP-ihS">
+                                <rect key="frame" x="667" y="63" width="667" height="312"/>
                                 <connections>
-                                    <outletCollection property="viewObjects" destination="qhn-fF-xpL" collectionClass="NSMutableArray" id="Q8B-bJ-202"/>
-                                    <outletCollection property="viewObjects" destination="zhA-HP-ihS" collectionClass="NSMutableArray" id="1Wo-hS-8rm"/>
+                                    <segue destination="IKY-Ps-knr" kind="embed" identifier="SecondHands" id="mAe-ai-Kz2"/>
                                 </connections>
-                            </scrollView>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhn-fF-xpL">
+                                <rect key="frame" x="0.0" y="63" width="667" height="312"/>
+                                <connections>
+                                    <segue destination="IKY-Ps-knr" kind="embed" identifier="FirstHands" id="sWi-wi-SS3"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.9529411792755127" green="0.96078431606292725" blue="0.9686274528503418" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="pAS-LT-5r8" secondAttribute="trailing" constant="16" id="0Cr-wE-x7Y"/>
+                            <constraint firstItem="qhn-fF-xpL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2p7-88-YuL"/>
                             <constraint firstItem="foO-GZ-eAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EJ8-Bo-riM"/>
+                            <constraint firstItem="qhn-fF-xpL" firstAttribute="top" secondItem="foO-GZ-eAy" secondAttribute="bottom" constant="1" id="Q3r-ra-FLd"/>
+                            <constraint firstItem="zhA-HP-ihS" firstAttribute="leading" secondItem="qhn-fF-xpL" secondAttribute="trailing" id="WUT-ea-wLk"/>
+                            <constraint firstAttribute="trailing" secondItem="qhn-fF-xpL" secondAttribute="trailing" id="Z4C-Ho-L32"/>
+                            <constraint firstItem="zhA-HP-ihS" firstAttribute="width" secondItem="qhn-fF-xpL" secondAttribute="width" id="eUd-DV-3jd"/>
                             <constraint firstItem="foO-GZ-eAy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="jmA-OO-2Em"/>
                             <constraint firstItem="pAS-LT-5r8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="khu-rg-3eb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qhn-fF-xpL" secondAttribute="bottom" id="t4R-ef-NJJ"/>
+                            <constraint firstItem="zhA-HP-ihS" firstAttribute="top" secondItem="foO-GZ-eAy" secondAttribute="bottom" constant="1" id="tPB-wR-nE2"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zhA-HP-ihS" secondAttribute="bottom" id="yCR-cp-PmZ"/>
                         </constraints>
                         <connections>
                             <outlet property="chipsCountLabel" destination="pAS-LT-5r8" id="BFk-a4-OiA"/>
-                            <outlet property="handsScrollView" destination="l3f-2a-fTu" id="P2c-dt-UmJ"/>
+                            <outlet property="firstHandsView" destination="qhn-fF-xpL" id="U2O-Qf-DAg"/>
+                            <outlet property="secondHandsView" destination="zhA-HP-ihS" id="0a9-El-qhM"/>
                             <outlet property="swipeRecognizer" destination="3Ck-2q-YGx" id="RiG-3m-7pJ"/>
                             <outlet property="tapRecognizer" destination="iXx-oe-fbw" id="7kj-8U-zns"/>
                             <outletCollection property="gestureRecognizers" destination="3Ck-2q-YGx" appends="YES" id="p9z-W8-SzU"/>
@@ -414,20 +428,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <containerView opaque="NO" contentMode="scaleToFill" id="qhn-fF-xpL">
-                    <rect key="frame" x="0.0" y="0.0" width="213" height="100"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <connections>
-                        <segue destination="IKY-Ps-knr" kind="embed" identifier="FirstHands" id="sWi-wi-SS3"/>
-                    </connections>
-                </containerView>
-                <containerView opaque="NO" contentMode="scaleToFill" id="zhA-HP-ihS">
-                    <rect key="frame" x="0.0" y="0.0" width="213" height="100"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <connections>
-                        <segue destination="IKY-Ps-knr" kind="embed" identifier="SecondHands" id="mAe-ai-Kz2"/>
-                    </connections>
-                </containerView>
                 <swipeGestureRecognizer direction="left" id="3Ck-2q-YGx">
                     <connections>
                         <action selector="nextHandGestureDidSwipe:" destination="BYZ-38-t0r" id="hMz-jo-fkr"/>
@@ -712,6 +712,10 @@
         <scene sceneID="c6X-yr-dVF">
             <objects>
                 <viewController id="IKY-Ps-knr" customClass="HandsCollectionViewController" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8X2-PI-tKq"/>
+                        <viewControllerLayoutGuide type="bottom" id="kgZ-32-qwX"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pRv-wy-WOc">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="313"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

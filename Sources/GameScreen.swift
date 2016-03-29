@@ -25,20 +25,20 @@ final class GameScreen: BaseViewController {
         firstHandsController.didPlayRoundHandler = { [unowned self] won in
             self.didPlayRoundHandler(won)
         }
+        firstHandsController.nextController = secondHandsController
         firstHandsController.generateHands()
         
         secondHandsController.numberOfHands = level.numberOfHands
         secondHandsController.didPlayRoundHandler = { [unowned self] won in
             self.didPlayRoundHandler(won)
         }
-        secondHandsController.generateHands()
+        secondHandsController.nextController = firstHandsController
         
         gameView.swipeRecognizer.enabled = false
         gameView.tapRecognizer.enabled = false
         
         updateChipsCountLabel()
         model.playerManager.observers.addObserver(self)
-        configureHandsScrollViewHandlers()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -77,18 +77,6 @@ final class GameScreen: BaseViewController {
         Analytics.gameRoundPlayed()
     }
     
-    private func configureHandsScrollViewHandlers() {
-        gameView.handsScrollView.didHideViewHandler = { [unowned self] view in
-            let controller = view == self.firstHandsController.view ? self.firstHandsController : self.secondHandsController
-            controller.generateHands()
-        }
-        
-        gameView.handsScrollView.didShowViewHandler = { [unowned self] view in
-            let controller = view == self.firstHandsController.view ? self.firstHandsController : self.secondHandsController
-            controller.flipHands()
-        }
-    }
-    
     private func updateChipsCountLabel() {
         gameView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %@   x%lld", comment: ""),
             model.playerManager.playerData.chipsCount.formattedChipsCountString,
@@ -101,7 +89,7 @@ extension GameScreen {
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
         gameView.swipeRecognizer.enabled = false
         gameView.tapRecognizer.enabled = false
-        gameView.handsScrollView.scrollToNextPage(true)
+        gameView.scrollToNextHandsView()
     }
     
     @IBAction private func menuButtonDidPress(sender: AnyObject) {

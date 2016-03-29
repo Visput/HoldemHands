@@ -27,10 +27,30 @@ final class HandsCollectionViewController: UIViewController {
     @IBOutlet private(set) weak var handsCollectionView: UICollectionView!
     
     private var handOddsCalculator: HandOddsCalculator!
+    private var needsGenerateHandsOnViewDisappear = false
+    
+    private var isViewPresented: Bool {
+        let window = UIApplication.sharedApplication().keyWindow!
+        let windowFrame = window.frame
+        let viewFrame = view.convertRect(view.bounds, toView: window)
+        return CGRectContainsRect(windowFrame, viewFrame)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         handsCollectionView.userInteractionEnabled = false
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if isViewPresented && handOddsCalculator.handsOdds != nil {
+            flipHands()
+        }
+        
+        if !isViewPresented && needsGenerateHandsOnViewDisappear {
+            needsGenerateHandsOnViewDisappear = false
+            generateHands()
+        }
     }
     
     func generateHands() {
@@ -40,12 +60,20 @@ final class HandsCollectionViewController: UIViewController {
         handOddsCalculator.calculateOdds({ handsOdds in
             self.handsCollectionView.reloadData()
             self.handsCollectionView.userInteractionEnabled = true
+            if self.isViewPresented {
+                self.flipHands()
+            }
             
-            self.nextController?.generateHands()
+            guard self.nextController != nil else { return }
+            if self.nextController!.isViewPresented {
+                self.nextController!.needsGenerateHandsOnViewDisappear = true
+            } else {
+                self.nextController!.generateHands()
+            }
         })
     }
     
-    func flipHands() {
+    private func flipHands() {
         
     }
 }
