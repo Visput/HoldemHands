@@ -13,8 +13,6 @@ final class HandsCollectionViewController: UIViewController {
     
     var numberOfHands: Int! {
         didSet {
-            handOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands)
-            
             let layout = HandsCollectionViewLayout(numberOfHands: numberOfHands)
             handsCollectionView.collectionViewLayout = layout
         }
@@ -41,8 +39,7 @@ final class HandsCollectionViewController: UIViewController {
         handsCollectionView.userInteractionEnabled = false
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    func viewDidChangePosition() {
         if isViewPresented && handOddsCalculator.handsOdds != nil {
             flipHands()
         }
@@ -54,7 +51,7 @@ final class HandsCollectionViewController: UIViewController {
     }
     
     func generateHands() {
-        handOddsCalculator.resetOdds()
+        handOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands)
         handsCollectionView.reloadData()
         
         handOddsCalculator.calculateOdds({ handsOdds in

@@ -29,10 +29,6 @@ final class HandOddsCalculator {
         self.deck.sortCards()
     }
     
-    func resetOdds() {
-        handsOdds = nil
-    }
-    
     func calculateOdds(completion: (handsOdds: [HandOdds]) -> Void) {
         let time = CFAbsoluteTimeGetCurrent()
         handsOdds = nil

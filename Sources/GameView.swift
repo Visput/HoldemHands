@@ -13,10 +13,39 @@ final class GameView: UIView {
     @IBOutlet private(set) weak var chipsCountLabel: UILabel!
     @IBOutlet private(set) weak var swipeRecognizer: UISwipeGestureRecognizer!
     @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
-    @IBOutlet private(set) weak var firstHandsView: UIView!
-    @IBOutlet private(set) weak var secondHandsView: UIView!
     
-    func scrollToNextHandsView() {
+    @IBOutlet private(set) weak var firstHandsView: UIView! {
+        didSet {
+            firstHandsView.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    @IBOutlet private(set) weak var secondHandsView: UIView! {
+        didSet {
+            secondHandsView.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let offset: CGFloat = 65.0
+        
+        var shownView = firstHandsView
+        var hiddenView = secondHandsView
+        
+        if firstHandsView.frame.origin.x != 0.0 {
+            shownView = secondHandsView
+            hiddenView = firstHandsView
+        }
+        var initialFrame = bounds
+        initialFrame.origin.y = offset
+        initialFrame.size.height -= offset
+        
+        shownView.frame = initialFrame
+        hiddenView.frame = initialFrame
+        hiddenView.frame.origin.x = frame.size.width
+    }
+    
+    func scrollToNextHandsView(completionHandler: () -> Void) {
         let animationDuration = 0.4
         var viewToShow = firstHandsView
         var viewToHide = secondHandsView
@@ -32,6 +61,7 @@ final class GameView: UIView {
             
             }, completion: { _ in
                 viewToHide.frame.origin.x = self.frame.size.width
+                completionHandler()
         })
     }
 }

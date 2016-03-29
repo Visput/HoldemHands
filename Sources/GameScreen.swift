@@ -89,7 +89,10 @@ extension GameScreen {
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
         gameView.swipeRecognizer.enabled = false
         gameView.tapRecognizer.enabled = false
-        gameView.scrollToNextHandsView()
+        gameView.scrollToNextHandsView({
+            self.firstHandsController.viewDidChangePosition()
+            self.secondHandsController.viewDidChangePosition()
+        })
     }
     
     @IBAction private func menuButtonDidPress(sender: AnyObject) {

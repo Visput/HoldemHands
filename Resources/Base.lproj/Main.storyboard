@@ -385,7 +385,7 @@
                                 </variation>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhA-HP-ihS">
-                                <rect key="frame" x="667" y="63" width="667" height="312"/>
+                                <rect key="frame" x="0.0" y="63" width="667" height="312"/>
                                 <connections>
                                     <segue destination="IKY-Ps-knr" kind="embed" identifier="SecondHands" id="mAe-ai-Kz2"/>
                                 </connections>
@@ -401,18 +401,38 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="pAS-LT-5r8" secondAttribute="trailing" constant="16" id="0Cr-wE-x7Y"/>
-                            <constraint firstItem="qhn-fF-xpL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2p7-88-YuL"/>
+                            <constraint firstItem="qhn-fF-xpL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" placeholder="YES" id="2p7-88-YuL"/>
                             <constraint firstItem="foO-GZ-eAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EJ8-Bo-riM"/>
+                            <constraint firstItem="qhn-fF-xpL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" placeholder="YES" id="Ksd-Nf-Qgg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zhA-HP-ihS" secondAttribute="bottom" placeholder="YES" id="OiH-88-KDM"/>
                             <constraint firstItem="qhn-fF-xpL" firstAttribute="top" secondItem="foO-GZ-eAy" secondAttribute="bottom" constant="1" id="Q3r-ra-FLd"/>
-                            <constraint firstItem="zhA-HP-ihS" firstAttribute="leading" secondItem="qhn-fF-xpL" secondAttribute="trailing" id="WUT-ea-wLk"/>
+                            <constraint firstAttribute="trailing" secondItem="qhn-fF-xpL" secondAttribute="trailing" placeholder="YES" id="RNW-HV-wcQ"/>
+                            <constraint firstItem="zhA-HP-ihS" firstAttribute="leading" secondItem="qhn-fF-xpL" secondAttribute="trailing" placeholder="YES" id="WUT-ea-wLk"/>
                             <constraint firstAttribute="trailing" secondItem="qhn-fF-xpL" secondAttribute="trailing" id="Z4C-Ho-L32"/>
                             <constraint firstItem="zhA-HP-ihS" firstAttribute="width" secondItem="qhn-fF-xpL" secondAttribute="width" id="eUd-DV-3jd"/>
+                            <constraint firstItem="qhn-fF-xpL" firstAttribute="top" secondItem="foO-GZ-eAy" secondAttribute="bottom" constant="1" placeholder="YES" id="fhU-Dm-UoT"/>
                             <constraint firstItem="foO-GZ-eAy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="jmA-OO-2Em"/>
                             <constraint firstItem="pAS-LT-5r8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="khu-rg-3eb"/>
+                            <constraint firstAttribute="trailing" secondItem="zhA-HP-ihS" secondAttribute="trailing" placeholder="YES" id="qwV-CX-P7M"/>
+                            <constraint firstItem="zhA-HP-ihS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" placeholder="YES" id="s15-zb-Vwt"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qhn-fF-xpL" secondAttribute="bottom" placeholder="YES" id="spb-dg-Y0c"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qhn-fF-xpL" secondAttribute="bottom" id="t4R-ef-NJJ"/>
                             <constraint firstItem="zhA-HP-ihS" firstAttribute="top" secondItem="foO-GZ-eAy" secondAttribute="bottom" constant="1" id="tPB-wR-nE2"/>
+                            <constraint firstItem="zhA-HP-ihS" firstAttribute="top" secondItem="foO-GZ-eAy" secondAttribute="bottom" constant="1" placeholder="YES" id="vPt-lj-sKs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zhA-HP-ihS" secondAttribute="bottom" id="yCR-cp-PmZ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2p7-88-YuL"/>
+                                <exclude reference="Q3r-ra-FLd"/>
+                                <exclude reference="Z4C-Ho-L32"/>
+                                <exclude reference="WUT-ea-wLk"/>
+                                <exclude reference="eUd-DV-3jd"/>
+                                <exclude reference="tPB-wR-nE2"/>
+                                <exclude reference="t4R-ef-NJJ"/>
+                                <exclude reference="yCR-cp-PmZ"/>
+                            </mask>
+                        </variation>
                         <connections>
                             <outlet property="chipsCountLabel" destination="pAS-LT-5r8" id="BFk-a4-OiA"/>
                             <outlet property="firstHandsView" destination="qhn-fF-xpL" id="U2O-Qf-DAg"/>
