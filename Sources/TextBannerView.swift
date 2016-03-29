@@ -15,9 +15,9 @@ final class TextBannerView: BannerView {
     func showInView(view: UIView, withText
         text: String,
         duration: NSTimeInterval = 0.0,
-        tapAction: (() -> Void)? = nil) {
+        tapHandler: (() -> Void)? = nil) {
             
             textLabel.text = text
-            super.showInView(view, duration: duration, tapAction: tapAction)
+            super.showInView(view, duration: duration, tapHandler: tapHandler)
     }
 }

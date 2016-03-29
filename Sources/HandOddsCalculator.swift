@@ -29,8 +29,13 @@ final class HandOddsCalculator {
         self.deck.sortCards()
     }
     
+    func resetOdds() {
+        handsOdds = nil
+    }
+    
     func calculateOdds(completion: (handsOdds: [HandOdds]) -> Void) {
         let time = CFAbsoluteTimeGetCurrent()
+        handsOdds = nil
         
         let boardSize = 5
         let deckSize = 52
@@ -40,9 +45,9 @@ final class HandOddsCalculator {
         let splitIndex = deckSplitIndexForNumberOfHands(hands.count)
         let iterationIndexes: [(minIdex: Int, maxIndex: Int)] = [(0, splitIndex), (splitIndex + 1, deck.cards.count - boardSize)]
     
-        var handsOdds = [HandOdds]()
+        var newHandsOdds = [HandOdds]()
         for hand in hands {
-            handsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
+            newHandsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
         }
         
         let group = dispatch_group_create()
@@ -71,7 +76,7 @@ final class HandOddsCalculator {
                 boardCards.destroy()
                 
                 for (index, subHandOdds) in subHandsOdds.enumerate() {
-                    handsOdds[index].winningCombinationsCount += subHandOdds.winningCombinationsCount
+                    newHandsOdds[index].winningCombinationsCount += subHandOdds.winningCombinationsCount
                 }
             })
         }
@@ -79,7 +84,7 @@ final class HandOddsCalculator {
         dispatch_group_notify(group, queue, {
             
             // Calculate winning hands.
-            self.handsOdds = handsOdds
+            self.handsOdds = newHandsOdds
             var winningHandsOddsIndexes = [Int]()
             
             for index in 0 ..< self.handsOdds!.count {
@@ -88,10 +93,10 @@ final class HandOddsCalculator {
                 if winningHandsOddsIndexes.count == 0 {
                     winningHandsOddsIndexes.append(index)
                     
-                } else if handsOdds[winningHandsOddsIndexes.last!].winningCombinationsCount == handOdds.winningCombinationsCount {
+                } else if self.handsOdds![winningHandsOddsIndexes.last!].winningCombinationsCount == handOdds.winningCombinationsCount {
                     winningHandsOddsIndexes.append(index)
                     
-                } else if handsOdds[winningHandsOddsIndexes.last!].winningCombinationsCount < handOdds.winningCombinationsCount {
+                } else if self.handsOdds![winningHandsOddsIndexes.last!].winningCombinationsCount < handOdds.winningCombinationsCount {
                     winningHandsOddsIndexes.removeAll()
                     winningHandsOddsIndexes.append(index)
                 }

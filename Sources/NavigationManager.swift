@@ -60,9 +60,9 @@ final class NavigationManager: NSObject {
         presentScreen(screen, animated: animated)
     }
     
-    func showBannerWithText(text: String, duration: NSTimeInterval = 5.0, tapAction: (() -> Void)? = nil) -> BannerView {
+    func showBannerWithText(text: String, duration: NSTimeInterval = 5.0, tapHandler: (() -> Void)? = nil) -> BannerView {
         let banner: TextBannerView = TextBannerView.fromNib()
-        banner.showInView(window, withText: text, duration: duration, tapAction: tapAction)
+        banner.showInView(window, withText: text, duration: duration, tapHandler: tapHandler)
         return banner
     }
 }

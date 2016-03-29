@@ -13,7 +13,7 @@ class BannerView: UIControl {
     private let animationDuration: NSTimeInterval = 0.5
     private let bannerHeight: CGFloat = 64.0
     
-    private var tapAction: (() -> Void)?
+    private var tapHandler: (() -> Void)?
     private var timer: NSTimer?
     private var swipeRecognizer: UISwipeGestureRecognizer!
     
@@ -29,9 +29,9 @@ class BannerView: UIControl {
     
     func showInView(view: UIView,
         duration: NSTimeInterval = 0.0,
-        tapAction: (() -> Void)? = nil) {
+        tapHandler: (() -> Void)? = nil) {
             
-            self.tapAction = tapAction
+            self.tapHandler = tapHandler
             
             frame = view.bounds
             frame.size.height = bannerHeight
@@ -60,7 +60,7 @@ class BannerView: UIControl {
         timer?.invalidate()
         timer = nil
         superview!.removeGestureRecognizer(swipeRecognizer)
-        tapAction = nil
+        tapHandler = nil
         
         UIView.animateWithDuration(animationDuration,
             delay: 0.0,
@@ -84,7 +84,7 @@ extension BannerView {
     }
     
     @objc private func bannerDidTap(sender: AnyObject) {
-        tapAction?()
+        tapHandler?()
         dismiss()
     }
 }

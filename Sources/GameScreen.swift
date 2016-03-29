@@ -12,9 +12,8 @@ final class GameScreen: BaseViewController {
     
     var level: Level!
     
-    private var currentHandOddsCalculator: HandOddsCalculator!
-    private var nextHandOddsCalculator: HandOddsCalculator!
-    private var needsShowNextHandImmediately: Bool = true
+    private var firstHandsController: HandsCollectionViewController!
+    private var secondHandsController: HandsCollectionViewController!
     
     private var gameView: GameView {
         return view as! GameView
@@ -22,10 +21,24 @@ final class GameScreen: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gameView.configureCollectionViewLayoutForNumberOfHands(level.numberOfHands)
-        generateNextHand()
+        firstHandsController.numberOfHands = level.numberOfHands
+        firstHandsController.didPlayRoundHandler = { [unowned self] won in
+            self.didPlayRoundHandler(won)
+        }
+        firstHandsController.generateHands()
+        
+        secondHandsController.numberOfHands = level.numberOfHands
+        secondHandsController.didPlayRoundHandler = { [unowned self] won in
+            self.didPlayRoundHandler(won)
+        }
+        secondHandsController.generateHands()
+        
+        gameView.swipeRecognizer.enabled = false
+        gameView.tapRecognizer.enabled = false
+        
         updateChipsCountLabel()
         model.playerManager.observers.addObserver(self)
+        configureHandsScrollViewHandlers()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -43,48 +56,36 @@ final class GameScreen: BaseViewController {
         Analytics.gameDisappeared(level)
     }
     
-    private func generateNextHand() {
-        gameView.swipeRecognizer.enabled = false
-        gameView.tapRecognizer.enabled = false
-        
-        if currentHandOddsCalculator == nil {
-            gameView.handsCollectionView.userInteractionEnabled = false
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier! == "FirstHands" {
+            firstHandsController = segue.destinationViewController as! HandsCollectionViewController
             
-            currentHandOddsCalculator = HandOddsCalculator(numberOfHands: level.numberOfHands)
-            currentHandOddsCalculator.calculateOdds({ handsOdds in
-                self.gameView.handsCollectionView.reloadData()
-                self.gameView.handsCollectionView.userInteractionEnabled = true
-                
-                self.needsShowNextHandImmediately = false
-                self.generateNextHand()
-            })
-        } else if nextHandOddsCalculator?.handsOdds == nil {
-            if !needsShowNextHandImmediately {
-                nextHandOddsCalculator = HandOddsCalculator(numberOfHands: level.numberOfHands)
-                nextHandOddsCalculator.calculateOdds({ handsOdds in
-                    if self.needsShowNextHandImmediately {
-                        self.currentHandOddsCalculator = self.nextHandOddsCalculator
-                        self.nextHandOddsCalculator = nil
-                        self.gameView.handsCollectionView.reloadData()
-                        self.gameView.handsCollectionView.userInteractionEnabled = true
-                        
-                        self.needsShowNextHandImmediately = false
-                        self.generateNextHand()
-                    }
-                })
-            } else {
-                currentHandOddsCalculator = nextHandOddsCalculator
-                gameView.handsCollectionView.reloadData()
-                gameView.handsCollectionView.userInteractionEnabled = false
-            }
+        } else if segue.identifier! == "SecondHands" {
+            secondHandsController = segue.destinationViewController as! HandsCollectionViewController
+        }
+    }
+    
+    private func didPlayRoundHandler(won: Bool) {
+        if won {
+            model.playerManager.trackNewWinInLevel(level)
         } else {
-            currentHandOddsCalculator = nextHandOddsCalculator
-            nextHandOddsCalculator = nil
-            gameView.handsCollectionView.reloadData()
-            gameView.handsCollectionView.userInteractionEnabled = true
-            
-            self.needsShowNextHandImmediately = false
-            self.generateNextHand()
+            model.playerManager.trackNewLossInLevel(level)
+        }
+        updateChipsCountLabel()
+        gameView.swipeRecognizer.enabled = true
+        gameView.tapRecognizer.enabled = true
+        Analytics.gameRoundPlayed()
+    }
+    
+    private func configureHandsScrollViewHandlers() {
+        gameView.handsScrollView.didHideViewHandler = { [unowned self] view in
+            let controller = view == self.firstHandsController.view ? self.firstHandsController : self.secondHandsController
+            controller.generateHands()
+        }
+        
+        gameView.handsScrollView.didShowViewHandler = { [unowned self] view in
+            let controller = view == self.firstHandsController.view ? self.firstHandsController : self.secondHandsController
+            controller.flipHands()
         }
     }
     
@@ -98,58 +99,14 @@ final class GameScreen: BaseViewController {
 extension GameScreen {
     
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
-        needsShowNextHandImmediately = true
-        generateNextHand()
+        gameView.swipeRecognizer.enabled = false
+        gameView.tapRecognizer.enabled = false
+        gameView.handsScrollView.scrollToNextPage(true)
     }
     
     @IBAction private func menuButtonDidPress(sender: AnyObject) {
         Analytics.doneClickedInGame()
         model.navigationManager.dismissScreenAnimated(true)
-    }
-}
-
-extension GameScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return currentHandOddsCalculator.hands.count
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HandCell.className(),
-            forIndexPath: indexPath) as! HandCell
-        
-        let item = HandCellItem(handOdds: currentHandOddsCalculator.handsOdds?[indexPath.item], needsShowOdds: false, isSuccessSate: nil)
-        cell.fillWithItem(item)
-        
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let currentCell = collectionView.cellForItemAtIndexPath(indexPath) as! HandCell
-        
-        for cell in collectionView.visibleCells() as! [HandCell] {
-            var isSuccessState: Bool? = nil
-            if currentCell == cell {
-                isSuccessState = cell.item.handOdds!.wins
-                if isSuccessState! {
-                    model.playerManager.trackNewWinInLevel(level)
-                } else {
-                    model.playerManager.trackNewLossInLevel(level)
-                }
-                updateChipsCountLabel()
-            } else {
-                if cell.item.handOdds!.wins {
-                    isSuccessState = true
-                }
-            }
-            let item = HandCellItem(handOdds: cell.item.handOdds, needsShowOdds: true, isSuccessSate: isSuccessState)
-            cell.fillWithItem(item)
-        }
-        
-        gameView.swipeRecognizer.enabled = true
-        gameView.tapRecognizer.enabled = true
-        gameView.handsCollectionView.userInteractionEnabled = false
-        Analytics.gameRoundPlayed()
     }
 }
 
@@ -160,7 +117,7 @@ extension GameScreen: PlayerManagerObserving {
         let text =  NSString(format: NSLocalizedString("Congratulations. %@ is unlocked now!", comment: ""), levelName)
         
         Analytics.unlockBannerShownInGame(levelProgress.level)
-        model.navigationManager.showBannerWithText(text as String, tapAction: { [unowned self] in
+        model.navigationManager.showBannerWithText(text as String, tapHandler: { [unowned self] in
             Analytics.unlockBannerClickedInGame(levelProgress.level)
             self.model.navigationManager.dismissScreenAnimated(true)
         })

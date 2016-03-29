@@ -109,7 +109,7 @@ extension MainScreen {
             image: nil,
             imageURL: NSURL(string: "https://d13yacurqjgara.cloudfront.net/users/3511/screenshots/827275/prvw.jpg"))
         
-        model.sharingManager.didFailToShareAction = { [unowned self] _ in
+        model.sharingManager.didFailToShareHandler = { [unowned self] _ in
             self.model.navigationManager.showBannerWithText(NSLocalizedString("Unable to locate your \"Facebook\" account", comment: ""))
         }
         
@@ -124,7 +124,7 @@ extension MainScreen {
             image: UIImage(named: "test.jpg"),
             imageURL: nil)
         
-        model.sharingManager.didFailToShareAction = { [unowned self] _ in
+        model.sharingManager.didFailToShareHandler = { [unowned self] _ in
             self.model.navigationManager.showBannerWithText(NSLocalizedString("Unable to locate your \"Twitter\" account", comment: ""))
         }
         
@@ -139,7 +139,7 @@ extension MainScreen {
             image: UIImage(named: "test.jpg"),
             imageURL: nil)
         
-        model.sharingManager.didFailToShareAction = { [unowned self] _ in
+        model.sharingManager.didFailToShareHandler = { [unowned self] _ in
             self.model.navigationManager.showBannerWithText(NSLocalizedString("Unable to locate your \"Instagram\" account", comment: ""))
         }
         

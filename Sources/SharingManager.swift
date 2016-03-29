@@ -20,9 +20,9 @@ final class SharingManager: NSObject {
     
     let errorDomain = "SharingManagerErrorDomain"
     
-    var didCompleteShareAction: ((item: SharingItem) -> Void)?
-    var didCancelShareAction: ((item: SharingItem) -> Void)?
-    var didFailToShareAction: ((item: SharingItem, error: NSError) -> Void)?
+    var didCompleteShareHandler: ((item: SharingItem) -> Void)?
+    var didCancelShareHandler: ((item: SharingItem) -> Void)?
+    var didFailToShareHandler: ((item: SharingItem, error: NSError) -> Void)?
     
     private var instagramDocumentController: UIDocumentInteractionController!
     private var facebookSharingItem: SharingItem!
@@ -39,7 +39,7 @@ final class SharingManager: NSObject {
             let error = NSError(domain: errorDomain,
                 code: ErrorCode.SharingAcountNotExist.rawValue,
                 userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Unable to locate Instagram app.", comment: "")])
-            didFailToShareAction?(item: item, error: error)
+            didFailToShareHandler?(item: item, error: error)
             Analytics.instagramSharingFailed(error)
             return
         }
@@ -54,7 +54,7 @@ final class SharingManager: NSObject {
         instagramDocumentController.annotation = [instagramCaptionKey: item.message!]
         instagramDocumentController.presentOpenInMenuFromRect(CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0), inView: view, animated: true)
 
-        didCompleteShareAction?(item: item)
+        didCompleteShareHandler?(item: item)
         
         Analytics.instagramSharingCompleted()
     }
@@ -67,7 +67,7 @@ final class SharingManager: NSObject {
             let error = NSError(domain: errorDomain,
                 code: ErrorCode.SharingAcountNotExist.rawValue,
                 userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Unable to locate Facebook account.", comment: "")])
-            didFailToShareAction?(item: item, error: error)
+            didFailToShareHandler?(item: item, error: error)
             Analytics.facebookSharingFailed(error)
             
             return
@@ -95,7 +95,7 @@ final class SharingManager: NSObject {
             let error = NSError(domain: errorDomain,
                 code: ErrorCode.SharingAcountNotExist.rawValue,
                 userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Unable to locate Twitter account.", comment: "")])
-            didFailToShareAction?(item: item, error: error)
+            didFailToShareHandler?(item: item, error: error)
             Analytics.twitterSharingFailed(error)
             
             return
@@ -107,10 +107,10 @@ final class SharingManager: NSObject {
         composer.addImage(item.image)
         composer.completionHandler = { [unowned self] result in
             if result == .Done {
-                self.didCompleteShareAction?(item: item)
+                self.didCompleteShareHandler?(item: item)
                 Analytics.twitterSharingCompleted()
             } else {
-                self.didCancelShareAction?(item: item)
+                self.didCancelShareHandler?(item: item)
                 Analytics.twitterSharingCanceled()
             }
             
@@ -126,13 +126,13 @@ final class SharingManager: NSObject {
 extension SharingManager: FBSDKSharingDelegate {
     
     @objc func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
-        didCompleteShareAction?(item: facebookSharingItem)
+        didCompleteShareHandler?(item: facebookSharingItem)
         facebookSharingItem = nil
         Analytics.facebookSharingCompleted()
     }
     
     @objc func sharerDidCancel(sharer: FBSDKSharing!) {
-        didCancelShareAction?(item: facebookSharingItem)
+        didCancelShareHandler?(item: facebookSharingItem)
         facebookSharingItem = nil
         Analytics.facebookSharingCanceled()
     }
@@ -146,7 +146,7 @@ extension SharingManager: FBSDKSharingDelegate {
             code: ErrorCode.SharingFailed.rawValue,
             userInfo: userInfo)
         
-        didFailToShareAction?(item: facebookSharingItem, error: sharingError)
+        didFailToShareHandler?(item: facebookSharingItem, error: sharingError)
         facebookSharingItem = nil
         Analytics.facebookSharingFailed(sharingError)
     }
