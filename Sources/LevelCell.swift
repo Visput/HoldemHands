@@ -22,17 +22,17 @@ final class LevelCell: UICollectionViewCell {
         
         levelLabel.text = item.levelProgress.level.name
         playButton.tag = item.buttonsTag
-        priceLabel.text = NSString(format: NSLocalizedString("Chips: %lld", comment: ""), item.levelProgress.level.chipsToUnlock) as String
+        
         if item.levelProgress.locked! {
             lockedLabel.hidden = false
-            priceLabel.hidden = false
+            priceLabel.text = item.levelProgress.level.chipsToUnlock.formattedChipsCountString
             
             playButton.hidden = true
             
         } else {
             playButton.hidden = false
             lockedLabel.hidden = true
-            priceLabel.hidden = true
+            priceLabel.text = item.levelProgress.level.chipsPerWin.formattedChipsCountString
         }
     }
 }
