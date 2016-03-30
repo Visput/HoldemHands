@@ -59,7 +59,7 @@ final class HandsCollectionViewController: UIViewController {
         reloadHandsCollectionViewDeeply(true)
         
         handOddsCalculator.calculateOdds({ handsOdds in
-            self.reloadHandsCollectionViewDeeply(false)
+            self.reloadHandsCollectionViewDeeply(true)
             if self.isViewPresented {
                 self.flipHandsWithDelay(0.0)
             }
@@ -75,13 +75,8 @@ final class HandsCollectionViewController: UIViewController {
     
     private func flipHandsWithDelay(delayDuration: Double) {
         executeAfterDelay(delayDuration, task: {
-            // Method `visibleCells()` provides cells in random order.
-            // Sort cells from left top to right bottom corner.
-            let cells = self.handsCollectionView.visibleCells().sort({ (cell1, cell2) -> Bool in
-                return self.handsCollectionView.indexPathForCell(cell1)!.item < self.handsCollectionView.indexPathForCell(cell2)!.item
-            }) as! [HandCell]
-            
             let delayCoefficient = 0.1
+            let cells = self.orderedCells()
             for (index, cell) in cells.enumerate() {
                 self.executeAfterDelay(Double(index) * delayCoefficient, task: {
                     cell.setHandVisible(true, animated: true, completionHandler: {
@@ -97,13 +92,23 @@ final class HandsCollectionViewController: UIViewController {
     private func reloadHandsCollectionViewDeeply(deeply: Bool) {
         if deeply {
             handsCollectionView.reloadData()
-        } else {
-            var indexPaths = [NSIndexPath]()
-            for index in 0 ..< handOddsCalculator.hands.count {
-                indexPaths.append(NSIndexPath(forItem: index, inSection: 0))
+        } else {  
+            let cells = orderedCells()
+            for (index, cell) in cells.enumerate() {
+                let item = HandCellItem(handOdds: handOddsCalculator.handsOdds?[index], needsShowOdds: false, isSuccessSate: nil)
+                cell.fillWithItem(item)
             }
-            handsCollectionView.reloadItemsAtIndexPaths(indexPaths)
         }
+    }
+    
+    private func orderedCells() -> [HandCell] {
+        // Method `visibleCells()` provides cells in random order.
+        // Sort cells from left top to right bottom corner.
+        let cells = self.handsCollectionView.visibleCells().sort({ (cell1, cell2) -> Bool in
+            return self.handsCollectionView.indexPathForCell(cell1)!.item < self.handsCollectionView.indexPathForCell(cell2)!.item
+        }) as! [HandCell]
+        
+        return cells
     }
 }
 
