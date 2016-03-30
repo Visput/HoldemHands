@@ -13,6 +13,7 @@ final class HandsCollectionViewController: UIViewController {
     
     var numberOfHands: Int! {
         didSet {
+            handOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands)
             let layout = HandsCollectionViewLayout(numberOfHands: numberOfHands)
             handsCollectionView.collectionViewLayout = layout
         }
@@ -52,10 +53,10 @@ final class HandsCollectionViewController: UIViewController {
     
     func generateHands() {
         handOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands)
-        handsCollectionView.reloadData()
+        reloadHandsCollectionViewDeeply(true)
         
         handOddsCalculator.calculateOdds({ handsOdds in
-            self.handsCollectionView.reloadData()
+            self.reloadHandsCollectionViewDeeply(false)
             self.handsCollectionView.userInteractionEnabled = true
             if self.isViewPresented {
                 self.flipHands()
@@ -71,7 +72,26 @@ final class HandsCollectionViewController: UIViewController {
     }
     
     private func flipHands() {
-        
+        // Use delay for better usability.
+        // Helps to understand better what is going on from user perspective.
+        let delayDuration = 0.2
+        executeAfterDelay(delayDuration, task: {
+            for cell in self.handsCollectionView.visibleCells() as! [HandCell] {
+                cell.setHandVisible(true, animated: true)
+            }
+        })
+    }
+    
+    private func reloadHandsCollectionViewDeeply(deeply: Bool) {
+        if deeply {
+            handsCollectionView.reloadData()
+        } else {
+            var indexPaths = [NSIndexPath]()
+            for index in 0 ..< handOddsCalculator.hands.count {
+                indexPaths.append(NSIndexPath(forItem: index, inSection: 0))
+            }
+            handsCollectionView.reloadItemsAtIndexPaths(indexPaths)
+        }
     }
 }
 

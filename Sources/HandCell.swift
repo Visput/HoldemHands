@@ -13,10 +13,12 @@ final class HandCell: UICollectionViewCell {
     @IBOutlet private(set) weak var firstCardImageView: UIImageView!
     @IBOutlet private(set) weak var secondCardImageView: UIImageView!
     
+    @IBOutlet private(set) weak var firstCardView: UIView!
     @IBOutlet private(set) weak var firstCardTopLabel: UILabel!
     @IBOutlet private(set) weak var firstCardCenterLabel: UILabel!
     @IBOutlet private(set) weak var firstCardBottomLabel: UILabel!
     
+    @IBOutlet private(set) weak var secondCardView: UIView!
     @IBOutlet private(set) weak var secondCardTopLabel: UILabel!
     @IBOutlet private(set) weak var secondCardCenterLabel: UILabel!
     @IBOutlet private(set) weak var secondCardBottomLabel: UILabel!
@@ -29,31 +31,12 @@ final class HandCell: UICollectionViewCell {
         self.item = item
         
         if item.handOdds == nil {
-            firstCardTopLabel.text = ""
-            firstCardCenterLabel.text = ""
-            firstCardBottomLabel.text = ""
-            secondCardTopLabel.text = ""
-            secondCardCenterLabel.text = ""
-            secondCardBottomLabel.text = ""
+            setHandVisible(false, animated: false)
             winningProbabilityLabel.hidden = true
             backgroundColor = UIColor.backgroundColor()
         } else {
             winningProbabilityLabel.hidden = !item.needsShowOdds
             winningProbabilityLabel.text = NSString(format: "Win: %.2f%%", item.handOdds!.winningProbability()) as String
-            
-            firstCardTopLabel.text = titleForCard(item.handOdds!.hand.firstCard)
-            firstCardTopLabel.textColor = colorForCard(item.handOdds!.hand.firstCard)
-            firstCardCenterLabel.text = firstCardTopLabel.text
-            firstCardCenterLabel.textColor = firstCardTopLabel.textColor
-            firstCardBottomLabel.text = firstCardTopLabel.text
-            firstCardBottomLabel.textColor = firstCardTopLabel.textColor
-            
-            secondCardTopLabel.text = titleForCard(item.handOdds!.hand.secondCard)
-            secondCardTopLabel.textColor = colorForCard(item.handOdds!.hand.secondCard)
-            secondCardCenterLabel.text = secondCardTopLabel.text
-            secondCardCenterLabel.textColor = secondCardTopLabel.textColor
-            secondCardBottomLabel.text = secondCardTopLabel.text
-            secondCardBottomLabel.textColor = secondCardTopLabel.textColor
             
             if item.isSuccessSate == nil {
                 backgroundColor = UIColor.backgroundColor()
@@ -65,6 +48,53 @@ final class HandCell: UICollectionViewCell {
                 backgroundColor = UIColor.lightSecondaryColor()
                 winningProbabilityLabel.backgroundColor = UIColor.lightSecondaryColor()
             }
+        }
+    }
+    
+    func setHandVisible(visible: Bool, animated: Bool) {
+        let animationDuration = 0.5
+        
+        func updateFirstCard() {
+            if visible {
+                firstCardTopLabel.text = titleForCard(item.handOdds!.hand.firstCard)
+                firstCardTopLabel.textColor = colorForCard(item.handOdds!.hand.firstCard)
+                firstCardCenterLabel.text = firstCardTopLabel.text
+                firstCardCenterLabel.textColor = firstCardTopLabel.textColor
+                firstCardBottomLabel.text = firstCardTopLabel.text
+                firstCardBottomLabel.textColor = firstCardTopLabel.textColor
+            } else {
+                firstCardTopLabel.text = ""
+                firstCardCenterLabel.text = ""
+                firstCardBottomLabel.text = ""
+            }
+        }
+        
+        func updateSecondCard() {
+            if visible {
+                secondCardTopLabel.text = titleForCard(item.handOdds!.hand.secondCard)
+                secondCardTopLabel.textColor = colorForCard(item.handOdds!.hand.secondCard)
+                secondCardCenterLabel.text = secondCardTopLabel.text
+                secondCardCenterLabel.textColor = secondCardTopLabel.textColor
+                secondCardBottomLabel.text = secondCardTopLabel.text
+                secondCardBottomLabel.textColor = secondCardTopLabel.textColor
+            } else {
+                secondCardTopLabel.text = ""
+                secondCardCenterLabel.text = ""
+                secondCardBottomLabel.text = ""
+            }
+        }
+        
+        if animated {
+            UIView.transitionWithView(firstCardView, duration: animationDuration, options: .TransitionFlipFromLeft, animations: {
+                updateFirstCard()
+                }, completion: nil)
+            
+            UIView.transitionWithView(secondCardView, duration: animationDuration, options: .TransitionFlipFromLeft, animations: {
+                updateSecondCard()
+                }, completion: nil)
+        } else {
+            updateFirstCard()
+            updateSecondCard()
         }
     }
 }
