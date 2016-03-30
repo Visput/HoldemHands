@@ -47,7 +47,7 @@ final class HandOddsCalculator {
         }
         
         let group = dispatch_group_create()
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
         
         for index in 0 ..< iterationIndexes.count {
             dispatch_group_async(group, queue, {

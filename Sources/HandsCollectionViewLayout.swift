@@ -76,7 +76,12 @@ final class HandsCollectionViewLayout: UICollectionViewFlowLayout {
         sectionInset.top = verticalSpacing
         sectionInset.bottom = verticalSpacing
         
-        var attributes = Array(super.layoutAttributesForElementsInRect(rect)!)
+        // Internal logic of UICollectionViewFlowLayout requires attributes 
+        // to be copied before being modified.
+        var attributes = [UICollectionViewLayoutAttributes]()
+        for attribute in super.layoutAttributesForElementsInRect(rect)! {
+            attributes.append(attribute.copy() as! UICollectionViewLayoutAttributes)
+        }
         
         // Center items for second line if it's not full.
         if attributes.count == 5 || attributes.count == 7 {

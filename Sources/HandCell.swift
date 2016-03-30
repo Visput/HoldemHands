@@ -52,7 +52,7 @@ final class HandCell: UICollectionViewCell {
     }
     
     func setHandVisible(visible: Bool, animated: Bool, completionHandler: (() -> Void)? = nil) {
-        let animationDuration = 0.5
+        let animationDuration = 0.6
         
         func updateFirstCard() {
             if visible {
@@ -85,11 +85,11 @@ final class HandCell: UICollectionViewCell {
         }
         
         if animated {
-            UIView.transitionWithView(firstCardView, duration: animationDuration, options: .TransitionFlipFromLeft, animations: {
+            UIView.transitionWithView(firstCardView, duration: animationDuration, options: [.TransitionFlipFromLeft, .CurveEaseOut], animations: {
                 updateFirstCard()
                 }, completion: nil)
             
-            UIView.transitionWithView(secondCardView, duration: animationDuration, options: .TransitionFlipFromLeft, animations: {
+            UIView.transitionWithView(secondCardView, duration: animationDuration, options: [.TransitionFlipFromLeft, .CurveEaseOut], animations: {
                 updateSecondCard()
                 }, completion: { _ in
                     completionHandler?()

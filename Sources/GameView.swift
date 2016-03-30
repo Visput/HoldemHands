@@ -46,7 +46,7 @@ final class GameView: UIView {
     }
     
     func scrollToNextHandsView(completionHandler: () -> Void) {
-        let animationDuration = 0.4
+        let animationDuration = 0.6
         var viewToShow = firstHandsView
         var viewToHide = secondHandsView
         
@@ -55,7 +55,7 @@ final class GameView: UIView {
             viewToHide = firstHandsView
         }
         
-        UIView.animateWithDuration(animationDuration, delay: 0, options: .CurveEaseInOut, animations: {
+        UIView.animateWithDuration(animationDuration, delay: 0, options: .CurveEaseOut, animations: {
             viewToShow.frame.origin.x = 0.0
             viewToHide.frame.origin.x = -self.frame.size.width
             
