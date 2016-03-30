@@ -42,7 +42,10 @@ final class HandsCollectionViewController: UIViewController {
     
     func viewDidChangePosition() {
         if isViewPresented && handOddsCalculator.handsOdds != nil {
-            flipHands()
+            let delayDuration = 0.2
+            // Use delay for better usability.
+            // Helps to understand better what is going on from user perspective.
+            flipHandsWithDelay(delayDuration)
         }
         
         if !isViewPresented && needsGenerateHandsOnViewDisappear {
@@ -57,9 +60,8 @@ final class HandsCollectionViewController: UIViewController {
         
         handOddsCalculator.calculateOdds({ handsOdds in
             self.reloadHandsCollectionViewDeeply(false)
-            self.handsCollectionView.userInteractionEnabled = true
             if self.isViewPresented {
-                self.flipHands()
+                self.flipHandsWithDelay(0.0)
             }
             
             guard self.nextController != nil else { return }
@@ -71,13 +73,12 @@ final class HandsCollectionViewController: UIViewController {
         })
     }
     
-    private func flipHands() {
-        // Use delay for better usability.
-        // Helps to understand better what is going on from user perspective.
-        let delayDuration = 0.2
+    private func flipHandsWithDelay(delayDuration: Double) {
         executeAfterDelay(delayDuration, task: {
             for cell in self.handsCollectionView.visibleCells() as! [HandCell] {
-                cell.setHandVisible(true, animated: true)
+                cell.setHandVisible(true, animated: true, completionHandler: {
+                    self.handsCollectionView.userInteractionEnabled = true
+                })
             }
         })
     }
