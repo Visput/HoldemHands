@@ -29,7 +29,7 @@
                         <viewControllerLayoutGuide type="top" id="8aH-Lx-sfy"/>
                         <viewControllerLayoutGuide type="bottom" id="PaV-UT-frg"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xgc-0v-nLd" customClass="MainView" customModule="HoldemHands" customModuleProvider="target">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="xgc-0v-nLd" customClass="MainView" customModule="HoldemHands" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -353,7 +353,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GameView" customModule="HoldemHands" customModuleProvider="target">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GameView" customModule="HoldemHands" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -469,7 +469,7 @@
                         <viewControllerLayoutGuide type="top" id="Dh2-RT-N5Z"/>
                         <viewControllerLayoutGuide type="bottom" id="KiA-JW-8FK"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kjO-Gz-Wg3" customClass="StatsView" customModule="HoldemHands" customModuleProvider="target">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="kjO-Gz-Wg3" customClass="StatsView" customModule="HoldemHands" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -736,7 +736,7 @@
                         <viewControllerLayoutGuide type="top" id="8X2-PI-tKq"/>
                         <viewControllerLayoutGuide type="bottom" id="kgZ-32-qwX"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pRv-wy-WOc">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="pRv-wy-WOc">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="313"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
