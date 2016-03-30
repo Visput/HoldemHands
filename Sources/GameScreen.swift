@@ -26,7 +26,6 @@ final class GameScreen: BaseViewController {
             self.didPlayRoundHandler(won)
         }
         firstHandsController.nextController = secondHandsController
-        firstHandsController.generateHands()
         
         secondHandsController.numberOfHands = level.numberOfHands
         secondHandsController.didPlayRoundHandler = { [unowned self] won in
@@ -39,6 +38,11 @@ final class GameScreen: BaseViewController {
         
         updateChipsCountLabel()
         model.playerManager.observers.addObserver(self)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        firstHandsController.generateHands()
     }
     
     override func viewDidDisappear(animated: Bool) {
