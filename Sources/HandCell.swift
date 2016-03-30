@@ -85,12 +85,18 @@ final class HandCell: UICollectionViewCell {
         }
         
         if animated {
-            UIView.transitionWithView(firstCardView, duration: animationDuration, options: [.TransitionFlipFromLeft, .CurveEaseOut], animations: {
-                updateFirstCard()
+            UIView.transitionWithView(firstCardView,
+                                      duration: animationDuration,
+                                      options: [.TransitionFlipFromLeft, .CurveEaseOut],
+                                      animations: {
+                                        updateFirstCard()
                 }, completion: nil)
             
-            UIView.transitionWithView(secondCardView, duration: animationDuration, options: [.TransitionFlipFromLeft, .CurveEaseOut], animations: {
-                updateSecondCard()
+            UIView.transitionWithView(secondCardView,
+                                      duration: animationDuration,
+                                      options: [.TransitionFlipFromLeft, .CurveEaseOut],
+                                      animations: {
+                                        updateSecondCard()
                 }, completion: { _ in
                     completionHandler?()
             })
