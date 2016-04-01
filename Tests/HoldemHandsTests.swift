@@ -18,8 +18,8 @@ class HoldemHandsTests: XCTestCase {
         ]
         
         let oddsResults: [OddsResult] = [
-            (winProbability: 65.46, winCount: 1120951.5),
-            (winProbability: 34.54, winCount: 591352.5)
+            (winProbability: 65.46, totalWinCount: 1120951.5),
+            (winProbability: 34.54, totalWinCount: 591352.5)
         ]
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)
@@ -32,8 +32,8 @@ class HoldemHandsTests: XCTestCase {
         ]
         
         let oddsResults: [OddsResult] = [
-            (winProbability: 50.0, winCount: 856152.0),
-            (winProbability: 50.0, winCount: 856152.0)
+            (winProbability: 50.0, totalWinCount: 856152.0),
+            (winProbability: 50.0, totalWinCount: 856152.0)
         ]
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)
@@ -47,9 +47,9 @@ class HoldemHandsTests: XCTestCase {
         ]
        
         let oddsResults: [OddsResult] = [
-            (winProbability: 51.15, winCount: 701202.17),
-            (winProbability: 35.18, winCount: 482273.67),
-            (winProbability: 13.66, winCount: 187278.17)
+            (winProbability: 51.15, totalWinCount: 701202.17),
+            (winProbability: 35.18, totalWinCount: 482273.67),
+            (winProbability: 13.66, totalWinCount: 187278.17)
         ]
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)
@@ -68,14 +68,14 @@ class HoldemHandsTests: XCTestCase {
         ]
         
         let oddsResults: [OddsResult] = [
-            (winProbability: 18.13, winCount: 68359.25),
-            (winProbability: 5.70, winCount: 21470.75),
-            (winProbability: 2.70, winCount: 10181.25),
-            (winProbability: 14.94, winCount: 56313.75),
-            (winProbability: 14.92, winCount: 56259.75),
-            (winProbability: 9.01, winCount: 33976.75),
-            (winProbability: 17.48, winCount: 65881.75),
-            (winProbability: 17.12, winCount: 64548.75)
+            (winProbability: 18.13, totalWinCount: 68359.25),
+            (winProbability: 5.70, totalWinCount: 21470.75),
+            (winProbability: 2.70, totalWinCount: 10181.25),
+            (winProbability: 14.94, totalWinCount: 56313.75),
+            (winProbability: 14.92, totalWinCount: 56259.75),
+            (winProbability: 9.01, totalWinCount: 33976.75),
+            (winProbability: 17.48, totalWinCount: 65881.75),
+            (winProbability: 17.12, totalWinCount: 64548.75)
         ]
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)
@@ -84,7 +84,7 @@ class HoldemHandsTests: XCTestCase {
 
 extension HoldemHandsTests {
     
-    typealias OddsResult = (winProbability: Double, winCount: Double)
+    typealias OddsResult = (winProbability: Double, totalWinCount: Double)
     
     private func testOddsCalculatorWithHands(hands: [Hand], expectedOddsResults: [OddsResult]) {
         var deck = Deck()
@@ -97,12 +97,12 @@ extension HoldemHandsTests {
         let oddsCalculator = HandOddsCalculator(hands: hands, deck: deck)
         oddsCalculator.calculateOdds({ handsOdds in
             for index in 0 ..< hands.count {
-                XCTAssertEqualWithAccuracy(handsOdds[index].winningProbability(),
+                XCTAssertEqualWithAccuracy(handsOdds[index].totalWinningProbability(),
                     expectedOddsResults[index].winProbability,
                     accuracy: 0.01)
                 
-                XCTAssertEqualWithAccuracy(handsOdds[index].winningCombinationsCount,
-                    expectedOddsResults[index].winCount,
+                XCTAssertEqualWithAccuracy(handsOdds[index].winningCombinationsCount + handsOdds[index].tieCombinationsCount,
+                    expectedOddsResults[index].totalWinCount,
                     accuracy: 0.01)
             }
             calculationExpecation.fulfill()

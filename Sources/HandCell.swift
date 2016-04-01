@@ -25,7 +25,7 @@ final class HandCell: UICollectionViewCell {
             backgroundColor = UIColor.clearColor()
         } else {
             winningProbabilityLabel.hidden = !item.needsShowOdds
-            winningProbabilityLabel.text = NSString(format: "Win: %.2f%%", item.handOdds!.winningProbability()) as String
+            winningProbabilityLabel.text = NSString(format: "Win: %.2f%%", item.handOdds!.totalWinningProbability()) as String
             
             if item.isSuccessSate == nil {
                 backgroundColor = item.needsShowOdds! ? UIColor.darkGrayColor() : UIColor.clearColor()

@@ -43,7 +43,9 @@ final class HandOddsCalculator {
     
         var newHandsOdds = [HandOdds]()
         for hand in hands {
-            newHandsOdds.append(HandOdds(hand: hand, totalCombinationsCount: numberOfCombinations))
+            newHandsOdds.append(HandOdds(hand: hand,
+                numberOfHands: hands.count,
+                totalCombinationsCount: numberOfCombinations))
         }
         
         let group = dispatch_group_create()
@@ -54,7 +56,9 @@ final class HandOddsCalculator {
                 
                 var subHandsOdds = [HandOdds]()
                 for hand in self.hands {
-                    subHandsOdds.append(HandOdds(hand: hand))
+                    subHandsOdds.append(HandOdds(hand: hand,
+                        numberOfHands: self.hands.count,
+                        totalCombinationsCount: numberOfCombinations))
                 }
 
                 var handRankComparator = HandRankComparator(numberOfHands: self.hands.count)
@@ -73,6 +77,7 @@ final class HandOddsCalculator {
                 
                 for (index, subHandOdds) in subHandsOdds.enumerate() {
                     newHandsOdds[index].winningCombinationsCount += subHandOdds.winningCombinationsCount
+                    newHandsOdds[index].tieCombinationsCount += subHandOdds.tieCombinationsCount
                 }
             })
         }

@@ -56,8 +56,15 @@ struct HandRankComparator {
             handsOdds[winningHandsRanksIndexes.first!].winningCombinationsCount += 1
             
         } else {
-            for index in 0 ..< winningHandsRanksIndexes.count {
-                handsOdds[winningHandsRanksIndexes[index]].winningCombinationsCount += 1.0 / Double(winningHandsRanksIndexes.count)
+            if winningHandsRanksIndexes.count == handsOdds.count {
+                for index in 0 ..< winningHandsRanksIndexes.count {
+                    handsOdds[winningHandsRanksIndexes[index]].tieCombinationsCount += 1.0 / Double(winningHandsRanksIndexes.count)
+                }
+                
+            } else {
+                for index in 0 ..< winningHandsRanksIndexes.count {
+                    handsOdds[winningHandsRanksIndexes[index]].winningCombinationsCount += 1.0 / Double(winningHandsRanksIndexes.count)
+                }
             }
         }
     }
