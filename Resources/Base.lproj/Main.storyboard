@@ -768,13 +768,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="252" height="173"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fDG-L2-3bs">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fDG-L2-3bs">
                                                     <rect key="frame" x="4" y="4" width="118" height="165"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="fDG-L2-3bs" secondAttribute="height" multiplier="118:165" id="6Qn-gw-NjA"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KrY-SE-ELq">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KrY-SE-ELq">
                                                     <rect key="frame" x="130" y="4" width="118" height="165"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="KrY-SE-ELq" secondAttribute="height" multiplier="118:165" id="0kB-sP-dOL"/>
