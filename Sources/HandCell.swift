@@ -12,17 +12,6 @@ final class HandCell: UICollectionViewCell {
     
     @IBOutlet private(set) weak var firstCardImageView: UIImageView!
     @IBOutlet private(set) weak var secondCardImageView: UIImageView!
-    
-    @IBOutlet private(set) weak var firstCardView: UIView!
-    @IBOutlet private(set) weak var firstCardTopLabel: UILabel!
-    @IBOutlet private(set) weak var firstCardCenterLabel: UILabel!
-    @IBOutlet private(set) weak var firstCardBottomLabel: UILabel!
-    
-    @IBOutlet private(set) weak var secondCardView: UIView!
-    @IBOutlet private(set) weak var secondCardTopLabel: UILabel!
-    @IBOutlet private(set) weak var secondCardCenterLabel: UILabel!
-    @IBOutlet private(set) weak var secondCardBottomLabel: UILabel!
-    
     @IBOutlet private(set) weak var winningProbabilityLabel: UILabel!
  
     private(set) var item: HandCellItem!
@@ -33,13 +22,13 @@ final class HandCell: UICollectionViewCell {
         if item.handOdds == nil {
             setHandVisible(false, animated: false)
             winningProbabilityLabel.hidden = true
-            backgroundColor = UIColor.backgroundColor()
+            backgroundColor = UIColor.clearColor()
         } else {
             winningProbabilityLabel.hidden = !item.needsShowOdds
             winningProbabilityLabel.text = NSString(format: "Win: %.2f%%", item.handOdds!.winningProbability()) as String
             
             if item.isSuccessSate == nil {
-                backgroundColor = UIColor.backgroundColor()
+                backgroundColor = item.needsShowOdds! ? UIColor.darkGrayColor() : UIColor.clearColor()
                 winningProbabilityLabel.backgroundColor = UIColor.darkGrayColor()
             } else if item.isSuccessSate! {
                 backgroundColor = UIColor.lightPrimaryColor()
@@ -56,45 +45,31 @@ final class HandCell: UICollectionViewCell {
         
         func updateFirstCard() {
             if visible {
-                firstCardTopLabel.text = titleForCard(item.handOdds!.hand.firstCard)
-                firstCardTopLabel.textColor = colorForCard(item.handOdds!.hand.firstCard)
-                firstCardCenterLabel.text = firstCardTopLabel.text
-                firstCardCenterLabel.textColor = firstCardTopLabel.textColor
-                firstCardBottomLabel.text = firstCardTopLabel.text
-                firstCardBottomLabel.textColor = firstCardTopLabel.textColor
+                firstCardImageView.image = imageForCard(item.handOdds!.hand.firstCard)
             } else {
-                firstCardTopLabel.text = ""
-                firstCardCenterLabel.text = ""
-                firstCardBottomLabel.text = ""
+                firstCardImageView.image = nil
             }
         }
         
         func updateSecondCard() {
             if visible {
-                secondCardTopLabel.text = titleForCard(item.handOdds!.hand.secondCard)
-                secondCardTopLabel.textColor = colorForCard(item.handOdds!.hand.secondCard)
-                secondCardCenterLabel.text = secondCardTopLabel.text
-                secondCardCenterLabel.textColor = secondCardTopLabel.textColor
-                secondCardBottomLabel.text = secondCardTopLabel.text
-                secondCardBottomLabel.textColor = secondCardTopLabel.textColor
+                secondCardImageView.image = imageForCard(item.handOdds!.hand.secondCard)
             } else {
-                secondCardTopLabel.text = ""
-                secondCardCenterLabel.text = ""
-                secondCardBottomLabel.text = ""
+                secondCardImageView.image = nil
             }
         }
         
         if animated {
-            UIView.transitionWithView(firstCardView,
+            UIView.transitionWithView(firstCardImageView,
                                       duration: animationDuration,
-                                      options: [.TransitionFlipFromLeft, .CurveEaseOut],
+                                      options: [.TransitionFlipFromLeft, .CurveEaseInOut],
                                       animations: {
                                         updateFirstCard()
                 }, completion: nil)
             
-            UIView.transitionWithView(secondCardView,
+            UIView.transitionWithView(secondCardImageView,
                                       duration: animationDuration,
-                                      options: [.TransitionFlipFromLeft, .CurveEaseOut],
+                                      options: [.TransitionFlipFromLeft, .CurveEaseInOut],
                                       animations: {
                                         updateSecondCard()
                 }, completion: { _ in
@@ -110,30 +85,8 @@ final class HandCell: UICollectionViewCell {
 
 extension HandCell {
     
-    private func colorForCard(card: Card) -> UIColor {
-        switch card.suit {
-        case .Hearts: return UIColor.secondaryColor()
-        case .Spades: return UIColor.primaryTextColor()
-        case .Clubs: return UIColor.primaryColor()
-        case .Diamonds: return UIColor.tertiaryColor()
-        }
-    }
-    
-    private func titleForCard(card: Card) -> String {
-        switch card.rank {
-        case .Two: return "2"
-        case .Three: return "3"
-        case .Four: return "4"
-        case .Five: return "5"
-        case .Six: return "6"
-        case .Seven: return "7"
-        case .Eight: return "8"
-        case .Nine: return "9"
-        case .Ten: return "10"
-        case .Jack: return "J"
-        case .Queen: return "Q"
-        case .King: return "K"
-        case .Ace: return "A"
-        }
+    private func imageForCard(card: Card) -> UIImage {
+        let imageName = "card_rank\(card.rank.rawValue)_suit\(card.suit.rawValue)"
+        return UIImage(named: imageName)!
     }
 }
