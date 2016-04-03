@@ -47,7 +47,7 @@ final class HandCell: UICollectionViewCell {
             if visible {
                 firstCardImageView.image = imageForCard(item.handOdds!.hand.firstCard)
             } else {
-                firstCardImageView.image = nil
+                firstCardImageView.image = UIImage(named: "card_back")
             }
         }
         
@@ -55,7 +55,7 @@ final class HandCell: UICollectionViewCell {
             if visible {
                 secondCardImageView.image = imageForCard(item.handOdds!.hand.secondCard)
             } else {
-                secondCardImageView.image = nil
+                secondCardImageView.image = UIImage(named: "card_back")
             }
         }
         
