@@ -86,7 +86,7 @@ final class HandCell: UICollectionViewCell {
 extension HandCell {
     
     private func imageForCard(card: Card) -> UIImage {
-        let imageName = "card_rank\(card.rank.rawValue)_suit\(card.suit.rawValue)"
+        let imageName = "card_suit\(card.suit.rawValue)_rank\(card.rank.rawValue)"
         return UIImage(named: imageName)!
     }
 }
