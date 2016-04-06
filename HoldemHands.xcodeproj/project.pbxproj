@@ -61,6 +61,8 @@
 		9F95E1601C879A9D00D6F368 /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15F1C879A9D00D6F368 /* PlayerData.swift */; };
 		9F95E1621C879B3100D6F368 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1611C879B3100D6F368 /* PlayerManager.swift */; };
 		9FA2090D1CA614F100E084E8 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */; };
+		9FA31FA31CB59D460010555B /* ChipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA21CB59D460010555B /* ChipsViewController.swift */; };
+		9FA31FA51CB59D840010555B /* ChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA41CB59D840010555B /* ChipsView.swift */; };
 		9FC567EF1CA487D100FF1DE7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */; };
 		9FE888E31C93F53400A39C2C /* StatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E21C93F53400A39C2C /* StatsCell.swift */; };
 		9FE888E51C93F54F00A39C2C /* StatsCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */; };
@@ -137,6 +139,8 @@
 		9F95E15F1C879A9D00D6F368 /* PlayerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 		9F95E1611C879B3100D6F368 /* PlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 		9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		9FA31FA21CB59D460010555B /* ChipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipsViewController.swift; sourceTree = "<group>"; };
+		9FA31FA41CB59D840010555B /* ChipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipsView.swift; sourceTree = "<group>"; };
 		9FACAAC91C72BCC20051A435 /* HoldemHands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FACAADD1C72BCC20051A435 /* HoldemHandsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoldemHandsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -295,6 +299,7 @@
 		9F44D22A1C84B3A400640046 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9FA31FA11CB59D320010555B /* ChipsViewController */,
 				9F3C4BE01C92555500B37939 /* TextBannerView */,
 				9F3C4BDD1C9251B500B37939 /* BannerView */,
 				9F44D23B1C84C60100640046 /* BaseViewController */,
@@ -369,6 +374,15 @@
 				9FC77B6E1C98C68C0070430D /* AnalyticsTracker */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		9FA31FA11CB59D320010555B /* ChipsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9FA31FA21CB59D460010555B /* ChipsViewController.swift */,
+				9FA31FA41CB59D840010555B /* ChipsView.swift */,
+			);
+			name = ChipsViewController;
 			sourceTree = "<group>";
 		};
 		9FACAAC01C72BCC20051A435 = {
@@ -658,6 +672,7 @@
 				9F3C4BDF1C9251E700B37939 /* BannerView.swift in Sources */,
 				9FE888E31C93F53400A39C2C /* StatsCell.swift in Sources */,
 				9F44D2191C84B21A00640046 /* HandRank.swift in Sources */,
+				9FA31FA51CB59D840010555B /* ChipsView.swift in Sources */,
 				9F1DDD271C8A13C7005F1D72 /* LevelCellItem.swift in Sources */,
 				9F3C4BE61C925A7A00B37939 /* UIView+Nib.swift in Sources */,
 				9F44D2471C84C63900640046 /* UIScreen+Size.swift in Sources */,
@@ -688,6 +703,7 @@
 				9FE888E51C93F54F00A39C2C /* StatsCellItem.swift in Sources */,
 				9F1927091CA3260B009F7E30 /* HandsCollectionViewLayout.swift in Sources */,
 				9F44D2441C84C63900640046 /* ModelProvider.swift in Sources */,
+				9FA31FA31CB59D460010555B /* ChipsViewController.swift in Sources */,
 				9F1DDD251C8A13B3005F1D72 /* LevelCell.swift in Sources */,
 				9F1DDD231C8A130E005F1D72 /* SharingManager.swift in Sources */,
 				9F3C4BE81C925BDA00B37939 /* PlayerManagerObserver.swift in Sources */,

@@ -105,9 +105,6 @@ extension StatsScreen {
             self.statsView.statsCollectionView.reloadData()
         })
         
-        statsView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %@", comment: ""),
-                                                 model.playerManager.playerData.chipsCount.formattedChipsCountString) as String
-        
         guard level != nil else { return }
         // Execute scrolling after short delay to be sure that collection view layout is configured.
         executeAfterDelay(0.1, task: {

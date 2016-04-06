@@ -53,17 +53,22 @@ final class PlayerManager: NSObject {
     }
     
     func trackNewWinInLevel(level: Level) {
-        let chipsWon = level.chipsPerWin * chipsMultiplierForLevel(level)
+        let oldChipsCount = playerData.chipsCount
+        let chipsMultiplier = chipsMultiplierForLevel(level)
+        let chipsWon = level.chipsPerWin * chipsMultiplier
         playerData.chipsCount! += chipsWon
         
         let progressItem = progressItemForLevel(level)
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingWinsCount(chipsWon: chipsWon)
         playerData.levelProgressItems[progressItem.index] = newLevelProgress
         
+        notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: chipsMultiplier)
+        
         updateLockStateForLevels()
     }
     
     func trackNewLossInLevel(level: Level) {
+        let oldChipsCount = playerData.chipsCount
         let chipsLost = level.chipsPerWin
         // Total chips count can not be less than zero.
         playerData.chipsCount = max(Int64(0), playerData.chipsCount - chipsLost)
@@ -72,6 +77,8 @@ final class PlayerManager: NSObject {
         
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingLossesCount(chipsLost: chipsLost)
         playerData.levelProgressItems[progressItem.index] = newLevelProgress
+        
+        notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: 1)
     }
     
     func chipsMultiplierForLevel(level: Level) -> Int64 {
@@ -509,6 +516,12 @@ extension PlayerManager {
     private func notifyObserversDidLoadPlayerData() {
         for observer in observers {
             observer.playerManager(self, didLoadPlayerData: playerData)
+        }
+    }
+    
+    private func notifyObserversDidUpdateChipsCount(newChipsCount: Int64, oldChipsCount: Int64, chipsMultiplier: Int64) {
+        for observer in observers {
+            observer.playerManager(self, didUpdateChipsCount: newChipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: chipsMultiplier)
         }
     }
 }

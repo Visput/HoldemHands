@@ -11,7 +11,6 @@ import UIKit
 final class MainView: UIView {
     
     @IBOutlet private(set) weak var levelsCollectionView: UICollectionView!
-    @IBOutlet private(set) weak var chipsCountLabel: UILabel!
     @IBOutlet private(set) weak var contentScrollView: UIScrollView!
 
     private var levelsCollectionLayout: UICollectionViewFlowLayout {

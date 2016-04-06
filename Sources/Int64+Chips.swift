@@ -15,6 +15,10 @@ extension Int64 {
         formatter.currencySymbol = "$"
         formatter.numberStyle = .CurrencyStyle
         formatter.maximumFractionDigits = 0
-        return formatter.stringFromNumber(NSNumber(longLong: self))!
+        var formattedString = formatter.stringFromNumber(NSNumber(longLong: self))!
+        // Replace 0 with O to remove separator from oval.
+        formattedString = formattedString.stringByReplacingOccurrencesOfString("0", withString: "O")
+        
+        return formattedString
     }
 }

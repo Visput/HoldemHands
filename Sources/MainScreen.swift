@@ -158,7 +158,5 @@ extension MainScreen {
     
     private func fillViewsWithModel() {
         mainView.levelsCollectionView.reloadData()
-        mainView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %@", comment: ""),
-            model.playerManager.playerData.chipsCount.formattedChipsCountString) as String
     }
 }

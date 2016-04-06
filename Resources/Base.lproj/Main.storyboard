@@ -236,20 +236,26 @@
                                                             <action selector="menuButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uAq-Je-fvN"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chips: 15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4j-rN-asI">
-                                                        <rect key="frame" x="592" y="16" width="58.5" height="17"/>
+                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKE-5M-LX0">
+                                                        <rect key="frame" x="467" y="0.0" width="200" height="62"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="h0I-RU-jwk"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="HtO-6d-hWg"/>
+                                                            <constraint firstAttribute="width" constant="180" id="LLa-Zk-ewp"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="62" id="nkk-fL-2bI"/>
+                                                            <constraint firstAttribute="width" constant="200" id="thL-HI-cLy"/>
+                                                            <constraint firstAttribute="height" constant="62" id="vkN-ch-f90"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
                                                         <variation key="default">
                                                             <mask key="constraints">
-                                                                <exclude reference="h0I-RU-jwk"/>
+                                                                <exclude reference="HtO-6d-hWg"/>
+                                                                <exclude reference="LLa-Zk-ewp"/>
+                                                                <exclude reference="nkk-fL-2bI"/>
                                                             </mask>
                                                         </variation>
-                                                    </label>
+                                                        <connections>
+                                                            <segue destination="NSI-Mb-hit" kind="embed" id="0pp-g4-GEi"/>
+                                                        </connections>
+                                                    </containerView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -258,9 +264,9 @@
                                                     <constraint firstItem="oig-8P-j3Y" firstAttribute="top" secondItem="uPq-Mh-IwM" secondAttribute="top" constant="16" id="PjH-Az-d2j"/>
                                                     <constraint firstAttribute="bottom" secondItem="b4G-V4-063" secondAttribute="bottom" constant="8" id="Q5Q-Eh-p2r"/>
                                                     <constraint firstItem="TkZ-aC-tWf" firstAttribute="leading" secondItem="uPq-Mh-IwM" secondAttribute="leading" constant="16" id="RxO-VQ-qXS"/>
-                                                    <constraint firstAttribute="trailing" secondItem="c4j-rN-asI" secondAttribute="trailing" constant="16" id="UMw-I1-1Us"/>
-                                                    <constraint firstItem="c4j-rN-asI" firstAttribute="top" secondItem="uPq-Mh-IwM" secondAttribute="top" constant="16" id="XiG-7n-4A1"/>
+                                                    <constraint firstAttribute="trailing" secondItem="vKE-5M-LX0" secondAttribute="trailing" id="SYS-ND-IMv"/>
                                                     <constraint firstItem="oig-8P-j3Y" firstAttribute="centerX" secondItem="uPq-Mh-IwM" secondAttribute="centerX" id="cCI-jd-FPj"/>
+                                                    <constraint firstItem="vKE-5M-LX0" firstAttribute="top" secondItem="uPq-Mh-IwM" secondAttribute="top" id="gPh-As-AOE"/>
                                                     <constraint firstAttribute="trailing" secondItem="b4G-V4-063" secondAttribute="trailing" id="wl4-y7-Opo"/>
                                                     <constraint firstItem="TkZ-aC-tWf" firstAttribute="top" secondItem="uPq-Mh-IwM" secondAttribute="top" constant="16" id="zeL-By-4nG"/>
                                                 </constraints>
@@ -334,7 +340,6 @@
                             </mask>
                         </variation>
                         <connections>
-                            <outlet property="chipsCountLabel" destination="c4j-rN-asI" id="X1Y-zb-Bpy"/>
                             <outlet property="contentScrollView" destination="57x-Zp-BiP" id="8GQ-Wt-4eN"/>
                             <outlet property="levelsCollectionView" destination="b4G-V4-063" id="4Tt-9G-ZJn"/>
                         </connections>
@@ -375,20 +380,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chips: 15   x1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAS-LT-5r8">
-                                <rect key="frame" x="568" y="8" width="83" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="gTu-YQ-rHT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="gTu-YQ-rHT"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhA-HP-ihS">
                                 <rect key="frame" x="0.0" y="63" width="667" height="312"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -410,12 +401,28 @@
                                     <action selector="statsButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mes-6V-dwO"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WP7-Y1-2cq">
+                                <rect key="frame" x="467" y="0.0" width="200" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="OhF-DF-cMi"/>
+                                    <constraint firstAttribute="height" constant="62" id="S2O-v8-d6R"/>
+                                    <constraint firstAttribute="width" constant="180" id="Y0j-Kg-pGC"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Y0j-Kg-pGC"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="NSI-Mb-hit" kind="embed" id="3Io-ee-72I"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.9529411792755127" green="0.96078431606292725" blue="0.9686274528503418" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="pAS-LT-5r8" secondAttribute="trailing" constant="16" id="0Cr-wE-x7Y"/>
                             <constraint firstItem="qhn-fF-xpL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" placeholder="YES" id="2p7-88-YuL"/>
+                            <constraint firstAttribute="trailing" secondItem="WP7-Y1-2cq" secondAttribute="trailing" id="3mN-kN-am7"/>
                             <constraint firstItem="foO-GZ-eAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EJ8-Bo-riM"/>
                             <constraint firstItem="1JT-vw-cgT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="HnT-4K-tdh"/>
                             <constraint firstItem="qhn-fF-xpL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" placeholder="YES" id="Ksd-Nf-Qgg"/>
@@ -433,8 +440,8 @@
                             <constraint firstItem="1JT-vw-cgT" firstAttribute="leading" secondItem="SXK-jE-uUX" secondAttribute="trailing" constant="8" id="iY7-TW-zu6"/>
                             <constraint firstItem="foO-GZ-eAy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="jmA-OO-2Em"/>
                             <constraint firstItem="SXK-jE-uUX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="jrK-rQ-Z1P"/>
-                            <constraint firstItem="pAS-LT-5r8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="khu-rg-3eb"/>
                             <constraint firstItem="xcn-m9-eka" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lvn-5g-GiQ"/>
+                            <constraint firstItem="WP7-Y1-2cq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qau-dr-9p8"/>
                             <constraint firstAttribute="trailing" secondItem="zhA-HP-ihS" secondAttribute="trailing" placeholder="YES" id="qwV-CX-P7M"/>
                             <constraint firstItem="zhA-HP-ihS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" placeholder="YES" id="s15-zb-Vwt"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qhn-fF-xpL" secondAttribute="bottom" placeholder="YES" id="spb-dg-Y0c"/>
@@ -456,7 +463,6 @@
                             </mask>
                         </variation>
                         <connections>
-                            <outlet property="chipsCountLabel" destination="pAS-LT-5r8" id="BFk-a4-OiA"/>
                             <outlet property="firstHandsView" destination="qhn-fF-xpL" id="U2O-Qf-DAg"/>
                             <outlet property="secondHandsView" destination="zhA-HP-ihS" id="0a9-El-qhM"/>
                             <outlet property="swipeRecognizer" destination="3Ck-2q-YGx" id="RiG-3m-7pJ"/>
@@ -481,7 +487,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-274.5" y="1715.5"/>
+            <point key="canvasLocation" x="-274.5" y="1528.5"/>
         </scene>
         <!--Stats Screen-->
         <scene sceneID="To1-fU-ZMC">
@@ -696,20 +702,26 @@
                                     <action selector="leaderboardsButtonDidPress:" destination="z6e-JP-LU6" eventType="touchUpInside" id="FV6-65-Iov"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chips: 15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkK-e9-IJq">
-                                <rect key="frame" x="593" y="20" width="58.5" height="17"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0BX-Ox-1P1">
+                                <rect key="frame" x="467" y="0.0" width="200" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="nBG-f4-df1"/>
+                                    <constraint firstAttribute="width" constant="200" id="0I9-oO-jig"/>
+                                    <constraint firstAttribute="height" constant="62" id="3sJ-nm-N5g"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Fl6-Lk-ioS"/>
+                                    <constraint firstAttribute="width" constant="180" id="ZJS-Cg-oMh"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="62" id="atJ-JM-z6x"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="nBG-f4-df1"/>
+                                        <exclude reference="Fl6-Lk-ioS"/>
+                                        <exclude reference="ZJS-Cg-oMh"/>
+                                        <exclude reference="atJ-JM-z6x"/>
                                     </mask>
                                 </variation>
-                            </label>
+                                <connections>
+                                    <segue destination="NSI-Mb-hit" kind="embed" id="wUm-0o-CJK"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -723,12 +735,12 @@
                             <constraint firstItem="5H1-ZI-YXV" firstAttribute="centerX" secondItem="kjO-Gz-Wg3" secondAttribute="centerX" id="MgN-Qm-FVm"/>
                             <constraint firstItem="gOY-1U-EdD" firstAttribute="top" secondItem="Dh2-RT-N5Z" secondAttribute="bottom" constant="16" id="OTD-1u-Gn9"/>
                             <constraint firstItem="N1z-B1-EU6" firstAttribute="leading" secondItem="kjO-Gz-Wg3" secondAttribute="leading" id="R2I-Hr-138"/>
-                            <constraint firstAttribute="trailing" secondItem="nkK-e9-IJq" secondAttribute="trailing" constant="16" id="T2h-YY-Rmp"/>
                             <constraint firstItem="HvS-71-ekD" firstAttribute="top" secondItem="Dh2-RT-N5Z" secondAttribute="bottom" constant="16" id="XH2-le-GEy"/>
                             <constraint firstItem="gOY-1U-EdD" firstAttribute="centerX" secondItem="kjO-Gz-Wg3" secondAttribute="centerX" id="bC4-mj-fz0"/>
                             <constraint firstItem="q9m-RG-1tU" firstAttribute="top" secondItem="Dh2-RT-N5Z" secondAttribute="bottom" id="bIu-8V-XIB"/>
                             <constraint firstItem="KiA-JW-8FK" firstAttribute="top" secondItem="5H1-ZI-YXV" secondAttribute="bottom" constant="10" id="bkr-uo-4ns"/>
-                            <constraint firstItem="nkK-e9-IJq" firstAttribute="top" secondItem="Dh2-RT-N5Z" secondAttribute="bottom" constant="20" id="sfl-rA-9cI"/>
+                            <constraint firstItem="0BX-Ox-1P1" firstAttribute="top" secondItem="Dh2-RT-N5Z" secondAttribute="bottom" id="jmM-Az-RLk"/>
+                            <constraint firstAttribute="trailing" secondItem="0BX-Ox-1P1" secondAttribute="trailing" id="pmF-U8-oEZ"/>
                             <constraint firstItem="KiA-JW-8FK" firstAttribute="top" secondItem="q9m-RG-1tU" secondAttribute="bottom" id="vQk-7i-PvY"/>
                         </constraints>
                         <variation key="default">
@@ -737,7 +749,6 @@
                             </mask>
                         </variation>
                         <connections>
-                            <outlet property="chipsCountLabel" destination="nkK-e9-IJq" id="C1h-uT-CPw"/>
                             <outlet property="leaderboardsButton" destination="5H1-ZI-YXV" id="mmL-2o-KEs"/>
                             <outlet property="statsCollectionView" destination="N1z-B1-EU6" id="lAT-fT-Ui7"/>
                         </connections>
@@ -863,16 +874,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5pv-G7-r1E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="511.5" y="1715.5"/>
+            <point key="canvasLocation" x="499.5" y="1551.5"/>
+        </scene>
+        <!--Chips View Controller-->
+        <scene sceneID="76T-8n-JIz">
+            <objects>
+                <viewController id="NSI-Mb-hit" customClass="ChipsViewController" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LzR-gF-exO" customClass="ChipsView" customModule="HoldemHands" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="62"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1,000,000,000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZ5-Xj-WXj">
+                                <rect key="frame" x="27.5" y="20" width="152" height="21"/>
+                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
+                                <color key="textColor" red="0.82745099070000006" green="0.96078431610000004" blue="0.92156863209999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_chip_blue" translatesAutoresizingMaskIntoConstraints="NO" id="eWa-7f-Wgk">
+                                <rect key="frame" x="0.0" y="19" width="23" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="23" id="XGF-7B-KPF"/>
+                                    <constraint firstAttribute="height" constant="23" id="ztF-Ta-KQz"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mZ5-Xj-WXj" firstAttribute="top" secondItem="LzR-gF-exO" secondAttribute="top" constant="20" id="BEE-4P-tgU"/>
+                            <constraint firstItem="mZ5-Xj-WXj" firstAttribute="leading" secondItem="eWa-7f-Wgk" secondAttribute="trailing" constant="4" id="esg-m3-wDf"/>
+                            <constraint firstItem="eWa-7f-Wgk" firstAttribute="centerY" secondItem="mZ5-Xj-WXj" secondAttribute="centerY" id="jtq-oQ-ECj"/>
+                            <constraint firstAttribute="trailing" secondItem="mZ5-Xj-WXj" secondAttribute="trailing" constant="20" id="ttM-UQ-bfc"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="chipsCountLabel" destination="mZ5-Xj-WXj" id="61c-di-x9G"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PCr-BH-5NM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="408" y="722"/>
         </scene>
     </scenes>
     <resources>
         <image name="background_green" width="736" height="414"/>
         <image name="background_levels_blue" width="736" height="414"/>
         <image name="background_table_green" width="522" height="253"/>
+        <image name="icon_chip_blue" width="23" height="23"/>
         <image name="icon_chips_blue" width="34" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="0pp-g4-GEi"/>
         <segue reference="mAe-ai-Kz2"/>
     </inferredMetricsTieBreakers>
 </document>

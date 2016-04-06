@@ -35,8 +35,7 @@ final class GameScreen: BaseViewController {
         
         gameView.swipeRecognizer.enabled = false
         gameView.tapRecognizer.enabled = false
-        
-        updateChipsCountLabel()
+    
         model.playerManager.observers.addObserver(self)
         
         firstHandsController.generateHands()
@@ -58,10 +57,10 @@ final class GameScreen: BaseViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier! == "FirstHands" {
+        if segue.identifier == "FirstHands" {
             firstHandsController = segue.destinationViewController as! HandsCollectionViewController
             
-        } else if segue.identifier! == "SecondHands" {
+        } else if segue.identifier == "SecondHands" {
             secondHandsController = segue.destinationViewController as! HandsCollectionViewController
         }
     }
@@ -72,16 +71,10 @@ final class GameScreen: BaseViewController {
         } else {
             model.playerManager.trackNewLossInLevel(level)
         }
-        updateChipsCountLabel()
+        
         gameView.swipeRecognizer.enabled = true
         gameView.tapRecognizer.enabled = true
         Analytics.gameRoundPlayed()
-    }
-    
-    private func updateChipsCountLabel() {
-        gameView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %@   x%lld", comment: ""),
-            model.playerManager.playerData.chipsCount.formattedChipsCountString,
-            model.playerManager.chipsMultiplierForLevel(level)) as String
     }
 }
 
@@ -123,8 +116,6 @@ extension GameScreen: PlayerManagerObserving {
     func playerManager(manager: PlayerManager, didLoadPlayerData playerData: PlayerData) {
         if manager.isLockedLevel(level) {
             model.navigationManager.dismissScreenAnimated(true)
-        } else {
-            updateChipsCountLabel()
         }
     }
 }

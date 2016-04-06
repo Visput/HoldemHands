@@ -10,7 +10,6 @@ import UIKit
 
 final class GameView: UIView {
     
-    @IBOutlet private(set) weak var chipsCountLabel: UILabel!
     @IBOutlet private(set) weak var swipeRecognizer: UISwipeGestureRecognizer!
     @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
     
