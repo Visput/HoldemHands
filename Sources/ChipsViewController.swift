@@ -18,21 +18,13 @@ final class ChipsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         model.playerManager.observers.addObserver(self)
-        updateChipsCountLabel()
+        chipsView.updateChipsLabelWithCount(model.playerManager.playerData.chipsCount, animated: false)
     }
 }
 
 extension ChipsViewController: PlayerManagerObserving {
     
     func playerManager(manager: PlayerManager, didUpdateChipsCount newChipsCount: Int64, oldChipsCount: Int64, chipsMultiplier: Int64) {
-        guard newChipsCount != oldChipsCount else { return }
-        updateChipsCountLabel()
-    }
-}
-
-extension ChipsViewController {
-    
-    private func updateChipsCountLabel() {
-        chipsView.chipsCountLabel.text = model.playerManager.playerData.chipsCount.formattedChipsCountString
+        chipsView.updateChipsLabelWithCount(newChipsCount, oldCount: oldChipsCount, chipsMultiplier: chipsMultiplier, animated: true)
     }
 }

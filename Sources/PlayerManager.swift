@@ -78,6 +78,7 @@ final class PlayerManager: NSObject {
         let newLevelProgress = progressItem.progress.levelProgressByIncrementingLossesCount(chipsLost: chipsLost)
         playerData.levelProgressItems[progressItem.index] = newLevelProgress
         
+        guard playerData.chipsCount != oldChipsCount else { return }
         notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: 1)
     }
     

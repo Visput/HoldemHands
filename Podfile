@@ -17,3 +17,5 @@ pod 'FBSDKShareKit'
 
 pod 'ObjectMapper'
 pod 'KeychainSwift'
+
+pod 'UICountingLabel'

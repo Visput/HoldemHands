@@ -19,6 +19,7 @@ PODS:
     - Fabric
   - TwitterKit (1.15.1):
     - TwitterCore (= 1.15.1)
+  - UICountingLabel (1.4.0)
 
 DEPENDENCIES:
   - Crashlytics
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - ObjectMapper
   - TwitterCore
   - TwitterKit
+  - UICountingLabel
 
 SPEC CHECKSUMS:
   Bolts: f52a250053bb517ca874523c3913776359ab3def
@@ -42,5 +44,6 @@ SPEC CHECKSUMS:
   ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
   TwitterCore: 12983a7464e34afbbf18881347898a9db526ac71
   TwitterKit: b5821570887ec2d77650fa232eaec175665dc443
+  UICountingLabel: ed5ce5b6d5ef278ff40d99cfa49577a30ab0c87b
 
 COCOAPODS: 0.39.0
