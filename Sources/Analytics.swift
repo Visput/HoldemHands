@@ -183,6 +183,12 @@ extension Analytics {
         Flurry.logEvent(event.name)
         Answers.logCustomEventWithName(event.name, customAttributes: nil)
     }
+    
+    class func statsClickedInGame() {
+        let event = (name: "click_game_stats", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
 }
 
 extension Analytics {

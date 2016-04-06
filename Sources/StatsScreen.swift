@@ -10,6 +10,8 @@ import UIKit
 
 final class StatsScreen: BaseViewController {
     
+    var level: Level?
+    
     private var progressItems: [Progress]!
     
     private var statsView: StatsView {
@@ -92,6 +94,7 @@ extension StatsScreen {
     
     private func fillViewsWithModel() {
         progressItems = model.playerManager.progressItems()
+        
         statsView.statsCollectionView.reloadData()
         statsView.leaderboardsButton.hidden = !model.playerManager.authenticated
         
@@ -103,5 +106,11 @@ extension StatsScreen {
         
         statsView.chipsCountLabel.text = NSString(format: NSLocalizedString("Chips: %@", comment: ""),
                                                  model.playerManager.playerData.chipsCount.formattedChipsCountString) as String
+        
+        guard level != nil else { return }
+        let itemIndex = model.playerManager.progressItemForLevel(level!).index + 1 // + 1 for overall progress item.
+        statsView.statsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: itemIndex, inSection: 0),
+                                                              atScrollPosition: .CenteredHorizontally,
+                                                              animated: false)
     }
 }

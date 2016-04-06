@@ -98,7 +98,7 @@ extension MainScreen {
     
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
         Analytics.statsClickedInMenu()
-        model.navigationManager.presentStatsScreenAnimated(true)
+        model.navigationManager.presentStatsScreenWithLevel(nil, animated: true)
     }
     
     @IBAction private func facebookButtonDidPress(sender: AnyObject) {

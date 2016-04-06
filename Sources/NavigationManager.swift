@@ -46,8 +46,9 @@ final class NavigationManager: NSObject {
         presentScreen(screen, animated: animated)
     }
     
-    func presentStatsScreenAnimated(animated: Bool) {
+    func presentStatsScreenWithLevel(level: Level?, animated: Bool) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(StatsScreen.className()) as! StatsScreen
+        screen.level = level
         presentScreen(screen, animated: animated)
     }
     

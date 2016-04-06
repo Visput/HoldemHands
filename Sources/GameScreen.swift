@@ -38,10 +38,7 @@ final class GameScreen: BaseViewController {
         
         updateChipsCountLabel()
         model.playerManager.observers.addObserver(self)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+        
         firstHandsController.generateHands()
     }
     
@@ -102,6 +99,11 @@ extension GameScreen {
     @IBAction private func menuButtonDidPress(sender: AnyObject) {
         Analytics.doneClickedInGame()
         model.navigationManager.dismissScreenAnimated(true)
+    }
+    
+    @IBAction private func statsButtonDidPress(sender: AnyObject) {
+        Analytics.statsClickedInGame()
+        model.navigationManager.presentStatsScreenWithLevel(level, animated: true)
     }
 }
 

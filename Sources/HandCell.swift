@@ -25,7 +25,9 @@ final class HandCell: UICollectionViewCell {
             backgroundColor = UIColor.clearColor()
         } else {
             winningProbabilityLabel.hidden = !item.needsShowOdds
-            winningProbabilityLabel.text = NSString(format: "Win: %.2f%%", item.handOdds!.totalWinningProbability()) as String
+            winningProbabilityLabel.text = NSString(format: "Win: %.2f%%\nTie: %.2f%%",
+                                                    item.handOdds!.winningProbability(),
+                                                    item.handOdds!.tieProbability()) as String
             
             if item.isSuccessSate == nil {
                 backgroundColor = item.needsShowOdds! ? UIColor.darkGrayColor() : UIColor.clearColor()
@@ -43,47 +45,47 @@ final class HandCell: UICollectionViewCell {
     func setHandVisible(visible: Bool, animated: Bool, completionHandler: (() -> Void)? = nil) {
         let animationDuration = 0.6
         
-        func updateFirstCard() {
-            if visible {
-                firstCardImageView.image = imageForCard(item.handOdds!.hand.firstCard)
-            } else {
-                firstCardImageView.image = UIImage(named: "card_back")
-            }
-        }
-        
-        func updateSecondCard() {
-            if visible {
-                secondCardImageView.image = imageForCard(item.handOdds!.hand.secondCard)
-            } else {
-                secondCardImageView.image = UIImage(named: "card_back")
-            }
-        }
-        
         if animated {
             UIView.transitionWithView(firstCardImageView,
                                       duration: animationDuration,
                                       options: [.TransitionFlipFromLeft, .CurveEaseInOut],
                                       animations: {
-                                        updateFirstCard()
+                                        self.updateFirstCard(visible)
                 }, completion: nil)
             
             UIView.transitionWithView(secondCardImageView,
                                       duration: animationDuration,
                                       options: [.TransitionFlipFromLeft, .CurveEaseInOut],
                                       animations: {
-                                        updateSecondCard()
+                                        self.updateSecondCard(visible)
                 }, completion: { _ in
                     completionHandler?()
             })
         } else {
-            updateFirstCard()
-            updateSecondCard()
+            updateFirstCard(visible)
+            updateSecondCard(visible)
             completionHandler?()
         }
     }
 }
 
 extension HandCell {
+    
+    private func updateFirstCard(visible: Bool) {
+        if visible && item.handOdds != nil {
+            firstCardImageView.image = imageForCard(item.handOdds!.hand.firstCard)
+        } else {
+            firstCardImageView.image = UIImage(named: "card_back")
+        }
+    }
+    
+    private func updateSecondCard(visible: Bool) {
+        if visible && item.handOdds != nil {
+            secondCardImageView.image = imageForCard(item.handOdds!.hand.secondCard)
+        } else {
+            secondCardImageView.image = UIImage(named: "card_back")
+        }
+    }
     
     private func imageForCard(card: Card) -> UIImage {
         let imageName = "card_suit\(card.suit.rawValue)_rank\(card.rank.rawValue)"
