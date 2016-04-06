@@ -33,6 +33,7 @@ final class ChipsView: UIView {
             
             if won {
                 chipsDifferenceLabelTopSpace.constant = 20.0
+                layoutIfNeeded()
                 chipsDifferenceLabel.text = "+ " + chipsDifference.formattedChipsCountString
                 chipsDifferenceLabel.textColor = UIColor.primaryColor()
                 
@@ -51,6 +52,7 @@ final class ChipsView: UIView {
                 
             } else {
                 chipsDifferenceLabelTopSpace.constant = 0.0
+                layoutIfNeeded()
                 chipsDifferenceLabel.text = "- " + chipsDifference.formattedChipsCountString
                 chipsDifferenceLabel.textColor = UIColor.backgroundColor()
                 
@@ -68,7 +70,7 @@ final class ChipsView: UIView {
                 })
             }
             
-            executeAfterDelay(0.2, task: {
+            executeAfterDelay(0.1, task: {
                 self.chipsCountLabel.countFromCurrentValueTo(CGFloat(newCount))
             })
             
