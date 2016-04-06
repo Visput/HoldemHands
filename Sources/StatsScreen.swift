@@ -96,6 +96,7 @@ extension StatsScreen {
         progressItems = model.playerManager.progressItems()
         
         statsView.statsCollectionView.reloadData()
+        
         statsView.leaderboardsButton.hidden = !model.playerManager.authenticated
         
         model.playerManager.loadProgressItemsIncludingRank({ progressItems, error in
@@ -108,9 +109,12 @@ extension StatsScreen {
                                                  model.playerManager.playerData.chipsCount.formattedChipsCountString) as String
         
         guard level != nil else { return }
-        let itemIndex = model.playerManager.progressItemForLevel(level!).index + 1 // + 1 for overall progress item.
-        statsView.statsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: itemIndex, inSection: 0),
-                                                              atScrollPosition: .CenteredHorizontally,
-                                                              animated: false)
+        // Execute scrolling after short delay to be sure that collection view layout is configured.
+        executeAfterDelay(0.1, task: {
+            let itemIndex = self.model.playerManager.progressItemForLevel(self.level!).index + 1 // + 1 for overall progress item.
+            self.statsView.statsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: itemIndex, inSection: 0),
+                atScrollPosition: .CenteredHorizontally,
+                animated: false)
+        })
     }
 }
