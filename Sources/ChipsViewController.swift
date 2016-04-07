@@ -27,4 +27,8 @@ extension ChipsViewController: PlayerManagerObserving {
     func playerManager(manager: PlayerManager, didUpdateChipsCount newChipsCount: Int64, oldChipsCount: Int64, chipsMultiplier: Int64) {
         chipsView.updateChipsLabelWithCount(newChipsCount, oldCount: oldChipsCount, chipsMultiplier: chipsMultiplier, animated: true)
     }
+    
+    func playerManager(manager: PlayerManager, didLoadPlayerData playerData: PlayerData) {
+        chipsView.updateChipsLabelWithCount(model.playerManager.playerData.chipsCount, animated: false)
+    }
 }

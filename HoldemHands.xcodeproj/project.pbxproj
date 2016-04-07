@@ -196,11 +196,7 @@
 			children = (
 				9F95E1611C879B3100D6F368 /* PlayerManager.swift */,
 				9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */,
-				9F95E15F1C879A9D00D6F368 /* PlayerData.swift */,
-				9F95E15D1C8761C700D6F368 /* LevelProgress.swift */,
-				9FE888E61C93F62700A39C2C /* PlayerProgress.swift */,
-				9FE888E81C93F76B00A39C2C /* Progress.swift */,
-				9F95E1591C875D0100D6F368 /* Level.swift */,
+				9FA31FA61CB609960010555B /* DTO */,
 			);
 			name = PlayerManager;
 			sourceTree = "<group>";
@@ -383,6 +379,18 @@
 				9FA31FA41CB59D840010555B /* ChipsView.swift */,
 			);
 			name = ChipsViewController;
+			sourceTree = "<group>";
+		};
+		9FA31FA61CB609960010555B /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				9F95E15F1C879A9D00D6F368 /* PlayerData.swift */,
+				9F95E15D1C8761C700D6F368 /* LevelProgress.swift */,
+				9FE888E61C93F62700A39C2C /* PlayerProgress.swift */,
+				9FE888E81C93F76B00A39C2C /* Progress.swift */,
+				9F95E1591C875D0100D6F368 /* Level.swift */,
+			);
+			name = DTO;
 			sourceTree = "<group>";
 		};
 		9FACAAC01C72BCC20051A435 = {

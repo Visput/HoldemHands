@@ -68,7 +68,7 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="268" height="251"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sA7-9C-x28">
-                                                                            <rect key="frame" x="99" y="16" width="70" height="30"/>
+                                                                            <rect key="frame" x="99" y="50" width="70" height="30"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="30" id="5Do-aS-X3Z"/>
                                                                             </constraints>
@@ -115,7 +115,7 @@
                                                                     <constraint firstAttribute="trailing" secondItem="FlL-1j-GzS" secondAttribute="trailing" id="cF8-Ah-mqd"/>
                                                                     <constraint firstItem="sA7-9C-x28" firstAttribute="centerX" secondItem="QDv-1s-Wtf" secondAttribute="centerX" id="kfq-AA-mh4"/>
                                                                     <constraint firstItem="h9T-zK-6Za" firstAttribute="top" secondItem="H4E-t4-ft2" secondAttribute="bottom" constant="16" id="qIp-1B-BmR"/>
-                                                                    <constraint firstItem="sA7-9C-x28" firstAttribute="top" secondItem="QDv-1s-Wtf" secondAttribute="top" constant="16" id="qtm-tv-oZG"/>
+                                                                    <constraint firstItem="sA7-9C-x28" firstAttribute="top" secondItem="QDv-1s-Wtf" secondAttribute="top" constant="50" id="qtm-tv-oZG"/>
                                                                     <constraint firstItem="FlL-1j-GzS" firstAttribute="leading" secondItem="QDv-1s-Wtf" secondAttribute="leading" id="vVO-qu-aAT"/>
                                                                     <constraint firstAttribute="bottom" secondItem="FlL-1j-GzS" secondAttribute="bottom" id="zZ1-Lb-S31"/>
                                                                 </constraints>
@@ -933,7 +933,7 @@
         <image name="icon_chips_blue" width="34" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wUm-0o-CJK"/>
+        <segue reference="0pp-g4-GEi"/>
         <segue reference="mAe-ai-Kz2"/>
     </inferredMetricsTieBreakers>
 </document>

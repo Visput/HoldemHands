@@ -6,7 +6,7 @@
     "chips_per_win" : 1,
     "chips_to_unlock" : 0,
     "hands_count" : 2,
-    "name" : "Level 1"
+    "name" : "Classic Table"
   },
   {
     "id" : 2,
@@ -15,7 +15,7 @@
     "chips_per_win" : 2,
     "chips_to_unlock" : 50,
     "hands_count" : 3,
-    "name" : "Level 2"
+    "name" : "Silver Table"
   },
   {
     "id" : 3,
@@ -24,7 +24,7 @@
     "chips_per_win" : 10,
     "chips_to_unlock" : 250,
     "hands_count" : 4,
-    "name" : "Level 3"
+    "name" : "Gold Table"
   },
   {
     "id" : 4,
@@ -33,7 +33,7 @@
     "chips_per_win" : 50,
     "chips_to_unlock" : 1000,
     "hands_count" : 5,
-    "name" : "Level 4"
+    "name" : "Platinum Table"
   },
   {
     "id" : 5,
@@ -42,7 +42,7 @@
     "chips_per_win" : 250,
     "chips_to_unlock" : 5000,
     "hands_count" : 6,
-    "name" : "Level 5"
+    "name" : "Emerald Table"
   },
   {
     "id" : 6,
@@ -51,7 +51,7 @@
     "chips_per_win" : 1000,
     "chips_to_unlock" : 25000,
     "hands_count" : 7,
-    "name" : "Level 6"
+    "name" : "Sapphire Table"
   },
   {
     "id" : 7,
@@ -60,6 +60,6 @@
     "chips_per_win" : 5000,
     "chips_to_unlock" : 100000,
     "hands_count" : 8,
-    "name" : "Level 7"
+    "name" : "Diamond Table"
   }
 ]
