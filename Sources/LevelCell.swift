@@ -14,12 +14,14 @@ final class LevelCell: UICollectionViewCell {
     @IBOutlet private(set) weak var playButton: UIButton!
     @IBOutlet private(set) weak var lockedLabel: UILabel!
     @IBOutlet private(set) weak var priceLabel: UILabel!
+    @IBOutlet private(set) weak var tableImageView: UIImageView!
     
     private(set) var item: LevelCellItem!
     
     func fillWithItem(item: LevelCellItem) {
         self.item = item
         
+        tableImageView.image = UIImage(named: "background_table_level_\(item.levelProgress.level.identifier)")
         levelLabel.text = item.levelProgress.level.name
         playButton.tag = item.buttonsTag
         

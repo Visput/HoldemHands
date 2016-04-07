@@ -17,6 +17,7 @@ final class ChipsView: UIView {
     @IBOutlet private(set) weak var chipsCountLabel: UICountingLabel! {
         didSet {
             chipsCountLabel.animationDuration = 1.0
+            chipsCountLabel.method = .Linear
             chipsCountLabel.formatBlock = { chipsCount -> String in
                 let chipsCountInt64 = Int64(chipsCount)
                 return chipsCountInt64.formattedChipsCountString
