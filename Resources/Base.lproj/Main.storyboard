@@ -589,8 +589,14 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="124" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wiv-hq-6Rb">
-                                                            <rect key="frame" x="134" y="0.0" width="118" height="33.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="124" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wiv-hq-6Rb" customClass="UICountingLabel">
+                                                            <rect key="frame" x="134" y="0.0" width="28" height="33.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 100000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBy-CN-DFO">
+                                                            <rect key="frame" x="170" y="0.0" width="74.5" height="33.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -620,8 +626,11 @@
                                                         <constraint firstItem="4eN-vj-ry1" firstAttribute="top" secondItem="8Ab-JQ-8JL" secondAttribute="bottom" constant="11.5" id="WSD-3i-8MJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="OGL-tE-qrc" secondAttribute="trailing" id="ccW-8J-LMx"/>
                                                         <constraint firstAttribute="trailing" secondItem="Wiv-hq-6Rb" secondAttribute="trailing" id="d4b-nC-RhZ"/>
+                                                        <constraint firstItem="aBy-CN-DFO" firstAttribute="height" secondItem="Wiv-hq-6Rb" secondAttribute="height" id="hk0-iX-FxT"/>
                                                         <constraint firstItem="5kw-9g-GL1" firstAttribute="leading" secondItem="E82-Sf-Lnu" secondAttribute="leading" id="jR8-c2-fr1"/>
                                                         <constraint firstItem="Wiv-hq-6Rb" firstAttribute="top" secondItem="E82-Sf-Lnu" secondAttribute="top" id="l85-Lu-egu"/>
+                                                        <constraint firstItem="aBy-CN-DFO" firstAttribute="top" secondItem="E82-Sf-Lnu" secondAttribute="top" id="lgO-Ie-ysk"/>
+                                                        <constraint firstItem="aBy-CN-DFO" firstAttribute="leading" secondItem="Wiv-hq-6Rb" secondAttribute="trailing" constant="8" id="lgW-ZU-354"/>
                                                         <constraint firstAttribute="trailing" secondItem="bna-fi-7EC" secondAttribute="trailing" id="mQC-UB-ksu"/>
                                                         <constraint firstItem="Wiv-hq-6Rb" firstAttribute="top" secondItem="E82-Sf-Lnu" secondAttribute="top" id="nTS-Tg-P3W"/>
                                                         <constraint firstItem="KN2-vT-oas" firstAttribute="leading" secondItem="E82-Sf-Lnu" secondAttribute="leading" id="nwO-EQ-95G"/>
@@ -636,6 +645,7 @@
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
+                                                            <exclude reference="d4b-nC-RhZ"/>
                                                             <exclude reference="nTS-Tg-P3W"/>
                                                         </mask>
                                                     </variation>
@@ -684,6 +694,7 @@
                                             <outlet property="handsCountLabel" destination="ffy-hN-1lN" id="gxO-AU-eo2"/>
                                             <outlet property="nameLabel" destination="sf0-wP-BEB" id="xbv-u5-YML"/>
                                             <outlet property="noStatsView" destination="04f-va-hdW" id="3U0-lC-QP2"/>
+                                            <outlet property="rankDifferenceLabel" destination="aBy-CN-DFO" id="waN-JJ-vj8"/>
                                             <outlet property="rankLabel" destination="Wiv-hq-6Rb" id="s7T-Xh-a7t"/>
                                             <outlet property="statsContentView" destination="E82-Sf-Lnu" id="W4Y-ud-16q"/>
                                             <outlet property="winPercentLabel" destination="bna-fi-7EC" id="DDw-yP-eZ3"/>
@@ -933,7 +944,7 @@
         <image name="icon_chips_blue" width="34" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0pp-g4-GEi"/>
+        <segue reference="wUm-0o-CJK"/>
         <segue reference="mAe-ai-Kz2"/>
     </inferredMetricsTieBreakers>
 </document>
