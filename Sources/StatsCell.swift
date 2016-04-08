@@ -56,14 +56,14 @@ final class StatsCell: UICollectionViewCell {
         let oldRank = oldItem?.progressItem.rank
         
         if newRank != nil && oldRank != nil && newRank! != oldRank! && newItem.progressItem.title == oldItem?.progressItem.title {
-            let rankRaised = newRank > oldRank
+            let rankRaised = newRank < oldRank
             let rankDifference = abs(newRank! - oldRank!)
             
             if rankRaised {
-                rankDifferenceLabel.text = "+ \(rankDifference)"
+                rankDifferenceLabel.text = "+\(rankDifference)"
                 rankDifferenceLabel.textColor = UIColor.primaryColor()
             } else {
-                rankDifferenceLabel.text = "- \(rankDifference)"
+                rankDifferenceLabel.text = "-\(rankDifference)"
                 rankDifferenceLabel.textColor = UIColor.backgroundColor()
             }
             
@@ -71,15 +71,12 @@ final class StatsCell: UICollectionViewCell {
                 self.rankDifferenceLabel.alpha = 1.0
                 
                 }, completion: { _ in
-                    UIView.animateWithDuration(0.5, delay: 0.1, options: .CurveEaseInOut, animations: {
+                    UIView.animateWithDuration(0.1, delay: 0.3, options: .CurveEaseInOut, animations: {
                         self.rankDifferenceLabel.alpha = 0.0
                         
-                        }, completion: nil)
-                    
-            })
-            
-            executeAfterDelay(0.1, task: {
-                self.rankLabel.countFrom(CGFloat(oldRank!), to: CGFloat(newRank!))
+                        }, completion: { _ in
+                            self.rankLabel.countFrom(CGFloat(oldRank!), to: CGFloat(newRank!))
+                    })   
             })
             
         } else {

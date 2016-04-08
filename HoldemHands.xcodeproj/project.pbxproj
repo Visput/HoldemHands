@@ -63,6 +63,7 @@
 		9FA2090D1CA614F100E084E8 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */; };
 		9FA31FA31CB59D460010555B /* ChipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA21CB59D460010555B /* ChipsViewController.swift */; };
 		9FA31FA51CB59D840010555B /* ChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA41CB59D840010555B /* ChipsView.swift */; };
+		9FA31FA81CB74F810010555B /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */; };
 		9FC567EF1CA487D100FF1DE7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */; };
 		9FE888E31C93F53400A39C2C /* StatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E21C93F53400A39C2C /* StatsCell.swift */; };
 		9FE888E51C93F54F00A39C2C /* StatsCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */; };
@@ -141,6 +142,7 @@
 		9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		9FA31FA21CB59D460010555B /* ChipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipsViewController.swift; sourceTree = "<group>"; };
 		9FA31FA41CB59D840010555B /* ChipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipsView.swift; sourceTree = "<group>"; };
+		9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Utils.swift"; sourceTree = "<group>"; };
 		9FACAAC91C72BCC20051A435 /* HoldemHands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FACAADD1C72BCC20051A435 /* HoldemHandsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoldemHandsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -316,6 +318,7 @@
 				9F3C4BE51C925A7A00B37939 /* UIView+Nib.swift */,
 				9FE888EA1C94F6A000A39C2C /* Int64+Chips.swift */,
 				9F93B4811C9750760092CBCB /* String+Path.swift */,
+				9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				9F95E15E1C8761C700D6F368 /* LevelProgress.swift in Sources */,
 				9F44D21D1C84B21A00640046 /* GameView.swift in Sources */,
 				9F44D2151C84B21A00640046 /* Hand.swift in Sources */,
+				9FA31FA81CB74F810010555B /* UICollectionView+Utils.swift in Sources */,
 				9F44D2341C84BAC700640046 /* MainView.swift in Sources */,
 				9F44D2181C84B21A00640046 /* HandOdds.swift in Sources */,
 				9F44D21C1C84B21A00640046 /* GameScreen.swift in Sources */,

@@ -101,8 +101,15 @@ extension StatsScreen {
         
         model.playerManager.loadProgressItemsIncludingRank({ progressItems, error in
             guard error == nil else { return }
+            
             self.progressItems = progressItems
-            self.statsView.statsCollectionView.reloadData()
+            let cells = self.statsView.statsCollectionView.visibleCells() as! [StatsCell]
+            for cell in cells {
+                let index = self.statsView.statsCollectionView.indexPathForCell(cell)!.item
+                let progressItem: Progress = progressItems![index]
+                let item = StatsCellItem(progressItem: progressItem)
+                cell.fillWithItem(item)
+            }
         })
         
         guard level != nil else { return }
