@@ -12,7 +12,7 @@ final class LevelsView: UIView {
  
     @IBOutlet private(set) weak var levelsCollectionView: UICollectionView!
     
-    private var levelsCollectionLayout: UICollectionViewFlowLayout {
+    var levelsCollectionLayout: UICollectionViewFlowLayout {
         return levelsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
     

@@ -16,19 +16,19 @@ final class MainScreen: BaseViewController {
     
     override func viewDidShow() {
         super.viewDidShow()
-        if mainView.isMenuShown {
-            Analytics.menuAppeared()
-        } else {
+        if mainView.isDetailsViewShown {
             Analytics.levelsAppeared()
+        } else {
+            Analytics.menuAppeared()
         }
     }
     
     override func viewDidHide() {
         super.viewDidHide()
-        if mainView.isMenuShown {
-            Analytics.menuDisappeared()
-        } else {
+        if mainView.isDetailsViewShown {
             Analytics.levelsDisappeared()
+        } else {
+            Analytics.menuDisappeared()
         }
     }
 }
@@ -42,6 +42,10 @@ extension MainScreen {
     
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
         Analytics.statsClickedInMenu()
-        model.navigationManager.presentStatsScreenWithLevel(nil, animated: true)
+        mainView.scrollToStatsView()
+    }
+    
+    @IBAction private func shareButtonDidPress(sender: AnyObject) {
+        mainView.scrollToSharingView()
     }
 }
