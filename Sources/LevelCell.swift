@@ -21,7 +21,11 @@ final class LevelCell: UICollectionViewCell {
     func fillWithItem(item: LevelCellItem) {
         self.item = item
         
-        tableImageView.image = UIImage(named: "background_table_level_\(item.levelProgress.level.identifier)")
+        if item.levelProgress.locked! {
+            tableImageView.image = UIImage(named: "background_table_level_locked")
+        } else {
+            tableImageView.image = UIImage(named: "background_table_level_\(item.levelProgress.level.identifier)")
+        }
         levelLabel.text = item.levelProgress.level.name
         playButton.tag = item.buttonsTag
         
