@@ -12,8 +12,8 @@ final class GameScreen: BaseViewController {
     
     var level: Level!
     
-    private var firstHandsController: HandsCollectionViewController!
-    private var secondHandsController: HandsCollectionViewController!
+    private var firstHandsController: HandsViewController!
+    private var secondHandsController: HandsViewController!
     
     private var gameView: GameView {
         return view as! GameView
@@ -58,10 +58,10 @@ final class GameScreen: BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "FirstHands" {
-            firstHandsController = segue.destinationViewController as! HandsCollectionViewController
+            firstHandsController = segue.destinationViewController as! HandsViewController
             
         } else if segue.identifier == "SecondHands" {
-            secondHandsController = segue.destinationViewController as! HandsCollectionViewController
+            secondHandsController = segue.destinationViewController as! HandsViewController
         }
     }
     

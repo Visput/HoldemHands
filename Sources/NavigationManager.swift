@@ -24,15 +24,20 @@ final class NavigationManager: NSObject {
     }
     
     func presentScreen(screen: UIViewController, animated: Bool) {
-        let presentingViewController = navigationController.presentedViewController ?? navigationController
-        presentingViewController!.presentViewController(screen, animated: animated, completion: nil)
+        var presentingViewController = navigationController as UIViewController
+        while presentingViewController.presentedViewController != nil {
+            presentingViewController = presentingViewController.presentedViewController!
+        }
+        presentingViewController.presentViewController(screen, animated: animated, completion: nil)
     }
     
     func dismissScreenAnimated(animated: Bool) {
-        let presentedViewController = navigationController.presentedViewController?.presentedViewController ??
-            navigationController.presentedViewController
-        let presentingViewController = presentedViewController?.presentingViewController
-        presentingViewController?.dismissViewControllerAnimated(animated, completion: nil)
+        var presentedViewController = navigationController as UIViewController
+        while presentedViewController.presentedViewController != nil {
+            presentedViewController = presentedViewController.presentedViewController!
+        }
+        
+        presentedViewController.dismissViewControllerAnimated(animated, completion: nil)
     }
     
     func setMainScreenAsRootAnimated(animated: Bool) {

@@ -1,5 +1,5 @@
 //
-//  HandsCollectionViewController.swift
+//  HandsViewController.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 3/28/16.
@@ -9,46 +9,40 @@
 import Foundation
 import UIKit
 
-final class HandsCollectionViewController: UIViewController {
+final class HandsViewController: UIViewController {
     
     var numberOfHands: Int! {
         didSet {
             handOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands)
-            let layout = HandsCollectionViewLayout(numberOfHands: numberOfHands)
-            handsCollectionView.collectionViewLayout = layout
+            handsView.configureLayoutForNumberOfHands(numberOfHands)
         }
     }
     
-    weak var nextController: HandsCollectionViewController?
+    weak var nextController: HandsViewController?
     
     var didPlayRoundHandler: ((won: Bool) -> Void)?
     
-    @IBOutlet private(set) weak var handsCollectionView: UICollectionView!
+    var handsView: HandsView {
+        return view as! HandsView
+    }
     
     private var handOddsCalculator: HandOddsCalculator!
     private var needsGenerateHandsOnViewDisappear = false
     
-    private var isViewPresented: Bool {
-        let window = UIApplication.sharedApplication().keyWindow!
-        let windowFrame = window.frame
-        let viewFrame = view.convertRect(view.bounds, toView: window)
-        return CGRectContainsRect(windowFrame, viewFrame)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        handsCollectionView.userInteractionEnabled = false
+        handsView.handsCollectionView.userInteractionEnabled = false
     }
     
     func viewDidChangePosition() {
-        if isViewPresented && handOddsCalculator.handsOdds != nil {
+        if handsView.isPresented && handOddsCalculator.handsOdds != nil {
             let delayDuration = 0.2
             // Use delay for better usability.
             // Helps to understand better what is going on from user perspective.
-            flipHandsWithDelay(delayDuration)
+            handsView.flipHandsWithDelay(delayDuration)
         }
         
-        if !isViewPresented && needsGenerateHandsOnViewDisappear {
+        if !handsView.isPresented && needsGenerateHandsOnViewDisappear {
             needsGenerateHandsOnViewDisappear = false
             generateHands()
         }
@@ -60,12 +54,12 @@ final class HandsCollectionViewController: UIViewController {
         
         handOddsCalculator.calculateOdds({ handsOdds in
             self.reloadHandsCollectionViewDeeply(true)
-            if self.isViewPresented {
-                self.flipHandsWithDelay(0.0)
+            if self.handsView.isPresented {
+                self.handsView.flipHandsWithDelay(0.0)
             }
             
             guard self.nextController != nil else { return }
-            if self.nextController!.isViewPresented {
+            if self.nextController!.handsView.isPresented {
                 self.nextController!.needsGenerateHandsOnViewDisappear = true
             } else {
                 self.nextController!.generateHands()
@@ -73,27 +67,11 @@ final class HandsCollectionViewController: UIViewController {
         })
     }
     
-    private func flipHandsWithDelay(delayDuration: Double) {
-        executeAfterDelay(delayDuration, task: {
-            let delayCoefficient = 0.1
-            let cells = self.handsCollectionView.orderedVisibleCells() as! [HandCell]
-            for (index, cell) in cells.enumerate() {
-                self.executeAfterDelay(Double(index) * delayCoefficient, task: {
-                    cell.setHandVisible(true, animated: true, completionHandler: {
-                        if index == cells.count - 1 {
-                            self.handsCollectionView.userInteractionEnabled = true
-                        }
-                    })
-                })
-            }
-        })
-    }
-    
     private func reloadHandsCollectionViewDeeply(deeply: Bool) {
         if deeply {
-            handsCollectionView.reloadData()
+            handsView.handsCollectionView.reloadData()
         } else {  
-            let cells = handsCollectionView.orderedVisibleCells() as! [HandCell]
+            let cells = handsView.handsCollectionView.orderedVisibleCells() as! [HandCell]
             for (index, cell) in cells.enumerate() {
                 let item = HandCellItem(handOdds: handOddsCalculator.handsOdds?[index], needsShowOdds: false, isSuccessSate: nil)
                 cell.fillWithItem(item)
@@ -102,7 +80,7 @@ final class HandsCollectionViewController: UIViewController {
     }
 }
 
-extension HandsCollectionViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension HandsViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return handOddsCalculator.hands.count
@@ -140,6 +118,6 @@ extension HandsCollectionViewController: UICollectionViewDelegateFlowLayout, UIC
             cell.fillWithItem(item)
         }
         
-        handsCollectionView.userInteractionEnabled = false
+        handsView.handsCollectionView.userInteractionEnabled = false
     }
 }

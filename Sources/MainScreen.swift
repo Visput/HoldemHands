@@ -14,16 +14,6 @@ final class MainScreen: BaseViewController {
         return view as! MainView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        model.playerManager.observers.addObserver(self)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        fillViewsWithModel()
-    }
-    
     override func viewDidShow() {
         super.viewDidShow()
         if mainView.isMenuShown {
@@ -43,47 +33,7 @@ final class MainScreen: BaseViewController {
     }
 }
 
-extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.playerManager.playerData.levelProgressItems.count
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(LevelCell.className(),
-            forIndexPath: indexPath) as! LevelCell
-        
-        let levelProgress = model.playerManager.playerData.levelProgressItems[indexPath.item]
-        let item = LevelCellItem(levelProgress: levelProgress, buttonsTag: indexPath.item)
-        cell.fillWithItem(item)
-        
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(indexPath) as! LevelCell
-        Analytics.levelClickedInLevels(cell.item.levelProgress)
-        if !cell.item.levelProgress.locked {
-            model.navigationManager.presentGameScreenWithLevel(cell.item.levelProgress.level, animated: true)
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        mainView.scrollToNearestLevel()
-    }
-    
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard !decelerate else { return }
-        mainView.scrollToNearestLevel()
-    }
-}
-
 extension MainScreen {
-    
-    @IBAction private func menuButtonDidPress(sender: AnyObject) {
-        Analytics.menuClickedInLevels()
-        mainView.scrollToMenuView()
-    }
     
     @IBAction private func playButtonDidPress(sender: AnyObject) {
         Analytics.playClickedInMenu()
@@ -93,64 +43,5 @@ extension MainScreen {
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
         Analytics.statsClickedInMenu()
         model.navigationManager.presentStatsScreenWithLevel(nil, animated: true)
-    }
-    
-    @IBAction private func facebookButtonDidPress(sender: AnyObject) {
-        Analytics.facebookClickedInMenu()
-        let item = SharingItem(title: NSLocalizedString("HoldemHands", comment: ""),
-            message: NSLocalizedString("Check this out", comment: ""),
-            linkURL: NSURL(string: "https://apple.com"),
-            image: nil,
-            imageURL: NSURL(string: "https://d13yacurqjgara.cloudfront.net/users/3511/screenshots/827275/prvw.jpg"))
-        
-        model.sharingManager.didFailToShareHandler = { [unowned self] _ in
-            self.model.navigationManager.showBannerWithText(NSLocalizedString("Unable to locate your \"Facebook\" account", comment: ""))
-        }
-        
-        model.sharingManager.shareWithFacebook(item, inViewController: self)
-    }
-    
-    @IBAction private func twitterButtonDidPress(sender: AnyObject) {
-        Analytics.twitterClickedInMenu()
-        let item = SharingItem(title: nil,
-            message: NSLocalizedString("Check this out: HoldemHands", comment: ""),
-            linkURL: NSURL(string: "https://apple.com"),
-            image: UIImage(named: "test.jpg"),
-            imageURL: nil)
-        
-        model.sharingManager.didFailToShareHandler = { [unowned self] _ in
-            self.model.navigationManager.showBannerWithText(NSLocalizedString("Unable to locate your \"Twitter\" account", comment: ""))
-        }
-        
-        model.sharingManager.shareWithTwitter(item, inViewController: self)
-    }
-    
-    @IBAction private func instagramButtonDidPress(sender: AnyObject) {
-        Analytics.instagramClickedInMenu()
-        let item = SharingItem(title: nil,
-            message: NSLocalizedString("Check this out: #HoldemHands", comment: ""),
-            linkURL: nil,
-            image: UIImage(named: "test.jpg"),
-            imageURL: nil)
-        
-        model.sharingManager.didFailToShareHandler = { [unowned self] _ in
-            self.model.navigationManager.showBannerWithText(NSLocalizedString("Unable to locate your \"Instagram\" account", comment: ""))
-        }
-        
-        model.sharingManager.shareWithInstagram(item, inView: mainView)
-    }
-}
-
-extension MainScreen: PlayerManagerObserving {
-    
-    func playerManager(manager: PlayerManager, didLoadPlayerData playerData: PlayerData) {
-        fillViewsWithModel()
-    }
-}
-
-extension MainScreen {
-    
-    private func fillViewsWithModel() {
-        mainView.levelsCollectionView.reloadData()
     }
 }
