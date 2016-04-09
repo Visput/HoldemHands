@@ -56,14 +56,16 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         let levelProgress = model.playerManager.playerData.levelProgressItems[indexPath.item]
         let item = LevelCellItem(levelProgress: levelProgress, buttonsTag: indexPath.item)
         cell.fillWithItem(item)
-        cell.playButton.addTarget(self, action: #selector(MainScreen.startLevelButtonDidPress(_:)), forControlEvents: .TouchUpInside)
         
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(indexPath) as! LevelCell
-        startLevelButtonDidPress(cell.playButton)
+        Analytics.levelClickedInLevels(cell.item.levelProgress)
+        if !cell.item.levelProgress.locked {
+            model.navigationManager.presentGameScreenWithLevel(cell.item.levelProgress.level, animated: true)
+        }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
@@ -77,14 +79,6 @@ extension MainScreen: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
 }
 
 extension MainScreen {
-    
-    @objc private func startLevelButtonDidPress(sender: UIButton) {
-        let cell = mainView.levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: sender.tag, inSection: 0)) as! LevelCell
-        Analytics.levelClickedInLevels(cell.item.levelProgress)
-        if !cell.item.levelProgress.locked {
-            model.navigationManager.presentGameScreenWithLevel(cell.item.levelProgress.level, animated: true)
-        }
-    }
     
     @IBAction private func menuButtonDidPress(sender: AnyObject) {
         Analytics.menuClickedInLevels()

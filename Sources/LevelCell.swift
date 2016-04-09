@@ -11,10 +11,10 @@ import UIKit
 final class LevelCell: UICollectionViewCell {
     
     @IBOutlet private(set) weak var levelLabel: UILabel!
-    @IBOutlet private(set) weak var playButton: UIButton!
     @IBOutlet private(set) weak var lockedLabel: UILabel!
     @IBOutlet private(set) weak var priceLabel: UILabel!
     @IBOutlet private(set) weak var tableImageView: UIImageView!
+    @IBOutlet private(set) weak var handsCountLabel: UILabel!
     
     private(set) var item: LevelCellItem!
     
@@ -26,17 +26,14 @@ final class LevelCell: UICollectionViewCell {
         } else {
             tableImageView.image = UIImage(named: "background_table_level_\(item.levelProgress.level.identifier)")
         }
+        handsCountLabel.text = NSString.localizedStringWithFormat("%d hands", item.levelProgress.level.numberOfHands) as String
         levelLabel.text = item.levelProgress.level.name
-        playButton.tag = item.buttonsTag
         
         if item.levelProgress.locked! {
             lockedLabel.hidden = false
             priceLabel.text = item.levelProgress.level.chipsToUnlock.formattedChipsCountString
             
-            playButton.hidden = true
-            
         } else {
-            playButton.hidden = false
             lockedLabel.hidden = true
             priceLabel.text = item.levelProgress.level.chipsPerWin.formattedChipsCountString
         }
