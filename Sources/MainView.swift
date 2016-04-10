@@ -30,48 +30,33 @@ final class MainView: UIView {
         menuViewWidth.constant = levelsView.levelsCollectionLayout.sectionInset.left - levelsView.levelsCollectionLayout.minimumInteritemSpacing
     }
     
-    func scrollToLevelsView() {
-        selectMenuButtonForPage(0)
-        if isDetailsViewShown {
-            UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveEaseInOut, animations: {
-                self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
-                }, completion: nil)
-        } else {
-            scrollToDetailsView()
+    func scrollToDetailsViewAtPage(page: Int, completionHandler: (() -> Void)? = nil) {
+        guard !menuButtons[page].selected else {
+            completionHandler?()
+            return
         }
-    }
-    
-    func scrollToStatsView() {
-        selectMenuButtonForPage(1)
-        if isDetailsViewShown {
-            UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveEaseInOut, animations: {
-                self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: self.detailsScrollView.frame.size.height)
-                }, completion: nil)
-        } else {
-            detailsScrollView.contentOffset = CGPoint(x: 0.0, y: detailsScrollView.frame.size.height)
-            scrollToDetailsView()
-        }
-    }
-    
-    func scrollToSharingView() {
-        selectMenuButtonForPage(2)
-        UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveEaseInOut, animations: {
-            self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: 2.0 * self.detailsScrollView.frame.size.height)
-            }, completion: nil)
-    }
-    
-    func selectMenuButtonForCurrentPage() {
-        let page = lroundf(Float(detailsScrollView.contentOffset.y / detailsScrollView.frame.size.height))
+        
         selectMenuButtonForPage(page)
+        
+        if isDetailsViewShown {
+            UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveEaseInOut, animations: {
+                self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: self.detailsScrollView.frame.size.height * CGFloat(page))
+                }, completion: { _ in
+                    completionHandler?()
+            })
+        } else {
+            detailsScrollView.contentOffset = CGPoint(x: 0.0, y: detailsScrollView.frame.size.height * CGFloat(page))
+            scrollToDetailsView(completionHandler)
+        }
     }
     
-    private func selectMenuButtonForPage(page: Int) {
+    func selectMenuButtonForPage(page: Int) {
         for (index, button) in menuButtons.enumerate() {
             button.selected = index == page
         }
     }
     
-    private func scrollToDetailsView() {
+    private func scrollToDetailsView(completionHandler: (() -> Void)? = nil) {
         menuViewLeadingSpace.constant = -menuViewWidth.constant
         layoutIfNeeded()
         
@@ -79,6 +64,9 @@ final class MainView: UIView {
             self.contentScrollView.contentOffset = CGPoint(x: self.contentScrollView.bounds.size.width, y: 0.0)
             
             }, completion: { _ in
+                completionHandler?()
+                
+                // Show menu.
                 UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut, animations: {
                     self.menuViewLeadingSpace.constant = 0.0
                     self.layoutIfNeeded()

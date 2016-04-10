@@ -71,7 +71,7 @@ final class StatsCell: UICollectionViewCell {
                 self.rankDifferenceLabel.alpha = 1.0
                 
                 }, completion: { _ in
-                    UIView.animateWithDuration(0.1, delay: 0.3, options: .CurveEaseInOut, animations: {
+                    UIView.animateWithDuration(0.1, delay: 0.7, options: .CurveEaseInOut, animations: {
                         self.rankDifferenceLabel.alpha = 0.0
                         
                         }, completion: { _ in

@@ -12,9 +12,23 @@ final class StatsScreen: BaseViewController {
     
     var level: Level!
     
+    private var statsController: StatsViewController!
+    
+    override func viewDidShow() {
+        super.viewDidShow()
+        Analytics.statsAppeared()
+        
+        statsController.reloadStats()
+    }
+    
+    override func viewDidHide() {
+        super.viewDidHide()
+        Analytics.statsDisappeared()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Stats" {
-            let statsController = segue.destinationViewController as! StatsViewController
+            statsController = segue.destinationViewController as! StatsViewController
             statsController.level = level
         }
     }

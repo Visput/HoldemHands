@@ -24,14 +24,21 @@ final class StatsViewController: BaseViewController {
         fillViewsWithModel()
     }
     
-    override func viewDidShow() {
-        super.viewDidShow()
-        Analytics.statsAppeared()
-    }
-    
-    override func viewDidHide() {
-        super.viewDidHide()
-        Analytics.statsDisappeared()
+    func reloadStats() {
+        fillViewsWithModel()
+        
+        model.playerManager.loadProgressItemsIncludingRank({ progressItems, error in
+            guard error == nil else { return }
+            
+            self.progressItems = progressItems
+            let cells = self.statsView.statsCollectionView.visibleCells() as! [StatsCell]
+            for cell in cells {
+                let index = self.statsView.statsCollectionView.indexPathForCell(cell)!.item
+                let progressItem: Progress = progressItems![index]
+                let item = StatsCellItem(progressItem: progressItem)
+                cell.fillWithItem(item)
+            }
+        })
     }
 }
 
@@ -91,21 +98,7 @@ extension StatsViewController {
         progressItems = model.playerManager.progressItems()
         
         statsView.statsCollectionView.reloadData()
-        
         statsView.leaderboardsButton.hidden = !model.playerManager.authenticated
-        
-        model.playerManager.loadProgressItemsIncludingRank({ progressItems, error in
-            guard error == nil else { return }
-            
-            self.progressItems = progressItems
-            let cells = self.statsView.statsCollectionView.visibleCells() as! [StatsCell]
-            for cell in cells {
-                let index = self.statsView.statsCollectionView.indexPathForCell(cell)!.item
-                let progressItem: Progress = progressItems![index]
-                let item = StatsCellItem(progressItem: progressItem)
-                cell.fillWithItem(item)
-            }
-        })
         
         guard level != nil else { return }
         // Execute scrolling after short delay to be sure that collection view layout is configured.
