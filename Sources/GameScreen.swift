@@ -89,9 +89,9 @@ extension GameScreen {
         })
     }
     
-    @IBAction private func menuButtonDidPress(sender: AnyObject) {
+    @IBAction private func doneButtonDidPress(sender: AnyObject) {
         Analytics.doneClickedInGame()
-        model.navigationManager.dismissScreenAnimated(true)
+        model.navigationManager.dismissGameScreenAnimated(true)
     }
     
     @IBAction private func statsButtonDidPress(sender: AnyObject) {

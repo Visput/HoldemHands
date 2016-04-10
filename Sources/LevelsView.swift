@@ -16,6 +16,16 @@ final class LevelsView: UIView {
         return levelsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
     
+    private var zoomedCell: LevelCell?
+    
+    private var currentLevelIndex: Int {
+        let offset = levelsCollectionView.contentOffset.x
+        let levelDecimalIndex = offset / (levelsCollectionLayout.itemSize.width + levelsCollectionLayout.minimumInteritemSpacing)
+        let levelIndex = Int(round(levelDecimalIndex))
+        
+        return levelIndex
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         let spacing: CGFloat = UIScreen.mainScreen().sizeType == .iPhone4 ? 32.0 : 48.0
@@ -38,12 +48,50 @@ final class LevelsView: UIView {
     }
     
     func scrollToNearestLevel() {
-        let offset = levelsCollectionView.contentOffset.x
-        let levelDecimalIndex = offset / (levelsCollectionLayout.itemSize.width + levelsCollectionLayout.minimumInteritemSpacing)
-        let levelIndex = Int(round(levelDecimalIndex))
-        
-        levelsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: levelIndex, inSection: 0),
+        levelsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: currentLevelIndex, inSection: 0),
                                                      atScrollPosition: .CenteredHorizontally,
                                                      animated: true)
+    }
+    
+    func zoomInLevelAtIndex(index: Int, mainView: UIView, completionHandler: (() -> Void)? = nil) {
+        zoomedCell = levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) as? LevelCell
+        
+        UIView.animateWithDuration(0.4, animations: {
+            self.levelsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0),
+                atScrollPosition: .CenteredHorizontally,
+                animated: false)
+            
+            }, completion: { _ in
+                // Call completion block before animation finished for smoother animation.
+                self.executeAfterDelay(0.2, task: {
+                    completionHandler?()
+                })
+                
+                UIView.animateWithDuration(0.4, animations: {
+                    self.zoomedCell!.handsCountLabel.alpha = 0.0
+                    self.zoomedCell!.priceLabel.alpha = 0.0
+                    self.zoomedCell!.chipsImageView.alpha = 0.0
+                    self.zoomedCell!.levelLabel.alpha = 0.0
+                    
+                    mainView.transform = CGAffineTransformMakeScale(3.0, 3.0)
+                    }, completion: nil)
+        })
+    }
+    
+    func zoomOutLevelIfNeeded(mainView: UIView) {
+        guard zoomedCell != nil else { return }
+        
+        UIView.animateWithDuration(0.4, animations: {
+            self.zoomedCell!.handsCountLabel.alpha = 1.0
+            self.zoomedCell!.priceLabel.alpha = 1.0
+            self.zoomedCell!.chipsImageView.alpha = 1.0
+            self.zoomedCell!.levelLabel.alpha = 1.0
+            
+            mainView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+            
+            }, completion: { _ in
+                self.zoomedCell = nil
+        })
+        
     }
 }

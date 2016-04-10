@@ -15,6 +15,7 @@ final class LevelCell: UICollectionViewCell {
     @IBOutlet private(set) weak var priceLabel: UILabel!
     @IBOutlet private(set) weak var tableImageView: UIImageView!
     @IBOutlet private(set) weak var handsCountLabel: UILabel!
+    @IBOutlet private(set) weak var chipsImageView: UIImageView!
     
     private(set) var item: LevelCellItem!
     

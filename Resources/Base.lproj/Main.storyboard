@@ -26,7 +26,7 @@
         <!--Main Screen-->
         <scene sceneID="SXZ-Wh-Obh">
             <objects>
-                <viewController storyboardIdentifier="MainScreen" id="P8v-C8-9Zi" customClass="MainScreen" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainScreen" definesPresentationContext="YES" id="P8v-C8-9Zi" customClass="MainScreen" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aH-Lx-sfy"/>
                         <viewControllerLayoutGuide type="bottom" id="PaV-UT-frg"/>
@@ -331,7 +331,7 @@
         <!--Game Screen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="GameScreen" id="BYZ-38-t0r" customClass="GameScreen" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameScreen" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="BYZ-38-t0r" customClass="GameScreen" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -344,10 +344,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXK-jE-uUX">
-                                <rect key="frame" x="10" y="10" width="39" height="30"/>
-                                <state key="normal" title="Menu"/>
+                                <rect key="frame" x="10" y="10" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
                                 <connections>
-                                    <action selector="menuButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f0u-yr-RD5"/>
+                                    <action selector="doneButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ER8-aI-chi"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which hand has more chances to win?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foO-GZ-eAy">
@@ -371,7 +371,7 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JT-vw-cgT">
-                                <rect key="frame" x="57" y="10" width="36" height="30"/>
+                                <rect key="frame" x="55" y="10" width="36" height="30"/>
                                 <state key="normal" title="Stats"/>
                                 <connections>
                                     <action selector="statsButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mes-6V-dwO"/>
@@ -481,10 +481,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HvS-71-ekD">
-                                <rect key="frame" x="16" y="16" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
+                                <rect key="frame" x="16" y="16" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
                                 <connections>
-                                    <action selector="closeButtonDidPress:" destination="z6e-JP-LU6" eventType="touchUpInside" id="Pc3-cK-TwB"/>
+                                    <action selector="doneButtonDidPress:" destination="z6e-JP-LU6" eventType="touchUpInside" id="x14-sU-byg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Stats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOY-1U-EdD">
@@ -717,11 +717,11 @@
             <objects>
                 <viewController id="egY-VU-Eln" customClass="StatsViewController" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oed-g2-2Fw" customClass="StatsView" customModule="HoldemHands" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="321"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="316"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N1z-B1-EU6">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="273"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="268"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="32" minimumInteritemSpacing="32" id="5WR-hD-MN8">
                                     <size key="itemSize" width="520" height="260"/>
@@ -731,7 +731,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StatsCell" id="8Ao-Uu-koo" customClass="StatsCell" customModule="HoldemHands" customModuleProvider="target">
-                                        <rect key="frame" x="32" y="6.5" width="520" height="260"/>
+                                        <rect key="frame" x="32" y="4" width="520" height="260"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="520" height="260"/>
@@ -910,7 +910,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5H1-ZI-YXV">
-                                <rect key="frame" x="286" y="281" width="95" height="30"/>
+                                <rect key="frame" x="286" y="276" width="95" height="30"/>
                                 <state key="normal" title="Leaderboards"/>
                                 <connections>
                                     <action selector="leaderboardsButtonDidPress:" destination="egY-VU-Eln" eventType="touchUpInside" id="W1f-9C-EHg"/>
@@ -1085,6 +1085,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
+                                            <outlet property="chipsImageView" destination="srV-n4-jae" id="GPd-RG-uuJ"/>
                                             <outlet property="handsCountLabel" destination="wH0-Za-1ti" id="pDr-yv-crB"/>
                                             <outlet property="levelLabel" destination="sA7-9C-x28" id="ECL-Rm-ph9"/>
                                             <outlet property="lockedLabel" destination="FT1-YY-8f3" id="1xw-NO-LCK"/>
@@ -1125,8 +1126,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xlj-m6-717"/>
-        <segue reference="0pp-g4-GEi"/>
-        <segue reference="fJt-d2-jaX"/>
         <segue reference="mAe-ai-Kz2"/>
+        <segue reference="3Io-ee-72I"/>
+        <segue reference="wkq-tr-tt6"/>
     </inferredMetricsTieBreakers>
 </document>

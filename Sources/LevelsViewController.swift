@@ -22,6 +22,7 @@ final class LevelsViewController: BaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         fillViewsWithModel()
+        levelsView.zoomOutLevelIfNeeded(model.navigationManager.mainScreen.view)
     }
 }
 
@@ -46,7 +47,9 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
         let cell = levelsView.levelsCollectionView.cellForItemAtIndexPath(indexPath) as! LevelCell
         Analytics.levelClickedInLevels(cell.item.levelProgress)
         if !cell.item.levelProgress.locked {
-            model.navigationManager.presentGameScreenWithLevel(cell.item.levelProgress.level, animated: true)
+            levelsView.zoomInLevelAtIndex(indexPath.item, mainView: model.navigationManager.mainScreen.view, completionHandler: {
+                self.model.navigationManager.presentGameScreenWithLevel(cell.item.levelProgress.level, animated: true)
+            })
         }
     }
     

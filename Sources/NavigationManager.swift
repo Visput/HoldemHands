@@ -17,38 +17,55 @@ final class NavigationManager: NSObject {
         }
     }
     
+    private(set) var mainScreen: MainScreen!
+    
     private var navigationController: UINavigationController!
     
     private var storyboard: UIStoryboard {
         return window.rootViewController!.storyboard!
     }
     
-    func presentScreen(screen: UIViewController, animated: Bool) {
-        var presentingViewController = navigationController as UIViewController
-        while presentingViewController.presentedViewController != nil {
-            presentingViewController = presentingViewController.presentedViewController!
+    private var topViewController: UIViewController {
+        var topViewController = navigationController as UIViewController
+        while topViewController.presentedViewController != nil {
+            topViewController = topViewController.presentedViewController!
         }
-        presentingViewController.presentViewController(screen, animated: animated, completion: nil)
+        return topViewController
     }
     
-    func dismissScreenAnimated(animated: Bool) {
-        var presentedViewController = navigationController as UIViewController
-        while presentedViewController.presentedViewController != nil {
-            presentedViewController = presentedViewController.presentedViewController!
-        }
-        
-        presentedViewController.dismissViewControllerAnimated(animated, completion: nil)
+    func presentScreen(screen: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
+        topViewController.presentViewController(screen, animated: animated, completion: completion)
+    }
+    
+    func dismissScreenAnimated(animated: Bool, completion: (() -> Void)? = nil) {
+        topViewController.dismissViewControllerAnimated(animated, completion: completion)
     }
     
     func setMainScreenAsRootAnimated(animated: Bool) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(MainScreen.className()) as! MainScreen
         navigationController.setViewControllers([screen], animated: animated)
+        mainScreen = screen
     }
     
     func presentGameScreenWithLevel(level: Level, animated: Bool) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(GameScreen.className()) as! GameScreen
         screen.level = level
-        presentScreen(screen, animated: animated)
+        mainScreen.modalPresentationStyle = .OverCurrentContext
+        // Manually call `beginAppearanceTransition` and `endAppearanceTransition` 
+        // as it's not called automatically when view controller is presented over current context.
+        mainScreen.beginAppearanceTransition(false, animated: animated)
+        presentScreen(screen, animated: animated, completion: {
+            self.mainScreen.endAppearanceTransition()
+        })
+    }
+    
+    func dismissGameScreenAnimated(animated: Bool) {
+        // Manually call `beginAppearanceTransition` and `endAppearanceTransition`
+        // as it's not called automatically when view controller is presented over current context.
+        mainScreen.beginAppearanceTransition(true, animated: animated)
+        dismissScreenAnimated(animated, completion: {
+            self.mainScreen.endAppearanceTransition()
+        })
     }
     
     func presentStatsScreenWithLevel(level: Level?, animated: Bool) {

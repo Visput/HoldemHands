@@ -36,7 +36,7 @@ final class StatsScreen: BaseViewController {
 
 extension StatsScreen {
     
-    @IBAction private func closeButtonDidPress(sender: AnyObject) {
+    @IBAction private func doneButtonDidPress(sender: AnyObject) {
         Analytics.doneClickedInStats()
         model.navigationManager.dismissScreenAnimated(true)
     }
