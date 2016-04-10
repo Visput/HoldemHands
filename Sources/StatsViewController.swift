@@ -21,12 +21,14 @@ final class StatsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         model.playerManager.observers.addObserver(self)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         fillViewsWithModel()
     }
     
-    func reloadStats() {
-        fillViewsWithModel()
-        
+    func reloadRanks() {
         model.playerManager.loadProgressItemsIncludingRank({ progressItems, error in
             guard error == nil else { return }
             

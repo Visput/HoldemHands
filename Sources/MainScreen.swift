@@ -63,7 +63,7 @@ extension MainScreen {
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
         Analytics.statsClickedInMenu()
         mainView.scrollToDetailsViewAtPage(DetailsViewPage.Stats.rawValue, completionHandler: {
-            self.statsController.reloadStats()
+            self.statsController.reloadRanks()
         })
     }
     
@@ -79,7 +79,7 @@ extension MainScreen: UIScrollViewDelegate {
         mainView.selectMenuButtonForPage(page)
         
         if page == DetailsViewPage.Stats.rawValue {
-            statsController.reloadStats()
+            statsController.reloadRanks()
         }
     }
 }

@@ -18,7 +18,7 @@ final class StatsScreen: BaseViewController {
         super.viewDidShow()
         Analytics.statsAppeared()
         
-        statsController.reloadStats()
+        statsController.reloadRanks()
     }
     
     override func viewDidHide() {
