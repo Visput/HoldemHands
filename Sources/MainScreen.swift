@@ -49,3 +49,10 @@ extension MainScreen {
         mainView.scrollToSharingView()
     }
 }
+
+extension MainScreen: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        mainView.selectMenuButtonForCurrentPage()
+    }
+}

@@ -44,7 +44,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0SB-ov-BlJ" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="1334" height="375"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJZ-Gm-YzJ" userLabel="Menu View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJZ-Gm-YzJ" userLabel="Master View">
                                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dl-06-gvp">
@@ -191,18 +191,18 @@
                                                                     <action selector="playButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="pOf-6W-r8p"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFd-jV-XYU">
-                                                                <rect key="frame" x="32" y="215" width="40" height="30"/>
-                                                                <state key="normal" title="Share"/>
-                                                                <connections>
-                                                                    <action selector="shareButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="n8y-3r-jjK"/>
-                                                                </connections>
-                                                            </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8L-qM-8tM">
                                                                 <rect key="frame" x="36" y="112" width="36" height="30"/>
                                                                 <state key="normal" title="Stats"/>
                                                                 <connections>
                                                                     <action selector="statsButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="XJQ-W9-oEh"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFd-jV-XYU">
+                                                                <rect key="frame" x="32" y="215" width="40" height="30"/>
+                                                                <state key="normal" title="Share"/>
+                                                                <connections>
+                                                                    <action selector="shareButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="n8y-3r-jjK"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -315,6 +315,9 @@
                             <outlet property="menuView" destination="ee7-Tw-xMU" id="0tt-bm-9cf"/>
                             <outlet property="menuViewLeadingSpace" destination="34B-1z-Wyp" id="rnO-mk-oHk"/>
                             <outlet property="menuViewWidth" destination="kOC-LC-PzJ" id="iQx-TT-CBF"/>
+                            <outletCollection property="menuButtons" destination="XjH-Zl-nik" collectionClass="NSMutableArray" id="UIN-4j-Dol"/>
+                            <outletCollection property="menuButtons" destination="W8L-qM-8tM" collectionClass="NSMutableArray" id="Eg0-UK-1Nu"/>
+                            <outletCollection property="menuButtons" destination="vFd-jV-XYU" collectionClass="NSMutableArray" id="gbq-3Z-bZx"/>
                         </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>

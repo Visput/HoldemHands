@@ -15,6 +15,7 @@ final class MainView: UIView {
     @IBOutlet private(set) weak var levelsContainerView: UIView!
     @IBOutlet private(set) weak var detailsTitleLabel: UILabel!
     
+    @IBOutlet private(set) var menuButtons: [UIButton]!
     @IBOutlet private(set) weak var menuView: UIView!
     @IBOutlet private weak var menuViewLeadingSpace: NSLayoutConstraint!
     @IBOutlet private weak var menuViewWidth: NSLayoutConstraint!
@@ -30,6 +31,7 @@ final class MainView: UIView {
     }
     
     func scrollToLevelsView() {
+        selectMenuButtonForPage(0)
         if isDetailsViewShown {
             UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveEaseInOut, animations: {
                 self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
@@ -40,6 +42,7 @@ final class MainView: UIView {
     }
     
     func scrollToStatsView() {
+        selectMenuButtonForPage(1)
         if isDetailsViewShown {
             UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveEaseInOut, animations: {
                 self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: self.detailsScrollView.frame.size.height)
@@ -51,9 +54,21 @@ final class MainView: UIView {
     }
     
     func scrollToSharingView() {
+        selectMenuButtonForPage(2)
         UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveEaseInOut, animations: {
             self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: 2.0 * self.detailsScrollView.frame.size.height)
             }, completion: nil)
+    }
+    
+    func selectMenuButtonForCurrentPage() {
+        let page = lroundf(Float(detailsScrollView.contentOffset.y / detailsScrollView.frame.size.height))
+        selectMenuButtonForPage(page)
+    }
+    
+    private func selectMenuButtonForPage(page: Int) {
+        for (index, button) in menuButtons.enumerate() {
+            button.selected = index == page
+        }
     }
     
     private func scrollToDetailsView() {
