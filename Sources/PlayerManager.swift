@@ -269,8 +269,8 @@ extension PlayerManager {
                 return
             }
             
-            Analytics.userName(self.player.alias!)
-            Analytics.userID(self.player.playerID!)
+            Analytics.userName(self.player.alias)
+            Analytics.userID(self.player.playerID)
             
             // Load GKSavedGame objects for authenticated player.
             self.player.fetchSavedGamesWithCompletionHandler({ savedGames, error in
@@ -378,7 +378,9 @@ extension PlayerManager {
             playerData = newPlayerData
             
             // Fill player data with game data.
-            let gameDataJSON = NSDictionary(contentsOfFile: gameDataFileName.pathInResourcesBundle())!
+            let gameData = NSData(contentsOfFile: gameDataFileName.pathInResourcesBundle())!
+            let gameDataJSON = try! NSJSONSerialization.JSONObjectWithData(gameData, options: .AllowFragments) as! [String : AnyObject]
+            
             playerData.overallLeaderboardID = gameDataJSON[overallLeaderboardIDKey] as! String
             
             let levelsJSON = gameDataJSON[levelsKey]

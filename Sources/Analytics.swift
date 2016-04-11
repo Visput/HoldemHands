@@ -41,11 +41,11 @@ final class Analytics {
         Crashlytics.sharedInstance().recordError(error!)
     }
     
-    class func userName(userName: String) {
+    class func userName(userName: String?) {
         Crashlytics.sharedInstance().setUserName(userName)
     }
     
-    class func userID(userID: String) {
+    class func userID(userID: String?) {
         Crashlytics.sharedInstance().setUserIdentifier(userID)
         Flurry.setUserID(userID)
     }
