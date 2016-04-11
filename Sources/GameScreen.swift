@@ -104,7 +104,7 @@ extension GameScreen: PlayerManagerObserving {
     
     func playerManager(manager: PlayerManager, didUnlockLevel levelProgress: LevelProgress) {
         let levelName = levelProgress.level.name
-        let text =  NSString(format: NSLocalizedString("Congratulations. %@ is unlocked now!", comment: ""), levelName)
+        let text = NSString.localizedStringWithFormat("Congratulations. %@ is unlocked now!", levelName)
         
         Analytics.unlockBannerShownInGame(levelProgress.level)
         model.navigationManager.showBannerWithText(text as String, tapHandler: { [unowned self] in
@@ -115,7 +115,7 @@ extension GameScreen: PlayerManagerObserving {
     
     func playerManager(manager: PlayerManager, didLoadPlayerData playerData: PlayerData) {
         if manager.isLockedLevel(level) {
-            model.navigationManager.dismissScreenAnimated(true)
+            model.navigationManager.dismissGameScreenAnimated(true)
         }
     }
 }
