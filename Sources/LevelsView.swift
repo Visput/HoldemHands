@@ -17,6 +17,7 @@ final class LevelsView: UIView {
     }
     
     private var zoomedCell: LevelCell?
+    private let zoomLevel: CGFloat = 3.0
     
     private var currentLevelIndex: Int {
         let offset = levelsCollectionView.contentOffset.x
@@ -67,19 +68,30 @@ final class LevelsView: UIView {
                     completionHandler?()
                 })
                 
-                UIView.animateWithDuration(0.4, animations: {
+                UIView.animateWithDuration(0.5, animations: {
                     self.zoomedCell!.handsCountLabel.alpha = 0.0
                     self.zoomedCell!.priceLabel.alpha = 0.0
                     self.zoomedCell!.chipsImageView.alpha = 0.0
                     self.zoomedCell!.levelLabel.alpha = 0.0
                     
-                    mainView.transform = CGAffineTransformMakeScale(3.0, 3.0)
-                    }, completion: nil)
+                    mainView.transform = CGAffineTransformMakeScale(self.zoomLevel, self.zoomLevel)
+                    }, completion: { _ in
+                        // Reset transform after delay when game screen is presented and levels are not visible.
+                        // It's needed to avoid issues with constraints when app goes to background and then back
+                        // to foreground while transform is applied.
+                        self.executeAfterDelay(0.5, task: {
+                            mainView.transform = CGAffineTransformIdentity
+                        })
+                })
         })
     }
     
     func zoomOutLevelIfNeeded(mainView: UIView) {
         guard zoomedCell != nil else { return }
+        
+        // Apply scale transform before animation started.
+        // It's needed because transform was reseted when `zoom in` operation completed.
+        mainView.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
         
         UIView.animateWithDuration(0.4, animations: {
             self.zoomedCell!.handsCountLabel.alpha = 1.0
@@ -87,7 +99,7 @@ final class LevelsView: UIView {
             self.zoomedCell!.chipsImageView.alpha = 1.0
             self.zoomedCell!.levelLabel.alpha = 1.0
             
-            mainView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+            mainView.transform = CGAffineTransformIdentity
             
             }, completion: { _ in
                 self.zoomedCell = nil
