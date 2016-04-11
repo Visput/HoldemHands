@@ -24,7 +24,6 @@ struct PlayerData: Mappable {
         
         levelProgressItems <- map["level_progress_items"]
         chipsCount <- (map["chips_count"], transformOfInt64)
-        overallLeaderboardID <- map["overall_leaderboard_id"]
         rank <- map["rank"]
         timestamp <- map["timestamp"]
     }

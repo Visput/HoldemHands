@@ -15,16 +15,16 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-            
-            FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-            Analytics.startSession()
-            
-            let model = ModelProvider.provider
-            model.navigationManager.window = window
-            model.navigationManager.setMainScreenAsRootAnimated(false)
-            
-            return true
+                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        Analytics.startSession()
+        
+        let model = ModelProvider.provider
+        model.navigationManager.window = window
+        model.navigationManager.setMainScreenAsRootAnimated(false)
+        
+        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -332,7 +332,7 @@ extension PlayerManager {
     }
     
     private func loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded useLastPlayerIfNeeded: Bool) {
-        let defaultPlayerDataFileName = "DefaultPlayerData.json"
+        let defaultPlayerDataFileName = NSBundle.mainBundle().objectForInfoDictionaryKey("DefaultPlayerDataFileName") as! String
         
         let keys = playerDataKeys()
         var playerDataJSON: String! = nil
@@ -369,15 +369,19 @@ extension PlayerManager {
     }
     
     private func initializePlayerDataWithJSONString(jsonString: String) {
-        let levelsDataFileName = "GameLevels.json"
+        let gameDataFileName = NSBundle.mainBundle().objectForInfoDictionaryKey("GameDataFileName") as! String
+        let overallLeaderboardIDKey = "overall_leaderboard_id"
+        let levelsKey = "levels"
         
         let newPlayerData = Mapper<PlayerData>().map(jsonString)
         if playerData?.timestamp < newPlayerData!.timestamp {
             playerData = newPlayerData
             
-            // Fill progress items with levels data.
-            let levelsJSON = try! NSString(contentsOfFile: levelsDataFileName.pathInResourcesBundle(),
-                encoding: NSUTF8StringEncoding) as String
+            // Fill player data with game data.
+            let gameDataJSON = NSDictionary(contentsOfFile: gameDataFileName.pathInResourcesBundle())!
+            playerData.overallLeaderboardID = gameDataJSON[overallLeaderboardIDKey] as! String
+            
+            let levelsJSON = gameDataJSON[levelsKey]
             let levels = Mapper<Level>().mapArray(levelsJSON)!
             for (index, progress) in playerData.levelProgressItems.enumerate() {
                 for level in levels {

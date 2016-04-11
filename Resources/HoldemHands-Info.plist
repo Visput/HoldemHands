@@ -53,7 +53,7 @@
 	<key>FacebookDisplayName</key>
 	<string>HoldemHands</string>
 	<key>FlurryKey</key>
-	<string>5RZNXDSGKD292DKMXGKM </string>
+	<string>FKV754NVT4GQNBPYHHST</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -124,5 +124,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>GameDataFileName</key>
+	<string>GameData.json</string>
+	<key>DefaultPlayerDataFileName</key>
+	<string>DefaultPlayerData.json</string>
 </dict>
 </plist>

@@ -716,6 +716,10 @@
         <scene sceneID="uqt-Cu-tYh">
             <objects>
                 <viewController id="egY-VU-Eln" customClass="StatsViewController" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Gj-ZC-t9y"/>
+                        <viewControllerLayoutGuide type="bottom" id="BNG-he-X4a"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oed-g2-2Fw" customClass="StatsView" customModule="HoldemHands" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="316"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -940,6 +944,10 @@
         <scene sceneID="A4p-mO-obr">
             <objects>
                 <viewController id="36g-I0-Am3" customClass="SharingViewController" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LWl-gn-hz1"/>
+                        <viewControllerLayoutGuide type="bottom" id="MhV-YJ-li6"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="v32-jH-mc8">
                         <rect key="frame" x="0.0" y="0.0" width="346" height="136"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -993,6 +1001,10 @@
         <scene sceneID="43U-lF-atv">
             <objects>
                 <viewController id="nmV-US-QSN" customClass="LevelsViewController" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5L3-Om-i7S"/>
+                        <viewControllerLayoutGuide type="bottom" id="zNM-Ym-6f3"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ykB-Dd-HwI" customClass="LevelsView" customModule="HoldemHands" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="321"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

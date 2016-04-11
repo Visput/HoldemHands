@@ -57,8 +57,72 @@
 		9F44D2451C84C63900640046 /* NSObject+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2401C84C63900640046 /* NSObject+Utils.swift */; };
 		9F44D2461C84C63900640046 /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2411C84C63900640046 /* ObserverSet.swift */; };
 		9F44D2471C84C63900640046 /* UIScreen+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2421C84C63900640046 /* UIScreen+Size.swift */; };
-		9F73D1C81C9BA2D900EA72A7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F73D1C71C9BA2D900EA72A7 /* GameKit.framework */; };
-		9F73D1D51CA04FF900EA72A7 /* GameLevels.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F73D1D41CA04FF900EA72A7 /* GameLevels.json */; };
+		9F4EF2751CBC4F66002E5FEA /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2411C84C63900640046 /* ObserverSet.swift */; };
+		9F4EF2761CBC4F66002E5FEA /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F314F901CB8D0D00063B893 /* SharingViewController.swift */; };
+		9F4EF2771CBC4F66002E5FEA /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BDE1C9251E700B37939 /* BannerView.swift */; };
+		9F4EF2781CBC4F66002E5FEA /* HandsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F314F8E1CB8CDD20063B893 /* HandsView.swift */; };
+		9F4EF2791CBC4F66002E5FEA /* StatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E21C93F53400A39C2C /* StatsCell.swift */; };
+		9F4EF27A1CBC4F66002E5FEA /* HandRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2031C84B21A00640046 /* HandRank.swift */; };
+		9F4EF27B1CBC4F66002E5FEA /* ChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA41CB59D840010555B /* ChipsView.swift */; };
+		9F4EF27C1CBC4F66002E5FEA /* LevelCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD261C8A13C7005F1D72 /* LevelCellItem.swift */; };
+		9F4EF27D1CBC4F66002E5FEA /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE51C925A7A00B37939 /* UIView+Nib.swift */; };
+		9F4EF27E1CBC4F66002E5FEA /* UIScreen+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2421C84C63900640046 /* UIScreen+Size.swift */; };
+		9F4EF27F1CBC4F66002E5FEA /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20B1C84B21A00640046 /* Rank.swift */; };
+		9F4EF2801CBC4F66002E5FEA /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1611C879B3100D6F368 /* PlayerManager.swift */; };
+		9F4EF2811CBC4F66002E5FEA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D23C1C84C61900640046 /* BaseViewController.swift */; };
+		9F4EF2821CBC4F66002E5FEA /* TextBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE11C92586800B37939 /* TextBannerView.swift */; };
+		9F4EF2831CBC4F66002E5FEA /* SharingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1BD3551C93701C00020AAA /* SharingItem.swift */; };
+		9F4EF2841CBC4F66002E5FEA /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4B731C91E40800B37939 /* StatsView.swift */; };
+		9F4EF2851CBC4F66002E5FEA /* NSObject+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2401C84C63900640046 /* NSObject+Utils.swift */; };
+		9F4EF2861CBC4F66002E5FEA /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2311C84BAA900640046 /* MainScreen.swift */; };
+		9F4EF2871CBC4F66002E5FEA /* Int64+Chips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888EA1C94F6A000A39C2C /* Int64+Chips.swift */; };
+		9F4EF2881CBC4F66002E5FEA /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD081C89022A005F1D72 /* NavigationManager.swift */; };
+		9F4EF2891CBC4F66002E5FEA /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15F1C879A9D00D6F368 /* PlayerData.swift */; };
+		9F4EF28A1CBC4F66002E5FEA /* LevelProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15D1C8761C700D6F368 /* LevelProgress.swift */; };
+		9F4EF28B1CBC4F66002E5FEA /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2071C84B21A00640046 /* GameView.swift */; };
+		9F4EF28C1CBC4F66002E5FEA /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D1FF1C84B21A00640046 /* Hand.swift */; };
+		9F4EF28D1CBC4F66002E5FEA /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */; };
+		9F4EF28E1CBC4F66002E5FEA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2331C84BAC700640046 /* MainView.swift */; };
+		9F4EF28F1CBC4F66002E5FEA /* LevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F314F8A1CB8CD620063B893 /* LevelsViewController.swift */; };
+		9F4EF2901CBC4F66002E5FEA /* HandOdds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2021C84B21A00640046 /* HandOdds.swift */; };
+		9F4EF2911CBC4F66002E5FEA /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2061C84B21A00640046 /* GameScreen.swift */; };
+		9F4EF2921CBC4F66002E5FEA /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D23E1C84C63900640046 /* Analytics.swift */; };
+		9F4EF2931CBC4F66002E5FEA /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D1FE1C84B21A00640046 /* Deck.swift */; };
+		9F4EF2941CBC4F66002E5FEA /* HandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F183F711CA9D993002F4C5F /* HandsViewController.swift */; };
+		9F4EF2951CBC4F66002E5FEA /* HandRankComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2051C84B21A00640046 /* HandRankComparator.swift */; };
+		9F4EF2961CBC4F66002E5FEA /* LevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F314F8C1CB8CD8C0063B893 /* LevelsView.swift */; };
+		9F4EF2971CBC4F66002E5FEA /* StatsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4B711C91E3C800B37939 /* StatsScreen.swift */; };
+		9F4EF2981CBC4F66002E5FEA /* UIColor+AppPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20D1C84B21A00640046 /* UIColor+AppPalette.swift */; };
+		9F4EF2991CBC4F66002E5FEA /* PlayerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E61C93F62700A39C2C /* PlayerProgress.swift */; };
+		9F4EF29A1CBC4F66002E5FEA /* StatsCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */; };
+		9F4EF29B1CBC4F66002E5FEA /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F314F881CB8CCE70063B893 /* StatsViewController.swift */; };
+		9F4EF29C1CBC4F66002E5FEA /* HandsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1927081CA3260B009F7E30 /* HandsCollectionViewLayout.swift */; };
+		9F4EF29D1CBC4F66002E5FEA /* ModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D23F1C84C63900640046 /* ModelProvider.swift */; };
+		9F4EF29E1CBC4F66002E5FEA /* ChipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA21CB59D460010555B /* ChipsViewController.swift */; };
+		9F4EF29F1CBC4F66002E5FEA /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD241C8A13B3005F1D72 /* LevelCell.swift */; };
+		9F4EF2A01CBC4F66002E5FEA /* SharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD221C8A130E005F1D72 /* SharingManager.swift */; };
+		9F4EF2A11CBC4F66002E5FEA /* PlayerManagerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */; };
+		9F4EF2A21CBC4F66002E5FEA /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20C1C84B21A00640046 /* Suit.swift */; };
+		9F4EF2A31CBC4F66002E5FEA /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E81C93F76B00A39C2C /* Progress.swift */; };
+		9F4EF2A41CBC4F66002E5FEA /* QuickArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20A1C84B21A00640046 /* QuickArray.swift */; };
+		9F4EF2A51CBC4F66002E5FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D1FC1C84B21A00640046 /* AppDelegate.swift */; };
+		9F4EF2A61CBC4F66002E5FEA /* HandRankCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2041C84B21A00640046 /* HandRankCalculator.swift */; };
+		9F4EF2A71CBC4F66002E5FEA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D1FD1C84B21A00640046 /* Card.swift */; };
+		9F4EF2A81CBC4F66002E5FEA /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F93B4811C9750760092CBCB /* String+Path.swift */; };
+		9F4EF2A91CBC4F66002E5FEA /* HandOddsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2081C84B21A00640046 /* HandOddsCalculator.swift */; };
+		9F4EF2AA1CBC4F66002E5FEA /* HandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2001C84B21A00640046 /* HandCell.swift */; };
+		9F4EF2AB1CBC4F66002E5FEA /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1591C875D0100D6F368 /* Level.swift */; };
+		9F4EF2AC1CBC4F66002E5FEA /* HandCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2011C84B21A00640046 /* HandCellItem.swift */; };
+		9F4EF2AE1CBC4F66002E5FEA /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */; };
+		9F4EF2AF1CBC4F66002E5FEA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77C71BFF06C1B554EEEC53C /* Pods.framework */; };
+		9F4EF2B21CBC4F66002E5FEA /* DefaultPlayerData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F93B4831C9760700092CBCB /* DefaultPlayerData.json */; };
+		9F4EF2B31CBC4F66002E5FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F81C84B21A00640046 /* Main.storyboard */; };
+		9F4EF2B41CBC4F66002E5FEA /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */; };
+		9F4EF2B51CBC4F66002E5FEA /* TextBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE31C9258F200B37939 /* TextBannerView.xib */; };
+		9F4EF2B61CBC4F66002E5FEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F51C84B21A00640046 /* Assets.xcassets */; };
+		9F4EF2B81CBC4F66002E5FEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F61C84B21A00640046 /* LaunchScreen.storyboard */; };
+		9F6703091CBC54EB00C85F99 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6703081CBC54EB00C85F99 /* GameKit.framework */; };
+		9F67030A1CBC559800C85F99 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6703081CBC54EB00C85F99 /* GameKit.framework */; };
 		9F93B4821C9750760092CBCB /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F93B4811C9750760092CBCB /* String+Path.swift */; };
 		9F93B4841C9760700092CBCB /* DefaultPlayerData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F93B4831C9760700092CBCB /* DefaultPlayerData.json */; };
 		9F95E15A1C875D0100D6F368 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1591C875D0100D6F368 /* Level.swift */; };
@@ -69,6 +133,8 @@
 		9FA31FA31CB59D460010555B /* ChipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA21CB59D460010555B /* ChipsViewController.swift */; };
 		9FA31FA51CB59D840010555B /* ChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA41CB59D840010555B /* ChipsView.swift */; };
 		9FA31FA81CB74F810010555B /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */; };
+		9FC41FD01CBC5E0D0021C91B /* GameData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9FC41FCE1CBC5E0D0021C91B /* GameData.json */; };
+		9FC41FD21CBC5E1A0021C91B /* GameDataQA.json in Resources */ = {isa = PBXBuildFile; fileRef = 9FC41FCF1CBC5E0D0021C91B /* GameDataQA.json */; };
 		9FC567EF1CA487D100FF1DE7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */; };
 		9FE888E31C93F53400A39C2C /* StatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E21C93F53400A39C2C /* StatsCell.swift */; };
 		9FE888E51C93F54F00A39C2C /* StatsCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */; };
@@ -113,7 +179,6 @@
 		9F44D1F51C84B21A00640046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F44D1F71C84B21A00640046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F44D1F91C84B21A00640046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9F44D1FA1C84B21A00640046 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F44D1FC1C84B21A00640046 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F44D1FD1C84B21A00640046 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		9F44D1FE1C84B21A00640046 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
@@ -140,9 +205,11 @@
 		9F44D2401C84C63900640046 /* NSObject+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Utils.swift"; sourceTree = "<group>"; };
 		9F44D2411C84C63900640046 /* ObserverSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverSet.swift; sourceTree = "<group>"; };
 		9F44D2421C84C63900640046 /* UIScreen+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Size.swift"; sourceTree = "<group>"; };
-		9F73D1C71C9BA2D900EA72A7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		9F4EF2C01CBC4F66002E5FEA /* HoldemHandsQA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHandsQA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F4EF2C21CBC4FDF002E5FEA /* HoldemHands-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HoldemHands-Info.plist"; sourceTree = "<group>"; };
+		9F4EF2C31CBC4FDF002E5FEA /* HoldemHandsQA-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HoldemHandsQA-Info.plist"; sourceTree = "<group>"; };
+		9F6703081CBC54EB00C85F99 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		9F73D1C91C9BA9D200EA72A7 /* HoldemHands.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HoldemHands.entitlements; sourceTree = "<group>"; };
-		9F73D1D41CA04FF900EA72A7 /* GameLevels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameLevels.json; sourceTree = "<group>"; };
 		9F93B4811C9750760092CBCB /* String+Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		9F93B4831C9760700092CBCB /* DefaultPlayerData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultPlayerData.json; sourceTree = "<group>"; };
 		9F95E1591C875D0100D6F368 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -155,6 +222,9 @@
 		9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Utils.swift"; sourceTree = "<group>"; };
 		9FACAAC91C72BCC20051A435 /* HoldemHands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FACAADD1C72BCC20051A435 /* HoldemHandsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoldemHandsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FC41FCE1CBC5E0D0021C91B /* GameData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameData.json; sourceTree = "<group>"; };
+		9FC41FCF1CBC5E0D0021C91B /* GameDataQA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameDataQA.json; sourceTree = "<group>"; };
+		9FC41FD31CBC5EF60021C91B /* HoldemHandsQA.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HoldemHandsQA.entitlements; sourceTree = "<group>"; };
 		9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		9FE888E21C93F53400A39C2C /* StatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCell.swift; sourceTree = "<group>"; };
 		9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCellItem.swift; sourceTree = "<group>"; };
@@ -165,13 +235,23 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9F4EF2AD1CBC4F66002E5FEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F6703091CBC54EB00C85F99 /* GameKit.framework in Frameworks */,
+				9F4EF2AE1CBC4F66002E5FEA /* AdSupport.framework in Frameworks */,
+				9F4EF2AF1CBC4F66002E5FEA /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FACAAC61C72BCC20051A435 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F67030A1CBC559800C85F99 /* GameKit.framework in Frameworks */,
 				9FC567EF1CA487D100FF1DE7 /* AdSupport.framework in Frameworks */,
 				08CF424122F5D177FE38852F /* Pods.framework in Frameworks */,
-				9F73D1C81C9BA2D900EA72A7 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,14 +404,17 @@
 		9F44D1F41C84B21A00640046 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */,
+				9F4EF2C21CBC4FDF002E5FEA /* HoldemHands-Info.plist */,
+				9F4EF2C31CBC4FDF002E5FEA /* HoldemHandsQA-Info.plist */,
+				9FC41FD31CBC5EF60021C91B /* HoldemHandsQA.entitlements */,
 				9F73D1C91C9BA9D200EA72A7 /* HoldemHands.entitlements */,
+				9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */,
 				9F44D1F51C84B21A00640046 /* Assets.xcassets */,
 				9F44D1F61C84B21A00640046 /* LaunchScreen.storyboard */,
 				9F44D1F81C84B21A00640046 /* Main.storyboard */,
-				9F44D1FA1C84B21A00640046 /* Info.plist */,
 				9F93B4831C9760700092CBCB /* DefaultPlayerData.json */,
-				9F73D1D41CA04FF900EA72A7 /* GameLevels.json */,
+				9FC41FCE1CBC5E0D0021C91B /* GameData.json */,
+				9FC41FCF1CBC5E0D0021C91B /* GameDataQA.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -484,6 +567,7 @@
 			children = (
 				9FACAAC91C72BCC20051A435 /* HoldemHands.app */,
 				9FACAADD1C72BCC20051A435 /* HoldemHandsTests.xctest */,
+				9F4EF2C01CBC4F66002E5FEA /* HoldemHandsQA.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -499,8 +583,8 @@
 		E4E4B045AA5B890F9E9E0F7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F6703081CBC54EB00C85F99 /* GameKit.framework */,
 				9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */,
-				9F73D1C71C9BA2D900EA72A7 /* GameKit.framework */,
 				B77C71BFF06C1B554EEEC53C /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -509,6 +593,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9F4EF2721CBC4F66002E5FEA /* HoldemHandsQA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F4EF2BD1CBC4F66002E5FEA /* Build configuration list for PBXNativeTarget "HoldemHandsQA" */;
+			buildPhases = (
+				9F4EF2731CBC4F66002E5FEA /* Check Pods Manifest.lock */,
+				9F4EF2741CBC4F66002E5FEA /* Sources */,
+				9F4EF2AD1CBC4F66002E5FEA /* Frameworks */,
+				9F4EF2B11CBC4F66002E5FEA /* Resources */,
+				9F4EF2B91CBC4F66002E5FEA /* Embed Pods Frameworks */,
+				9F4EF2BA1CBC4F66002E5FEA /* Copy Pods Resources */,
+				9F4EF2BB1CBC4F66002E5FEA /* Run Swift Lint */,
+				9F4EF2BC1CBC4F66002E5FEA /* Run Crashlytics */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HoldemHandsQA;
+			productName = PokerHand;
+			productReference = 9F4EF2C01CBC4F66002E5FEA /* HoldemHandsQA.app */;
+			productType = "com.apple.product-type.application";
+		};
 		9FACAAC81C72BCC20051A435 /* HoldemHands */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FACAAE61C72BCC20051A435 /* Build configuration list for PBXNativeTarget "HoldemHands" */;
@@ -562,6 +668,17 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Visput;
 				TargetAttributes = {
+					9F4EF2721CBC4F66002E5FEA = {
+						DevelopmentTeam = WP3CPF8Q52;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
 					9FACAAC81C72BCC20051A435 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = WP3CPF8Q52;
@@ -595,22 +712,37 @@
 			projectRoot = "";
 			targets = (
 				9FACAAC81C72BCC20051A435 /* HoldemHands */,
+				9F4EF2721CBC4F66002E5FEA /* HoldemHandsQA */,
 				9FACAADC1C72BCC20051A435 /* HoldemHandsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9F4EF2B11CBC4F66002E5FEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F4EF2B21CBC4F66002E5FEA /* DefaultPlayerData.json in Resources */,
+				9F4EF2B31CBC4F66002E5FEA /* Main.storyboard in Resources */,
+				9F4EF2B41CBC4F66002E5FEA /* iTunesArtwork@2x.png in Resources */,
+				9F4EF2B51CBC4F66002E5FEA /* TextBannerView.xib in Resources */,
+				9F4EF2B61CBC4F66002E5FEA /* Assets.xcassets in Resources */,
+				9FC41FD21CBC5E1A0021C91B /* GameDataQA.json in Resources */,
+				9F4EF2B81CBC4F66002E5FEA /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FACAAC71C72BCC20051A435 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9F93B4841C9760700092CBCB /* DefaultPlayerData.json in Resources */,
 				9F44D2101C84B21A00640046 /* Main.storyboard in Resources */,
+				9FC41FD01CBC5E0D0021C91B /* GameData.json in Resources */,
 				9FA2090D1CA614F100E084E8 /* iTunesArtwork@2x.png in Resources */,
 				9F3C4BE41C9258F200B37939 /* TextBannerView.xib in Resources */,
 				9F44D20E1C84B21A00640046 /* Assets.xcassets in Resources */,
-				9F73D1D51CA04FF900EA72A7 /* GameLevels.json in Resources */,
 				9F44D20F1C84B21A00640046 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,6 +830,79 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 8848a7672c67cf781cf1f20388b3c330c7f0d5be 34855c0cf709ce272884a13e3b1b0fc95ccabe1bd0ed15f3328369ad3f77b1ef";
 		};
+		9F4EF2731CBC4F66002E5FEA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9F4EF2B91CBC4F66002E5FEA /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F4EF2BA1CBC4F66002E5FEA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F4EF2BB1CBC4F66002E5FEA /* Run Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		9F4EF2BC1CBC4F66002E5FEA /* Run Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Crashlytics";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 8848a7672c67cf781cf1f20388b3c330c7f0d5be 34855c0cf709ce272884a13e3b1b0fc95ccabe1bd0ed15f3328369ad3f77b1ef";
+		};
 		B8BB0EEF8865D3D73820D2B4 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -746,6 +951,69 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9F4EF2741CBC4F66002E5FEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F4EF2751CBC4F66002E5FEA /* ObserverSet.swift in Sources */,
+				9F4EF2761CBC4F66002E5FEA /* SharingViewController.swift in Sources */,
+				9F4EF2771CBC4F66002E5FEA /* BannerView.swift in Sources */,
+				9F4EF2781CBC4F66002E5FEA /* HandsView.swift in Sources */,
+				9F4EF2791CBC4F66002E5FEA /* StatsCell.swift in Sources */,
+				9F4EF27A1CBC4F66002E5FEA /* HandRank.swift in Sources */,
+				9F4EF27B1CBC4F66002E5FEA /* ChipsView.swift in Sources */,
+				9F4EF27C1CBC4F66002E5FEA /* LevelCellItem.swift in Sources */,
+				9F4EF27D1CBC4F66002E5FEA /* UIView+Nib.swift in Sources */,
+				9F4EF27E1CBC4F66002E5FEA /* UIScreen+Size.swift in Sources */,
+				9F4EF27F1CBC4F66002E5FEA /* Rank.swift in Sources */,
+				9F4EF2801CBC4F66002E5FEA /* PlayerManager.swift in Sources */,
+				9F4EF2811CBC4F66002E5FEA /* BaseViewController.swift in Sources */,
+				9F4EF2821CBC4F66002E5FEA /* TextBannerView.swift in Sources */,
+				9F4EF2831CBC4F66002E5FEA /* SharingItem.swift in Sources */,
+				9F4EF2841CBC4F66002E5FEA /* StatsView.swift in Sources */,
+				9F4EF2851CBC4F66002E5FEA /* NSObject+Utils.swift in Sources */,
+				9F4EF2861CBC4F66002E5FEA /* MainScreen.swift in Sources */,
+				9F4EF2871CBC4F66002E5FEA /* Int64+Chips.swift in Sources */,
+				9F4EF2881CBC4F66002E5FEA /* NavigationManager.swift in Sources */,
+				9F4EF2891CBC4F66002E5FEA /* PlayerData.swift in Sources */,
+				9F4EF28A1CBC4F66002E5FEA /* LevelProgress.swift in Sources */,
+				9F4EF28B1CBC4F66002E5FEA /* GameView.swift in Sources */,
+				9F4EF28C1CBC4F66002E5FEA /* Hand.swift in Sources */,
+				9F4EF28D1CBC4F66002E5FEA /* UICollectionView+Utils.swift in Sources */,
+				9F4EF28E1CBC4F66002E5FEA /* MainView.swift in Sources */,
+				9F4EF28F1CBC4F66002E5FEA /* LevelsViewController.swift in Sources */,
+				9F4EF2901CBC4F66002E5FEA /* HandOdds.swift in Sources */,
+				9F4EF2911CBC4F66002E5FEA /* GameScreen.swift in Sources */,
+				9F4EF2921CBC4F66002E5FEA /* Analytics.swift in Sources */,
+				9F4EF2931CBC4F66002E5FEA /* Deck.swift in Sources */,
+				9F4EF2941CBC4F66002E5FEA /* HandsViewController.swift in Sources */,
+				9F4EF2951CBC4F66002E5FEA /* HandRankComparator.swift in Sources */,
+				9F4EF2961CBC4F66002E5FEA /* LevelsView.swift in Sources */,
+				9F4EF2971CBC4F66002E5FEA /* StatsScreen.swift in Sources */,
+				9F4EF2981CBC4F66002E5FEA /* UIColor+AppPalette.swift in Sources */,
+				9F4EF2991CBC4F66002E5FEA /* PlayerProgress.swift in Sources */,
+				9F4EF29A1CBC4F66002E5FEA /* StatsCellItem.swift in Sources */,
+				9F4EF29B1CBC4F66002E5FEA /* StatsViewController.swift in Sources */,
+				9F4EF29C1CBC4F66002E5FEA /* HandsCollectionViewLayout.swift in Sources */,
+				9F4EF29D1CBC4F66002E5FEA /* ModelProvider.swift in Sources */,
+				9F4EF29E1CBC4F66002E5FEA /* ChipsViewController.swift in Sources */,
+				9F4EF29F1CBC4F66002E5FEA /* LevelCell.swift in Sources */,
+				9F4EF2A01CBC4F66002E5FEA /* SharingManager.swift in Sources */,
+				9F4EF2A11CBC4F66002E5FEA /* PlayerManagerObserver.swift in Sources */,
+				9F4EF2A21CBC4F66002E5FEA /* Suit.swift in Sources */,
+				9F4EF2A31CBC4F66002E5FEA /* Progress.swift in Sources */,
+				9F4EF2A41CBC4F66002E5FEA /* QuickArray.swift in Sources */,
+				9F4EF2A51CBC4F66002E5FEA /* AppDelegate.swift in Sources */,
+				9F4EF2A61CBC4F66002E5FEA /* HandRankCalculator.swift in Sources */,
+				9F4EF2A71CBC4F66002E5FEA /* Card.swift in Sources */,
+				9F4EF2A81CBC4F66002E5FEA /* String+Path.swift in Sources */,
+				9F4EF2A91CBC4F66002E5FEA /* HandOddsCalculator.swift in Sources */,
+				9F4EF2AA1CBC4F66002E5FEA /* HandCell.swift in Sources */,
+				9F4EF2AB1CBC4F66002E5FEA /* Level.swift in Sources */,
+				9F4EF2AC1CBC4F66002E5FEA /* HandCellItem.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FACAAC51C72BCC20051A435 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -847,6 +1115,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9F4EF2BE1CBC4F66002E5FEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38F1C5899B0FDC694E47BE96 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Resources/HoldemHandsQA.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "Resources/HoldemHandsQA-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.visput.holdemhands.test;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9F4EF2BF1CBC4F66002E5FEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25C523273D3C4AF45346EF9E /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Resources/HoldemHandsQA.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_OPTIMIZATION_LEVEL = s;
+				INFOPLIST_FILE = "Resources/HoldemHandsQA-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.visput.holdemhands.test;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		9FACAAE41C72BCC20051A435 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -938,14 +1247,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = "Resources/HoldemHands-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.visput.holdemhands.prod;
 				PRODUCT_NAME = HoldemHands;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -958,14 +1267,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_OPTIMIZATION_LEVEL = s;
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = "Resources/HoldemHands-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.visput.holdemhands.prod;
 				PRODUCT_NAME = HoldemHands;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1001,6 +1310,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9F4EF2BD1CBC4F66002E5FEA /* Build configuration list for PBXNativeTarget "HoldemHandsQA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F4EF2BE1CBC4F66002E5FEA /* Debug */,
+				9F4EF2BF1CBC4F66002E5FEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9FACAAC41C72BCC20051A435 /* Build configuration list for PBXProject "HoldemHands" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
