@@ -45,7 +45,7 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = levelsView.levelsCollectionView.cellForItemAtIndexPath(indexPath) as! LevelCell
-        Analytics.levelClickedInLevels(cell.item.levelProgress)
+        Analytics.levelClickedInMainScreen(cell.item.levelProgress)
         if !cell.item.levelProgress.locked {
             levelsView.zoomInLevelAtIndex(indexPath.item, mainView: model.navigationManager.mainScreen.view, completionHandler: {
                 self.model.navigationManager.presentGameScreenWithLevel(cell.item.levelProgress.level, animated: true)

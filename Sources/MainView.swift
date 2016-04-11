@@ -20,7 +20,7 @@ final class MainView: UIView {
     @IBOutlet private weak var menuViewLeadingSpace: NSLayoutConstraint!
     @IBOutlet private weak var menuViewWidth: NSLayoutConstraint!
     
-    var isDetailsViewShown: Bool {
+    private var isDetailsViewShown: Bool {
         return contentScrollView.contentOffset.x != 0.0
     }
     

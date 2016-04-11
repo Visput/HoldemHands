@@ -16,14 +16,14 @@ final class StatsScreen: BaseViewController {
     
     override func viewDidShow() {
         super.viewDidShow()
-        Analytics.statsAppeared()
+        Analytics.statsScreenAppeared()
         
         statsController.reloadRanks()
     }
     
     override func viewDidHide() {
         super.viewDidHide()
-        Analytics.statsDisappeared()
+        Analytics.statsScreenDisappeared()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -37,7 +37,7 @@ final class StatsScreen: BaseViewController {
 extension StatsScreen {
     
     @IBAction private func doneButtonDidPress(sender: AnyObject) {
-        Analytics.doneClickedInStats()
+        Analytics.doneClickedInStatsScreen()
         model.navigationManager.dismissScreenAnimated(true)
     }
 }

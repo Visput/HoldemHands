@@ -12,6 +12,12 @@ class BaseViewController: UIViewController {
 
     let model = ModelProvider.provider
     
+    var isViewDisplayed: Bool {
+        get {
+            return isViewLoaded() && view.window != nil
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         viewDidShow()

@@ -47,8 +47,8 @@ final class StatsViewController: BaseViewController {
 extension StatsViewController {
     
     @IBAction private func leaderboardsButtonDidPress(sender: UIButton) {
+        Analytics.leaderboardsClicked()
         let leaderboardID = model.playerManager.playerData.overallLeaderboardID
-        Analytics.leaderboardClickedInStats(leaderboardID)
         model.navigationManager.presentLeaderboardScreenWithLeaderboardID(leaderboardID, animated: true)
     }
 }
@@ -72,8 +72,9 @@ extension StatsViewController: UICollectionViewDelegateFlowLayout, UICollectionV
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! StatsCell!
+        Analytics.statsItemClicked(cell.item.progressItem)
+        
         let leaderboardID = cell.item.progressItem.leaderboardID
-        Analytics.leaderboardClickedInStats(leaderboardID)
         model.navigationManager.presentLeaderboardScreenWithLeaderboardID(leaderboardID, animated: true)
     }
     

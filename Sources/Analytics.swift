@@ -16,6 +16,8 @@ import AdSupport
 
 final class Analytics {
     
+    weak static var navigationManager: NavigationManager!
+    
     private static var gameRoundsCount = 0
     private static var screenAppearTime = 0.0
     private static var screenDisappearTime: Double {
@@ -55,64 +57,64 @@ final class Analytics {
 extension Analytics {
     
     class func facebookSharingInitiated() {
-        Flurry.logEvent("sharing_facebook", timed: true)
+        Flurry.logEvent("share.facebook", timed: true)
     }
 
     class func facebookSharingCanceled() {
-        let event = (name: "sharing_facebook", params: ["action" : "canceled"])
+        let event = (name: "share.facebook", params: ["action" : "canceled"])
         Flurry.endTimedEvent(event.name, withParameters: event.params)
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func facebookSharingCompleted() {
-        let event = (name: "sharing_facebook", params: ["action" : "completed"])
+        let event = (name: "share.facebook", params: ["action" : "completed"])
         Flurry.endTimedEvent(event.name, withParameters: event.params)
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func facebookSharingFailed(error: NSError) {
         self.error(error)
-        let event = (name: "sharing_facebook", params: ["action" : "failed"])
+        let event = (name: "share.facebook", params: ["action" : "failed"])
         Flurry.endTimedEvent(event.name, withParameters: event.params)
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func twitterSharingInitiated() {
-        Flurry.logEvent("sharing_twitter", timed: true)
+        Flurry.logEvent("share.twitter", timed: true)
     }
     
     class func twitterSharingCanceled() {
-        let event = (name: "sharing_twitter", params: ["action" : "canceled"])
+        let event = (name: "share.twitter", params: ["action" : "canceled"])
         Flurry.endTimedEvent(event.name, withParameters: event.params)
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func twitterSharingCompleted() {
-        let event = (name: "sharing_twitter", params: ["action" : "completed"])
+        let event = (name: "share.twitter", params: ["action" : "completed"])
         Flurry.endTimedEvent(event.name, withParameters: event.params)
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func twitterSharingFailed(error: NSError) {
         self.error(error)
-        let event = (name: "sharing_twitter", params: ["action" : "failed"])
+        let event = (name: "share.twitter", params: ["action" : "failed"])
         Flurry.endTimedEvent(event.name, withParameters: event.params)
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func instagramSharingInitiated() {
-        Flurry.logEvent("sharing_instagram", timed: true)
+        Flurry.logEvent("share.instagram", timed: true)
     }
     
     class func instagramSharingCompleted() {
-        let event = (name: "sharing_instagram", params: ["action" : "completed"])
+        let event = (name: "share.instagram", params: ["action" : "completed"])
         Flurry.endTimedEvent(event.name, withParameters: event.params)
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
     class func instagramSharingFailed(error: NSError) {
         self.error(error)
-        let event = (name: "sharing_instagram", params: ["action" : "failed"])
+        let event = (name: "share.instagram", params: ["action" : "failed"])
         Flurry.endTimedEvent(event.name, withParameters: event.params)
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
@@ -120,72 +122,42 @@ extension Analytics {
 
 extension Analytics {
     
-    class func playClickedInMenu() {
-        let event = (name: "click_menu_play", params: [:])
-        Flurry.logEvent(event.name)
-        Answers.logCustomEventWithName(event.name, customAttributes: nil)
-        menuDisappeared()
-        levelsAppeared()
+    class func statsItemClicked(progress: Progress) {
+        if navigationManager.mainScreen.isViewDisplayed {
+            Analytics.statsItemClickedInMainScreen(progress)
+        } else {
+            Analytics.statsItemClickedInStatsScreen(progress)
+        }
     }
     
-    class func statsClickedInMenu() {
-        let event = (name: "click_menu_stats", params: [:])
-        Flurry.logEvent(event.name)
-        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    class func leaderboardsClicked() {
+        if navigationManager.mainScreen.isViewDisplayed {
+            Analytics.leaderboardsClickedInMainScreen()
+        } else {
+            Analytics.leaderboardsClickedInStatsScreen()
+        }
     }
     
-    class func facebookClickedInMenu() {
-        let event = (name: "click_menu_facebook", params: [:])
-        Flurry.logEvent(event.name)
-        Answers.logCustomEventWithName(event.name, customAttributes: nil)
-    }
-    
-    class func twitterClickedInMenu() {
-        let event = (name: "click_menu_twitter", params: [:])
-        Flurry.logEvent(event.name)
-        Answers.logCustomEventWithName(event.name, customAttributes: nil)
-    }
-    
-    class func instagramClickedInMenu() {
-        let event = (name: "click_menu_instagram", params: [:])
-        Flurry.logEvent(event.name)
-        Answers.logCustomEventWithName(event.name, customAttributes: nil)
-    }
-    
-    class func leaderboardClickedInStats(leaderboardID: String) {
-        let event = (name: "click_stats_leaderboard", params: ["id" : leaderboardID])
+    private class func statsItemClickedInMainScreen(progress: Progress) {
+        let event = (name: "click.main_screen.stats_item", params: ["leaderboard_id" : progress.leaderboardID])
         Flurry.logEvent(event.name, withParameters: event.params)
-        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: (event.params))
     }
     
-    class func doneClickedInStats() {
-        let event = (name: "click_stats_done", params: [:])
+    private class func leaderboardsClickedInMainScreen() {
+        let event = (name: "click.main_screen.leaderboards", params: [:])
         Flurry.logEvent(event.name)
         Answers.logCustomEventWithName(event.name, customAttributes: nil)
     }
     
-    class func menuClickedInLevels() {
-        let event = (name: "click_levels_menu", params: [:])
-        Flurry.logEvent(event.name)
-        Answers.logCustomEventWithName(event.name, customAttributes: nil)
-        levelsDisappeared()
-        menuAppeared()
+    class func statsItemClickedInStatsScreen(progress: Progress) {
+        let event = (name: "click.stats_screen.stats_item", params: ["leaderboard_id" : progress.leaderboardID])
+        Flurry.logEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: (event.params))
     }
     
-    class func levelClickedInLevels(progress: LevelProgress) {
-        let event = (name: "click_levels_level", params: ["id" : progress.levelID, "locked" : progress.locked])
-        Flurry.logEvent(event.name, withParameters: event.params as [NSObject : AnyObject])
-        Answers.logCustomEventWithName(event.name, customAttributes: (event.params as! [String : AnyObject]))
-    }
-    
-    class func doneClickedInGame() {
-        let event = (name: "click_game_done", params: [:])
-        Flurry.logEvent(event.name)
-        Answers.logCustomEventWithName(event.name, customAttributes: nil)
-    }
-    
-    class func statsClickedInGame() {
-        let event = (name: "click_game_stats", params: [:])
+    class func leaderboardsClickedInStatsScreen() {
+        let event = (name: "click.stats_screen.leaderboards", params: [:])
         Flurry.logEvent(event.name)
         Answers.logCustomEventWithName(event.name, customAttributes: nil)
     }
@@ -193,53 +165,305 @@ extension Analytics {
 
 extension Analytics {
     
-    class func menuAppeared() {
-        Flurry.logEvent("screen_menu", timed: true)
+    class func facebookClicked() {
+        if navigationManager.mainScreen.currentDetailsPage == nil {
+            Analytics.facebookClickedInMenuScreen()
+        } else {
+            Analytics.facebookClickedInMainScreen()
+        }
+    }
+    
+    class func twitterClicked() {
+        if navigationManager.mainScreen.currentDetailsPage == nil {
+            Analytics.twitterClickedInMenuScreen()
+        } else {
+            Analytics.twitterClickedInMainScreen()
+        }
+    }
+    
+    class func instagramClicked() {
+        if navigationManager.mainScreen.currentDetailsPage == nil {
+            Analytics.instagramClickedInMenuScreen()
+        } else {
+            Analytics.instagramClickedInMainScreen()
+        }
+    }
+    
+    private class func facebookClickedInMainScreen() {
+        let event = (name: "click.main_screen.facebook", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    private class func twitterClickedInMainScreen() {
+        let event = (name: "click.main_screen.twitter", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    private class func instagramClickedInMainScreen() {
+        let event = (name: "click.main_screen.instagram", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    private class func facebookClickedInMenuScreen() {
+        let event = (name: "click.menu_screen.facebook", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    private class func twitterClickedInMenuScreen() {
+        let event = (name: "click.menu_screen.twitter", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    private class func instagramClickedInMenuScreen() {
+        let event = (name: "click.menu_screen.instagram", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+}
+
+extension Analytics {
+    
+    class func playClicked() {
+        if navigationManager.mainScreen.currentDetailsPage == nil {
+            playClickedInMenuScreen()
+        } else {
+            playClickedInMainScreen()
+        }
+    }
+    
+    private class func playClickedInMainScreen() {
+        let event = (name: "click.main_screen.play", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    private class func playClickedInMenuScreen() {
+        let event = (name: "click.menu_screen.play", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+}
+
+extension Analytics {
+    
+    class func statsClicked() {
+        if navigationManager.mainScreen.currentDetailsPage == nil {
+            statsClickedInMenuScreen()
+        } else {
+            statsClickedInMainScreen()
+        }
+    }
+    
+    private class func statsClickedInMainScreen() {
+        let event = (name: "click.main_screen.stats", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    private class func statsClickedInMenuScreen() {
+        let event = (name: "click.menu_screen.stats", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+}
+
+extension Analytics {
+    
+    class func detailsViewSwipedInMainScreen() {
+        switch navigationManager.mainScreen.currentDetailsPage! {
+        case .Levels:
+            playSwipedInMainScreen()
+        case .Stats:
+            statsSwipedInMainScreen()
+        case .Sharing:
+            shareSwipedInMainScreen()
+        }
+    }
+    
+    private class func playSwipedInMainScreen() {
+        let event = (name: "swipe.main_screen.play", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    private class func statsSwipedInMainScreen() {
+        let event = (name: "swipe.main_screen.stats", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    private class func shareSwipedInMainScreen() {
+        let event = (name: "swipe.main_screen.share", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+}
+
+extension Analytics {
+    
+    class func shareClickedInMainScreen() {
+        let event = (name: "click.main_screen.share", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    class func levelClickedInMainScreen(progress: LevelProgress) {
+        let event = (name: "click.main_screen.level", params: ["level_id" : progress.levelID, "locked" : progress.locked])
+        Flurry.logEvent(event.name, withParameters: event.params as [NSObject : AnyObject])
+        Answers.logCustomEventWithName(event.name, customAttributes: (event.params as! [String : AnyObject]))
+    }
+}
+
+extension Analytics {
+    
+    class func doneClickedInGameScreen() {
+        let event = (name: "click.game_screen.done", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    class func statsClickedInGameScreen() {
+        let event = (name: "click.game_screen.stats", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+    
+    class func unlockedLevelBannerShownInGameScreen(level: Level) {
+        let event = (name: "show.game_screen.unlock_banner", params: ["level_id" : level.identifier])
+        Flurry.logEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
+    }
+    
+    class func unlockBannerClickedInGameScreen(level: Level) {
+        let event = (name: "click.game_screen.unlock_banner", params: ["level_id" : level.identifier])
+        Flurry.logEvent(event.name, withParameters: event.params)
+        Answers.logCustomEventWithName(event.name, customAttributes: event.params)
+    }
+}
+    
+extension Analytics {
+    
+    class func doneClickedInStatsScreen() {
+        let event = (name: "click.stats_screen.done", params: [:])
+        Flurry.logEvent(event.name)
+        Answers.logCustomEventWithName(event.name, customAttributes: nil)
+    }
+}
+
+extension Analytics {
+    
+    class func mainScreenAppeared() {
+        if navigationManager.mainScreen.currentDetailsPage == nil {
+            menuScreenAppeared()
+        } else {
+            switch navigationManager.mainScreen.currentDetailsPage! {
+            case .Levels:
+                mainScreenLevelsAppeared()
+            case .Stats:
+                mainScreenStatsAppeared()
+            case .Sharing:
+                mainScreenShareAppeared()
+            }
+        }
+    }
+    
+    class func mainScreenDisappeared() {
+        if navigationManager.mainScreen.currentDetailsPage == nil {
+            menuScreenDisappeared()
+        } else {
+            switch navigationManager.mainScreen.currentDetailsPage! {
+            case .Levels:
+                mainScreenLevelsDisappeared()
+            case .Stats:
+                mainScreenStatsDisappeared()
+            case .Sharing:
+                mainScreenShareDisappeared()
+            }
+        }
+    }
+    
+    class func detailsViewPageOnMainScreenChanged(oldPage: MainScreen.DetailsViewPage?, newPage: MainScreen.DetailsViewPage) {
+        guard oldPage != newPage else { return }
+        
+        if oldPage == nil {
+            menuScreenDisappeared()
+        } else {
+            switch oldPage! {
+            case .Levels:
+                mainScreenLevelsDisappeared()
+            case .Stats:
+                mainScreenStatsDisappeared()
+            case .Sharing:
+                mainScreenShareDisappeared()
+            }
+        }
+        
+        switch newPage {
+        case .Levels:
+            mainScreenLevelsAppeared()
+        case .Stats:
+            mainScreenStatsAppeared()
+        case .Sharing:
+            mainScreenShareAppeared()
+        }
+    }
+    
+    private class func menuScreenAppeared() {
+        Flurry.logEvent("screen.menu", timed: true)
         screenAppearTime = CFAbsoluteTimeGetCurrent()
     }
     
-    class func menuDisappeared() {
-        let event = (name: "screen_menu", params: ["time" : screenDisappearTime])
+    private class func menuScreenDisappeared() {
+        let event = (name: "screen.menu", params: ["time" : screenDisappearTime])
         Flurry.endTimedEvent(event.name, withParameters: [:])
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
-    class func levelsAppeared() {
-        Flurry.logEvent("screen_levels", timed: true)
+    private class func mainScreenLevelsAppeared() {
+        Flurry.logEvent("screen.main.levels", timed: true)
         screenAppearTime = CFAbsoluteTimeGetCurrent()
     }
     
-    class func levelsDisappeared() {
-        let event = (name: "screen_levels", params: ["time" : screenDisappearTime])
+    private class func mainScreenLevelsDisappeared() {
+        let event = (name: "screen.main.levels", params: ["time" : screenDisappearTime])
         Flurry.endTimedEvent(event.name, withParameters: [:])
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
-    class func statsAppeared() {
-        Flurry.logEvent("screen_stats", timed: true)
+    private class func mainScreenStatsAppeared() {
+        Flurry.logEvent("screen.main.stats", timed: true)
         screenAppearTime = CFAbsoluteTimeGetCurrent()
     }
     
-    class func statsDisappeared() {
-        let event = (name: "screen_stats", params: ["time" : screenDisappearTime])
+    private class func mainScreenStatsDisappeared() {
+        let event = (name: "screen.main.stats", params: ["time" : screenDisappearTime])
         Flurry.endTimedEvent(event.name, withParameters: [:])
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
-    class func leaderboardsAppeared() {
-        Flurry.logEvent("screen_leaderboards", timed: true)
+    private class func mainScreenShareAppeared() {
+        Flurry.logEvent("screen.main.share", timed: true)
         screenAppearTime = CFAbsoluteTimeGetCurrent()
     }
     
-    class func leaderboardsDisappeared() {
-        let event = (name: "screen_leaderboards", params: ["time" : screenDisappearTime])
+    private class func mainScreenShareDisappeared() {
+        let event = (name: "screen.main.share", params: ["time" : screenDisappearTime])
         Flurry.endTimedEvent(event.name, withParameters: [:])
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
+}
+
+extension Analytics {
     
-    class func gameAppeared(level: Level) {
-        Flurry.logEvent("screen_game_\(level.identifier)", timed: true)
-        Answers.logLevelStart("level_\(level.identifier)", customAttributes: nil)
+    class func gameScreenAppeared(level: Level) {
+        let eventName = "screen.game.level_\(level.identifier)"
+        Flurry.logEvent(eventName, timed: true)
+        Answers.logLevelStart(eventName, customAttributes: nil)
         screenAppearTime = CFAbsoluteTimeGetCurrent()
     }
     
@@ -247,10 +471,10 @@ extension Analytics {
         gameRoundsCount += 1
     }
     
-    class func gameDisappeared(level: Level) {
-        Flurry.endTimedEvent("screen_game_\(level.identifier)", withParameters: ["rounds" : gameRoundsCount])
-        Answers.logCustomEventWithName("screen_game_\(level.identifier)",
-                                       customAttributes: ["rounds" : gameRoundsCount, "time" : screenDisappearTime])
+    class func gameScreenDisappeared(level: Level) {
+        let eventName = "screen.game.level_\(level.identifier)"
+        Flurry.endTimedEvent(eventName, withParameters: ["rounds" : gameRoundsCount])
+        Answers.logCustomEventWithName(eventName, customAttributes: ["rounds" : gameRoundsCount, "time" : screenDisappearTime])
         
         Answers.logLevelEnd("level_\(level.identifier)",
                             score: gameRoundsCount,
@@ -262,15 +486,25 @@ extension Analytics {
 
 extension Analytics {
     
-    class func unlockBannerShownInGame(level: Level) {
-        let event = (name: "show_game_unlock_banner", params: ["id" : level.identifier])
-        Flurry.logEvent(event.name, withParameters: event.params)
+    class func statsScreenAppeared() {
+        Flurry.logEvent("screen.stats", timed: true)
+        screenAppearTime = CFAbsoluteTimeGetCurrent()
+    }
+    
+    class func statsScreenDisappeared() {
+        let event = (name: "screen.stats", params: ["time" : screenDisappearTime])
+        Flurry.endTimedEvent(event.name, withParameters: [:])
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
     
-    class func unlockBannerClickedInGame(level: Level) {
-        let event = (name: "click_game_unlock_banner", params: ["id" : level.identifier])
-        Flurry.logEvent(event.name, withParameters: event.params)
+    class func leaderboardsScreenAppeared() {
+        Flurry.logEvent("screen.leaderboards", timed: true)
+        screenAppearTime = CFAbsoluteTimeGetCurrent()
+    }
+    
+    class func leaderboardsScreenDisappeared() {
+        let event = (name: "screen.leaderboards", params: ["time" : screenDisappearTime])
+        Flurry.endTimedEvent(event.name, withParameters: [:])
         Answers.logCustomEventWithName(event.name, customAttributes: event.params)
     }
 }

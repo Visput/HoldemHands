@@ -48,12 +48,12 @@ final class GameScreen: BaseViewController {
     
     override func viewDidShow() {
         super.viewDidShow()
-        Analytics.gameAppeared(level)
+        Analytics.gameScreenAppeared(level)
     }
     
     override func viewDidHide() {
         super.viewDidHide()
-        Analytics.gameDisappeared(level)
+        Analytics.gameScreenDisappeared(level)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -90,12 +90,12 @@ extension GameScreen {
     }
     
     @IBAction private func doneButtonDidPress(sender: AnyObject) {
-        Analytics.doneClickedInGame()
+        Analytics.doneClickedInGameScreen()
         model.navigationManager.dismissGameScreenAnimated(true)
     }
     
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
-        Analytics.statsClickedInGame()
+        Analytics.statsClickedInGameScreen()
         model.navigationManager.presentStatsScreenWithLevel(level, animated: true)
     }
 }
@@ -106,9 +106,9 @@ extension GameScreen: PlayerManagerObserving {
         let levelName = levelProgress.level.name
         let text = NSString.localizedStringWithFormat("Congratulations. %@ is unlocked now!", levelName)
         
-        Analytics.unlockBannerShownInGame(levelProgress.level)
+        Analytics.unlockedLevelBannerShownInGameScreen(levelProgress.level)
         model.navigationManager.showBannerWithText(text as String, tapHandler: { [unowned self] in
-            Analytics.unlockBannerClickedInGame(levelProgress.level)
+            Analytics.unlockBannerClickedInGameScreen(levelProgress.level)
             self.model.navigationManager.dismissScreenAnimated(true)
         })
     }

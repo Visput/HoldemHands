@@ -20,5 +20,7 @@ final class ModelProvider {
         navigationManager = NavigationManager()
         playerManager = PlayerManager(navigationManager: navigationManager)
         sharingManager = SharingManager()
+        
+        Analytics.navigationManager = navigationManager
     }
 }

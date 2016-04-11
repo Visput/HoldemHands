@@ -75,7 +75,7 @@ final class NavigationManager: NSObject {
     }
     
     func presentLeaderboardScreenWithLeaderboardID(leaderboardID: String?, animated: Bool) {
-        Analytics.leaderboardsAppeared()
+        Analytics.leaderboardsScreenAppeared()
         let screen = GKGameCenterViewController()
         screen.leaderboardIdentifier = leaderboardID
         screen.viewState = .Leaderboards
@@ -93,7 +93,7 @@ final class NavigationManager: NSObject {
 extension NavigationManager: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
-        Analytics.leaderboardsDisappeared()
+        Analytics.leaderboardsScreenDisappeared()
         dismissScreenAnimated(true)
     }
 }

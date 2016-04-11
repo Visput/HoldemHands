@@ -11,7 +11,8 @@ import UIKit
 final class SharingViewController: BaseViewController {
     
     @IBAction private func facebookButtonDidPress(sender: AnyObject) {
-        Analytics.facebookClickedInMenu()
+        Analytics.facebookClicked()
+        
         let item = SharingItem(title: NSLocalizedString("HoldemHands", comment: ""),
                                message: NSLocalizedString("Check this out", comment: ""),
                                linkURL: NSURL(string: "https://apple.com"),
@@ -26,7 +27,8 @@ final class SharingViewController: BaseViewController {
     }
     
     @IBAction private func twitterButtonDidPress(sender: AnyObject) {
-        Analytics.twitterClickedInMenu()
+        Analytics.twitterClicked()
+        
         let item = SharingItem(title: nil,
                                message: NSLocalizedString("Check this out: HoldemHands", comment: ""),
                                linkURL: NSURL(string: "https://apple.com"),
@@ -41,7 +43,8 @@ final class SharingViewController: BaseViewController {
     }
     
     @IBAction private func instagramButtonDidPress(sender: AnyObject) {
-        Analytics.instagramClickedInMenu()
+        Analytics.instagramClicked()
+        
         let item = SharingItem(title: nil,
                                message: NSLocalizedString("Check this out: #HoldemHands", comment: ""),
                                linkURL: nil,
