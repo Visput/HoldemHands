@@ -120,7 +120,7 @@ extension Analytics {
 extension Analytics {
     
     class func statsItemClicked(progress: Progress) {
-        if navigationManager.mainScreen.isViewDisplayed {
+        if navigationManager.mainScreen.presentedViewController == nil {
             Analytics.statsItemClickedInMainScreen(progress)
         } else {
             Analytics.statsItemClickedInStatsScreen(progress)
@@ -128,7 +128,7 @@ extension Analytics {
     }
     
     class func leaderboardsClicked() {
-        if navigationManager.mainScreen.isViewDisplayed {
+        if navigationManager.mainScreen.presentedViewController == nil {
             Analytics.leaderboardsClickedInMainScreen()
         } else {
             Analytics.leaderboardsClickedInStatsScreen()

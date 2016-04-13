@@ -50,21 +50,23 @@ final class NavigationManager: NSObject {
     func presentGameScreenWithLevel(level: Level, animated: Bool) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(GameScreen.className()) as! GameScreen
         screen.level = level
-        mainScreen.modalPresentationStyle = .OverCurrentContext
+        screen.modalPresentationStyle = .OverCurrentContext
         // Manually call `beginAppearanceTransition` and `endAppearanceTransition` 
         // as it's not called automatically when view controller is presented over current context.
-        mainScreen.beginAppearanceTransition(false, animated: animated)
+        let presentingScreen = topViewController
+        presentingScreen.beginAppearanceTransition(false, animated: animated)
         presentScreen(screen, animated: animated, completion: {
-            self.mainScreen.endAppearanceTransition()
+            presentingScreen.endAppearanceTransition()
         })
     }
     
     func dismissGameScreenAnimated(animated: Bool) {
         // Manually call `beginAppearanceTransition` and `endAppearanceTransition`
         // as it's not called automatically when view controller is presented over current context.
-        mainScreen.beginAppearanceTransition(true, animated: animated)
+        let presentingScreen = topViewController.presentingViewController!
+        presentingScreen.beginAppearanceTransition(true, animated: animated)
         dismissScreenAnimated(animated, completion: {
-            self.mainScreen.endAppearanceTransition()
+            presentingScreen.endAppearanceTransition()
         })
     }
     
@@ -75,12 +77,19 @@ final class NavigationManager: NSObject {
     }
     
     func presentLeaderboardScreenWithLeaderboardID(leaderboardID: String?, animated: Bool) {
-        Analytics.leaderboardsScreenAppeared()
         let screen = GKGameCenterViewController()
         screen.leaderboardIdentifier = leaderboardID
         screen.viewState = .Leaderboards
         screen.gameCenterDelegate = self
-        presentScreen(screen, animated: animated)
+        
+        // Manually call `beginAppearanceTransition` and `endAppearanceTransition`
+        // as it's not called automatically when view controller is presented over current context.
+        let presentingScreen = topViewController
+        presentingScreen.beginAppearanceTransition(false, animated: animated)
+        presentScreen(screen, animated: animated, completion: {
+            presentingScreen.endAppearanceTransition()
+            Analytics.leaderboardsScreenAppeared()
+        })
     }
     
     func showBannerWithText(text: String, duration: NSTimeInterval = 5.0, tapHandler: (() -> Void)? = nil) -> BannerView {
@@ -93,7 +102,13 @@ final class NavigationManager: NSObject {
 extension NavigationManager: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
-        Analytics.leaderboardsScreenDisappeared()
-        dismissScreenAnimated(true)
+        // Manually call `beginAppearanceTransition` and `endAppearanceTransition`
+        // as it's not called automatically when view controller is presented over current context.
+        let presentingScreen = topViewController.presentingViewController!
+        presentingScreen.beginAppearanceTransition(true, animated: true)
+        dismissScreenAnimated(true, completion: {
+            Analytics.leaderboardsScreenDisappeared()
+            presentingScreen.endAppearanceTransition()
+        })
     }
 }

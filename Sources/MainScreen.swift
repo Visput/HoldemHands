@@ -19,6 +19,36 @@ final class MainScreen: BaseViewController {
     private(set) var currentDetailsPage: DetailsViewPage? {
         willSet (newPage) {
             Analytics.detailsViewPageOnMainScreenChanged(currentDetailsPage, newPage: newPage!)
+            
+            guard currentDetailsPage != newPage else { return }
+            
+            if currentDetailsPage != nil {
+                switch currentDetailsPage! {
+                case .Levels:
+                    levelsController.beginAppearanceTransition(false, animated: false)
+                    levelsController.endAppearanceTransition()
+                case .Stats:
+                    statsController.beginAppearanceTransition(false, animated: false)
+                    statsController.endAppearanceTransition()
+                case .Sharing:
+                    sharingController.beginAppearanceTransition(false, animated: false)
+                    sharingController.endAppearanceTransition()
+                }
+            }
+            
+            if newPage != nil {
+                switch newPage! {
+                case .Levels:
+                    levelsController.beginAppearanceTransition(true, animated: false)
+                    levelsController.endAppearanceTransition()
+                case .Stats:
+                    statsController.beginAppearanceTransition(true, animated: false)
+                    statsController.endAppearanceTransition()
+                case .Sharing:
+                    sharingController.beginAppearanceTransition(true, animated: false)
+                    sharingController.endAppearanceTransition()
+                }
+            }
         }
     }
     
@@ -28,6 +58,19 @@ final class MainScreen: BaseViewController {
 
     private var mainView: MainView {
         return view as! MainView
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if currentDetailsPage == nil {
+            // Notify details view controllers are hidden when details view isn't presented.
+            levelsController.beginAppearanceTransition(false, animated: animated)
+            levelsController.endAppearanceTransition()
+            statsController.beginAppearanceTransition(false, animated: animated)
+            statsController.endAppearanceTransition()
+            sharingController.beginAppearanceTransition(false, animated: animated)
+            sharingController.endAppearanceTransition()
+        }
     }
     
     override func viewDidShow() {
@@ -54,23 +97,23 @@ final class MainScreen: BaseViewController {
 extension MainScreen {
     
     @IBAction private func playButtonDidPress(sender: AnyObject) {
+        Analytics.playClicked()
         currentDetailsPage = .Levels
         mainView.scrollToDetailsViewAtPage(DetailsViewPage.Levels.rawValue)
-        Analytics.playClicked()
     }
     
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
+        Analytics.statsClicked()
         currentDetailsPage = .Stats
         mainView.scrollToDetailsViewAtPage(DetailsViewPage.Stats.rawValue, completionHandler: {
             self.statsController.reloadRanks()
         })
-        Analytics.statsClicked()
     }
     
     @IBAction private func shareButtonDidPress(sender: AnyObject) {
+        Analytics.shareClickedInMainScreen()
         currentDetailsPage = .Sharing
         mainView.scrollToDetailsViewAtPage(DetailsViewPage.Sharing.rawValue)
-        Analytics.shareClickedInMainScreen()
     }
 }
 
