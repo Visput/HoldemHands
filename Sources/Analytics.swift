@@ -460,7 +460,7 @@ extension Analytics {
     class func gameScreenAppeared(level: Level) {
         let eventName = "screen.game.level_\(level.identifier)"
         Flurry.logEvent(eventName, timed: true)
-        Answers.logLevelStart(eventName, customAttributes: nil)
+        Answers.logLevelStart("level_\(level.identifier)", customAttributes: nil)
         screenAppearTime = CFAbsoluteTimeGetCurrent()
     }
     
