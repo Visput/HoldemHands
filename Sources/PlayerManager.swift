@@ -373,8 +373,15 @@ extension PlayerManager {
         let overallLeaderboardIDKey = "overall_leaderboard_id"
         let levelsKey = "levels"
         
+        let keys = playerDataKeys()
+        
         let newPlayerData = Mapper<PlayerData>().map(jsonString)
-        if playerData?.timestamp < newPlayerData!.timestamp {
+        
+        // Update player data if new data timestamp is newer than current data timestamp or if player changed.
+        if playerData?.timestamp < newPlayerData!.timestamp ||
+            (player.authenticated && player.playerID != keys.lastSavedKey) ||
+            (!player.authenticated && keys.lastSavedKey != keys.guestKey) {
+            
             playerData = newPlayerData
             
             // Fill player data with game data.
@@ -393,9 +400,11 @@ extension PlayerManager {
                 }
             }
             updateLockStateForLevels()
-            
-            notifyObserversDidLoadPlayerData()
         }
+        
+        // Notify observers even if `self.playerData` not updated.
+        // because player authentication status can be changed (this is part of player data).
+        notifyObserversDidLoadPlayerData()
     }
     
     typealias PlayerDataKeys = (authenticatedKey: String?, guestKey: String, lastSavedKey: String?)
