@@ -21,7 +21,7 @@ final class LevelsViewController: BaseViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        fillViewsWithModel()
+        fillViewsWithModelWithScrollingToLastPlayedLevel(false)
         levelsView.zoomOutLevelIfNeeded(model.navigationManager.mainScreen.view)
     }
 }
@@ -66,13 +66,28 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
 extension LevelsViewController: PlayerManagerObserving {
     
     func playerManager(manager: PlayerManager, didLoadPlayerData playerData: PlayerData) {
-        fillViewsWithModel()
+        fillViewsWithModelWithScrollingToLastPlayedLevel(true)
     }
 }
 
 extension LevelsViewController {
     
-    private func fillViewsWithModel() {
+    private func fillViewsWithModelWithScrollingToLastPlayedLevel(scrollToLastPlayedLevel: Bool) {
         levelsView.levelsCollectionView.reloadData()
+        
+        guard scrollToLastPlayedLevel && model.playerManager.playerData.lastPlayedLevelID != nil else { return }
+        
+        // Execute scrolling after short delay to be sure that collection view layout is configured.
+        executeAfterDelay(0.05, task: {
+            for (index, levelProgress) in self.model.playerManager.playerData.levelProgressItems.enumerate() {
+                guard levelProgress.levelID == self.model.playerManager.playerData.lastPlayedLevelID else { continue }
+                
+                self.levelsView.levelsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0),
+                    atScrollPosition: .CenteredHorizontally,
+                    animated: false)
+                
+                break
+            }
+        })
     }
 }

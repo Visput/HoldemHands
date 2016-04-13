@@ -53,6 +53,8 @@ final class PlayerManager: NSObject {
     }
     
     func trackNewWinInLevel(level: Level) {
+        playerData.lastPlayedLevelID = level.identifier
+        
         let oldChipsCount = playerData.chipsCount
         let chipsMultiplier = chipsMultiplierForLevel(level)
         let chipsWon = level.chipsPerWin * chipsMultiplier
@@ -68,6 +70,8 @@ final class PlayerManager: NSObject {
     }
     
     func trackNewLossInLevel(level: Level) {
+        playerData.lastPlayedLevelID = level.identifier
+        
         let oldChipsCount = playerData.chipsCount
         let chipsLost = level.chipsPerWin
         // Total chips count can not be less than zero.
@@ -399,6 +403,7 @@ extension PlayerManager {
                     break
                 }
             }
+            
             updateLockStateForLevels()
         }
         

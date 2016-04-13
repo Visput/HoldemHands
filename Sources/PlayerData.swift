@@ -15,6 +15,7 @@ struct PlayerData: Mappable {
     var chipsCount: Int64!
     var overallLeaderboardID: String!
     var rank: Int?
+    var lastPlayedLevelID: Int?
     private(set) var timestamp: Double!
     
     init?(_ map: Map) {}
@@ -26,6 +27,7 @@ struct PlayerData: Mappable {
         chipsCount <- (map["chips_count"], transformOfInt64)
         rank <- map["rank"]
         timestamp <- map["timestamp"]
+        lastPlayedLevelID <- map["last_played_level_id"]
     }
     
     mutating func generateTimestamp() {

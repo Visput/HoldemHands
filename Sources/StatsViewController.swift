@@ -109,7 +109,7 @@ extension StatsViewController {
         
         guard level != nil else { return }
         // Execute scrolling after short delay to be sure that collection view layout is configured.
-        executeAfterDelay(0.1, task: {
+        executeAfterDelay(0.05, task: {
             let itemIndex = self.model.playerManager.progressItemForLevel(self.level!).index + 1 // + 1 for overall progress item.
             self.statsView.statsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: itemIndex, inSection: 0),
                 atScrollPosition: .CenteredHorizontally,
