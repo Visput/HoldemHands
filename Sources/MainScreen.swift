@@ -99,7 +99,9 @@ extension MainScreen {
     @IBAction private func playButtonDidPress(sender: AnyObject) {
         Analytics.playClicked()
         currentDetailsPage = .Levels
-        mainView.scrollToDetailsViewAtPage(DetailsViewPage.Levels.rawValue)
+        mainView.scrollToDetailsViewAtPage(DetailsViewPage.Levels.rawValue, completionHandler: {
+            self.statsController.scrollToOverallStatsAnimated(false)
+        })
     }
     
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
@@ -127,6 +129,8 @@ extension MainScreen: UIScrollViewDelegate {
         
         if currentDetailsPage == .Stats {
             statsController.reloadRanks()
+        } else if currentDetailsPage == .Levels {
+            statsController.scrollToOverallStatsAnimated(false)
         }
         
         Analytics.detailsViewSwipedInMainScreen()

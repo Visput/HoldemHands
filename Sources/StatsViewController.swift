@@ -42,6 +42,10 @@ final class StatsViewController: BaseViewController {
             }
         })
     }
+    
+    func scrollToOverallStatsAnimated(animated: Bool) {
+        statsView.statsCollectionView.setContentOffset(CGPoint(x: 0.0, y: 0.0), animated: animated)
+    }
 }
 
 extension StatsViewController {
