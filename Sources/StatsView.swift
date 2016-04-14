@@ -12,6 +12,9 @@ final class StatsView: UIView {
     
     @IBOutlet private(set) weak var statsCollectionView: UICollectionView!
     @IBOutlet private(set) weak var leaderboardsButton: UIButton!
+    @IBOutlet private(set) weak var contentViewLeadingSpace: NSLayoutConstraint!
+    
+    var leadingContentSpaceEnabled = true
     
     private var statsCollectionLayout: UICollectionViewFlowLayout {
         return statsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -25,28 +28,46 @@ final class StatsView: UIView {
         let widthRatio: CGFloat = 1.4
         let heightRatio: CGFloat = 2.0
         
-        statsCollectionLayout.itemSize.width = floor(statsCollectionView.frame.size.width / widthRatio)
+        statsCollectionLayout.itemSize.width = floor(frame.size.width / widthRatio)
         statsCollectionLayout.itemSize.height = floor(statsCollectionLayout.itemSize.width / heightRatio)
         
-        statsCollectionLayout.sectionInset.top = floor((statsCollectionView.frame.size.height -
-            statsCollectionLayout.itemSize.height) / 2.0)
+        statsCollectionLayout.sectionInset.top = floor((statsCollectionView.frame.size.height - statsCollectionLayout.itemSize.height) / 2.0)
         statsCollectionLayout.sectionInset.bottom = statsCollectionLayout.sectionInset.top
-        
-        statsCollectionLayout.sectionInset.left = floor((statsCollectionView.frame.size.width -
-            statsCollectionLayout.itemSize.width) / 2.0)
-        statsCollectionLayout.sectionInset.right = statsCollectionLayout.sectionInset.left
         
         statsCollectionLayout.minimumLineSpacing = spacing
         statsCollectionLayout.minimumInteritemSpacing = spacing
+        
+        statsCollectionLayout.sectionInset.right = floor((frame.size.width - statsCollectionLayout.itemSize.width) / 2.0)
+        
+        if leadingContentSpaceEnabled {
+            statsCollectionLayout.sectionInset.left = spacing
+            contentViewLeadingSpace.constant = statsCollectionLayout.sectionInset.right - statsCollectionLayout.sectionInset.left
+        } else {
+            statsCollectionLayout.sectionInset.left = statsCollectionLayout.sectionInset.right
+            contentViewLeadingSpace.constant = 0.0
+        }
     }
     
-    func scrollToNearestStats() {
+    func scrollToNearestStatsAnimated(animated: Bool) {
         let offset = statsCollectionView.contentOffset.x
-        let statDecimalIndex = offset / (statsCollectionLayout.itemSize.width + statsCollectionLayout.minimumInteritemSpacing)
-        let statIndex = Int(round(statDecimalIndex))
+        let statsDecimalIndex = offset / (statsCollectionLayout.itemSize.width + statsCollectionLayout.minimumInteritemSpacing)
+        let statsIndex = Int(round(statsDecimalIndex))
         
-        statsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: statIndex, inSection: 0),
-                                                    atScrollPosition: .CenteredHorizontally,
-                                                    animated: true)
+        scrollToStatsAtIndex(statsIndex, animated: animated)
+    }
+    
+    func scrollToStatsAtIndex(index: Int, animated: Bool) {
+        var targetOffset: CGFloat = 0.0
+        if index != 0 {
+            targetOffset = statsCollectionLayout.sectionInset.left +
+                statsCollectionLayout.minimumInteritemSpacing * CGFloat(index - 1) +
+                statsCollectionLayout.itemSize.width * CGFloat(index)
+            
+            if !leadingContentSpaceEnabled {
+                targetOffset -= statsCollectionLayout.sectionInset.left - statsCollectionLayout.minimumInteritemSpacing
+            }
+        }
+        
+        statsCollectionView.setContentOffset(CGPoint(x: targetOffset, y: 0), animated: animated)
     }
 }

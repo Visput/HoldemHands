@@ -27,7 +27,7 @@ final class MainView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let levelsView = levelsContainerView.subviews.first! as! LevelsView
-        menuViewWidth.constant = levelsView.levelsCollectionLayout.sectionInset.left - levelsView.levelsCollectionLayout.minimumInteritemSpacing
+        menuViewWidth.constant = levelsView.contentViewLeadingSpace.constant
     }
     
     func scrollToDetailsViewAtPage(page: Int, completionHandler: (() -> Void)? = nil) {

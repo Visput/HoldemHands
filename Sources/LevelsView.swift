@@ -11,21 +11,14 @@ import UIKit
 final class LevelsView: UIView {
  
     @IBOutlet private(set) weak var levelsCollectionView: UICollectionView!
+    @IBOutlet private(set) weak var contentViewLeadingSpace: NSLayoutConstraint!
     
-    var levelsCollectionLayout: UICollectionViewFlowLayout {
+    private var levelsCollectionLayout: UICollectionViewFlowLayout {
         return levelsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
     
     private var zoomedCell: LevelCell?
     private let zoomLevel: CGFloat = 3.0
-    
-    private var currentLevelIndex: Int {
-        let offset = levelsCollectionView.contentOffset.x
-        let levelDecimalIndex = offset / (levelsCollectionLayout.itemSize.width + levelsCollectionLayout.minimumInteritemSpacing)
-        let levelIndex = Int(round(levelDecimalIndex))
-        
-        return levelIndex
-    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -33,34 +26,47 @@ final class LevelsView: UIView {
         let widthRatio: CGFloat = 1.4
         let heightRatio: CGFloat = 2.0
         
-        levelsCollectionLayout.itemSize.width = floor(levelsCollectionView.frame.size.width / widthRatio)
+        levelsCollectionLayout.itemSize.width = floor(frame.size.width / widthRatio)
         levelsCollectionLayout.itemSize.height = floor(levelsCollectionLayout.itemSize.width / heightRatio)
         
-        levelsCollectionLayout.sectionInset.top = floor((levelsCollectionView.frame.size.height -
-            levelsCollectionLayout.itemSize.height) / 2.0)
+        levelsCollectionLayout.sectionInset.top = floor((levelsCollectionView.frame.size.height - levelsCollectionLayout.itemSize.height) / 2.0)
         levelsCollectionLayout.sectionInset.bottom = levelsCollectionLayout.sectionInset.top
-        
-        levelsCollectionLayout.sectionInset.left = floor((levelsCollectionView.frame.size.width -
-            levelsCollectionLayout.itemSize.width) / 2.0)
-        levelsCollectionLayout.sectionInset.right = levelsCollectionLayout.sectionInset.left
         
         levelsCollectionLayout.minimumLineSpacing = spacing
         levelsCollectionLayout.minimumInteritemSpacing = spacing
+        
+        levelsCollectionLayout.sectionInset.right = floor((frame.size.width - levelsCollectionLayout.itemSize.width) / 2.0)
+        levelsCollectionLayout.sectionInset.left = spacing
+        
+        contentViewLeadingSpace.constant = levelsCollectionLayout.sectionInset.right - levelsCollectionLayout.sectionInset.left
     }
     
-    func scrollToNearestLevel() {
-        levelsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: currentLevelIndex, inSection: 0),
-                                                     atScrollPosition: .CenteredHorizontally,
-                                                     animated: true)
+    func scrollToNearestLevelAnimated(animated: Bool) {
+        let offset = levelsCollectionView.contentOffset.x
+        let levelDecimalIndex = offset / (levelsCollectionLayout.itemSize.width + levelsCollectionLayout.minimumInteritemSpacing)
+        let levelIndex = Int(round(levelDecimalIndex))
+        
+        scrollToLevelAtIndex(levelIndex, animated: animated)
+    }
+    
+    func scrollToLevelAtIndex(index: Int, animated: Bool) {
+        var targetOffset: CGFloat = 0.0
+        if index != 0 {
+            targetOffset = levelsCollectionLayout.sectionInset.left +
+                levelsCollectionLayout.minimumInteritemSpacing * CGFloat(index - 1) +
+                levelsCollectionLayout.itemSize.width * CGFloat(index)
+        }
+        
+        levelsCollectionView.setContentOffset(CGPoint(x: targetOffset, y: 0), animated: animated)
     }
     
     func zoomInLevelAtIndex(index: Int, mainView: UIView, completionHandler: (() -> Void)? = nil) {
         zoomedCell = levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) as? LevelCell
         
         UIView.animateWithDuration(0.4, animations: {
-            self.levelsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0),
-                atScrollPosition: .CenteredHorizontally,
-                animated: false)
+            self.scrollToLevelAtIndex(index, animated: false)
+            // Call `layoutIfNeeded` to avoid immediate cell hiding (UICollectionView behaviour).
+            self.levelsCollectionView.layoutIfNeeded()
             
             }, completion: { _ in
                 // Call completion block before animation finished for smoother animation.

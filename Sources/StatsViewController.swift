@@ -14,7 +14,7 @@ final class StatsViewController: BaseViewController {
     
     private var progressItems: [Progress]!
     
-    private var statsView: StatsView {
+    var statsView: StatsView {
         return view as! StatsView
     }
     
@@ -83,12 +83,12 @@ extension StatsViewController: UICollectionViewDelegateFlowLayout, UICollectionV
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        statsView.scrollToNearestStats()
+        statsView.scrollToNearestStatsAnimated(true)
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard !decelerate else { return }
-        statsView.scrollToNearestStats()
+        statsView.scrollToNearestStatsAnimated(true)
     }
 }
 
@@ -110,10 +110,8 @@ extension StatsViewController {
         guard level != nil else { return }
         // Execute scrolling after short delay to be sure that collection view layout is configured.
         executeAfterDelay(0.05, task: {
-            let itemIndex = self.model.playerManager.progressItemForLevel(self.level!).index + 1 // + 1 for overall progress item.
-            self.statsView.statsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: itemIndex, inSection: 0),
-                atScrollPosition: .CenteredHorizontally,
-                animated: false)
+            let statsIndex = self.model.playerManager.progressItemForLevel(self.level!).index + 1 // + 1 for overall progress item.
+            self.statsView.scrollToStatsAtIndex(statsIndex, animated: false)
         })
     }
 }

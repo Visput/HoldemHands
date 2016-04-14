@@ -54,12 +54,12 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        levelsView.scrollToNearestLevel()
+        levelsView.scrollToNearestLevelAnimated(true)
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard !decelerate else { return }
-        levelsView.scrollToNearestLevel()
+        levelsView.scrollToNearestLevelAnimated(true)
     }
 }
 
@@ -82,10 +82,7 @@ extension LevelsViewController {
             for (index, levelProgress) in self.model.playerManager.playerData.levelProgressItems.enumerate() {
                 guard levelProgress.levelID == self.model.playerManager.playerData.lastPlayedLevelID else { continue }
                 
-                self.levelsView.levelsCollectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0),
-                    atScrollPosition: .CenteredHorizontally,
-                    animated: false)
-                
+                self.levelsView.scrollToLevelAtIndex(index, animated: false)
                 break
             }
         })

@@ -14,6 +14,11 @@ final class StatsScreen: BaseViewController {
     
     private var statsController: StatsViewController!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        statsController.statsView.leadingContentSpaceEnabled = false
+    }
+    
     override func viewDidShow() {
         super.viewDidShow()
         Analytics.statsScreenAppeared()
