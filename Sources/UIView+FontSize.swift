@@ -10,7 +10,9 @@ import UIKit
 
 extension UIView {
     
-    private static var labelKey = "LabelKey"
+    private struct AssociatedObjectsKey {
+        static var key = "AssociatedObjectsKey"
+    }
     
     /**
      Adjusts font size according to iPhone screen height. Bigger height means bigger font size.
@@ -26,8 +28,7 @@ extension UIView {
         let fontScale = screenDimension / screenDimensionIPhone6Plus
         
         if self is UILabel {
-            var label = self as! UILabel
-            adjustFontSizeForLabel(&label, fontScale: fontScale)
+            adjustFontSizeForLabelWithScale(fontScale)
         } else {
             guard recursively else { return }
             
@@ -37,26 +38,23 @@ extension UIView {
         }
     }
     
-    private func adjustFontSizeForLabel(inout label: UILabel, fontScale: CGFloat) {
+    private func adjustFontSizeForLabelWithScale(fontScale: CGFloat) {
+        let label = self as! UILabel
         let attributedText = label.attributedText?.copy() as? NSAttributedString
-        var view = label as UIView
-        label.font = fontWithFont(label.font, fontScale: fontScale, view: &view, key: &UIView.labelKey)
-        label.attributedText = stringWithString(attributedText, fontScale: fontScale, view: &view, key: &UIView.labelKey)
+        label.font = fontWithFont(label.font, fontScale: fontScale, key: &AssociatedObjectsKey.key)
+        label.attributedText = stringWithString(attributedText, fontScale: fontScale, key: &AssociatedObjectsKey.key)
     }
     
-    private func fontWithFont(font: UIFont, fontScale: CGFloat, inout view: UIView, key: UnsafePointer<Void>) -> UIFont {
-        guard !isFontScaled(font, forView: view, key: key) else { return font }
+    private func fontWithFont(font: UIFont, fontScale: CGFloat, key: UnsafePointer<Void>) -> UIFont {
+        guard !isFontScaled(font, key: key) else { return font }
         
         let scaledFont = font.fontWithSize(round(font.pointSize * fontScale))
-        setFontScaled(scaledFont, forView: &view, key: key)
+        setFontScaled(scaledFont, key: key)
         
         return scaledFont
     }
     
-    private func stringWithString(string: NSAttributedString?,
-                                  fontScale: CGFloat,
-                                  inout view: UIView,
-                                  key: UnsafePointer<Void>) -> NSAttributedString? {
+    private func stringWithString(string: NSAttributedString?, fontScale: CGFloat, key: UnsafePointer<Void>) -> NSAttributedString? {
         guard string != nil else { return nil }
         
         let mutableString = string!.mutableCopy() as! NSMutableAttributedString
@@ -64,7 +62,7 @@ extension UIView {
         mutableString.enumerateAttribute(NSFontAttributeName, inRange: stringRange, options: [], usingBlock: { value, range, _ in
             guard value != nil else { return }
             
-            let scaledFont = self.fontWithFont(value! as! UIFont, fontScale: fontScale, view: &view, key: key)
+            let scaledFont = self.fontWithFont(value! as! UIFont, fontScale: fontScale, key: key)
             mutableString.removeAttribute(NSFontAttributeName, range: range)
             mutableString.addAttribute(NSFontAttributeName, value: scaledFont, range: range)
         })
@@ -72,13 +70,13 @@ extension UIView {
         return mutableString.copy() as? NSAttributedString
     }
     
-    private func isFontScaled(font: UIFont, forView view: UIView, key: UnsafePointer<Void>) -> Bool {
+    private func isFontScaled(font: UIFont, key: UnsafePointer<Void>) -> Bool {
         let views = objc_getAssociatedObject(font, key) as? NSHashTable
         guard views != nil else { return false }
         
         var isFontScaled = false
         for aView in views!.allObjects as! [UIView] {
-            if view === aView {
+            if self === aView {
                 isFontScaled = true
                 break
             }
@@ -87,17 +85,17 @@ extension UIView {
         return isFontScaled
     }
     
-    private func setFontScaled(font: UIFont, inout forView view: UIView, key: UnsafePointer<Void>) {
+    private func setFontScaled(font: UIFont, key: UnsafePointer<Void>) {
         // Internal implementation of NSFont allows its instance to be shared between different objects.
         // For example two labels with the same font family and size will use one shared instance of NSFont class.
         // For this reason weak pointer array with views is used. It tracks if font is scaled for requested view.
-        guard !isFontScaled(font, forView: view, key: key) else { return }
+        guard !isFontScaled(font, key: key) else { return }
         
         var views = objc_getAssociatedObject(font, key) as? NSHashTable
         if views == nil {
             views = NSHashTable.weakObjectsHashTable()
         }
-        views!.addObject(view)
+        views!.addObject(self)
         objc_setAssociatedObject(font, key, views, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 }
