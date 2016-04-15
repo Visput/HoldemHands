@@ -133,6 +133,7 @@
 		9FA31FA31CB59D460010555B /* ChipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA21CB59D460010555B /* ChipsViewController.swift */; };
 		9FA31FA51CB59D840010555B /* ChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA41CB59D840010555B /* ChipsView.swift */; };
 		9FA31FA81CB74F810010555B /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */; };
+		9FBC4CDC1CC0924F00F38DD7 /* app_font.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */; };
 		9FC41FD01CBC5E0D0021C91B /* GameData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9FC41FCE1CBC5E0D0021C91B /* GameData.json */; };
 		9FC41FD21CBC5E1A0021C91B /* GameDataQA.json in Resources */ = {isa = PBXBuildFile; fileRef = 9FC41FCF1CBC5E0D0021C91B /* GameDataQA.json */; };
 		9FC567EF1CA487D100FF1DE7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */; };
@@ -222,6 +223,7 @@
 		9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Utils.swift"; sourceTree = "<group>"; };
 		9FACAAC91C72BCC20051A435 /* HoldemHands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FACAADD1C72BCC20051A435 /* HoldemHandsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoldemHandsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = app_font.ttc; sourceTree = "<group>"; };
 		9FC41FCE1CBC5E0D0021C91B /* GameData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameData.json; sourceTree = "<group>"; };
 		9FC41FCF1CBC5E0D0021C91B /* GameDataQA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameDataQA.json; sourceTree = "<group>"; };
 		9FC41FD31CBC5EF60021C91B /* HoldemHandsQA.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HoldemHandsQA.entitlements; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 		9F44D1F41C84B21A00640046 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */,
 				9F4EF2C21CBC4FDF002E5FEA /* HoldemHands-Info.plist */,
 				9F4EF2C31CBC4FDF002E5FEA /* HoldemHandsQA-Info.plist */,
 				9FC41FD31CBC5EF60021C91B /* HoldemHandsQA.entitlements */,
@@ -741,6 +744,7 @@
 				9F44D2101C84B21A00640046 /* Main.storyboard in Resources */,
 				9FC41FD01CBC5E0D0021C91B /* GameData.json in Resources */,
 				9FA2090D1CA614F100E084E8 /* iTunesArtwork@2x.png in Resources */,
+				9FBC4CDC1CC0924F00F38DD7 /* app_font.ttc in Resources */,
 				9F3C4BE41C9258F200B37939 /* TextBannerView.xib in Resources */,
 				9F44D20E1C84B21A00640046 /* Assets.xcassets in Resources */,
 				9F44D20F1C84B21A00640046 /* LaunchScreen.storyboard in Resources */,
