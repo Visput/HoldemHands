@@ -134,6 +134,9 @@
 		9FA31FA51CB59D840010555B /* ChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA41CB59D840010555B /* ChipsView.swift */; };
 		9FA31FA81CB74F810010555B /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */; };
 		9FBC4CDC1CC0924F00F38DD7 /* app_font.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */; };
+		9FBC4CE31CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */; };
+		9FBC4CE41CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */; };
+		9FBC4CE51CC0C15900F38DD7 /* app_font.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */; };
 		9FC41FD01CBC5E0D0021C91B /* GameData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9FC41FCE1CBC5E0D0021C91B /* GameData.json */; };
 		9FC41FD21CBC5E1A0021C91B /* GameDataQA.json in Resources */ = {isa = PBXBuildFile; fileRef = 9FC41FCF1CBC5E0D0021C91B /* GameDataQA.json */; };
 		9FC567EF1CA487D100FF1DE7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */; };
@@ -224,6 +227,7 @@
 		9FACAAC91C72BCC20051A435 /* HoldemHands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FACAADD1C72BCC20051A435 /* HoldemHandsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoldemHandsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = app_font.ttc; sourceTree = "<group>"; };
+		9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FontSize.swift"; sourceTree = "<group>"; };
 		9FC41FCE1CBC5E0D0021C91B /* GameData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameData.json; sourceTree = "<group>"; };
 		9FC41FCF1CBC5E0D0021C91B /* GameDataQA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameDataQA.json; sourceTree = "<group>"; };
 		9FC41FD31CBC5EF60021C91B /* HoldemHandsQA.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HoldemHandsQA.entitlements; sourceTree = "<group>"; };
@@ -482,6 +486,7 @@
 				9FE888EA1C94F6A000A39C2C /* Int64+Chips.swift */,
 				9F93B4811C9750760092CBCB /* String+Path.swift */,
 				9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */,
+				9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -730,6 +735,7 @@
 				9F4EF2B31CBC4F66002E5FEA /* Main.storyboard in Resources */,
 				9F4EF2B41CBC4F66002E5FEA /* iTunesArtwork@2x.png in Resources */,
 				9F4EF2B51CBC4F66002E5FEA /* TextBannerView.xib in Resources */,
+				9FBC4CE51CC0C15900F38DD7 /* app_font.ttc in Resources */,
 				9F4EF2B61CBC4F66002E5FEA /* Assets.xcassets in Resources */,
 				9FC41FD21CBC5E1A0021C91B /* GameDataQA.json in Resources */,
 				9F4EF2B81CBC4F66002E5FEA /* LaunchScreen.storyboard in Resources */,
@@ -1014,6 +1020,7 @@
 				9F4EF2A91CBC4F66002E5FEA /* HandOddsCalculator.swift in Sources */,
 				9F4EF2AA1CBC4F66002E5FEA /* HandCell.swift in Sources */,
 				9F4EF2AB1CBC4F66002E5FEA /* Level.swift in Sources */,
+				9FBC4CE41CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */,
 				9F4EF2AC1CBC4F66002E5FEA /* HandCellItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1077,6 +1084,7 @@
 				9F44D21E1C84B21A00640046 /* HandOddsCalculator.swift in Sources */,
 				9F44D2161C84B21A00640046 /* HandCell.swift in Sources */,
 				9F95E15A1C875D0100D6F368 /* Level.swift in Sources */,
+				9FBC4CE31CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */,
 				9F44D2171C84B21A00640046 /* HandCellItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,11 @@ class BaseViewController: UIViewController {
 
     let model = ModelProvider.provider
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.adjustFontSizeRecursively(true)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         viewDidShow()

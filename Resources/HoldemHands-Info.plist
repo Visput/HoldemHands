@@ -128,5 +128,9 @@
 	<string>GameData.json</string>
 	<key>DefaultPlayerDataFileName</key>
 	<string>DefaultPlayerData.json</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>app_font.ttc</string>
+	</array>
 </dict>
 </plist>
