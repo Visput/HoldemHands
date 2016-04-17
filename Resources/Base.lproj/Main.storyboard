@@ -249,16 +249,16 @@
                                                                             <segue destination="nmV-US-QSN" kind="embed" identifier="Levels" id="NGL-H0-Zuc"/>
                                                                         </connections>
                                                                     </containerView>
-                                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hTQ-mv-LSV" userLabel="Sharing Container View">
-                                                                        <rect key="frame" x="0.0" y="714" width="736" height="357"/>
-                                                                        <connections>
-                                                                            <segue destination="36g-I0-Am3" kind="embed" identifier="Sharing" id="tp7-4V-qxN"/>
-                                                                        </connections>
-                                                                    </containerView>
                                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KnV-NH-LsX" userLabel="Stats Container View">
                                                                         <rect key="frame" x="0.0" y="357" width="736" height="357"/>
                                                                         <connections>
                                                                             <segue destination="egY-VU-Eln" kind="embed" identifier="Stats" id="fJt-d2-jaX"/>
+                                                                        </connections>
+                                                                    </containerView>
+                                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hTQ-mv-LSV" userLabel="Sharing Container View">
+                                                                        <rect key="frame" x="0.0" y="714" width="736" height="357"/>
+                                                                        <connections>
+                                                                            <segue destination="mrY-O8-8Zr" kind="embed" identifier="Sharing" id="NKu-au-bTY"/>
                                                                         </connections>
                                                                     </containerView>
                                                                 </subviews>
@@ -854,7 +854,109 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5pv-G7-r1E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606.5" y="1553.5"/>
+            <point key="canvasLocation" x="606.5" y="1672.5"/>
+        </scene>
+        <!--Sharing View Controller-->
+        <scene sceneID="gJU-A0-bVM">
+            <objects>
+                <viewController id="mrY-O8-8Zr" customClass="SharingViewController" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1mn-DK-gRz"/>
+                        <viewControllerLayoutGuide type="bottom" id="cU9-U1-pIS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eCY-Kd-ISB">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2y-Hs-duQ" userLabel="Facebook Button">
+                                <rect key="frame" x="181" y="159" width="96" height="96"/>
+                                <state key="normal" image="icon_share_facebook_large"/>
+                                <connections>
+                                    <action selector="facebookButtonDidPress:" destination="mrY-O8-8Zr" eventType="touchUpInside" id="dU2-jy-OHY"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HoF-y4-Hgv" userLabel="Space">
+                                <rect key="frame" x="277" y="159" width="43" height="96"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HoF-y4-Hgv" secondAttribute="height" multiplier="73:8" id="ElM-zn-kww"/>
+                                    <constraint firstAttribute="width" secondItem="HoF-y4-Hgv" secondAttribute="height" multiplier="43:96" id="tmK-w5-JCF"/>
+                                    <constraint firstAttribute="width" secondItem="HoF-y4-Hgv" secondAttribute="height" multiplier="97:12" id="wzb-53-0na"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ElM-zn-kww"/>
+                                        <exclude reference="wzb-53-0na"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynG-9l-qV2" userLabel="Twitter Button">
+                                <rect key="frame" x="320" y="159" width="96" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ynG-9l-qV2" secondAttribute="height" multiplier="1:1" id="akR-XC-ycn"/>
+                                </constraints>
+                                <state key="normal" image="icon_share_twitter_large"/>
+                                <connections>
+                                    <action selector="twitterButtonDidPress:" destination="mrY-O8-8Zr" eventType="touchUpInside" id="5I5-5I-HwM"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rCk-rz-6lm" userLabel="Space">
+                                <rect key="frame" x="416" y="159" width="43" height="96"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rCk-rz-6lm" secondAttribute="height" multiplier="97:12" id="Smv-BL-vW8"/>
+                                    <constraint firstAttribute="width" secondItem="rCk-rz-6lm" secondAttribute="height" multiplier="73:8" id="abw-Y9-cmq"/>
+                                    <constraint firstAttribute="width" secondItem="rCk-rz-6lm" secondAttribute="height" multiplier="43:96" id="nYn-bm-gcQ"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Smv-BL-vW8"/>
+                                        <exclude reference="abw-Y9-cmq"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5j-l2-21j" userLabel="Instagram Button">
+                                <rect key="frame" x="459" y="159" width="96" height="96"/>
+                                <state key="normal" image="icon_share_instagram_large"/>
+                                <connections>
+                                    <action selector="instagramButtonDidPress:" destination="mrY-O8-8Zr" eventType="touchUpInside" id="t4V-oD-6uP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ynG-9l-qV2" firstAttribute="width" secondItem="y5j-l2-21j" secondAttribute="width" id="01s-SC-wAN"/>
+                            <constraint firstItem="HoF-y4-Hgv" firstAttribute="width" secondItem="eCY-Kd-ISB" secondAttribute="height" multiplier="43:414" id="1iD-ZS-uhY"/>
+                            <constraint firstItem="ynG-9l-qV2" firstAttribute="width" secondItem="eCY-Kd-ISB" secondAttribute="height" multiplier="16:69" id="2Z1-1u-L3v"/>
+                            <constraint firstItem="rCk-rz-6lm" firstAttribute="width" secondItem="eCY-Kd-ISB" secondAttribute="height" multiplier="43:414" id="2oC-D5-OvT"/>
+                            <constraint firstItem="a2y-Hs-duQ" firstAttribute="top" secondItem="ynG-9l-qV2" secondAttribute="top" id="4Fh-qz-run"/>
+                            <constraint firstItem="ynG-9l-qV2" firstAttribute="width" secondItem="a2y-Hs-duQ" secondAttribute="width" id="6ac-Hr-Gtw"/>
+                            <constraint firstItem="HoF-y4-Hgv" firstAttribute="leading" secondItem="a2y-Hs-duQ" secondAttribute="trailing" id="Br8-5U-p9x"/>
+                            <constraint firstItem="ynG-9l-qV2" firstAttribute="height" secondItem="y5j-l2-21j" secondAttribute="height" id="IKg-Dj-EVG"/>
+                            <constraint firstItem="y5j-l2-21j" firstAttribute="leading" secondItem="rCk-rz-6lm" secondAttribute="trailing" id="Lbf-9Z-77X"/>
+                            <constraint firstItem="ynG-9l-qV2" firstAttribute="centerX" secondItem="eCY-Kd-ISB" secondAttribute="centerX" id="OvL-of-uiB"/>
+                            <constraint firstItem="ynG-9l-qV2" firstAttribute="height" secondItem="a2y-Hs-duQ" secondAttribute="height" id="PuF-RT-LAh"/>
+                            <constraint firstItem="ynG-9l-qV2" firstAttribute="leading" secondItem="HoF-y4-Hgv" secondAttribute="trailing" id="PuO-xk-MsF"/>
+                            <constraint firstItem="rCk-rz-6lm" firstAttribute="leading" secondItem="ynG-9l-qV2" secondAttribute="trailing" id="QkN-3b-W8O"/>
+                            <constraint firstItem="HoF-y4-Hgv" firstAttribute="top" secondItem="ynG-9l-qV2" secondAttribute="top" id="cBm-5t-pkp"/>
+                            <constraint firstItem="HoF-y4-Hgv" firstAttribute="width" secondItem="HoF-y4-Hgv" secondAttribute="height" multiplier="97:12" id="cn8-PJ-asC"/>
+                            <constraint firstItem="rCk-rz-6lm" firstAttribute="top" secondItem="ynG-9l-qV2" secondAttribute="top" id="ifm-B8-SXF"/>
+                            <constraint firstItem="y5j-l2-21j" firstAttribute="top" secondItem="ynG-9l-qV2" secondAttribute="top" id="m9B-i1-mT1"/>
+                            <constraint firstItem="ynG-9l-qV2" firstAttribute="centerY" secondItem="eCY-Kd-ISB" secondAttribute="centerY" id="xMZ-4N-Lbi"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cn8-PJ-asC"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfo-Ay-gbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="641" y="499"/>
         </scene>
         <!--Chips View Controller-->
         <scene sceneID="76T-8n-JIz">
@@ -948,7 +1050,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCr-BH-5NM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="373" y="720"/>
+            <point key="canvasLocation" x="423" y="825"/>
         </scene>
         <!--Stats View Controller-->
         <scene sceneID="uqt-Cu-tYh">
@@ -959,14 +1061,14 @@
                         <viewControllerLayoutGuide type="bottom" id="BNG-he-X4a"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oed-g2-2Fw" customClass="StatsView" customModule="HoldemHands" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="358"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="357"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jt-Zp-Mf2" userLabel="Content View">
-                                <rect key="frame" x="0.0" y="0.0" width="736" height="358"/>
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="357"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N1z-B1-EU6">
-                                        <rect key="frame" x="0.0" y="0.0" width="736" height="358"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="736" height="357"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="32" minimumInteritemSpacing="32" id="5WR-hD-MN8">
                                             <size key="itemSize" width="520" height="260"/>
@@ -976,7 +1078,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StatsCell" id="8Ao-Uu-koo" customClass="StatsCell" customModule="HoldemHands" customModuleProvider="target">
-                                                <rect key="frame" x="32" y="49" width="520" height="260"/>
+                                                <rect key="frame" x="32" y="48.5" width="520" height="260"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="520" height="260"/>
@@ -1164,7 +1266,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5H1-ZI-YXV">
-                                <rect key="frame" x="320" y="318" width="95" height="30"/>
+                                <rect key="frame" x="320" y="317" width="95" height="30"/>
                                 <state key="normal" title="Leaderboards"/>
                                 <connections>
                                     <action selector="leaderboardsButtonDidPress:" destination="egY-VU-Eln" eventType="touchUpInside" id="W1f-9C-EHg"/>
@@ -1195,7 +1297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjQ-X0-e1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="641" y="1053"/>
+            <point key="canvasLocation" x="641" y="1263.5"/>
         </scene>
         <!--Sharing View Controller-->
         <scene sceneID="A4p-mO-obr">
@@ -1314,7 +1416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6l3-9Y-1Wn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="373" y="549"/>
+            <point key="canvasLocation" x="373" y="180"/>
         </scene>
         <!--Levels View Controller-->
         <scene sceneID="43U-lF-atv">
@@ -1458,7 +1560,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ar-6P-wI1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="641" y="241"/>
+            <point key="canvasLocation" x="641" y="-115.5"/>
         </scene>
     </scenes>
     <resources>
@@ -1471,19 +1573,21 @@
         <image name="button_menu_share_selected" width="59" height="85"/>
         <image name="button_menu_stats_normal" width="59" height="83"/>
         <image name="button_menu_stats_selected" width="59" height="83"/>
-        <image name="icon_chip_blue" width="46" height="46"/>
+        <image name="icon_chip_blue" width="30" height="30"/>
         <image name="icon_chips_blue" width="34" height="23"/>
         <image name="icon_play" width="241" height="63"/>
+        <image name="icon_share_facebook_large" width="96" height="96"/>
         <image name="icon_share_facebook_small" width="48" height="48"/>
+        <image name="icon_share_instagram_large" width="96" height="96"/>
         <image name="icon_share_instagram_small" width="48" height="48"/>
+        <image name="icon_share_twitter_large" width="96" height="96"/>
         <image name="icon_share_twitter_small" width="48" height="48"/>
         <image name="icon_stats" width="241" height="63"/>
         <image name="overlay_letters_blue" width="736" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wkq-tr-tt6"/>
-        <segue reference="xlj-m6-717"/>
-        <segue reference="3Io-ee-72I"/>
+        <segue reference="0pp-g4-GEi"/>
+        <segue reference="fJt-d2-jaX"/>
         <segue reference="mAe-ai-Kz2"/>
     </inferredMetricsTieBreakers>
 </document>
