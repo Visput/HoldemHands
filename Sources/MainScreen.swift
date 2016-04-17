@@ -10,14 +10,8 @@ import UIKit
 
 final class MainScreen: BaseViewController {
     
-    enum DetailsViewPage: Int {
-        case Levels = 0
-        case Stats = 1
-        case Sharing = 2
-    }
-    
-    private(set) var currentDetailsPage: DetailsViewPage? {
-        willSet (newPage) {
+    private(set) var currentDetailsPage: MainView.DetailsViewPage? {
+        set (newPage) {
             Analytics.detailsViewPageOnMainScreenChanged(currentDetailsPage, newPage: newPage!)
             
             guard currentDetailsPage != newPage else { return }
@@ -49,6 +43,12 @@ final class MainScreen: BaseViewController {
                     sharingController.endAppearanceTransition()
                 }
             }
+            
+            mainView.currentDetailsPage = newPage
+        }
+        
+        get {
+            return mainView.currentDetailsPage
         }
     }
     
@@ -99,7 +99,7 @@ extension MainScreen {
     @IBAction private func playButtonDidPress(sender: AnyObject) {
         Analytics.playClicked()
         currentDetailsPage = .Levels
-        mainView.scrollToDetailsViewAtPage(DetailsViewPage.Levels.rawValue, completionHandler: {
+        mainView.scrollToDetailsViewAtPage(MainView.DetailsViewPage.Levels.rawValue, completionHandler: {
             self.statsController.scrollToOverallStatsAnimated(false)
         })
     }
@@ -107,7 +107,7 @@ extension MainScreen {
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
         Analytics.statsClicked()
         currentDetailsPage = .Stats
-        mainView.scrollToDetailsViewAtPage(DetailsViewPage.Stats.rawValue, completionHandler: {
+        mainView.scrollToDetailsViewAtPage(MainView.DetailsViewPage.Stats.rawValue, completionHandler: {
             self.statsController.reloadRanks()
         })
     }
@@ -115,7 +115,7 @@ extension MainScreen {
     @IBAction private func shareButtonDidPress(sender: AnyObject) {
         Analytics.shareClickedInMainScreen()
         currentDetailsPage = .Sharing
-        mainView.scrollToDetailsViewAtPage(DetailsViewPage.Sharing.rawValue)
+        mainView.scrollToDetailsViewAtPage(MainView.DetailsViewPage.Sharing.rawValue)
     }
 }
 
@@ -124,7 +124,7 @@ extension MainScreen: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let page = lroundf(Float(scrollView.contentOffset.y / scrollView.frame.size.height))
         
-        currentDetailsPage = DetailsViewPage(rawValue: page)
+        currentDetailsPage = MainView.DetailsViewPage(rawValue: page)
         mainView.selectMenuButtonForPage(page)
         
         if currentDetailsPage == .Stats {
@@ -132,6 +132,8 @@ extension MainScreen: UIScrollViewDelegate {
         } else if currentDetailsPage == .Levels {
             statsController.scrollToOverallStatsAnimated(false)
         }
+        
+        mainView.updateDetailsViewTitleWithPage(page)
         
         Analytics.detailsViewSwipedInMainScreen()
     }

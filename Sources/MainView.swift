@@ -10,6 +10,14 @@ import UIKit
 
 final class MainView: UIView {
     
+    enum DetailsViewPage: Int {
+        case Levels = 0
+        case Stats = 1
+        case Sharing = 2
+    }
+    
+    var currentDetailsPage: DetailsViewPage?
+    
     @IBOutlet private(set) weak var contentScrollView: UIScrollView!
     @IBOutlet private(set) weak var detailsScrollView: UIScrollView!
     @IBOutlet private(set) weak var levelsContainerView: UIView!
@@ -40,6 +48,7 @@ final class MainView: UIView {
             return
         }
         
+        updateDetailsViewTitleWithPage(page)
         selectMenuButtonForPage(page)
         
         if isDetailsViewShown {
@@ -58,6 +67,23 @@ final class MainView: UIView {
         for (index, button) in menuButtons.enumerate() {
             button.selected = index == page
         }
+    }
+    
+    func updateDetailsViewTitleWithPage(page: Int) {
+        var text: String! = nil
+        
+        switch DetailsViewPage(rawValue: page)! {
+        case .Levels:
+            text = NSLocalizedString("HoldemHands", comment: "")
+        case .Stats:
+            text = NSLocalizedString("Stats", comment: "")
+        case .Sharing:
+            text = NSLocalizedString("Share with Friends", comment: "")
+        }
+        
+        UIView.transitionWithView(detailsTitleLabel, duration: 0.4, options: [.TransitionCrossDissolve], animations: {
+            self.detailsTitleLabel.text = text
+            }, completion: nil)
     }
     
     private func scrollToDetailsView(completionHandler: (() -> Void)? = nil) {
