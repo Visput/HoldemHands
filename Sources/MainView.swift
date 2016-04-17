@@ -18,7 +18,6 @@ final class MainView: UIView {
     @IBOutlet private(set) var menuButtons: [UIButton]!
     @IBOutlet private(set) weak var menuView: UIView!
     @IBOutlet private weak var menuViewLeadingSpace: NSLayoutConstraint!
-    @IBOutlet private weak var menuViewWidth: NSLayoutConstraint!
     
     private var isDetailsViewShown: Bool {
         return contentScrollView.contentOffset.x != 0.0
@@ -27,7 +26,7 @@ final class MainView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let levelsView = levelsContainerView.subviews.first! as! LevelsView
-        menuViewWidth.constant = levelsView.contentViewLeadingSpace.constant
+        levelsView.menuSize = menuView.frame.size
     }
     
     func scrollToDetailsViewAtPage(page: Int, completionHandler: (() -> Void)? = nil) {
@@ -57,7 +56,7 @@ final class MainView: UIView {
     }
     
     private func scrollToDetailsView(completionHandler: (() -> Void)? = nil) {
-        menuViewLeadingSpace.constant = -menuViewWidth.constant
+        menuViewLeadingSpace.constant = -menuView.frame.size.width
         layoutIfNeeded()
         
         UIView.animateWithDuration(0.6, delay: 0.0, options: .CurveEaseInOut, animations: {

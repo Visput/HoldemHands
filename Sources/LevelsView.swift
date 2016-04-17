@@ -11,7 +11,9 @@ import UIKit
 final class LevelsView: UIView {
  
     @IBOutlet private(set) weak var levelsCollectionView: UICollectionView!
-    @IBOutlet private(set) weak var contentViewLeadingSpace: NSLayoutConstraint!
+    @IBOutlet private weak var contentViewLeadingSpace: NSLayoutConstraint!
+    
+    var menuSize = CGSize(width: 0.0, height: 0.0)
     
     private var levelsCollectionLayout: UICollectionViewFlowLayout {
         return levelsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -22,23 +24,22 @@ final class LevelsView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let spacing: CGFloat = UIScreen.mainScreen().sizeType == .iPhone4 ? 32.0 : 48.0
-        let widthRatio: CGFloat = 1.4
-        let heightRatio: CGFloat = 2.0
+        let widthRatio: CGFloat = 2.0
+        let offset: CGFloat = 5.0
         
-        levelsCollectionLayout.itemSize.width = floor(frame.size.width / widthRatio)
-        levelsCollectionLayout.itemSize.height = floor(levelsCollectionLayout.itemSize.width / heightRatio)
+        contentViewLeadingSpace.constant = menuSize.width - offset
+        
+        levelsCollectionLayout.itemSize.height = floor(menuSize.height + offset)
+        levelsCollectionLayout.itemSize.width = floor(levelsCollectionLayout.itemSize.height * widthRatio)
         
         levelsCollectionLayout.sectionInset.top = floor((levelsCollectionView.frame.size.height - levelsCollectionLayout.itemSize.height) / 2.0)
         levelsCollectionLayout.sectionInset.bottom = levelsCollectionLayout.sectionInset.top
         
-        levelsCollectionLayout.minimumLineSpacing = spacing
-        levelsCollectionLayout.minimumInteritemSpacing = spacing
-        
         levelsCollectionLayout.sectionInset.right = floor((frame.size.width - levelsCollectionLayout.itemSize.width) / 2.0)
-        levelsCollectionLayout.sectionInset.left = spacing
+        levelsCollectionLayout.sectionInset.left = levelsCollectionLayout.sectionInset.right - menuSize.width
         
-        contentViewLeadingSpace.constant = levelsCollectionLayout.sectionInset.right - levelsCollectionLayout.sectionInset.left
+        levelsCollectionLayout.minimumLineSpacing = levelsCollectionLayout.sectionInset.left
+        levelsCollectionLayout.minimumInteritemSpacing = levelsCollectionLayout.sectionInset.left
     }
     
     func scrollToNearestLevelAnimated(animated: Bool) {
