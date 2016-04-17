@@ -15,6 +15,15 @@ final class LevelCell: UICollectionViewCell {
     
     private(set) var item: LevelCellItem!
     
+    override var highlighted: Bool {
+        didSet {
+            UIView.animateWithDuration(0.2, animations: {
+                let zoomLevel: CGFloat = self.highlighted ? 0.9 : 1.0
+                self.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
+            })
+        }
+    }
+    
     func fillWithItem(item: LevelCellItem) {
         self.item = item
         
