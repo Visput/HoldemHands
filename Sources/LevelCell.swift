@@ -10,12 +10,8 @@ import UIKit
 
 final class LevelCell: UICollectionViewCell {
     
-    @IBOutlet private(set) weak var levelLabel: UILabel!
-    @IBOutlet private(set) weak var lockedLabel: UILabel!
-    @IBOutlet private(set) weak var priceLabel: UILabel!
-    @IBOutlet private(set) weak var tableImageView: UIImageView!
-    @IBOutlet private(set) weak var handsCountLabel: UILabel!
-    @IBOutlet private(set) weak var chipsImageView: UIImageView!
+    @IBOutlet private(set) weak var tableBackgroundImageView: UIImageView!
+    @IBOutlet private(set) weak var tableOverlayImageView: UIImageView!
     
     private(set) var item: LevelCellItem!
     
@@ -23,20 +19,10 @@ final class LevelCell: UICollectionViewCell {
         self.item = item
         
         if item.levelProgress.locked! {
-            tableImageView.image = UIImage(named: "background_table_level_locked")
+            tableBackgroundImageView.image = UIImage(named: "background_table_level_locked")
         } else {
-            tableImageView.image = UIImage(named: "background_table_level_\(item.levelProgress.level.identifier)")
+            tableBackgroundImageView.image = UIImage(named: "background_table_level_\(item.levelProgress.level.identifier)")
         }
-        handsCountLabel.text = NSString.localizedStringWithFormat("%d hands", item.levelProgress.level.numberOfHands) as String
-        levelLabel.text = item.levelProgress.level.name
-        
-        if item.levelProgress.locked! {
-            lockedLabel.hidden = false
-            priceLabel.text = item.levelProgress.level.chipsToUnlock.formattedChipsCountString
-            
-        } else {
-            lockedLabel.hidden = true
-            priceLabel.text = item.levelProgress.level.chipsPerWin.formattedChipsCountString
-        }
+        tableOverlayImageView.image = UIImage(named: "overlay_table_level_\(item.levelProgress.level.identifier)")
     }
 }

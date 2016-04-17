@@ -75,10 +75,7 @@ final class LevelsView: UIView {
                 })
                 
                 UIView.animateWithDuration(0.5, animations: {
-                    self.zoomedCell!.handsCountLabel.alpha = 0.0
-                    self.zoomedCell!.priceLabel.alpha = 0.0
-                    self.zoomedCell!.chipsImageView.alpha = 0.0
-                    self.zoomedCell!.levelLabel.alpha = 0.0
+                    self.zoomedCell!.tableOverlayImageView.alpha = 0.0
                     
                     mainView.transform = CGAffineTransformMakeScale(self.zoomLevel, self.zoomLevel)
                     }, completion: { _ in
@@ -100,10 +97,7 @@ final class LevelsView: UIView {
         mainView.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
         
         UIView.animateWithDuration(0.4, animations: {
-            self.zoomedCell!.handsCountLabel.alpha = 1.0
-            self.zoomedCell!.priceLabel.alpha = 1.0
-            self.zoomedCell!.chipsImageView.alpha = 1.0
-            self.zoomedCell!.levelLabel.alpha = 1.0
+            self.zoomedCell!.tableOverlayImageView.alpha = 1.0
             
             mainView.transform = CGAffineTransformIdentity
             

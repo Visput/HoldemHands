@@ -72,10 +72,17 @@ extension LevelsViewController: PlayerManagerObserving {
 
 extension LevelsViewController {
     
+    private static var autoScrollingEnabled = true
+    
     private func fillViewsWithModelWithScrollingToLastPlayedLevel(scrollToLastPlayedLevel: Bool) {
         levelsView.levelsCollectionView.reloadData()
         
-        guard scrollToLastPlayedLevel && model.playerManager.playerData.lastPlayedLevelID != nil else { return }
+        guard LevelsViewController.autoScrollingEnabled &&
+            scrollToLastPlayedLevel &&
+            model.playerManager.playerData.lastPlayedLevelID != nil else { return }
+        
+        // Auto scrolling needed only for the first time.
+        LevelsViewController.autoScrollingEnabled = false
         
         // Execute scrolling after short delay to be sure that collection view layout is configured.
         executeAfterDelay(0.05, task: {
