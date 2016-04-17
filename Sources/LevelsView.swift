@@ -25,11 +25,10 @@ final class LevelsView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let widthRatio: CGFloat = 2.0
-        let offset: CGFloat = 5.0
         
-        contentViewLeadingSpace.constant = menuSize.width - offset
+        contentViewLeadingSpace.constant = menuSize.width
         
-        levelsCollectionLayout.itemSize.height = floor(menuSize.height + offset)
+        levelsCollectionLayout.itemSize.height = floor(menuSize.height)
         levelsCollectionLayout.itemSize.width = floor(levelsCollectionLayout.itemSize.height * widthRatio)
         
         levelsCollectionLayout.sectionInset.top = floor((levelsCollectionView.frame.size.height - levelsCollectionLayout.itemSize.height) / 2.0)

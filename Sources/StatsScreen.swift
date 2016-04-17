@@ -16,13 +16,13 @@ final class StatsScreen: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        statsController.statsView.leadingContentSpaceEnabled = false
+        // Stats view uses menu height as measure for table height.
+        statsController.statsView.menuSize = CGSize(width: 0.0, height: model.navigationManager.mainScreen.mainView.menuView.frame.size.height)
     }
     
     override func viewDidShow() {
         super.viewDidShow()
         Analytics.statsScreenAppeared()
-        
         statsController.reloadRanks()
     }
     

@@ -56,7 +56,7 @@ final class MainScreen: BaseViewController {
     private var statsController: StatsViewController!
     private var sharingController: SharingViewController!
 
-    private var mainView: MainView {
+    var mainView: MainView {
         return view as! MainView
     }
     

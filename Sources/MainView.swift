@@ -13,6 +13,8 @@ final class MainView: UIView {
     @IBOutlet private(set) weak var contentScrollView: UIScrollView!
     @IBOutlet private(set) weak var detailsScrollView: UIScrollView!
     @IBOutlet private(set) weak var levelsContainerView: UIView!
+    @IBOutlet private(set) weak var statsContainerView: UIView!
+    @IBOutlet private(set) weak var sharingContainerView: UIView!
     @IBOutlet private(set) weak var detailsTitleLabel: UILabel!
     
     @IBOutlet private(set) var menuButtons: [UIButton]!
@@ -27,6 +29,9 @@ final class MainView: UIView {
         super.layoutSubviews()
         let levelsView = levelsContainerView.subviews.first! as! LevelsView
         levelsView.menuSize = menuView.frame.size
+        
+        let statsView = statsContainerView.subviews.first! as! StatsView
+        statsView.menuSize = menuView.frame.size
     }
     
     func scrollToDetailsViewAtPage(page: Int, completionHandler: (() -> Void)? = nil) {

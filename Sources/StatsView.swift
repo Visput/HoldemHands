@@ -12,9 +12,9 @@ final class StatsView: UIView {
     
     @IBOutlet private(set) weak var statsCollectionView: UICollectionView!
     @IBOutlet private(set) weak var leaderboardsButton: UIButton!
-    @IBOutlet private(set) weak var contentViewLeadingSpace: NSLayoutConstraint!
+    @IBOutlet private weak var contentViewLeadingSpace: NSLayoutConstraint!
     
-    var leadingContentSpaceEnabled = true
+    var menuSize = CGSize(width: 0.0, height: 0.0)
     
     private var statsCollectionLayout: UICollectionViewFlowLayout {
         return statsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -22,30 +22,22 @@ final class StatsView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        let widthRatio: CGFloat = 2.0
         
-        super.layoutSubviews()
-        let spacing: CGFloat = UIScreen.mainScreen().sizeType == .iPhone4 ? 32.0 : 48.0
-        let widthRatio: CGFloat = 1.4
-        let heightRatio: CGFloat = 2.0
+        contentViewLeadingSpace.constant = menuSize.width
         
-        statsCollectionLayout.itemSize.width = floor(frame.size.width / widthRatio)
-        statsCollectionLayout.itemSize.height = floor(statsCollectionLayout.itemSize.width / heightRatio)
+        statsCollectionLayout.itemSize.height = floor(menuSize.height)
+        statsCollectionLayout.itemSize.width = floor(statsCollectionLayout.itemSize.height * widthRatio)
         
         statsCollectionLayout.sectionInset.top = floor((statsCollectionView.frame.size.height - statsCollectionLayout.itemSize.height) / 2.0)
         statsCollectionLayout.sectionInset.bottom = statsCollectionLayout.sectionInset.top
         
+        statsCollectionLayout.sectionInset.right = floor((frame.size.width - statsCollectionLayout.itemSize.width) / 2.0)
+        statsCollectionLayout.sectionInset.left = statsCollectionLayout.sectionInset.right - menuSize.width
+        
+        let spacing = menuSize.width > 0.0 ? statsCollectionLayout.sectionInset.left : statsCollectionLayout.sectionInset.left / 2.0
         statsCollectionLayout.minimumLineSpacing = spacing
         statsCollectionLayout.minimumInteritemSpacing = spacing
-        
-        statsCollectionLayout.sectionInset.right = floor((frame.size.width - statsCollectionLayout.itemSize.width) / 2.0)
-        
-        if leadingContentSpaceEnabled {
-            statsCollectionLayout.sectionInset.left = spacing
-            contentViewLeadingSpace.constant = statsCollectionLayout.sectionInset.right - statsCollectionLayout.sectionInset.left
-        } else {
-            statsCollectionLayout.sectionInset.left = statsCollectionLayout.sectionInset.right
-            contentViewLeadingSpace.constant = 0.0
-        }
     }
     
     func scrollToNearestStatsAnimated(animated: Bool) {
@@ -63,7 +55,7 @@ final class StatsView: UIView {
                 statsCollectionLayout.minimumInteritemSpacing * CGFloat(index - 1) +
                 statsCollectionLayout.itemSize.width * CGFloat(index)
             
-            if !leadingContentSpaceEnabled {
+            if menuSize.width == 0 {
                 targetOffset -= statsCollectionLayout.sectionInset.left - statsCollectionLayout.minimumInteritemSpacing
             }
         }
