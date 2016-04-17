@@ -24,6 +24,7 @@ final class MainView: UIView {
     @IBOutlet private(set) weak var statsContainerView: UIView!
     @IBOutlet private(set) weak var sharingContainerView: UIView!
     @IBOutlet private(set) weak var detailsTitleLabel: UILabel!
+    @IBOutlet private(set) weak var headerGradientView: UIImageView!
     
     @IBOutlet private(set) var menuButtons: [UIButton]!
     @IBOutlet private(set) weak var menuView: UIView!
@@ -96,9 +97,10 @@ final class MainView: UIView {
             }, completion: { _ in
                 completionHandler?()
                 
-                // Show menu.
+                // Show menu and gradient header.
                 UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut, animations: {
                     self.menuViewLeadingSpace.constant = 0.0
+                    self.headerGradientView.alpha = 1.0
                     self.layoutIfNeeded()
                     }, completion: nil)
         })

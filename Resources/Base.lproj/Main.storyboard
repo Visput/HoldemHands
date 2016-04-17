@@ -66,7 +66,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HoldemHands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POy-nj-eDG">
-                                                        <rect key="frame" x="258" y="24" width="219" height="32"/>
+                                                        <rect key="frame" x="258.5" y="24" width="219" height="32"/>
                                                         <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="32"/>
                                                         <color key="textColor" red="0.2784313725" green="0.32549019610000002" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -223,20 +223,6 @@
                                                             </mask>
                                                         </variation>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HoldemHands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oig-8P-j3Y">
-                                                        <rect key="frame" x="255" y="24" width="225.5" height="33"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="S9c-0c-yri"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="33"/>
-                                                        <color key="textColor" red="0.2784313725" green="0.32549019610000002" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <variation key="default">
-                                                            <mask key="constraints">
-                                                                <exclude reference="S9c-0c-yri"/>
-                                                            </mask>
-                                                        </variation>
-                                                    </label>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVy-7R-SH6">
                                                         <rect key="frame" x="0.0" y="57" width="736" height="357"/>
                                                         <subviews>
@@ -292,11 +278,23 @@
                                                             <outlet property="delegate" destination="P8v-C8-9Zi" id="nHT-Ig-Zjp"/>
                                                         </connections>
                                                     </scrollView>
+                                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow_blue" translatesAutoresizingMaskIntoConstraints="NO" id="TZP-if-cHH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="736" height="95"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="TZP-if-cHH" secondAttribute="height" multiplier="736:95" id="IDf-9E-gUp"/>
+                                                            <constraint firstAttribute="width" secondItem="TZP-if-cHH" secondAttribute="height" multiplier="736:109" id="ktI-Hr-sZp"/>
+                                                        </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="ktI-Hr-sZp"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ee7-Tw-xMU">
-                                                        <rect key="frame" x="0.0" y="109" width="59" height="253"/>
+                                                        <rect key="frame" x="0.0" y="109.5" width="59" height="253"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XjH-Zl-nik" userLabel="Play Button">
-                                                                <rect key="frame" x="0.0" y="0.0" width="59" height="85"/>
+                                                                <rect key="frame" x="0.0" y="0.5" width="59" height="85"/>
                                                                 <state key="normal" backgroundImage="button_menu_play_normal"/>
                                                                 <state key="selected" backgroundImage="button_menu_play_selected"/>
                                                                 <state key="highlighted" backgroundImage="button_menu_play_selected"/>
@@ -305,7 +303,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8L-qM-8tM" userLabel="Stats Button">
-                                                                <rect key="frame" x="0.0" y="85" width="59" height="83"/>
+                                                                <rect key="frame" x="0.0" y="85.5" width="59" height="83"/>
                                                                 <state key="normal" backgroundImage="button_menu_stats_normal"/>
                                                                 <state key="selected" backgroundImage="button_menu_stats_selected"/>
                                                                 <state key="highlighted" backgroundImage="button_menu_stats_selected"/>
@@ -314,7 +312,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFd-jV-XYU" userLabel="Sharing Button">
-                                                                <rect key="frame" x="0.0" y="168" width="59" height="85"/>
+                                                                <rect key="frame" x="0.0" y="168.5" width="59" height="85"/>
                                                                 <state key="normal" backgroundImage="button_menu_share_normal"/>
                                                                 <state key="selected" backgroundImage="button_menu_share_selected"/>
                                                                 <state key="highlighted" backgroundImage="button_menu_share_selected"/>
@@ -368,6 +366,20 @@
                                                             </mask>
                                                         </variation>
                                                     </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HoldemHands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oig-8P-j3Y">
+                                                        <rect key="frame" x="255" y="24" width="225.5" height="33"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="S9c-0c-yri"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="33"/>
+                                                        <color key="textColor" red="0.2784313725" green="0.32549019610000002" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="S9c-0c-yri"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </label>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKE-5M-LX0" userLabel="Chips Container View">
                                                         <rect key="frame" x="436" y="0.0" width="300" height="100"/>
                                                         <constraints>
@@ -388,17 +400,21 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="TZP-if-cHH" firstAttribute="top" secondItem="uPq-Mh-IwM" secondAttribute="top" id="4AN-1i-fTb"/>
                                                     <constraint firstItem="vKE-5M-LX0" firstAttribute="width" secondItem="uPq-Mh-IwM" secondAttribute="height" multiplier="50:69" id="4Uc-ex-TDA"/>
                                                     <constraint firstItem="VzT-1v-EWA" firstAttribute="centerX" secondItem="uPq-Mh-IwM" secondAttribute="centerX" id="5Hb-xt-yiQ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TZP-if-cHH" secondAttribute="trailing" id="DOr-ZF-6Ej"/>
                                                     <constraint firstItem="ee7-Tw-xMU" firstAttribute="height" secondItem="uPq-Mh-IwM" secondAttribute="width" multiplier="253:736" id="G6p-uJ-cJ5"/>
                                                     <constraint firstAttribute="trailing" secondItem="hVy-7R-SH6" secondAttribute="trailing" id="Hbx-50-L37"/>
                                                     <constraint firstItem="ee7-Tw-xMU" firstAttribute="leading" secondItem="uPq-Mh-IwM" secondAttribute="leading" id="Ih8-Fl-VQH"/>
+                                                    <constraint firstItem="ee7-Tw-xMU" firstAttribute="top" secondItem="TZP-if-cHH" secondAttribute="bottom" id="In5-YV-eOX"/>
                                                     <constraint firstItem="hVy-7R-SH6" firstAttribute="top" secondItem="oig-8P-j3Y" secondAttribute="bottom" id="JRN-pg-WZL"/>
                                                     <constraint firstAttribute="bottom" secondItem="hVy-7R-SH6" secondAttribute="bottom" id="Jm9-Xm-hTw"/>
                                                     <constraint firstItem="hVy-7R-SH6" firstAttribute="leading" secondItem="uPq-Mh-IwM" secondAttribute="leading" id="Nsv-Mj-UC0"/>
                                                     <constraint firstItem="VzT-1v-EWA" firstAttribute="top" secondItem="uPq-Mh-IwM" secondAttribute="top" id="PJ5-ke-5AV"/>
                                                     <constraint firstItem="oig-8P-j3Y" firstAttribute="top" secondItem="uPq-Mh-IwM" secondAttribute="top" constant="16" id="PjH-Az-d2j"/>
                                                     <constraint firstAttribute="trailing" secondItem="vKE-5M-LX0" secondAttribute="trailing" id="SYS-ND-IMv"/>
+                                                    <constraint firstItem="TZP-if-cHH" firstAttribute="leading" secondItem="uPq-Mh-IwM" secondAttribute="leading" id="YCa-M6-jDx"/>
                                                     <constraint firstItem="ee7-Tw-xMU" firstAttribute="centerY" secondItem="hVy-7R-SH6" secondAttribute="centerY" id="akt-Nj-aDd"/>
                                                     <constraint firstItem="oig-8P-j3Y" firstAttribute="centerX" secondItem="uPq-Mh-IwM" secondAttribute="centerX" id="cCI-jd-FPj"/>
                                                     <constraint firstItem="vKE-5M-LX0" firstAttribute="top" secondItem="uPq-Mh-IwM" secondAttribute="top" id="gPh-As-AOE"/>
@@ -408,6 +424,7 @@
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
+                                                        <exclude reference="In5-YV-eOX"/>
                                                         <exclude reference="qiH-Ok-25A"/>
                                                         <exclude reference="PjH-Az-d2j"/>
                                                     </mask>
@@ -485,6 +502,7 @@
                             <outlet property="contentScrollView" destination="57x-Zp-BiP" id="8GQ-Wt-4eN"/>
                             <outlet property="detailsScrollView" destination="hVy-7R-SH6" id="YgM-Oc-axa"/>
                             <outlet property="detailsTitleLabel" destination="oig-8P-j3Y" id="aSP-yg-hCW"/>
+                            <outlet property="headerGradientView" destination="TZP-if-cHH" id="1AN-GK-HTw"/>
                             <outlet property="levelsContainerView" destination="v8l-bn-mY7" id="R4x-Zz-gt5"/>
                             <outlet property="menuView" destination="ee7-Tw-xMU" id="0tt-bm-9cf"/>
                             <outlet property="menuViewLeadingSpace" destination="Ih8-Fl-VQH" id="xJk-jS-D3F"/>
@@ -1535,6 +1553,7 @@
         <image name="icon_stats" width="241" height="63"/>
         <image name="overlay_letters_blue" width="736" height="414"/>
         <image name="overlay_table_level_1" width="522" height="254"/>
+        <image name="shadow_blue" width="736" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0pp-g4-GEi"/>

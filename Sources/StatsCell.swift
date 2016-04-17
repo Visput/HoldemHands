@@ -28,6 +28,15 @@ final class StatsCell: UICollectionViewCell {
  
     private(set) var item: StatsCellItem!
     
+    override var highlighted: Bool {
+        didSet {
+            UIView.animateWithDuration(0.2, animations: {
+                let zoomLevel: CGFloat = self.highlighted ? 0.9 : 1.0
+                self.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
+            })
+        }
+    }
+    
     func fillWithItem(item: StatsCellItem) {
         updateRankLabelWithItem(item, oldItem: self.item)
         
