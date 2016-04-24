@@ -28,10 +28,11 @@ final class LevelCell: UICollectionViewCell {
         self.item = item
         
         if item.levelProgress.locked! {
-            tableBackgroundImageView.image = UIImage(named: "background_table_level_locked")
+            tableBackgroundImageView.image = UIImage(named: "background_table_locked")
+            tableOverlayImageView.image = UIImage(named: "overlay_table_locked_level_\(item.levelProgress.level.identifier)")
         } else {
             tableBackgroundImageView.image = UIImage(named: "background_table_level_\(item.levelProgress.level.identifier)")
+            tableOverlayImageView.image = UIImage(named: "overlay_table_level_\(item.levelProgress.level.identifier)")
         }
-        tableOverlayImageView.image = UIImage(named: "overlay_table_level_\(item.levelProgress.level.identifier)")
     }
 }

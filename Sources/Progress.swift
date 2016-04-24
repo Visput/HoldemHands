@@ -16,11 +16,12 @@ protocol Progress {
     var rank: Int? { get }
     
     var chipsCount: Int64 { get }
-    var title: String { get }
     var leaderboardID: String { get }
     
     var winPercent: Double { get }
     var handsCount: Int { get }
+    var identifier: String { get }
+    var locked: Bool! { get }
 }
 
 extension Progress {

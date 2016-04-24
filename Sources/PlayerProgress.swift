@@ -17,7 +17,11 @@ struct PlayerProgress: Progress {
     let leaderboardID: String
     let rank: Int?
     
-    var title: String {
-        return NSLocalizedString("Overall", comment: "")
+    var identifier: String {
+        return "overall"
+    }
+    
+    var locked: Bool! {
+        return false
     }
 }

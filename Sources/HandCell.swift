@@ -33,11 +33,11 @@ final class HandCell: UICollectionViewCell {
                 backgroundColor = item.needsShowOdds! ? UIColor.darkGrayColor() : UIColor.clearColor()
                 winningProbabilityLabel.backgroundColor = UIColor.darkGrayColor()
             } else if item.isSuccessSate! {
-                backgroundColor = UIColor.lightPrimaryColor()
-                winningProbabilityLabel.backgroundColor = UIColor.lightPrimaryColor()
+                backgroundColor = UIColor.greenColor()
+                winningProbabilityLabel.backgroundColor = UIColor.greenColor()
             } else {
-                backgroundColor = UIColor.lightSecondaryColor()
-                winningProbabilityLabel.backgroundColor = UIColor.lightSecondaryColor()
+                backgroundColor = UIColor.redColor()
+                winningProbabilityLabel.backgroundColor = UIColor.redColor()
             }
         }
     }

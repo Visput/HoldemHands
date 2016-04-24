@@ -26,12 +26,12 @@ struct LevelProgress: Progress, Mappable {
         return wonChipsCount - lostChipsCount
     }
     
-    var title: String {
-        return level.name
-    }
-    
     var leaderboardID: String {
         return level.leaderboardID
+    }
+    
+    var identifier: String {
+        return String(levelID)
     }
     
     init(levelID: Int,

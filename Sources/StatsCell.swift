@@ -11,9 +11,8 @@ import UICountingLabel
 
 final class StatsCell: UICollectionViewCell {
     
-    @IBOutlet private(set) weak var statsContentView: UIView!
-    @IBOutlet private(set) weak var noStatsView: UIView!
-    @IBOutlet private(set) weak var nameLabel: UILabel!
+    @IBOutlet private(set) weak var statsBackgroundImageView: UIImageView!
+    @IBOutlet private(set) weak var statsOverlayImageView: UIImageView!
     @IBOutlet private(set) weak var winPercentLabel: UILabel!
     @IBOutlet private(set) weak var winsInRowLabel: UILabel!
     @IBOutlet private(set) weak var handsCountLabel: UILabel!
@@ -38,24 +37,37 @@ final class StatsCell: UICollectionViewCell {
     }
     
     func fillWithItem(item: StatsCellItem) {
-        updateRankLabelWithItem(item, oldItem: self.item)
+        let hasProgress = item.progressItem.handsCount != 0
+        
+        if hasProgress {
+            updateRankLabelWithItem(item, oldItem: self.item)
+        } else {
+            rankLabel.text = "-"
+        }
         
         self.item = item
         
-        nameLabel.text = item.progressItem.title
-        
-        if item.progressItem.handsCount != 0 {
-            statsContentView.hidden = false
-            noStatsView.hidden = true
-
-            winPercentLabel.text = NSString(format: "%.2f%%", item.progressItem.winPercent) as String
-            winsInRowLabel.text = String(item.progressItem.maxWinsCountInRow)
-            handsCountLabel.text = String(item.progressItem.handsCount)
-
+        if item.progressItem.locked! {
+            statsBackgroundImageView.image = UIImage(named: "background_table_locked")
+            statsOverlayImageView.image = UIImage(named: "overlay_stats_locked_level_\(item.progressItem.identifier)")
+            
+            rankLabel.textColor = UIColor.gray1Color()
+            winPercentLabel.textColor  = UIColor.gray1Color()
+            winsInRowLabel.textColor = UIColor.gray1Color()
+            handsCountLabel.textColor = UIColor.gray1Color()
         } else {
-            statsContentView.hidden = true
-            noStatsView.hidden = false
+            statsBackgroundImageView.image = UIImage(named: "background_table_level_\(item.progressItem.identifier)")
+            statsOverlayImageView.image = UIImage(named: "overlay_stats_level_\(item.progressItem.identifier)")
+            
+            rankLabel.textColor = UIColor.aquamarine1Color()
+            winPercentLabel.textColor  = UIColor.aquamarine1Color()
+            winsInRowLabel.textColor = UIColor.aquamarine1Color()
+            handsCountLabel.textColor = UIColor.aquamarine1Color()
         }
+        
+        winPercentLabel.text = hasProgress ? NSString(format: "%.2f%%", item.progressItem.winPercent) as String : "-"
+        winsInRowLabel.text = hasProgress ? String(item.progressItem.maxWinsCountInRow) : "-"
+        handsCountLabel.text = hasProgress ? String(item.progressItem.handsCount) : "-"
     }
     
     func updateRankLabelWithItem(newItem: StatsCellItem, oldItem: StatsCellItem?) {
@@ -64,16 +76,16 @@ final class StatsCell: UICollectionViewCell {
         let newRank = newItem.progressItem.rank
         let oldRank = oldItem?.progressItem.rank
         
-        if newRank != nil && oldRank != nil && newRank! != oldRank! && newItem.progressItem.title == oldItem?.progressItem.title {
+        if newRank != nil && oldRank != nil && newRank! != oldRank! && newItem.progressItem.identifier == oldItem?.progressItem.identifier {
             let rankRaised = newRank < oldRank
             let rankDifference = abs(newRank! - oldRank!)
             
             if rankRaised {
                 rankDifferenceLabel.text = "+\(rankDifference)"
-                rankDifferenceLabel.textColor = UIColor.primaryColor()
+                rankDifferenceLabel.textColor = UIColor.aquamarine1Color()
             } else {
                 rankDifferenceLabel.text = "-\(rankDifference)"
-                rankDifferenceLabel.textColor = UIColor.backgroundColor()
+                rankDifferenceLabel.textColor = UIColor.gray1Color()
             }
             
             UIView.animateWithDuration(0.2, delay: 0.0, options: .CurveLinear, animations: {

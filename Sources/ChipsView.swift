@@ -42,7 +42,7 @@ final class ChipsView: UIView {
                 }
                 
                 chipsDifferenceLabel.text = chipsDifferenceText
-                chipsDifferenceLabel.textColor = UIColor.primaryColor()
+                chipsDifferenceLabel.textColor = UIColor.aquamarine1Color()
                 
                 UIView.animateWithDuration(0.2, delay: 0.0, options: .CurveLinear, animations: {
                     self.chipsDifferenceLabel.alpha = 1.0
@@ -61,7 +61,7 @@ final class ChipsView: UIView {
                 chipsDifferenceLabelTopSpace.constant = 0.0
                 layoutIfNeeded()
                 chipsDifferenceLabel.text = "- " + chipsDifference.formattedChipsCountString
-                chipsDifferenceLabel.textColor = UIColor.backgroundColor()
+                chipsDifferenceLabel.textColor = UIColor.gray1Color()
                 
                 UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveLinear, animations: {
                     self.chipsDifferenceLabelTopSpace.constant = 20.0

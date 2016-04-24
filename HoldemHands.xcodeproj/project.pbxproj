@@ -228,6 +228,7 @@
 		9FACAADD1C72BCC20051A435 /* HoldemHandsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoldemHandsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = app_font.ttc; sourceTree = "<group>"; };
 		9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FontSize.swift"; sourceTree = "<group>"; };
+		9FBE139B1CCD678B00144E15 /* AppPalette.clr */ = {isa = PBXFileReference; lastKnownFileType = text; name = AppPalette.clr; path = AppPalette/AppPalette.clr; sourceTree = "<group>"; };
 		9FC41FCE1CBC5E0D0021C91B /* GameData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameData.json; sourceTree = "<group>"; };
 		9FC41FCF1CBC5E0D0021C91B /* GameDataQA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameDataQA.json; sourceTree = "<group>"; };
 		9FC41FD31CBC5EF60021C91B /* HoldemHandsQA.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HoldemHandsQA.entitlements; sourceTree = "<group>"; };
@@ -410,6 +411,7 @@
 		9F44D1F41C84B21A00640046 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9FBE139B1CCD678B00144E15 /* AppPalette.clr */,
 				9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */,
 				9F4EF2C21CBC4FDF002E5FEA /* HoldemHands-Info.plist */,
 				9F4EF2C31CBC4FDF002E5FEA /* HoldemHandsQA-Info.plist */,
@@ -605,6 +607,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F4EF2BD1CBC4F66002E5FEA /* Build configuration list for PBXNativeTarget "HoldemHandsQA" */;
 			buildPhases = (
+				9FBE139A1CCD676A00144E15 /* Run App Palette Generator */,
 				9F4EF2731CBC4F66002E5FEA /* Check Pods Manifest.lock */,
 				9F4EF2741CBC4F66002E5FEA /* Sources */,
 				9F4EF2AD1CBC4F66002E5FEA /* Frameworks */,
@@ -627,6 +630,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FACAAE61C72BCC20051A435 /* Build configuration list for PBXNativeTarget "HoldemHands" */;
 			buildPhases = (
+				9FBE13991CCD674400144E15 /* Run App Palette Generator */,
 				2DBABDD6BFB6D9B43F4F53D6 /* Check Pods Manifest.lock */,
 				9FACAAC51C72BCC20051A435 /* Sources */,
 				9FACAAC61C72BCC20051A435 /* Frameworks */,
@@ -912,6 +916,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 8848a7672c67cf781cf1f20388b3c330c7f0d5be 34855c0cf709ce272884a13e3b1b0fc95ccabe1bd0ed15f3328369ad3f77b1ef";
+		};
+		9FBE13991CCD674400144E15 /* Run App Palette Generator */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run App Palette Generator";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "Resources/AppPalette/SwiftAppPaletteGenerator -i Resources/AppPalette/AppPalette.clr -o Sources/ -clr";
+		};
+		9FBE139A1CCD676A00144E15 /* Run App Palette Generator */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run App Palette Generator";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "Resources/AppPalette/SwiftAppPaletteGenerator -i Resources/AppPalette/AppPalette.clr -o Sources/ -clr";
 		};
 		B8BB0EEF8865D3D73820D2B4 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
