@@ -16,6 +16,11 @@ final class HandCell: UICollectionViewCell {
  
     private(set) var item: HandCellItem!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        adjustFontSizeRecursively(true)
+    }
+    
     func fillWithItem(item: HandCellItem) {
         self.item = item
         

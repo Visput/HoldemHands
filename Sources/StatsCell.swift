@@ -36,6 +36,11 @@ final class StatsCell: UICollectionViewCell {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        adjustFontSizeRecursively(true)
+    }
+    
     func fillWithItem(item: StatsCellItem) {
         let hasProgress = item.progressItem.handsCount != 0
         
