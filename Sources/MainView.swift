@@ -25,6 +25,7 @@ final class MainView: UIView {
     @IBOutlet private(set) weak var sharingContainerView: UIView!
     @IBOutlet private(set) weak var detailsTitleLabel: UILabel!
     @IBOutlet private(set) weak var headerGradientView: UIImageView!
+    @IBOutlet private(set) weak var leaderboardsButton: UIButton!
     
     @IBOutlet private(set) var menuButtons: [UIButton]!
     @IBOutlet private(set) weak var menuView: UIView!
@@ -49,7 +50,7 @@ final class MainView: UIView {
             return
         }
         
-        updateDetailsViewTitleWithPage(page)
+        updateDetailsViewHeaderWithPage(page)
         selectMenuButtonForPage(page)
         
         if isDetailsViewShown {
@@ -70,19 +71,22 @@ final class MainView: UIView {
         }
     }
     
-    func updateDetailsViewTitleWithPage(page: Int) {
-        var text: String! = nil
-        
-        switch DetailsViewPage(rawValue: page)! {
-        case .Levels:
-            text = NSLocalizedString("HoldemHands", comment: "")
-        case .Stats:
-            text = NSLocalizedString("Stats", comment: "")
-        case .Sharing:
-            text = NSLocalizedString("Share with Friends", comment: "")
-        }
-        
+    func updateDetailsViewHeaderWithPage(page: Int) {
         UIView.transitionWithView(detailsTitleLabel, duration: 0.4, options: [.TransitionCrossDissolve], animations: {
+            var text: String! = nil
+            
+            switch DetailsViewPage(rawValue: page)! {
+            case .Levels:
+                text = NSLocalizedString("HoldemHands", comment: "")
+                self.leaderboardsButton.alpha = 0.0
+            case .Stats:
+                text = NSLocalizedString("Stats", comment: "")
+                self.leaderboardsButton.alpha = 1.0
+            case .Sharing:
+                self.leaderboardsButton.alpha = 0.0
+                text = NSLocalizedString("Share with Friends", comment: "")
+            }
+            
             self.detailsTitleLabel.text = text
             }, completion: nil)
     }

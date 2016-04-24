@@ -11,7 +11,6 @@ import UIKit
 final class StatsView: UIView {
     
     @IBOutlet private(set) weak var statsCollectionView: UICollectionView!
-    @IBOutlet private(set) weak var leaderboardsButton: UIButton!
     @IBOutlet private weak var contentViewLeadingSpace: NSLayoutConstraint!
     
     var menuSize = CGSize(width: 0.0, height: 0.0)

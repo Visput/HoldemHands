@@ -48,15 +48,6 @@ final class StatsViewController: BaseViewController {
     }
 }
 
-extension StatsViewController {
-    
-    @IBAction private func leaderboardsButtonDidPress(sender: UIButton) {
-        Analytics.leaderboardsClicked()
-        let leaderboardID = model.playerManager.playerData.overallLeaderboardID
-        model.navigationManager.presentLeaderboardScreenWithLeaderboardID(leaderboardID, animated: true)
-    }
-}
-
 extension StatsViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -105,7 +96,6 @@ extension StatsViewController {
         progressItems = model.playerManager.progressItems()
         
         statsView.statsCollectionView.reloadData()
-        statsView.leaderboardsButton.hidden = !model.playerManager.authenticated
         
         guard level != nil else { return }
         // Execute scrolling after short delay to be sure that collection view layout is configured.

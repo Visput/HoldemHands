@@ -45,4 +45,10 @@ extension StatsScreen {
         Analytics.doneClickedInStatsScreen()
         model.navigationManager.dismissScreenAnimated(true)
     }
+    
+    @IBAction private func leaderboardsButtonDidPress(sender: UIButton) {
+        Analytics.leaderboardsClicked()
+        let leaderboardID = model.playerManager.playerData.overallLeaderboardID
+        model.navigationManager.presentLeaderboardScreenWithLeaderboardID(leaderboardID, animated: true)
+    }
 }

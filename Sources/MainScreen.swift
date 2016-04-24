@@ -117,6 +117,12 @@ extension MainScreen {
         currentDetailsPage = .Sharing
         mainView.scrollToDetailsViewAtPage(MainView.DetailsViewPage.Sharing.rawValue)
     }
+    
+    @IBAction private func leaderboardsButtonDidPress(sender: UIButton) {
+        Analytics.leaderboardsClicked()
+        let leaderboardID = model.playerManager.playerData.overallLeaderboardID
+        model.navigationManager.presentLeaderboardScreenWithLeaderboardID(leaderboardID, animated: true)
+    }
 }
 
 extension MainScreen: UIScrollViewDelegate {
@@ -133,7 +139,7 @@ extension MainScreen: UIScrollViewDelegate {
             statsController.scrollToOverallStatsAnimated(false)
         }
         
-        mainView.updateDetailsViewTitleWithPage(page)
+        mainView.updateDetailsViewHeaderWithPage(page)
         
         Analytics.detailsViewSwipedInMainScreen()
     }
