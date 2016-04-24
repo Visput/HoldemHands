@@ -21,6 +21,8 @@ final class GameScreen: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        gameView.levelNameLabel.text = level.name
+        
         firstHandsController.numberOfHands = level.numberOfHands
         firstHandsController.didPlayRoundHandler = { [unowned self] won in
             self.didPlayRoundHandler(won)

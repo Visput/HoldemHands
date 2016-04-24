@@ -12,6 +12,7 @@ final class GameView: UIView {
     
     @IBOutlet private(set) weak var swipeRecognizer: UISwipeGestureRecognizer!
     @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
+    @IBOutlet private(set) weak var levelNameLabel: UILabel!
     
     @IBOutlet private(set) weak var firstHandsView: UIView! {
         didSet {
