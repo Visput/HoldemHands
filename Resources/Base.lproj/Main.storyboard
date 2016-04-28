@@ -1209,11 +1209,19 @@
                                                             </constraints>
                                                         </view>
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfi-cU-PfF" userLabel="Space">
-                                                            <rect key="frame" x="0.0" y="87" width="276" height="109"/>
+                                                            <rect key="frame" x="0.0" y="87" width="278" height="109"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="nfi-cU-PfF" secondAttribute="height" multiplier="276:109" id="6PK-Sm-RPN"/>
+                                                                <constraint firstAttribute="width" secondItem="nfi-cU-PfF" secondAttribute="height" multiplier="278:109" id="CaS-iq-KV1"/>
+                                                                <constraint firstAttribute="width" secondItem="nfi-cU-PfF" secondAttribute="height" multiplier="280:109" id="sge-JG-lsa"/>
                                                             </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="6PK-Sm-RPN"/>
+                                                                    <exclude reference="sge-JG-lsa"/>
+                                                                </mask>
+                                                            </variation>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_table_level_1" translatesAutoresizingMaskIntoConstraints="NO" id="tuo-FT-BwQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="500" height="250"/>
@@ -1222,16 +1230,16 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="500" height="250"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E82-Sf-Lnu" userLabel="Stats Content View">
-                                                            <rect key="frame" x="276" y="87" width="75" height="109"/>
+                                                            <rect key="frame" x="278" y="87" width="73" height="109"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1240" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Wiv-hq-6Rb" customClass="UICountingLabel">
-                                                                    <rect key="frame" x="17" y="0.0" width="42" height="27.5"/>
+                                                                    <rect key="frame" x="16" y="0.0" width="42" height="27.5"/>
                                                                     <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="16"/>
                                                                     <color key="textColor" red="0.59607843137254901" green="0.92941176470588238" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 100000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBy-CN-DFO">
-                                                                    <rect key="frame" x="64" y="0.0" width="100" height="27.5"/>
+                                                                    <rect key="frame" x="63" y="0.0" width="100" height="27.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="KJ2-T4-73Z"/>
                                                                     </constraints>
@@ -1240,19 +1248,19 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.00%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bna-fi-7EC">
-                                                                    <rect key="frame" x="7.5" y="27" width="61" height="27"/>
+                                                                    <rect key="frame" x="6.5" y="27" width="61" height="27"/>
                                                                     <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="16"/>
                                                                     <color key="textColor" red="0.59607843137254901" green="0.92941176470588238" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OGL-tE-qrc">
-                                                                    <rect key="frame" x="32.5" y="54" width="10.5" height="27.5"/>
+                                                                    <rect key="frame" x="31.5" y="54" width="10.5" height="27.5"/>
                                                                     <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="16"/>
                                                                     <color key="textColor" red="0.59607843137254901" green="0.92941176470588238" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12500" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ffy-hN-1lN">
-                                                                    <rect key="frame" x="11.5" y="82" width="52.5" height="27"/>
+                                                                    <rect key="frame" x="10.5" y="82" width="52.5" height="27"/>
                                                                     <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="16"/>
                                                                     <color key="textColor" red="0.59607843137254901" green="0.92941176470588238" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1352,8 +1360,10 @@
                                                     <constraint firstItem="9bA-L5-c3t" firstAttribute="width" secondItem="8Ao-Uu-koo" secondAttribute="height" multiplier="351:250" id="ffx-MQ-zX3"/>
                                                     <constraint firstItem="GX2-WX-mSW" firstAttribute="top" secondItem="8Ao-Uu-koo" secondAttribute="top" id="g24-se-xrM"/>
                                                     <constraint firstAttribute="trailing" secondItem="GX2-WX-mSW" secondAttribute="trailing" id="h2f-Ac-wce"/>
+                                                    <constraint firstItem="nfi-cU-PfF" firstAttribute="width" secondItem="8Ao-Uu-koo" secondAttribute="height" multiplier="28:25" id="igj-7j-ynE"/>
                                                     <constraint firstItem="9bA-L5-c3t" firstAttribute="leading" secondItem="8Ao-Uu-koo" secondAttribute="leading" id="qZF-Up-N8s"/>
                                                     <constraint firstItem="GX2-WX-mSW" firstAttribute="leading" secondItem="8Ao-Uu-koo" secondAttribute="leading" id="tCs-6A-Rbi"/>
+                                                    <constraint firstItem="nfi-cU-PfF" firstAttribute="width" secondItem="8Ao-Uu-koo" secondAttribute="height" multiplier="139:125" id="v2Z-1t-fYx"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1362,6 +1372,8 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <variation key="default">
                                                     <mask key="constraints">
+                                                        <exclude reference="68F-dl-Tdo"/>
+                                                        <exclude reference="igj-7j-ynE"/>
                                                         <exclude reference="BQp-Zc-Vqt"/>
                                                         <exclude reference="G5T-3P-GjS"/>
                                                         <exclude reference="KTQ-4D-DpH"/>
