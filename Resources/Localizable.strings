@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  HoldemHands
+
+  Created by Uladzimir Papko on 4/30/16.
+  Copyright © 2016 Visput. All rights reserved.
+*/
+
+"banner_format_unlocked_level" = "Congratulations!\nYou've unlocked %@!";
+"banner_format_chips_to_unlock_level" = "You need %@ chips more to unlock %@.";
+"title_details_levels" = "Play";
+"title_details_stats" = "Stats";
+"title_details_sharing" = "Share";

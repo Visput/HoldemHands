@@ -121,6 +121,10 @@
 		9F4EF2B51CBC4F66002E5FEA /* TextBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE31C9258F200B37939 /* TextBannerView.xib */; };
 		9F4EF2B61CBC4F66002E5FEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F51C84B21A00640046 /* Assets.xcassets */; };
 		9F4EF2B81CBC4F66002E5FEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F61C84B21A00640046 /* LaunchScreen.storyboard */; };
+		9F6434A01CD51F7F00B3BED6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F64349F1CD51F7F00B3BED6 /* Localizable.strings */; };
+		9F6434A11CD51F7F00B3BED6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F64349F1CD51F7F00B3BED6 /* Localizable.strings */; };
+		9F6434A31CD544FE00B3BED6 /* CustomFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6434A21CD544FE00B3BED6 /* CustomFontLabel.swift */; };
+		9F6434A41CD544FE00B3BED6 /* CustomFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6434A21CD544FE00B3BED6 /* CustomFontLabel.swift */; };
 		9F6703091CBC54EB00C85F99 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6703081CBC54EB00C85F99 /* GameKit.framework */; };
 		9F67030A1CBC559800C85F99 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6703081CBC54EB00C85F99 /* GameKit.framework */; };
 		9F93B4821C9750760092CBCB /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F93B4811C9750760092CBCB /* String+Path.swift */; };
@@ -212,6 +216,8 @@
 		9F4EF2C01CBC4F66002E5FEA /* HoldemHandsQA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHandsQA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4EF2C21CBC4FDF002E5FEA /* HoldemHands-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HoldemHands-Info.plist"; sourceTree = "<group>"; };
 		9F4EF2C31CBC4FDF002E5FEA /* HoldemHandsQA-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HoldemHandsQA-Info.plist"; sourceTree = "<group>"; };
+		9F64349F1CD51F7F00B3BED6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		9F6434A21CD544FE00B3BED6 /* CustomFontLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFontLabel.swift; sourceTree = "<group>"; };
 		9F6703081CBC54EB00C85F99 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		9F73D1C91C9BA9D200EA72A7 /* HoldemHands.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HoldemHands.entitlements; sourceTree = "<group>"; };
 		9F93B4811C9750760092CBCB /* String+Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
@@ -367,6 +373,7 @@
 			children = (
 				9F3C4BE01C92555500B37939 /* TextBannerView */,
 				9F3C4BDD1C9251B500B37939 /* BannerView */,
+				9F6434A51CD5471900B3BED6 /* CustomFontLabel */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -411,6 +418,7 @@
 		9F44D1F41C84B21A00640046 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9F64349F1CD51F7F00B3BED6 /* Localizable.strings */,
 				9FBE139B1CCD678B00144E15 /* AppPalette.clr */,
 				9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */,
 				9F4EF2C21CBC4FDF002E5FEA /* HoldemHands-Info.plist */,
@@ -537,6 +545,14 @@
 				9FC77B6E1C98C68C0070430D /* AnalyticsTracker */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		9F6434A51CD5471900B3BED6 /* CustomFontLabel */ = {
+			isa = PBXGroup;
+			children = (
+				9F6434A21CD544FE00B3BED6 /* CustomFontLabel.swift */,
+			);
+			name = CustomFontLabel;
 			sourceTree = "<group>";
 		};
 		9FA31FA11CB59D320010555B /* ChipsViewController */ = {
@@ -739,6 +755,7 @@
 				9F4EF2B31CBC4F66002E5FEA /* Main.storyboard in Resources */,
 				9F4EF2B41CBC4F66002E5FEA /* iTunesArtwork@2x.png in Resources */,
 				9F4EF2B51CBC4F66002E5FEA /* TextBannerView.xib in Resources */,
+				9F6434A11CD51F7F00B3BED6 /* Localizable.strings in Resources */,
 				9FBC4CE51CC0C15900F38DD7 /* app_font.ttc in Resources */,
 				9F4EF2B61CBC4F66002E5FEA /* Assets.xcassets in Resources */,
 				9FC41FD21CBC5E1A0021C91B /* GameDataQA.json in Resources */,
@@ -754,6 +771,7 @@
 				9F44D2101C84B21A00640046 /* Main.storyboard in Resources */,
 				9FC41FD01CBC5E0D0021C91B /* GameData.json in Resources */,
 				9FA2090D1CA614F100E084E8 /* iTunesArtwork@2x.png in Resources */,
+				9F6434A01CD51F7F00B3BED6 /* Localizable.strings in Resources */,
 				9FBC4CDC1CC0924F00F38DD7 /* app_font.ttc in Resources */,
 				9F3C4BE41C9258F200B37939 /* TextBannerView.xib in Resources */,
 				9F44D20E1C84B21A00640046 /* Assets.xcassets in Resources */,
@@ -1000,6 +1018,7 @@
 				9F4EF2751CBC4F66002E5FEA /* ObserverSet.swift in Sources */,
 				9F4EF2761CBC4F66002E5FEA /* SharingViewController.swift in Sources */,
 				9F4EF2771CBC4F66002E5FEA /* BannerView.swift in Sources */,
+				9F6434A41CD544FE00B3BED6 /* CustomFontLabel.swift in Sources */,
 				9F4EF2781CBC4F66002E5FEA /* HandsView.swift in Sources */,
 				9F4EF2791CBC4F66002E5FEA /* StatsCell.swift in Sources */,
 				9F4EF27A1CBC4F66002E5FEA /* HandRank.swift in Sources */,
@@ -1064,6 +1083,7 @@
 				9F44D2461C84C63900640046 /* ObserverSet.swift in Sources */,
 				9F314F911CB8D0D00063B893 /* SharingViewController.swift in Sources */,
 				9F3C4BDF1C9251E700B37939 /* BannerView.swift in Sources */,
+				9F6434A31CD544FE00B3BED6 /* CustomFontLabel.swift in Sources */,
 				9F314F8F1CB8CDD20063B893 /* HandsView.swift in Sources */,
 				9FE888E31C93F53400A39C2C /* StatsCell.swift in Sources */,
 				9F44D2191C84B21A00640046 /* HandRank.swift in Sources */,

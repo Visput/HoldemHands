@@ -91,6 +91,10 @@ final class PlayerManager: NSObject {
         return Int64(pow(2, Double(progressItem.progress.currentWinsCountInRow / level.winsInRowToDoubleChips)))
     }
     
+    func chipsToUnlockLevel(level: Level) -> Int64 {
+        return level.chipsToUnlock - playerData.chipsCount
+    }
+    
     func playerProgress() -> PlayerProgress {
         var maxWinsCountInRow = 0
         var winsCount = 0

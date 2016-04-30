@@ -52,7 +52,7 @@ final class MainScreen: BaseViewController {
         }
     }
     
-    private var levelsController: LevelsViewController!
+    private(set) var levelsController: LevelsViewController!
     private var statsController: StatsViewController!
     private var sharingController: SharingViewController!
 

@@ -72,7 +72,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HoldemHands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POy-nj-eDG">
-                                                        <rect key="frame" x="258.5" y="24" width="219" height="32"/>
+                                                        <rect key="frame" x="258" y="24" width="219" height="32"/>
                                                         <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="32"/>
                                                         <color key="textColor" red="0.2784313725" green="0.32549019610000002" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -245,25 +245,25 @@
                                                         </variation>
                                                     </view>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVy-7R-SH6">
-                                                        <rect key="frame" x="0.0" y="56" width="736" height="358"/>
+                                                        <rect key="frame" x="0.0" y="61" width="736" height="353"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N0b-gG-tkv" userLabel="Content View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="736" height="1074"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="736" height="1059"/>
                                                                 <subviews>
                                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8l-bn-mY7">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="736" height="358"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="736" height="353"/>
                                                                         <connections>
                                                                             <segue destination="nmV-US-QSN" kind="embed" identifier="Levels" id="NGL-H0-Zuc"/>
                                                                         </connections>
                                                                     </containerView>
                                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KnV-NH-LsX" userLabel="Stats Container View">
-                                                                        <rect key="frame" x="0.0" y="358" width="736" height="358"/>
+                                                                        <rect key="frame" x="0.0" y="353" width="736" height="353"/>
                                                                         <connections>
                                                                             <segue destination="egY-VU-Eln" kind="embed" identifier="Stats" id="fJt-d2-jaX"/>
                                                                         </connections>
                                                                     </containerView>
                                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hTQ-mv-LSV" userLabel="Sharing Container View">
-                                                                        <rect key="frame" x="0.0" y="716" width="736" height="358"/>
+                                                                        <rect key="frame" x="0.0" y="706" width="736" height="353"/>
                                                                         <connections>
                                                                             <segue destination="mrY-O8-8Zr" kind="embed" identifier="Sharing" id="NKu-au-bTY"/>
                                                                         </connections>
@@ -312,10 +312,10 @@
                                                         </variation>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ee7-Tw-xMU">
-                                                        <rect key="frame" x="0.0" y="109" width="59" height="253"/>
+                                                        <rect key="frame" x="0.0" y="111" width="59" height="253"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XjH-Zl-nik" userLabel="Play Button">
-                                                                <rect key="frame" x="0.0" y="0.5" width="59" height="85"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="59" height="85"/>
                                                                 <state key="normal" backgroundImage="button_menu_play_normal"/>
                                                                 <state key="selected" backgroundImage="button_menu_play_selected"/>
                                                                 <state key="highlighted" backgroundImage="button_menu_play_selected"/>
@@ -324,7 +324,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8L-qM-8tM" userLabel="Stats Button">
-                                                                <rect key="frame" x="0.0" y="85.5" width="59" height="83"/>
+                                                                <rect key="frame" x="0.0" y="85" width="59" height="83"/>
                                                                 <state key="normal" backgroundImage="button_menu_stats_normal"/>
                                                                 <state key="selected" backgroundImage="button_menu_stats_selected"/>
                                                                 <state key="highlighted" backgroundImage="button_menu_stats_selected"/>
@@ -333,7 +333,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFd-jV-XYU" userLabel="Sharing Button">
-                                                                <rect key="frame" x="0.0" y="168.5" width="59" height="85"/>
+                                                                <rect key="frame" x="0.0" y="168" width="59" height="85"/>
                                                                 <state key="normal" backgroundImage="button_menu_share_normal"/>
                                                                 <state key="selected" backgroundImage="button_menu_share_selected"/>
                                                                 <state key="highlighted" backgroundImage="button_menu_share_selected"/>
@@ -387,10 +387,12 @@
                                                             </mask>
                                                         </variation>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HoldemHands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oig-8P-j3Y">
-                                                        <rect key="frame" x="255" y="23" width="225.5" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oig-8P-j3Y" customClass="CustomFontLabel" customModule="HoldemHands" customModuleProvider="target">
+                                                        <rect key="frame" x="334" y="25" width="68" height="36"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="S9c-0c-yri"/>
+                                                            <constraint firstAttribute="height" constant="36" id="Uuf-Mn-Qqk"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="33"/>
                                                         <color key="textColor" red="0.2784313725" green="0.32549019610000002" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -398,6 +400,7 @@
                                                         <variation key="default">
                                                             <mask key="constraints">
                                                                 <exclude reference="S9c-0c-yri"/>
+                                                                <exclude reference="Uuf-Mn-Qqk"/>
                                                             </mask>
                                                         </variation>
                                                     </label>
@@ -453,9 +456,10 @@
                                                     <constraint firstItem="XTO-MV-jTO" firstAttribute="width" secondItem="uPq-Mh-IwM" secondAttribute="height" multiplier="4:207" id="ac3-2X-uec"/>
                                                     <constraint firstItem="ee7-Tw-xMU" firstAttribute="centerY" secondItem="hVy-7R-SH6" secondAttribute="centerY" id="akt-Nj-aDd"/>
                                                     <constraint firstItem="oig-8P-j3Y" firstAttribute="centerX" secondItem="uPq-Mh-IwM" secondAttribute="centerX" id="cCI-jd-FPj"/>
+                                                    <constraint firstItem="oig-8P-j3Y" firstAttribute="height" secondItem="uPq-Mh-IwM" secondAttribute="height" multiplier="36:414" id="gA8-sw-eWP"/>
                                                     <constraint firstItem="vKE-5M-LX0" firstAttribute="top" secondItem="uPq-Mh-IwM" secondAttribute="top" id="gPh-As-AOE"/>
                                                     <constraint firstItem="XTO-MV-jTO" firstAttribute="leading" secondItem="uPq-Mh-IwM" secondAttribute="leading" id="gYS-Z4-wJK"/>
-                                                    <constraint firstItem="oig-8P-j3Y" firstAttribute="top" secondItem="VzT-1v-EWA" secondAttribute="bottom" constant="-2" id="jMW-YE-ip0"/>
+                                                    <constraint firstItem="oig-8P-j3Y" firstAttribute="top" secondItem="VzT-1v-EWA" secondAttribute="bottom" id="jMW-YE-ip0"/>
                                                     <constraint firstItem="VzT-1v-EWA" firstAttribute="width" secondItem="uPq-Mh-IwM" secondAttribute="height" multiplier="110:207" id="o6P-OS-qbk"/>
                                                     <constraint firstItem="ee7-Tw-xMU" firstAttribute="width" secondItem="uPq-Mh-IwM" secondAttribute="height" multiplier="26:207" id="qiH-Ok-25A"/>
                                                     <constraint firstItem="Yxu-04-z1F" firstAttribute="top" secondItem="uPq-Mh-IwM" secondAttribute="top" constant="25" id="sF6-xM-VNo"/>
@@ -470,8 +474,8 @@
                                                         <exclude reference="uoR-P4-wOp"/>
                                                         <exclude reference="In5-YV-eOX"/>
                                                         <exclude reference="qiH-Ok-25A"/>
-                                                        <exclude reference="PjH-Az-d2j"/>
                                                         <exclude reference="o6P-OS-qbk"/>
+                                                        <exclude reference="PjH-Az-d2j"/>
                                                     </mask>
                                                 </variation>
                                             </view>
@@ -1178,14 +1182,14 @@
                         <viewControllerLayoutGuide type="bottom" id="BNG-he-X4a"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oed-g2-2Fw" customClass="StatsView" customModule="HoldemHands" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="359"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="353"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jt-Zp-Mf2" userLabel="Content View">
-                                <rect key="frame" x="0.0" y="0.0" width="736" height="359"/>
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="353"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N1z-B1-EU6">
-                                        <rect key="frame" x="0.0" y="0.0" width="736" height="359"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="736" height="353"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="32" minimumInteritemSpacing="32" id="5WR-hD-MN8">
                                             <size key="itemSize" width="500" height="250"/>
@@ -1195,7 +1199,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StatsCell" id="8Ao-Uu-koo" customClass="StatsCell" customModule="HoldemHands" customModuleProvider="target">
-                                                <rect key="frame" x="32" y="54.5" width="500" height="250"/>
+                                                <rect key="frame" x="32" y="51.5" width="500" height="250"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="500" height="250"/>
@@ -1551,14 +1555,14 @@
                         <viewControllerLayoutGuide type="bottom" id="zNM-Ym-6f3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ykB-Dd-HwI" customClass="LevelsView" customModule="HoldemHands" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="358"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="353"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzS-OF-xLH" userLabel="Content View">
-                                <rect key="frame" x="0.0" y="0.0" width="736" height="358"/>
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="353"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b4G-V4-063">
-                                        <rect key="frame" x="0.0" y="0.0" width="736" height="358"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="736" height="353"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="32" minimumInteritemSpacing="32" id="rY2-ZN-BW8">
                                             <size key="itemSize" width="500" height="250"/>
@@ -1568,7 +1572,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LevelCell" id="QDv-1s-Wtf" customClass="LevelCell" customModule="HoldemHands" customModuleProvider="target">
-                                                <rect key="frame" x="32" y="54" width="500" height="250"/>
+                                                <rect key="frame" x="32" y="51.5" width="500" height="250"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="500" height="250"/>
@@ -1667,8 +1671,8 @@
         <image name="shadow_blue" width="736" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wkq-tr-tt6"/>
+        <segue reference="0pp-g4-GEi"/>
+        <segue reference="fJt-d2-jaX"/>
         <segue reference="mAe-ai-Kz2"/>
-        <segue reference="3Io-ee-72I"/>
     </inferredMetricsTieBreakers>
 </document>

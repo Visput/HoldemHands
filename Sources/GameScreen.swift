@@ -105,13 +105,15 @@ extension GameScreen {
 extension GameScreen: PlayerManagerObserving {
     
     func playerManager(manager: PlayerManager, didUnlockLevel levelProgress: LevelProgress) {
-        let levelName = levelProgress.level.name
-        let text = NSString.localizedStringWithFormat("Congratulations. %@ is unlocked now!", levelName)
+        let levelIndex = manager.progressItemForLevel(levelProgress.level).index
+        let text = NSString.localizedStringWithFormat("banner_format_unlocked_level", levelProgress.level.name) as String
         
         Analytics.unlockedLevelBannerShownInGameScreen(levelProgress.level)
-        model.navigationManager.showBannerWithText(text as String, tapHandler: { [unowned self] in
+        model.navigationManager.showBannerWithText(text, tapHandler: { [unowned self] in
             Analytics.unlockBannerClickedInGameScreen(levelProgress.level)
-            self.model.navigationManager.dismissScreenAnimated(true)
+            self.model.navigationManager.dismissScreenAnimated(true, completion: {
+                self.model.navigationManager.mainScreen.levelsController.scrollToLevelAtIndex(levelIndex, animated: true)
+            })
         })
     }
     
