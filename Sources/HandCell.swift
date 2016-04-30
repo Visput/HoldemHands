@@ -12,7 +12,9 @@ final class HandCell: UICollectionViewCell {
     
     @IBOutlet private(set) weak var firstCardImageView: UIImageView!
     @IBOutlet private(set) weak var secondCardImageView: UIImageView!
-    @IBOutlet private(set) weak var winningProbabilityLabel: UILabel!
+    @IBOutlet private(set) weak var winOddsLabel: UILabel!
+    @IBOutlet private(set) weak var tieOddsLabel: UILabel!
+    @IBOutlet private(set) weak var oddsBackgroundView: UIImageView!
  
     private(set) var item: HandCellItem!
     
@@ -21,29 +23,41 @@ final class HandCell: UICollectionViewCell {
         adjustFontSizeRecursively(true)
     }
     
+    override var highlighted: Bool {
+        didSet {
+            UIView.animateWithDuration(0.2, animations: {
+                let zoomLevel: CGFloat = self.highlighted ? 0.9 : 1.0
+                self.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
+            })
+        }
+    }
+    
     func fillWithItem(item: HandCellItem) {
         self.item = item
         
         if item.handOdds == nil {
             setHandVisible(false, animated: false)
-            winningProbabilityLabel.hidden = true
-            backgroundColor = UIColor.clearColor()
+            winOddsLabel.alpha = 0.0
+            tieOddsLabel.alpha = 0.0
+            oddsBackgroundView.alpha = 0.0
         } else {
-            winningProbabilityLabel.hidden = !item.needsShowOdds
-            winningProbabilityLabel.text = NSString(format: "Win: %.2f%%\nTie: %.2f%%",
-                                                    item.handOdds!.winningProbability(),
-                                                    item.handOdds!.tieProbability()) as String
+            winOddsLabel.text = NSString(format: NSLocalizedString("text_format_win_odds", comment: ""),
+                                         item.handOdds!.winningProbability()) as String
+            tieOddsLabel.text = NSString(format: NSLocalizedString("text_format_tie_odds", comment: ""),
+                                         item.handOdds!.tieProbability()) as String
             
             if item.isSuccessSate == nil {
-                backgroundColor = item.needsShowOdds! ? UIColor.darkGrayColor() : UIColor.clearColor()
-                winningProbabilityLabel.backgroundColor = UIColor.darkGrayColor()
+                oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
             } else if item.isSuccessSate! {
-                backgroundColor = UIColor.greenColor()
-                winningProbabilityLabel.backgroundColor = UIColor.greenColor()
+                oddsBackgroundView.image = UIImage(named: "background_hand_odds_green")
             } else {
-                backgroundColor = UIColor.redColor()
-                winningProbabilityLabel.backgroundColor = UIColor.redColor()
+                oddsBackgroundView.image = UIImage(named: "background_hand_odds_red")
             }
+            UIView.animateWithDuration(0.4, animations: {
+                self.oddsBackgroundView.alpha = item.needsShowOdds! ? 1.0 : 0.0
+                self.winOddsLabel.alpha = item.needsShowOdds! ? 1.0 : 0.0
+                self.tieOddsLabel.alpha = item.needsShowOdds! ? 1.0 : 0.0
+            })
         }
     }
     

@@ -81,7 +81,7 @@ final class GameScreen: BaseViewController {
 extension GameScreen {
     
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
-        gameView.controlsEnabled = true
+        gameView.controlsEnabled = false
         gameView.scrollToNextHandsView({
             self.firstHandsController.viewDidChangePosition()
             self.secondHandsController.viewDidChangePosition()

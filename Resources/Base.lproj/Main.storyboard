@@ -18,6 +18,8 @@
             <string>HiraMaruPro-W4</string>
             <string>HiraMaruPro-W4</string>
             <string>HiraMaruPro-W4</string>
+            <string>HiraMaruPro-W4</string>
+            <string>HiraMaruPro-W4</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -873,7 +875,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="313"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kUo-2W-y7t">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kUo-2W-y7t">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="313"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9tq-wP-FWK">
@@ -890,13 +892,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="252" height="173"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fDG-L2-3bs">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card_back" translatesAutoresizingMaskIntoConstraints="NO" id="fDG-L2-3bs">
                                                     <rect key="frame" x="4" y="4" width="118" height="165"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="fDG-L2-3bs" secondAttribute="height" multiplier="118:165" id="6Qn-gw-NjA"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KrY-SE-ELq">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card_back" translatesAutoresizingMaskIntoConstraints="NO" id="KrY-SE-ELq">
                                                     <rect key="frame" x="130" y="4" width="118" height="165"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="KrY-SE-ELq" secondAttribute="height" multiplier="118:165" id="0kB-sP-dOL"/>
@@ -907,13 +909,18 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Win: 24.58%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="3l3-pG-S6Z">
-                                                    <rect key="frame" x="0.0" y="123" width="252" height="50"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="FRN-0b-Ost"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_hand_odds_green" translatesAutoresizingMaskIntoConstraints="NO" id="BJa-hN-hWY">
+                                                    <rect key="frame" x="4" y="98" width="244" height="69"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Win: 24.58%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suH-72-eOP">
+                                                    <rect key="frame" x="4" y="103" width="244" height="29"/>
+                                                    <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="15"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tie: 12.54%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oL-Jw-81k">
+                                                    <rect key="frame" x="4" y="133" width="244" height="29"/>
+                                                    <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -921,17 +928,33 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="6oL-Jw-81k" firstAttribute="trailing" secondItem="BJa-hN-hWY" secondAttribute="trailing" id="0jl-zI-QIr"/>
+                                            <constraint firstItem="BJa-hN-hWY" firstAttribute="height" secondItem="z6N-GK-9x6" secondAttribute="height" multiplier="67:173" id="0lN-Dv-8cL"/>
                                             <constraint firstAttribute="bottom" secondItem="fDG-L2-3bs" secondAttribute="bottom" constant="4" id="1nn-aC-7pD"/>
-                                            <constraint firstItem="3l3-pG-S6Z" firstAttribute="leading" secondItem="z6N-GK-9x6" secondAttribute="leading" id="Aae-T9-JT2"/>
+                                            <constraint firstItem="6oL-Jw-81k" firstAttribute="leading" secondItem="BJa-hN-hWY" secondAttribute="leading" constant="-4" id="7ps-yf-taG"/>
+                                            <constraint firstAttribute="trailing" secondItem="BJa-hN-hWY" secondAttribute="trailing" constant="4" id="9lL-qL-rIZ"/>
+                                            <constraint firstItem="6oL-Jw-81k" firstAttribute="top" secondItem="BJa-hN-hWY" secondAttribute="top" id="CM0-yw-gKJ"/>
                                             <constraint firstItem="fDG-L2-3bs" firstAttribute="top" secondItem="z6N-GK-9x6" secondAttribute="top" constant="4" id="Dz8-bC-XGR"/>
-                                            <constraint firstItem="3l3-pG-S6Z" firstAttribute="bottom" secondItem="z6N-GK-9x6" secondAttribute="bottom" id="Kpy-EL-0ga"/>
-                                            <constraint firstAttribute="trailing" secondItem="3l3-pG-S6Z" secondAttribute="trailing" id="KuQ-d4-qOp"/>
-                                            <constraint firstItem="3l3-pG-S6Z" firstAttribute="centerX" secondItem="z6N-GK-9x6" secondAttribute="centerX" id="PGg-jd-KEV"/>
+                                            <constraint firstItem="6oL-Jw-81k" firstAttribute="height" secondItem="suH-72-eOP" secondAttribute="height" id="EuR-An-2ho"/>
+                                            <constraint firstItem="6oL-Jw-81k" firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="4" id="Fy1-VV-Qmt"/>
+                                            <constraint firstItem="6oL-Jw-81k" firstAttribute="leading" secondItem="BJa-hN-hWY" secondAttribute="leading" id="GAZ-Jk-TLm"/>
+                                            <constraint firstItem="6oL-Jw-81k" firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="-5" id="GcK-qh-nTy"/>
+                                            <constraint firstItem="6oL-Jw-81k" firstAttribute="top" secondItem="suH-72-eOP" secondAttribute="bottom" constant="1" id="H2S-kE-96i"/>
+                                            <constraint firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="6" id="IXU-a8-7ga"/>
+                                            <constraint firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="4" id="O7E-sM-XWX"/>
                                             <constraint firstItem="KrY-SE-ELq" firstAttribute="top" secondItem="z6N-GK-9x6" secondAttribute="top" constant="4" id="Vt2-GD-YJW"/>
+                                            <constraint firstItem="6oL-Jw-81k" firstAttribute="trailing" secondItem="BJa-hN-hWY" secondAttribute="trailing" constant="4" id="XcN-UY-yTe"/>
                                             <constraint firstItem="KrY-SE-ELq" firstAttribute="width" secondItem="KrY-SE-ELq" secondAttribute="height" multiplier="118:165" id="XgD-YJ-S4f"/>
+                                            <constraint firstAttribute="trailing" secondItem="BJa-hN-hWY" secondAttribute="trailing" constant="4" id="ZjL-sz-jF1"/>
                                             <constraint firstAttribute="trailing" secondItem="KrY-SE-ELq" secondAttribute="trailing" constant="4" id="aep-r0-omp"/>
+                                            <constraint firstItem="BJa-hN-hWY" firstAttribute="height" secondItem="z6N-GK-9x6" secondAttribute="height" multiplier="69:173" id="ffc-Al-136"/>
+                                            <constraint firstItem="suH-72-eOP" firstAttribute="leading" secondItem="BJa-hN-hWY" secondAttribute="leading" id="ghh-aW-17G"/>
+                                            <constraint firstItem="suH-72-eOP" firstAttribute="top" secondItem="BJa-hN-hWY" secondAttribute="top" constant="5" id="k4S-fu-SXJ"/>
                                             <constraint firstItem="fDG-L2-3bs" firstAttribute="leading" secondItem="z6N-GK-9x6" secondAttribute="leading" constant="4" id="kxW-DB-TXs"/>
                                             <constraint firstAttribute="bottom" secondItem="KrY-SE-ELq" secondAttribute="bottom" constant="4" id="sKr-HH-ymi"/>
+                                            <constraint firstItem="suH-72-eOP" firstAttribute="trailing" secondItem="BJa-hN-hWY" secondAttribute="trailing" id="u58-KJ-2B0"/>
+                                            <constraint firstItem="BJa-hN-hWY" firstAttribute="leading" secondItem="z6N-GK-9x6" secondAttribute="leading" constant="4" id="wOa-gq-FHs"/>
+                                            <constraint firstItem="BJa-hN-hWY" firstAttribute="leading" secondItem="z6N-GK-9x6" secondAttribute="leading" constant="4" id="xXY-8x-URX"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -940,13 +963,22 @@
                                         </userDefinedRuntimeAttributes>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="PGg-jd-KEV"/>
+                                                <exclude reference="0lN-Dv-8cL"/>
+                                                <exclude reference="9lL-qL-rIZ"/>
+                                                <exclude reference="O7E-sM-XWX"/>
+                                                <exclude reference="wOa-gq-FHs"/>
+                                                <exclude reference="7ps-yf-taG"/>
+                                                <exclude reference="CM0-yw-gKJ"/>
+                                                <exclude reference="Fy1-VV-Qmt"/>
+                                                <exclude reference="XcN-UY-yTe"/>
                                             </mask>
                                         </variation>
                                         <connections>
                                             <outlet property="firstCardImageView" destination="fDG-L2-3bs" id="V8u-hv-5OZ"/>
+                                            <outlet property="oddsBackgroundView" destination="BJa-hN-hWY" id="kCU-Fj-s0h"/>
                                             <outlet property="secondCardImageView" destination="KrY-SE-ELq" id="yns-Xd-0Ok"/>
-                                            <outlet property="winningProbabilityLabel" destination="3l3-pG-S6Z" id="H3V-R2-gkE"/>
+                                            <outlet property="tieOddsLabel" destination="6oL-Jw-81k" id="eYW-D2-R8K"/>
+                                            <outlet property="winOddsLabel" destination="suH-72-eOP" id="DAP-0J-zcT"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1645,6 +1677,7 @@
     <resources>
         <image name="background_blue" width="736" height="414"/>
         <image name="background_green" width="736" height="414"/>
+        <image name="background_hand_odds_green" width="252" height="71"/>
         <image name="background_table_level_1" width="522" height="254"/>
         <image name="button_menu_play_normal" width="59" height="85"/>
         <image name="button_menu_play_selected" width="59" height="85"/>
@@ -1652,6 +1685,7 @@
         <image name="button_menu_share_selected" width="59" height="85"/>
         <image name="button_menu_stats_normal" width="59" height="83"/>
         <image name="button_menu_stats_selected" width="59" height="83"/>
+        <image name="card_back" width="125" height="175"/>
         <image name="icon_chip_blue" width="30" height="30"/>
         <image name="icon_done_blue" width="54" height="30"/>
         <image name="icon_done_green" width="54" height="30"/>
