@@ -25,6 +25,16 @@ final class GameView: UIView {
         }
     }
     
+    var controlsEnabled: Bool {
+        set {
+            swipeRecognizer.enabled = newValue
+            tapRecognizer.enabled = newValue
+        }
+        get {
+            return swipeRecognizer.enabled
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         let offset: CGFloat = 65.0

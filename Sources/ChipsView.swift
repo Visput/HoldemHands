@@ -20,7 +20,7 @@ final class ChipsView: UIView {
             chipsCountLabel.method = .Linear
             chipsCountLabel.formatBlock = { chipsCount -> String in
                 let chipsCountInt64 = Int64(chipsCount)
-                return chipsCountInt64.formattedChipsCountString
+                return chipsCountInt64.formattedChipsCountString()
             }
         }
     }
@@ -36,7 +36,7 @@ final class ChipsView: UIView {
                 chipsDifferenceLabelTopSpace.constant = 20.0
                 layoutIfNeeded()
                 
-                var chipsDifferenceText = "+ " + (chipsDifference / chipsMultiplier).formattedChipsCountString
+                var chipsDifferenceText = "+ " + (chipsDifference / chipsMultiplier).formattedChipsCountString()
                 if chipsMultiplier > 1 {
                     chipsDifferenceText.appendContentsOf(" x \(chipsMultiplier)")
                 }
@@ -60,7 +60,7 @@ final class ChipsView: UIView {
             } else {
                 chipsDifferenceLabelTopSpace.constant = 0.0
                 layoutIfNeeded()
-                chipsDifferenceLabel.text = "- " + chipsDifference.formattedChipsCountString
+                chipsDifferenceLabel.text = "- " + chipsDifference.formattedChipsCountString()
                 chipsDifferenceLabel.textColor = UIColor.gray1Color()
                 
                 UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveLinear, animations: {

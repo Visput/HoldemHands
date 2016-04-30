@@ -125,6 +125,8 @@
 		9F6434A11CD51F7F00B3BED6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F64349F1CD51F7F00B3BED6 /* Localizable.strings */; };
 		9F6434A31CD544FE00B3BED6 /* CustomFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6434A21CD544FE00B3BED6 /* CustomFontLabel.swift */; };
 		9F6434A41CD544FE00B3BED6 /* CustomFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6434A21CD544FE00B3BED6 /* CustomFontLabel.swift */; };
+		9F6434A71CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6434A61CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift */; };
+		9F6434A81CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6434A61CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift */; };
 		9F6703091CBC54EB00C85F99 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6703081CBC54EB00C85F99 /* GameKit.framework */; };
 		9F67030A1CBC559800C85F99 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6703081CBC54EB00C85F99 /* GameKit.framework */; };
 		9F93B4821C9750760092CBCB /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F93B4811C9750760092CBCB /* String+Path.swift */; };
@@ -218,6 +220,7 @@
 		9F4EF2C31CBC4FDF002E5FEA /* HoldemHandsQA-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HoldemHandsQA-Info.plist"; sourceTree = "<group>"; };
 		9F64349F1CD51F7F00B3BED6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		9F6434A21CD544FE00B3BED6 /* CustomFontLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFontLabel.swift; sourceTree = "<group>"; };
+		9F6434A61CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+SizeRatio.swift"; sourceTree = "<group>"; };
 		9F6703081CBC54EB00C85F99 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		9F73D1C91C9BA9D200EA72A7 /* HoldemHands.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HoldemHands.entitlements; sourceTree = "<group>"; };
 		9F93B4811C9750760092CBCB /* String+Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
@@ -497,6 +500,7 @@
 				9F93B4811C9750760092CBCB /* String+Path.swift */,
 				9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */,
 				9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */,
+				9F6434A61CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1071,6 +1075,7 @@
 				9F4EF2A91CBC4F66002E5FEA /* HandOddsCalculator.swift in Sources */,
 				9F4EF2AA1CBC4F66002E5FEA /* HandCell.swift in Sources */,
 				9F4EF2AB1CBC4F66002E5FEA /* Level.swift in Sources */,
+				9F6434A81CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */,
 				9FBC4CE41CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */,
 				9F4EF2AC1CBC4F66002E5FEA /* HandCellItem.swift in Sources */,
 			);
@@ -1136,6 +1141,7 @@
 				9F44D21E1C84B21A00640046 /* HandOddsCalculator.swift in Sources */,
 				9F44D2161C84B21A00640046 /* HandCell.swift in Sources */,
 				9F95E15A1C875D0100D6F368 /* Level.swift in Sources */,
+				9F6434A71CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */,
 				9FBC4CE31CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */,
 				9F44D2171C84B21A00640046 /* HandCellItem.swift in Sources */,
 			);

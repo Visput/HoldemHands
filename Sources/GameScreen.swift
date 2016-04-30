@@ -35,8 +35,7 @@ final class GameScreen: BaseViewController {
         }
         secondHandsController.nextController = firstHandsController
         
-        gameView.swipeRecognizer.enabled = false
-        gameView.tapRecognizer.enabled = false
+        gameView.controlsEnabled = false
     
         model.playerManager.observers.addObserver(self)
         
@@ -74,8 +73,7 @@ final class GameScreen: BaseViewController {
             model.playerManager.trackNewLossInLevel(level)
         }
         
-        gameView.swipeRecognizer.enabled = true
-        gameView.tapRecognizer.enabled = true
+        gameView.controlsEnabled = true
         Analytics.gameRoundPlayed()
     }
 }
@@ -83,8 +81,7 @@ final class GameScreen: BaseViewController {
 extension GameScreen {
     
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
-        gameView.swipeRecognizer.enabled = false
-        gameView.tapRecognizer.enabled = false
+        gameView.controlsEnabled = true
         gameView.scrollToNextHandsView({
             self.firstHandsController.viewDidChangePosition()
             self.secondHandsController.viewDidChangePosition()
@@ -106,7 +103,7 @@ extension GameScreen: PlayerManagerObserving {
     
     func playerManager(manager: PlayerManager, didUnlockLevel levelProgress: LevelProgress) {
         let levelIndex = manager.progressItemForLevel(levelProgress.level).index
-        let text = NSString.localizedStringWithFormat("banner_format_unlocked_level", levelProgress.level.name) as String
+        let text = NSString(format: NSLocalizedString("banner_format_unlocked_level", comment: ""), levelProgress.level.name) as String
         
         Analytics.unlockedLevelBannerShownInGameScreen(levelProgress.level)
         model.navigationManager.showBannerWithText(text, tapHandler: { [unowned self] in

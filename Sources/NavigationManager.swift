@@ -92,7 +92,7 @@ final class NavigationManager: NSObject {
         })
     }
     
-    func showBannerWithText(text: String, duration: NSTimeInterval = 5.0, tapHandler: (() -> Void)? = nil) -> BannerView {
+    func showBannerWithText(text: String, duration: NSTimeInterval = 10.0, tapHandler: (() -> Void)? = nil) -> BannerView {
         let banner: TextBannerView = TextBannerView.fromNib()
         banner.showInView(window, withText: text, duration: duration, tapHandler: tapHandler)
         return banner

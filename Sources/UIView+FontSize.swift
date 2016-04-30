@@ -22,10 +22,7 @@ extension UIView {
      - parameter recursively: Set true if you need to adjust font size recursively through subviews.
      */
     func adjustFontSizeRecursively(recursively: Bool) {
-        let screenDimensionIPhone6Plus: CGFloat = 414.0
-        let screenSize = UIApplication.sharedApplication().keyWindow!.bounds.size
-        let screenDimension = UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation) ? screenSize.width : screenSize.height
-        let fontScale = screenDimension / screenDimensionIPhone6Plus
+        let fontScale = UIScreen.mainScreen().sizeScaleToIPhone6Plus()
         
         if self is UILabel {
             adjustFontSizeForLabelWithScale(fontScale)

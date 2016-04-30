@@ -11,7 +11,7 @@ import UIKit
 class BannerView: UIControl {
     
     private let animationDuration: NSTimeInterval = 0.5
-    private let bannerHeight: CGFloat = 64.0
+    private var bannerSize = CGSize(width: 344.0, height: 66.0)
     
     private var tapHandler: (() -> Void)?
     private var timer: NSTimer?
@@ -28,32 +28,31 @@ class BannerView: UIControl {
     }
     
     func showInView(view: UIView,
-        duration: NSTimeInterval = 0.0,
-        tapHandler: (() -> Void)? = nil) {
-            
-            self.tapHandler = tapHandler
-            
-            frame = view.bounds
-            frame.size.height = bannerHeight
-            frame.origin.y = -bannerHeight
-            view.addSubview(self)
-            view.addGestureRecognizer(swipeRecognizer)
-            
-            UIView.animateWithDuration(animationDuration,
-                delay: 0.0,
-                options: .CurveEaseOut,
-                animations: { () -> Void in
-                    self.frame.origin.y = 0.0
-                    
-                }, completion: { _ in
-                    if duration != 0.0 {
-                        self.timer = NSTimer.scheduledTimerWithTimeInterval(duration,
-                            target: self,
-                            selector: #selector(BannerView.dismiss),
-                            userInfo: nil,
-                            repeats: false)
-                    }
-            })
+                    duration: NSTimeInterval = 0.0,
+                    tapHandler: (() -> Void)? = nil) {
+        
+        self.tapHandler = tapHandler
+        
+        frame.origin.x = (view.bounds.size.width - bounds.size.width) / 2.0
+        frame.origin.y = -bannerSize.height
+        view.addSubview(self)
+        view.addGestureRecognizer(swipeRecognizer)
+        
+        UIView.animateWithDuration(animationDuration,
+                                   delay: 0.0,
+                                   options: .CurveEaseOut,
+                                   animations: { () -> Void in
+                                    self.frame.origin.y = 0.0
+                                    
+            }, completion: { _ in
+                if duration != 0.0 {
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(duration,
+                        target: self,
+                        selector: #selector(BannerView.dismiss),
+                        userInfo: nil,
+                        repeats: false)
+                }
+        })
     }
     
     func dismiss() {
@@ -63,11 +62,11 @@ class BannerView: UIControl {
         tapHandler = nil
         
         UIView.animateWithDuration(animationDuration,
-            delay: 0.0,
-            options: .CurveEaseOut,
-            animations: { () -> Void in
-                self.frame.origin.y = -self.bannerHeight
-                
+                                   delay: 0.0,
+                                   options: .CurveEaseOut,
+                                   animations: { () -> Void in
+                                    self.frame.origin.y = -self.bannerSize.height
+                                    
             }, completion: { _ in
                 self.removeFromSuperview()
         })
@@ -77,6 +76,11 @@ class BannerView: UIControl {
 extension BannerView {
     
     private func initialize() {
+        let sizeScale = UIScreen.mainScreen().sizeScaleToIPhone6Plus()
+        bannerSize.width *= sizeScale
+        bannerSize.height *= sizeScale
+        frame.size = bannerSize
+        
         swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(BannerView.dismiss))
         swipeRecognizer.direction = .Up
         
