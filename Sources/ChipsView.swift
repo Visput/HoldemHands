@@ -33,7 +33,7 @@ final class ChipsView: UIView {
             let chipsDifference = abs(newCount - oldCount)
             
             if won {
-                chipsDifferenceLabelTopSpace.constant = 20.0
+                chipsDifferenceLabelTopSpace.constant = 15.0
                 layoutIfNeeded()
                 
                 var chipsDifferenceText = "+ " + (chipsDifference / chipsMultiplier).formattedChipsCountString()
@@ -42,7 +42,7 @@ final class ChipsView: UIView {
                 }
                 
                 chipsDifferenceLabel.text = chipsDifferenceText
-                chipsDifferenceLabel.textColor = UIColor.aquamarine1Color()
+                chipsDifferenceLabel.textColor = UIColor.green2Color()
                 
                 UIView.animateWithDuration(0.2, delay: 0.0, options: .CurveLinear, animations: {
                     self.chipsDifferenceLabel.alpha = 1.0
@@ -61,10 +61,10 @@ final class ChipsView: UIView {
                 chipsDifferenceLabelTopSpace.constant = 0.0
                 layoutIfNeeded()
                 chipsDifferenceLabel.text = "- " + chipsDifference.formattedChipsCountString()
-                chipsDifferenceLabel.textColor = UIColor.gray1Color()
+                chipsDifferenceLabel.textColor = UIColor.gray2Color()
                 
                 UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveLinear, animations: {
-                    self.chipsDifferenceLabelTopSpace.constant = 20.0
+                    self.chipsDifferenceLabelTopSpace.constant = 15.0
                     self.layoutIfNeeded()
                     self.chipsDifferenceLabel.alpha = 1.0
                     

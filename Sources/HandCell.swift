@@ -15,6 +15,8 @@ final class HandCell: UICollectionViewCell {
     @IBOutlet private(set) weak var winOddsLabel: UILabel!
     @IBOutlet private(set) weak var tieOddsLabel: UILabel!
     @IBOutlet private(set) weak var oddsBackgroundView: UIImageView!
+    
+    private var selectionLayer: CAShapeLayer?
  
     private(set) var item: HandCellItem!
     
@@ -52,7 +54,6 @@ final class HandCell: UICollectionViewCell {
                 } else {
                     oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
                 }
-                animateHandSelection()
             } else {
                 oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
             }
@@ -63,6 +64,8 @@ final class HandCell: UICollectionViewCell {
                 self.tieOddsLabel.alpha = item.needsShowOdds! ? 1.0 : 0.0
             })
         }
+        
+        setHandSelectionVisible(selected, isSuccessState: item.isSuccessSate)
     }
     
     func setHandVisible(visible: Bool, animated: Bool, completionHandler: (() -> Void)? = nil) {
@@ -115,39 +118,51 @@ extension HandCell {
         return UIImage(named: imageName)!
     }
     
-    private func animateHandSelection() {
-        let lineWidth: CGFloat = 12.0
-        let inset = CGFloat(0.0)
-        let pathRightToTop = UIBezierPath()
-        pathRightToTop.lineWidth = lineWidth
-        pathRightToTop.moveToPoint(CGPoint(x: inset, y: bounds.size.height - inset))
-        pathRightToTop.addLineToPoint(CGPoint(x: bounds.size.width - inset, y: bounds.size.height - inset))
-        pathRightToTop.addLineToPoint(CGPoint(x: bounds.size.width - inset, y: inset))
+    private func setHandSelectionVisible(visible: Bool, isSuccessState: Bool?) {
+        guard visible else {
+            selectionLayer?.removeFromSuperlayer()
+            selectionLayer = nil
+            return
+        }
         
-        let pathTopToRight = UIBezierPath()
-        pathTopToRight.lineWidth = lineWidth
-        pathTopToRight.moveToPoint(CGPoint(x: inset, y: bounds.size.height - inset))
-        pathTopToRight.addLineToPoint(CGPoint(x: inset, y: inset))
-        pathTopToRight.addLineToPoint(CGPoint(x: bounds.size.width - inset, y: inset))
+        let lineWidth = CGFloat(3.0)
+        let inset = CGFloat(-5.0)
         
-        for path in [pathRightToTop, pathTopToRight] {
-            let pathLayer = CAShapeLayer()
-            pathLayer.path = path.CGPath
-            pathLayer.strokeColor = UIColor.aquamarine1Color().CGColor
-            pathLayer.fillColor = nil
-            pathLayer.lineJoin = kCALineJoinBevel
-            pathLayer.frame = bounds
-            layer.addSublayer(pathLayer)
+        let path = UIBezierPath()
+        path.moveToPoint(CGPoint(x: inset, y: bounds.size.height - inset))
+        path.addLineToPoint(CGPoint(x: inset, y: inset))
+        path.addLineToPoint(CGPoint(x: bounds.size.width - inset, y: inset))
+        path.addLineToPoint(CGPoint(x: bounds.size.width - inset, y: bounds.size.height - inset))
+        path.addLineToPoint(CGPoint(x: inset, y: bounds.size.height - inset))
+        
+        selectionLayer?.removeFromSuperlayer()
+        selectionLayer = CAShapeLayer()
+        selectionLayer!.path = path.CGPath
+        selectionLayer!.fillColor = nil
+        selectionLayer!.lineWidth = lineWidth
+        selectionLayer!.lineJoin = kCALineJoinRound
+        selectionLayer!.frame = bounds
+        layer.addSublayer(selectionLayer!)
+        
+        var animation: CABasicAnimation! = nil
+        if isSuccessState! {
+            selectionLayer!.strokeColor = UIColor.green1Color().CGColor
             
-            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            animation = CABasicAnimation(keyPath: "strokeEnd")
             animation.duration = 0.8
             animation.fromValue = 0.0
             animation.toValue = 1.0
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.removedOnCompletion = false
+        } else {
+            selectionLayer!.strokeColor = UIColor.blue1Color().CGColor
             
-            pathLayer.addAnimation(animation, forKey: nil)
+            animation = CABasicAnimation(keyPath: "opacity")
+            animation.duration = 0.4
+            animation.fromValue = 0.0
+            animation.toValue = 1.0
+            animation.removedOnCompletion = false
         }
         
+        selectionLayer!.addAnimation(animation, forKey: nil)
     }
 }

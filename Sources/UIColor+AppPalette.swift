@@ -23,4 +23,32 @@ extension UIColor {
             alpha:1)
     }
 
+    class func gray2Color() -> UIColor {
+        return UIColor(red: 0.6470588445663452,
+            green:0.6784313917160034,
+            blue:0.7764706015586853,
+            alpha:1)
+    }
+
+    class func green1Color() -> UIColor {
+        return UIColor(red: 0.09411764889955521,
+            green:0.6431372761726379,
+            blue:0.4705882370471954,
+            alpha:1)
+    }
+
+    class func green2Color() -> UIColor {
+        return UIColor(red: 0.1333333402872086,
+            green:0.843137264251709,
+            blue:0.6235294342041016,
+            alpha:1)
+    }
+
+    class func blue1Color() -> UIColor {
+        return UIColor(red: 0.2666666805744171,
+            green:0.3254902064800262,
+            blue:0.4588235318660736,
+            alpha:1)
+    }
+
 }

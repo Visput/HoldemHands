@@ -87,10 +87,10 @@ final class StatsCell: UICollectionViewCell {
             
             if rankRaised {
                 rankDifferenceLabel.text = "+\(rankDifference)"
-                rankDifferenceLabel.textColor = UIColor.aquamarine1Color()
+                rankDifferenceLabel.textColor = UIColor.green2Color()
             } else {
                 rankDifferenceLabel.text = "-\(rankDifference)"
-                rankDifferenceLabel.textColor = UIColor.gray1Color()
+                rankDifferenceLabel.textColor = UIColor.gray2Color()
             }
             
             UIView.animateWithDuration(0.2, delay: 0.0, options: .CurveLinear, animations: {
