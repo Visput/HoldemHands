@@ -46,13 +46,17 @@ final class HandCell: UICollectionViewCell {
             tieOddsLabel.text = NSString(format: NSLocalizedString("text_format_tie_odds", comment: ""),
                                          item.handOdds!.tieProbability()) as String
             
-            if item.isSuccessSate == nil {
-                oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
-            } else if item.isSuccessSate! {
-                oddsBackgroundView.image = UIImage(named: "background_hand_odds_green")
+            if item.isSuccessSate != nil {
+                if item.isSuccessSate! {
+                    oddsBackgroundView.image = UIImage(named: "background_hand_odds_green")
+                } else {
+                    oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
+                }
+                animateHandSelection()
             } else {
-                oddsBackgroundView.image = UIImage(named: "background_hand_odds_red")
+                oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
             }
+            
             UIView.animateWithDuration(0.4, animations: {
                 self.oddsBackgroundView.alpha = item.needsShowOdds! ? 1.0 : 0.0
                 self.winOddsLabel.alpha = item.needsShowOdds! ? 1.0 : 0.0
@@ -109,5 +113,43 @@ extension HandCell {
     private func imageForCard(card: Card) -> UIImage {
         let imageName = "card_suit\(card.suit.rawValue)_rank\(card.rank.rawValue)"
         return UIImage(named: imageName)!
+    }
+    
+    private func animateHandSelection() {
+        let lineWidth: CGFloat = 1.0
+        let pathRightToTop = UIBezierPath()
+        pathRightToTop.lineWidth = lineWidth * 2.0
+        
+        pathRightToTop.moveToPoint(CGPoint(x: lineWidth, y: bounds.size.height - lineWidth))
+        pathRightToTop.addLineToPoint(CGPoint(x: bounds.size.width - lineWidth, y: bounds.size.height - lineWidth))
+        pathRightToTop.addLineToPoint(CGPoint(x: bounds.size.width - lineWidth, y: lineWidth))
+        
+        let pathTopToRight = UIBezierPath()
+        pathTopToRight.lineWidth = lineWidth
+        
+        pathTopToRight.moveToPoint(CGPoint(x: lineWidth, y: bounds.size.height - lineWidth))
+        pathTopToRight.addLineToPoint(CGPoint(x: lineWidth, y: lineWidth))
+        pathTopToRight.addLineToPoint(CGPoint(x: bounds.size.width - lineWidth, y: lineWidth))
+        
+        let startPath = UIBezierPath()
+        startPath.moveToPoint(CGPoint(x: lineWidth, y: bounds.size.height - lineWidth))
+        
+        for path in [pathRightToTop, pathTopToRight] {
+            let pathLayer = CAShapeLayer()
+            pathLayer.path = startPath.CGPath
+            pathLayer.strokeColor = UIColor.aquamarine1Color().CGColor
+            pathLayer.fillColor = UIColor.clearColor().CGColor
+            layer.addSublayer(pathLayer)
+            
+            let animation = CABasicAnimation(keyPath: "path")
+            animation.duration = 2.0
+            animation.toValue = path.CGPath
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.fillMode = kCAFillModeForwards
+            animation.removedOnCompletion = false
+            
+            pathLayer.addAnimation(animation, forKey: nil)
+        }
+        
     }
 }
