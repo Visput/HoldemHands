@@ -913,13 +913,13 @@
                                                     <rect key="frame" x="4" y="98" width="244" height="69"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Win: 24.58%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suH-72-eOP">
-                                                    <rect key="frame" x="4" y="103" width="244" height="29"/>
+                                                    <rect key="frame" x="4" y="108" width="244" height="24"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tie: 12.54%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oL-Jw-81k">
-                                                    <rect key="frame" x="4" y="133" width="244" height="29"/>
+                                                    <rect key="frame" x="4" y="133" width="244" height="24"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -938,7 +938,7 @@
                                             <constraint firstItem="6oL-Jw-81k" firstAttribute="height" secondItem="suH-72-eOP" secondAttribute="height" id="EuR-An-2ho"/>
                                             <constraint firstItem="6oL-Jw-81k" firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="4" id="Fy1-VV-Qmt"/>
                                             <constraint firstItem="6oL-Jw-81k" firstAttribute="leading" secondItem="BJa-hN-hWY" secondAttribute="leading" id="GAZ-Jk-TLm"/>
-                                            <constraint firstItem="6oL-Jw-81k" firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="-5" id="GcK-qh-nTy"/>
+                                            <constraint firstItem="6oL-Jw-81k" firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="-10" id="GcK-qh-nTy"/>
                                             <constraint firstItem="6oL-Jw-81k" firstAttribute="top" secondItem="suH-72-eOP" secondAttribute="bottom" constant="1" id="H2S-kE-96i"/>
                                             <constraint firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="6" id="IXU-a8-7ga"/>
                                             <constraint firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="4" id="O7E-sM-XWX"/>
@@ -949,7 +949,7 @@
                                             <constraint firstAttribute="trailing" secondItem="KrY-SE-ELq" secondAttribute="trailing" constant="4" id="aep-r0-omp"/>
                                             <constraint firstItem="BJa-hN-hWY" firstAttribute="height" secondItem="z6N-GK-9x6" secondAttribute="height" multiplier="69:173" id="ffc-Al-136"/>
                                             <constraint firstItem="suH-72-eOP" firstAttribute="leading" secondItem="BJa-hN-hWY" secondAttribute="leading" id="ghh-aW-17G"/>
-                                            <constraint firstItem="suH-72-eOP" firstAttribute="top" secondItem="BJa-hN-hWY" secondAttribute="top" constant="5" id="k4S-fu-SXJ"/>
+                                            <constraint firstItem="suH-72-eOP" firstAttribute="top" secondItem="BJa-hN-hWY" secondAttribute="top" constant="10" id="k4S-fu-SXJ"/>
                                             <constraint firstItem="fDG-L2-3bs" firstAttribute="leading" secondItem="z6N-GK-9x6" secondAttribute="leading" constant="4" id="kxW-DB-TXs"/>
                                             <constraint firstAttribute="bottom" secondItem="KrY-SE-ELq" secondAttribute="bottom" constant="4" id="sKr-HH-ymi"/>
                                             <constraint firstItem="suH-72-eOP" firstAttribute="trailing" secondItem="BJa-hN-hWY" secondAttribute="trailing" id="u58-KJ-2B0"/>

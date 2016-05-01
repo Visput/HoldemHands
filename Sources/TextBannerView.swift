@@ -13,12 +13,16 @@ final class TextBannerView: BannerView {
     @IBOutlet private(set) weak var textLabel: UILabel!
     @IBOutlet private(set) weak var backgroundImageView: UIImageView!
     
-    func showInView(view: UIView, withText
+    func presentInView(view: UIView, withText
         text: String,
+        backgroundImage: UIImage? = nil,
         duration: NSTimeInterval = 0.0,
         tapHandler: (() -> Void)? = nil) {
         
         textLabel.text = text
-        super.showInView(view, duration: duration, tapHandler: tapHandler)
+        if backgroundImage != nil {
+            backgroundImageView.image = backgroundImage
+        }
+        super.presentInView(view, duration: duration, tapHandler: tapHandler)
     }
 }

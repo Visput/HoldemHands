@@ -20,7 +20,7 @@ final class SharingViewController: BaseViewController {
                                imageURL: NSURL(string: "https://d13yacurqjgara.cloudfront.net/users/3511/screenshots/827275/prvw.jpg"))
         
         model.sharingManager.didFailToShareHandler = { [unowned self] _ in
-            self.model.navigationManager.showBannerWithText(NSLocalizedString("Unable to locate your \"Facebook\" account", comment: ""))
+            self.model.navigationManager.presentBannerWithText(NSLocalizedString("error_share_with_facebook", comment: ""))
         }
         
         model.sharingManager.shareWithFacebook(item, inViewController: self)
@@ -36,7 +36,7 @@ final class SharingViewController: BaseViewController {
                                imageURL: nil)
         
         model.sharingManager.didFailToShareHandler = { [unowned self] _ in
-            self.model.navigationManager.showBannerWithText(NSLocalizedString("Unable to locate your \"Twitter\" account", comment: ""))
+            self.model.navigationManager.presentBannerWithText(NSLocalizedString("error_share_with_twitter", comment: ""))
         }
         
         model.sharingManager.shareWithTwitter(item, inViewController: self)
@@ -52,7 +52,7 @@ final class SharingViewController: BaseViewController {
                                imageURL: nil)
         
         model.sharingManager.didFailToShareHandler = { [unowned self] _ in
-            self.model.navigationManager.showBannerWithText(NSLocalizedString("Unable to locate your \"Instagram\" account", comment: ""))
+            self.model.navigationManager.presentBannerWithText(NSLocalizedString("error_share_with_instagram", comment: ""))
         }
         
         model.sharingManager.shareWithInstagram(item, inView: view)

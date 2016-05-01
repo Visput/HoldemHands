@@ -20,6 +20,7 @@ final class NavigationManager: NSObject {
     private(set) var mainScreen: MainScreen!
     
     private var navigationController: UINavigationController!
+    private var currentTextBanner: TextBannerView?
     
     private var storyboard: UIStoryboard {
         return window.rootViewController!.storyboard!
@@ -92,10 +93,36 @@ final class NavigationManager: NSObject {
         })
     }
     
-    func showBannerWithText(text: String, duration: NSTimeInterval = 5.0, tapHandler: (() -> Void)? = nil) -> BannerView {
-        let banner: TextBannerView = TextBannerView.fromNib()
-        banner.showInView(window, withText: text, duration: duration, tapHandler: tapHandler)
-        return banner
+    func presentBannerWithText(text: String,
+                               backgroundImage: UIImage? = nil,
+                               duration: NSTimeInterval = 5.0,
+                               tapHandler: (() -> Void)? = nil) -> BannerView {
+        // If current banner presented and shows the same text it's not needed to display new banner.
+        guard !(currentTextBanner != nil &&
+            currentTextBanner!.presented &&
+            currentTextBanner!.textLabel.text == text) else {
+                return currentTextBanner!
+        }
+        
+        let newTextBanner: TextBannerView = TextBannerView.fromNib()
+        let showNewTextBanner = { [unowned self] in
+            self.currentTextBanner = newTextBanner
+            newTextBanner.presentInView(self.window,
+                                        withText: text,
+                                        backgroundImage: backgroundImage,
+                                        duration: duration,
+                                        tapHandler: tapHandler)
+        }
+        
+        if currentTextBanner == nil || !currentTextBanner!.presented {
+            showNewTextBanner()
+        } else {
+            currentTextBanner!.dismiss({
+                showNewTextBanner()
+            })
+        }
+        
+        return newTextBanner
     }
 }
 

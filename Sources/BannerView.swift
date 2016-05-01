@@ -10,6 +10,8 @@ import UIKit
 
 class BannerView: UIControl {
     
+    private(set) var presented = false
+    
     private let animationDuration: NSTimeInterval = 0.5
     private var bannerSize = CGSize(width: 344.0, height: 66.0)
     
@@ -27,11 +29,12 @@ class BannerView: UIControl {
         initialize()
     }
     
-    func showInView(view: UIView,
-                    duration: NSTimeInterval = 0.0,
-                    tapHandler: (() -> Void)? = nil) {
+    func presentInView(view: UIView,
+                       duration: NSTimeInterval = 0.0,
+                       tapHandler: (() -> Void)? = nil) {
         
         self.tapHandler = tapHandler
+        presented = true
         
         frame.origin.x = (view.bounds.size.width - bounds.size.width) / 2.0
         frame.origin.y = -bannerSize.height
@@ -48,17 +51,17 @@ class BannerView: UIControl {
                 if duration != 0.0 {
                     self.timer = NSTimer.scheduledTimerWithTimeInterval(duration,
                         target: self,
-                        selector: #selector(BannerView.dismiss),
+                        selector: #selector(BannerView.dismissByTimer),
                         userInfo: nil,
                         repeats: false)
                 }
         })
     }
     
-    func dismiss() {
+    func dismiss(completion: (() -> Void)? = nil) {
         timer?.invalidate()
         timer = nil
-        superview!.removeGestureRecognizer(swipeRecognizer)
+        superview?.removeGestureRecognizer(swipeRecognizer)
         tapHandler = nil
         
         UIView.animateWithDuration(animationDuration,
@@ -69,6 +72,8 @@ class BannerView: UIControl {
                                     
             }, completion: { _ in
                 self.removeFromSuperview()
+                self.presented = false
+                completion?()
         })
     }
 }
@@ -89,6 +94,10 @@ extension BannerView {
     
     @objc private func bannerDidTap(sender: AnyObject) {
         tapHandler?()
+        dismiss()
+    }
+    
+    @objc private func dismissByTimer() {
         dismiss()
     }
 }
