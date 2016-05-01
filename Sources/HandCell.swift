@@ -116,36 +116,34 @@ extension HandCell {
     }
     
     private func animateHandSelection() {
-        let lineWidth: CGFloat = 1.0
+        let lineWidth: CGFloat = 12.0
+        let inset = CGFloat(0.0)
         let pathRightToTop = UIBezierPath()
-        pathRightToTop.lineWidth = lineWidth * 2.0
-        
-        pathRightToTop.moveToPoint(CGPoint(x: lineWidth, y: bounds.size.height - lineWidth))
-        pathRightToTop.addLineToPoint(CGPoint(x: bounds.size.width - lineWidth, y: bounds.size.height - lineWidth))
-        pathRightToTop.addLineToPoint(CGPoint(x: bounds.size.width - lineWidth, y: lineWidth))
+        pathRightToTop.lineWidth = lineWidth
+        pathRightToTop.moveToPoint(CGPoint(x: inset, y: bounds.size.height - inset))
+        pathRightToTop.addLineToPoint(CGPoint(x: bounds.size.width - inset, y: bounds.size.height - inset))
+        pathRightToTop.addLineToPoint(CGPoint(x: bounds.size.width - inset, y: inset))
         
         let pathTopToRight = UIBezierPath()
         pathTopToRight.lineWidth = lineWidth
-        
-        pathTopToRight.moveToPoint(CGPoint(x: lineWidth, y: bounds.size.height - lineWidth))
-        pathTopToRight.addLineToPoint(CGPoint(x: lineWidth, y: lineWidth))
-        pathTopToRight.addLineToPoint(CGPoint(x: bounds.size.width - lineWidth, y: lineWidth))
-        
-        let startPath = UIBezierPath()
-        startPath.moveToPoint(CGPoint(x: lineWidth, y: bounds.size.height - lineWidth))
+        pathTopToRight.moveToPoint(CGPoint(x: inset, y: bounds.size.height - inset))
+        pathTopToRight.addLineToPoint(CGPoint(x: inset, y: inset))
+        pathTopToRight.addLineToPoint(CGPoint(x: bounds.size.width - inset, y: inset))
         
         for path in [pathRightToTop, pathTopToRight] {
             let pathLayer = CAShapeLayer()
-            pathLayer.path = startPath.CGPath
+            pathLayer.path = path.CGPath
             pathLayer.strokeColor = UIColor.aquamarine1Color().CGColor
-            pathLayer.fillColor = UIColor.clearColor().CGColor
+            pathLayer.fillColor = nil
+            pathLayer.lineJoin = kCALineJoinBevel
+            pathLayer.frame = bounds
             layer.addSublayer(pathLayer)
             
-            let animation = CABasicAnimation(keyPath: "path")
-            animation.duration = 2.0
-            animation.toValue = path.CGPath
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            animation.duration = 0.8
+            animation.fromValue = 0.0
+            animation.toValue = 1.0
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-            animation.fillMode = kCAFillModeForwards
             animation.removedOnCompletion = false
             
             pathLayer.addAnimation(animation, forKey: nil)
