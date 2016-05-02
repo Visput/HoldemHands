@@ -126,22 +126,25 @@ extension HandCell {
         }
         
         let lineWidth = CGFloat(3.0)
+        let arcRadius = CGFloat(8.0)
         let inset = CGFloat(-5.0)
-        
-        let path = UIBezierPath()
-        path.moveToPoint(CGPoint(x: inset, y: bounds.size.height - inset))
-        path.addLineToPoint(CGPoint(x: inset, y: inset))
-        path.addLineToPoint(CGPoint(x: bounds.size.width - inset, y: inset))
-        path.addLineToPoint(CGPoint(x: bounds.size.width - inset, y: bounds.size.height - inset))
-        path.addLineToPoint(CGPoint(x: inset, y: bounds.size.height - inset))
         
         selectionLayer?.removeFromSuperlayer()
         selectionLayer = CAShapeLayer()
-        selectionLayer!.path = path.CGPath
+        
         selectionLayer!.fillColor = nil
         selectionLayer!.lineWidth = lineWidth
         selectionLayer!.lineJoin = kCALineJoinRound
-        selectionLayer!.frame = bounds
+        selectionLayer!.frame = CGRectInset(bounds, inset, inset)
+        
+        let path = UIBezierPath()
+        path.moveToPoint(CGPoint(x: 0.0, y: selectionLayer!.bounds.size.height))
+        path.addLineToPoint(CGPoint(x: 0.0, y: 0.0))
+        path.addLineToPoint(CGPoint(x: selectionLayer!.bounds.size.width, y: 0.0))
+        path.addLineToPoint(CGPoint(x: selectionLayer!.bounds.size.width, y: selectionLayer!.bounds.size.height))
+        path.addLineToPoint(CGPoint(x: 0.0, y: selectionLayer!.bounds.size.height))
+        
+        selectionLayer!.path = path.CGPath
         layer.addSublayer(selectionLayer!)
         
         var animation: CABasicAnimation! = nil
@@ -162,7 +165,6 @@ extension HandCell {
             animation.toValue = 1.0
             animation.removedOnCompletion = false
         }
-        
         selectionLayer!.addAnimation(animation, forKey: nil)
     }
 }

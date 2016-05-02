@@ -86,7 +86,7 @@ extension BannerView {
         bannerSize.height *= sizeScale
         frame.size = bannerSize
         
-        swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(BannerView.dismiss))
+        swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(BannerView.dismissBySwipe))
         swipeRecognizer.direction = .Up
         
         addTarget(self, action: #selector(BannerView.bannerDidTap(_:)), forControlEvents: .TouchUpInside)
@@ -98,6 +98,10 @@ extension BannerView {
     }
     
     @objc private func dismissByTimer() {
+        dismiss()
+    }
+    
+    @objc private func dismissBySwipe() {
         dismiss()
     }
 }
