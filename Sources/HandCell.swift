@@ -125,24 +125,54 @@ extension HandCell {
             return
         }
         
-        let lineWidth = CGFloat(3.0)
-        let arcRadius = CGFloat(8.0)
-        let inset = CGFloat(-5.0)
+        let maxCellWidth = CGFloat(252.0)
+        let scale = frame.size.width / maxCellWidth
+        let halfPi = CGFloat(M_PI_2)
+        let lineWidth = ceil(3.0 * scale)
+        let arcRadius = ceil(12.0 * scale)
+        let inset = ceil(-6.0 * scale)
         
         selectionLayer?.removeFromSuperlayer()
         selectionLayer = CAShapeLayer()
-        
         selectionLayer!.fillColor = nil
         selectionLayer!.lineWidth = lineWidth
         selectionLayer!.lineJoin = kCALineJoinRound
         selectionLayer!.frame = CGRectInset(bounds, inset, inset)
         
         let path = UIBezierPath()
-        path.moveToPoint(CGPoint(x: 0.0, y: selectionLayer!.bounds.size.height))
-        path.addLineToPoint(CGPoint(x: 0.0, y: 0.0))
-        path.addLineToPoint(CGPoint(x: selectionLayer!.bounds.size.width, y: 0.0))
-        path.addLineToPoint(CGPoint(x: selectionLayer!.bounds.size.width, y: selectionLayer!.bounds.size.height))
-        path.addLineToPoint(CGPoint(x: 0.0, y: selectionLayer!.bounds.size.height))
+        // Move to bottom left.
+        path.moveToPoint(CGPoint(x: 0.0, y: selectionLayer!.bounds.size.height - arcRadius))
+        
+        // Draw to top left.
+        path.addLineToPoint(CGPoint(x: 0.0, y: arcRadius))
+        path.addArcWithCenter(CGPoint(x: arcRadius, y: arcRadius),
+                              radius: arcRadius,
+                              startAngle: 2 * halfPi,
+                              endAngle: 3 * halfPi,
+                              clockwise: true)
+        // Draw to top right.
+        path.addLineToPoint(CGPoint(x: selectionLayer!.bounds.size.width - arcRadius, y: 0.0))
+        path.addArcWithCenter(CGPoint(x: selectionLayer!.bounds.size.width - arcRadius, y: arcRadius),
+                              radius: arcRadius,
+                              startAngle: 3 * halfPi,
+                              endAngle: 4 * halfPi,
+                              clockwise: true)
+        
+        // Draw to bottom right.
+        path.addLineToPoint(CGPoint(x: selectionLayer!.bounds.size.width, y: selectionLayer!.bounds.size.height - arcRadius))
+        path.addArcWithCenter(CGPoint(x: selectionLayer!.bounds.size.width - arcRadius, y: selectionLayer!.bounds.size.height - arcRadius),
+                              radius: arcRadius,
+                              startAngle: 0,
+                              endAngle: halfPi,
+                              clockwise: true)
+        
+        // Draw to bottom left.
+        path.addLineToPoint(CGPoint(x: arcRadius, y: selectionLayer!.bounds.size.height))
+        path.addArcWithCenter(CGPoint(x: arcRadius, y: selectionLayer!.bounds.size.height - arcRadius),
+                              radius: arcRadius,
+                              startAngle: halfPi,
+                              endAngle: 2 * halfPi,
+                              clockwise: true)
         
         selectionLayer!.path = path.CGPath
         layer.addSublayer(selectionLayer!)

@@ -45,9 +45,9 @@ extension UIColor {
     }
 
     class func blue1Color() -> UIColor {
-        return UIColor(red: 0.2666666805744171,
-            green:0.3254902064800262,
-            blue:0.4588235318660736,
+        return UIColor(red: 0.3607843220233917,
+            green:0.4313725531101227,
+            blue:0.6039215922355652,
             alpha:1)
     }
 
