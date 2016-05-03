@@ -109,7 +109,7 @@ extension GameScreen: PlayerManagerObserving {
         Analytics.unlockedLevelBannerShownInGameScreen(levelProgress.level)
         model.navigationManager.presentBannerWithText(text, backgroundImage: backgroundImage, tapHandler: { [unowned self] in
             Analytics.unlockBannerClickedInGameScreen(levelProgress.level)
-            self.model.navigationManager.dismissScreenAnimated(true, completion: {
+            self.model.navigationManager.dismissGameScreenAnimated(true, completion: {
                 self.model.navigationManager.mainScreen.levelsController.scrollToLevelAtIndex(levelIndex, animated: true)
             })
         })

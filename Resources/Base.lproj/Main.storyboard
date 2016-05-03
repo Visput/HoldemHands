@@ -937,19 +937,19 @@
                                                     </variation>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_hand_odds_green" translatesAutoresizingMaskIntoConstraints="NO" id="BJa-hN-hWY">
-                                                    <rect key="frame" x="4" y="113" width="244" height="56"/>
+                                                    <rect key="frame" x="4" y="109.5" width="244" height="59.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="BJa-hN-hWY" secondAttribute="height" multiplier="754:173" id="Fbp-sf-qiw"/>
+                                                        <constraint firstAttribute="width" secondItem="BJa-hN-hWY" secondAttribute="height" multiplier="762:186" id="Fbp-sf-qiw"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Win: 24.58%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suH-72-eOP">
-                                                    <rect key="frame" x="4" y="123" width="244" height="17.5"/>
+                                                    <rect key="frame" x="4" y="119.5" width="244" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tie: 12.54%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oL-Jw-81k">
-                                                    <rect key="frame" x="4" y="141.5" width="244" height="17.5"/>
+                                                    <rect key="frame" x="4" y="140" width="244" height="19"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1708,7 +1708,7 @@
     <resources>
         <image name="background_blue" width="736" height="414"/>
         <image name="background_green" width="736" height="414"/>
-        <image name="background_hand_odds_green" width="251" height="57"/>
+        <image name="background_hand_odds_green" width="254" height="62"/>
         <image name="background_table_level_1" width="522" height="254"/>
         <image name="button_menu_play_normal" width="59" height="85"/>
         <image name="button_menu_play_selected" width="59" height="85"/>

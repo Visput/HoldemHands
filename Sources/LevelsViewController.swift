@@ -78,6 +78,11 @@ extension LevelsViewController: PlayerManagerObserving {
     func playerManager(manager: PlayerManager, didLoadPlayerData playerData: PlayerData) {
         fillViewsWithModelWithScrollingToLastPlayedLevel(true)
     }
+    
+    func playerManager(manager: PlayerManager, didUnlockLevel levelProgress: LevelProgress) {
+        let levelIndex = manager.progressItemForLevel(levelProgress.level).index
+        levelsView.levelsCollectionView.reloadItemsAtIndexPaths([NSIndexPath(forItem: levelIndex, inSection: 0)])
+    }
 }
 
 extension LevelsViewController {

@@ -48,7 +48,7 @@ final class NavigationManager: NSObject {
         mainScreen = screen
     }
     
-    func presentGameScreenWithLevel(level: Level, animated: Bool) {
+    func presentGameScreenWithLevel(level: Level, animated: Bool, completion: (() -> Void)? = nil) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(GameScreen.className()) as! GameScreen
         screen.level = level
         screen.modalPresentationStyle = .OverCurrentContext
@@ -58,26 +58,28 @@ final class NavigationManager: NSObject {
         presentingScreen.beginAppearanceTransition(false, animated: animated)
         presentScreen(screen, animated: animated, completion: {
             presentingScreen.endAppearanceTransition()
+            completion?()
         })
     }
     
-    func dismissGameScreenAnimated(animated: Bool) {
+    func dismissGameScreenAnimated(animated: Bool, completion: (() -> Void)? = nil) {
         // Manually call `beginAppearanceTransition` and `endAppearanceTransition`
         // as it's not called automatically when view controller is presented over current context.
         let presentingScreen = topViewController.presentingViewController!
         presentingScreen.beginAppearanceTransition(true, animated: animated)
         dismissScreenAnimated(animated, completion: {
             presentingScreen.endAppearanceTransition()
+            completion?()
         })
     }
     
-    func presentStatsScreenWithLevel(level: Level?, animated: Bool) {
+    func presentStatsScreenWithLevel(level: Level?, animated: Bool, completion: (() -> Void)? = nil) {
         let screen = storyboard.instantiateViewControllerWithIdentifier(StatsScreen.className()) as! StatsScreen
         screen.level = level
-        presentScreen(screen, animated: animated)
+        presentScreen(screen, animated: animated, completion: completion)
     }
     
-    func presentLeaderboardScreenWithLeaderboardID(leaderboardID: String?, animated: Bool) {
+    func presentLeaderboardScreenWithLeaderboardID(leaderboardID: String?, animated: Bool, completion: (() -> Void)? = nil) {
         let screen = GKGameCenterViewController()
         screen.leaderboardIdentifier = leaderboardID
         screen.viewState = .Leaderboards
@@ -90,6 +92,7 @@ final class NavigationManager: NSObject {
         presentScreen(screen, animated: animated, completion: {
             presentingScreen.endAppearanceTransition()
             Analytics.leaderboardsScreenAppeared()
+            completion?()
         })
     }
     

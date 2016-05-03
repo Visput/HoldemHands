@@ -20,6 +20,12 @@ final class HandCell: UICollectionViewCell {
  
     private(set) var item: HandCellItem!
     
+    private var currentScale: CGFloat {
+        let maxCellWidth = CGFloat(252.0)
+        let scale = frame.size.width / maxCellWidth
+        return scale
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         adjustFontSizeRecursively(true)
@@ -43,10 +49,15 @@ final class HandCell: UICollectionViewCell {
             tieOddsLabel.alpha = 0.0
             oddsBackgroundView.alpha = 0.0
         } else {
+            let maxFontSize = CGFloat(15.0)
+            let textFont = UIFont(name: winOddsLabel.font!.fontName, size: maxFontSize * currentScale)
+            
             winOddsLabel.text = NSString(format: NSLocalizedString("text_format_win_odds", comment: ""),
                                          item.handOdds!.winningProbability()) as String
+            winOddsLabel.font = textFont
             tieOddsLabel.text = NSString(format: NSLocalizedString("text_format_tie_odds", comment: ""),
                                          item.handOdds!.tieProbability()) as String
+            tieOddsLabel.font = textFont
             
             if item.isSuccessSate != nil {
                 if item.isSuccessSate! {
@@ -124,13 +135,11 @@ extension HandCell {
             selectionLayer = nil
             return
         }
-        
-        let maxCellWidth = CGFloat(252.0)
-        let scale = frame.size.width / maxCellWidth
+
         let halfPi = CGFloat(M_PI_2)
-        let lineWidth = ceil(3.0 * scale)
-        let arcRadius = ceil(12.0 * scale)
-        let inset = ceil(-6.0 * scale)
+        let lineWidth = ceil(3.0 * currentScale)
+        let arcRadius = ceil(12.0 * currentScale)
+        let inset = ceil(-6.0 * currentScale)
         
         selectionLayer?.removeFromSuperlayer()
         selectionLayer = CAShapeLayer()
