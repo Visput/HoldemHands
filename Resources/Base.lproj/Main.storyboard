@@ -937,16 +937,19 @@
                                                     </variation>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_hand_odds_green" translatesAutoresizingMaskIntoConstraints="NO" id="BJa-hN-hWY">
-                                                    <rect key="frame" x="4" y="98" width="244" height="69"/>
+                                                    <rect key="frame" x="4" y="113" width="244" height="56"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="BJa-hN-hWY" secondAttribute="height" multiplier="244:56" id="Fbp-sf-qiw"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Win: 24.58%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suH-72-eOP">
-                                                    <rect key="frame" x="4" y="108" width="244" height="24"/>
+                                                    <rect key="frame" x="4" y="123" width="244" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tie: 12.54%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oL-Jw-81k">
-                                                    <rect key="frame" x="4" y="133" width="244" height="24"/>
+                                                    <rect key="frame" x="4" y="141.5" width="244" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -967,14 +970,14 @@
                                             <constraint firstItem="6oL-Jw-81k" firstAttribute="leading" secondItem="BJa-hN-hWY" secondAttribute="leading" id="GAZ-Jk-TLm"/>
                                             <constraint firstItem="6oL-Jw-81k" firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="-10" id="GcK-qh-nTy"/>
                                             <constraint firstItem="6oL-Jw-81k" firstAttribute="top" secondItem="suH-72-eOP" secondAttribute="bottom" constant="1" id="H2S-kE-96i"/>
-                                            <constraint firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="6" id="IXU-a8-7ga"/>
+                                            <constraint firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="4" id="IXU-a8-7ga"/>
                                             <constraint firstAttribute="bottom" secondItem="BJa-hN-hWY" secondAttribute="bottom" constant="4" id="O7E-sM-XWX"/>
                                             <constraint firstItem="KrY-SE-ELq" firstAttribute="top" secondItem="z6N-GK-9x6" secondAttribute="top" constant="4" id="Vt2-GD-YJW"/>
                                             <constraint firstItem="6oL-Jw-81k" firstAttribute="trailing" secondItem="BJa-hN-hWY" secondAttribute="trailing" constant="4" id="XcN-UY-yTe"/>
                                             <constraint firstItem="KrY-SE-ELq" firstAttribute="width" secondItem="KrY-SE-ELq" secondAttribute="height" multiplier="118:165" id="XgD-YJ-S4f"/>
                                             <constraint firstAttribute="trailing" secondItem="BJa-hN-hWY" secondAttribute="trailing" constant="4" id="ZjL-sz-jF1"/>
                                             <constraint firstAttribute="trailing" secondItem="KrY-SE-ELq" secondAttribute="trailing" constant="4" id="aep-r0-omp"/>
-                                            <constraint firstItem="BJa-hN-hWY" firstAttribute="height" secondItem="z6N-GK-9x6" secondAttribute="height" multiplier="69:173" id="ffc-Al-136"/>
+                                            <constraint firstItem="BJa-hN-hWY" firstAttribute="height" secondItem="z6N-GK-9x6" secondAttribute="height" multiplier="55:173" id="ffc-Al-136"/>
                                             <constraint firstItem="suH-72-eOP" firstAttribute="leading" secondItem="BJa-hN-hWY" secondAttribute="leading" id="ghh-aW-17G"/>
                                             <constraint firstItem="suH-72-eOP" firstAttribute="top" secondItem="BJa-hN-hWY" secondAttribute="top" constant="10" id="k4S-fu-SXJ"/>
                                             <constraint firstItem="fDG-L2-3bs" firstAttribute="leading" secondItem="z6N-GK-9x6" secondAttribute="leading" constant="4" id="kxW-DB-TXs"/>
@@ -993,6 +996,7 @@
                                                 <exclude reference="0lN-Dv-8cL"/>
                                                 <exclude reference="9lL-qL-rIZ"/>
                                                 <exclude reference="O7E-sM-XWX"/>
+                                                <exclude reference="ffc-Al-136"/>
                                                 <exclude reference="wOa-gq-FHs"/>
                                                 <exclude reference="7ps-yf-taG"/>
                                                 <exclude reference="CM0-yw-gKJ"/>
@@ -1704,7 +1708,7 @@
     <resources>
         <image name="background_blue" width="736" height="414"/>
         <image name="background_green" width="736" height="414"/>
-        <image name="background_hand_odds_green" width="252" height="71"/>
+        <image name="background_hand_odds_green" width="252" height="57"/>
         <image name="background_table_level_1" width="522" height="254"/>
         <image name="button_menu_play_normal" width="59" height="85"/>
         <image name="button_menu_play_selected" width="59" height="85"/>

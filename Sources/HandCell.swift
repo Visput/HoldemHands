@@ -52,10 +52,10 @@ final class HandCell: UICollectionViewCell {
                 if item.isSuccessSate! {
                     oddsBackgroundView.image = UIImage(named: "background_hand_odds_green")
                 } else {
-                    oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
+                    oddsBackgroundView.image = UIImage(named: "background_hand_odds_blue")
                 }
             } else {
-                oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
+                oddsBackgroundView.image = UIImage(named: "background_hand_odds_blue")
             }
             
             UIView.animateWithDuration(0.4, animations: {
