@@ -13,7 +13,6 @@ final class HandCell: UICollectionViewCell {
     @IBOutlet private(set) weak var firstCardImageView: UIImageView!
     @IBOutlet private(set) weak var secondCardImageView: UIImageView!
     @IBOutlet private(set) weak var winOddsLabel: UILabel!
-    @IBOutlet private(set) weak var tieOddsLabel: UILabel!
     @IBOutlet private(set) weak var oddsBackgroundView: UIImageView!
     
     private var selectionLayer: CAShapeLayer?
@@ -46,18 +45,14 @@ final class HandCell: UICollectionViewCell {
         if item.handOdds == nil {
             setHandVisible(false, animated: false)
             winOddsLabel.alpha = 0.0
-            tieOddsLabel.alpha = 0.0
             oddsBackgroundView.alpha = 0.0
         } else {
-            let maxFontSize = CGFloat(15.0)
+            let maxFontSize = CGFloat(21.0)
             let textFont = UIFont(name: winOddsLabel.font!.fontName, size: maxFontSize * currentScale)
             
             winOddsLabel.text = NSString(format: NSLocalizedString("text_format_win_odds", comment: ""),
                                          item.handOdds!.winningProbability()) as String
             winOddsLabel.font = textFont
-            tieOddsLabel.text = NSString(format: NSLocalizedString("text_format_tie_odds", comment: ""),
-                                         item.handOdds!.tieProbability()) as String
-            tieOddsLabel.font = textFont
             
             if item.isSuccessSate != nil {
                 if item.isSuccessSate! {
@@ -72,7 +67,6 @@ final class HandCell: UICollectionViewCell {
             UIView.animateWithDuration(0.4, animations: {
                 self.oddsBackgroundView.alpha = item.needsShowOdds! ? 1.0 : 0.0
                 self.winOddsLabel.alpha = item.needsShowOdds! ? 1.0 : 0.0
-                self.tieOddsLabel.alpha = item.needsShowOdds! ? 1.0 : 0.0
             })
         }
         

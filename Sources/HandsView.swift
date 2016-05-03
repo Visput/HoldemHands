@@ -11,6 +11,7 @@ import UIKit
 final class HandsView: UIView {
     
     @IBOutlet private(set) weak var handsCollectionView: UICollectionView!
+    @IBOutlet private(set) weak var tieOddsLabel: UILabel!
     
     var isPresented: Bool {
         let window = UIApplication.sharedApplication().keyWindow!
@@ -37,6 +38,12 @@ final class HandsView: UIView {
                     })
                 })
             }
+        })
+    }
+    
+    func setTieOddsVisible(visible: Bool) {
+        UIView.animateWithDuration(0.4, animations: {
+            self.tieOddsLabel.alpha = visible ? 1.0 : 0.0
         })
     }
 }
