@@ -63,10 +63,10 @@ final class HandCell: UICollectionViewCell {
                 if item.isSuccessSate! {
                     oddsBackgroundView.image = UIImage(named: "background_hand_odds_green")
                 } else {
-                    oddsBackgroundView.image = UIImage(named: "background_hand_odds_blue")
+                    oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
                 }
             } else {
-                oddsBackgroundView.image = UIImage(named: "background_hand_odds_blue")
+                oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
             }
             
             UIView.animateWithDuration(0.4, animations: {
@@ -196,7 +196,7 @@ extension HandCell {
             animation.toValue = 1.0
             animation.removedOnCompletion = false
         } else {
-            selectionLayer!.strokeColor = UIColor.blue1Color().CGColor
+            selectionLayer!.strokeColor = UIColor.gray3Color().CGColor
             
             animation = CABasicAnimation(keyPath: "opacity")
             animation.duration = 0.4
