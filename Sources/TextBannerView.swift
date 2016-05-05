@@ -32,13 +32,15 @@ final class TextBannerView: BannerView {
         // Increase space manually.
         let maxLineSpacing = CGFloat(8)
         
+        let attributedText = NSMutableAttributedString(string: textLabel.text!)
+        let textRange = NSRange(location: 0, length: attributedText.length)
+        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = maxLineSpacing * UIScreen.mainScreen().sizeScaleToIPhone6Plus()
         paragraphStyle.alignment = .Center
-        let attributedText = NSMutableAttributedString(string: textLabel.text!)
-        attributedText.addAttribute(NSParagraphStyleAttributeName,
-                                    value:paragraphStyle,
-                                    range:NSRange(location: 0, length: attributedText.length))
+        attributedText.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:textRange)
+        attributedText.addAttribute(NSFontAttributeName, value: textLabel.font, range: textRange)
+        
         textLabel.attributedText = attributedText
         adjustFontSizeRecursively(false)
     }
