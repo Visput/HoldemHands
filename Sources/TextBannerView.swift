@@ -13,16 +13,33 @@ final class TextBannerView: BannerView {
     @IBOutlet private(set) weak var textLabel: UILabel!
     @IBOutlet private(set) weak var backgroundImageView: UIImageView!
     
-    func presentInView(view: UIView, withText
-        text: String,
-        backgroundImage: UIImage? = nil,
-        duration: NSTimeInterval = 0.0,
-        tapHandler: (() -> Void)? = nil) {
+    func presentInView(view: UIView,
+                       withText text: String,
+                       backgroundImage: UIImage? = nil,
+                       duration: NSTimeInterval = 0.0,
+                       tapHandler: (() -> Void)? = nil) {
         
         textLabel.text = text
+        fixLineSpacing()
         if backgroundImage != nil {
             backgroundImageView.image = backgroundImage
         }
         super.presentInView(view, duration: duration, tapHandler: tapHandler)
+    }
+    
+    private func fixLineSpacing() {
+        // App custom font has very small line spacing.
+        // Increase space manually.
+        let maxLineSpacing = CGFloat(8)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = maxLineSpacing * UIScreen.mainScreen().sizeScaleToIPhone6Plus()
+        paragraphStyle.alignment = .Center
+        let attributedText = NSMutableAttributedString(string: textLabel.text!)
+        attributedText.addAttribute(NSParagraphStyleAttributeName,
+                                    value:paragraphStyle,
+                                    range:NSRange(location: 0, length: attributedText.length))
+        textLabel.attributedText = attributedText
+        adjustFontSizeRecursively(false)
     }
 }

@@ -7,7 +7,7 @@
 */
 
 "banner_format_unlocked_level" = "Congratulations!\nYou've unlocked %@!";
-"banner_format_chips_to_unlock_level" = "You need %@ chips more\nto unlock %@.";
+"banner_format_chips_to_unlock_level" = "You need %@ chips more\nto unlock %@";
 
 "title_details_levels" = "Play";
 "title_details_stats" = "Stats";
