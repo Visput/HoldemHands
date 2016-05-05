@@ -24,13 +24,15 @@ final class GameScreen: BaseViewController {
         gameView.levelNameLabel.text = level.name
         
         firstHandsController.numberOfHands = level.numberOfHands
-        firstHandsController.didPlayRoundHandler = { [unowned self] won in
+        firstHandsController.didPlayRoundHandler = { [unowned self] won, tieProbability in
+            self.gameView.setTieOddsVisible(true, tieProbability: tieProbability)
             self.didPlayRoundHandler(won)
         }
         firstHandsController.nextController = secondHandsController
         
         secondHandsController.numberOfHands = level.numberOfHands
-        secondHandsController.didPlayRoundHandler = { [unowned self] won in
+        secondHandsController.didPlayRoundHandler = { [unowned self] won, tieProbability in
+            self.gameView.setTieOddsVisible(true, tieProbability: tieProbability)
             self.didPlayRoundHandler(won)
         }
         secondHandsController.nextController = firstHandsController
@@ -81,6 +83,7 @@ final class GameScreen: BaseViewController {
 extension GameScreen {
     
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
+        gameView.setTieOddsVisible(false, tieProbability: nil)
         gameView.controlsEnabled = false
         gameView.scrollToNextHandsView({
             self.firstHandsController.viewDidChangePosition()

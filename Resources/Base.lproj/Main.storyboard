@@ -19,6 +19,7 @@
             <string>HiraMaruPro-W4</string>
             <string>HiraMaruPro-W4</string>
             <string>HiraMaruPro-W4</string>
+            <string>HiraMaruPro-W4</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -588,7 +589,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classic Table" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7B-ZW-3s1">
-                                <rect key="frame" x="266" y="18.5" width="203" height="40"/>
+                                <rect key="frame" x="266" y="18" width="203" height="40"/>
                                 <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="32"/>
                                 <color key="textColor" red="0.094117647058823528" green="0.64313725490196072" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -607,14 +608,14 @@
                                 </variation>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhA-HP-ihS">
-                                <rect key="frame" x="0.0" y="55" width="736" height="359"/>
+                                <rect key="frame" x="0.0" y="55" width="736" height="319"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="IKY-Ps-knr" kind="embed" identifier="SecondHands" id="mAe-ai-Kz2"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhn-fF-xpL">
-                                <rect key="frame" x="0.0" y="55" width="736" height="359"/>
+                                <rect key="frame" x="0.0" y="55" width="736" height="319"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="IKY-Ps-knr" kind="embed" identifier="FirstHands" id="sWi-wi-SS3"/>
@@ -687,6 +688,30 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tie: 12.12%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF5-zF-KQt">
+                                <rect key="frame" x="306" y="374" width="124.5" height="21"/>
+                                <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="21"/>
+                                <color key="textColor" red="0.094117648899555206" green="0.64313727617263794" blue="0.47058823704719543" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kL-hu-HSd" userLabel="Space">
+                                <rect key="frame" x="298" y="395" width="140" height="18.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5kL-hu-HSd" secondAttribute="height" multiplier="70:13" id="9Bz-7M-Giz"/>
+                                    <constraint firstAttribute="width" secondItem="5kL-hu-HSd" secondAttribute="height" multiplier="15:2" id="A5C-jo-8iK"/>
+                                    <constraint firstAttribute="width" secondItem="5kL-hu-HSd" secondAttribute="height" multiplier="28:5" id="d0t-pk-qtA"/>
+                                    <constraint firstAttribute="width" constant="140" id="ng3-tp-I6N"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9Bz-7M-Giz"/>
+                                        <exclude reference="A5C-jo-8iK"/>
+                                        <exclude reference="d0t-pk-qtA"/>
+                                        <exclude reference="ng3-tp-I6N"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.9529411792755127" green="0.96078431606292725" blue="0.9686274528503418" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -695,11 +720,13 @@
                             <constraint firstItem="pdo-q4-dyZ" firstAttribute="trailing" secondItem="SXK-jE-uUX" secondAttribute="trailing" constant="8" id="2AY-hH-ese"/>
                             <constraint firstItem="qhn-fF-xpL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" placeholder="YES" id="2p7-88-YuL"/>
                             <constraint firstAttribute="trailing" secondItem="WP7-Y1-2cq" secondAttribute="trailing" id="3mN-kN-am7"/>
+                            <constraint firstItem="5kL-hu-HSd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="70:207" id="5bg-b1-FTi"/>
                             <constraint firstItem="qV0-7W-NHv" firstAttribute="width" secondItem="pdo-q4-dyZ" secondAttribute="width" id="5dt-UE-gGm"/>
                             <constraint firstItem="SXK-jE-uUX" firstAttribute="top" secondItem="ttb-Hj-NiI" secondAttribute="bottom" id="6aO-Ge-CR3"/>
                             <constraint firstItem="pdo-q4-dyZ" firstAttribute="bottom" secondItem="SXK-jE-uUX" secondAttribute="bottom" constant="8" id="6iB-8D-oXN"/>
                             <constraint firstItem="qV0-7W-NHv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8yp-mM-w6H"/>
                             <constraint firstItem="pdo-q4-dyZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="AZi-ZU-Ggh"/>
+                            <constraint firstItem="5kL-hu-HSd" firstAttribute="top" secondItem="aF5-zF-KQt" secondAttribute="bottom" id="BRH-Ji-OkW"/>
                             <constraint firstItem="f7B-ZW-3s1" firstAttribute="top" secondItem="WtL-PO-Gk1" secondAttribute="top" id="CQW-PL-orR"/>
                             <constraint firstItem="1JT-vw-cgT" firstAttribute="top" secondItem="SXK-jE-uUX" secondAttribute="top" id="Ccq-b5-Jkn"/>
                             <constraint firstItem="ttb-Hj-NiI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="D9V-m3-q5r"/>
@@ -712,15 +739,19 @@
                             <constraint firstItem="SXK-jE-uUX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Spi-Kf-lf2"/>
                             <constraint firstItem="f7B-ZW-3s1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TLl-iW-6kQ"/>
                             <constraint firstItem="f7B-ZW-3s1" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="40:414" id="TfS-83-Ooi"/>
+                            <constraint firstItem="aF5-zF-KQt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="U1S-uJ-47E"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xcn-m9-eka" secondAttribute="bottom" id="UUc-Eb-S3V"/>
                             <constraint firstItem="xcn-m9-eka" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Uhl-Kl-bOT"/>
                             <constraint firstItem="zhA-HP-ihS" firstAttribute="leading" secondItem="qhn-fF-xpL" secondAttribute="trailing" placeholder="YES" id="WUT-ea-wLk"/>
                             <constraint firstItem="ttb-Hj-NiI" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="70:207" id="XGG-tx-Ihh"/>
-                            <constraint firstItem="zhA-HP-ihS" firstAttribute="top" secondItem="1JT-vw-cgT" secondAttribute="bottom" id="Xpl-bV-eFq"/>
+                            <constraint firstItem="zhA-HP-ihS" firstAttribute="top" secondItem="1JT-vw-cgT" secondAttribute="bottom" placeholder="YES" id="Xpl-bV-eFq"/>
                             <constraint firstItem="1JT-vw-cgT" firstAttribute="width" secondItem="SXK-jE-uUX" secondAttribute="width" id="Yib-2V-Fja"/>
                             <constraint firstAttribute="trailing" secondItem="qhn-fF-xpL" secondAttribute="trailing" id="Z4C-Ho-L32"/>
-                            <constraint firstItem="qhn-fF-xpL" firstAttribute="top" secondItem="1JT-vw-cgT" secondAttribute="bottom" id="Z7I-IM-fgj"/>
+                            <constraint firstItem="qhn-fF-xpL" firstAttribute="top" secondItem="1JT-vw-cgT" secondAttribute="bottom" placeholder="YES" id="Z7I-IM-fgj"/>
+                            <constraint firstItem="aF5-zF-KQt" firstAttribute="top" secondItem="zhA-HP-ihS" secondAttribute="bottom" placeholder="YES" id="bgC-NT-yOt"/>
+                            <constraint firstItem="5kL-hu-HSd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bvc-TJ-Xog"/>
                             <constraint firstItem="WtL-PO-Gk1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cko-l9-40R"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5kL-hu-HSd" secondAttribute="bottom" id="cwZ-n4-IaY"/>
                             <constraint firstAttribute="trailing" secondItem="xcn-m9-eka" secondAttribute="trailing" id="db2-Fh-x7F"/>
                             <constraint firstItem="f7B-ZW-3s1" firstAttribute="top" secondItem="WtL-PO-Gk1" secondAttribute="bottom" id="dfz-gC-ac5"/>
                             <constraint firstItem="zhA-HP-ihS" firstAttribute="width" secondItem="qhn-fF-xpL" secondAttribute="width" id="eUd-DV-3jd"/>
@@ -735,10 +766,12 @@
                             <constraint firstItem="WP7-Y1-2cq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qau-dr-9p8"/>
                             <constraint firstAttribute="trailing" secondItem="zhA-HP-ihS" secondAttribute="trailing" placeholder="YES" id="qwV-CX-P7M"/>
                             <constraint firstItem="zhA-HP-ihS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" placeholder="YES" id="s15-zb-Vwt"/>
+                            <constraint firstItem="5kL-hu-HSd" firstAttribute="width" secondItem="5kL-hu-HSd" secondAttribute="height" multiplier="15:2" id="sIf-1B-GxK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qhn-fF-xpL" secondAttribute="bottom" placeholder="YES" id="spb-dg-Y0c"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qhn-fF-xpL" secondAttribute="bottom" id="t4R-ef-NJJ"/>
                             <constraint firstItem="ttb-Hj-NiI" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="70:207" id="tg9-Nm-5Tl"/>
                             <constraint firstItem="1JT-vw-cgT" firstAttribute="height" secondItem="SXK-jE-uUX" secondAttribute="height" id="vhU-4v-CqQ"/>
+                            <constraint firstItem="aF5-zF-KQt" firstAttribute="top" secondItem="qhn-fF-xpL" secondAttribute="bottom" placeholder="YES" id="w06-G6-hgH"/>
                             <constraint firstItem="WtL-PO-Gk1" firstAttribute="width" secondItem="WtL-PO-Gk1" secondAttribute="height" multiplier="28:5" id="xoQ-qx-t8F"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zhA-HP-ihS" secondAttribute="bottom" id="yCR-cp-PmZ"/>
                             <constraint firstItem="ttb-Hj-NiI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="z0f-YD-IsS"/>
@@ -755,6 +788,8 @@
                                 <exclude reference="CQW-PL-orR"/>
                                 <exclude reference="LUP-bl-kuK"/>
                                 <exclude reference="xoQ-qx-t8F"/>
+                                <exclude reference="OiH-88-KDM"/>
+                                <exclude reference="spb-dg-Y0c"/>
                                 <exclude reference="t4R-ef-NJJ"/>
                                 <exclude reference="yCR-cp-PmZ"/>
                             </mask>
@@ -765,6 +800,7 @@
                             <outlet property="secondHandsView" destination="zhA-HP-ihS" id="0a9-El-qhM"/>
                             <outlet property="swipeRecognizer" destination="3Ck-2q-YGx" id="RiG-3m-7pJ"/>
                             <outlet property="tapRecognizer" destination="iXx-oe-fbw" id="7kj-8U-zns"/>
+                            <outlet property="tieOddsLabel" destination="aF5-zF-KQt" id="kcx-u0-vIT"/>
                             <outletCollection property="gestureRecognizers" destination="3Ck-2q-YGx" appends="YES" id="p9z-W8-SzU"/>
                             <outletCollection property="gestureRecognizers" destination="iXx-oe-fbw" appends="YES" id="DNt-sw-QZ2"/>
                             <outletCollection property="doneButtons" destination="SXK-jE-uUX" collectionClass="NSMutableArray" id="Bbg-pj-dYl"/>
@@ -1775,8 +1811,8 @@
         <image name="shadow_blue" width="736" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="3Io-ee-72I"/>
         <segue reference="mAe-ai-Kz2"/>
-        <segue reference="wUm-0o-CJK"/>
         <segue reference="wkq-tr-tt6"/>
     </inferredMetricsTieBreakers>
 </document>

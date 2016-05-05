@@ -13,6 +13,7 @@ final class GameScreenView: UIView {
     @IBOutlet private(set) weak var swipeRecognizer: UISwipeGestureRecognizer!
     @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
     @IBOutlet private(set) weak var levelNameLabel: UILabel!
+    @IBOutlet private(set) weak var tieOddsLabel: UILabel!
     
     @IBOutlet private(set) var doneButtons: [UIButton]! {
         didSet {
@@ -53,8 +54,7 @@ final class GameScreenView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let offset: CGFloat = 65.0
-        
+
         var shownView = firstHandsView
         var hiddenView = secondHandsView
         
@@ -63,8 +63,8 @@ final class GameScreenView: UIView {
             hiddenView = firstHandsView
         }
         var initialFrame = bounds
-        initialFrame.origin.y = offset
-        initialFrame.size.height -= offset
+        initialFrame.origin.y = levelNameLabel.frame.origin.y + levelNameLabel.frame.size.height
+        initialFrame.size.height = tieOddsLabel.frame.origin.y - initialFrame.origin.y
         
         shownView.frame = initialFrame
         hiddenView.frame = initialFrame
@@ -88,6 +88,16 @@ final class GameScreenView: UIView {
             }, completion: { _ in
                 viewToHide.frame.origin.x = self.frame.size.width
                 completionHandler()
+        })
+    }
+    
+    func setTieOddsVisible(visible: Bool, tieProbability: Double?) {
+        if tieProbability != nil {
+            self.tieOddsLabel.text = NSString(format: NSLocalizedString("text_format_tie_odds", comment: ""), tieProbability!) as String
+        }
+        
+        UIView.animateWithDuration(0.4, animations: {
+            self.tieOddsLabel.alpha = visible ? 1.0 : 0.0
         })
     }
 }

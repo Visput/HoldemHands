@@ -20,9 +20,13 @@ final class HandsViewController: UIViewController {
     
     weak var nextController: HandsViewController?
     
-    var didPlayRoundHandler: ((won: Bool) -> Void)?
+    var didPlayRoundHandler: ((won: Bool, tieProbability: Double) -> Void)?
     
-    var handsView: HandsView {
+    var tieProbability: Double? {
+        return handOddsCalculator.handsOdds?.first?.tieProbability()
+    }
+    
+    private var handsView: HandsView {
         return view as! HandsView
     }
     
@@ -103,11 +107,7 @@ extension HandsViewController: UICollectionViewDelegateFlowLayout, UICollectionV
             var isSuccessState: Bool? = nil
             if currentCell == cell {
                 isSuccessState = cell.item.handOdds!.wins
-                if isSuccessState! {
-                    didPlayRoundHandler?(won: true)
-                } else {
-                    didPlayRoundHandler?(won: false)
-                }
+                didPlayRoundHandler?(won: isSuccessState!, tieProbability: cell.item.handOdds!.tieProbability())
                 
             } else {
                 if cell.item.handOdds!.wins {
