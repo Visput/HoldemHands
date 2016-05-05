@@ -88,7 +88,7 @@ final class PlayerManager: NSObject {
     
     func chipsMultiplierForLevel(level: Level) -> Int64 {
         let progressItem = progressItemForLevel(level)
-        return Int64(pow(2, Double(progressItem.progress.currentWinsCountInRow / level.winsInRowToDoubleChips)))
+        return Int64(1 + progressItem.progress.currentWinsCountInRow / level.winsInRowToDoubleChips)
     }
     
     func chipsToUnlockLevel(level: Level) -> Int64 {
