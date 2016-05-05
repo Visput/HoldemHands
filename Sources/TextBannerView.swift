@@ -42,6 +42,6 @@ final class TextBannerView: BannerView {
         attributedText.addAttribute(NSFontAttributeName, value: textLabel.font, range: textRange)
         
         textLabel.attributedText = attributedText
-        adjustFontSizeRecursively(false)
+        adjustFontSizeRecursively(true)
     }
 }
