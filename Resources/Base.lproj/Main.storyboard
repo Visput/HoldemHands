@@ -54,7 +54,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_blue" translatesAutoresizingMaskIntoConstraints="NO" id="Ah1-hb-ccF">
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57x-Zp-BiP">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57x-Zp-BiP">
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0SB-ov-BlJ" userLabel="Content View">
@@ -246,7 +246,7 @@
                                                             </mask>
                                                         </variation>
                                                     </view>
-                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVy-7R-SH6">
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVy-7R-SH6">
                                                         <rect key="frame" x="0.0" y="61" width="736" height="353"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N0b-gG-tkv" userLabel="Content View">
@@ -1320,14 +1320,14 @@
                         <viewControllerLayoutGuide type="bottom" id="BNG-he-X4a"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oed-g2-2Fw" customClass="StatsView" customModule="HoldemHands" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="359"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="353"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jt-Zp-Mf2" userLabel="Content View">
-                                <rect key="frame" x="0.0" y="0.0" width="736" height="359"/>
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="353"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N1z-B1-EU6">
-                                        <rect key="frame" x="0.0" y="0.0" width="736" height="359"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="736" height="353"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="32" minimumInteritemSpacing="32" id="5WR-hD-MN8">
                                             <size key="itemSize" width="500" height="250"/>
@@ -1337,7 +1337,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StatsCell" id="8Ao-Uu-koo" customClass="StatsCell" customModule="HoldemHands" customModuleProvider="target">
-                                                <rect key="frame" x="32" y="54.5" width="500" height="250"/>
+                                                <rect key="frame" x="32" y="51.5" width="500" height="250"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="500" height="250"/>
@@ -1811,8 +1811,8 @@
         <image name="shadow_blue" width="736" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3Io-ee-72I"/>
         <segue reference="mAe-ai-Kz2"/>
-        <segue reference="wkq-tr-tt6"/>
+        <segue reference="fJt-d2-jaX"/>
+        <segue reference="0pp-g4-GEi"/>
     </inferredMetricsTieBreakers>
 </document>
