@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  MainScreenView.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 2/29/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MainView: UIView {
+final class MainScreenView: UIView {
     
     enum DetailsViewPage: Int {
         case Levels = 0

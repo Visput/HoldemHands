@@ -15,8 +15,8 @@ final class GameScreen: BaseViewController {
     private var firstHandsController: HandsViewController!
     private var secondHandsController: HandsViewController!
     
-    private var gameView: GameView {
-        return view as! GameView
+    private var gameView: GameScreenView {
+        return view as! GameScreenView
     }
     
     override func viewDidLoad() {

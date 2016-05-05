@@ -384,7 +384,7 @@ extension Analytics {
         }
     }
     
-    class func detailsViewPageOnMainScreenChanged(oldPage: MainView.DetailsViewPage?, newPage: MainView.DetailsViewPage) {
+    class func detailsViewPageOnMainScreenChanged(oldPage: MainScreenView.DetailsViewPage?, newPage: MainScreenView.DetailsViewPage) {
         guard oldPage != newPage else { return }
         
         if oldPage == nil {

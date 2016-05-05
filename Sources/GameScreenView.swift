@@ -1,5 +1,5 @@
 //
-//  GameView.swift
+//  GameScreenView.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 2/18/16.
@@ -8,11 +8,27 @@
 
 import UIKit
 
-final class GameView: UIView {
+final class GameScreenView: UIView {
     
     @IBOutlet private(set) weak var swipeRecognizer: UISwipeGestureRecognizer!
     @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
     @IBOutlet private(set) weak var levelNameLabel: UILabel!
+    
+    @IBOutlet private(set) var doneButtons: [UIButton]! {
+        didSet {
+            for button in doneButtons {
+                button.exclusiveTouch = true
+            }
+        }
+    }
+    
+    @IBOutlet private(set) var statsButtons: [UIButton]! {
+        didSet {
+            for button in doneButtons {
+                button.exclusiveTouch = true
+            }
+        }
+    }
     
     @IBOutlet private(set) weak var firstHandsView: UIView! {
         didSet {

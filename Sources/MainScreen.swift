@@ -10,7 +10,7 @@ import UIKit
 
 final class MainScreen: BaseViewController {
     
-    private(set) var currentDetailsPage: MainView.DetailsViewPage? {
+    private(set) var currentDetailsPage: MainScreenView.DetailsViewPage? {
         set (newPage) {
             Analytics.detailsViewPageOnMainScreenChanged(currentDetailsPage, newPage: newPage!)
             
@@ -56,8 +56,8 @@ final class MainScreen: BaseViewController {
     private var statsController: StatsViewController!
     private var sharingController: SharingViewController!
 
-    var mainView: MainView {
-        return view as! MainView
+    var mainView: MainScreenView {
+        return view as! MainScreenView
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -99,7 +99,7 @@ extension MainScreen {
     @IBAction private func playButtonDidPress(sender: AnyObject) {
         Analytics.playClicked()
         currentDetailsPage = .Levels
-        mainView.scrollToDetailsViewAtPage(MainView.DetailsViewPage.Levels.rawValue, completionHandler: {
+        mainView.scrollToDetailsViewAtPage(MainScreenView.DetailsViewPage.Levels.rawValue, completionHandler: {
             self.statsController.scrollToOverallStatsAnimated(false)
         })
     }
@@ -107,7 +107,7 @@ extension MainScreen {
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
         Analytics.statsClicked()
         currentDetailsPage = .Stats
-        mainView.scrollToDetailsViewAtPage(MainView.DetailsViewPage.Stats.rawValue, completionHandler: {
+        mainView.scrollToDetailsViewAtPage(MainScreenView.DetailsViewPage.Stats.rawValue, completionHandler: {
             self.statsController.reloadRanks()
         })
     }
@@ -115,7 +115,7 @@ extension MainScreen {
     @IBAction private func shareButtonDidPress(sender: AnyObject) {
         Analytics.shareClickedInMainScreen()
         currentDetailsPage = .Sharing
-        mainView.scrollToDetailsViewAtPage(MainView.DetailsViewPage.Sharing.rawValue)
+        mainView.scrollToDetailsViewAtPage(MainScreenView.DetailsViewPage.Sharing.rawValue)
     }
     
     @IBAction private func leaderboardsButtonDidPress(sender: UIButton) {
@@ -130,7 +130,7 @@ extension MainScreen: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let page = lroundf(Float(scrollView.contentOffset.y / scrollView.frame.size.height))
         
-        currentDetailsPage = MainView.DetailsViewPage(rawValue: page)
+        currentDetailsPage = MainScreenView.DetailsViewPage(rawValue: page)
         mainView.selectMenuButtonForPage(page)
         
         if currentDetailsPage == .Stats {

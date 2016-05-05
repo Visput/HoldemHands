@@ -43,14 +43,14 @@
 		9F44D21A1C84B21A00640046 /* HandRankCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2041C84B21A00640046 /* HandRankCalculator.swift */; };
 		9F44D21B1C84B21A00640046 /* HandRankComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2051C84B21A00640046 /* HandRankComparator.swift */; };
 		9F44D21C1C84B21A00640046 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2061C84B21A00640046 /* GameScreen.swift */; };
-		9F44D21D1C84B21A00640046 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2071C84B21A00640046 /* GameView.swift */; };
+		9F44D21D1C84B21A00640046 /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2071C84B21A00640046 /* GameScreenView.swift */; };
 		9F44D21E1C84B21A00640046 /* HandOddsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2081C84B21A00640046 /* HandOddsCalculator.swift */; };
 		9F44D2201C84B21A00640046 /* QuickArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20A1C84B21A00640046 /* QuickArray.swift */; };
 		9F44D2211C84B21A00640046 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20B1C84B21A00640046 /* Rank.swift */; };
 		9F44D2221C84B21A00640046 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20C1C84B21A00640046 /* Suit.swift */; };
 		9F44D2231C84B21A00640046 /* UIColor+AppPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20D1C84B21A00640046 /* UIColor+AppPalette.swift */; };
 		9F44D2321C84BAA900640046 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2311C84BAA900640046 /* MainScreen.swift */; };
-		9F44D2341C84BAC700640046 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2331C84BAC700640046 /* MainView.swift */; };
+		9F44D2341C84BAC700640046 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2331C84BAC700640046 /* MainScreenView.swift */; };
 		9F44D23D1C84C61900640046 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D23C1C84C61900640046 /* BaseViewController.swift */; };
 		9F44D2431C84C63900640046 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D23E1C84C63900640046 /* Analytics.swift */; };
 		9F44D2441C84C63900640046 /* ModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D23F1C84C63900640046 /* ModelProvider.swift */; };
@@ -79,10 +79,10 @@
 		9F4EF2881CBC4F66002E5FEA /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD081C89022A005F1D72 /* NavigationManager.swift */; };
 		9F4EF2891CBC4F66002E5FEA /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15F1C879A9D00D6F368 /* PlayerData.swift */; };
 		9F4EF28A1CBC4F66002E5FEA /* LevelProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15D1C8761C700D6F368 /* LevelProgress.swift */; };
-		9F4EF28B1CBC4F66002E5FEA /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2071C84B21A00640046 /* GameView.swift */; };
+		9F4EF28B1CBC4F66002E5FEA /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2071C84B21A00640046 /* GameScreenView.swift */; };
 		9F4EF28C1CBC4F66002E5FEA /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D1FF1C84B21A00640046 /* Hand.swift */; };
 		9F4EF28D1CBC4F66002E5FEA /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */; };
-		9F4EF28E1CBC4F66002E5FEA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2331C84BAC700640046 /* MainView.swift */; };
+		9F4EF28E1CBC4F66002E5FEA /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2331C84BAC700640046 /* MainScreenView.swift */; };
 		9F4EF28F1CBC4F66002E5FEA /* LevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F314F8A1CB8CD620063B893 /* LevelsViewController.swift */; };
 		9F4EF2901CBC4F66002E5FEA /* HandOdds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2021C84B21A00640046 /* HandOdds.swift */; };
 		9F4EF2911CBC4F66002E5FEA /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2061C84B21A00640046 /* GameScreen.swift */; };
@@ -139,6 +139,8 @@
 		9FA31FA31CB59D460010555B /* ChipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA21CB59D460010555B /* ChipsViewController.swift */; };
 		9FA31FA51CB59D840010555B /* ChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA41CB59D840010555B /* ChipsView.swift */; };
 		9FA31FA81CB74F810010555B /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */; };
+		9FB10CC21CDAE1950046B6C1 /* StatsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB10CC11CDAE1950046B6C1 /* StatsScreenView.swift */; };
+		9FB10CC31CDAE1950046B6C1 /* StatsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB10CC11CDAE1950046B6C1 /* StatsScreenView.swift */; };
 		9FBC4CDC1CC0924F00F38DD7 /* app_font.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */; };
 		9FBC4CE31CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */; };
 		9FBC4CE41CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */; };
@@ -200,7 +202,7 @@
 		9F44D2041C84B21A00640046 /* HandRankCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandRankCalculator.swift; sourceTree = "<group>"; };
 		9F44D2051C84B21A00640046 /* HandRankComparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandRankComparator.swift; sourceTree = "<group>"; };
 		9F44D2061C84B21A00640046 /* GameScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
-		9F44D2071C84B21A00640046 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		9F44D2071C84B21A00640046 /* GameScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScreenView.swift; sourceTree = "<group>"; };
 		9F44D2081C84B21A00640046 /* HandOddsCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandOddsCalculator.swift; sourceTree = "<group>"; };
 		9F44D20A1C84B21A00640046 /* QuickArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickArray.swift; sourceTree = "<group>"; };
 		9F44D20B1C84B21A00640046 /* Rank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
@@ -208,7 +210,7 @@
 		9F44D20D1C84B21A00640046 /* UIColor+AppPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AppPalette.swift"; sourceTree = "<group>"; };
 		9F44D2251C84B22400640046 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F44D2311C84BAA900640046 /* MainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
-		9F44D2331C84BAC700640046 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		9F44D2331C84BAC700640046 /* MainScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		9F44D23C1C84C61900640046 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9F44D23E1C84C63900640046 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		9F44D23F1C84C63900640046 /* ModelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelProvider.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Utils.swift"; sourceTree = "<group>"; };
 		9FACAAC91C72BCC20051A435 /* HoldemHands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FACAADD1C72BCC20051A435 /* HoldemHandsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoldemHandsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FB10CC11CDAE1950046B6C1 /* StatsScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsScreenView.swift; sourceTree = "<group>"; };
 		9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = app_font.ttc; sourceTree = "<group>"; };
 		9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FontSize.swift"; sourceTree = "<group>"; };
 		9FBE139B1CCD678B00144E15 /* AppPalette.clr */ = {isa = PBXFileReference; lastKnownFileType = text; name = AppPalette.clr; path = AppPalette/AppPalette.clr; sourceTree = "<group>"; };
@@ -397,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				9F3C4B711C91E3C800B37939 /* StatsScreen.swift */,
+				9FB10CC11CDAE1950046B6C1 /* StatsScreenView.swift */,
 			);
 			name = StatsScreen;
 			sourceTree = "<group>";
@@ -517,7 +521,7 @@
 			isa = PBXGroup;
 			children = (
 				9F44D2061C84B21A00640046 /* GameScreen.swift */,
-				9F44D2071C84B21A00640046 /* GameView.swift */,
+				9F44D2071C84B21A00640046 /* GameScreenView.swift */,
 			);
 			name = GameScreen;
 			sourceTree = "<group>";
@@ -526,7 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				9F44D2311C84BAA900640046 /* MainScreen.swift */,
-				9F44D2331C84BAC700640046 /* MainView.swift */,
+				9F44D2331C84BAC700640046 /* MainScreenView.swift */,
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
@@ -1042,10 +1046,10 @@
 				9F4EF2881CBC4F66002E5FEA /* NavigationManager.swift in Sources */,
 				9F4EF2891CBC4F66002E5FEA /* PlayerData.swift in Sources */,
 				9F4EF28A1CBC4F66002E5FEA /* LevelProgress.swift in Sources */,
-				9F4EF28B1CBC4F66002E5FEA /* GameView.swift in Sources */,
+				9F4EF28B1CBC4F66002E5FEA /* GameScreenView.swift in Sources */,
 				9F4EF28C1CBC4F66002E5FEA /* Hand.swift in Sources */,
 				9F4EF28D1CBC4F66002E5FEA /* UICollectionView+Utils.swift in Sources */,
-				9F4EF28E1CBC4F66002E5FEA /* MainView.swift in Sources */,
+				9F4EF28E1CBC4F66002E5FEA /* MainScreenView.swift in Sources */,
 				9F4EF28F1CBC4F66002E5FEA /* LevelsViewController.swift in Sources */,
 				9F4EF2901CBC4F66002E5FEA /* HandOdds.swift in Sources */,
 				9F4EF2911CBC4F66002E5FEA /* GameScreen.swift in Sources */,
@@ -1057,6 +1061,7 @@
 				9F4EF2971CBC4F66002E5FEA /* StatsScreen.swift in Sources */,
 				9F4EF2981CBC4F66002E5FEA /* UIColor+AppPalette.swift in Sources */,
 				9F4EF2991CBC4F66002E5FEA /* PlayerProgress.swift in Sources */,
+				9FB10CC31CDAE1950046B6C1 /* StatsScreenView.swift in Sources */,
 				9F4EF29A1CBC4F66002E5FEA /* StatsCellItem.swift in Sources */,
 				9F4EF29B1CBC4F66002E5FEA /* StatsViewController.swift in Sources */,
 				9F4EF29C1CBC4F66002E5FEA /* HandsCollectionViewLayout.swift in Sources */,
@@ -1108,10 +1113,10 @@
 				9F1DDD091C89022A005F1D72 /* NavigationManager.swift in Sources */,
 				9F95E1601C879A9D00D6F368 /* PlayerData.swift in Sources */,
 				9F95E15E1C8761C700D6F368 /* LevelProgress.swift in Sources */,
-				9F44D21D1C84B21A00640046 /* GameView.swift in Sources */,
+				9F44D21D1C84B21A00640046 /* GameScreenView.swift in Sources */,
 				9F44D2151C84B21A00640046 /* Hand.swift in Sources */,
 				9FA31FA81CB74F810010555B /* UICollectionView+Utils.swift in Sources */,
-				9F44D2341C84BAC700640046 /* MainView.swift in Sources */,
+				9F44D2341C84BAC700640046 /* MainScreenView.swift in Sources */,
 				9F314F8B1CB8CD620063B893 /* LevelsViewController.swift in Sources */,
 				9F44D2181C84B21A00640046 /* HandOdds.swift in Sources */,
 				9F44D21C1C84B21A00640046 /* GameScreen.swift in Sources */,
@@ -1123,6 +1128,7 @@
 				9F3C4B721C91E3C800B37939 /* StatsScreen.swift in Sources */,
 				9F44D2231C84B21A00640046 /* UIColor+AppPalette.swift in Sources */,
 				9FE888E71C93F62700A39C2C /* PlayerProgress.swift in Sources */,
+				9FB10CC21CDAE1950046B6C1 /* StatsScreenView.swift in Sources */,
 				9FE888E51C93F54F00A39C2C /* StatsCellItem.swift in Sources */,
 				9F314F891CB8CCE70063B893 /* StatsViewController.swift in Sources */,
 				9F1927091CA3260B009F7E30 /* HandsCollectionViewLayout.swift in Sources */,
