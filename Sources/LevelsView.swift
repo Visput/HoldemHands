@@ -58,6 +58,9 @@ final class LevelsView: UIView {
         }
         
         levelsCollectionView.setContentOffset(CGPoint(x: targetOffset, y: 0), animated: animated)
+        
+        // Call `layoutIfNeeded` to avoid immediate cell hiding (UICollectionView behaviour).
+        self.levelsCollectionView.layoutIfNeeded()
     }
     
     func zoomInLevelAtIndex(index: Int, mainView: UIView, completionHandler: (() -> Void)? = nil) {
@@ -65,8 +68,6 @@ final class LevelsView: UIView {
         
         UIView.animateWithDuration(0.4, animations: {
             self.scrollToLevelAtIndex(index, animated: false)
-            // Call `layoutIfNeeded` to avoid immediate cell hiding (UICollectionView behaviour).
-            self.levelsCollectionView.layoutIfNeeded()
             
             }, completion: { _ in
                 // Call completion block before animation finished for smoother animation.
