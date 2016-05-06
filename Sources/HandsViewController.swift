@@ -52,11 +52,12 @@ final class HandsViewController: UIViewController {
         }
     }
     
-    func generateHands() {
+    func generateHands(completion: (() -> Void)? = nil) {
         handOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands)
         reloadHandsCollectionViewDeeply(true)
         
         handOddsCalculator.calculateOdds({ handsOdds in
+            completion?()
             self.reloadHandsCollectionViewDeeply(true)
             if self.handsView.isPresented {
                 self.handsView.flipHandsWithDelay(0.0)

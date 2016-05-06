@@ -57,6 +57,8 @@
 		9F44D2451C84C63900640046 /* NSObject+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2401C84C63900640046 /* NSObject+Utils.swift */; };
 		9F44D2461C84C63900640046 /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2411C84C63900640046 /* ObserverSet.swift */; };
 		9F44D2471C84C63900640046 /* UIScreen+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2421C84C63900640046 /* UIScreen+Size.swift */; };
+		9F46C5D61CDC288E00EA06C8 /* WalkthroughManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F46C5D51CDC288E00EA06C8 /* WalkthroughManager.swift */; };
+		9F46C5D71CDC289300EA06C8 /* WalkthroughManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F46C5D51CDC288E00EA06C8 /* WalkthroughManager.swift */; };
 		9F4EF2751CBC4F66002E5FEA /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2411C84C63900640046 /* ObserverSet.swift */; };
 		9F4EF2761CBC4F66002E5FEA /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F314F901CB8D0D00063B893 /* SharingViewController.swift */; };
 		9F4EF2771CBC4F66002E5FEA /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BDE1C9251E700B37939 /* BannerView.swift */; };
@@ -217,6 +219,7 @@
 		9F44D2401C84C63900640046 /* NSObject+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Utils.swift"; sourceTree = "<group>"; };
 		9F44D2411C84C63900640046 /* ObserverSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverSet.swift; sourceTree = "<group>"; };
 		9F44D2421C84C63900640046 /* UIScreen+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Size.swift"; sourceTree = "<group>"; };
+		9F46C5D51CDC288E00EA06C8 /* WalkthroughManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughManager.swift; sourceTree = "<group>"; };
 		9F4EF2C01CBC4F66002E5FEA /* HoldemHandsQA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHandsQA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4EF2C21CBC4FDF002E5FEA /* HoldemHands-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HoldemHands-Info.plist"; sourceTree = "<group>"; };
 		9F4EF2C31CBC4FDF002E5FEA /* HoldemHandsQA-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HoldemHandsQA-Info.plist"; sourceTree = "<group>"; };
@@ -548,11 +551,20 @@
 			children = (
 				9F44D23F1C84C63900640046 /* ModelProvider.swift */,
 				9F1BD3531C936FED00020AAA /* PlayerManager */,
+				9F46C5D41CDC287300EA06C8 /* WalkthroughManager */,
 				9F1BD3521C936FDC00020AAA /* NavigationManager */,
 				9F1BD3541C93700E00020AAA /* SharingManager */,
 				9FC77B6E1C98C68C0070430D /* AnalyticsTracker */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		9F46C5D41CDC287300EA06C8 /* WalkthroughManager */ = {
+			isa = PBXGroup;
+			children = (
+				9F46C5D51CDC288E00EA06C8 /* WalkthroughManager.swift */,
+			);
+			name = WalkthroughManager;
 			sourceTree = "<group>";
 		};
 		9F6434A51CD5471900B3BED6 /* CustomFontLabel */ = {
@@ -1083,6 +1095,7 @@
 				9F6434A81CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */,
 				9FBC4CE41CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */,
 				9F4EF2AC1CBC4F66002E5FEA /* HandCellItem.swift in Sources */,
+				9F46C5D71CDC289300EA06C8 /* WalkthroughManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1150,6 +1163,7 @@
 				9F6434A71CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */,
 				9FBC4CE31CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */,
 				9F44D2171C84B21A00640046 /* HandCellItem.swift in Sources */,
+				9F46C5D61CDC288E00EA06C8 /* WalkthroughManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

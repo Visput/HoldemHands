@@ -15,11 +15,14 @@ final class ModelProvider {
     let playerManager: PlayerManager
     let navigationManager: NavigationManager
     let sharingManager: SharingManager
+    let walkthroughManager: WalkthroughManager
     
     init() {
         navigationManager = NavigationManager()
         playerManager = PlayerManager(navigationManager: navigationManager)
         sharingManager = SharingManager()
+        walkthroughManager = WalkthroughManager(navigationManager: navigationManager,
+                                                playerManager: playerManager)
         
         Analytics.navigationManager = navigationManager
     }

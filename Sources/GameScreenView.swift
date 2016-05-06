@@ -9,11 +9,16 @@
 import UIKit
 
 final class GameScreenView: UIView {
-    
-    @IBOutlet private(set) weak var swipeRecognizer: UISwipeGestureRecognizer!
-    @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
+
     @IBOutlet private(set) weak var levelNameLabel: UILabel!
     @IBOutlet private(set) weak var tieOddsLabel: UILabel!
+    @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
+    
+    @IBOutlet private(set) weak var swipeRecognizer: UISwipeGestureRecognizer! {
+        didSet {
+            swipeRecognizer.direction = [.Left, .Right]
+        }
+    }
     
     @IBOutlet private(set) var doneButtons: [UIButton]! {
         didSet {

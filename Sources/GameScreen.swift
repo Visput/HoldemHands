@@ -41,7 +41,14 @@ final class GameScreen: BaseViewController {
     
         model.playerManager.observers.addObserver(self)
         
-        firstHandsController.generateHands()
+        firstHandsController.generateHands({ [unowned self] in
+            self.model.walkthroughManager.showFirstRoundBannerIfNeeded()
+        })
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        model.walkthroughManager.hideBanners()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -75,6 +82,8 @@ final class GameScreen: BaseViewController {
             model.playerManager.trackNewLossInLevel(level)
         }
         
+        model.walkthroughManager.showNextRoundBannerIfNeeded(won: won)
+        
         gameView.controlsEnabled = true
         Analytics.gameRoundPlayed()
     }
@@ -83,6 +92,7 @@ final class GameScreen: BaseViewController {
 extension GameScreen {
     
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
+        model.walkthroughManager.hideBanners()
         gameView.setTieOddsVisible(false, tieProbability: nil)
         gameView.controlsEnabled = false
         gameView.scrollToNextHandsView({

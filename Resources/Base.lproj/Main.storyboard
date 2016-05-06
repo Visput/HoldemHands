@@ -1811,8 +1811,8 @@
         <image name="shadow_blue" width="736" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mAe-ai-Kz2"/>
         <segue reference="fJt-d2-jaX"/>
-        <segue reference="0pp-g4-GEi"/>
+        <segue reference="3Io-ee-72I"/>
+        <segue reference="mAe-ai-Kz2"/>
     </inferredMetricsTieBreakers>
 </document>
