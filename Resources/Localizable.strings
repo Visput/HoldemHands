@@ -8,7 +8,7 @@
 
 "banner_format_unlocked_level" = "Congratulations!\nYou've unlocked %@!";
 "banner_format_chips_to_unlock_level" = "You need %@ chips more\nto unlock %@";
-"banner_walkthrough_choose_hand" = "Welcome!\nChoose better hand and win chips";
+"banner_walkthrough_choose_hand" = "Welcome!\nChoose better hand to win the round";
 "banner_walkthrough_won" = "Good Job!\nTap or Swipe to play next hand";
 "banner_walkthrough_lost" = "Nice Try...\nTap or Swipe to play next hand";
 
