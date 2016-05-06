@@ -1,0 +1,68 @@
+{
+  "overall_leaderboard_id" : "highscore_qa",
+  "levels" : [
+    {
+      "id" : 1,
+      "wins_in_row_to_double_chips" : 10,
+      "leaderboard_id" : "level1_qa",
+      "chips_per_win" : 10,
+      "chips_to_unlock" : 0,
+      "hands_count" : 2,
+      "name" : "Classic Table"
+    },
+    {
+      "id" : 2,
+      "wins_in_row_to_double_chips" : 10,
+      "leaderboard_id" : "level2_qa",
+      "chips_per_win" : 50,
+      "chips_to_unlock" : 120,
+      "hands_count" : 3,
+      "name" : "Silver Table"
+    },
+    {
+      "id" : 3,
+      "wins_in_row_to_double_chips" : 10,
+      "leaderboard_id" : "level3_qa",
+      "chips_per_win" : 250,
+      "chips_to_unlock" : 130,
+      "hands_count" : 4,
+      "name" : "Gold Table"
+    },
+    {
+      "id" : 4,
+      "wins_in_row_to_double_chips" : 10,
+      "leaderboard_id" : "level4_qa",
+      "chips_per_win" : 1000,
+      "chips_to_unlock" : 140,
+      "hands_count" : 5,
+      "name" : "Platinum Table"
+    },
+    {
+      "id" : 5,
+      "wins_in_row_to_double_chips" : 10,
+      "leaderboard_id" : "level5_qa",
+      "chips_per_win" : 5000,
+      "chips_to_unlock" : 150,
+      "hands_count" : 6,
+      "name" : "Emerald Table"
+    },
+    {
+      "id" : 6,
+      "wins_in_row_to_double_chips" : 10,
+      "leaderboard_id" : "level6_qa",
+      "chips_per_win" : 25000,
+      "chips_to_unlock" : 160,
+      "hands_count" : 7,
+      "name" : "Sapphire Table"
+    },
+    {
+      "id" : 7,
+      "wins_in_row_to_double_chips" : 10,
+      "leaderboard_id" : "level7_qa",
+      "chips_per_win" : 100000,
+      "chips_to_unlock" : 170,
+      "hands_count" : 8,
+      "name" : "Diamond Table"
+    }
+  ]
+}

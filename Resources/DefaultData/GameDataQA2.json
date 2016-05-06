@@ -15,7 +15,7 @@
       "wins_in_row_to_double_chips" : 10,
       "leaderboard_id" : "level2_qa",
       "chips_per_win" : 50,
-      "chips_to_unlock" : 20,
+      "chips_to_unlock" : 1000,
       "hands_count" : 3,
       "name" : "Silver Table"
     },
@@ -24,7 +24,7 @@
       "wins_in_row_to_double_chips" : 10,
       "leaderboard_id" : "level3_qa",
       "chips_per_win" : 250,
-      "chips_to_unlock" : 30,
+      "chips_to_unlock" : 5000,
       "hands_count" : 4,
       "name" : "Gold Table"
     },
@@ -33,7 +33,7 @@
       "wins_in_row_to_double_chips" : 10,
       "leaderboard_id" : "level4_qa",
       "chips_per_win" : 1000,
-      "chips_to_unlock" : 40,
+      "chips_to_unlock" : 25000,
       "hands_count" : 5,
       "name" : "Platinum Table"
     },
@@ -42,7 +42,7 @@
       "wins_in_row_to_double_chips" : 10,
       "leaderboard_id" : "level5_qa",
       "chips_per_win" : 5000,
-      "chips_to_unlock" : 50,
+      "chips_to_unlock" : 100000,
       "hands_count" : 6,
       "name" : "Emerald Table"
     },
@@ -51,7 +51,7 @@
       "wins_in_row_to_double_chips" : 10,
       "leaderboard_id" : "level6_qa",
       "chips_per_win" : 25000,
-      "chips_to_unlock" : 60,
+      "chips_to_unlock" : 500000,
       "hands_count" : 7,
       "name" : "Sapphire Table"
     },
@@ -60,7 +60,7 @@
       "wins_in_row_to_double_chips" : 10,
       "leaderboard_id" : "level7_qa",
       "chips_per_win" : 100000,
-      "chips_to_unlock" : 70,
+      "chips_to_unlock" : 2500000,
       "hands_count" : 8,
       "name" : "Diamond Table"
     }

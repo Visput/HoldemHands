@@ -127,7 +127,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>GameDataFileName</key>
-	<string>GameDataQA.json</string>
+	<string>GameDataQA2.json</string>
 	<key>DefaultPlayerDataFileName</key>
 	<string>DefaultPlayerData.json</string>
 	<key>UIAppFonts</key>
