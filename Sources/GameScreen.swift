@@ -41,8 +41,8 @@ final class GameScreen: BaseViewController {
     
         model.playerManager.observers.addObserver(self)
         
-        firstHandsController.generateHands({ [unowned self] in
-            self.model.walkthroughManager.showFirstRoundBannerIfNeeded()
+        firstHandsController.generateHands({ [weak self] in
+            self?.model.walkthroughManager.showFirstRoundBannerIfNeeded()
         })
     }
     

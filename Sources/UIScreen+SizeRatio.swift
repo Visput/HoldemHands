@@ -13,8 +13,7 @@ extension UIScreen {
     func sizeScaleToIPhone6Plus() -> CGFloat {
         let screenDimensionIPhone6Plus: CGFloat = 414.0
         let screenSize = bounds.size
-        let screenDimension = UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation) ? screenSize.width : screenSize.height
-        let scale = screenDimension / screenDimensionIPhone6Plus
+        let scale = screenSize.height / screenDimensionIPhone6Plus
         
         return scale
     }
