@@ -14,14 +14,31 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_screen" translatesAutoresizingMaskIntoConstraints="NO" id="W84-dv-pSX">
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="W84-dv-pSX" secondAttribute="trailing" id="MUQ-OO-Bxp"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="W84-dv-pSX" secondAttribute="bottom" id="btm-Iy-cRb"/>
+                            <constraint firstItem="W84-dv-pSX" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="inl-3U-V6V"/>
+                            <constraint firstItem="W84-dv-pSX" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="vKv-ep-Iao"/>
+                        </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launch_screen" width="736" height="414"/>
+    </resources>
 </document>
