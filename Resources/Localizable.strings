@@ -19,7 +19,9 @@
 "text_format_win_odds" = "Win: %.2f%%";
 "text_format_tie_odds" = "Tie: %.2f%%";
 
-"title_app_sharing" = "HoldemHands is available on the App Store";
+"title_sharing_twitter" = "@HoldemHands is available on the App Store";
+"title_sharing_instagram" = "#HoldemHands is available on the App Store";
+"title_sharing_facebook" = "HoldemHands is available on the App Store";
 
 "error_share_with_facebook" = "Unable to locate your Facebook account";
 "error_share_with_twitter" = "Unable to locate your Twitter account";

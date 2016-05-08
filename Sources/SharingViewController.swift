@@ -13,8 +13,8 @@ final class SharingViewController: BaseViewController {
     @IBAction private func facebookButtonDidPress(sender: AnyObject) {
         Analytics.facebookClicked()
         
-        let imageURL = NSURL(string: "https://scontent-dfw1-1.xx.fbcdn.net/t31.0-8/13173276_1261247917237193_3593241687542870964_o.jpg")
-        let item = SharingItem(title: NSLocalizedString("title_app_sharing", comment: ""),
+        let imageURL = NSURL(string: "https://scontent-dfw1-1.xx.fbcdn.net/t31.0-8/13198627_1261277187234266_633424816393798658_o.jpg")
+        let item = SharingItem(title: NSLocalizedString("title_sharing_facebook", comment: ""),
                                message: nil,
                                linkURL: NSURL(string: "https://apple.com"),
                                image: nil,
@@ -31,7 +31,7 @@ final class SharingViewController: BaseViewController {
         Analytics.twitterClicked()
         
         let item = SharingItem(title: nil,
-                               message: NSLocalizedString("title_app_sharing", comment: ""),
+                               message: NSLocalizedString("title_sharing_twitter", comment: ""),
                                linkURL: NSURL(string: "https://apple.com"),
                                image: UIImage(named: "share_screen_twitter"),
                                imageURL: nil)
@@ -47,7 +47,7 @@ final class SharingViewController: BaseViewController {
         Analytics.instagramClicked()
         
         let item = SharingItem(title: nil,
-                               message: NSLocalizedString("title_app_sharing", comment: ""),
+                               message: NSLocalizedString("title_sharing_instagram", comment: ""),
                                linkURL: nil,
                                image: UIImage(named: "share_screen_instagram"),
                                imageURL: nil)
