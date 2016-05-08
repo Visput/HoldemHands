@@ -13,11 +13,12 @@ final class SharingViewController: BaseViewController {
     @IBAction private func facebookButtonDidPress(sender: AnyObject) {
         Analytics.facebookClicked()
         
+        let imageURL = NSURL(string: "https://scontent-dfw1-1.xx.fbcdn.net/t31.0-8/13173070_250586265330553_3591325401914814681_o.jpg")
         let item = SharingItem(title: NSLocalizedString("title_app_sharing", comment: ""),
                                message: nil,
                                linkURL: NSURL(string: "https://apple.com"),
                                image: nil,
-                               imageURL: NSURL(string: "https://d13yacurqjgara.cloudfront.net/users/3511/screenshots/827275/prvw.jpg"))
+                               imageURL: imageURL)
         
         model.sharingManager.didFailToShareHandler = { [weak self] _ in
             self?.model.navigationManager.presentBannerWithText(NSLocalizedString("error_share_with_facebook", comment: ""))
