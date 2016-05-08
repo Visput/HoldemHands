@@ -13,7 +13,7 @@ final class SharingViewController: BaseViewController {
     @IBAction private func facebookButtonDidPress(sender: AnyObject) {
         Analytics.facebookClicked()
         
-        let imageURL = NSURL(string: "https://scontent-dfw1-1.xx.fbcdn.net/t31.0-8/13173070_250586265330553_3591325401914814681_o.jpg")
+        let imageURL = NSURL(string: "https://scontent-dfw1-1.xx.fbcdn.net/t31.0-8/13173276_1261247917237193_3593241687542870964_o.jpg")
         let item = SharingItem(title: NSLocalizedString("title_app_sharing", comment: ""),
                                message: nil,
                                linkURL: NSURL(string: "https://apple.com"),
