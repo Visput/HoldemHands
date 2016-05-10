@@ -140,7 +140,7 @@ extension HandCell {
         selectionLayer!.fillColor = nil
         selectionLayer!.lineWidth = lineWidth
         selectionLayer!.lineJoin = kCALineJoinRound
-        selectionLayer!.frame = CGRectInset(bounds, inset, inset)
+        selectionLayer!.frame = bounds.insetBy(dx: inset, dy: inset)
         
         let path = UIBezierPath()
         // Move to bottom left.

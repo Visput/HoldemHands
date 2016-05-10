@@ -16,7 +16,7 @@ final class HandsView: UIView {
         let window = UIApplication.sharedApplication().keyWindow!
         let windowFrame = window.frame
         let viewFrame = convertRect(bounds, toView: window)
-        return CGRectContainsRect(windowFrame, viewFrame)
+        return windowFrame.contains(viewFrame)
     }
     
     func configureLayoutForNumberOfHands(numberOfHands: Int) {

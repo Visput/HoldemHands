@@ -128,6 +128,8 @@
 	<string>GameData.json</string>
 	<key>DefaultPlayerDataFileName</key>
 	<string>DefaultPlayerData.json</string>
+	<key>AppURL</key>
+	<string>https://itunes.apple.com/us/app/holdemhands/id1090777716</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>app_font.ttc</string>

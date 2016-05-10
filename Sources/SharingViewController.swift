@@ -10,13 +10,17 @@ import UIKit
 
 final class SharingViewController: BaseViewController {
     
+    var appLink: NSURL {
+        return NSURL(string: NSBundle.mainBundle().objectForInfoDictionaryKey("AppURL") as! String)!
+    }
+    
     @IBAction private func facebookButtonDidPress(sender: AnyObject) {
         Analytics.facebookClicked()
         
         let imageURL = NSURL(string: "https://scontent-dfw1-1.xx.fbcdn.net/t31.0-8/13198627_1261277187234266_633424816393798658_o.jpg")
         let item = SharingItem(title: NSLocalizedString("title_sharing_facebook", comment: ""),
                                message: nil,
-                               linkURL: NSURL(string: "https://apple.com"),
+                               linkURL: appLink,
                                image: nil,
                                imageURL: imageURL)
         
@@ -32,7 +36,7 @@ final class SharingViewController: BaseViewController {
         
         let item = SharingItem(title: nil,
                                message: NSLocalizedString("title_sharing_twitter", comment: ""),
-                               linkURL: NSURL(string: "https://apple.com"),
+                               linkURL: appLink,
                                image: UIImage(named: "share_screen_twitter"),
                                imageURL: nil)
         
