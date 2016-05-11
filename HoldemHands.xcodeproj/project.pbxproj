@@ -253,6 +253,7 @@
 		9FBE139B1CCD678B00144E15 /* AppPalette.clr */ = {isa = PBXFileReference; lastKnownFileType = text; name = AppPalette.clr; path = AppPalette/AppPalette.clr; sourceTree = "<group>"; };
 		9FC41FD31CBC5EF60021C91B /* HoldemHandsQA.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HoldemHandsQA.entitlements; sourceTree = "<group>"; };
 		9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		9FCE27671CE3ED6E002E3F04 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		9FE888E21C93F53400A39C2C /* StatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCell.swift; sourceTree = "<group>"; };
 		9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCellItem.swift; sourceTree = "<group>"; };
 		9FE888E61C93F62700A39C2C /* PlayerProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgress.swift; sourceTree = "<group>"; };
@@ -441,6 +442,7 @@
 		9F44D1F41C84B21A00640046 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9FCE27671CE3ED6E002E3F04 /* .swiftlint.yml */,
 				9F46C5D81CDC615400EA06C8 /* DefaultData */,
 				9F64349F1CD51F7F00B3BED6 /* Localizable.strings */,
 				9FBE139B1CCD678B00144E15 /* AppPalette.clr */,
@@ -670,6 +672,7 @@
 			buildPhases = (
 				37F386208C6EEFED149F8FF9 /* 📦 Check Pods Manifest.lock */,
 				9FBE139A1CCD676A00144E15 /* Run App Palette Generator */,
+				9FCE27661CE3EB06002E3F04 /* Run R.swift */,
 				9F4EF2741CBC4F66002E5FEA /* Sources */,
 				9F4EF2AD1CBC4F66002E5FEA /* Frameworks */,
 				9F4EF2B11CBC4F66002E5FEA /* Resources */,
@@ -993,6 +996,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "Resources/AppPalette/SwiftAppPaletteGenerator -i Resources/AppPalette/AppPalette.clr -o Sources/ -clr";
+		};
+		9FCE27661CE3EB06002E3F04 /* Run R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run R.swift";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT/Sources\"";
 		};
 		CA1ADB500DE0188082759519 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
