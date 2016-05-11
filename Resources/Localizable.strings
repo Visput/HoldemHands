@@ -26,3 +26,5 @@
 "error_share_with_facebook" = "Unable to locate your Facebook account";
 "error_share_with_twitter" = "Unable to locate your Twitter account";
 "error_share_with_instagram" = "Unable to locate your Instagram account";
+
+"app_name" = "HoldemHands";

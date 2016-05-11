@@ -54,8 +54,6 @@
 	<string>HoldemHands</string>
 	<key>FlurryKey</key>
 	<string>FKV754NVT4GQNBPYHHST</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram</string>
@@ -124,12 +122,12 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>GameDataFileName</key>
-	<string>GameData.json</string>
 	<key>DefaultPlayerDataFileName</key>
 	<string>DefaultPlayerData.json</string>
-	<key>AppURL</key>
-	<string>https://itunes.apple.com/us/app/holdemhands/id1090777716</string>
+	<key>AppFullURL</key>
+	<string>https://itunes.apple.com/app/holdemhands/id1090777716?mt=8</string>
+	<key>AppShortURL</key>
+	<string>http://apple.co/1T9VGcG</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>app_font.ttc</string>
