@@ -1355,7 +1355,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.visput.holdemhands.prod;
 				PRODUCT_NAME = HoldemHands;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b5ceb719-cf94-49f0-b209-32d2fe0ceac6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1366,15 +1366,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Resources/HoldemHands.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Uladzimir Papko (WP3CPF8Q52)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Uladzimir Papko (WP3CPF8Q52)";
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Resources/HoldemHands-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.visput.holdemhands.prod;
 				PRODUCT_NAME = HoldemHands;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b5ceb719-cf94-49f0-b209-32d2fe0ceac6";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
