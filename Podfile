@@ -3,19 +3,28 @@ platform :ios, "8.0"
 use_frameworks!
 inhibit_all_warnings!
 
-link_with ['HoldemHands', 'HoldemHandsTests']
+def pods
+    pod 'Flurry-iOS-SDK/FlurrySDK'
+    pod 'Crashlytics'
+    pod 'Fabric'
+    pod 'TwitterCore'
+    pod 'TwitterKit'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKShareKit'
+    pod 'ObjectMapper'
+    pod 'KeychainSwift'
+    pod 'UICountingLabel'
+    pod 'R.swift'
+end
 
-pod 'Flurry-iOS-SDK/FlurrySDK'
+target 'HoldemHands' do
+    pods
+end
 
-pod 'Crashlytics'
-pod 'Fabric'
-pod 'TwitterCore'
-pod 'TwitterKit'
+target 'HoldemHandsQA' do
+    pods
+end
 
-pod 'FBSDKCoreKit'
-pod 'FBSDKShareKit'
-
-pod 'ObjectMapper'
-pod 'KeychainSwift'
-
-pod 'UICountingLabel'
+target 'HoldemHandsTests' do
+    pods
+end
