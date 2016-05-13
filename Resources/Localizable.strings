@@ -6,25 +6,25 @@
   Copyright © 2016 Visput. All rights reserved.
 */
 
-"banner_format_unlocked_level" = "Congratulations!\nYou've unlocked %@!";
-"banner_format_chips_to_unlock_level" = "You need %@ chips more\nto unlock %@";
-"banner_walkthrough_choose_hand" = "Welcome!\nChoose better hand to win the round";
-"banner_walkthrough_won" = "Good Job!\nTap or Swipe to play next hand";
-"banner_walkthrough_lost" = "Nice Try...\nTap or Swipe to play next hand";
+"banner.unlocked.level" = "Congratulations!\nYou've unlocked %@!";
+"banner.chips.to.unlock.level" = "You need %@ chips more\nto unlock %@";
+"banner.walkthrough.choose.hand" = "Welcome!\nChoose better hand to win the round";
+"banner.walkthrough.won" = "Good Job!\nTap or Swipe to play next hand";
+"banner.walkthrough.lost" = "Nice Try...\nTap or Swipe to play next hand";
 
-"title_details_levels" = "Play";
-"title_details_stats" = "Stats";
-"title_details_sharing" = "Share";
+"title.details.levels" = "Play";
+"title.details.stats" = "Stats";
+"title.details.sharing" = "Share";
 
-"text_format_win_odds" = "Win: %.2f%%";
-"text_format_tie_odds" = "Tie: %.2f%%";
+"text.win.odds" = "Win: %.2f%%";
+"text.tie.odds" = "Tie: %.2f%%";
 
-"title_sharing_twitter" = "Play @HoldemHands - prove your mastery!";
-"title_sharing_instagram" = "Play #HoldemHands - prove your mastery!";
-"title_sharing_facebook" = "Play HoldemHands - prove your mastery!";
+"title.sharing.twitter" = "Play @HoldemHands - prove your mastery!";
+"title.sharing.instagram" = "Play #HoldemHands - prove your mastery!";
+"title.sharing.facebook" = "Play HoldemHands - prove your mastery!";
 
-"error_share_with_facebook" = "Unable to locate your Facebook account";
-"error_share_with_twitter" = "Unable to locate your Twitter account";
-"error_share_with_instagram" = "Unable to locate your Instagram account";
+"error.share.with.facebook" = "Unable to locate your Facebook account";
+"error.share.with.twitter" = "Unable to locate your Twitter account";
+"error.share.with.instagram" = "Unable to locate your Instagram account";
 
-"app_name" = "HoldemHands";
+"app.name" = "HoldemHands";

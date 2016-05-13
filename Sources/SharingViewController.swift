@@ -21,14 +21,14 @@ final class SharingViewController: BaseViewController {
         Analytics.facebookClicked()
         
         let imageURL = NSURL(string: "https://scontent-dfw1-1.xx.fbcdn.net/t31.0-8/13198627_1261277187234266_633424816393798658_o.jpg")
-        let item = SharingItem(title: NSLocalizedString("app_name", comment: ""),
-                               message: NSLocalizedString("title_sharing_facebook", comment: ""),
+        let item = SharingItem(title: R.string.localizable.appName(),
+                               message: R.string.localizable.titleSharingFacebook(),
                                linkURL: appLink.full,
                                image: nil,
                                imageURL: imageURL)
         
         model.sharingManager.didFailToShareHandler = { [weak self] _ in
-            self?.model.navigationManager.presentBannerWithText(NSLocalizedString("error_share_with_facebook", comment: ""))
+            self?.model.navigationManager.presentBannerWithText(R.string.localizable.errorShareWithFacebook())
         }
         
         model.sharingManager.shareWithFacebook(item, inViewController: self)
@@ -38,13 +38,13 @@ final class SharingViewController: BaseViewController {
         Analytics.twitterClicked()
         
         let item = SharingItem(title: nil,
-                               message: NSLocalizedString("title_sharing_twitter", comment: ""),
+                               message: R.string.localizable.titleSharingTwitter(),
                                linkURL: appLink.short,
                                image: UIImage(named: "share_screen_twitter"),
                                imageURL: nil)
         
         model.sharingManager.didFailToShareHandler = { [weak self] _ in
-            self?.model.navigationManager.presentBannerWithText(NSLocalizedString("error_share_with_twitter", comment: ""))
+            self?.model.navigationManager.presentBannerWithText(R.string.localizable.errorShareWithTwitter())
         }
         
         model.sharingManager.shareWithTwitter(item, inViewController: self)
@@ -54,13 +54,13 @@ final class SharingViewController: BaseViewController {
         Analytics.instagramClicked()
         
         let item = SharingItem(title: nil,
-                               message: NSLocalizedString("title_sharing_instagram", comment: ""),
+                               message: R.string.localizable.titleSharingInstagram(),
                                linkURL: nil,
                                image: UIImage(named: "share_screen_instagram"),
                                imageURL: nil)
         
         model.sharingManager.didFailToShareHandler = { [weak self] _ in
-            self?.model.navigationManager.presentBannerWithText(NSLocalizedString("error_share_with_instagram", comment: ""))
+            self?.model.navigationManager.presentBannerWithText(R.string.localizable.errorShareWithInstagram())
         }
         
         model.sharingManager.shareWithInstagram(item, inView: view)

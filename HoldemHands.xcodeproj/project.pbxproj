@@ -149,6 +149,8 @@
 		9FBC4CE41CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */; };
 		9FBC4CE51CC0C15900F38DD7 /* app_font.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */; };
 		9FC567EF1CA487D100FF1DE7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */; };
+		9FCE277F1CE657D7002E3F04 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCE277E1CE657D7002E3F04 /* R.generated.swift */; };
+		9FCE27801CE657DC002E3F04 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCE277E1CE657D7002E3F04 /* R.generated.swift */; };
 		9FE888E31C93F53400A39C2C /* StatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E21C93F53400A39C2C /* StatsCell.swift */; };
 		9FE888E51C93F54F00A39C2C /* StatsCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */; };
 		9FE888E71C93F62700A39C2C /* PlayerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E61C93F62700A39C2C /* PlayerProgress.swift */; };
@@ -254,6 +256,7 @@
 		9FC41FD31CBC5EF60021C91B /* HoldemHandsQA.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HoldemHandsQA.entitlements; sourceTree = "<group>"; };
 		9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		9FCE27671CE3ED6E002E3F04 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+		9FCE277E1CE657D7002E3F04 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		9FE888E21C93F53400A39C2C /* StatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCell.swift; sourceTree = "<group>"; };
 		9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCellItem.swift; sourceTree = "<group>"; };
 		9FE888E61C93F62700A39C2C /* PlayerProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgress.swift; sourceTree = "<group>"; };
@@ -511,6 +514,7 @@
 		9F44D22B1C84B3AA00640046 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9FCE277E1CE657D7002E3F04 /* R.generated.swift */,
 				9F44D2401C84C63900640046 /* NSObject+Utils.swift */,
 				9F44D2411C84C63900640046 /* ObserverSet.swift */,
 				9F44D2421C84C63900640046 /* UIScreen+Size.swift */,
@@ -696,6 +700,7 @@
 			buildPhases = (
 				CA1ADB500DE0188082759519 /* 📦 Check Pods Manifest.lock */,
 				9FBE13991CCD674400144E15 /* Run App Palette Generator */,
+				9FCE27811CE6581B002E3F04 /* Run R.swift */,
 				9FACAAC51C72BCC20051A435 /* Sources */,
 				9FACAAC61C72BCC20051A435 /* Frameworks */,
 				9FACAAC71C72BCC20051A435 /* Resources */,
@@ -1011,6 +1016,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT/Sources\"";
 		};
+		9FCE27811CE6581B002E3F04 /* Run R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run R.swift";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT/Sources\"";
+		};
 		CA1ADB500DE0188082759519 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1111,6 +1130,7 @@
 				9F4EF2921CBC4F66002E5FEA /* Analytics.swift in Sources */,
 				9F4EF2931CBC4F66002E5FEA /* Deck.swift in Sources */,
 				9F4EF2941CBC4F66002E5FEA /* HandsViewController.swift in Sources */,
+				9FCE27801CE657DC002E3F04 /* R.generated.swift in Sources */,
 				9F4EF2951CBC4F66002E5FEA /* HandRankComparator.swift in Sources */,
 				9F4EF2961CBC4F66002E5FEA /* LevelsView.swift in Sources */,
 				9F4EF2971CBC4F66002E5FEA /* StatsScreen.swift in Sources */,
@@ -1179,6 +1199,7 @@
 				9F44D2431C84C63900640046 /* Analytics.swift in Sources */,
 				9F44D2141C84B21A00640046 /* Deck.swift in Sources */,
 				9F183F721CA9D993002F4C5F /* HandsViewController.swift in Sources */,
+				9FCE277F1CE657D7002E3F04 /* R.generated.swift in Sources */,
 				9F44D21B1C84B21A00640046 /* HandRankComparator.swift in Sources */,
 				9F314F8D1CB8CD8C0063B893 /* LevelsView.swift in Sources */,
 				9F3C4B721C91E3C800B37939 /* StatsScreen.swift in Sources */,

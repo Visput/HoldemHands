@@ -116,7 +116,7 @@ extension GameScreen: PlayerManagerObserving {
     
     func playerManager(manager: PlayerManager, didUnlockLevel levelProgress: LevelProgress) {
         let levelIndex = manager.progressItemForLevel(levelProgress.level).index
-        let text = NSString(format: NSLocalizedString("banner_format_unlocked_level", comment: ""), levelProgress.level.name) as String
+        let text = R.string.localizable.bannerUnlockedLevel(levelProgress.level.name)
         let backgroundImage = UIImage(named: "banner_unlock_level_\(levelProgress.level.identifier)")!
         
         Analytics.unlockedLevelBannerShownInGameScreen(levelProgress.level)

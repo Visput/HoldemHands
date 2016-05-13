@@ -77,14 +77,14 @@ final class MainScreenView: UIView {
             
             switch DetailsViewPage(rawValue: page)! {
             case .Levels:
-                text = NSLocalizedString("title_details_levels", comment: "")
+                text = R.string.localizable.titleDetailsLevels()
                 self.leaderboardsButton.alpha = 0.0
             case .Stats:
-                text = NSLocalizedString("title_details_stats", comment: "")
+                text = R.string.localizable.titleDetailsStats()
                 self.leaderboardsButton.alpha = 1.0
             case .Sharing:
                 self.leaderboardsButton.alpha = 0.0
-                text = NSLocalizedString("title_details_sharing", comment: "")
+                text = R.string.localizable.titleDetailsSharing()
             }
             
             self.detailsTitleLabel.text = text

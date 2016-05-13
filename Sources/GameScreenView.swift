@@ -98,7 +98,7 @@ final class GameScreenView: UIView {
     
     func setTieOddsVisible(visible: Bool, tieProbability: Double?) {
         if tieProbability != nil {
-            self.tieOddsLabel.text = NSString(format: NSLocalizedString("text_format_tie_odds", comment: ""), tieProbability!) as String
+            self.tieOddsLabel.text = R.string.localizable.textTieOdds(tieProbability!)
         }
         
         UIView.animateWithDuration(0.4, animations: {

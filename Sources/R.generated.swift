@@ -1083,123 +1083,123 @@ struct R: Rswift.Validatable {
     /// This `R.string.localizable` struct is generated, and contains static references to 17 localization keys.
     struct localizable {
       /// Value: HoldemHands
-      static let app_name = StringResource(key: "app_name", tableName: "Localizable", locales: [])
+      static let appName = StringResource(key: "app.name", tableName: "Localizable", locales: [])
       /// Value: You need %@ chips more to unlock %@
-      static let banner_format_chips_to_unlock_level = StringResource(key: "banner_format_chips_to_unlock_level", tableName: "Localizable", locales: [])
+      static let bannerChipsToUnlockLevel = StringResource(key: "banner.chips.to.unlock.level", tableName: "Localizable", locales: [])
       /// Value: Congratulations! You've unlocked %@!
-      static let banner_format_unlocked_level = StringResource(key: "banner_format_unlocked_level", tableName: "Localizable", locales: [])
+      static let bannerUnlockedLevel = StringResource(key: "banner.unlocked.level", tableName: "Localizable", locales: [])
       /// Value: Welcome! Choose better hand to win the round
-      static let banner_walkthrough_choose_hand = StringResource(key: "banner_walkthrough_choose_hand", tableName: "Localizable", locales: [])
+      static let bannerWalkthroughChooseHand = StringResource(key: "banner.walkthrough.choose.hand", tableName: "Localizable", locales: [])
       /// Value: Nice Try... Tap or Swipe to play next hand
-      static let banner_walkthrough_lost = StringResource(key: "banner_walkthrough_lost", tableName: "Localizable", locales: [])
+      static let bannerWalkthroughLost = StringResource(key: "banner.walkthrough.lost", tableName: "Localizable", locales: [])
       /// Value: Good Job! Tap or Swipe to play next hand
-      static let banner_walkthrough_won = StringResource(key: "banner_walkthrough_won", tableName: "Localizable", locales: [])
+      static let bannerWalkthroughWon = StringResource(key: "banner.walkthrough.won", tableName: "Localizable", locales: [])
       /// Value: Unable to locate your Facebook account
-      static let error_share_with_facebook = StringResource(key: "error_share_with_facebook", tableName: "Localizable", locales: [])
+      static let errorShareWithFacebook = StringResource(key: "error.share.with.facebook", tableName: "Localizable", locales: [])
       /// Value: Unable to locate your Instagram account
-      static let error_share_with_instagram = StringResource(key: "error_share_with_instagram", tableName: "Localizable", locales: [])
+      static let errorShareWithInstagram = StringResource(key: "error.share.with.instagram", tableName: "Localizable", locales: [])
       /// Value: Unable to locate your Twitter account
-      static let error_share_with_twitter = StringResource(key: "error_share_with_twitter", tableName: "Localizable", locales: [])
+      static let errorShareWithTwitter = StringResource(key: "error.share.with.twitter", tableName: "Localizable", locales: [])
       /// Value: Tie: %.2f%%
-      static let text_format_tie_odds = StringResource(key: "text_format_tie_odds", tableName: "Localizable", locales: [])
+      static let textTieOdds = StringResource(key: "text.tie.odds", tableName: "Localizable", locales: [])
       /// Value: Win: %.2f%%
-      static let text_format_win_odds = StringResource(key: "text_format_win_odds", tableName: "Localizable", locales: [])
+      static let textWinOdds = StringResource(key: "text.win.odds", tableName: "Localizable", locales: [])
       /// Value: Play
-      static let title_details_levels = StringResource(key: "title_details_levels", tableName: "Localizable", locales: [])
+      static let titleDetailsLevels = StringResource(key: "title.details.levels", tableName: "Localizable", locales: [])
       /// Value: Share
-      static let title_details_sharing = StringResource(key: "title_details_sharing", tableName: "Localizable", locales: [])
+      static let titleDetailsSharing = StringResource(key: "title.details.sharing", tableName: "Localizable", locales: [])
       /// Value: Stats
-      static let title_details_stats = StringResource(key: "title_details_stats", tableName: "Localizable", locales: [])
+      static let titleDetailsStats = StringResource(key: "title.details.stats", tableName: "Localizable", locales: [])
       /// Value: Play HoldemHands - prove your mastery!
-      static let title_sharing_facebook = StringResource(key: "title_sharing_facebook", tableName: "Localizable", locales: [])
+      static let titleSharingFacebook = StringResource(key: "title.sharing.facebook", tableName: "Localizable", locales: [])
       /// Value: Play #HoldemHands - prove your mastery!
-      static let title_sharing_instagram = StringResource(key: "title_sharing_instagram", tableName: "Localizable", locales: [])
+      static let titleSharingInstagram = StringResource(key: "title.sharing.instagram", tableName: "Localizable", locales: [])
       /// Value: Play @HoldemHands - prove your mastery!
-      static let title_sharing_twitter = StringResource(key: "title_sharing_twitter", tableName: "Localizable", locales: [])
+      static let titleSharingTwitter = StringResource(key: "title.sharing.twitter", tableName: "Localizable", locales: [])
       
       /// Value: HoldemHands
-      static func app_name(_: Void) -> String {
-        return NSLocalizedString("app_name", comment: "")
+      static func appName(_: Void) -> String {
+        return NSLocalizedString("app.name", comment: "")
       }
       
       /// Value: You need %@ chips more to unlock %@
-      static func banner_format_chips_to_unlock_level(value1: String, _ value2: String) -> String {
-        return String(format: NSLocalizedString("banner_format_chips_to_unlock_level", comment: ""), locale: NSLocale.currentLocale(), value1, value2)
+      static func bannerChipsToUnlockLevel(value1: String, _ value2: String) -> String {
+        return String(format: NSLocalizedString("banner.chips.to.unlock.level", comment: ""), locale: NSLocale.currentLocale(), value1, value2)
       }
       
       /// Value: Congratulations! You've unlocked %@!
-      static func banner_format_unlocked_level(value1: String) -> String {
-        return String(format: NSLocalizedString("banner_format_unlocked_level", comment: ""), locale: NSLocale.currentLocale(), value1)
+      static func bannerUnlockedLevel(value1: String) -> String {
+        return String(format: NSLocalizedString("banner.unlocked.level", comment: ""), locale: NSLocale.currentLocale(), value1)
       }
       
       /// Value: Welcome! Choose better hand to win the round
-      static func banner_walkthrough_choose_hand(_: Void) -> String {
-        return NSLocalizedString("banner_walkthrough_choose_hand", comment: "")
+      static func bannerWalkthroughChooseHand(_: Void) -> String {
+        return NSLocalizedString("banner.walkthrough.choose.hand", comment: "")
       }
       
       /// Value: Nice Try... Tap or Swipe to play next hand
-      static func banner_walkthrough_lost(_: Void) -> String {
-        return NSLocalizedString("banner_walkthrough_lost", comment: "")
+      static func bannerWalkthroughLost(_: Void) -> String {
+        return NSLocalizedString("banner.walkthrough.lost", comment: "")
       }
       
       /// Value: Good Job! Tap or Swipe to play next hand
-      static func banner_walkthrough_won(_: Void) -> String {
-        return NSLocalizedString("banner_walkthrough_won", comment: "")
+      static func bannerWalkthroughWon(_: Void) -> String {
+        return NSLocalizedString("banner.walkthrough.won", comment: "")
       }
       
       /// Value: Unable to locate your Facebook account
-      static func error_share_with_facebook(_: Void) -> String {
-        return NSLocalizedString("error_share_with_facebook", comment: "")
+      static func errorShareWithFacebook(_: Void) -> String {
+        return NSLocalizedString("error.share.with.facebook", comment: "")
       }
       
       /// Value: Unable to locate your Instagram account
-      static func error_share_with_instagram(_: Void) -> String {
-        return NSLocalizedString("error_share_with_instagram", comment: "")
+      static func errorShareWithInstagram(_: Void) -> String {
+        return NSLocalizedString("error.share.with.instagram", comment: "")
       }
       
       /// Value: Unable to locate your Twitter account
-      static func error_share_with_twitter(_: Void) -> String {
-        return NSLocalizedString("error_share_with_twitter", comment: "")
+      static func errorShareWithTwitter(_: Void) -> String {
+        return NSLocalizedString("error.share.with.twitter", comment: "")
       }
       
       /// Value: Tie: %.2f%%
-      static func text_format_tie_odds(value1: Double) -> String {
-        return String(format: NSLocalizedString("text_format_tie_odds", comment: ""), locale: NSLocale.currentLocale(), value1)
+      static func textTieOdds(value1: Double) -> String {
+        return String(format: NSLocalizedString("text.tie.odds", comment: ""), locale: NSLocale.currentLocale(), value1)
       }
       
       /// Value: Win: %.2f%%
-      static func text_format_win_odds(value1: Double) -> String {
-        return String(format: NSLocalizedString("text_format_win_odds", comment: ""), locale: NSLocale.currentLocale(), value1)
+      static func textWinOdds(value1: Double) -> String {
+        return String(format: NSLocalizedString("text.win.odds", comment: ""), locale: NSLocale.currentLocale(), value1)
       }
       
       /// Value: Play
-      static func title_details_levels(_: Void) -> String {
-        return NSLocalizedString("title_details_levels", comment: "")
+      static func titleDetailsLevels(_: Void) -> String {
+        return NSLocalizedString("title.details.levels", comment: "")
       }
       
       /// Value: Share
-      static func title_details_sharing(_: Void) -> String {
-        return NSLocalizedString("title_details_sharing", comment: "")
+      static func titleDetailsSharing(_: Void) -> String {
+        return NSLocalizedString("title.details.sharing", comment: "")
       }
       
       /// Value: Stats
-      static func title_details_stats(_: Void) -> String {
-        return NSLocalizedString("title_details_stats", comment: "")
+      static func titleDetailsStats(_: Void) -> String {
+        return NSLocalizedString("title.details.stats", comment: "")
       }
       
       /// Value: Play HoldemHands - prove your mastery!
-      static func title_sharing_facebook(_: Void) -> String {
-        return NSLocalizedString("title_sharing_facebook", comment: "")
+      static func titleSharingFacebook(_: Void) -> String {
+        return NSLocalizedString("title.sharing.facebook", comment: "")
       }
       
       /// Value: Play #HoldemHands - prove your mastery!
-      static func title_sharing_instagram(_: Void) -> String {
-        return NSLocalizedString("title_sharing_instagram", comment: "")
+      static func titleSharingInstagram(_: Void) -> String {
+        return NSLocalizedString("title.sharing.instagram", comment: "")
       }
       
       /// Value: Play @HoldemHands - prove your mastery!
-      static func title_sharing_twitter(_: Void) -> String {
-        return NSLocalizedString("title_sharing_twitter", comment: "")
+      static func titleSharingTwitter(_: Void) -> String {
+        return NSLocalizedString("title.sharing.twitter", comment: "")
       }
       
       private init() {}

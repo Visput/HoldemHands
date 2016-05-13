@@ -50,8 +50,7 @@ final class HandCell: UICollectionViewCell {
             let maxFontSize = CGFloat(21.0)
             let textFont = UIFont(name: winOddsLabel.font!.fontName, size: maxFontSize * currentScale)
             
-            winOddsLabel.text = NSString(format: NSLocalizedString("text_format_win_odds", comment: ""),
-                                         item.handOdds!.winningProbability()) as String
+            winOddsLabel.text = R.string.localizable.textWinOdds(item.handOdds!.winningProbability())
             winOddsLabel.font = textFont
             
             if item.isSuccessSate != nil {

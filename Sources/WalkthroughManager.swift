@@ -26,8 +26,8 @@ final class WalkthroughManager {
             hideBanners()
             return
         }
-        
-        let text = NSLocalizedString("banner_walkthrough_choose_hand", comment: "")
+       
+        let text = R.string.localizable.bannerWalkthroughChooseHand()
         firstRoundBanner = navigationManager.presentBannerWithText(text, duration: 0.0)
     }
     
@@ -38,9 +38,9 @@ final class WalkthroughManager {
         }
         var text: String! = nil
         if won {
-            text = NSLocalizedString("banner_walkthrough_won", comment: "")
+            text = R.string.localizable.bannerWalkthroughWon()
         } else {
-            text = NSLocalizedString("banner_walkthrough_lost", comment: "")
+            text = R.string.localizable.bannerWalkthroughLost()
         }
         nextRoundBanner = navigationManager.presentBannerWithText(text, duration: 0.0)
     }

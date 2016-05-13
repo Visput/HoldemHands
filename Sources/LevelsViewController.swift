@@ -54,7 +54,7 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
         if cell.item.levelProgress.locked! {
             let level = cell.item.levelProgress.level
             let chipsToUnlock = model.playerManager.chipsToUnlockLevel(level).formattedChipsCountString(needsReplaceZerosWithO: false)
-            let text = NSString(format: NSLocalizedString("banner_format_chips_to_unlock_level", comment: ""), chipsToUnlock, level.name) as String
+            let text = R.string.localizable.bannerChipsToUnlockLevel(chipsToUnlock, level.name)
             model.navigationManager.presentBannerWithText(text)
             
             levelsView.scrollToLevelAtIndex(indexPath.item, animated: true)
