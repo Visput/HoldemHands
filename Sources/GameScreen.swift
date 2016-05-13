@@ -67,11 +67,10 @@ final class GameScreen: BaseViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "FirstHands" {
-            firstHandsController = segue.destinationViewController as! HandsViewController
-            
-        } else if segue.identifier == "SecondHands" {
-            secondHandsController = segue.destinationViewController as! HandsViewController
+        if let segue = R.segue.gameScreen.firstHands(segue: segue) {
+            firstHandsController = segue.destinationViewController
+        } else if let segue = R.segue.gameScreen.secondHands(segue: segue) {
+            secondHandsController = segue.destinationViewController
         }
     }
     

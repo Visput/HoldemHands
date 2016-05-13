@@ -84,12 +84,12 @@ final class MainScreen: BaseViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "Levels" {
-            levelsController = segue.destinationViewController as! LevelsViewController
-        } else if segue.identifier == "Stats" {
-            statsController = segue.destinationViewController as! StatsViewController
-        } else if segue.identifier == "Sharing" {
-            sharingController = segue.destinationViewController as! SharingViewController
+        if let segue = R.segue.mainScreen.levels(segue: segue) {
+            levelsController = segue.destinationViewController
+        } else if let segue = R.segue.mainScreen.stats(segue: segue) {
+            statsController = segue.destinationViewController
+        } else if let segue = R.segue.mainScreen.sharing(segue: segue) {
+            sharingController = segue.destinationViewController
         }
     }
 }

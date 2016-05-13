@@ -32,8 +32,8 @@ final class StatsScreen: BaseViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "Stats" {
-            statsController = segue.destinationViewController as! StatsViewController
+        if let segue = R.segue.statsScreen.stats(segue: segue) {
+            statsController = segue.destinationViewController
             statsController.level = level
         }
     }

@@ -22,10 +22,6 @@ final class NavigationManager: NSObject {
     private var navigationController: UINavigationController!
     private var currentTextBanner: TextBannerView?
     
-    private var storyboard: UIStoryboard {
-        return window.rootViewController!.storyboard!
-    }
-    
     private var topViewController: UIViewController {
         var topViewController = navigationController as UIViewController
         while topViewController.presentedViewController != nil {
@@ -43,13 +39,13 @@ final class NavigationManager: NSObject {
     }
     
     func setMainScreenAsRootAnimated(animated: Bool) {
-        let screen = storyboard.instantiateViewControllerWithIdentifier(MainScreen.className()) as! MainScreen
+        let screen = R.storyboard.main.mainScreen()!
         navigationController.setViewControllers([screen], animated: animated)
         mainScreen = screen
     }
     
     func presentGameScreenWithLevel(level: Level, animated: Bool, completion: (() -> Void)? = nil) {
-        let screen = storyboard.instantiateViewControllerWithIdentifier(GameScreen.className()) as! GameScreen
+        let screen = R.storyboard.main.gameScreen()!
         screen.level = level
         screen.modalPresentationStyle = .OverCurrentContext
         // Manually call `beginAppearanceTransition` and `endAppearanceTransition` 
@@ -74,7 +70,7 @@ final class NavigationManager: NSObject {
     }
     
     func presentStatsScreenWithLevel(level: Level?, animated: Bool, completion: (() -> Void)? = nil) {
-        let screen = storyboard.instantiateViewControllerWithIdentifier(StatsScreen.className()) as! StatsScreen
+        let screen = R.storyboard.main.statsScreen()!
         screen.level = level
         presentScreen(screen, animated: animated, completion: completion)
     }
@@ -107,7 +103,7 @@ final class NavigationManager: NSObject {
                 return currentTextBanner!
         }
         
-        let newTextBanner: TextBannerView = TextBannerView.fromNib()
+        let newTextBanner = R.nib.textBannerView.firstView(owner: nil)!
         let showNewTextBanner = { [unowned self] in
             self.currentTextBanner = newTextBanner
             newTextBanner.presentInView(self.window,
