@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AppFullURL</key>
+	<string>https://itunes.apple.com/app/holdemhands/id1090777716?mt=8</string>
+	<key>AppShortURL</key>
+	<string>http://apple.co/1T9VGcG</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -33,7 +37,9 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
+	<key>DefaultPlayerDataFileName</key>
+	<string>DefaultPlayerData.json</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -54,6 +60,8 @@
 	<string>HoldemHands</string>
 	<key>FlurryKey</key>
 	<string>FKV754NVT4GQNBPYHHST</string>
+	<key>GameDataFileName</key>
+	<string>GameData.json</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram</string>
@@ -102,6 +110,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>app_font.ttc</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -122,17 +134,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>DefaultPlayerDataFileName</key>
-	<string>DefaultPlayerData.json</string>
-	<key>AppFullURL</key>
-	<string>https://itunes.apple.com/app/holdemhands/id1090777716?mt=8</string>
-	<key>AppShortURL</key>
-	<string>http://apple.co/1T9VGcG</string>
-	<key>GameDataFileName</key>
-	<string>GameData.json</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>app_font.ttc</string>
-	</array>
 </dict>
 </plist>
