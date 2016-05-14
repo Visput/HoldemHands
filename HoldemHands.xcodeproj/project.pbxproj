@@ -149,6 +149,8 @@
 		9FC567EF1CA487D100FF1DE7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */; };
 		9FCE277F1CE657D7002E3F04 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCE277E1CE657D7002E3F04 /* R.generated.swift */; };
 		9FCE27801CE657DC002E3F04 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCE277E1CE657D7002E3F04 /* R.generated.swift */; };
+		9FCE27851CE7DB8C002E3F04 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FCE27841CE7DB8C002E3F04 /* iTunesArtwork.png */; };
+		9FCE27861CE7DB90002E3F04 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FCE27841CE7DB8C002E3F04 /* iTunesArtwork.png */; };
 		9FE888E31C93F53400A39C2C /* StatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E21C93F53400A39C2C /* StatsCell.swift */; };
 		9FE888E51C93F54F00A39C2C /* StatsCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */; };
 		9FE888E71C93F62700A39C2C /* PlayerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E61C93F62700A39C2C /* PlayerProgress.swift */; };
@@ -254,6 +256,7 @@
 		9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		9FCE27671CE3ED6E002E3F04 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		9FCE277E1CE657D7002E3F04 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		9FCE27841CE7DB8C002E3F04 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		9FE888E21C93F53400A39C2C /* StatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCell.swift; sourceTree = "<group>"; };
 		9FE888E41C93F54F00A39C2C /* StatsCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCellItem.swift; sourceTree = "<group>"; };
 		9FE888E61C93F62700A39C2C /* PlayerProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgress.swift; sourceTree = "<group>"; };
@@ -452,6 +455,7 @@
 				9FC41FD31CBC5EF60021C91B /* HoldemHandsQA.entitlements */,
 				9F73D1C91C9BA9D200EA72A7 /* HoldemHands.entitlements */,
 				9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */,
+				9FCE27841CE7DB8C002E3F04 /* iTunesArtwork.png */,
 				9F44D1F51C84B21A00640046 /* Assets.xcassets */,
 				9F44D1F61C84B21A00640046 /* LaunchScreen.storyboard */,
 				9F44D1F81C84B21A00640046 /* Main.storyboard */,
@@ -806,6 +810,7 @@
 				9F46C5E11CDC615C00EA06C8 /* DefaultPlayerData.json in Resources */,
 				9F4EF2B51CBC4F66002E5FEA /* TextBannerView.xib in Resources */,
 				9F6434A11CD51F7F00B3BED6 /* Localizable.strings in Resources */,
+				9FCE27861CE7DB90002E3F04 /* iTunesArtwork.png in Resources */,
 				9FBC4CE51CC0C15900F38DD7 /* app_font.ttc in Resources */,
 				9F4EF2B61CBC4F66002E5FEA /* Assets.xcassets in Resources */,
 				9F4EF2B81CBC4F66002E5FEA /* LaunchScreen.storyboard in Resources */,
@@ -825,6 +830,7 @@
 				9FBC4CDC1CC0924F00F38DD7 /* app_font.ttc in Resources */,
 				9F3C4BE41C9258F200B37939 /* TextBannerView.xib in Resources */,
 				9F44D20E1C84B21A00640046 /* Assets.xcassets in Resources */,
+				9FCE27851CE7DB8C002E3F04 /* iTunesArtwork.png in Resources */,
 				9F44D20F1C84B21A00640046 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
