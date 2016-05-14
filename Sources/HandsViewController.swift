@@ -92,9 +92,7 @@ extension HandsViewController: UICollectionViewDelegateFlowLayout, UICollectionV
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HandCell.className(),
-                                                                         forIndexPath: indexPath) as! HandCell
-        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.handCell, forIndexPath: indexPath)!
         let item = HandCellItem(handOdds: handOddsCalculator.handsOdds?[indexPath.item], needsShowOdds: false, isSuccessSate: nil)
         cell.fillWithItem(item)
         
