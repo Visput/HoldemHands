@@ -2,10 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "icon_leaderboards_blue.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icon_leaderboards_blue@2x.png",
       "scale" : "2x"
     },
     {

@@ -1598,7 +1598,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQm-Rd-hks" userLabel="Facebook">
                                 <rect key="frame" x="3" y="48" width="48" height="48"/>
-                                <state key="normal" image="icon_share_facebook_small"/>
+                                <state key="normal" image="icon_share_facebook"/>
                                 <connections>
                                     <action selector="facebookButtonDidPress:" destination="36g-I0-Am3" eventType="touchUpInside" id="zyc-WM-bPy"/>
                                 </connections>
@@ -1608,14 +1608,14 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bXU-rz-kmg" secondAttribute="height" multiplier="1:1" id="5SO-sE-fiB"/>
                                 </constraints>
-                                <state key="normal" image="icon_share_twitter_small"/>
+                                <state key="normal" image="icon_share_twitter"/>
                                 <connections>
                                     <action selector="twitterButtonDidPress:" destination="36g-I0-Am3" eventType="touchUpInside" id="8zb-lX-b4h"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEf-Nj-7gF" userLabel="Instagram">
                                 <rect key="frame" x="149" y="48" width="48" height="48"/>
-                                <state key="normal" image="icon_share_instagram_small"/>
+                                <state key="normal" image="icon_share_instagram"/>
                                 <connections>
                                     <action selector="instagramButtonDidPress:" destination="36g-I0-Am3" eventType="touchUpInside" id="VZU-To-Bym"/>
                                 </connections>
@@ -1781,10 +1781,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background_blue" width="736" height="414"/>
-        <image name="background_green" width="736" height="414"/>
-        <image name="background_hand_odds_green" width="254" height="60"/>
-        <image name="background_table_level_1" width="522" height="254"/>
+        <image name="background_blue" width="739" height="416"/>
+        <image name="background_green" width="739" height="416"/>
+        <image name="background_hand_odds_green" width="255" height="60"/>
+        <image name="background_table_level_1" width="525" height="255"/>
         <image name="button_menu_play_normal" width="59" height="85"/>
         <image name="button_menu_play_selected" width="59" height="85"/>
         <image name="button_menu_share_normal" width="59" height="85"/>
@@ -1796,19 +1796,19 @@
         <image name="icon_done_blue" width="54" height="30"/>
         <image name="icon_done_green" width="54" height="30"/>
         <image name="icon_leaderboards_blue" width="52" height="30"/>
-        <image name="icon_play" width="241" height="63"/>
+        <image name="icon_play" width="242" height="63"/>
+        <image name="icon_share_facebook" width="48" height="48"/>
         <image name="icon_share_facebook_large" width="96" height="96"/>
-        <image name="icon_share_facebook_small" width="48" height="48"/>
+        <image name="icon_share_instagram" width="48" height="48"/>
         <image name="icon_share_instagram_large" width="96" height="96"/>
-        <image name="icon_share_instagram_small" width="48" height="48"/>
+        <image name="icon_share_twitter" width="48" height="48"/>
         <image name="icon_share_twitter_large" width="96" height="96"/>
-        <image name="icon_share_twitter_small" width="48" height="48"/>
-        <image name="icon_stats" width="241" height="63"/>
+        <image name="icon_stats" width="242" height="63"/>
         <image name="icon_stats_green" width="54" height="30"/>
-        <image name="overlay_letters_blue" width="736" height="414"/>
-        <image name="overlay_stats_level_1" width="522" height="254"/>
-        <image name="overlay_table_level_1" width="522" height="254"/>
-        <image name="shadow_blue" width="736" height="95"/>
+        <image name="overlay_letters_blue" width="739" height="416"/>
+        <image name="overlay_stats_level_1" width="525" height="255"/>
+        <image name="overlay_table_level_1" width="525" height="255"/>
+        <image name="shadow_blue" width="739" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fJt-d2-jaX"/>

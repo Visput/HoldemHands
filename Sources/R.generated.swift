@@ -16,7 +16,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 4 files.
+  /// This `R.file` struct is generated, and contains static references to 5 files.
   struct file {
     /// Resource file `app_font.ttc`.
     static let app_fontTtc = FileResource(bundle: _R.hostingBundle, name: "app_font", pathExtension: "ttc")
@@ -26,6 +26,8 @@ struct R: Rswift.Validatable {
     static let gameDataJson = FileResource(bundle: _R.hostingBundle, name: "GameData", pathExtension: "json")
     /// Resource file `iTunesArtwork@2x.png`.
     static let iTunesArtwork2xPng = FileResource(bundle: _R.hostingBundle, name: "iTunesArtwork@2x", pathExtension: "png")
+    /// Resource file `iTunesArtwork.png`.
+    static let iTunesArtworkPng = FileResource(bundle: _R.hostingBundle, name: "iTunesArtwork", pathExtension: "png")
     
     /// `bundle.URLForResource("app_font", withExtension: "ttc")`
     static func app_fontTtc(_: Void) -> NSURL? {
@@ -48,6 +50,12 @@ struct R: Rswift.Validatable {
     /// `bundle.URLForResource("iTunesArtwork@2x", withExtension: "png")`
     static func iTunesArtwork2xPng(_: Void) -> NSURL? {
       let fileResource = R.file.iTunesArtwork2xPng
+      return fileResource.bundle.URLForResource(fileResource)
+    }
+    
+    /// `bundle.URLForResource("iTunesArtwork", withExtension: "png")`
+    static func iTunesArtworkPng(_: Void) -> NSURL? {
+      let fileResource = R.file.iTunesArtworkPng
       return fileResource.bundle.URLForResource(fileResource)
     }
     
@@ -229,18 +237,18 @@ struct R: Rswift.Validatable {
     static let icon_leaderboards_blue = ImageResource(bundle: _R.hostingBundle, name: "icon_leaderboards_blue")
     /// Image `icon_play`.
     static let icon_play = ImageResource(bundle: _R.hostingBundle, name: "icon_play")
+    /// Image `icon_share_facebook`.
+    static let icon_share_facebook = ImageResource(bundle: _R.hostingBundle, name: "icon_share_facebook")
     /// Image `icon_share_facebook_large`.
     static let icon_share_facebook_large = ImageResource(bundle: _R.hostingBundle, name: "icon_share_facebook_large")
-    /// Image `icon_share_facebook_small`.
-    static let icon_share_facebook_small = ImageResource(bundle: _R.hostingBundle, name: "icon_share_facebook_small")
+    /// Image `icon_share_instagram`.
+    static let icon_share_instagram = ImageResource(bundle: _R.hostingBundle, name: "icon_share_instagram")
     /// Image `icon_share_instagram_large`.
     static let icon_share_instagram_large = ImageResource(bundle: _R.hostingBundle, name: "icon_share_instagram_large")
-    /// Image `icon_share_instagram_small`.
-    static let icon_share_instagram_small = ImageResource(bundle: _R.hostingBundle, name: "icon_share_instagram_small")
+    /// Image `icon_share_twitter`.
+    static let icon_share_twitter = ImageResource(bundle: _R.hostingBundle, name: "icon_share_twitter")
     /// Image `icon_share_twitter_large`.
     static let icon_share_twitter_large = ImageResource(bundle: _R.hostingBundle, name: "icon_share_twitter_large")
-    /// Image `icon_share_twitter_small`.
-    static let icon_share_twitter_small = ImageResource(bundle: _R.hostingBundle, name: "icon_share_twitter_small")
     /// Image `icon_stats`.
     static let icon_stats = ImageResource(bundle: _R.hostingBundle, name: "icon_stats")
     /// Image `icon_stats_blue`.
@@ -732,14 +740,19 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.icon_play, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "icon_share_facebook", bundle: ..., traitCollection: ...)`
+    static func icon_share_facebook(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_share_facebook, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "icon_share_facebook_large", bundle: ..., traitCollection: ...)`
     static func icon_share_facebook_large(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.icon_share_facebook_large, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_share_facebook_small", bundle: ..., traitCollection: ...)`
-    static func icon_share_facebook_small(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_share_facebook_small, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon_share_instagram", bundle: ..., traitCollection: ...)`
+    static func icon_share_instagram(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_share_instagram, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "icon_share_instagram_large", bundle: ..., traitCollection: ...)`
@@ -747,19 +760,14 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.icon_share_instagram_large, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_share_instagram_small", bundle: ..., traitCollection: ...)`
-    static func icon_share_instagram_small(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_share_instagram_small, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon_share_twitter", bundle: ..., traitCollection: ...)`
+    static func icon_share_twitter(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_share_twitter, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "icon_share_twitter_large", bundle: ..., traitCollection: ...)`
     static func icon_share_twitter_large(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.icon_share_twitter_large, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "icon_share_twitter_small", bundle: ..., traitCollection: ...)`
-    static func icon_share_twitter_small(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_share_twitter_small, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "icon_stats", bundle: ..., traitCollection: ...)`
@@ -1267,11 +1275,10 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIImage(named: "background_table_level_1") == nil { throw ValidationError(description: "[R.swift] Image named 'background_table_level_1' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_share_instagram_small") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_instagram_small' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon_share_twitter") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_twitter' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_chip_blue") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_chip_blue' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_done_green") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_done_green' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_share_twitter_large") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_twitter_large' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_share_twitter_small") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_twitter_small' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "overlay_letters_blue") == nil { throw ValidationError(description: "[R.swift] Image named 'overlay_letters_blue' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_stats_green") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_stats_green' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_done_blue") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_done_blue' is used in storyboard 'Main', but couldn't be loaded.") }
@@ -1281,9 +1288,10 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "icon_play") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_play' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "card_back") == nil { throw ValidationError(description: "[R.swift] Image named 'card_back' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "overlay_table_level_1") == nil { throw ValidationError(description: "[R.swift] Image named 'overlay_table_level_1' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_share_facebook_small") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_facebook_small' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "background_hand_odds_green") == nil { throw ValidationError(description: "[R.swift] Image named 'background_hand_odds_green' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "button_menu_play_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'button_menu_play_selected' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon_share_facebook") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_facebook' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon_share_instagram") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_instagram' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "button_menu_stats_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'button_menu_stats_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_stats") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_stats' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "background_green") == nil { throw ValidationError(description: "[R.swift] Image named 'background_green' is used in storyboard 'Main', but couldn't be loaded.") }

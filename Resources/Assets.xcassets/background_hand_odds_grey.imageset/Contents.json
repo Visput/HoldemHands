@@ -2,10 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "background_hand_odds_grey.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "background_hand_odds_grey@2x.png",
       "scale" : "2x"
     },
     {
