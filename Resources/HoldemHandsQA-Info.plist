@@ -129,9 +129,9 @@
 	<key>DefaultPlayerDataFileName</key>
 	<string>DefaultPlayerData.json</string>
 	<key>AppFullURL</key>
-	<string>https://itunes.apple.com/app/holdemhands/id1090777716?mt=8</string>
+	<string>https://itunes.apple.com/app/id1090777716?mt=8</string>
 	<key>AppShortURL</key>
-	<string>https://appsto.re/i6YN5wd</string>
+	<string>http://apple.co/1Whk0gt</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>app_font.ttc</string>
