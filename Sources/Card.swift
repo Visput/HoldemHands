@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Card: Equatable, Comparable {
+struct Card: Equatable {
     
     let rank: Rank
     let suit: Suit
@@ -16,8 +16,4 @@ struct Card: Equatable, Comparable {
 
 @inline(__always) func == (lhs: Card, rhs: Card) -> Bool {
     return lhs.rank == rhs.rank && lhs.suit == rhs.suit
-}
-
-@inline(__always) func < (lhs: Card, rhs: Card) -> Bool {
-    return lhs.rank < lhs.rank
 }
