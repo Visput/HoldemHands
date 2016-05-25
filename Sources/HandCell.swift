@@ -184,7 +184,7 @@ extension HandCell {
             selectionLayer!.strokeColor = UIColor.green1Color().CGColor
             
             animation = CABasicAnimation(keyPath: "strokeEnd")
-            animation.duration = 0.8
+            animation.duration = 0.5
             animation.fromValue = 0.0
             animation.toValue = 1.0
             animation.removedOnCompletion = false
