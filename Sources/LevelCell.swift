@@ -32,7 +32,7 @@ final class LevelCell: UICollectionViewCell {
             tableOverlayImageView.image = UIImage(named: "overlay_table_locked_level_\(item.levelProgress.level.identifier)")
         } else {
             tableBackgroundImageView.image = UIImage(named: "background_table_level_\(item.levelProgress.level.identifier)")
-            tableOverlayImageView.image = UIImage(named: "overlay_table_level_\(item.levelProgress.level.identifier)")
+            tableOverlayImageView.image = nil
         }
     }
 }

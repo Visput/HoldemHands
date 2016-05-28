@@ -61,8 +61,8 @@ final class StatsCell: UICollectionViewCell {
             winsInRowLabel.textColor = UIColor.gray1Color()
             handsCountLabel.textColor = UIColor.gray1Color()
         } else {
-            statsBackgroundImageView.image = UIImage(named: "background_table_level_\(item.progressItem.identifier)")
-            statsOverlayImageView.image = UIImage(named: "overlay_stats_level_\(item.progressItem.identifier)")
+            statsBackgroundImageView.image = UIImage(named: "background_stats_level_\(item.progressItem.identifier)")
+            statsOverlayImageView.image = nil
             
             rankLabel.textColor = UIColor.aquamarine1Color()
             winPercentLabel.textColor  = UIColor.aquamarine1Color()

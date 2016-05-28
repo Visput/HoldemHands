@@ -16,14 +16,16 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 5 files.
+  /// This `R.file` struct is generated, and contains static references to 6 files.
   struct file {
     /// Resource file `app_font.ttc`.
     static let app_fontTtc = FileResource(bundle: _R.hostingBundle, name: "app_font", pathExtension: "ttc")
     /// Resource file `DefaultPlayerData.json`.
     static let defaultPlayerDataJson = FileResource(bundle: _R.hostingBundle, name: "DefaultPlayerData", pathExtension: "json")
-    /// Resource file `GameData.json`.
-    static let gameDataJson = FileResource(bundle: _R.hostingBundle, name: "GameData", pathExtension: "json")
+    /// Resource file `GameDataQA1.json`.
+    static let gameDataQA1Json = FileResource(bundle: _R.hostingBundle, name: "GameDataQA1", pathExtension: "json")
+    /// Resource file `GameDataQA2.json`.
+    static let gameDataQA2Json = FileResource(bundle: _R.hostingBundle, name: "GameDataQA2", pathExtension: "json")
     /// Resource file `iTunesArtwork@2x.png`.
     static let iTunesArtwork2xPng = FileResource(bundle: _R.hostingBundle, name: "iTunesArtwork@2x", pathExtension: "png")
     /// Resource file `iTunesArtwork.png`.
@@ -41,9 +43,15 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.URLForResource(fileResource)
     }
     
-    /// `bundle.URLForResource("GameData", withExtension: "json")`
-    static func gameDataJson(_: Void) -> NSURL? {
-      let fileResource = R.file.gameDataJson
+    /// `bundle.URLForResource("GameDataQA1", withExtension: "json")`
+    static func gameDataQA1Json(_: Void) -> NSURL? {
+      let fileResource = R.file.gameDataQA1Json
+      return fileResource.bundle.URLForResource(fileResource)
+    }
+    
+    /// `bundle.URLForResource("GameDataQA2", withExtension: "json")`
+    static func gameDataQA2Json(_: Void) -> NSURL? {
+      let fileResource = R.file.gameDataQA2Json
       return fileResource.bundle.URLForResource(fileResource)
     }
     
@@ -67,7 +75,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 125 images.
+  /// This `R.image` struct is generated, and contains static references to 118 images.
   struct image {
     /// Image `background_blue`.
     static let background_blue = ImageResource(bundle: _R.hostingBundle, name: "background_blue")
@@ -77,6 +85,22 @@ struct R: Rswift.Validatable {
     static let background_hand_odds_green = ImageResource(bundle: _R.hostingBundle, name: "background_hand_odds_green")
     /// Image `background_hand_odds_grey`.
     static let background_hand_odds_grey = ImageResource(bundle: _R.hostingBundle, name: "background_hand_odds_grey")
+    /// Image `background_stats_level_1`.
+    static let background_stats_level_1 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_1")
+    /// Image `background_stats_level_2`.
+    static let background_stats_level_2 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_2")
+    /// Image `background_stats_level_3`.
+    static let background_stats_level_3 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_3")
+    /// Image `background_stats_level_4`.
+    static let background_stats_level_4 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_4")
+    /// Image `background_stats_level_5`.
+    static let background_stats_level_5 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_5")
+    /// Image `background_stats_level_6`.
+    static let background_stats_level_6 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_6")
+    /// Image `background_stats_level_7`.
+    static let background_stats_level_7 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_7")
+    /// Image `background_stats_level_overall`.
+    static let background_stats_level_overall = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_overall")
     /// Image `background_table_level_1`.
     static let background_table_level_1 = ImageResource(bundle: _R.hostingBundle, name: "background_table_level_1")
     /// Image `background_table_level_2`.
@@ -259,22 +283,6 @@ struct R: Rswift.Validatable {
     static let launch_screen = ImageResource(bundle: _R.hostingBundle, name: "launch_screen")
     /// Image `overlay_letters_blue`.
     static let overlay_letters_blue = ImageResource(bundle: _R.hostingBundle, name: "overlay_letters_blue")
-    /// Image `overlay_stats_level_1`.
-    static let overlay_stats_level_1 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_level_1")
-    /// Image `overlay_stats_level_2`.
-    static let overlay_stats_level_2 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_level_2")
-    /// Image `overlay_stats_level_3`.
-    static let overlay_stats_level_3 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_level_3")
-    /// Image `overlay_stats_level_4`.
-    static let overlay_stats_level_4 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_level_4")
-    /// Image `overlay_stats_level_5`.
-    static let overlay_stats_level_5 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_level_5")
-    /// Image `overlay_stats_level_6`.
-    static let overlay_stats_level_6 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_level_6")
-    /// Image `overlay_stats_level_7`.
-    static let overlay_stats_level_7 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_level_7")
-    /// Image `overlay_stats_level_overall`.
-    static let overlay_stats_level_overall = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_level_overall")
     /// Image `overlay_stats_locked_level_2`.
     static let overlay_stats_locked_level_2 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_locked_level_2")
     /// Image `overlay_stats_locked_level_3`.
@@ -287,20 +295,6 @@ struct R: Rswift.Validatable {
     static let overlay_stats_locked_level_6 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_locked_level_6")
     /// Image `overlay_stats_locked_level_7`.
     static let overlay_stats_locked_level_7 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_locked_level_7")
-    /// Image `overlay_table_level_1`.
-    static let overlay_table_level_1 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_level_1")
-    /// Image `overlay_table_level_2`.
-    static let overlay_table_level_2 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_level_2")
-    /// Image `overlay_table_level_3`.
-    static let overlay_table_level_3 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_level_3")
-    /// Image `overlay_table_level_4`.
-    static let overlay_table_level_4 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_level_4")
-    /// Image `overlay_table_level_5`.
-    static let overlay_table_level_5 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_level_5")
-    /// Image `overlay_table_level_6`.
-    static let overlay_table_level_6 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_level_6")
-    /// Image `overlay_table_level_7`.
-    static let overlay_table_level_7 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_level_7")
     /// Image `overlay_table_locked_level_2`.
     static let overlay_table_locked_level_2 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_locked_level_2")
     /// Image `overlay_table_locked_level_3`.
@@ -338,6 +332,46 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "background_hand_odds_grey", bundle: ..., traitCollection: ...)`
     static func background_hand_odds_grey(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.background_hand_odds_grey, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "background_stats_level_1", bundle: ..., traitCollection: ...)`
+    static func background_stats_level_1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.background_stats_level_1, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "background_stats_level_2", bundle: ..., traitCollection: ...)`
+    static func background_stats_level_2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.background_stats_level_2, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "background_stats_level_3", bundle: ..., traitCollection: ...)`
+    static func background_stats_level_3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.background_stats_level_3, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "background_stats_level_4", bundle: ..., traitCollection: ...)`
+    static func background_stats_level_4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.background_stats_level_4, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "background_stats_level_5", bundle: ..., traitCollection: ...)`
+    static func background_stats_level_5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.background_stats_level_5, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "background_stats_level_6", bundle: ..., traitCollection: ...)`
+    static func background_stats_level_6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.background_stats_level_6, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "background_stats_level_7", bundle: ..., traitCollection: ...)`
+    static func background_stats_level_7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.background_stats_level_7, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "background_stats_level_overall", bundle: ..., traitCollection: ...)`
+    static func background_stats_level_overall(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.background_stats_level_overall, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "background_table_level_1", bundle: ..., traitCollection: ...)`
@@ -795,46 +829,6 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.overlay_letters_blue, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_stats_level_1", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_level_1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_level_1, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_stats_level_2", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_level_2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_level_2, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_stats_level_3", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_level_3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_level_3, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_stats_level_4", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_level_4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_level_4, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_stats_level_5", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_level_5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_level_5, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_stats_level_6", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_level_6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_level_6, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_stats_level_7", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_level_7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_level_7, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_stats_level_overall", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_level_overall(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_level_overall, compatibleWithTraitCollection: traitCollection)
-    }
-    
     /// `UIImage(named: "overlay_stats_locked_level_2", bundle: ..., traitCollection: ...)`
     static func overlay_stats_locked_level_2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.overlay_stats_locked_level_2, compatibleWithTraitCollection: traitCollection)
@@ -863,41 +857,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "overlay_stats_locked_level_7", bundle: ..., traitCollection: ...)`
     static func overlay_stats_locked_level_7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.overlay_stats_locked_level_7, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_table_level_1", bundle: ..., traitCollection: ...)`
-    static func overlay_table_level_1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_level_1, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_table_level_2", bundle: ..., traitCollection: ...)`
-    static func overlay_table_level_2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_level_2, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_table_level_3", bundle: ..., traitCollection: ...)`
-    static func overlay_table_level_3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_level_3, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_table_level_4", bundle: ..., traitCollection: ...)`
-    static func overlay_table_level_4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_level_4, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_table_level_5", bundle: ..., traitCollection: ...)`
-    static func overlay_table_level_5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_level_5, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_table_level_6", bundle: ..., traitCollection: ...)`
-    static func overlay_table_level_6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_level_6, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "overlay_table_level_7", bundle: ..., traitCollection: ...)`
-    static func overlay_table_level_7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_level_7, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "overlay_table_locked_level_2", bundle: ..., traitCollection: ...)`
@@ -1212,7 +1171,7 @@ struct R: Rswift.Validatable {
 }
 
 struct _R: Rswift.Validatable {
-  static let hostingBundle = NSBundle(identifier: "com.visput.holdemhands.prod") ?? NSBundle.mainBundle()
+  static let hostingBundle = NSBundle(identifier: "com.visput.holdemhands.test") ?? NSBundle.mainBundle()
   
   static func validate() throws {
     try storyboard.validate()
