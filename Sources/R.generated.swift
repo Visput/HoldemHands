@@ -16,16 +16,14 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 6 files.
+  /// This `R.file` struct is generated, and contains static references to 5 files.
   struct file {
     /// Resource file `app_font.ttc`.
     static let app_fontTtc = FileResource(bundle: _R.hostingBundle, name: "app_font", pathExtension: "ttc")
     /// Resource file `DefaultPlayerData.json`.
     static let defaultPlayerDataJson = FileResource(bundle: _R.hostingBundle, name: "DefaultPlayerData", pathExtension: "json")
-    /// Resource file `GameDataQA1.json`.
-    static let gameDataQA1Json = FileResource(bundle: _R.hostingBundle, name: "GameDataQA1", pathExtension: "json")
-    /// Resource file `GameDataQA2.json`.
-    static let gameDataQA2Json = FileResource(bundle: _R.hostingBundle, name: "GameDataQA2", pathExtension: "json")
+    /// Resource file `GameData.json`.
+    static let gameDataJson = FileResource(bundle: _R.hostingBundle, name: "GameData", pathExtension: "json")
     /// Resource file `iTunesArtwork@2x.png`.
     static let iTunesArtwork2xPng = FileResource(bundle: _R.hostingBundle, name: "iTunesArtwork@2x", pathExtension: "png")
     /// Resource file `iTunesArtwork.png`.
@@ -43,15 +41,9 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.URLForResource(fileResource)
     }
     
-    /// `bundle.URLForResource("GameDataQA1", withExtension: "json")`
-    static func gameDataQA1Json(_: Void) -> NSURL? {
-      let fileResource = R.file.gameDataQA1Json
-      return fileResource.bundle.URLForResource(fileResource)
-    }
-    
-    /// `bundle.URLForResource("GameDataQA2", withExtension: "json")`
-    static func gameDataQA2Json(_: Void) -> NSURL? {
-      let fileResource = R.file.gameDataQA2Json
+    /// `bundle.URLForResource("GameData", withExtension: "json")`
+    static func gameDataJson(_: Void) -> NSURL? {
+      let fileResource = R.file.gameDataJson
       return fileResource.bundle.URLForResource(fileResource)
     }
     
@@ -1220,7 +1212,7 @@ struct R: Rswift.Validatable {
 }
 
 struct _R: Rswift.Validatable {
-  static let hostingBundle = NSBundle(identifier: "com.visput.holdemhands.test") ?? NSBundle.mainBundle()
+  static let hostingBundle = NSBundle(identifier: "com.visput.holdemhands.prod") ?? NSBundle.mainBundle()
   
   static func validate() throws {
     try storyboard.validate()
@@ -1282,7 +1274,6 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIImage(named: "background_table_level_1") == nil { throw ValidationError(description: "[R.swift] Image named 'background_table_level_1' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_share_twitter") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_twitter' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_chip_blue") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_chip_blue' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_done_green") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_done_green' is used in storyboard 'Main', but couldn't be loaded.") }
@@ -1295,7 +1286,6 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "background_blue") == nil { throw ValidationError(description: "[R.swift] Image named 'background_blue' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_play") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_play' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "card_back") == nil { throw ValidationError(description: "[R.swift] Image named 'card_back' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "overlay_table_level_1") == nil { throw ValidationError(description: "[R.swift] Image named 'overlay_table_level_1' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "background_hand_odds_green") == nil { throw ValidationError(description: "[R.swift] Image named 'background_hand_odds_green' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "button_menu_play_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'button_menu_play_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_share_facebook") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_facebook' is used in storyboard 'Main', but couldn't be loaded.") }
@@ -1309,7 +1299,6 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "icon_share_facebook_large") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_facebook_large' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "button_menu_stats_normal") == nil { throw ValidationError(description: "[R.swift] Image named 'button_menu_stats_normal' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "icon_share_instagram_large") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_instagram_large' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "overlay_stats_level_1") == nil { throw ValidationError(description: "[R.swift] Image named 'overlay_stats_level_1' is used in storyboard 'Main', but couldn't be loaded.") }
         if _R.storyboard.main().mainScreen() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'mainScreen' could not be loaded from storyboard 'Main' as 'MainScreen'.") }
         if _R.storyboard.main().gameScreen() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'gameScreen' could not be loaded from storyboard 'Main' as 'GameScreen'.") }
         if _R.storyboard.main().statsScreen() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'statsScreen' could not be loaded from storyboard 'Main' as 'StatsScreen'.") }
