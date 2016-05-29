@@ -16,16 +16,14 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 6 files.
+  /// This `R.file` struct is generated, and contains static references to 5 files.
   struct file {
     /// Resource file `app_font.ttc`.
     static let app_fontTtc = FileResource(bundle: _R.hostingBundle, name: "app_font", pathExtension: "ttc")
     /// Resource file `DefaultPlayerData.json`.
     static let defaultPlayerDataJson = FileResource(bundle: _R.hostingBundle, name: "DefaultPlayerData", pathExtension: "json")
-    /// Resource file `GameDataQA1.json`.
-    static let gameDataQA1Json = FileResource(bundle: _R.hostingBundle, name: "GameDataQA1", pathExtension: "json")
-    /// Resource file `GameDataQA2.json`.
-    static let gameDataQA2Json = FileResource(bundle: _R.hostingBundle, name: "GameDataQA2", pathExtension: "json")
+    /// Resource file `GameData.json`.
+    static let gameDataJson = FileResource(bundle: _R.hostingBundle, name: "GameData", pathExtension: "json")
     /// Resource file `iTunesArtwork@2x.png`.
     static let iTunesArtwork2xPng = FileResource(bundle: _R.hostingBundle, name: "iTunesArtwork@2x", pathExtension: "png")
     /// Resource file `iTunesArtwork.png`.
@@ -43,15 +41,9 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.URLForResource(fileResource)
     }
     
-    /// `bundle.URLForResource("GameDataQA1", withExtension: "json")`
-    static func gameDataQA1Json(_: Void) -> NSURL? {
-      let fileResource = R.file.gameDataQA1Json
-      return fileResource.bundle.URLForResource(fileResource)
-    }
-    
-    /// `bundle.URLForResource("GameDataQA2", withExtension: "json")`
-    static func gameDataQA2Json(_: Void) -> NSURL? {
-      let fileResource = R.file.gameDataQA2Json
+    /// `bundle.URLForResource("GameData", withExtension: "json")`
+    static func gameDataJson(_: Void) -> NSURL? {
+      let fileResource = R.file.gameDataJson
       return fileResource.bundle.URLForResource(fileResource)
     }
     
@@ -77,671 +69,671 @@ struct R: Rswift.Validatable {
   
   /// This `R.image` struct is generated, and contains static references to 118 images.
   struct image {
-    /// Image `background_blue`.
-    static let background_blue = ImageResource(bundle: _R.hostingBundle, name: "background_blue")
-    /// Image `background_green`.
-    static let background_green = ImageResource(bundle: _R.hostingBundle, name: "background_green")
-    /// Image `background_hand_odds_green`.
-    static let background_hand_odds_green = ImageResource(bundle: _R.hostingBundle, name: "background_hand_odds_green")
-    /// Image `background_hand_odds_grey`.
-    static let background_hand_odds_grey = ImageResource(bundle: _R.hostingBundle, name: "background_hand_odds_grey")
-    /// Image `background_stats_level_1`.
-    static let background_stats_level_1 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_1")
-    /// Image `background_stats_level_2`.
-    static let background_stats_level_2 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_2")
-    /// Image `background_stats_level_3`.
-    static let background_stats_level_3 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_3")
-    /// Image `background_stats_level_4`.
-    static let background_stats_level_4 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_4")
-    /// Image `background_stats_level_5`.
-    static let background_stats_level_5 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_5")
-    /// Image `background_stats_level_6`.
-    static let background_stats_level_6 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_6")
-    /// Image `background_stats_level_7`.
-    static let background_stats_level_7 = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_7")
-    /// Image `background_stats_level_overall`.
-    static let background_stats_level_overall = ImageResource(bundle: _R.hostingBundle, name: "background_stats_level_overall")
-    /// Image `background_table_level_1`.
-    static let background_table_level_1 = ImageResource(bundle: _R.hostingBundle, name: "background_table_level_1")
-    /// Image `background_table_level_2`.
-    static let background_table_level_2 = ImageResource(bundle: _R.hostingBundle, name: "background_table_level_2")
-    /// Image `background_table_level_3`.
-    static let background_table_level_3 = ImageResource(bundle: _R.hostingBundle, name: "background_table_level_3")
-    /// Image `background_table_level_4`.
-    static let background_table_level_4 = ImageResource(bundle: _R.hostingBundle, name: "background_table_level_4")
-    /// Image `background_table_level_5`.
-    static let background_table_level_5 = ImageResource(bundle: _R.hostingBundle, name: "background_table_level_5")
-    /// Image `background_table_level_6`.
-    static let background_table_level_6 = ImageResource(bundle: _R.hostingBundle, name: "background_table_level_6")
-    /// Image `background_table_level_7`.
-    static let background_table_level_7 = ImageResource(bundle: _R.hostingBundle, name: "background_table_level_7")
-    /// Image `background_table_locked`.
-    static let background_table_locked = ImageResource(bundle: _R.hostingBundle, name: "background_table_locked")
-    /// Image `banner_standard`.
-    static let banner_standard = ImageResource(bundle: _R.hostingBundle, name: "banner_standard")
-    /// Image `banner_unlock_level_2`.
-    static let banner_unlock_level_2 = ImageResource(bundle: _R.hostingBundle, name: "banner_unlock_level_2")
-    /// Image `banner_unlock_level_3`.
-    static let banner_unlock_level_3 = ImageResource(bundle: _R.hostingBundle, name: "banner_unlock_level_3")
-    /// Image `banner_unlock_level_4`.
-    static let banner_unlock_level_4 = ImageResource(bundle: _R.hostingBundle, name: "banner_unlock_level_4")
-    /// Image `banner_unlock_level_5`.
-    static let banner_unlock_level_5 = ImageResource(bundle: _R.hostingBundle, name: "banner_unlock_level_5")
-    /// Image `banner_unlock_level_6`.
-    static let banner_unlock_level_6 = ImageResource(bundle: _R.hostingBundle, name: "banner_unlock_level_6")
-    /// Image `banner_unlock_level_7`.
-    static let banner_unlock_level_7 = ImageResource(bundle: _R.hostingBundle, name: "banner_unlock_level_7")
-    /// Image `button_menu_play_normal`.
-    static let button_menu_play_normal = ImageResource(bundle: _R.hostingBundle, name: "button_menu_play_normal")
-    /// Image `button_menu_play_selected`.
-    static let button_menu_play_selected = ImageResource(bundle: _R.hostingBundle, name: "button_menu_play_selected")
-    /// Image `button_menu_share_normal`.
-    static let button_menu_share_normal = ImageResource(bundle: _R.hostingBundle, name: "button_menu_share_normal")
-    /// Image `button_menu_share_selected`.
-    static let button_menu_share_selected = ImageResource(bundle: _R.hostingBundle, name: "button_menu_share_selected")
-    /// Image `button_menu_stats_normal`.
-    static let button_menu_stats_normal = ImageResource(bundle: _R.hostingBundle, name: "button_menu_stats_normal")
-    /// Image `button_menu_stats_selected`.
-    static let button_menu_stats_selected = ImageResource(bundle: _R.hostingBundle, name: "button_menu_stats_selected")
-    /// Image `card_back`.
-    static let card_back = ImageResource(bundle: _R.hostingBundle, name: "card_back")
-    /// Image `card_suit0_rank0`.
-    static let card_suit0_rank0 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank0")
-    /// Image `card_suit0_rank1`.
-    static let card_suit0_rank1 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank1")
-    /// Image `card_suit0_rank10`.
-    static let card_suit0_rank10 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank10")
-    /// Image `card_suit0_rank11`.
-    static let card_suit0_rank11 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank11")
-    /// Image `card_suit0_rank12`.
-    static let card_suit0_rank12 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank12")
-    /// Image `card_suit0_rank2`.
-    static let card_suit0_rank2 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank2")
-    /// Image `card_suit0_rank3`.
-    static let card_suit0_rank3 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank3")
-    /// Image `card_suit0_rank4`.
-    static let card_suit0_rank4 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank4")
-    /// Image `card_suit0_rank5`.
-    static let card_suit0_rank5 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank5")
-    /// Image `card_suit0_rank6`.
-    static let card_suit0_rank6 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank6")
-    /// Image `card_suit0_rank7`.
-    static let card_suit0_rank7 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank7")
-    /// Image `card_suit0_rank8`.
-    static let card_suit0_rank8 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank8")
-    /// Image `card_suit0_rank9`.
-    static let card_suit0_rank9 = ImageResource(bundle: _R.hostingBundle, name: "card_suit0_rank9")
-    /// Image `card_suit1_rank0`.
-    static let card_suit1_rank0 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank0")
-    /// Image `card_suit1_rank1`.
-    static let card_suit1_rank1 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank1")
-    /// Image `card_suit1_rank10`.
-    static let card_suit1_rank10 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank10")
-    /// Image `card_suit1_rank11`.
-    static let card_suit1_rank11 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank11")
-    /// Image `card_suit1_rank12`.
-    static let card_suit1_rank12 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank12")
-    /// Image `card_suit1_rank2`.
-    static let card_suit1_rank2 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank2")
-    /// Image `card_suit1_rank3`.
-    static let card_suit1_rank3 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank3")
-    /// Image `card_suit1_rank4`.
-    static let card_suit1_rank4 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank4")
-    /// Image `card_suit1_rank5`.
-    static let card_suit1_rank5 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank5")
-    /// Image `card_suit1_rank6`.
-    static let card_suit1_rank6 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank6")
-    /// Image `card_suit1_rank7`.
-    static let card_suit1_rank7 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank7")
-    /// Image `card_suit1_rank8`.
-    static let card_suit1_rank8 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank8")
-    /// Image `card_suit1_rank9`.
-    static let card_suit1_rank9 = ImageResource(bundle: _R.hostingBundle, name: "card_suit1_rank9")
-    /// Image `card_suit2_rank0`.
-    static let card_suit2_rank0 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank0")
-    /// Image `card_suit2_rank1`.
-    static let card_suit2_rank1 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank1")
-    /// Image `card_suit2_rank10`.
-    static let card_suit2_rank10 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank10")
-    /// Image `card_suit2_rank11`.
-    static let card_suit2_rank11 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank11")
-    /// Image `card_suit2_rank12`.
-    static let card_suit2_rank12 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank12")
-    /// Image `card_suit2_rank2`.
-    static let card_suit2_rank2 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank2")
-    /// Image `card_suit2_rank3`.
-    static let card_suit2_rank3 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank3")
-    /// Image `card_suit2_rank4`.
-    static let card_suit2_rank4 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank4")
-    /// Image `card_suit2_rank5`.
-    static let card_suit2_rank5 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank5")
-    /// Image `card_suit2_rank6`.
-    static let card_suit2_rank6 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank6")
-    /// Image `card_suit2_rank7`.
-    static let card_suit2_rank7 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank7")
-    /// Image `card_suit2_rank8`.
-    static let card_suit2_rank8 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank8")
-    /// Image `card_suit2_rank9`.
-    static let card_suit2_rank9 = ImageResource(bundle: _R.hostingBundle, name: "card_suit2_rank9")
-    /// Image `card_suit3_rank0`.
-    static let card_suit3_rank0 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank0")
-    /// Image `card_suit3_rank1`.
-    static let card_suit3_rank1 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank1")
-    /// Image `card_suit3_rank10`.
-    static let card_suit3_rank10 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank10")
-    /// Image `card_suit3_rank11`.
-    static let card_suit3_rank11 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank11")
-    /// Image `card_suit3_rank12`.
-    static let card_suit3_rank12 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank12")
-    /// Image `card_suit3_rank2`.
-    static let card_suit3_rank2 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank2")
-    /// Image `card_suit3_rank3`.
-    static let card_suit3_rank3 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank3")
-    /// Image `card_suit3_rank4`.
-    static let card_suit3_rank4 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank4")
-    /// Image `card_suit3_rank5`.
-    static let card_suit3_rank5 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank5")
-    /// Image `card_suit3_rank6`.
-    static let card_suit3_rank6 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank6")
-    /// Image `card_suit3_rank7`.
-    static let card_suit3_rank7 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank7")
-    /// Image `card_suit3_rank8`.
-    static let card_suit3_rank8 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank8")
-    /// Image `card_suit3_rank9`.
-    static let card_suit3_rank9 = ImageResource(bundle: _R.hostingBundle, name: "card_suit3_rank9")
+    /// Image `background.blue`.
+    static let backgroundBlue = ImageResource(bundle: _R.hostingBundle, name: "background.blue")
+    /// Image `background.green`.
+    static let backgroundGreen = ImageResource(bundle: _R.hostingBundle, name: "background.green")
+    /// Image `background.hand.odds.green`.
+    static let backgroundHandOddsGreen = ImageResource(bundle: _R.hostingBundle, name: "background.hand.odds.green")
+    /// Image `background.hand.odds.grey`.
+    static let backgroundHandOddsGrey = ImageResource(bundle: _R.hostingBundle, name: "background.hand.odds.grey")
+    /// Image `background.stats.level.1`.
+    static let backgroundStatsLevel1 = ImageResource(bundle: _R.hostingBundle, name: "background.stats.level.1")
+    /// Image `background.stats.level.2`.
+    static let backgroundStatsLevel2 = ImageResource(bundle: _R.hostingBundle, name: "background.stats.level.2")
+    /// Image `background.stats.level.3`.
+    static let backgroundStatsLevel3 = ImageResource(bundle: _R.hostingBundle, name: "background.stats.level.3")
+    /// Image `background.stats.level.4`.
+    static let backgroundStatsLevel4 = ImageResource(bundle: _R.hostingBundle, name: "background.stats.level.4")
+    /// Image `background.stats.level.5`.
+    static let backgroundStatsLevel5 = ImageResource(bundle: _R.hostingBundle, name: "background.stats.level.5")
+    /// Image `background.stats.level.6`.
+    static let backgroundStatsLevel6 = ImageResource(bundle: _R.hostingBundle, name: "background.stats.level.6")
+    /// Image `background.stats.level.7`.
+    static let backgroundStatsLevel7 = ImageResource(bundle: _R.hostingBundle, name: "background.stats.level.7")
+    /// Image `background.stats.level.overall`.
+    static let backgroundStatsLevelOverall = ImageResource(bundle: _R.hostingBundle, name: "background.stats.level.overall")
+    /// Image `background.table.level.1`.
+    static let backgroundTableLevel1 = ImageResource(bundle: _R.hostingBundle, name: "background.table.level.1")
+    /// Image `background.table.level.2`.
+    static let backgroundTableLevel2 = ImageResource(bundle: _R.hostingBundle, name: "background.table.level.2")
+    /// Image `background.table.level.3`.
+    static let backgroundTableLevel3 = ImageResource(bundle: _R.hostingBundle, name: "background.table.level.3")
+    /// Image `background.table.level.4`.
+    static let backgroundTableLevel4 = ImageResource(bundle: _R.hostingBundle, name: "background.table.level.4")
+    /// Image `background.table.level.5`.
+    static let backgroundTableLevel5 = ImageResource(bundle: _R.hostingBundle, name: "background.table.level.5")
+    /// Image `background.table.level.6`.
+    static let backgroundTableLevel6 = ImageResource(bundle: _R.hostingBundle, name: "background.table.level.6")
+    /// Image `background.table.level.7`.
+    static let backgroundTableLevel7 = ImageResource(bundle: _R.hostingBundle, name: "background.table.level.7")
+    /// Image `background.table.locked`.
+    static let backgroundTableLocked = ImageResource(bundle: _R.hostingBundle, name: "background.table.locked")
+    /// Image `banner.standard`.
+    static let bannerStandard = ImageResource(bundle: _R.hostingBundle, name: "banner.standard")
+    /// Image `banner.unlock.level.2`.
+    static let bannerUnlockLevel2 = ImageResource(bundle: _R.hostingBundle, name: "banner.unlock.level.2")
+    /// Image `banner.unlock.level.3`.
+    static let bannerUnlockLevel3 = ImageResource(bundle: _R.hostingBundle, name: "banner.unlock.level.3")
+    /// Image `banner.unlock.level.4`.
+    static let bannerUnlockLevel4 = ImageResource(bundle: _R.hostingBundle, name: "banner.unlock.level.4")
+    /// Image `banner.unlock.level.5`.
+    static let bannerUnlockLevel5 = ImageResource(bundle: _R.hostingBundle, name: "banner.unlock.level.5")
+    /// Image `banner.unlock.level.6`.
+    static let bannerUnlockLevel6 = ImageResource(bundle: _R.hostingBundle, name: "banner.unlock.level.6")
+    /// Image `banner.unlock.level.7`.
+    static let bannerUnlockLevel7 = ImageResource(bundle: _R.hostingBundle, name: "banner.unlock.level.7")
+    /// Image `button.menu.play.normal`.
+    static let buttonMenuPlayNormal = ImageResource(bundle: _R.hostingBundle, name: "button.menu.play.normal")
+    /// Image `button.menu.play.selected`.
+    static let buttonMenuPlaySelected = ImageResource(bundle: _R.hostingBundle, name: "button.menu.play.selected")
+    /// Image `button.menu.share.normal`.
+    static let buttonMenuShareNormal = ImageResource(bundle: _R.hostingBundle, name: "button.menu.share.normal")
+    /// Image `button.menu.share.selected`.
+    static let buttonMenuShareSelected = ImageResource(bundle: _R.hostingBundle, name: "button.menu.share.selected")
+    /// Image `button.menu.stats.normal`.
+    static let buttonMenuStatsNormal = ImageResource(bundle: _R.hostingBundle, name: "button.menu.stats.normal")
+    /// Image `button.menu.stats.selected`.
+    static let buttonMenuStatsSelected = ImageResource(bundle: _R.hostingBundle, name: "button.menu.stats.selected")
+    /// Image `card.back`.
+    static let cardBack = ImageResource(bundle: _R.hostingBundle, name: "card.back")
+    /// Image `card.suit0.rank0`.
+    static let cardSuit0Rank0 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank0")
+    /// Image `card.suit0.rank1`.
+    static let cardSuit0Rank1 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank1")
+    /// Image `card.suit0.rank10`.
+    static let cardSuit0Rank10 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank10")
+    /// Image `card.suit0.rank11`.
+    static let cardSuit0Rank11 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank11")
+    /// Image `card.suit0.rank12`.
+    static let cardSuit0Rank12 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank12")
+    /// Image `card.suit0.rank2`.
+    static let cardSuit0Rank2 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank2")
+    /// Image `card.suit0.rank3`.
+    static let cardSuit0Rank3 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank3")
+    /// Image `card.suit0.rank4`.
+    static let cardSuit0Rank4 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank4")
+    /// Image `card.suit0.rank5`.
+    static let cardSuit0Rank5 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank5")
+    /// Image `card.suit0.rank6`.
+    static let cardSuit0Rank6 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank6")
+    /// Image `card.suit0.rank7`.
+    static let cardSuit0Rank7 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank7")
+    /// Image `card.suit0.rank8`.
+    static let cardSuit0Rank8 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank8")
+    /// Image `card.suit0.rank9`.
+    static let cardSuit0Rank9 = ImageResource(bundle: _R.hostingBundle, name: "card.suit0.rank9")
+    /// Image `card.suit1.rank0`.
+    static let cardSuit1Rank0 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank0")
+    /// Image `card.suit1.rank1`.
+    static let cardSuit1Rank1 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank1")
+    /// Image `card.suit1.rank10`.
+    static let cardSuit1Rank10 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank10")
+    /// Image `card.suit1.rank11`.
+    static let cardSuit1Rank11 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank11")
+    /// Image `card.suit1.rank12`.
+    static let cardSuit1Rank12 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank12")
+    /// Image `card.suit1.rank2`.
+    static let cardSuit1Rank2 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank2")
+    /// Image `card.suit1.rank3`.
+    static let cardSuit1Rank3 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank3")
+    /// Image `card.suit1.rank4`.
+    static let cardSuit1Rank4 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank4")
+    /// Image `card.suit1.rank5`.
+    static let cardSuit1Rank5 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank5")
+    /// Image `card.suit1.rank6`.
+    static let cardSuit1Rank6 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank6")
+    /// Image `card.suit1.rank7`.
+    static let cardSuit1Rank7 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank7")
+    /// Image `card.suit1.rank8`.
+    static let cardSuit1Rank8 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank8")
+    /// Image `card.suit1.rank9`.
+    static let cardSuit1Rank9 = ImageResource(bundle: _R.hostingBundle, name: "card.suit1.rank9")
+    /// Image `card.suit2.rank0`.
+    static let cardSuit2Rank0 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank0")
+    /// Image `card.suit2.rank1`.
+    static let cardSuit2Rank1 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank1")
+    /// Image `card.suit2.rank10`.
+    static let cardSuit2Rank10 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank10")
+    /// Image `card.suit2.rank11`.
+    static let cardSuit2Rank11 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank11")
+    /// Image `card.suit2.rank12`.
+    static let cardSuit2Rank12 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank12")
+    /// Image `card.suit2.rank2`.
+    static let cardSuit2Rank2 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank2")
+    /// Image `card.suit2.rank3`.
+    static let cardSuit2Rank3 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank3")
+    /// Image `card.suit2.rank4`.
+    static let cardSuit2Rank4 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank4")
+    /// Image `card.suit2.rank5`.
+    static let cardSuit2Rank5 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank5")
+    /// Image `card.suit2.rank6`.
+    static let cardSuit2Rank6 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank6")
+    /// Image `card.suit2.rank7`.
+    static let cardSuit2Rank7 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank7")
+    /// Image `card.suit2.rank8`.
+    static let cardSuit2Rank8 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank8")
+    /// Image `card.suit2.rank9`.
+    static let cardSuit2Rank9 = ImageResource(bundle: _R.hostingBundle, name: "card.suit2.rank9")
+    /// Image `card.suit3.rank0`.
+    static let cardSuit3Rank0 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank0")
+    /// Image `card.suit3.rank1`.
+    static let cardSuit3Rank1 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank1")
+    /// Image `card.suit3.rank10`.
+    static let cardSuit3Rank10 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank10")
+    /// Image `card.suit3.rank11`.
+    static let cardSuit3Rank11 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank11")
+    /// Image `card.suit3.rank12`.
+    static let cardSuit3Rank12 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank12")
+    /// Image `card.suit3.rank2`.
+    static let cardSuit3Rank2 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank2")
+    /// Image `card.suit3.rank3`.
+    static let cardSuit3Rank3 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank3")
+    /// Image `card.suit3.rank4`.
+    static let cardSuit3Rank4 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank4")
+    /// Image `card.suit3.rank5`.
+    static let cardSuit3Rank5 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank5")
+    /// Image `card.suit3.rank6`.
+    static let cardSuit3Rank6 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank6")
+    /// Image `card.suit3.rank7`.
+    static let cardSuit3Rank7 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank7")
+    /// Image `card.suit3.rank8`.
+    static let cardSuit3Rank8 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank8")
+    /// Image `card.suit3.rank9`.
+    static let cardSuit3Rank9 = ImageResource(bundle: _R.hostingBundle, name: "card.suit3.rank9")
     /// Image `iTunesArtwork`.
     static let iTunesArtwork = ImageResource(bundle: _R.hostingBundle, name: "iTunesArtwork")
-    /// Image `icon_chip_blue`.
-    static let icon_chip_blue = ImageResource(bundle: _R.hostingBundle, name: "icon_chip_blue")
-    /// Image `icon_done_blue`.
-    static let icon_done_blue = ImageResource(bundle: _R.hostingBundle, name: "icon_done_blue")
-    /// Image `icon_done_green`.
-    static let icon_done_green = ImageResource(bundle: _R.hostingBundle, name: "icon_done_green")
-    /// Image `icon_leaderboards_blue`.
-    static let icon_leaderboards_blue = ImageResource(bundle: _R.hostingBundle, name: "icon_leaderboards_blue")
-    /// Image `icon_play`.
-    static let icon_play = ImageResource(bundle: _R.hostingBundle, name: "icon_play")
-    /// Image `icon_share_facebook`.
-    static let icon_share_facebook = ImageResource(bundle: _R.hostingBundle, name: "icon_share_facebook")
-    /// Image `icon_share_facebook_large`.
-    static let icon_share_facebook_large = ImageResource(bundle: _R.hostingBundle, name: "icon_share_facebook_large")
-    /// Image `icon_share_instagram`.
-    static let icon_share_instagram = ImageResource(bundle: _R.hostingBundle, name: "icon_share_instagram")
-    /// Image `icon_share_instagram_large`.
-    static let icon_share_instagram_large = ImageResource(bundle: _R.hostingBundle, name: "icon_share_instagram_large")
-    /// Image `icon_share_twitter`.
-    static let icon_share_twitter = ImageResource(bundle: _R.hostingBundle, name: "icon_share_twitter")
-    /// Image `icon_share_twitter_large`.
-    static let icon_share_twitter_large = ImageResource(bundle: _R.hostingBundle, name: "icon_share_twitter_large")
-    /// Image `icon_stats`.
-    static let icon_stats = ImageResource(bundle: _R.hostingBundle, name: "icon_stats")
-    /// Image `icon_stats_blue`.
-    static let icon_stats_blue = ImageResource(bundle: _R.hostingBundle, name: "icon_stats_blue")
-    /// Image `icon_stats_green`.
-    static let icon_stats_green = ImageResource(bundle: _R.hostingBundle, name: "icon_stats_green")
-    /// Image `launch_screen`.
-    static let launch_screen = ImageResource(bundle: _R.hostingBundle, name: "launch_screen")
-    /// Image `overlay_letters_blue`.
-    static let overlay_letters_blue = ImageResource(bundle: _R.hostingBundle, name: "overlay_letters_blue")
-    /// Image `overlay_stats_locked_level_2`.
-    static let overlay_stats_locked_level_2 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_locked_level_2")
-    /// Image `overlay_stats_locked_level_3`.
-    static let overlay_stats_locked_level_3 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_locked_level_3")
-    /// Image `overlay_stats_locked_level_4`.
-    static let overlay_stats_locked_level_4 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_locked_level_4")
-    /// Image `overlay_stats_locked_level_5`.
-    static let overlay_stats_locked_level_5 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_locked_level_5")
-    /// Image `overlay_stats_locked_level_6`.
-    static let overlay_stats_locked_level_6 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_locked_level_6")
-    /// Image `overlay_stats_locked_level_7`.
-    static let overlay_stats_locked_level_7 = ImageResource(bundle: _R.hostingBundle, name: "overlay_stats_locked_level_7")
-    /// Image `overlay_table_locked_level_2`.
-    static let overlay_table_locked_level_2 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_locked_level_2")
-    /// Image `overlay_table_locked_level_3`.
-    static let overlay_table_locked_level_3 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_locked_level_3")
-    /// Image `overlay_table_locked_level_4`.
-    static let overlay_table_locked_level_4 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_locked_level_4")
-    /// Image `overlay_table_locked_level_5`.
-    static let overlay_table_locked_level_5 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_locked_level_5")
-    /// Image `overlay_table_locked_level_6`.
-    static let overlay_table_locked_level_6 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_locked_level_6")
-    /// Image `overlay_table_locked_level_7`.
-    static let overlay_table_locked_level_7 = ImageResource(bundle: _R.hostingBundle, name: "overlay_table_locked_level_7")
-    /// Image `shadow_blue`.
-    static let shadow_blue = ImageResource(bundle: _R.hostingBundle, name: "shadow_blue")
-    /// Image `share_screen_instagram`.
-    static let share_screen_instagram = ImageResource(bundle: _R.hostingBundle, name: "share_screen_instagram")
-    /// Image `share_screen_twitter`.
-    static let share_screen_twitter = ImageResource(bundle: _R.hostingBundle, name: "share_screen_twitter")
-    
-    /// `UIImage(named: "background_blue", bundle: ..., traitCollection: ...)`
-    static func background_blue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_blue, compatibleWithTraitCollection: traitCollection)
-    }
+    /// Image `icon.chip.blue`.
+    static let iconChipBlue = ImageResource(bundle: _R.hostingBundle, name: "icon.chip.blue")
+    /// Image `icon.done.blue`.
+    static let iconDoneBlue = ImageResource(bundle: _R.hostingBundle, name: "icon.done.blue")
+    /// Image `icon.done.green`.
+    static let iconDoneGreen = ImageResource(bundle: _R.hostingBundle, name: "icon.done.green")
+    /// Image `icon.leaderboards.blue`.
+    static let iconLeaderboardsBlue = ImageResource(bundle: _R.hostingBundle, name: "icon.leaderboards.blue")
+    /// Image `icon.menu.play`.
+    static let iconMenuPlay = ImageResource(bundle: _R.hostingBundle, name: "icon.menu.play")
+    /// Image `icon.menu.stats`.
+    static let iconMenuStats = ImageResource(bundle: _R.hostingBundle, name: "icon.menu.stats")
+    /// Image `icon.share.facebook.large`.
+    static let iconShareFacebookLarge = ImageResource(bundle: _R.hostingBundle, name: "icon.share.facebook.large")
+    /// Image `icon.share.facebook.small`.
+    static let iconShareFacebookSmall = ImageResource(bundle: _R.hostingBundle, name: "icon.share.facebook.small")
+    /// Image `icon.share.instagram.large`.
+    static let iconShareInstagramLarge = ImageResource(bundle: _R.hostingBundle, name: "icon.share.instagram.large")
+    /// Image `icon.share.instagram.small`.
+    static let iconShareInstagramSmall = ImageResource(bundle: _R.hostingBundle, name: "icon.share.instagram.small")
+    /// Image `icon.share.twitter.large`.
+    static let iconShareTwitterLarge = ImageResource(bundle: _R.hostingBundle, name: "icon.share.twitter.large")
+    /// Image `icon.share.twitter.small`.
+    static let iconShareTwitterSmall = ImageResource(bundle: _R.hostingBundle, name: "icon.share.twitter.small")
+    /// Image `icon.stats.blue`.
+    static let iconStatsBlue = ImageResource(bundle: _R.hostingBundle, name: "icon.stats.blue")
+    /// Image `icon.stats.green`.
+    static let iconStatsGreen = ImageResource(bundle: _R.hostingBundle, name: "icon.stats.green")
+    /// Image `launch.screen`.
+    static let launchScreen = ImageResource(bundle: _R.hostingBundle, name: "launch.screen")
+    /// Image `overlay.letters.blue`.
+    static let overlayLettersBlue = ImageResource(bundle: _R.hostingBundle, name: "overlay.letters.blue")
+    /// Image `overlay.stats.locked.level.2`.
+    static let overlayStatsLockedLevel2 = ImageResource(bundle: _R.hostingBundle, name: "overlay.stats.locked.level.2")
+    /// Image `overlay.stats.locked.level.3`.
+    static let overlayStatsLockedLevel3 = ImageResource(bundle: _R.hostingBundle, name: "overlay.stats.locked.level.3")
+    /// Image `overlay.stats.locked.level.4`.
+    static let overlayStatsLockedLevel4 = ImageResource(bundle: _R.hostingBundle, name: "overlay.stats.locked.level.4")
+    /// Image `overlay.stats.locked.level.5`.
+    static let overlayStatsLockedLevel5 = ImageResource(bundle: _R.hostingBundle, name: "overlay.stats.locked.level.5")
+    /// Image `overlay.stats.locked.level.6`.
+    static let overlayStatsLockedLevel6 = ImageResource(bundle: _R.hostingBundle, name: "overlay.stats.locked.level.6")
+    /// Image `overlay.stats.locked.level.7`.
+    static let overlayStatsLockedLevel7 = ImageResource(bundle: _R.hostingBundle, name: "overlay.stats.locked.level.7")
+    /// Image `overlay.table.locked.level.2`.
+    static let overlayTableLockedLevel2 = ImageResource(bundle: _R.hostingBundle, name: "overlay.table.locked.level.2")
+    /// Image `overlay.table.locked.level.3`.
+    static let overlayTableLockedLevel3 = ImageResource(bundle: _R.hostingBundle, name: "overlay.table.locked.level.3")
+    /// Image `overlay.table.locked.level.4`.
+    static let overlayTableLockedLevel4 = ImageResource(bundle: _R.hostingBundle, name: "overlay.table.locked.level.4")
+    /// Image `overlay.table.locked.level.5`.
+    static let overlayTableLockedLevel5 = ImageResource(bundle: _R.hostingBundle, name: "overlay.table.locked.level.5")
+    /// Image `overlay.table.locked.level.6`.
+    static let overlayTableLockedLevel6 = ImageResource(bundle: _R.hostingBundle, name: "overlay.table.locked.level.6")
+    /// Image `overlay.table.locked.level.7`.
+    static let overlayTableLockedLevel7 = ImageResource(bundle: _R.hostingBundle, name: "overlay.table.locked.level.7")
+    /// Image `shadow.blue`.
+    static let shadowBlue = ImageResource(bundle: _R.hostingBundle, name: "shadow.blue")
+    /// Image `share.screen.instagram`.
+    static let shareScreenInstagram = ImageResource(bundle: _R.hostingBundle, name: "share.screen.instagram")
+    /// Image `share.screen.twitter`.
+    static let shareScreenTwitter = ImageResource(bundle: _R.hostingBundle, name: "share.screen.twitter")
+    
+    /// `UIImage(named: "background.blue", bundle: ..., traitCollection: ...)`
+    static func backgroundBlue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundBlue, compatibleWithTraitCollection: traitCollection)
+    }
     
-    /// `UIImage(named: "background_green", bundle: ..., traitCollection: ...)`
-    static func background_green(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_green, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.green", bundle: ..., traitCollection: ...)`
+    static func backgroundGreen(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundGreen, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_hand_odds_green", bundle: ..., traitCollection: ...)`
-    static func background_hand_odds_green(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_hand_odds_green, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.hand.odds.green", bundle: ..., traitCollection: ...)`
+    static func backgroundHandOddsGreen(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundHandOddsGreen, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_hand_odds_grey", bundle: ..., traitCollection: ...)`
-    static func background_hand_odds_grey(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_hand_odds_grey, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.hand.odds.grey", bundle: ..., traitCollection: ...)`
+    static func backgroundHandOddsGrey(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundHandOddsGrey, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_stats_level_1", bundle: ..., traitCollection: ...)`
-    static func background_stats_level_1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_stats_level_1, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.stats.level.1", bundle: ..., traitCollection: ...)`
+    static func backgroundStatsLevel1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundStatsLevel1, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_stats_level_2", bundle: ..., traitCollection: ...)`
-    static func background_stats_level_2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_stats_level_2, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.stats.level.2", bundle: ..., traitCollection: ...)`
+    static func backgroundStatsLevel2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundStatsLevel2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_stats_level_3", bundle: ..., traitCollection: ...)`
-    static func background_stats_level_3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_stats_level_3, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.stats.level.3", bundle: ..., traitCollection: ...)`
+    static func backgroundStatsLevel3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundStatsLevel3, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_stats_level_4", bundle: ..., traitCollection: ...)`
-    static func background_stats_level_4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_stats_level_4, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.stats.level.4", bundle: ..., traitCollection: ...)`
+    static func backgroundStatsLevel4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundStatsLevel4, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_stats_level_5", bundle: ..., traitCollection: ...)`
-    static func background_stats_level_5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_stats_level_5, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.stats.level.5", bundle: ..., traitCollection: ...)`
+    static func backgroundStatsLevel5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundStatsLevel5, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_stats_level_6", bundle: ..., traitCollection: ...)`
-    static func background_stats_level_6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_stats_level_6, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.stats.level.6", bundle: ..., traitCollection: ...)`
+    static func backgroundStatsLevel6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundStatsLevel6, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_stats_level_7", bundle: ..., traitCollection: ...)`
-    static func background_stats_level_7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_stats_level_7, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.stats.level.7", bundle: ..., traitCollection: ...)`
+    static func backgroundStatsLevel7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundStatsLevel7, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_stats_level_overall", bundle: ..., traitCollection: ...)`
-    static func background_stats_level_overall(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_stats_level_overall, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.stats.level.overall", bundle: ..., traitCollection: ...)`
+    static func backgroundStatsLevelOverall(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundStatsLevelOverall, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_table_level_1", bundle: ..., traitCollection: ...)`
-    static func background_table_level_1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_table_level_1, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.table.level.1", bundle: ..., traitCollection: ...)`
+    static func backgroundTableLevel1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundTableLevel1, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_table_level_2", bundle: ..., traitCollection: ...)`
-    static func background_table_level_2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_table_level_2, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.table.level.2", bundle: ..., traitCollection: ...)`
+    static func backgroundTableLevel2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundTableLevel2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_table_level_3", bundle: ..., traitCollection: ...)`
-    static func background_table_level_3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_table_level_3, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.table.level.3", bundle: ..., traitCollection: ...)`
+    static func backgroundTableLevel3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundTableLevel3, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_table_level_4", bundle: ..., traitCollection: ...)`
-    static func background_table_level_4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_table_level_4, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.table.level.4", bundle: ..., traitCollection: ...)`
+    static func backgroundTableLevel4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundTableLevel4, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_table_level_5", bundle: ..., traitCollection: ...)`
-    static func background_table_level_5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_table_level_5, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.table.level.5", bundle: ..., traitCollection: ...)`
+    static func backgroundTableLevel5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundTableLevel5, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_table_level_6", bundle: ..., traitCollection: ...)`
-    static func background_table_level_6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_table_level_6, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.table.level.6", bundle: ..., traitCollection: ...)`
+    static func backgroundTableLevel6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundTableLevel6, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_table_level_7", bundle: ..., traitCollection: ...)`
-    static func background_table_level_7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_table_level_7, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.table.level.7", bundle: ..., traitCollection: ...)`
+    static func backgroundTableLevel7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundTableLevel7, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "background_table_locked", bundle: ..., traitCollection: ...)`
-    static func background_table_locked(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.background_table_locked, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "background.table.locked", bundle: ..., traitCollection: ...)`
+    static func backgroundTableLocked(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backgroundTableLocked, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "banner_standard", bundle: ..., traitCollection: ...)`
-    static func banner_standard(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.banner_standard, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "banner.standard", bundle: ..., traitCollection: ...)`
+    static func bannerStandard(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.bannerStandard, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "banner_unlock_level_2", bundle: ..., traitCollection: ...)`
-    static func banner_unlock_level_2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.banner_unlock_level_2, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "banner.unlock.level.2", bundle: ..., traitCollection: ...)`
+    static func bannerUnlockLevel2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.bannerUnlockLevel2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "banner_unlock_level_3", bundle: ..., traitCollection: ...)`
-    static func banner_unlock_level_3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.banner_unlock_level_3, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "banner.unlock.level.3", bundle: ..., traitCollection: ...)`
+    static func bannerUnlockLevel3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.bannerUnlockLevel3, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "banner_unlock_level_4", bundle: ..., traitCollection: ...)`
-    static func banner_unlock_level_4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.banner_unlock_level_4, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "banner.unlock.level.4", bundle: ..., traitCollection: ...)`
+    static func bannerUnlockLevel4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.bannerUnlockLevel4, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "banner_unlock_level_5", bundle: ..., traitCollection: ...)`
-    static func banner_unlock_level_5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.banner_unlock_level_5, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "banner.unlock.level.5", bundle: ..., traitCollection: ...)`
+    static func bannerUnlockLevel5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.bannerUnlockLevel5, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "banner_unlock_level_6", bundle: ..., traitCollection: ...)`
-    static func banner_unlock_level_6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.banner_unlock_level_6, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "banner.unlock.level.6", bundle: ..., traitCollection: ...)`
+    static func bannerUnlockLevel6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.bannerUnlockLevel6, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "banner_unlock_level_7", bundle: ..., traitCollection: ...)`
-    static func banner_unlock_level_7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.banner_unlock_level_7, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "banner.unlock.level.7", bundle: ..., traitCollection: ...)`
+    static func bannerUnlockLevel7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.bannerUnlockLevel7, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "button_menu_play_normal", bundle: ..., traitCollection: ...)`
-    static func button_menu_play_normal(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_menu_play_normal, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button.menu.play.normal", bundle: ..., traitCollection: ...)`
+    static func buttonMenuPlayNormal(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.buttonMenuPlayNormal, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "button_menu_play_selected", bundle: ..., traitCollection: ...)`
-    static func button_menu_play_selected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_menu_play_selected, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button.menu.play.selected", bundle: ..., traitCollection: ...)`
+    static func buttonMenuPlaySelected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.buttonMenuPlaySelected, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "button_menu_share_normal", bundle: ..., traitCollection: ...)`
-    static func button_menu_share_normal(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_menu_share_normal, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button.menu.share.normal", bundle: ..., traitCollection: ...)`
+    static func buttonMenuShareNormal(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.buttonMenuShareNormal, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "button_menu_share_selected", bundle: ..., traitCollection: ...)`
-    static func button_menu_share_selected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_menu_share_selected, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button.menu.share.selected", bundle: ..., traitCollection: ...)`
+    static func buttonMenuShareSelected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.buttonMenuShareSelected, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "button_menu_stats_normal", bundle: ..., traitCollection: ...)`
-    static func button_menu_stats_normal(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_menu_stats_normal, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button.menu.stats.normal", bundle: ..., traitCollection: ...)`
+    static func buttonMenuStatsNormal(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.buttonMenuStatsNormal, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "button_menu_stats_selected", bundle: ..., traitCollection: ...)`
-    static func button_menu_stats_selected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_menu_stats_selected, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button.menu.stats.selected", bundle: ..., traitCollection: ...)`
+    static func buttonMenuStatsSelected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.buttonMenuStatsSelected, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_back", bundle: ..., traitCollection: ...)`
-    static func card_back(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_back, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.back", bundle: ..., traitCollection: ...)`
+    static func cardBack(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardBack, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank0", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank0(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank0, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank0", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank0(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank0, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank1", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank1, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank1", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank1, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank10", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank10(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank10, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank10", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank10(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank10, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank11", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank11(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank11, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank11", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank11(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank11, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank12", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank12(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank12, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank12", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank12(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank12, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank2", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank2, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank2", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank3", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank3, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank3", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank3, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank4", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank4, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank4", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank4, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank5", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank5, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank5", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank5, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank6", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank6, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank6", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank6, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank7", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank7, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank7", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank7, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank8", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank8(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank8, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank8", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank8(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank8, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit0_rank9", bundle: ..., traitCollection: ...)`
-    static func card_suit0_rank9(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit0_rank9, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit0.rank9", bundle: ..., traitCollection: ...)`
+    static func cardSuit0Rank9(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit0Rank9, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank0", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank0(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank0, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank0", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank0(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank0, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank1", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank1, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank1", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank1, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank10", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank10(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank10, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank10", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank10(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank10, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank11", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank11(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank11, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank11", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank11(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank11, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank12", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank12(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank12, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank12", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank12(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank12, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank2", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank2, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank2", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank3", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank3, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank3", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank3, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank4", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank4, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank4", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank4, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank5", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank5, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank5", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank5, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank6", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank6, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank6", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank6, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank7", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank7, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank7", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank7, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank8", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank8(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank8, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank8", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank8(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank8, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit1_rank9", bundle: ..., traitCollection: ...)`
-    static func card_suit1_rank9(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit1_rank9, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit1.rank9", bundle: ..., traitCollection: ...)`
+    static func cardSuit1Rank9(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit1Rank9, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank0", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank0(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank0, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank0", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank0(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank0, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank1", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank1, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank1", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank1, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank10", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank10(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank10, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank10", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank10(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank10, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank11", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank11(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank11, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank11", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank11(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank11, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank12", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank12(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank12, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank12", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank12(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank12, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank2", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank2, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank2", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank3", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank3, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank3", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank3, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank4", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank4, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank4", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank4, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank5", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank5, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank5", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank5, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank6", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank6, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank6", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank6, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank7", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank7, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank7", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank7, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank8", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank8(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank8, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank8", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank8(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank8, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit2_rank9", bundle: ..., traitCollection: ...)`
-    static func card_suit2_rank9(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit2_rank9, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit2.rank9", bundle: ..., traitCollection: ...)`
+    static func cardSuit2Rank9(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit2Rank9, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank0", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank0(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank0, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank0", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank0(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank0, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank1", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank1, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank1", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank1, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank10", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank10(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank10, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank10", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank10(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank10, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank11", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank11(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank11, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank11", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank11(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank11, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank12", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank12(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank12, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank12", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank12(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank12, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank2", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank2, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank2", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank3", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank3, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank3", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank3, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank4", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank4, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank4", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank4, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank5", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank5, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank5", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank5, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank6", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank6, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank6", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank6, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank7", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank7, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank7", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank7, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank8", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank8(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank8, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank8", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank8(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank8, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "card_suit3_rank9", bundle: ..., traitCollection: ...)`
-    static func card_suit3_rank9(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.card_suit3_rank9, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "card.suit3.rank9", bundle: ..., traitCollection: ...)`
+    static func cardSuit3Rank9(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.cardSuit3Rank9, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "iTunesArtwork", bundle: ..., traitCollection: ...)`
@@ -749,159 +741,159 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.iTunesArtwork, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_chip_blue", bundle: ..., traitCollection: ...)`
-    static func icon_chip_blue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_chip_blue, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.chip.blue", bundle: ..., traitCollection: ...)`
+    static func iconChipBlue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconChipBlue, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_done_blue", bundle: ..., traitCollection: ...)`
-    static func icon_done_blue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_done_blue, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.done.blue", bundle: ..., traitCollection: ...)`
+    static func iconDoneBlue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconDoneBlue, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_done_green", bundle: ..., traitCollection: ...)`
-    static func icon_done_green(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_done_green, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.done.green", bundle: ..., traitCollection: ...)`
+    static func iconDoneGreen(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconDoneGreen, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_leaderboards_blue", bundle: ..., traitCollection: ...)`
-    static func icon_leaderboards_blue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_leaderboards_blue, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.leaderboards.blue", bundle: ..., traitCollection: ...)`
+    static func iconLeaderboardsBlue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconLeaderboardsBlue, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_play", bundle: ..., traitCollection: ...)`
-    static func icon_play(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_play, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.menu.play", bundle: ..., traitCollection: ...)`
+    static func iconMenuPlay(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconMenuPlay, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_share_facebook", bundle: ..., traitCollection: ...)`
-    static func icon_share_facebook(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_share_facebook, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.menu.stats", bundle: ..., traitCollection: ...)`
+    static func iconMenuStats(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconMenuStats, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_share_facebook_large", bundle: ..., traitCollection: ...)`
-    static func icon_share_facebook_large(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_share_facebook_large, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.share.facebook.large", bundle: ..., traitCollection: ...)`
+    static func iconShareFacebookLarge(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconShareFacebookLarge, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_share_instagram", bundle: ..., traitCollection: ...)`
-    static func icon_share_instagram(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_share_instagram, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.share.facebook.small", bundle: ..., traitCollection: ...)`
+    static func iconShareFacebookSmall(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconShareFacebookSmall, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_share_instagram_large", bundle: ..., traitCollection: ...)`
-    static func icon_share_instagram_large(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_share_instagram_large, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.share.instagram.large", bundle: ..., traitCollection: ...)`
+    static func iconShareInstagramLarge(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconShareInstagramLarge, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_share_twitter", bundle: ..., traitCollection: ...)`
-    static func icon_share_twitter(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_share_twitter, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.share.instagram.small", bundle: ..., traitCollection: ...)`
+    static func iconShareInstagramSmall(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconShareInstagramSmall, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_share_twitter_large", bundle: ..., traitCollection: ...)`
-    static func icon_share_twitter_large(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_share_twitter_large, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.share.twitter.large", bundle: ..., traitCollection: ...)`
+    static func iconShareTwitterLarge(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconShareTwitterLarge, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_stats", bundle: ..., traitCollection: ...)`
-    static func icon_stats(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_stats, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.share.twitter.small", bundle: ..., traitCollection: ...)`
+    static func iconShareTwitterSmall(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconShareTwitterSmall, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_stats_blue", bundle: ..., traitCollection: ...)`
-    static func icon_stats_blue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_stats_blue, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.stats.blue", bundle: ..., traitCollection: ...)`
+    static func iconStatsBlue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconStatsBlue, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_stats_green", bundle: ..., traitCollection: ...)`
-    static func icon_stats_green(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_stats_green, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon.stats.green", bundle: ..., traitCollection: ...)`
+    static func iconStatsGreen(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconStatsGreen, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "launch_screen", bundle: ..., traitCollection: ...)`
-    static func launch_screen(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.launch_screen, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "launch.screen", bundle: ..., traitCollection: ...)`
+    static func launchScreen(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.launchScreen, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_letters_blue", bundle: ..., traitCollection: ...)`
-    static func overlay_letters_blue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_letters_blue, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.letters.blue", bundle: ..., traitCollection: ...)`
+    static func overlayLettersBlue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayLettersBlue, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_stats_locked_level_2", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_locked_level_2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_locked_level_2, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.stats.locked.level.2", bundle: ..., traitCollection: ...)`
+    static func overlayStatsLockedLevel2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayStatsLockedLevel2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_stats_locked_level_3", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_locked_level_3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_locked_level_3, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.stats.locked.level.3", bundle: ..., traitCollection: ...)`
+    static func overlayStatsLockedLevel3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayStatsLockedLevel3, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_stats_locked_level_4", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_locked_level_4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_locked_level_4, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.stats.locked.level.4", bundle: ..., traitCollection: ...)`
+    static func overlayStatsLockedLevel4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayStatsLockedLevel4, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_stats_locked_level_5", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_locked_level_5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_locked_level_5, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.stats.locked.level.5", bundle: ..., traitCollection: ...)`
+    static func overlayStatsLockedLevel5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayStatsLockedLevel5, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_stats_locked_level_6", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_locked_level_6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_locked_level_6, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.stats.locked.level.6", bundle: ..., traitCollection: ...)`
+    static func overlayStatsLockedLevel6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayStatsLockedLevel6, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_stats_locked_level_7", bundle: ..., traitCollection: ...)`
-    static func overlay_stats_locked_level_7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_stats_locked_level_7, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.stats.locked.level.7", bundle: ..., traitCollection: ...)`
+    static func overlayStatsLockedLevel7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayStatsLockedLevel7, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_table_locked_level_2", bundle: ..., traitCollection: ...)`
-    static func overlay_table_locked_level_2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_locked_level_2, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.table.locked.level.2", bundle: ..., traitCollection: ...)`
+    static func overlayTableLockedLevel2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayTableLockedLevel2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_table_locked_level_3", bundle: ..., traitCollection: ...)`
-    static func overlay_table_locked_level_3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_locked_level_3, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.table.locked.level.3", bundle: ..., traitCollection: ...)`
+    static func overlayTableLockedLevel3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayTableLockedLevel3, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_table_locked_level_4", bundle: ..., traitCollection: ...)`
-    static func overlay_table_locked_level_4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_locked_level_4, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.table.locked.level.4", bundle: ..., traitCollection: ...)`
+    static func overlayTableLockedLevel4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayTableLockedLevel4, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_table_locked_level_5", bundle: ..., traitCollection: ...)`
-    static func overlay_table_locked_level_5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_locked_level_5, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.table.locked.level.5", bundle: ..., traitCollection: ...)`
+    static func overlayTableLockedLevel5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayTableLockedLevel5, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_table_locked_level_6", bundle: ..., traitCollection: ...)`
-    static func overlay_table_locked_level_6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_locked_level_6, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.table.locked.level.6", bundle: ..., traitCollection: ...)`
+    static func overlayTableLockedLevel6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayTableLockedLevel6, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "overlay_table_locked_level_7", bundle: ..., traitCollection: ...)`
-    static func overlay_table_locked_level_7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.overlay_table_locked_level_7, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "overlay.table.locked.level.7", bundle: ..., traitCollection: ...)`
+    static func overlayTableLockedLevel7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.overlayTableLockedLevel7, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "shadow_blue", bundle: ..., traitCollection: ...)`
-    static func shadow_blue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.shadow_blue, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "shadow.blue", bundle: ..., traitCollection: ...)`
+    static func shadowBlue(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.shadowBlue, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "share_screen_instagram", bundle: ..., traitCollection: ...)`
-    static func share_screen_instagram(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.share_screen_instagram, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "share.screen.instagram", bundle: ..., traitCollection: ...)`
+    static func shareScreenInstagram(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.shareScreenInstagram, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "share_screen_twitter", bundle: ..., traitCollection: ...)`
-    static func share_screen_twitter(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.share_screen_twitter, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "share.screen.twitter", bundle: ..., traitCollection: ...)`
+    static func shareScreenTwitter(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.shareScreenTwitter, compatibleWithTraitCollection: traitCollection)
     }
     
     private init() {}
@@ -1171,7 +1163,7 @@ struct R: Rswift.Validatable {
 }
 
 struct _R: Rswift.Validatable {
-  static let hostingBundle = NSBundle(identifier: "com.visput.holdemhands.test") ?? NSBundle.mainBundle()
+  static let hostingBundle = NSBundle(identifier: "com.visput.holdemhands.prod") ?? NSBundle.mainBundle()
   
   static func validate() throws {
     try storyboard.validate()
@@ -1205,7 +1197,7 @@ struct _R: Rswift.Validatable {
       let name = "LaunchScreen"
       
       static func validate() throws {
-        if UIImage(named: "launch_screen") == nil { throw ValidationError(description: "[R.swift] Image named 'launch_screen' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
+        if UIImage(named: "launch.screen") == nil { throw ValidationError(description: "[R.swift] Image named 'launch.screen' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
       }
       
       private init() {}
@@ -1233,31 +1225,31 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIImage(named: "icon_share_twitter") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_twitter' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_chip_blue") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_chip_blue' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_done_green") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_done_green' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_share_twitter_large") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_twitter_large' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "overlay_letters_blue") == nil { throw ValidationError(description: "[R.swift] Image named 'overlay_letters_blue' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_stats_green") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_stats_green' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_done_blue") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_done_blue' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "button_menu_share_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'button_menu_share_selected' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "shadow_blue") == nil { throw ValidationError(description: "[R.swift] Image named 'shadow_blue' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "background_blue") == nil { throw ValidationError(description: "[R.swift] Image named 'background_blue' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_play") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_play' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "card_back") == nil { throw ValidationError(description: "[R.swift] Image named 'card_back' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "background_hand_odds_green") == nil { throw ValidationError(description: "[R.swift] Image named 'background_hand_odds_green' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "button_menu_play_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'button_menu_play_selected' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_share_facebook") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_facebook' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_share_instagram") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_instagram' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "button_menu_stats_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'button_menu_stats_selected' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_stats") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_stats' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "background_green") == nil { throw ValidationError(description: "[R.swift] Image named 'background_green' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "button_menu_play_normal") == nil { throw ValidationError(description: "[R.swift] Image named 'button_menu_play_normal' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "button_menu_share_normal") == nil { throw ValidationError(description: "[R.swift] Image named 'button_menu_share_normal' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_leaderboards_blue") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_leaderboards_blue' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_share_facebook_large") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_facebook_large' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "button_menu_stats_normal") == nil { throw ValidationError(description: "[R.swift] Image named 'button_menu_stats_normal' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "icon_share_instagram_large") == nil { throw ValidationError(description: "[R.swift] Image named 'icon_share_instagram_large' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.stats.green") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.stats.green' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.share.facebook.small") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.share.facebook.small' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.menu.stats") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.menu.stats' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.share.twitter.small") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.share.twitter.small' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.done.green") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.done.green' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.chip.blue") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.chip.blue' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "button.menu.share.selected") == nil { throw ValidationError(description: "[R.swift] Image named 'button.menu.share.selected' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.leaderboards.blue") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.leaderboards.blue' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "overlay.letters.blue") == nil { throw ValidationError(description: "[R.swift] Image named 'overlay.letters.blue' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.done.blue") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.done.blue' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.share.facebook.large") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.share.facebook.large' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "button.menu.play.normal") == nil { throw ValidationError(description: "[R.swift] Image named 'button.menu.play.normal' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "shadow.blue") == nil { throw ValidationError(description: "[R.swift] Image named 'shadow.blue' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "background.hand.odds.green") == nil { throw ValidationError(description: "[R.swift] Image named 'background.hand.odds.green' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "background.green") == nil { throw ValidationError(description: "[R.swift] Image named 'background.green' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.share.instagram.large") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.share.instagram.large' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.share.twitter.large") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.share.twitter.large' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "button.menu.play.selected") == nil { throw ValidationError(description: "[R.swift] Image named 'button.menu.play.selected' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "button.menu.share.normal") == nil { throw ValidationError(description: "[R.swift] Image named 'button.menu.share.normal' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "button.menu.stats.normal") == nil { throw ValidationError(description: "[R.swift] Image named 'button.menu.stats.normal' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "card.back") == nil { throw ValidationError(description: "[R.swift] Image named 'card.back' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.menu.play") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.menu.play' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "button.menu.stats.selected") == nil { throw ValidationError(description: "[R.swift] Image named 'button.menu.stats.selected' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon.share.instagram.small") == nil { throw ValidationError(description: "[R.swift] Image named 'icon.share.instagram.small' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "background.blue") == nil { throw ValidationError(description: "[R.swift] Image named 'background.blue' is used in storyboard 'Main', but couldn't be loaded.") }
         if _R.storyboard.main().mainScreen() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'mainScreen' could not be loaded from storyboard 'Main' as 'MainScreen'.") }
         if _R.storyboard.main().gameScreen() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'gameScreen' could not be loaded from storyboard 'Main' as 'GameScreen'.") }
         if _R.storyboard.main().statsScreen() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'statsScreen' could not be loaded from storyboard 'Main' as 'StatsScreen'.") }

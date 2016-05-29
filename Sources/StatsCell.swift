@@ -53,15 +53,15 @@ final class StatsCell: UICollectionViewCell {
         self.item = item
         
         if item.progressItem.locked! {
-            statsBackgroundImageView.image = UIImage(named: "background_table_locked")
-            statsOverlayImageView.image = UIImage(named: "overlay_stats_locked_level_\(item.progressItem.identifier)")
+            statsBackgroundImageView.image = R.image.backgroundTableLocked()
+            statsOverlayImageView.image = UIImage(named: "overlay.stats.locked.level.\(item.progressItem.identifier)")
             
             rankLabel.textColor = UIColor.gray1Color()
             winPercentLabel.textColor  = UIColor.gray1Color()
             winsInRowLabel.textColor = UIColor.gray1Color()
             handsCountLabel.textColor = UIColor.gray1Color()
         } else {
-            statsBackgroundImageView.image = UIImage(named: "background_stats_level_\(item.progressItem.identifier)")
+            statsBackgroundImageView.image = UIImage(named: "background.stats.level.\(item.progressItem.identifier)")
             statsOverlayImageView.image = nil
             
             rankLabel.textColor = UIColor.aquamarine1Color()

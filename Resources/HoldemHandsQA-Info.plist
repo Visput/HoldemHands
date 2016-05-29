@@ -2,8 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AppFullURL</key>
+	<string>https://itunes.apple.com/app/id1090777716?mt=8</string>
+	<key>AppShortURL</key>
+	<string>http://apple.co/1Whk0gt</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>HH QA</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -12,12 +18,10 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
-	<key>CFBundleDisplayName</key>
-	<string>HH QA</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -36,6 +40,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>DefaultPlayerDataFileName</key>
+	<string>DefaultPlayerData.json</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -56,6 +62,8 @@
 	<string>HoldemHands</string>
 	<key>FlurryKey</key>
 	<string>H4SJ82CM8Z2CJFVJJD2J</string>
+	<key>GameDataFileName</key>
+	<string>GameDataQA2.json</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram</string>
@@ -104,6 +112,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>app_font.ttc</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -124,17 +136,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>GameDataFileName</key>
-	<string>GameDataQA2.json</string>
-	<key>DefaultPlayerDataFileName</key>
-	<string>DefaultPlayerData.json</string>
-	<key>AppFullURL</key>
-	<string>https://itunes.apple.com/app/id1090777716?mt=8</string>
-	<key>AppShortURL</key>
-	<string>http://apple.co/1Whk0gt</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>app_font.ttc</string>
-	</array>
 </dict>
 </plist>

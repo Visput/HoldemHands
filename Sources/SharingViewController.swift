@@ -40,7 +40,7 @@ final class SharingViewController: BaseViewController {
         let item = SharingItem(title: nil,
                                message: R.string.localizable.titleSharingTwitter(),
                                linkURL: appLink.short,
-                               image: UIImage(named: "share_screen_twitter"),
+                               image: R.image.shareScreenTwitter(),
                                imageURL: nil)
         
         model.sharingManager.didFailToShareHandler = { [weak self] _ in
@@ -56,7 +56,7 @@ final class SharingViewController: BaseViewController {
         let item = SharingItem(title: nil,
                                message: R.string.localizable.titleSharingInstagram(),
                                linkURL: nil,
-                               image: UIImage(named: "share_screen_instagram"),
+                               image: R.image.shareScreenInstagram(),
                                imageURL: nil)
         
         model.sharingManager.didFailToShareHandler = { [weak self] _ in

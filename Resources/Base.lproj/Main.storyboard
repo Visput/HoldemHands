@@ -50,7 +50,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_blue" translatesAutoresizingMaskIntoConstraints="NO" id="Ah1-hb-ccF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.blue" translatesAutoresizingMaskIntoConstraints="NO" id="Ah1-hb-ccF">
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57x-Zp-BiP">
@@ -62,7 +62,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJZ-Gm-YzJ" userLabel="Master View">
                                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="overlay_letters_blue" translatesAutoresizingMaskIntoConstraints="NO" id="gHm-4c-yDV">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="overlay.letters.blue" translatesAutoresizingMaskIntoConstraints="NO" id="gHm-4c-yDV">
                                                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                                                     </imageView>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pgq-tZ-NEG" userLabel="Space">
@@ -99,7 +99,7 @@
                                                             <constraint firstAttribute="height" constant="51" id="XjM-62-RxV"/>
                                                             <constraint firstAttribute="width" secondItem="4dl-06-gvp" secondAttribute="height" multiplier="241:63" id="g3G-1D-0hj"/>
                                                         </constraints>
-                                                        <state key="normal" image="icon_play"/>
+                                                        <state key="normal" image="icon.menu.play"/>
                                                         <variation key="default">
                                                             <mask key="constraints">
                                                                 <exclude reference="LBx-sq-9Z4"/>
@@ -125,7 +125,7 @@
                                                             <constraint firstAttribute="width" constant="346" id="h6J-QN-Ieq"/>
                                                             <constraint firstAttribute="width" secondItem="c7L-2W-AQU" secondAttribute="height" multiplier="241:63" id="ovQ-BL-nKZ"/>
                                                         </constraints>
-                                                        <state key="normal" image="icon_stats"/>
+                                                        <state key="normal" image="icon.menu.stats"/>
                                                         <variation key="default">
                                                             <mask key="constraints">
                                                                 <exclude reference="Wp6-xb-14s"/>
@@ -300,7 +300,7 @@
                                                             <outlet property="delegate" destination="P8v-C8-9Zi" id="nHT-Ig-Zjp"/>
                                                         </connections>
                                                     </scrollView>
-                                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow_blue" translatesAutoresizingMaskIntoConstraints="NO" id="TZP-if-cHH">
+                                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow.blue" translatesAutoresizingMaskIntoConstraints="NO" id="TZP-if-cHH">
                                                         <rect key="frame" x="0.0" y="0.0" width="736" height="95"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="TZP-if-cHH" secondAttribute="height" multiplier="736:95" id="IDf-9E-gUp"/>
@@ -317,27 +317,27 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XjH-Zl-nik" userLabel="Play Button">
                                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="85"/>
-                                                                <state key="normal" backgroundImage="button_menu_play_normal"/>
-                                                                <state key="selected" backgroundImage="button_menu_play_selected"/>
-                                                                <state key="highlighted" backgroundImage="button_menu_play_selected"/>
+                                                                <state key="normal" backgroundImage="button.menu.play.normal"/>
+                                                                <state key="selected" backgroundImage="button.menu.play.selected"/>
+                                                                <state key="highlighted" backgroundImage="button.menu.play.selected"/>
                                                                 <connections>
                                                                     <action selector="playButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="pOf-6W-r8p"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8L-qM-8tM" userLabel="Stats Button">
                                                                 <rect key="frame" x="0.0" y="85" width="59" height="83"/>
-                                                                <state key="normal" backgroundImage="button_menu_stats_normal"/>
-                                                                <state key="selected" backgroundImage="button_menu_stats_selected"/>
-                                                                <state key="highlighted" backgroundImage="button_menu_stats_selected"/>
+                                                                <state key="normal" backgroundImage="button.menu.stats.normal"/>
+                                                                <state key="selected" backgroundImage="button.menu.stats.selected"/>
+                                                                <state key="highlighted" backgroundImage="button.menu.stats.selected"/>
                                                                 <connections>
                                                                     <action selector="statsButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="XJQ-W9-oEh"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFd-jV-XYU" userLabel="Sharing Button">
                                                                 <rect key="frame" x="0.0" y="168" width="59" height="85"/>
-                                                                <state key="normal" backgroundImage="button_menu_share_normal"/>
-                                                                <state key="selected" backgroundImage="button_menu_share_selected"/>
-                                                                <state key="highlighted" backgroundImage="button_menu_share_selected"/>
+                                                                <state key="normal" backgroundImage="button.menu.share.normal"/>
+                                                                <state key="selected" backgroundImage="button.menu.share.selected"/>
+                                                                <state key="highlighted" backgroundImage="button.menu.share.selected"/>
                                                                 <connections>
                                                                     <action selector="shareButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="n8y-3r-jjK"/>
                                                                 </connections>
@@ -427,7 +427,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Yxu-04-z1F" secondAttribute="height" multiplier="26:15" id="wts-9s-lgI"/>
                                                         </constraints>
-                                                        <state key="normal" image="icon_leaderboards_blue"/>
+                                                        <state key="normal" image="icon.leaderboards.blue"/>
                                                         <connections>
                                                             <action selector="leaderboardsButtonDidPress:" destination="P8v-C8-9Zi" eventType="touchUpInside" id="p9S-jk-rvU"/>
                                                         </connections>
@@ -584,7 +584,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_green" translatesAutoresizingMaskIntoConstraints="NO" id="xcn-m9-eka">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.green" translatesAutoresizingMaskIntoConstraints="NO" id="xcn-m9-eka">
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classic Table" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7B-ZW-3s1">
@@ -639,14 +639,14 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SXK-jE-uUX" secondAttribute="height" multiplier="9:5" id="4Fc-sz-OGi"/>
                                 </constraints>
-                                <state key="normal" image="icon_done_green"/>
+                                <state key="normal" image="icon.done.green"/>
                                 <connections>
                                     <action selector="doneButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ER8-aI-chi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JT-vw-cgT" userLabel="Stats Button">
                                 <rect key="frame" x="86" y="25" width="54" height="30"/>
-                                <state key="normal" image="icon_stats_green"/>
+                                <state key="normal" image="icon.stats.green"/>
                                 <connections>
                                     <action selector="statsButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mes-6V-dwO"/>
                                 </connections>
@@ -838,7 +838,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_blue" translatesAutoresizingMaskIntoConstraints="NO" id="q9m-RG-1tU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.blue" translatesAutoresizingMaskIntoConstraints="NO" id="q9m-RG-1tU">
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOY-1U-EdD" userLabel="Title">
@@ -897,7 +897,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zUB-hO-yFd" secondAttribute="height" multiplier="26:15" id="y71-bA-piq"/>
                                 </constraints>
-                                <state key="normal" image="icon_leaderboards_blue"/>
+                                <state key="normal" image="icon.leaderboards.blue"/>
                                 <connections>
                                     <action selector="leaderboardsButtonDidPress:" destination="z6e-JP-LU6" eventType="touchUpInside" id="AOn-ee-k1a"/>
                                 </connections>
@@ -907,7 +907,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HvS-71-ekD" secondAttribute="height" multiplier="9:5" id="bGH-jP-wcl"/>
                                 </constraints>
-                                <state key="normal" image="icon_done_blue"/>
+                                <state key="normal" image="icon.done.blue"/>
                                 <connections>
                                     <action selector="doneButtonDidPress:" destination="z6e-JP-LU6" eventType="touchUpInside" id="x14-sU-byg"/>
                                 </connections>
@@ -1008,13 +1008,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="252" height="173"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card_back" translatesAutoresizingMaskIntoConstraints="NO" id="fDG-L2-3bs">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card.back" translatesAutoresizingMaskIntoConstraints="NO" id="fDG-L2-3bs">
                                                     <rect key="frame" x="4" y="4" width="118" height="165"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="fDG-L2-3bs" secondAttribute="height" multiplier="376:525" id="6Qn-gw-NjA"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card_back" translatesAutoresizingMaskIntoConstraints="NO" id="KrY-SE-ELq">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card.back" translatesAutoresizingMaskIntoConstraints="NO" id="KrY-SE-ELq">
                                                     <rect key="frame" x="130" y="4" width="118" height="165"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="KrY-SE-ELq" secondAttribute="height" multiplier="118:165" id="0kB-sP-dOL"/>
@@ -1025,7 +1025,7 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_hand_odds_green" translatesAutoresizingMaskIntoConstraints="NO" id="BJa-hN-hWY">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.hand.odds.green" translatesAutoresizingMaskIntoConstraints="NO" id="BJa-hN-hWY">
                                                     <rect key="frame" x="4" y="111" width="244" height="58"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="BJa-hN-hWY" secondAttribute="height" multiplier="762:181" id="Fbp-sf-qiw"/>
@@ -1127,7 +1127,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2y-Hs-duQ" userLabel="Facebook Button">
                                 <rect key="frame" x="181" y="159" width="96" height="96"/>
-                                <state key="normal" image="icon_share_facebook_large"/>
+                                <state key="normal" image="icon.share.facebook.large"/>
                                 <connections>
                                     <action selector="facebookButtonDidPress:" destination="mrY-O8-8Zr" eventType="touchUpInside" id="dU2-jy-OHY"/>
                                 </connections>
@@ -1152,7 +1152,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ynG-9l-qV2" secondAttribute="height" multiplier="1:1" id="akR-XC-ycn"/>
                                 </constraints>
-                                <state key="normal" image="icon_share_twitter_large"/>
+                                <state key="normal" image="icon.share.twitter.large"/>
                                 <connections>
                                     <action selector="twitterButtonDidPress:" destination="mrY-O8-8Zr" eventType="touchUpInside" id="5I5-5I-HwM"/>
                                 </connections>
@@ -1174,7 +1174,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5j-l2-21j" userLabel="Instagram Button">
                                 <rect key="frame" x="459" y="159" width="96" height="96"/>
-                                <state key="normal" image="icon_share_instagram_large"/>
+                                <state key="normal" image="icon.share.instagram.large"/>
                                 <connections>
                                     <action selector="instagramButtonDidPress:" destination="mrY-O8-8Zr" eventType="touchUpInside" id="t4V-oD-6uP"/>
                                 </connections>
@@ -1245,7 +1245,7 @@
                                 <color key="textColor" red="0.77647058823529413" green="0.81568627450980391" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_chip_blue" translatesAutoresizingMaskIntoConstraints="NO" id="eWa-7f-Wgk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.chip.blue" translatesAutoresizingMaskIntoConstraints="NO" id="eWa-7f-Wgk">
                                 <rect key="frame" x="219.5" y="25" width="30" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1597,7 +1597,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQm-Rd-hks" userLabel="Facebook">
                                 <rect key="frame" x="3" y="48" width="48" height="48"/>
-                                <state key="normal" image="icon_share_facebook"/>
+                                <state key="normal" image="icon.share.facebook.small"/>
                                 <connections>
                                     <action selector="facebookButtonDidPress:" destination="36g-I0-Am3" eventType="touchUpInside" id="zyc-WM-bPy"/>
                                 </connections>
@@ -1607,14 +1607,14 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bXU-rz-kmg" secondAttribute="height" multiplier="1:1" id="5SO-sE-fiB"/>
                                 </constraints>
-                                <state key="normal" image="icon_share_twitter"/>
+                                <state key="normal" image="icon.share.twitter.small"/>
                                 <connections>
                                     <action selector="twitterButtonDidPress:" destination="36g-I0-Am3" eventType="touchUpInside" id="8zb-lX-b4h"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEf-Nj-7gF" userLabel="Instagram">
                                 <rect key="frame" x="149" y="48" width="48" height="48"/>
-                                <state key="normal" image="icon_share_instagram"/>
+                                <state key="normal" image="icon.share.instagram.small"/>
                                 <connections>
                                     <action selector="instagramButtonDidPress:" destination="36g-I0-Am3" eventType="touchUpInside" id="VZU-To-Bym"/>
                                 </connections>
@@ -1780,35 +1780,35 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background_blue" width="739" height="416"/>
-        <image name="background_green" width="739" height="416"/>
-        <image name="background_hand_odds_green" width="255" height="60"/>
-        <image name="button_menu_play_normal" width="59" height="85"/>
-        <image name="button_menu_play_selected" width="59" height="85"/>
-        <image name="button_menu_share_normal" width="59" height="85"/>
-        <image name="button_menu_share_selected" width="59" height="85"/>
-        <image name="button_menu_stats_normal" width="59" height="83"/>
-        <image name="button_menu_stats_selected" width="59" height="83"/>
-        <image name="card_back" width="125" height="175"/>
-        <image name="icon_chip_blue" width="30" height="30"/>
-        <image name="icon_done_blue" width="54" height="30"/>
-        <image name="icon_done_green" width="54" height="30"/>
-        <image name="icon_leaderboards_blue" width="52" height="30"/>
-        <image name="icon_play" width="242" height="63"/>
-        <image name="icon_share_facebook" width="48" height="48"/>
-        <image name="icon_share_facebook_large" width="96" height="96"/>
-        <image name="icon_share_instagram" width="48" height="48"/>
-        <image name="icon_share_instagram_large" width="96" height="96"/>
-        <image name="icon_share_twitter" width="48" height="48"/>
-        <image name="icon_share_twitter_large" width="96" height="96"/>
-        <image name="icon_stats" width="242" height="63"/>
-        <image name="icon_stats_green" width="54" height="30"/>
-        <image name="overlay_letters_blue" width="739" height="416"/>
-        <image name="shadow_blue" width="739" height="95"/>
+        <image name="background.blue" width="739" height="416"/>
+        <image name="background.green" width="739" height="416"/>
+        <image name="background.hand.odds.green" width="255" height="60"/>
+        <image name="button.menu.play.normal" width="59" height="85"/>
+        <image name="button.menu.play.selected" width="59" height="85"/>
+        <image name="button.menu.share.normal" width="59" height="85"/>
+        <image name="button.menu.share.selected" width="59" height="85"/>
+        <image name="button.menu.stats.normal" width="59" height="83"/>
+        <image name="button.menu.stats.selected" width="59" height="83"/>
+        <image name="card.back" width="125" height="175"/>
+        <image name="icon.chip.blue" width="30" height="30"/>
+        <image name="icon.done.blue" width="54" height="30"/>
+        <image name="icon.done.green" width="54" height="30"/>
+        <image name="icon.leaderboards.blue" width="52" height="30"/>
+        <image name="icon.menu.play" width="242" height="63"/>
+        <image name="icon.menu.stats" width="242" height="63"/>
+        <image name="icon.share.facebook.large" width="96" height="96"/>
+        <image name="icon.share.facebook.small" width="48" height="48"/>
+        <image name="icon.share.instagram.large" width="96" height="96"/>
+        <image name="icon.share.instagram.small" width="48" height="48"/>
+        <image name="icon.share.twitter.large" width="96" height="96"/>
+        <image name="icon.share.twitter.small" width="48" height="48"/>
+        <image name="icon.stats.green" width="54" height="30"/>
+        <image name="overlay.letters.blue" width="739" height="416"/>
+        <image name="shadow.blue" width="739" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="0pp-g4-GEi"/>
         <segue reference="fJt-d2-jaX"/>
-        <segue reference="3Io-ee-72I"/>
         <segue reference="mAe-ai-Kz2"/>
     </inferredMetricsTieBreakers>
 </document>

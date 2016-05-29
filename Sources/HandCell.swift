@@ -55,12 +55,12 @@ final class HandCell: UICollectionViewCell {
             
             if item.isSuccessSate != nil {
                 if item.isSuccessSate! {
-                    oddsBackgroundView.image = UIImage(named: "background_hand_odds_green")
+                    oddsBackgroundView.image = R.image.backgroundHandOddsGreen()
                 } else {
-                    oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
+                    oddsBackgroundView.image = R.image.backgroundHandOddsGrey()
                 }
             } else {
-                oddsBackgroundView.image = UIImage(named: "background_hand_odds_grey")
+                oddsBackgroundView.image = R.image.backgroundHandOddsGrey()
             }
             
             UIView.animateWithDuration(0.4, animations: {
@@ -105,7 +105,7 @@ extension HandCell {
         if visible && item.handOdds != nil {
             firstCardImageView.image = imageForCard(item.handOdds!.hand.firstCard)
         } else {
-            firstCardImageView.image = UIImage(named: "card_back")
+            firstCardImageView.image = R.image.cardBack()
         }
     }
     
@@ -113,12 +113,12 @@ extension HandCell {
         if visible && item.handOdds != nil {
             secondCardImageView.image = imageForCard(item.handOdds!.hand.secondCard)
         } else {
-            secondCardImageView.image = UIImage(named: "card_back")
+            secondCardImageView.image = R.image.cardBack()
         }
     }
     
     private func imageForCard(card: Card) -> UIImage {
-        let imageName = "card_suit\(card.suit.rawValue)_rank\(card.rank.rawValue)"
+        let imageName = "card.suit\(card.suit.rawValue).rank\(card.rank.rawValue)"
         return UIImage(named: imageName)!
     }
     
