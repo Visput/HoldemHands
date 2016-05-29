@@ -1,5 +1,5 @@
 //
-//  HoldemHandsTests.swift
+//  HandOddsCalculatorTests.swift
 //  HoldemHandsTests
 //
 //  Created by Uladzimir Papko on 2/15/16.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import HoldemHands
 
-class HoldemHandsTests: XCTestCase {
+class HandOddsCalculatorTests: XCTestCase {
     
     func testOddsCalculator1() {
         let hands = [
@@ -82,7 +82,7 @@ class HoldemHandsTests: XCTestCase {
     }
 }
 
-extension HoldemHandsTests {
+extension HandOddsCalculatorTests {
     
     typealias OddsResult = (winProbability: Double, totalWinCount: Double)
     
@@ -94,7 +94,7 @@ extension HoldemHandsTests {
         
         let calculationExpecation = expectationWithDescription("calculationExpecation")
         
-        let oddsCalculator = HandOddsCalculator(hands: hands, deck: deck)
+        let oddsCalculator = HandOddsCalculator(hands: hands, deck: deck, comparisonPrecision: 0.01)
         oddsCalculator.calculateOdds({ handsOdds in
             for index in 0 ..< hands.count {
                 XCTAssertEqualWithAccuracy(handsOdds[index].totalWinningProbability(),

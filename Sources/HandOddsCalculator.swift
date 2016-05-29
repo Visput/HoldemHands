@@ -14,7 +14,12 @@ final class HandOddsCalculator {
     private(set) var deck: Deck
     private(set) var handsOdds: [HandOdds]?
     
-    init(numberOfHands: Int) {
+    /// Precision used for comapring hands winning percent.
+    /// If winning percent difference is less than this value than hands will be valued as equally winning.
+    private(set) var comparisonPrecision: Double
+    
+    init(numberOfHands: Int, comparisonPrecision: Double) {
+        self.comparisonPrecision = comparisonPrecision
         deck = Deck()
         hands = [Hand]()
         for _ in 0 ..< numberOfHands {
@@ -23,10 +28,11 @@ final class HandOddsCalculator {
         deck.sortCards()
     }
     
-    init(hands: [Hand], deck: Deck) {
+    init(hands: [Hand], deck: Deck, comparisonPrecision: Double) {
         self.hands = hands
         self.deck = deck
         self.deck.sortCards()
+        self.comparisonPrecision = comparisonPrecision
     }
     
     func calculateOdds(completion: (handsOdds: [HandOdds]) -> Void) {
@@ -93,13 +99,17 @@ final class HandOddsCalculator {
                 
                 if winningHandsOddsIndexes.count == 0 {
                     winningHandsOddsIndexes.append(index)
+                } else {
+                    let winningHandOdds = self.handsOdds![winningHandsOddsIndexes.last!]
+                    let comparisonResult = winningHandOdds.winningProbability().compare(handOdds.winningProbability(),
+                        precision: self.comparisonPrecision)
                     
-                } else if self.handsOdds![winningHandsOddsIndexes.last!].winningCombinationsCount == handOdds.winningCombinationsCount {
-                    winningHandsOddsIndexes.append(index)
-                    
-                } else if self.handsOdds![winningHandsOddsIndexes.last!].winningCombinationsCount < handOdds.winningCombinationsCount {
-                    winningHandsOddsIndexes.removeAll()
-                    winningHandsOddsIndexes.append(index)
+                    if comparisonResult == .OrderedSame {
+                        winningHandsOddsIndexes.append(index)
+                    } else if comparisonResult == .OrderedAscending {
+                        winningHandsOddsIndexes.removeAll()
+                        winningHandsOddsIndexes.append(index)
+                    }
                 }
             }
             
