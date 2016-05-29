@@ -13,7 +13,6 @@ final class HandsViewController: UIViewController {
     
     var numberOfHands: Int! {
         didSet {
-            handOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands, comparisonPrecision: comparisonPrecision)
             handsView.configureLayoutForNumberOfHands(numberOfHands)
         }
     }
@@ -91,7 +90,7 @@ final class HandsViewController: UIViewController {
 extension HandsViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return handOddsCalculator.hands.count
+        return handOddsCalculator != nil ? handOddsCalculator.hands.count : 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

@@ -123,80 +123,17 @@ extension HandCell {
     }
     
     private func setHandSelectionVisible(visible: Bool, isSuccessState: Bool?) {
+        selectionLayer?.removeFromSuperlayer()
+        
         guard visible else {
-            selectionLayer?.removeFromSuperlayer()
             selectionLayer = nil
             return
         }
-
-        let halfPi = CGFloat(M_PI_2)
-        let lineWidth = ceil(3.0 * currentScale)
-        let arcRadius = ceil(12.0 * currentScale)
-        let inset = ceil(-6.0 * currentScale)
         
-        selectionLayer?.removeFromSuperlayer()
-        selectionLayer = CAShapeLayer()
-        selectionLayer!.fillColor = nil
-        selectionLayer!.lineWidth = lineWidth
-        selectionLayer!.lineJoin = kCALineJoinRound
-        selectionLayer!.frame = bounds.insetBy(dx: inset, dy: inset)
+        selectionLayer = HandSelectionLayer(frame: bounds,
+                                            scale: currentScale,
+                                            isSuccessState: isSuccessState!)
         
-        let path = UIBezierPath()
-        // Move to bottom left.
-        path.moveToPoint(CGPoint(x: 0.0, y: selectionLayer!.bounds.size.height - arcRadius))
-        
-        // Draw to top left.
-        path.addLineToPoint(CGPoint(x: 0.0, y: arcRadius))
-        path.addArcWithCenter(CGPoint(x: arcRadius, y: arcRadius),
-                              radius: arcRadius,
-                              startAngle: 2 * halfPi,
-                              endAngle: 3 * halfPi,
-                              clockwise: true)
-        // Draw to top right.
-        path.addLineToPoint(CGPoint(x: selectionLayer!.bounds.size.width - arcRadius, y: 0.0))
-        path.addArcWithCenter(CGPoint(x: selectionLayer!.bounds.size.width - arcRadius, y: arcRadius),
-                              radius: arcRadius,
-                              startAngle: 3 * halfPi,
-                              endAngle: 4 * halfPi,
-                              clockwise: true)
-        
-        // Draw to bottom right.
-        path.addLineToPoint(CGPoint(x: selectionLayer!.bounds.size.width, y: selectionLayer!.bounds.size.height - arcRadius))
-        path.addArcWithCenter(CGPoint(x: selectionLayer!.bounds.size.width - arcRadius, y: selectionLayer!.bounds.size.height - arcRadius),
-                              radius: arcRadius,
-                              startAngle: 0,
-                              endAngle: halfPi,
-                              clockwise: true)
-        
-        // Draw to bottom left.
-        path.addLineToPoint(CGPoint(x: arcRadius, y: selectionLayer!.bounds.size.height))
-        path.addArcWithCenter(CGPoint(x: arcRadius, y: selectionLayer!.bounds.size.height - arcRadius),
-                              radius: arcRadius,
-                              startAngle: halfPi,
-                              endAngle: 2 * halfPi,
-                              clockwise: true)
-        
-        selectionLayer!.path = path.CGPath
         layer.addSublayer(selectionLayer!)
-        
-        var animation: CABasicAnimation! = nil
-        if isSuccessState! {
-            selectionLayer!.strokeColor = UIColor.green1Color().CGColor
-            
-            animation = CABasicAnimation(keyPath: "strokeEnd")
-            animation.duration = 0.5
-            animation.fromValue = 0.0
-            animation.toValue = 1.0
-            animation.removedOnCompletion = false
-        } else {
-            selectionLayer!.strokeColor = UIColor.gray3Color().CGColor
-            
-            animation = CABasicAnimation(keyPath: "opacity")
-            animation.duration = 0.4
-            animation.fromValue = 0.0
-            animation.toValue = 1.0
-            animation.removedOnCompletion = false
-        }
-        selectionLayer!.addAnimation(animation, forKey: nil)
     }
 }
