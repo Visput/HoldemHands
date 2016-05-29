@@ -80,6 +80,43 @@ class HandOddsCalculatorTests: XCTestCase {
         
         testOddsCalculatorWithHands(hands, expectedOddsResults: oddsResults)
     }
+    
+    func testOddsCalculator5() {
+        let winningHand1 = Hand(firstCard: Card(rank: .Ace, suit: .Spades), secondCard: Card(rank: .Two, suit: .Spades))
+        let winningHand2 = Hand(firstCard: Card(rank: .Queen, suit: .Diamonds), secondCard: Card(rank: .Jack, suit: .Diamonds))
+        let hands = [
+            winningHand1,
+            winningHand2,
+            Hand(firstCard: Card(rank: .Nine, suit: .Diamonds), secondCard: Card(rank: .Five, suit: .Hearts)),
+            Hand(firstCard: Card(rank: .Ten, suit: .Diamonds), secondCard: Card(rank: .Eight, suit: .Clubs)),
+            Hand(firstCard: Card(rank: .Eight, suit: .Spades), secondCard: Card(rank: .Three, suit: .Spades)),
+            Hand(firstCard: Card(rank: .King, suit: .Diamonds), secondCard: Card(rank: .Three, suit: .Diamonds)),
+            Hand(firstCard: Card(rank: .Ace, suit: .Clubs), secondCard: Card(rank: .Seven, suit: .Diamonds)),
+            Hand(firstCard: Card(rank: .Jack, suit: .Hearts), secondCard: Card(rank: .Six, suit: .Diamonds))
+        ]
+        
+        var deck = Deck()
+        for hand in hands {
+            deck.removeHand(hand)
+        }
+        
+        let calculationExpecation = expectationWithDescription("calculationExpecation")
+        
+        let oddsCalculator = HandOddsCalculator(hands: hands, deck: deck, comparisonPrecision: 0.01)
+        oddsCalculator.calculateOdds({ handsOdds in
+            for handOdds in handsOdds {
+                if handOdds.hand == winningHand1 || handOdds.hand == winningHand2 {
+                    XCTAssertTrue(handOdds.wins)
+                } else {
+                    XCTAssertFalse(handOdds.wins)
+                }
+            }
+            calculationExpecation.fulfill()
+        })
+        
+        waitForExpectationsWithTimeout(300, handler: nil)
+        
+    }
 }
 
 extension HandOddsCalculatorTests {
