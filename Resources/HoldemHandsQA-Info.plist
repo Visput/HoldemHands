@@ -34,7 +34,6 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1299208010094691</string>
-				<string>fbauth2</string>
 			</array>
 		</dict>
 	</array>
