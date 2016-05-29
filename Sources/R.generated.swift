@@ -5,7 +5,7 @@ import Foundation
 import Rswift
 import UIKit
 
-/// This `R` struct is code generateted, and contains references to static resources.
+/// This `R` struct is code generated, and contains references to static resources.
 struct R: Rswift.Validatable {
   static func validate() throws {
     try intern.validate()
@@ -1075,12 +1075,12 @@ struct R: Rswift.Validatable {
       
       /// Value: You need %@ chips more to unlock %@
       static func bannerChipsToUnlockLevel(value1: String, _ value2: String) -> String {
-        return String(format: NSLocalizedString("banner.chips.to.unlock.level", comment: ""), locale: NSLocale.currentLocale(), value1, value2)
+        return String(format: NSLocalizedString("banner.chips.to.unlock.level", comment: ""), locale: _R.applicationLocale, value1, value2)
       }
       
       /// Value: Congratulations! You've unlocked %@!
       static func bannerUnlockedLevel(value1: String) -> String {
-        return String(format: NSLocalizedString("banner.unlocked.level", comment: ""), locale: NSLocale.currentLocale(), value1)
+        return String(format: NSLocalizedString("banner.unlocked.level", comment: ""), locale: _R.applicationLocale, value1)
       }
       
       /// Value: Welcome! Choose better hand to win the round
@@ -1115,12 +1115,12 @@ struct R: Rswift.Validatable {
       
       /// Value: Tie: %.2f%%
       static func textTieOdds(value1: Double) -> String {
-        return String(format: NSLocalizedString("text.tie.odds", comment: ""), locale: NSLocale.currentLocale(), value1)
+        return String(format: NSLocalizedString("text.tie.odds", comment: ""), locale: _R.applicationLocale, value1)
       }
       
       /// Value: Win: %.2f%%
       static func textWinOdds(value1: Double) -> String {
-        return String(format: NSLocalizedString("text.win.odds", comment: ""), locale: NSLocale.currentLocale(), value1)
+        return String(format: NSLocalizedString("text.win.odds", comment: ""), locale: _R.applicationLocale, value1)
       }
       
       /// Value: Play
@@ -1163,6 +1163,7 @@ struct R: Rswift.Validatable {
 }
 
 struct _R: Rswift.Validatable {
+  static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(NSLocale.init) ?? NSLocale.currentLocale()
   static let hostingBundle = NSBundle(identifier: "com.visput.holdemhands.prod") ?? NSBundle.mainBundle()
   
   static func validate() throws {

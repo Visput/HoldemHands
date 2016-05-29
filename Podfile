@@ -24,7 +24,3 @@ end
 target 'HoldemHandsQA' do
     pods
 end
-
-target 'HoldemHandsTests' do
-    pods
-end
