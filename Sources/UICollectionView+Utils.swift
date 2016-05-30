@@ -11,6 +11,10 @@ import UIKit
 
 extension UICollectionView {
     
+    var flowLayout: UICollectionViewFlowLayout? {
+        return collectionViewLayout as? UICollectionViewFlowLayout
+    }
+    
     func orderedVisibleCells() -> [UICollectionViewCell] {
         // Method `visibleCells()` provides cells in random order.
         let cells = visibleCells().sort({ (cell1, cell2) -> Bool in

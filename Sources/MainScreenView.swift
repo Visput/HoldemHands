@@ -55,12 +55,12 @@ final class MainScreenView: UIView {
         
         if isDetailsViewShown {
             UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveEaseInOut, animations: {
-                self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: self.detailsScrollView.frame.size.height * CGFloat(page))
+                self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: self.detailsScrollView.frame.height * CGFloat(page))
                 }, completion: { _ in
                     completionHandler?()
             })
         } else {
-            detailsScrollView.contentOffset = CGPoint(x: 0.0, y: detailsScrollView.frame.size.height * CGFloat(page))
+            detailsScrollView.contentOffset = CGPoint(x: 0.0, y: detailsScrollView.frame.height * CGFloat(page))
             scrollToDetailsView(completionHandler)
         }
     }
@@ -92,11 +92,11 @@ final class MainScreenView: UIView {
     }
     
     private func scrollToDetailsView(completionHandler: (() -> Void)? = nil) {
-        menuViewLeadingSpace.constant = -menuView.frame.size.width
+        menuViewLeadingSpace.constant = -menuView.frame.width
         layoutIfNeeded()
         
         UIView.animateWithDuration(0.6, delay: 0.0, options: .CurveEaseInOut, animations: {
-            self.contentScrollView.contentOffset = CGPoint(x: self.contentScrollView.bounds.size.width, y: 0.0)
+            self.contentScrollView.contentOffset = CGPoint(x: self.contentScrollView.bounds.width, y: 0.0)
             
             }, completion: { _ in
                 completionHandler?()

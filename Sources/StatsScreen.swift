@@ -17,7 +17,7 @@ final class StatsScreen: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Stats view uses menu height as measure for table height.
-        statsController.statsView.menuSize = CGSize(width: 0.0, height: model.navigationManager.mainScreen.mainView.menuView.frame.size.height)
+        statsController.statsView.menuSize = CGSize(width: 0.0, height: model.navigationManager.mainScreen.mainView.menuView.frame.height)
     }
     
     override func viewDidShow() {

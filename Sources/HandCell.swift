@@ -21,7 +21,7 @@ final class HandCell: UICollectionViewCell {
     
     private var currentScale: CGFloat {
         let maxCellWidth = CGFloat(255.0)
-        let scale = frame.size.width / maxCellWidth
+        let scale = frame.width / maxCellWidth
         return scale
     }
     

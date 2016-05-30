@@ -15,33 +15,30 @@ final class StatsView: UIView {
     
     var menuSize = CGSize(width: 0.0, height: 0.0)
     
-    private var statsCollectionLayout: UICollectionViewFlowLayout {
-        return statsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         let widthRatio: CGFloat = 2.0
         
         contentViewLeadingSpace.constant = menuSize.width
         
-        statsCollectionLayout.itemSize.height = floor(menuSize.height)
-        statsCollectionLayout.itemSize.width = floor(statsCollectionLayout.itemSize.height * widthRatio)
+        let flowLayout = statsCollectionView.flowLayout!
+        flowLayout.itemSize.height = floor(menuSize.height)
+        flowLayout.itemSize.width = floor(flowLayout.itemSize.height * widthRatio)
         
-        statsCollectionLayout.sectionInset.top = floor((statsCollectionView.frame.size.height - statsCollectionLayout.itemSize.height) / 2.0)
-        statsCollectionLayout.sectionInset.bottom = statsCollectionLayout.sectionInset.top
+        flowLayout.sectionInset.top = floor((statsCollectionView.frame.height - flowLayout.itemSize.height) / 2.0)
+        flowLayout.sectionInset.bottom = flowLayout.sectionInset.top
         
-        statsCollectionLayout.sectionInset.right = floor((frame.size.width - statsCollectionLayout.itemSize.width) / 2.0)
-        statsCollectionLayout.sectionInset.left = statsCollectionLayout.sectionInset.right - menuSize.width
+        flowLayout.sectionInset.right = floor((frame.width - flowLayout.itemSize.width) / 2.0)
+        flowLayout.sectionInset.left = flowLayout.sectionInset.right - menuSize.width
         
-        let spacing = menuSize.width > 0.0 ? statsCollectionLayout.sectionInset.left : statsCollectionLayout.sectionInset.left / 2.0
-        statsCollectionLayout.minimumLineSpacing = spacing
-        statsCollectionLayout.minimumInteritemSpacing = spacing
+        let spacing = menuSize.width > 0.0 ? flowLayout.sectionInset.left : flowLayout.sectionInset.left / 2.0
+        flowLayout.minimumLineSpacing = spacing
+        flowLayout.minimumInteritemSpacing = spacing
     }
     
     func scrollToNearestStatsAnimated(animated: Bool) {
         let offset = statsCollectionView.contentOffset.x
-        let statsDecimalIndex = offset / (statsCollectionLayout.itemSize.width + statsCollectionLayout.minimumInteritemSpacing)
+        let statsDecimalIndex = offset / (statsCollectionView.flowLayout!.itemSize.width + statsCollectionView.flowLayout!.minimumInteritemSpacing)
         let statsIndex = Int(round(statsDecimalIndex))
         
         scrollToStatsAtIndex(statsIndex, animated: animated)
@@ -50,12 +47,12 @@ final class StatsView: UIView {
     func scrollToStatsAtIndex(index: Int, animated: Bool) {
         var targetOffset: CGFloat = 0.0
         if index != 0 {
-            targetOffset = statsCollectionLayout.sectionInset.left +
-                statsCollectionLayout.minimumInteritemSpacing * CGFloat(index - 1) +
-                statsCollectionLayout.itemSize.width * CGFloat(index)
+            targetOffset = statsCollectionView.flowLayout!.sectionInset.left +
+                statsCollectionView.flowLayout!.minimumInteritemSpacing * CGFloat(index - 1) +
+                statsCollectionView.flowLayout!.itemSize.width * CGFloat(index)
             
             if menuSize.width == 0 {
-                targetOffset -= statsCollectionLayout.sectionInset.left - statsCollectionLayout.minimumInteritemSpacing
+                targetOffset -= statsCollectionView.flowLayout!.sectionInset.left - statsCollectionView.flowLayout!.minimumInteritemSpacing
             }
         }
         

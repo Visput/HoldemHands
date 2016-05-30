@@ -128,7 +128,7 @@ extension MainScreen {
 extension MainScreen: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        let page = lroundf(Float(scrollView.contentOffset.y / scrollView.frame.size.height))
+        let page = lroundf(Float(scrollView.contentOffset.y / scrollView.frame.height))
         
         currentDetailsPage = MainScreenView.DetailsViewPage(rawValue: page)
         mainView.selectMenuButtonForPage(page)

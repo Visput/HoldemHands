@@ -68,12 +68,12 @@ final class GameScreenView: UIView {
             hiddenView = firstHandsView
         }
         var initialFrame = bounds
-        initialFrame.origin.y = levelNameLabel.frame.origin.y + levelNameLabel.frame.size.height
+        initialFrame.origin.y = levelNameLabel.frame.origin.y + levelNameLabel.frame.height
         initialFrame.size.height = tieOddsLabel.frame.origin.y - initialFrame.origin.y
         
         shownView.frame = initialFrame
         hiddenView.frame = initialFrame
-        hiddenView.frame.origin.x = frame.size.width
+        hiddenView.frame.origin.x = frame.width
     }
     
     func scrollToNextHandsView(completionHandler: () -> Void) {
@@ -88,10 +88,10 @@ final class GameScreenView: UIView {
         
         UIView.animateWithDuration(animationDuration, delay: 0, options: .CurveEaseOut, animations: {
             viewToShow.frame.origin.x = 0.0
-            viewToHide.frame.origin.x = -self.frame.size.width
+            viewToHide.frame.origin.x = -self.frame.width
             
             }, completion: { _ in
-                viewToHide.frame.origin.x = self.frame.size.width
+                viewToHide.frame.origin.x = self.frame.width
                 completionHandler()
         })
     }

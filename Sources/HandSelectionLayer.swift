@@ -26,7 +26,7 @@ final class HandSelectionLayer: CAShapeLayer {
         
         let selectionPath = UIBezierPath()
         // Move to bottom left.
-        selectionPath.moveToPoint(CGPoint(x: 0.0, y: bounds.size.height - arcRadius))
+        selectionPath.moveToPoint(CGPoint(x: 0.0, y: bounds.height - arcRadius))
         
         // Draw to top left.
         selectionPath.addLineToPoint(CGPoint(x: 0.0, y: arcRadius))
@@ -36,24 +36,24 @@ final class HandSelectionLayer: CAShapeLayer {
                                        endAngle: 3 * halfPi,
                                        clockwise: true)
         // Draw to top right.
-        selectionPath.addLineToPoint(CGPoint(x: bounds.size.width - arcRadius, y: 0.0))
-        selectionPath.addArcWithCenter(CGPoint(x: bounds.size.width - arcRadius, y: arcRadius),
+        selectionPath.addLineToPoint(CGPoint(x: bounds.width - arcRadius, y: 0.0))
+        selectionPath.addArcWithCenter(CGPoint(x: bounds.width - arcRadius, y: arcRadius),
                                        radius: arcRadius,
                                        startAngle: 3 * halfPi,
                                        endAngle: 4 * halfPi,
                                        clockwise: true)
         
         // Draw to bottom right.
-        selectionPath.addLineToPoint(CGPoint(x: bounds.size.width, y: bounds.size.height - arcRadius))
-        selectionPath.addArcWithCenter(CGPoint(x: bounds.size.width - arcRadius, y: bounds.size.height - arcRadius),
+        selectionPath.addLineToPoint(CGPoint(x: bounds.width, y: bounds.height - arcRadius))
+        selectionPath.addArcWithCenter(CGPoint(x: bounds.width - arcRadius, y: bounds.height - arcRadius),
                                        radius: arcRadius,
                                        startAngle: 0,
                                        endAngle: halfPi,
                                        clockwise: true)
         
         // Draw to bottom left.
-        selectionPath.addLineToPoint(CGPoint(x: arcRadius, y: bounds.size.height))
-        selectionPath.addArcWithCenter(CGPoint(x: arcRadius, y: bounds.size.height - arcRadius),
+        selectionPath.addLineToPoint(CGPoint(x: arcRadius, y: bounds.height))
+        selectionPath.addArcWithCenter(CGPoint(x: arcRadius, y: bounds.height - arcRadius),
                                        radius: arcRadius,
                                        startAngle: halfPi,
                                        endAngle: 2 * halfPi,

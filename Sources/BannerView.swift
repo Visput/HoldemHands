@@ -36,7 +36,7 @@ class BannerView: UIControl {
         self.tapHandler = tapHandler
         presented = true
         
-        frame.origin.x = (view.bounds.size.width - bounds.size.width) / 2.0
+        frame.origin.x = (view.bounds.width - bounds.width) / 2.0
         frame.origin.y = -bannerSize.height
         view.addSubview(self)
         view.addGestureRecognizer(swipeRecognizer)

@@ -15,10 +15,6 @@ final class LevelsView: UIView {
     
     var menuSize = CGSize(width: 0.0, height: 0.0)
     
-    private var levelsCollectionLayout: UICollectionViewFlowLayout {
-        return levelsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    }
-    
     private var zoomedCell: LevelCell?
     private let zoomLevel: CGFloat = 3.0
     
@@ -28,22 +24,23 @@ final class LevelsView: UIView {
         
         contentViewLeadingSpace.constant = menuSize.width
         
-        levelsCollectionLayout.itemSize.height = floor(menuSize.height)
-        levelsCollectionLayout.itemSize.width = floor(levelsCollectionLayout.itemSize.height * widthRatio)
+        let flowLayout = levelsCollectionView.flowLayout!
+        flowLayout.itemSize.height = floor(menuSize.height)
+        flowLayout.itemSize.width = floor(flowLayout.itemSize.height * widthRatio)
         
-        levelsCollectionLayout.sectionInset.top = floor((levelsCollectionView.frame.size.height - levelsCollectionLayout.itemSize.height) / 2.0)
-        levelsCollectionLayout.sectionInset.bottom = levelsCollectionLayout.sectionInset.top
+        flowLayout.sectionInset.top = floor((levelsCollectionView.frame.height - flowLayout.itemSize.height) / 2.0)
+        flowLayout.sectionInset.bottom = flowLayout.sectionInset.top
         
-        levelsCollectionLayout.sectionInset.right = floor((frame.size.width - levelsCollectionLayout.itemSize.width) / 2.0)
-        levelsCollectionLayout.sectionInset.left = levelsCollectionLayout.sectionInset.right - menuSize.width
+        flowLayout.sectionInset.right = floor((frame.width - flowLayout.itemSize.width) / 2.0)
+        flowLayout.sectionInset.left = flowLayout.sectionInset.right - menuSize.width
         
-        levelsCollectionLayout.minimumLineSpacing = levelsCollectionLayout.sectionInset.left
-        levelsCollectionLayout.minimumInteritemSpacing = levelsCollectionLayout.sectionInset.left
+        flowLayout.minimumLineSpacing = flowLayout.sectionInset.left
+        flowLayout.minimumInteritemSpacing = flowLayout.sectionInset.left
     }
     
     func scrollToNearestLevelAnimated(animated: Bool) {
         let offset = levelsCollectionView.contentOffset.x
-        let levelDecimalIndex = offset / (levelsCollectionLayout.itemSize.width + levelsCollectionLayout.minimumInteritemSpacing)
+        let levelDecimalIndex = offset / (levelsCollectionView.flowLayout!.itemSize.width + levelsCollectionView.flowLayout!.minimumInteritemSpacing)
         let levelIndex = Int(round(levelDecimalIndex))
         
         scrollToLevelAtIndex(levelIndex, animated: animated)
@@ -52,9 +49,9 @@ final class LevelsView: UIView {
     func scrollToLevelAtIndex(index: Int, animated: Bool) {
         var targetOffset: CGFloat = 0.0
         if index != 0 {
-            targetOffset = levelsCollectionLayout.sectionInset.left +
-                levelsCollectionLayout.minimumInteritemSpacing * CGFloat(index - 1) +
-                levelsCollectionLayout.itemSize.width * CGFloat(index)
+            targetOffset = levelsCollectionView.flowLayout!.sectionInset.left +
+                levelsCollectionView.flowLayout!.minimumInteritemSpacing * CGFloat(index - 1) +
+                levelsCollectionView.flowLayout!.itemSize.width * CGFloat(index)
         }
         
         levelsCollectionView.setContentOffset(CGPoint(x: targetOffset, y: 0), animated: animated)
