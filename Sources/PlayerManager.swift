@@ -23,7 +23,7 @@ final class PlayerManager: NSObject {
     let observers = ObserverSet<PlayerManagerObserving>()
     
     private(set) var playerData: PlayerData!
-    private var player: GKLocalPlayer
+    private(set) var player: GKLocalPlayer
 
     private let navigationManager: NavigationManager
     private var autoSaveTimer: NSTimer?
@@ -61,8 +61,7 @@ final class PlayerManager: NSObject {
         playerData.chipsCount! += chipsWon
         
         let progressItem = progressItemForLevel(level)
-        let newLevelProgress = progressItem.progress.levelProgressByIncrementingWinsCount(chipsWon: chipsWon)
-        playerData.levelProgressItems[progressItem.index] = newLevelProgress
+        playerData.levelProgressItems[progressItem.index].trackWinWithChipsCount(chipsWon)
         
         notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: chipsMultiplier)
         
@@ -78,9 +77,7 @@ final class PlayerManager: NSObject {
         playerData.chipsCount = max(Int64(0), playerData.chipsCount - chipsLost)
 
         let progressItem = progressItemForLevel(level)
-        
-        let newLevelProgress = progressItem.progress.levelProgressByIncrementingLossesCount(chipsLost: chipsLost)
-        playerData.levelProgressItems[progressItem.index] = newLevelProgress
+        playerData.levelProgressItems[progressItem.index].trackLostWithChipsCount(chipsLost)
         
         guard playerData.chipsCount != oldChipsCount else { return }
         notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: 1)
@@ -167,8 +164,7 @@ final class PlayerManager: NSObject {
                 } else {
                     for (index, progress) in self.playerData.levelProgressItems.enumerate() {
                         if progress.leaderboardID == leaderboard.identifier {
-                            let progressItemWithRank = progress.levelProgressBySettingRank(leaderboard.localPlayerScore?.rank)
-                            self.playerData.levelProgressItems[index] = progressItemWithRank
+                            self.playerData.levelProgressItems[index].rank = leaderboard.localPlayerScore?.rank
                             handleProcessedLeaderboard(leaderboard, error: nil)
                             break
                         }
@@ -233,10 +229,9 @@ final class PlayerManager: NSObject {
     private func updateLockStateForLevels() {
         var didUnlock = false
         for index in (playerData.levelProgressItems.count - 1).stride(through: 0, by: -1) {
-            var levelProgress = playerData.levelProgressItems[index]
+            let levelProgress = playerData.levelProgressItems[index]
             if levelProgress.locked! && levelProgress.level.chipsToUnlock <= playerData.chipsCount {
-                levelProgress = levelProgress.levelProgressBySettingUnlocked()
-                playerData.levelProgressItems[index] = levelProgress
+                playerData.levelProgressItems[index].locked = false
                 
                 if !didUnlock {
                     notifyObserversDidUnlockLevel(levelProgress)
@@ -401,9 +396,8 @@ extension PlayerManager {
             let levelsJSON = gameDataJSON[levelsKey]
             let levels = Mapper<Level>().mapArray(levelsJSON)!
             for (index, progress) in playerData.levelProgressItems.enumerate() {
-                for level in levels {
-                    guard progress.levelID == level.identifier else { continue }
-                    playerData.levelProgressItems[index] = progress.levelProgressBySettingLevel(level)
+                for level in levels where level.identifier == progress.levelID {
+                    playerData.levelProgressItems[index].level = level
                     break
                 }
             }
