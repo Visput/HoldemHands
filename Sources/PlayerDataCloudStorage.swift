@@ -102,7 +102,7 @@ extension PlayerDataCloudStorage: GKLocalPlayerListener {
     
     func player(player: GKPlayer, hasConflictingSavedGames savedGames: [GKSavedGame]) {
         let recentSavedGame = savedGames.mostRecentSavedGame()!
-        recentSavedGame.loadDataWithCompletionHandler({ [unowned self] data, error in
+        recentSavedGame.loadDataWithCompletionHandler({ data, error in
             guard error == nil else {
                 Analytics.error(error)
                 return

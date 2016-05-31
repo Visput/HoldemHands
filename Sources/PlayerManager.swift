@@ -141,6 +141,9 @@ extension PlayerManager {
             })
         }
     }
+}
+
+extension PlayerManager {
     
     private func reportScores() {
         guard player.authenticated else { return }
