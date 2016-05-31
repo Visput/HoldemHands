@@ -12,6 +12,12 @@
 		9F12A8771CFBB5DC00823D6D /* LevelProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15D1C8761C700D6F368 /* LevelProgress.swift */; };
 		9F13F3BD1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3BC1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift */; };
 		9F13F3BE1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3BC1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift */; };
+		9F13F3C01CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3BF1CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift */; };
+		9F13F3C11CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3BF1CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift */; };
+		9F13F3C31CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3C21CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift */; };
+		9F13F3C41CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3C21CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift */; };
+		9F13F3C61CFD5F2A00ED66D9 /* Array+GKSavedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3C51CFD5F2A00ED66D9 /* Array+GKSavedGame.swift */; };
+		9F13F3C71CFD5F2A00ED66D9 /* Array+GKSavedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3C51CFD5F2A00ED66D9 /* Array+GKSavedGame.swift */; };
 		9F183F721CA9D993002F4C5F /* HandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F183F711CA9D993002F4C5F /* HandsViewController.swift */; };
 		9F1927091CA3260B009F7E30 /* HandsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1927081CA3260B009F7E30 /* HandsCollectionViewLayout.swift */; };
 		9F1BD3561C93701C00020AAA /* SharingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1BD3551C93701C00020AAA /* SharingItem.swift */; };
@@ -184,6 +190,9 @@
 		4B0B8444E57E1428EDE81FFE /* Pods_HoldemHands.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldemHands.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		510D239E9E33B644BB279827 /* Pods_HoldemHandsQA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldemHandsQA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F13F3BC1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDataSynchronizer.swift; sourceTree = "<group>"; };
+		9F13F3BF1CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDataCloudStorage.swift; sourceTree = "<group>"; };
+		9F13F3C21CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDataKeychainStorage.swift; sourceTree = "<group>"; };
+		9F13F3C51CFD5F2A00ED66D9 /* Array+GKSavedGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+GKSavedGame.swift"; sourceTree = "<group>"; };
 		9F183F711CA9D993002F4C5F /* HandsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandsViewController.swift; sourceTree = "<group>"; };
 		9F1927081CA3260B009F7E30 /* HandsCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		9F1BD3551C93701C00020AAA /* SharingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingItem.swift; sourceTree = "<group>"; };
@@ -337,6 +346,8 @@
 				9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */,
 				9F259FFA1CFD1DEE00219D68 /* PlayerDataJsonLoader.swift */,
 				9F13F3BC1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift */,
+				9F13F3BF1CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift */,
+				9F13F3C21CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift */,
 				9FA31FA61CB609960010555B /* DTO */,
 			);
 			name = PlayerManager;
@@ -537,6 +548,7 @@
 				9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */,
 				9F6434A61CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift */,
 				9FB093C31CFB80C700A677EF /* Double+Precision.swift */,
+				9F13F3C51CFD5F2A00ED66D9 /* Array+GKSavedGame.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1082,6 +1094,7 @@
 				9F4EF27A1CBC4F66002E5FEA /* HandRank.swift in Sources */,
 				9F4EF27B1CBC4F66002E5FEA /* ChipsView.swift in Sources */,
 				9F4EF27C1CBC4F66002E5FEA /* LevelCellItem.swift in Sources */,
+				9F13F3C41CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift in Sources */,
 				9F4EF27E1CBC4F66002E5FEA /* UIScreen+Size.swift in Sources */,
 				9F4EF27F1CBC4F66002E5FEA /* Rank.swift in Sources */,
 				9F4EF2801CBC4F66002E5FEA /* PlayerManager.swift in Sources */,
@@ -1096,6 +1109,7 @@
 				9F4EF2861CBC4F66002E5FEA /* MainScreen.swift in Sources */,
 				9F4EF2871CBC4F66002E5FEA /* Int64+Chips.swift in Sources */,
 				9F4EF2881CBC4F66002E5FEA /* NavigationManager.swift in Sources */,
+				9F13F3C11CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift in Sources */,
 				9F4EF2891CBC4F66002E5FEA /* PlayerData.swift in Sources */,
 				9F4EF28B1CBC4F66002E5FEA /* GameScreenView.swift in Sources */,
 				9F4EF28C1CBC4F66002E5FEA /* Hand.swift in Sources */,
@@ -1105,6 +1119,7 @@
 				9F4EF2901CBC4F66002E5FEA /* HandOdds.swift in Sources */,
 				9F4EF2911CBC4F66002E5FEA /* GameScreen.swift in Sources */,
 				9F4EF2921CBC4F66002E5FEA /* Analytics.swift in Sources */,
+				9F13F3C71CFD5F2A00ED66D9 /* Array+GKSavedGame.swift in Sources */,
 				9F4EF2931CBC4F66002E5FEA /* Deck.swift in Sources */,
 				9F4EF2941CBC4F66002E5FEA /* HandsViewController.swift in Sources */,
 				9FCE27801CE657DC002E3F04 /* R.generated.swift in Sources */,
@@ -1154,6 +1169,7 @@
 				9F44D2191C84B21A00640046 /* HandRank.swift in Sources */,
 				9FA31FA51CB59D840010555B /* ChipsView.swift in Sources */,
 				9F1DDD271C8A13C7005F1D72 /* LevelCellItem.swift in Sources */,
+				9F13F3C31CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift in Sources */,
 				9F44D2471C84C63900640046 /* UIScreen+Size.swift in Sources */,
 				9F44D2211C84B21A00640046 /* Rank.swift in Sources */,
 				9F95E1621C879B3100D6F368 /* PlayerManager.swift in Sources */,
@@ -1168,6 +1184,7 @@
 				9F44D2321C84BAA900640046 /* MainScreen.swift in Sources */,
 				9FE888EB1C94F6A000A39C2C /* Int64+Chips.swift in Sources */,
 				9F1DDD091C89022A005F1D72 /* NavigationManager.swift in Sources */,
+				9F13F3C01CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift in Sources */,
 				9F95E1601C879A9D00D6F368 /* PlayerData.swift in Sources */,
 				9F44D21D1C84B21A00640046 /* GameScreenView.swift in Sources */,
 				9F44D2151C84B21A00640046 /* Hand.swift in Sources */,
@@ -1177,6 +1194,7 @@
 				9F44D2181C84B21A00640046 /* HandOdds.swift in Sources */,
 				9F44D21C1C84B21A00640046 /* GameScreen.swift in Sources */,
 				9F44D2431C84C63900640046 /* Analytics.swift in Sources */,
+				9F13F3C61CFD5F2A00ED66D9 /* Array+GKSavedGame.swift in Sources */,
 				9F44D2141C84B21A00640046 /* Deck.swift in Sources */,
 				9F183F721CA9D993002F4C5F /* HandsViewController.swift in Sources */,
 				9FCE277F1CE657D7002E3F04 /* R.generated.swift in Sources */,
