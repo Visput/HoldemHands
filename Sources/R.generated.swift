@@ -16,16 +16,14 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 6 files.
+  /// This `R.file` struct is generated, and contains static references to 5 files.
   struct file {
     /// Resource file `app_font.ttc`.
     static let app_fontTtc = FileResource(bundle: _R.hostingBundle, name: "app_font", pathExtension: "ttc")
     /// Resource file `DefaultPlayerData.json`.
     static let defaultPlayerDataJson = FileResource(bundle: _R.hostingBundle, name: "DefaultPlayerData", pathExtension: "json")
-    /// Resource file `GameDataQA1.json`.
-    static let gameDataQA1Json = FileResource(bundle: _R.hostingBundle, name: "GameDataQA1", pathExtension: "json")
-    /// Resource file `GameDataQA2.json`.
-    static let gameDataQA2Json = FileResource(bundle: _R.hostingBundle, name: "GameDataQA2", pathExtension: "json")
+    /// Resource file `GameData.json`.
+    static let gameDataJson = FileResource(bundle: _R.hostingBundle, name: "GameData", pathExtension: "json")
     /// Resource file `iTunesArtwork@2x.png`.
     static let iTunesArtwork2xPng = FileResource(bundle: _R.hostingBundle, name: "iTunesArtwork@2x", pathExtension: "png")
     /// Resource file `iTunesArtwork.png`.
@@ -43,15 +41,9 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.URLForResource(fileResource)
     }
     
-    /// `bundle.URLForResource("GameDataQA1", withExtension: "json")`
-    static func gameDataQA1Json(_: Void) -> NSURL? {
-      let fileResource = R.file.gameDataQA1Json
-      return fileResource.bundle.URLForResource(fileResource)
-    }
-    
-    /// `bundle.URLForResource("GameDataQA2", withExtension: "json")`
-    static func gameDataQA2Json(_: Void) -> NSURL? {
-      let fileResource = R.file.gameDataQA2Json
+    /// `bundle.URLForResource("GameData", withExtension: "json")`
+    static func gameDataJson(_: Void) -> NSURL? {
+      let fileResource = R.file.gameDataJson
       return fileResource.bundle.URLForResource(fileResource)
     }
     
@@ -1172,7 +1164,7 @@ struct R: Rswift.Validatable {
 
 struct _R: Rswift.Validatable {
   static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(NSLocale.init) ?? NSLocale.currentLocale()
-  static let hostingBundle = NSBundle(identifier: "com.visput.holdemhands.test") ?? NSBundle.mainBundle()
+  static let hostingBundle = NSBundle(identifier: "com.visput.holdemhands.prod") ?? NSBundle.mainBundle()
   
   static func validate() throws {
     try storyboard.validate()

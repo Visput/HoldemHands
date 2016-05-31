@@ -40,7 +40,9 @@ final class PlayerManager: NSObject {
         player = GKLocalPlayer.localPlayer()
         super.init()
         player.registerListener(self)
-        loadPlayerData()
+        loadPlayerDataWithCompletionHandler({ [unowned self] playerData in
+            self.updatePlayerDataIfNeeded(playerData)
+        })
     }
     
     deinit {
@@ -247,9 +249,9 @@ final class PlayerManager: NSObject {
 
 extension PlayerManager {
     
-    private func loadPlayerData() {
+    private func loadPlayerDataWithCompletionHandler(completionHandler: (playerData: PlayerData) -> Void) {
         // Use last saved data while actual data is loading from GameCenter.
-        loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: true)
+        completionHandler(playerData: loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: true))
         
         // Authenticate current user and load data from GameCenter.
         player.authenticateHandler = { [unowned self] viewController, error in
@@ -268,7 +270,7 @@ extension PlayerManager {
                 Analytics.error(error)
                 
                 // Load local data for guest player.
-                self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false)
+                completionHandler(playerData: self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false))
                 return
             }
             
@@ -281,13 +283,13 @@ extension PlayerManager {
                     Analytics.error(error)
                     
                     // Load local data for authenticated player.
-                    self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false)
+                    completionHandler(playerData: self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false))
                     return
                 }
                 
                 guard let recentSavedGame = self.mostRecentSavedGameInGames(savedGames) else {
                     // Load default data for authenticated player.
-                    self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false)
+                    completionHandler(playerData: self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false))
                     return
                 }
                 
@@ -297,12 +299,13 @@ extension PlayerManager {
                         Analytics.error(error)
                         
                         // Load local data for authenticated player.
-                        self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false)
+                        completionHandler(playerData: self.loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded: false))
                         return
                     }
                     
                     // Initialize player data with GameCenter data.
-                    self.initializePlayerDataWithJSONData(data!)
+                    let newPlayerData = PlayerDataJsonLoader(jsonData: data!).playerData
+                    completionHandler(playerData: newPlayerData)
                 })
             })
         }
@@ -334,7 +337,7 @@ extension PlayerManager {
         }
     }
     
-    private func loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded useLastPlayerIfNeeded: Bool) {
+    private func loadPlayerDataFromLocalStorage(useLastPlayerIfNeeded useLastPlayerIfNeeded: Bool) -> PlayerData {
         let defaultPlayerDataFileName = NSBundle.mainBundle().objectForInfoDictionaryKey("DefaultPlayerDataFileName") as! String
         
         let keys = playerDataKeys()
@@ -363,45 +366,19 @@ extension PlayerManager {
                 encoding: NSUTF8StringEncoding) as String
         }
 
-        initializePlayerDataWithJSONString(playerDataJSON)
+        let playerData = PlayerDataJsonLoader(jsonString: playerDataJSON).playerData
+        return playerData
     }
     
-    private func initializePlayerDataWithJSONData(jsonData: NSData) {
-        let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
-        initializePlayerDataWithJSONString(jsonString)
-    }
-    
-    private func initializePlayerDataWithJSONString(jsonString: String) {
-        let gameDataFileName = NSBundle.mainBundle().objectForInfoDictionaryKey("GameDataFileName") as! String
-        let overallLeaderboardIDKey = "overall_leaderboard_id"
-        let levelsKey = "levels"
-        
+    private func updatePlayerDataIfNeeded(newPlayerData: PlayerData) {
         let keys = playerDataKeys()
         
-        let newPlayerData = Mapper<PlayerData>().map(jsonString)
-        
         // Update player data if new data timestamp is newer than current data timestamp or if player changed.
-        if playerData?.timestamp < newPlayerData!.timestamp ||
+        if playerData?.timestamp < newPlayerData.timestamp ||
             (player.authenticated && player.playerID != keys.lastSavedKey) ||
             (!player.authenticated && keys.lastSavedKey != keys.guestKey) {
             
             playerData = newPlayerData
-            
-            // Fill player data with game data.
-            let gameData = NSData(contentsOfFile: gameDataFileName.pathInResourcesBundle())!
-            let gameDataJSON = try! NSJSONSerialization.JSONObjectWithData(gameData, options: .AllowFragments) as! [String : AnyObject]
-            
-            playerData.overallLeaderboardID = gameDataJSON[overallLeaderboardIDKey] as! String
-            
-            let levelsJSON = gameDataJSON[levelsKey]
-            let levels = Mapper<Level>().mapArray(levelsJSON)!
-            for (index, progress) in playerData.levelProgressItems.enumerate() {
-                for level in levels where level.identifier == progress.levelID {
-                    playerData.levelProgressItems[index].level = level
-                    break
-                }
-            }
-            
             updateLockStateForLevels()
         }
         
@@ -448,7 +425,9 @@ extension PlayerManager {
 extension PlayerManager: GKLocalPlayerListener {
     
     func player(player: GKPlayer, didModifySavedGame savedGame: GKSavedGame) {
-        loadPlayerData()
+        loadPlayerDataWithCompletionHandler({ [unowned self] playerData in
+            self.updatePlayerDataIfNeeded(playerData)
+        })
     }
     
     func player(player: GKPlayer, hasConflictingSavedGames savedGames: [GKSavedGame]) {
@@ -468,7 +447,8 @@ extension PlayerManager: GKLocalPlayerListener {
                     }
                     
                     // Initialize player data with most recent GameCenter data.
-                    self.initializePlayerDataWithJSONData(data!)
+                    let newPlayerData = PlayerDataJsonLoader(jsonData: data!).playerData
+                    self.updatePlayerDataIfNeeded(newPlayerData)
             })
         })
     }
@@ -519,7 +499,9 @@ extension PlayerManager {
     }
     
     @objc private func appDidBecomeActive(notification: NSNotification) {
-        loadPlayerData()
+        loadPlayerDataWithCompletionHandler({ [unowned self] playerData in
+            self.updatePlayerDataIfNeeded(playerData)
+        })
         startAutoSaveTimer()
     }
 }
