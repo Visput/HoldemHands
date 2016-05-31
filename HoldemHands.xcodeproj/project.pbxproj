@@ -18,6 +18,8 @@
 		9F13F3C41CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3C21CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift */; };
 		9F13F3C61CFD5F2A00ED66D9 /* Array+GKSavedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3C51CFD5F2A00ED66D9 /* Array+GKSavedGame.swift */; };
 		9F13F3C71CFD5F2A00ED66D9 /* Array+GKSavedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3C51CFD5F2A00ED66D9 /* Array+GKSavedGame.swift */; };
+		9F13F3C91CFD6C3900ED66D9 /* PlayerData+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3C81CFD6C3900ED66D9 /* PlayerData+Utils.swift */; };
+		9F13F3CA1CFD6C3900ED66D9 /* PlayerData+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3C81CFD6C3900ED66D9 /* PlayerData+Utils.swift */; };
 		9F183F721CA9D993002F4C5F /* HandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F183F711CA9D993002F4C5F /* HandsViewController.swift */; };
 		9F1927091CA3260B009F7E30 /* HandsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1927081CA3260B009F7E30 /* HandsCollectionViewLayout.swift */; };
 		9F1BD3561C93701C00020AAA /* SharingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1BD3551C93701C00020AAA /* SharingItem.swift */; };
@@ -193,6 +195,7 @@
 		9F13F3BF1CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDataCloudStorage.swift; sourceTree = "<group>"; };
 		9F13F3C21CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDataKeychainStorage.swift; sourceTree = "<group>"; };
 		9F13F3C51CFD5F2A00ED66D9 /* Array+GKSavedGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+GKSavedGame.swift"; sourceTree = "<group>"; };
+		9F13F3C81CFD6C3900ED66D9 /* PlayerData+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlayerData+Utils.swift"; sourceTree = "<group>"; };
 		9F183F711CA9D993002F4C5F /* HandsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandsViewController.swift; sourceTree = "<group>"; };
 		9F1927081CA3260B009F7E30 /* HandsCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		9F1BD3551C93701C00020AAA /* SharingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingItem.swift; sourceTree = "<group>"; };
@@ -348,6 +351,7 @@
 				9F13F3BC1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift */,
 				9F13F3BF1CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift */,
 				9F13F3C21CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift */,
+				9F13F3C81CFD6C3900ED66D9 /* PlayerData+Utils.swift */,
 				9FA31FA61CB609960010555B /* DTO */,
 			);
 			name = PlayerManager;
@@ -1141,6 +1145,7 @@
 				9F4EF2A31CBC4F66002E5FEA /* Progress.swift in Sources */,
 				9F4EF2A41CBC4F66002E5FEA /* QuickArray.swift in Sources */,
 				9F4EF2A51CBC4F66002E5FEA /* AppDelegate.swift in Sources */,
+				9F13F3CA1CFD6C3900ED66D9 /* PlayerData+Utils.swift in Sources */,
 				9F4EF2A61CBC4F66002E5FEA /* HandRankCalculator.swift in Sources */,
 				9F4EF2A71CBC4F66002E5FEA /* Card.swift in Sources */,
 				9F4EF2A81CBC4F66002E5FEA /* String+Path.swift in Sources */,
@@ -1216,6 +1221,7 @@
 				9FE888E91C93F76B00A39C2C /* Progress.swift in Sources */,
 				9F44D2201C84B21A00640046 /* QuickArray.swift in Sources */,
 				9F44D2121C84B21A00640046 /* AppDelegate.swift in Sources */,
+				9F13F3C91CFD6C3900ED66D9 /* PlayerData+Utils.swift in Sources */,
 				9F44D21A1C84B21A00640046 /* HandRankCalculator.swift in Sources */,
 				9F44D2131C84B21A00640046 /* Card.swift in Sources */,
 				9F93B4821C9750760092CBCB /* String+Path.swift in Sources */,

@@ -93,14 +93,14 @@ extension StatsViewController: PlayerManagerObserving {
 extension StatsViewController {
     
     private func fillViewsWithModel() {
-        progressItems = model.playerManager.progressItems()
+        progressItems = model.playerManager.playerData.progressItems()
         
         statsView.statsCollectionView.reloadData()
         
         guard level != nil else { return }
         // Execute scrolling after short delay to be sure that collection view layout is configured.
         executeAfterDelay(0.05, task: {
-            let statsIndex = self.model.playerManager.progressItemForLevel(self.level!).index + 1 // + 1 for overall progress item.
+            let statsIndex = self.model.playerManager.playerData.progressForLevel(self.level!).index + 1 // + 1 for overall progress item.
             self.statsView.scrollToStatsAtIndex(statsIndex, animated: false)
         })
     }

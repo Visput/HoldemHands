@@ -22,7 +22,7 @@ final class WalkthroughManager {
     }
     
     func showFirstRoundBannerIfNeeded() {
-        guard playerManager.playerProgress().handsCount == 0 else {
+        guard playerManager.playerData.playerProgress().handsCount == 0 else {
             hideBanners()
             return
         }
@@ -32,7 +32,7 @@ final class WalkthroughManager {
     }
     
     func showNextRoundBannerIfNeeded(won won: Bool) {
-        guard playerManager.playerProgress().handsCount == 1 else {
+        guard playerManager.playerData.playerProgress().handsCount == 1 else {
             hideBanners()
             return
         }

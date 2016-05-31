@@ -114,7 +114,7 @@ extension GameScreen {
 extension GameScreen: PlayerManagerObserving {
     
     func playerManager(manager: PlayerManager, didUnlockLevel levelProgress: LevelProgress) {
-        let levelIndex = manager.progressItemForLevel(levelProgress.level).index
+        let levelIndex = manager.playerData.progressForLevel(levelProgress.level).index
         let text = R.string.localizable.bannerUnlockedLevel(levelProgress.level.name)
         let backgroundImage = UIImage(named: "banner.unlock.level.\(levelProgress.level.identifier)")!
         
@@ -128,7 +128,7 @@ extension GameScreen: PlayerManagerObserving {
     }
     
     func playerManager(manager: PlayerManager, didLoadPlayerData playerData: PlayerData) {
-        if manager.isLockedLevel(level) {
+        if manager.playerData.isLockedLevel(level) {
             model.navigationManager.dismissGameScreenAnimated(true)
         }
     }

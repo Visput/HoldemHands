@@ -53,7 +53,7 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
         
         if cell.item.levelProgress.locked! {
             let level = cell.item.levelProgress.level
-            let chipsToUnlock = model.playerManager.chipsToUnlockLevel(level).formattedChipsCountString(needsReplaceZerosWithO: false)
+            let chipsToUnlock = model.playerManager.playerData.chipsToUnlockLevel(level).formattedChipsCountString(needsReplaceZerosWithO: false)
             let text = R.string.localizable.bannerChipsToUnlockLevel(chipsToUnlock, level.name)
             model.navigationManager.presentBannerWithText(text)
             
@@ -82,7 +82,7 @@ extension LevelsViewController: PlayerManagerObserving {
     }
     
     func playerManager(manager: PlayerManager, didUnlockLevel levelProgress: LevelProgress) {
-        let levelIndex = manager.progressItemForLevel(levelProgress.level).index
+        let levelIndex = manager.playerData.progressForLevel(levelProgress.level).index
         levelsView.levelsCollectionView.reloadItemsAtIndexPaths([NSIndexPath(forItem: levelIndex, inSection: 0)])
     }
 }

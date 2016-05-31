@@ -22,15 +22,15 @@ final class PlayerManager {
     let observers = ObserverSet<PlayerManagerObserving>()
     
     private(set) var playerData: PlayerData!
-    private(set) var player: GKLocalPlayer!
+    private var player: GKLocalPlayer!
 
-    private(set) var playerDataSynchronizer: PlayerDataSynchronizer!
-    private(set) var keychainStorage: PlayerDataKeychainStorage!
-    private(set) var cloudStorage: PlayerDataCloudStorage!
-    
     var authenticated: Bool {
         return player.authenticated
     }
+    
+    private var playerDataSynchronizer: PlayerDataSynchronizer!
+    private var keychainStorage: PlayerDataKeychainStorage!
+    private var cloudStorage: PlayerDataCloudStorage!
     
     init(navigationManager: NavigationManager) {
         player = GKLocalPlayer.localPlayer()
@@ -48,22 +48,20 @@ final class PlayerManager {
         
         loadPlayerData()
     }
-    
-    func isLockedLevel(level: Level) -> Bool {
-        let progress = progressItemForLevel(level).progress
-        return progress.locked
-    }
+}
+
+extension PlayerManager {
     
     func trackNewWinInLevel(level: Level) {
         playerData.lastPlayedLevelID = level.identifier
         
         let oldChipsCount = playerData.chipsCount
-        let chipsMultiplier = chipsMultiplierForLevel(level)
+        let chipsMultiplier = playerData.chipsMultiplierForLevel(level)
         let chipsWon = level.chipsPerWin * chipsMultiplier
         playerData.chipsCount! += chipsWon
         
-        let progressItem = progressItemForLevel(level)
-        playerData.levelProgressItems[progressItem.index].trackWinWithChipsCount(chipsWon)
+        let progressIndex = playerData.progressForLevel(level).index
+        playerData.levelProgressItems[progressIndex].trackWinWithChipsCount(chipsWon)
         
         notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: chipsMultiplier)
         
@@ -77,9 +75,9 @@ final class PlayerManager {
         let chipsLost = level.chipsPerWin
         // Total chips count can not be less than zero.
         playerData.chipsCount = max(Int64(0), playerData.chipsCount - chipsLost)
-
-        let progressItem = progressItemForLevel(level)
-        playerData.levelProgressItems[progressItem.index].trackLostWithChipsCount(chipsLost)
+        
+        let progressIndex = playerData.progressForLevel(level).index
+        playerData.levelProgressItems[progressIndex].trackLostWithChipsCount(chipsLost)
         
         guard playerData.chipsCount != oldChipsCount else { return }
         notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: 1)
@@ -89,50 +87,14 @@ final class PlayerManager {
         savePlayerData()
     }
     
-    func chipsMultiplierForLevel(level: Level) -> Int64 {
-        let progressItem = progressItemForLevel(level)
-        return Int64(1 + progressItem.progress.currentWinsCountInRow / level.winsInRowToDoubleChips)
-    }
-    
-    func chipsToUnlockLevel(level: Level) -> Int64 {
-        return level.chipsToUnlock - playerData.chipsCount
-    }
-    
-    func playerProgress() -> PlayerProgress {
-        var maxWinsCountInRow = 0
-        var winsCount = 0
-        var lossesCount = 0
-        
-        for levelProgress in playerData.levelProgressItems {
-            maxWinsCountInRow = max(maxWinsCountInRow, levelProgress.maxWinsCountInRow)
-            winsCount += levelProgress.winsCount
-            lossesCount += levelProgress.lossesCount
-        }
-        
-        return PlayerProgress(maxWinsCountInRow: maxWinsCountInRow,
-            winsCount: winsCount,
-            lossesCount: lossesCount,
-            chipsCount: playerData.chipsCount,
-            leaderboardID: playerData.overallLeaderboardID,
-            rank: playerData.rank)
-    }
-    
-    func progressItems() -> [Progress] {
-        var progressItems: [Progress] = [playerProgress()]
-        for levelProgressItem in playerData.levelProgressItems {
-            progressItems.append(levelProgressItem)
-        }
-        return progressItems
-    }
-    
     func loadProgressItemsIncludingRank(completionHandler: (progressItems: [Progress]?, error: NSError?) -> Void) {
         guard player.authenticated else {
-            completionHandler(progressItems: progressItems(), error: nil)
+            completionHandler(progressItems: playerData.progressItems(), error: nil)
             return
         }
         
         var leaderboards = [GKLeaderboard]()
-        for progress in progressItems() {
+        for progress in playerData.progressItems() {
             let leaderboard = GKLeaderboard(players: [player])
             leaderboard.identifier = progress.leaderboardID
             leaderboards.append(leaderboard)
@@ -148,7 +110,7 @@ final class PlayerManager {
             } else {
                 leaderboards.removeAtIndex(leaderboards.indexOf(leaderboard!)!)
                 if leaderboards.count == 0 {
-                    completionHandler(progressItems: self.progressItems(), error: nil)
+                    completionHandler(progressItems: self.playerData.progressItems(), error: nil)
                 }
             }
         }
@@ -180,29 +142,6 @@ final class PlayerManager {
         }
     }
     
-    func progressItemForLevel(level: Level) -> (index: Int, progress: LevelProgress) {
-        var progressItem: (Int, LevelProgress)! = nil
-        for (index, progress) in playerData.levelProgressItems.enumerate() {
-            if progress.level == level {
-                progressItem = (index, progress)
-                break
-            }
-        }
-        
-        return progressItem
-    }
-    
-    private func scoreForLevelProgress(progress: LevelProgress) -> Int64 {
-        let decimalScore = pow(Double(progress.handsCount), 0.7) *
-            Double(progress.level.chipsPerWin) *
-            Double(progress.wonChipsCount + progress.level.chipsPerWin) /
-            Double(progress.wonChipsCount + progress.lostChipsCount + progress.level.chipsPerWin)
-        
-        let score = Int64(round(decimalScore))
-        
-        return score
-    }
-    
     private func reportScores() {
         guard player.authenticated else { return }
         
@@ -212,7 +151,7 @@ final class PlayerManager {
             guard progress.handsCount > 0 else { continue }
             
             let score = GKScore()
-            score.value = scoreForLevelProgress(progress)
+            score.value = playerData.scoreForLevelProgress(progress)
             overallScore += score.value
             score.leaderboardIdentifier = progress.level.leaderboardID
             
@@ -221,7 +160,7 @@ final class PlayerManager {
             })
         }
         
-        guard playerProgress().handsCount > 0 else { return }
+        guard playerData.playerProgress().handsCount > 0 else { return }
         
         let score = GKScore()
         score.value = overallScore
@@ -229,7 +168,7 @@ final class PlayerManager {
         
         GKScore.reportScores([score], withCompletionHandler: { error in
             Analytics.error(error)
-        })   
+        })
     }
     
     private func updateLockStateForLevels() {
