@@ -10,6 +10,8 @@
 		6BF1C7E0D1BEC87E20F88F2F /* Pods_HoldemHands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B0B8444E57E1428EDE81FFE /* Pods_HoldemHands.framework */; };
 		9F12A8761CFBB5DC00823D6D /* LevelProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15D1C8761C700D6F368 /* LevelProgress.swift */; };
 		9F12A8771CFBB5DC00823D6D /* LevelProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15D1C8761C700D6F368 /* LevelProgress.swift */; };
+		9F13F3BD1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3BC1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift */; };
+		9F13F3BE1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13F3BC1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift */; };
 		9F183F721CA9D993002F4C5F /* HandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F183F711CA9D993002F4C5F /* HandsViewController.swift */; };
 		9F1927091CA3260B009F7E30 /* HandsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1927081CA3260B009F7E30 /* HandsCollectionViewLayout.swift */; };
 		9F1BD3561C93701C00020AAA /* SharingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1BD3551C93701C00020AAA /* SharingItem.swift */; };
@@ -181,6 +183,7 @@
 		4A3A2DE80C33B039FE0898C9 /* Pods-HoldemHandsQA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoldemHandsQA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HoldemHandsQA/Pods-HoldemHandsQA.debug.xcconfig"; sourceTree = "<group>"; };
 		4B0B8444E57E1428EDE81FFE /* Pods_HoldemHands.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldemHands.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		510D239E9E33B644BB279827 /* Pods_HoldemHandsQA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldemHandsQA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F13F3BC1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDataSynchronizer.swift; sourceTree = "<group>"; };
 		9F183F711CA9D993002F4C5F /* HandsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandsViewController.swift; sourceTree = "<group>"; };
 		9F1927081CA3260B009F7E30 /* HandsCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		9F1BD3551C93701C00020AAA /* SharingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingItem.swift; sourceTree = "<group>"; };
@@ -333,6 +336,7 @@
 				9F95E1611C879B3100D6F368 /* PlayerManager.swift */,
 				9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */,
 				9F259FFA1CFD1DEE00219D68 /* PlayerDataJsonLoader.swift */,
+				9F13F3BC1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift */,
 				9FA31FA61CB609960010555B /* DTO */,
 			);
 			name = PlayerManager;
@@ -1072,6 +1076,7 @@
 				9F4EF2761CBC4F66002E5FEA /* SharingViewController.swift in Sources */,
 				9F4EF2771CBC4F66002E5FEA /* BannerView.swift in Sources */,
 				9F6434A41CD544FE00B3BED6 /* CustomFontLabel.swift in Sources */,
+				9F13F3BE1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift in Sources */,
 				9F4EF2781CBC4F66002E5FEA /* HandsView.swift in Sources */,
 				9F4EF2791CBC4F66002E5FEA /* StatsCell.swift in Sources */,
 				9F4EF27A1CBC4F66002E5FEA /* HandRank.swift in Sources */,
@@ -1143,6 +1148,7 @@
 				9F314F911CB8D0D00063B893 /* SharingViewController.swift in Sources */,
 				9F3C4BDF1C9251E700B37939 /* BannerView.swift in Sources */,
 				9F6434A31CD544FE00B3BED6 /* CustomFontLabel.swift in Sources */,
+				9F13F3BD1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift in Sources */,
 				9F314F8F1CB8CDD20063B893 /* HandsView.swift in Sources */,
 				9FE888E31C93F53400A39C2C /* StatsCell.swift in Sources */,
 				9F44D2191C84B21A00640046 /* HandRank.swift in Sources */,

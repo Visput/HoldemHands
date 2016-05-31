@@ -53,7 +53,7 @@ final class GameScreen: BaseViewController {
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        model.playerManager.savePlayerData()
+        model.playerManager.trackFinishPlayLevel(level)
     }
     
     override func viewDidShow() {
