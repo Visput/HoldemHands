@@ -310,7 +310,7 @@ extension Analytics {
     }
     
     class func levelClickedInMainScreen(progress: LevelProgress) {
-        let event = (name: "click.main_screen.level", params: ["level_id" : progress.levelID, "locked" : progress.locked])
+        let event = (name: "click.main_screen.level", params: ["level_id" : progress.levelId, "locked" : progress.locked])
         Flurry.logEvent(event.name, withParameters: event.params as [NSObject : AnyObject])
         Answers.logCustomEventWithName(event.name, customAttributes: (event.params as! [String : AnyObject]))
     }

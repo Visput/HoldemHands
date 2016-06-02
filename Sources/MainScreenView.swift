@@ -45,6 +45,13 @@ final class MainScreenView: UIView {
     }
     
     func scrollToDetailsViewAtPage(page: DetailsViewPage, animated: Bool, completionHandler: (() -> Void)? = nil) {
+        if !animated {
+            // Layout if called without animation.
+            // It's needed to fix layout issue when app is launched by app shortcut (3D Touch).
+            setNeedsLayout()
+            layoutIfNeeded()
+        }
+        
         let pageIndex = page.rawValue
         guard !menuButtons[pageIndex].selected else {
             completionHandler?()
@@ -58,8 +65,8 @@ final class MainScreenView: UIView {
             let animationDuration = animated ? 0.4 : 0.0
             UIView.animateWithDuration(animationDuration, delay: 0.0, options: .CurveEaseInOut, animations: {
                 self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: self.detailsScrollView.frame.height * CGFloat(pageIndex))
-                }, completion: { _ in
-                    completionHandler?()
+            }, completion: { _ in
+                completionHandler?()
             })
         } else {
             detailsScrollView.contentOffset = CGPoint(x: 0.0, y: detailsScrollView.frame.height * CGFloat(pageIndex))
@@ -101,15 +108,15 @@ final class MainScreenView: UIView {
         UIView.animateWithDuration(animationDuration, delay: 0.0, options: .CurveEaseInOut, animations: {
             self.contentScrollView.contentOffset = CGPoint(x: self.contentScrollView.bounds.width, y: 0.0)
             
-            }, completion: { _ in
-                completionHandler?()
-                
-                // Show menu and gradient header.
-                UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut, animations: {
-                    self.menuViewLeadingSpace.constant = 0.0
-                    self.headerGradientView.alpha = 1.0
-                    self.layoutIfNeeded()
-                    }, completion: nil)
+        }, completion: { _ in
+            completionHandler?()
+            
+            // Show menu and gradient header.
+            UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut, animations: {
+                self.menuViewLeadingSpace.constant = 0.0
+                self.headerGradientView.alpha = 1.0
+                self.layoutIfNeeded()
+            }, completion: nil)
         })
     }
 }

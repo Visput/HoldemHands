@@ -16,6 +16,7 @@ final class LevelsView: UIView {
     var menuSize = CGSize(width: 0.0, height: 0.0)
     
     private var zoomedCell: LevelCell?
+    private var zoomApplied = false
     private let zoomLevel: CGFloat = 3.0
     
     override func layoutSubviews() {
@@ -61,6 +62,7 @@ final class LevelsView: UIView {
     }
     
     func zoomInLevelAtIndex(index: Int, mainView: UIView, completionHandler: (() -> Void)? = nil) {
+        zoomApplied = true
         zoomedCell = levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) as? LevelCell
         
         UIView.animateWithDuration(0.4, animations: {
@@ -73,34 +75,38 @@ final class LevelsView: UIView {
                 })
                 
                 UIView.animateWithDuration(0.5, animations: {
-                    self.zoomedCell!.tableOverlayImageView.alpha = 0.0
+                    self.zoomedCell?.tableOverlayImageView.alpha = 0.0
                     
                     mainView.transform = CGAffineTransformMakeScale(self.zoomLevel, self.zoomLevel)
-                    }, completion: { _ in
-                        // Reset transform after delay when game screen is presented and levels are not visible.
-                        // It's needed to avoid issues with constraints when app goes to background and then back
-                        // to foreground while transform is applied.
-                        self.executeAfterDelay(0.5, task: {
-                            mainView.transform = CGAffineTransformIdentity
-                        })
+                }, completion: { _ in
+                    // Reset transform after delay when game screen is presented and levels are not visible.
+                    // It's needed to avoid issues with constraints when app goes to background and then back
+                    // to foreground while transform is applied.
+                    self.executeAfterDelay(0.5, task: {
+                        mainView.transform = CGAffineTransformIdentity
+                    })
                 })
         })
     }
     
     func zoomOutLevelIfNeeded(mainView: UIView) {
-        guard zoomedCell != nil else { return }
+        guard zoomApplied else {
+            mainView.transform = CGAffineTransformIdentity
+            return
+        }
         
         // Apply scale transform before animation started.
         // It's needed because transform was reseted when `zoom in` operation completed.
         mainView.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
         
         UIView.animateWithDuration(0.4, animations: {
-            self.zoomedCell!.tableOverlayImageView.alpha = 1.0
+            self.zoomedCell?.tableOverlayImageView.alpha = 1.0
             
             mainView.transform = CGAffineTransformIdentity
             
-            }, completion: { _ in
-                self.zoomedCell = nil
+        }, completion: { _ in
+            self.zoomApplied = false
+            self.zoomedCell = nil
         })
         
     }

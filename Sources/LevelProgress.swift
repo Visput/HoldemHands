@@ -15,7 +15,7 @@ struct LevelProgress: Progress, Mappable {
     var locked: Bool!
     var level: Level!
     
-    private(set) var levelID: Int!
+    private(set) var levelId: Int!
     private(set) var maxWinsCountInRow: Int!
     private(set) var currentWinsCountInRow: Int!
     private(set) var winsCount: Int!
@@ -32,7 +32,7 @@ struct LevelProgress: Progress, Mappable {
     }
     
     var identifier: String {
-        return String(levelID)
+        return String(levelId)
     }
 
     init?(_ map: Map) {}
@@ -40,7 +40,7 @@ struct LevelProgress: Progress, Mappable {
     mutating func mapping(map: Map) {
         let transformOfInt64 = TransformOf<Int64, NSNumber>(fromJSON: { $0?.longLongValue }, toJSON: { $0.map { NSNumber(longLong: $0) } })
         
-        levelID <- map["level_id"]
+        levelId <- map["level_id"]
         locked <- map["locked"]
         maxWinsCountInRow <- map["max_wins_count_in_row"]
         currentWinsCountInRow <- map["wins_count_in_row"]

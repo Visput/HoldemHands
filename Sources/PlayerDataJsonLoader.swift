@@ -34,7 +34,7 @@ struct PlayerDataJsonLoader {
         let levelsJSON = gameDataJSON[levelsKey]
         let levels = Mapper<Level>().mapArray(levelsJSON)!
         for (index, progress) in playerData.levelProgressItems.enumerate() {
-            for level in levels where level.identifier == progress.levelID {
+            for level in levels where level.identifier == progress.levelId {
                 playerData.levelProgressItems[index].level = level
                 break
             }

@@ -25,11 +25,19 @@ extension PlayerData {
     }
     
     func lastPlayedLevel() -> Level? {
-        return levelProgressItems.filter { $0.levelID == lastPlayedLevelID }.first?.level
+        return levelProgressItems.filter { $0.levelId == lastPlayedLevelID }.first?.level
     }
     
     func firstLevel() -> Level {
         return levelProgressItems.first!.level
+    }
+    
+    func levelWithId(levelId: Int) -> Level {
+        return levelProgressItems.filter { $0.levelId == levelId }.first!.level
+    }
+    
+    func indexOfLevel(level: Level) -> Int {
+        return levelProgressItems.indexOf { $0.levelId == level.identifier }!
     }
 }
 
