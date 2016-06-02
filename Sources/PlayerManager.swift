@@ -56,7 +56,7 @@ final class PlayerManager {
 extension PlayerManager {
     
     func trackNewWinInLevel(level: Level) {
-        updateLastPlayedLevel(level)
+        playerData.lastPlayedLevelID = level.identifier
         
         let oldChipsCount = playerData.chipsCount
         let chipsMultiplier = playerData.chipsMultiplierForLevel(level)
@@ -72,7 +72,7 @@ extension PlayerManager {
     }
     
     func trackNewLossInLevel(level: Level) {
-        updateLastPlayedLevel(level)
+        playerData.lastPlayedLevelID = level.identifier
         
         let oldChipsCount = playerData.chipsCount
         let chipsLost = level.chipsPerWin
@@ -192,13 +192,6 @@ extension PlayerManager {
         }
         if didUnlock {
             savePlayerData()
-        }
-    }
-    
-    private func updateLastPlayedLevel(level: Level) {
-        if playerData.lastPlayedLevelID != level.identifier {
-            playerData.lastPlayedLevelID = level.identifier
-            notifier.notifyObserversDidUpdateLastPlayedLavel(playerData.lastPlayedLevel()!)
         }
     }
 }

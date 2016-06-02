@@ -15,7 +15,6 @@ final class LevelsView: UIView {
     
     var menuSize = CGSize(width: 0.0, height: 0.0)
     
-    private var zoomedCell: LevelCell?
     private var zoomApplied = false
     private let zoomLevel: CGFloat = 3.0
     
@@ -63,7 +62,6 @@ final class LevelsView: UIView {
     
     func zoomInLevelAtIndex(index: Int, mainView: UIView, completionHandler: (() -> Void)? = nil) {
         zoomApplied = true
-        zoomedCell = levelsCollectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) as? LevelCell
         
         UIView.animateWithDuration(0.4, animations: {
             self.scrollToLevelAtIndex(index, animated: false)
@@ -75,8 +73,6 @@ final class LevelsView: UIView {
                 })
                 
                 UIView.animateWithDuration(0.5, animations: {
-                    self.zoomedCell?.tableOverlayImageView.alpha = 0.0
-                    
                     mainView.transform = CGAffineTransformMakeScale(self.zoomLevel, self.zoomLevel)
                 }, completion: { _ in
                     // Reset transform after delay when game screen is presented and levels are not visible.
@@ -91,7 +87,6 @@ final class LevelsView: UIView {
     
     func zoomOutLevelIfNeeded(mainView: UIView) {
         guard zoomApplied else {
-            zoomedCell = nil
             mainView.transform = CGAffineTransformIdentity
             return
         }
@@ -101,13 +96,10 @@ final class LevelsView: UIView {
         mainView.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
         
         UIView.animateWithDuration(0.4, animations: {
-            self.zoomedCell?.tableOverlayImageView.alpha = 1.0
-            
             mainView.transform = CGAffineTransformIdentity
             
         }, completion: { _ in
             self.zoomApplied = false
-            self.zoomedCell = nil
         })
         
     }

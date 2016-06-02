@@ -98,7 +98,11 @@ extension AppShortcutsManager {
 
 extension AppShortcutsManager: PlayerManagerObserving {
     
-    func playerManager(manager: PlayerManager, didUpdateLastPlayedLevel level: Level) {
+    func playerManager(manager: PlayerManager, didLoadPlayerData playerData: PlayerData) {
+        updateShortcuts()
+    }
+    
+    func playerManager(manager: PlayerManager, didUpdateChipsCount newChipsCount: Int64, oldChipsCount: Int64, chipsMultiplier: Int64) {
         updateShortcuts()
     }
 }

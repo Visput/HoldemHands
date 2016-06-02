@@ -33,10 +33,4 @@ struct PlayerManagerObserverNotifier {
             observer.playerManager(manager, didUpdateChipsCount: newChipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: chipsMultiplier)
         }
     }
-    
-    func notifyObserversDidUpdateLastPlayedLavel(level: Level) {
-        for observer in manager.observers {
-            observer.playerManager(manager, didUpdateLastPlayedLevel: level)
-        }
-    }
 }

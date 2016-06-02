@@ -29,8 +29,6 @@ final class LevelCell: UICollectionViewCell {
     }
     
     func loadImages() {
-        tableOverlayImageView.alpha = 1.0
-        
         if item.levelProgress.locked! {
             tableBackgroundImageView.image = R.image.backgroundTableLocked()
             tableOverlayImageView.image = UIImage(named: "overlay.table.locked.level.\(item.levelProgress.level.identifier)")
