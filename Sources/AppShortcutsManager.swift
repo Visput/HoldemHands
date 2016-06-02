@@ -59,14 +59,16 @@ extension AppShortcutsManager {
         if #available(iOS 9, *) {
             let level = playerManager.playerData.lastPlayedLevel() ?? playerManager.playerData.firstLevel()
             let levelShortcut = UIApplicationShortcutItem(type: String(level.identifier),
-                                                          localizedTitle: level.name,
-                                                          localizedSubtitle: nil,
+                                                          localizedTitle: R.string.localizable.shortcutTitlePlay(),
+                                                          localizedSubtitle: level.name,
                                                           icon: nil,
                                                           userInfo: nil)
             
+            let progress = playerManager.playerData.playerProgress()
+            let winPercent = progress.handsCount != 0 ? NSString(format: "%.2f%%", progress.winPercent) as String : "-"
             let statsShortcut = UIApplicationShortcutItem(type: shortcutTypeStats,
-                                                          localizedTitle: R.string.localizable.titleDetailsStats(),
-                                                          localizedSubtitle: nil,
+                                                          localizedTitle: R.string.localizable.shortcutTitleStats(),
+                                                          localizedSubtitle: R.string.localizable.shortcutSubtitleStats(winPercent),
                                                           icon: nil,
                                                           userInfo: nil)
             
@@ -81,7 +83,9 @@ extension AppShortcutsManager {
     
     @available(iOS 9.0, *)
     private func performActionForStatsShortcut(shortcut: UIApplicationShortcutItem) {
-        
+        navigationManager.dismissToMainScreenAnimated(false, completion: {
+            self.navigationManager.mainScreen.mainView.scrollToDetailsViewAtPage(.Stats, animated: false)
+        })
     }
 }
 

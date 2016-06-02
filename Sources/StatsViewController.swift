@@ -21,6 +21,7 @@ final class StatsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         model.playerManager.observers.addObserver(self)
+        fillViewsWithModel()
     }
     
     override func viewWillAppear(animated: Bool) {

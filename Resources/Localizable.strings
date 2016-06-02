@@ -28,3 +28,7 @@
 "error.share.with.instagram" = "Unable to locate your Instagram account";
 
 "app.name" = "HoldemHands";
+
+"shortcut.title.play" = "Play";
+"shortcut.title.stats" = "Stats";
+"shortcut.subtitle.stats" = "Win Percent: %@";

@@ -44,24 +44,26 @@ final class MainScreenView: UIView {
         statsView.menuSize = menuView.frame.size
     }
     
-    func scrollToDetailsViewAtPage(page: Int, completionHandler: (() -> Void)? = nil) {
-        guard !menuButtons[page].selected else {
+    func scrollToDetailsViewAtPage(page: DetailsViewPage, animated: Bool, completionHandler: (() -> Void)? = nil) {
+        let pageIndex = page.rawValue
+        guard !menuButtons[pageIndex].selected else {
             completionHandler?()
             return
         }
         
-        updateDetailsViewHeaderWithPage(page)
-        selectMenuButtonForPage(page)
+        updateDetailsViewHeaderWithPage(pageIndex)
+        selectMenuButtonForPage(pageIndex)
         
         if isDetailsViewShown {
-            UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveEaseInOut, animations: {
-                self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: self.detailsScrollView.frame.height * CGFloat(page))
+            let animationDuration = animated ? 0.4 : 0.0
+            UIView.animateWithDuration(animationDuration, delay: 0.0, options: .CurveEaseInOut, animations: {
+                self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: self.detailsScrollView.frame.height * CGFloat(pageIndex))
                 }, completion: { _ in
                     completionHandler?()
             })
         } else {
-            detailsScrollView.contentOffset = CGPoint(x: 0.0, y: detailsScrollView.frame.height * CGFloat(page))
-            scrollToDetailsView(completionHandler)
+            detailsScrollView.contentOffset = CGPoint(x: 0.0, y: detailsScrollView.frame.height * CGFloat(pageIndex))
+            scrollToDetailsViewAnimated(animated, completionHandler: completionHandler)
         }
     }
     
@@ -91,11 +93,12 @@ final class MainScreenView: UIView {
             }, completion: nil)
     }
     
-    private func scrollToDetailsView(completionHandler: (() -> Void)? = nil) {
+    private func scrollToDetailsViewAnimated(animated: Bool, completionHandler: (() -> Void)? = nil) {
         menuViewLeadingSpace.constant = -menuView.frame.width
         layoutIfNeeded()
         
-        UIView.animateWithDuration(0.6, delay: 0.0, options: .CurveEaseInOut, animations: {
+        let animationDuration = animated ? 0.6 : 0.0
+        UIView.animateWithDuration(animationDuration, delay: 0.0, options: .CurveEaseInOut, animations: {
             self.contentScrollView.contentOffset = CGPoint(x: self.contentScrollView.bounds.width, y: 0.0)
             
             }, completion: { _ in

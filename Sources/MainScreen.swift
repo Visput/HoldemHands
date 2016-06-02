@@ -16,32 +16,16 @@ final class MainScreen: BaseViewController {
             
             guard currentDetailsPage != newPage else { return }
             
-            if currentDetailsPage != nil {
-                switch currentDetailsPage! {
-                case .Levels:
-                    levelsController.beginAppearanceTransition(false, animated: false)
-                    levelsController.endAppearanceTransition()
-                case .Stats:
-                    statsController.beginAppearanceTransition(false, animated: false)
-                    statsController.endAppearanceTransition()
-                case .Sharing:
-                    sharingController.beginAppearanceTransition(false, animated: false)
-                    sharingController.endAppearanceTransition()
-                }
+            if let currentDetailsPage = currentDetailsPage {
+                let controller = detailsControllers[currentDetailsPage.rawValue]
+                controller.beginAppearanceTransition(false, animated: false)
+                controller.endAppearanceTransition()
             }
             
-            if newPage != nil {
-                switch newPage! {
-                case .Levels:
-                    levelsController.beginAppearanceTransition(true, animated: false)
-                    levelsController.endAppearanceTransition()
-                case .Stats:
-                    statsController.beginAppearanceTransition(true, animated: false)
-                    statsController.endAppearanceTransition()
-                case .Sharing:
-                    sharingController.beginAppearanceTransition(true, animated: false)
-                    sharingController.endAppearanceTransition()
-                }
+            if let newPage = newPage {
+                let controller = detailsControllers[newPage.rawValue]
+                controller.beginAppearanceTransition(true, animated: false)
+                controller.endAppearanceTransition()
             }
             
             mainView.currentDetailsPage = newPage
@@ -55,21 +39,25 @@ final class MainScreen: BaseViewController {
     private(set) var levelsController: LevelsViewController!
     private var statsController: StatsViewController!
     private var sharingController: SharingViewController!
+    private var detailsControllers: [UIViewController]!
 
     var mainView: MainScreenView {
         return view as! MainScreenView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        detailsControllers = [levelsController, statsController, sharingController]
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if currentDetailsPage == nil {
             // Notify details view controllers are hidden when details view isn't presented.
-            levelsController.beginAppearanceTransition(false, animated: animated)
-            levelsController.endAppearanceTransition()
-            statsController.beginAppearanceTransition(false, animated: animated)
-            statsController.endAppearanceTransition()
-            sharingController.beginAppearanceTransition(false, animated: animated)
-            sharingController.endAppearanceTransition()
+            for controller in detailsControllers {
+                controller.beginAppearanceTransition(false, animated: animated)
+                controller.endAppearanceTransition()
+            }
         }
     }
     
@@ -99,7 +87,7 @@ extension MainScreen {
     @IBAction private func playButtonDidPress(sender: AnyObject) {
         Analytics.playClicked()
         currentDetailsPage = .Levels
-        mainView.scrollToDetailsViewAtPage(MainScreenView.DetailsViewPage.Levels.rawValue, completionHandler: {
+        mainView.scrollToDetailsViewAtPage(.Levels, animated: true, completionHandler: {
             self.statsController.scrollToOverallStatsAnimated(false)
         })
     }
@@ -107,7 +95,7 @@ extension MainScreen {
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
         Analytics.statsClicked()
         currentDetailsPage = .Stats
-        mainView.scrollToDetailsViewAtPage(MainScreenView.DetailsViewPage.Stats.rawValue, completionHandler: {
+        mainView.scrollToDetailsViewAtPage(.Stats, animated: true, completionHandler: {
             self.statsController.reloadRanks()
         })
     }
@@ -115,7 +103,7 @@ extension MainScreen {
     @IBAction private func shareButtonDidPress(sender: AnyObject) {
         Analytics.shareClickedInMainScreen()
         currentDetailsPage = .Sharing
-        mainView.scrollToDetailsViewAtPage(MainScreenView.DetailsViewPage.Sharing.rawValue)
+        mainView.scrollToDetailsViewAtPage(.Sharing, animated: true)
     }
     
     @IBAction private func leaderboardsButtonDidPress(sender: UIButton) {

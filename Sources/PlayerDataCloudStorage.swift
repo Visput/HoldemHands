@@ -51,7 +51,7 @@ final class PlayerDataCloudStorage: NSObject {
                     return
                 }
                 
-                guard let recentSavedGame = savedGames?.mostRecentSavedGame() else {
+                guard let recentSavedGame = savedGames?.mostRecentSavedGameWithName(self.player.playerID!) else {
                     completionHandler(playerData: nil)
                     return
                 }
@@ -101,25 +101,26 @@ extension PlayerDataCloudStorage: GKLocalPlayerListener {
     }
     
     func player(player: GKPlayer, hasConflictingSavedGames savedGames: [GKSavedGame]) {
-        let recentSavedGame = savedGames.mostRecentSavedGame()!
-        recentSavedGame.loadDataWithCompletionHandler({ data, error in
-            guard error == nil else {
-                Analytics.error(error)
-                return
-            }
-            
-            self.player.resolveConflictingSavedGames(savedGames,
-                withData: data!,
-                completionHandler: { savedGame, error in
-                    guard error == nil else {
-                        Analytics.error(error)
-                        return
-                    }
-                    
-                    // Initialize player data with most recent GameCenter data.
-                    let playerData = PlayerDataJsonLoader(jsonData: data!).playerData
-                    self.didAutoLoadPlayerDataHandler(playerData: playerData)
+        if let recentSavedGame = savedGames.mostRecentSavedGameWithName(player.playerID!) {
+            recentSavedGame.loadDataWithCompletionHandler({ data, error in
+                guard error == nil else {
+                    Analytics.error(error)
+                    return
+                }
+                
+                self.player.resolveConflictingSavedGames(savedGames,
+                    withData: data!,
+                    completionHandler: { savedGame, error in
+                        guard error == nil else {
+                            Analytics.error(error)
+                            return
+                        }
+                        
+                        // Initialize player data with most recent GameCenter data.
+                        let playerData = PlayerDataJsonLoader(jsonData: data!).playerData
+                        self.didAutoLoadPlayerDataHandler(playerData: playerData)
+                })
             })
-        })
+        }
     }
 }

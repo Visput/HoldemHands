@@ -31,11 +31,45 @@ final class NavigationManager: NSObject {
     }
     
     func presentScreen(screen: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
-        topViewController.presentViewController(screen, animated: animated, completion: completion)
+        let needsToManageAppearanceTransition = screen.modalPresentationStyle != .FullScreen
+        let presentingScreen = topViewController
+        
+        if needsToManageAppearanceTransition {
+            presentingScreen.beginAppearanceTransition(false, animated: animated)
+        }
+        topViewController.presentViewController(screen, animated: animated, completion: {
+            if needsToManageAppearanceTransition {
+                presentingScreen.endAppearanceTransition()
+            }
+            
+            completion?()
+        })
     }
     
     func dismissScreenAnimated(animated: Bool, completion: (() -> Void)? = nil) {
-        topViewController.dismissViewControllerAnimated(animated, completion: completion)
+        let needsToManageAppearanceTransition = topViewController.modalPresentationStyle != .FullScreen
+        let presentingScreen = topViewController.presentingViewController
+        
+        if needsToManageAppearanceTransition {
+            presentingScreen?.beginAppearanceTransition(true, animated: animated)
+        }
+        topViewController.dismissViewControllerAnimated(animated, completion: {
+            if needsToManageAppearanceTransition {
+                presentingScreen?.endAppearanceTransition()
+            }
+            
+            completion?()
+        })
+    }
+    
+    func dismissToMainScreenAnimated(animated: Bool, completion: (() -> Void)? = nil) {
+        if topViewController === navigationController {
+            completion?()
+        } else {
+            dismissScreenAnimated(animated, completion: {
+                self.dismissToMainScreenAnimated(animated, completion: completion)
+            })
+        }
     }
     
     func setMainScreenAsRootAnimated(animated: Bool) {
@@ -47,26 +81,7 @@ final class NavigationManager: NSObject {
     func presentGameScreenWithLevel(level: Level, animated: Bool, completion: (() -> Void)? = nil) {
         let screen = R.storyboard.main.gameScreen()!
         screen.level = level
-        screen.modalPresentationStyle = .OverCurrentContext
-        // Manually call `beginAppearanceTransition` and `endAppearanceTransition` 
-        // as it's not called automatically when view controller is presented over current context.
-        let presentingScreen = topViewController
-        presentingScreen.beginAppearanceTransition(false, animated: animated)
-        presentScreen(screen, animated: animated, completion: {
-            presentingScreen.endAppearanceTransition()
-            completion?()
-        })
-    }
-    
-    func dismissGameScreenAnimated(animated: Bool, completion: (() -> Void)? = nil) {
-        // Manually call `beginAppearanceTransition` and `endAppearanceTransition`
-        // as it's not called automatically when view controller is presented over current context.
-        let presentingScreen = topViewController.presentingViewController!
-        presentingScreen.beginAppearanceTransition(true, animated: animated)
-        dismissScreenAnimated(animated, completion: {
-            presentingScreen.endAppearanceTransition()
-            completion?()
-        })
+        presentScreen(screen, animated: animated, completion: completion)
     }
     
     func presentStatsScreenWithLevel(level: Level?, animated: Bool, completion: (() -> Void)? = nil) {
@@ -80,13 +95,7 @@ final class NavigationManager: NSObject {
         screen.leaderboardIdentifier = leaderboardID
         screen.viewState = .Leaderboards
         screen.gameCenterDelegate = self
-        
-        // Manually call `beginAppearanceTransition` and `endAppearanceTransition`
-        // as it's not called automatically when view controller is presented over current context.
-        let presentingScreen = topViewController
-        presentingScreen.beginAppearanceTransition(false, animated: animated)
         presentScreen(screen, animated: animated, completion: {
-            presentingScreen.endAppearanceTransition()
             Analytics.leaderboardsScreenAppeared()
             completion?()
         })
@@ -128,13 +137,8 @@ final class NavigationManager: NSObject {
 extension NavigationManager: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
-        // Manually call `beginAppearanceTransition` and `endAppearanceTransition`
-        // as it's not called automatically when view controller is presented over current context.
-        let presentingScreen = topViewController.presentingViewController!
-        presentingScreen.beginAppearanceTransition(true, animated: true)
         dismissScreenAnimated(true, completion: {
             Analytics.leaderboardsScreenDisappeared()
-            presentingScreen.endAppearanceTransition()
         })
     }
 }

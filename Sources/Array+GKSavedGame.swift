@@ -10,12 +10,11 @@ import GameKit
 
 extension Array where Element: GKSavedGame {
     
-    func mostRecentSavedGame() -> GKSavedGame? {
-        guard var recentSavedGame = first else { return nil }
-        
-        for index in 1 ..< count {
-            if self[index].modificationDate!.compare(recentSavedGame.modificationDate!) == .OrderedDescending {
-                recentSavedGame = self[index]
+    func mostRecentSavedGameWithName(name: String) -> GKSavedGame? {
+        var recentSavedGame: GKSavedGame? = nil
+        for game in self where game.name == name {
+            if recentSavedGame == nil || game.modificationDate!.compare(recentSavedGame!.modificationDate!) == .OrderedDescending {
+                recentSavedGame = game
             }
         }
         

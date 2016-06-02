@@ -102,7 +102,7 @@ extension GameScreen {
     
     @IBAction private func doneButtonDidPress(sender: AnyObject) {
         Analytics.doneClickedInGameScreen()
-        model.navigationManager.dismissGameScreenAnimated(true)
+        model.navigationManager.dismissScreenAnimated(true)
     }
     
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
@@ -121,7 +121,7 @@ extension GameScreen: PlayerManagerObserving {
         Analytics.unlockedLevelBannerShownInGameScreen(levelProgress.level)
         model.navigationManager.presentBannerWithText(text, backgroundImage: backgroundImage, tapHandler: { [unowned self] in
             Analytics.unlockBannerClickedInGameScreen(levelProgress.level)
-            self.model.navigationManager.dismissGameScreenAnimated(true, completion: {
+            self.model.navigationManager.dismissScreenAnimated(true, completion: {
                 self.model.navigationManager.mainScreen.levelsController.scrollToLevelAtIndex(levelIndex, animated: true)
             })
         })
@@ -129,7 +129,7 @@ extension GameScreen: PlayerManagerObserving {
     
     func playerManager(manager: PlayerManager, didLoadPlayerData playerData: PlayerData) {
         if manager.playerData.isLockedLevel(level) {
-            model.navigationManager.dismissGameScreenAnimated(true)
+            model.navigationManager.dismissScreenAnimated(true)
         }
     }
 }
