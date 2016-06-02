@@ -31,4 +31,5 @@
 
 "shortcut.title.play" = "Play";
 "shortcut.title.stats" = "Stats";
-"shortcut.subtitle.stats" = "Win Percent: %@";
+"shortcut.subtitle.stats" = "Win Percent: %.2f%%";
+"shortcut.subtitle.no.stats" = "Win Percent: -";

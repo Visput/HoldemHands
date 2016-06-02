@@ -65,10 +65,12 @@ extension AppShortcutsManager {
                                                           userInfo: nil)
             
             let progress = playerManager.playerData.playerProgress()
-            let winPercent = progress.handsCount != 0 ? NSString(format: "%.2f%%", progress.winPercent) as String : "-"
+            let winPercent = progress.handsCount != 0 ?
+                R.string.localizable.shortcutSubtitleStats(progress.winPercent) : R.string.localizable.shortcutSubtitleNoStats()
+            
             let statsShortcut = UIApplicationShortcutItem(type: shortcutTypeStats,
                                                           localizedTitle: R.string.localizable.shortcutTitleStats(),
-                                                          localizedSubtitle: R.string.localizable.shortcutSubtitleStats(winPercent),
+                                                          localizedSubtitle: winPercent,
                                                           icon: nil,
                                                           userInfo: nil)
             

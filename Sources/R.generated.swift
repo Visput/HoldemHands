@@ -16,14 +16,16 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 5 files.
+  /// This `R.file` struct is generated, and contains static references to 6 files.
   struct file {
     /// Resource file `app_font.ttc`.
     static let app_fontTtc = FileResource(bundle: _R.hostingBundle, name: "app_font", pathExtension: "ttc")
     /// Resource file `DefaultPlayerData.json`.
     static let defaultPlayerDataJson = FileResource(bundle: _R.hostingBundle, name: "DefaultPlayerData", pathExtension: "json")
-    /// Resource file `GameData.json`.
-    static let gameDataJson = FileResource(bundle: _R.hostingBundle, name: "GameData", pathExtension: "json")
+    /// Resource file `GameDataQA1.json`.
+    static let gameDataQA1Json = FileResource(bundle: _R.hostingBundle, name: "GameDataQA1", pathExtension: "json")
+    /// Resource file `GameDataQA2.json`.
+    static let gameDataQA2Json = FileResource(bundle: _R.hostingBundle, name: "GameDataQA2", pathExtension: "json")
     /// Resource file `iTunesArtwork@2x.png`.
     static let iTunesArtwork2xPng = FileResource(bundle: _R.hostingBundle, name: "iTunesArtwork@2x", pathExtension: "png")
     /// Resource file `iTunesArtwork.png`.
@@ -41,9 +43,15 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.URLForResource(fileResource)
     }
     
-    /// `bundle.URLForResource("GameData", withExtension: "json")`
-    static func gameDataJson(_: Void) -> NSURL? {
-      let fileResource = R.file.gameDataJson
+    /// `bundle.URLForResource("GameDataQA1", withExtension: "json")`
+    static func gameDataQA1Json(_: Void) -> NSURL? {
+      let fileResource = R.file.gameDataQA1Json
+      return fileResource.bundle.URLForResource(fileResource)
+    }
+    
+    /// `bundle.URLForResource("GameDataQA2", withExtension: "json")`
+    static func gameDataQA2Json(_: Void) -> NSURL? {
+      let fileResource = R.file.gameDataQA2Json
       return fileResource.bundle.URLForResource(fileResource)
     }
     
@@ -1031,7 +1039,7 @@ struct R: Rswift.Validatable {
   
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 20 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 21 localization keys.
     struct localizable {
       /// Value: HoldemHands
       static let appName = StringResource(key: "app.name", tableName: "Localizable", locales: [])
@@ -1051,7 +1059,9 @@ struct R: Rswift.Validatable {
       static let errorShareWithInstagram = StringResource(key: "error.share.with.instagram", tableName: "Localizable", locales: [])
       /// Value: Unable to locate your Twitter account
       static let errorShareWithTwitter = StringResource(key: "error.share.with.twitter", tableName: "Localizable", locales: [])
-      /// Value: Win Percent: %@
+      /// Value: Win Percent: -
+      static let shortcutSubtitleNoStats = StringResource(key: "shortcut.subtitle.no.stats", tableName: "Localizable", locales: [])
+      /// Value: Win Percent: %.2f%%
       static let shortcutSubtitleStats = StringResource(key: "shortcut.subtitle.stats", tableName: "Localizable", locales: [])
       /// Value: Play
       static let shortcutTitlePlay = StringResource(key: "shortcut.title.play", tableName: "Localizable", locales: [])
@@ -1119,8 +1129,13 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("error.share.with.twitter", comment: "")
       }
       
-      /// Value: Win Percent: %@
-      static func shortcutSubtitleStats(value1: String) -> String {
+      /// Value: Win Percent: -
+      static func shortcutSubtitleNoStats(_: Void) -> String {
+        return NSLocalizedString("shortcut.subtitle.no.stats", comment: "")
+      }
+      
+      /// Value: Win Percent: %.2f%%
+      static func shortcutSubtitleStats(value1: Double) -> String {
         return String(format: NSLocalizedString("shortcut.subtitle.stats", comment: ""), locale: _R.applicationLocale, value1)
       }
       
@@ -1185,7 +1200,7 @@ struct R: Rswift.Validatable {
 
 struct _R: Rswift.Validatable {
   static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(NSLocale.init) ?? NSLocale.currentLocale()
-  static let hostingBundle = NSBundle(identifier: "com.visput.holdemhands.prod") ?? NSBundle.mainBundle()
+  static let hostingBundle = NSBundle(identifier: "com.visput.holdemhands.test") ?? NSBundle.mainBundle()
   
   static func validate() throws {
     try storyboard.validate()

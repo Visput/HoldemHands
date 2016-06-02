@@ -91,6 +91,7 @@ final class LevelsView: UIView {
     
     func zoomOutLevelIfNeeded(mainView: UIView) {
         guard zoomApplied else {
+            zoomedCell = nil
             mainView.transform = CGAffineTransformIdentity
             return
         }
