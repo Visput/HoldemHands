@@ -13,6 +13,7 @@ import FBSDKCoreKit
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private var model: ModelProvider!
 
     func application(application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -20,11 +21,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         Analytics.startSession()
         
-        let model = ModelProvider.provider
+        model = ModelProvider.provider
         model.navigationManager.window = window
         model.navigationManager.setMainScreenAsRootAnimated(false)
         
-        return true
+        return !model.appShortcutsManager.handleShortcutInAppLaunchOptions(launchOptions)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -41,6 +42,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         Analytics.appDidBecomeActive()
+        model.appShortcutsManager.performActionForLaunchedShortcutIfNeeded()
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -56,5 +58,14 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 openURL: url,
                 sourceApplication: sourceApplication,
                 annotation: annotation)
+    }
+    
+    @available(iOS 9.0, *)
+    func application(application: UIApplication,
+                     performActionForShortcutItem shortcutItem: UIApplicationShortcutItem,
+                     completionHandler: Bool -> Void) {
+        
+        let handled = model.appShortcutsManager.performActionForShortcut(shortcutItem)
+        completionHandler(handled)
     }
 }

@@ -16,6 +16,7 @@ final class ModelProvider {
     let navigationManager: NavigationManager
     let sharingManager: SharingManager
     let walkthroughManager: WalkthroughManager
+    let appShortcutsManager: AppShortcutsManager
     
     init() {
         navigationManager = NavigationManager()
@@ -23,6 +24,10 @@ final class ModelProvider {
         sharingManager = SharingManager()
         walkthroughManager = WalkthroughManager(navigationManager: navigationManager,
                                                 playerManager: playerManager)
+        
+        
+        appShortcutsManager = AppShortcutsManager(navigationManager: navigationManager,
+                                                  playerManager: playerManager)
         
         Analytics.navigationManager = navigationManager
     }

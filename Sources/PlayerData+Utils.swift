@@ -23,6 +23,14 @@ extension PlayerData {
     func chipsToUnlockLevel(level: Level) -> Int64 {
         return level.chipsToUnlock - chipsCount
     }
+    
+    func lastPlayedLevel() -> Level? {
+        return levelProgressItems.filter { $0.levelID == lastPlayedLevelID }.first?.level
+    }
+    
+    func firstLevel() -> Level {
+        return levelProgressItems.first!.level
+    }
 }
 
 extension PlayerData {

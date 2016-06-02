@@ -28,22 +28,25 @@ final class PlayerManager {
         return player.authenticated
     }
     
-    private var playerDataSynchronizer: PlayerDataSynchronizer!
+    private var notifier: PlayerManagerObserverNotifier!
+    private var synchronizer: PlayerDataSynchronizer!
     private var keychainStorage: PlayerDataKeychainStorage!
     private var cloudStorage: PlayerDataCloudStorage!
     
     init(navigationManager: NavigationManager) {
         player = GKLocalPlayer.localPlayer()
         keychainStorage = PlayerDataKeychainStorage(player: player)
+        
+        notifier = PlayerManagerObserverNotifier(playerManager: self)
         cloudStorage = PlayerDataCloudStorage(player: player,
                                               navigationManager: navigationManager,
                                               didAutoLoadPlayerDataHandler: { [unowned self] playerData in
                                                 self.handleLoadedPlayerData(playerData)
         })
-        playerDataSynchronizer = PlayerDataSynchronizer(loadHandler: { [unowned self] in
+        synchronizer = PlayerDataSynchronizer(loadHandler: { [unowned self] in
             self.loadPlayerData()
         }, saveHandler: { [unowned self] in
-            self.savePlayerData()
+                self.savePlayerData()
         })
         
         loadPlayerData()
@@ -53,7 +56,7 @@ final class PlayerManager {
 extension PlayerManager {
     
     func trackNewWinInLevel(level: Level) {
-        playerData.lastPlayedLevelID = level.identifier
+        updateLastPlayedLevel(level)
         
         let oldChipsCount = playerData.chipsCount
         let chipsMultiplier = playerData.chipsMultiplierForLevel(level)
@@ -63,13 +66,13 @@ extension PlayerManager {
         let progressIndex = playerData.progressForLevel(level).index
         playerData.levelProgressItems[progressIndex].trackWinWithChipsCount(chipsWon)
         
-        notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: chipsMultiplier)
+        notifier.notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: chipsMultiplier)
         
         updateLockStateForLevels()
     }
     
     func trackNewLossInLevel(level: Level) {
-        playerData.lastPlayedLevelID = level.identifier
+        updateLastPlayedLevel(level)
         
         let oldChipsCount = playerData.chipsCount
         let chipsLost = level.chipsPerWin
@@ -80,7 +83,7 @@ extension PlayerManager {
         playerData.levelProgressItems[progressIndex].trackLostWithChipsCount(chipsLost)
         
         guard playerData.chipsCount != oldChipsCount else { return }
-        notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: 1)
+        notifier.notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: 1)
     }
     
     func trackFinishPlayLevel(level: Level) {
@@ -182,13 +185,20 @@ extension PlayerManager {
                 playerData.levelProgressItems[index].locked = false
                 
                 if !didUnlock {
-                    notifyObserversDidUnlockLevel(levelProgress)
+                    notifier.notifyObserversDidUnlockLevel(levelProgress)
                     didUnlock = true
                 }
             }
         }
         if didUnlock {
             savePlayerData()
+        }
+    }
+    
+    private func updateLastPlayedLevel(level: Level) {
+        if playerData.lastPlayedLevelID != level.identifier {
+            playerData.lastPlayedLevelID = level.identifier
+            notifier.notifyObserversDidUpdateLastPlayedLavel(playerData.lastPlayedLevel()!)
         }
     }
 }
@@ -223,7 +233,7 @@ extension PlayerManager {
         
         // Notify observers even if `self.playerData` not updated.
         // because player authentication status can be changed (this is part of player data).
-        notifyObserversDidLoadPlayerData()
+        notifier.notifyObserversDidLoadPlayerData(playerData)
     }
     
     private func savePlayerData() {
@@ -239,26 +249,5 @@ extension PlayerManager {
     private func deletePlayerData() {
         keychainStorage.deletePlayerData()
         cloudStorage.deletePlayerData()
-    }
-}
-
-extension PlayerManager {
-    
-    private func notifyObserversDidUnlockLevel(levelProgress: LevelProgress) {
-        for observer in observers {
-            observer.playerManager(self, didUnlockLevel: levelProgress)
-        }
-    }
-    
-    private func notifyObserversDidLoadPlayerData() {
-        for observer in observers {
-            observer.playerManager(self, didLoadPlayerData: playerData)
-        }
-    }
-    
-    private func notifyObserversDidUpdateChipsCount(newChipsCount: Int64, oldChipsCount: Int64, chipsMultiplier: Int64) {
-        for observer in observers {
-            observer.playerManager(self, didUpdateChipsCount: newChipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: chipsMultiplier)
-        }
     }
 }

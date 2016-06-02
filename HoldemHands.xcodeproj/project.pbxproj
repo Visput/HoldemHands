@@ -40,7 +40,7 @@
 		9F3C4BDF1C9251E700B37939 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BDE1C9251E700B37939 /* BannerView.swift */; };
 		9F3C4BE21C92586800B37939 /* TextBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE11C92586800B37939 /* TextBannerView.swift */; };
 		9F3C4BE41C9258F200B37939 /* TextBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE31C9258F200B37939 /* TextBannerView.xib */; };
-		9F3C4BE81C925BDA00B37939 /* PlayerManagerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */; };
+		9F3C4BE81C925BDA00B37939 /* PlayerManagerObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE71C925BDA00B37939 /* PlayerManagerObserving.swift */; };
 		9F44D20E1C84B21A00640046 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F51C84B21A00640046 /* Assets.xcassets */; };
 		9F44D20F1C84B21A00640046 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F61C84B21A00640046 /* LaunchScreen.storyboard */; };
 		9F44D2101C84B21A00640046 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F81C84B21A00640046 /* Main.storyboard */; };
@@ -118,7 +118,7 @@
 		9F4EF29E1CBC4F66002E5FEA /* ChipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA21CB59D460010555B /* ChipsViewController.swift */; };
 		9F4EF29F1CBC4F66002E5FEA /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD241C8A13B3005F1D72 /* LevelCell.swift */; };
 		9F4EF2A01CBC4F66002E5FEA /* SharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DDD221C8A130E005F1D72 /* SharingManager.swift */; };
-		9F4EF2A11CBC4F66002E5FEA /* PlayerManagerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */; };
+		9F4EF2A11CBC4F66002E5FEA /* PlayerManagerObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE71C925BDA00B37939 /* PlayerManagerObserving.swift */; };
 		9F4EF2A21CBC4F66002E5FEA /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20C1C84B21A00640046 /* Suit.swift */; };
 		9F4EF2A31CBC4F66002E5FEA /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E81C93F76B00A39C2C /* Progress.swift */; };
 		9F4EF2A41CBC4F66002E5FEA /* QuickArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D20A1C84B21A00640046 /* QuickArray.swift */; };
@@ -171,6 +171,10 @@
 		9FE888E71C93F62700A39C2C /* PlayerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E61C93F62700A39C2C /* PlayerProgress.swift */; };
 		9FE888E91C93F76B00A39C2C /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888E81C93F76B00A39C2C /* Progress.swift */; };
 		9FE888EB1C94F6A000A39C2C /* Int64+Chips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE888EA1C94F6A000A39C2C /* Int64+Chips.swift */; };
+		9FE9F69E1CFFB18600D5A06B /* AppShortcutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9F69D1CFFB18600D5A06B /* AppShortcutsManager.swift */; };
+		9FE9F6A01CFFB42300D5A06B /* AppShortcutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9F69D1CFFB18600D5A06B /* AppShortcutsManager.swift */; };
+		9FE9F6A21CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9F6A11CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift */; };
+		9FE9F6A31CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9F6A11CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift */; };
 		9FEE714B1CFBB299003F4308 /* HandSelectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEE714A1CFBB299003F4308 /* HandSelectionLayer.swift */; };
 		9FEE714C1CFBB29D003F4308 /* HandSelectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEE714A1CFBB299003F4308 /* HandSelectionLayer.swift */; };
 		A1C48D560C8CB83E749D9BE0 /* Pods_HoldemHandsQA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 510D239E9E33B644BB279827 /* Pods_HoldemHandsQA.framework */; };
@@ -215,7 +219,7 @@
 		9F3C4BDE1C9251E700B37939 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		9F3C4BE11C92586800B37939 /* TextBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextBannerView.swift; sourceTree = "<group>"; };
 		9F3C4BE31C9258F200B37939 /* TextBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextBannerView.xib; sourceTree = "<group>"; };
-		9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerManagerObserver.swift; sourceTree = "<group>"; };
+		9F3C4BE71C925BDA00B37939 /* PlayerManagerObserving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerManagerObserving.swift; sourceTree = "<group>"; };
 		9F44D1F51C84B21A00640046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F44D1F71C84B21A00640046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F44D1F91C84B21A00640046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -285,6 +289,8 @@
 		9FE888E61C93F62700A39C2C /* PlayerProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgress.swift; sourceTree = "<group>"; };
 		9FE888E81C93F76B00A39C2C /* Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		9FE888EA1C94F6A000A39C2C /* Int64+Chips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int64+Chips.swift"; sourceTree = "<group>"; };
+		9FE9F69D1CFFB18600D5A06B /* AppShortcutsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShortcutsManager.swift; sourceTree = "<group>"; };
+		9FE9F6A11CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerManagerObserverNotifier.swift; sourceTree = "<group>"; };
 		9FEE714A1CFBB299003F4308 /* HandSelectionLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandSelectionLayer.swift; sourceTree = "<group>"; };
 		B77C71BFF06C1B554EEEC53C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24BF151EC421552BF72BED9 /* Pods_HoldemHandsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldemHandsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -346,13 +352,13 @@
 			isa = PBXGroup;
 			children = (
 				9F95E1611C879B3100D6F368 /* PlayerManager.swift */,
-				9F3C4BE71C925BDA00B37939 /* PlayerManagerObserver.swift */,
+				9F3C4BE71C925BDA00B37939 /* PlayerManagerObserving.swift */,
+				9FE9F6A11CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift */,
 				9F259FFA1CFD1DEE00219D68 /* PlayerDataJsonLoader.swift */,
 				9F13F3BC1CFD4AD500ED66D9 /* PlayerDataSynchronizer.swift */,
 				9F13F3BF1CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift */,
 				9F13F3C21CFD564F00ED66D9 /* PlayerDataKeychainStorage.swift */,
 				9F13F3C81CFD6C3900ED66D9 /* PlayerData+Utils.swift */,
-				9FA31FA61CB609960010555B /* DTO */,
 			);
 			name = PlayerManager;
 			sourceTree = "<group>";
@@ -595,6 +601,8 @@
 			isa = PBXGroup;
 			children = (
 				9F44D23F1C84C63900640046 /* ModelProvider.swift */,
+				9FA31FA61CB609960010555B /* DTO */,
+				9FE9F69F1CFFB18E00D5A06B /* AppShortcutsManager */,
 				9F1BD3531C936FED00020AAA /* PlayerManager */,
 				9F46C5D41CDC287300EA06C8 /* WalkthroughManager */,
 				9F1BD3521C936FDC00020AAA /* NavigationManager */,
@@ -680,6 +688,14 @@
 				9F44D23E1C84C63900640046 /* Analytics.swift */,
 			);
 			name = AnalyticsTracker;
+			sourceTree = "<group>";
+		};
+		9FE9F69F1CFFB18E00D5A06B /* AppShortcutsManager */ = {
+			isa = PBXGroup;
+			children = (
+				9FE9F69D1CFFB18600D5A06B /* AppShortcutsManager.swift */,
+			);
+			name = AppShortcutsManager;
 			sourceTree = "<group>";
 		};
 		9FEE71491CFBB0C3003F4308 /* Storyboards */ = {
@@ -1139,8 +1155,9 @@
 				9F4EF29D1CBC4F66002E5FEA /* ModelProvider.swift in Sources */,
 				9F4EF29E1CBC4F66002E5FEA /* ChipsViewController.swift in Sources */,
 				9F4EF29F1CBC4F66002E5FEA /* LevelCell.swift in Sources */,
+				9FE9F6A01CFFB42300D5A06B /* AppShortcutsManager.swift in Sources */,
 				9F4EF2A01CBC4F66002E5FEA /* SharingManager.swift in Sources */,
-				9F4EF2A11CBC4F66002E5FEA /* PlayerManagerObserver.swift in Sources */,
+				9F4EF2A11CBC4F66002E5FEA /* PlayerManagerObserving.swift in Sources */,
 				9F4EF2A21CBC4F66002E5FEA /* Suit.swift in Sources */,
 				9F4EF2A31CBC4F66002E5FEA /* Progress.swift in Sources */,
 				9F4EF2A41CBC4F66002E5FEA /* QuickArray.swift in Sources */,
@@ -1151,6 +1168,7 @@
 				9F4EF2A81CBC4F66002E5FEA /* String+Path.swift in Sources */,
 				9F4EF2A91CBC4F66002E5FEA /* HandOddsCalculator.swift in Sources */,
 				9FEE714C1CFBB29D003F4308 /* HandSelectionLayer.swift in Sources */,
+				9FE9F6A31CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift in Sources */,
 				9F4EF2AA1CBC4F66002E5FEA /* HandCell.swift in Sources */,
 				9F4EF2AB1CBC4F66002E5FEA /* Level.swift in Sources */,
 				9F6434A81CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */,
@@ -1215,8 +1233,9 @@
 				9F44D2441C84C63900640046 /* ModelProvider.swift in Sources */,
 				9FA31FA31CB59D460010555B /* ChipsViewController.swift in Sources */,
 				9F1DDD251C8A13B3005F1D72 /* LevelCell.swift in Sources */,
+				9FE9F69E1CFFB18600D5A06B /* AppShortcutsManager.swift in Sources */,
 				9F1DDD231C8A130E005F1D72 /* SharingManager.swift in Sources */,
-				9F3C4BE81C925BDA00B37939 /* PlayerManagerObserver.swift in Sources */,
+				9F3C4BE81C925BDA00B37939 /* PlayerManagerObserving.swift in Sources */,
 				9F44D2221C84B21A00640046 /* Suit.swift in Sources */,
 				9FE888E91C93F76B00A39C2C /* Progress.swift in Sources */,
 				9F44D2201C84B21A00640046 /* QuickArray.swift in Sources */,
@@ -1227,6 +1246,7 @@
 				9F93B4821C9750760092CBCB /* String+Path.swift in Sources */,
 				9F44D21E1C84B21A00640046 /* HandOddsCalculator.swift in Sources */,
 				9FEE714B1CFBB299003F4308 /* HandSelectionLayer.swift in Sources */,
+				9FE9F6A21CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift in Sources */,
 				9F44D2161C84B21A00640046 /* HandCell.swift in Sources */,
 				9F95E15A1C875D0100D6F368 /* Level.swift in Sources */,
 				9F6434A71CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */,
