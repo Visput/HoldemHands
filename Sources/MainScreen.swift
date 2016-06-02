@@ -84,6 +84,15 @@ final class MainScreen: BaseViewController {
 
 extension MainScreen {
     
+    func startGameAtLevel(level: Level, animated: Bool) {
+        mainView.scrollToDetailsViewAtPage(.Levels, animated: animated, completionHandler: {
+            self.levelsController.startGameAtLevel(level, animated: animated)
+        })
+    }
+}
+
+extension MainScreen {
+    
     @IBAction private func playButtonDidPress(sender: AnyObject) {
         Analytics.playClicked()
         currentDetailsPage = .Levels

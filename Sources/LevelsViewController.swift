@@ -10,7 +10,7 @@ import UIKit
 
 final class LevelsViewController: BaseViewController {
     
-    private var levelsView: LevelsView {
+    var levelsView: LevelsView {
         return view as! LevelsView
     }
     
@@ -22,24 +22,23 @@ final class LevelsViewController: BaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         fillViewsWithModelWithScrollingToLastPlayedLevel(false)
-        levelsView.zoomOutLevelIfNeeded(model.navigationManager.mainScreen.view)
+        levelsView.zoomOutLevelIfNeeded(model.navigationManager.mainScreen.view, animated: animated)
     }
     
-    func scrollToLevelAtIndex(index: Int, animated: Bool) {
-        levelsView.scrollToLevelAtIndex(index, animated: animated)
-    }
-    
-    func startGameAtLevel(level: Level) {
+    func startGameAtLevel(level: Level, animated: Bool) {
         let levelIndex = model.playerManager.playerData.indexOfLevel(level)
         if model.playerManager.playerData.isLockedLevel(level) {
             let chipsToUnlock = model.playerManager.playerData.chipsToUnlockLevel(level).formattedChipsCountString(needsReplaceZerosWithO: false)
             let text = R.string.localizable.bannerChipsToUnlockLevel(chipsToUnlock, level.name)
             model.navigationManager.presentBannerWithText(text)
             
-            levelsView.scrollToLevelAtIndex(levelIndex, animated: true)
+            levelsView.scrollToLevelAtIndex(levelIndex, animated: animated)
         } else {
-            levelsView.zoomInLevelAtIndex(levelIndex, mainView: model.navigationManager.mainScreen.view, completionHandler: {
-                self.model.navigationManager.presentGameScreenWithLevel(level, animated: true)
+            levelsView.zoomInLevelAtIndex(levelIndex,
+                                          mainView: model.navigationManager.mainScreen.view,
+                                          animated: animated,
+                                          completionHandler: {
+                self.model.navigationManager.presentGameScreenWithLevel(level, animated: animated)
             })
         }
     }
@@ -69,7 +68,7 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = levelsView.levelsCollectionView.cellForItemAtIndexPath(indexPath) as! LevelCell
         Analytics.levelClickedInMainScreen(cell.item.levelProgress)
-        startGameAtLevel(cell.item.levelProgress.level)
+        startGameAtLevel(cell.item.levelProgress.level, animated: true)
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {

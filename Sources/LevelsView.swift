@@ -60,10 +60,11 @@ final class LevelsView: UIView {
         self.levelsCollectionView.layoutIfNeeded()
     }
     
-    func zoomInLevelAtIndex(index: Int, mainView: UIView, completionHandler: (() -> Void)? = nil) {
+    func zoomInLevelAtIndex(index: Int, mainView: UIView, animated: Bool, completionHandler: (() -> Void)? = nil) {
         zoomApplied = true
         
-        UIView.animateWithDuration(0.4, animations: {
+        let animationDuration = animated ? 0.4 : 0.0
+        UIView.animateWithDuration(animationDuration, animations: {
             self.scrollToLevelAtIndex(index, animated: false)
             
             }, completion: { _ in
@@ -74,33 +75,36 @@ final class LevelsView: UIView {
                 
                 UIView.animateWithDuration(0.5, animations: {
                     mainView.transform = CGAffineTransformMakeScale(self.zoomLevel, self.zoomLevel)
-                }, completion: { _ in
-                    // Reset transform after delay when game screen is presented and levels are not visible.
-                    // It's needed to avoid issues with constraints when app goes to background and then back
-                    // to foreground while transform is applied.
-                    self.executeAfterDelay(0.5, task: {
-                        mainView.transform = CGAffineTransformIdentity
-                    })
+                    }, completion: { _ in
+                        // Reset transform after delay when game screen is presented and levels are not visible.
+                        // It's needed to avoid issues with constraints when app goes to background and then back
+                        // to foreground while transform is applied.
+                        self.executeAfterDelay(0.5, task: {
+                            mainView.transform = CGAffineTransformIdentity
+                        })
                 })
         })
     }
     
-    func zoomOutLevelIfNeeded(mainView: UIView) {
+    func zoomOutLevelIfNeeded(mainView: UIView, animated: Bool) {
         guard zoomApplied else {
             mainView.transform = CGAffineTransformIdentity
             return
         }
         
-        // Apply scale transform before animation started.
-        // It's needed because transform was reseted when `zoom in` operation completed.
-        mainView.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
-        
-        UIView.animateWithDuration(0.4, animations: {
-            mainView.transform = CGAffineTransformIdentity
+        if animated {
+            // Apply scale transform before animation started.
+            // It's needed because transform was reseted when `zoom in` operation completed.
+            mainView.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
             
-        }, completion: { _ in
-            self.zoomApplied = false
-        })
-        
+            UIView.animateWithDuration(0.4, animations: {
+                mainView.transform = CGAffineTransformIdentity
+                
+                }, completion: { _ in
+                    self.zoomApplied = false
+            })
+        } else {
+            mainView.transform = CGAffineTransformIdentity
+        }
     }
 }
