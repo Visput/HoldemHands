@@ -53,17 +53,11 @@ final class StatsCell: UICollectionViewCell {
         self.item = item
         
         if item.progressItem.locked! {
-            statsBackgroundImageView.image = R.image.backgroundTableLocked()
-            statsOverlayImageView.image = UIImage(named: "overlay.stats.locked.level.\(item.progressItem.identifier)")
-            
             rankLabel.textColor = UIColor.gray1Color()
             winPercentLabel.textColor  = UIColor.gray1Color()
             winsInRowLabel.textColor = UIColor.gray1Color()
             handsCountLabel.textColor = UIColor.gray1Color()
         } else {
-            statsBackgroundImageView.image = UIImage(named: "background.stats.level.\(item.progressItem.identifier)")
-            statsOverlayImageView.image = nil
-            
             rankLabel.textColor = UIColor.aquamarine1Color()
             winPercentLabel.textColor  = UIColor.aquamarine1Color()
             winsInRowLabel.textColor = UIColor.aquamarine1Color()
@@ -73,6 +67,16 @@ final class StatsCell: UICollectionViewCell {
         winPercentLabel.text = hasProgress ? NSString(format: "%.2f%%", item.progressItem.winPercent) as String : "-"
         winsInRowLabel.text = hasProgress ? String(item.progressItem.maxWinsCountInRow) : "-"
         handsCountLabel.text = hasProgress ? String(item.progressItem.handsCount) : "-"
+    }
+    
+    func loadImages() {
+        if item.progressItem.locked! {
+            statsBackgroundImageView.image = R.image.backgroundTableLocked()
+            statsOverlayImageView.image = UIImage(named: "overlay.stats.locked.level.\(item.progressItem.identifier)")
+        } else {
+            statsBackgroundImageView.image = UIImage(named: "background.stats.level.\(item.progressItem.identifier)")
+            statsOverlayImageView.image = nil
+        }
     }
     
     func updateRankLabelWithItem(newItem: StatsCellItem, oldItem: StatsCellItem?) {

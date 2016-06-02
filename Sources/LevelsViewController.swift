@@ -37,14 +37,18 @@ extension LevelsViewController: UICollectionViewDelegateFlowLayout, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.levelCell, forIndexPath: indexPath)!
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.levelCell, forIndexPath: indexPath)!
+        
+        let levelProgress = model.playerManager.playerData.levelProgressItems[indexPath.item]
+        let item = LevelCellItem(levelProgress: levelProgress, buttonsTag: indexPath.item)
+        cell.fillWithItem(item)
+        
+        return cell
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        let levelProgress = model.playerManager.playerData.levelProgressItems[indexPath.item]
-        let item = LevelCellItem(levelProgress: levelProgress, buttonsTag: indexPath.item)
-        let levelCell = cell as! LevelCell
-        levelCell.fillWithItem(item)
+        // Load images in `willDisplayCell` to make animation smoother.
+        (cell as! LevelCell).loadImages()
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

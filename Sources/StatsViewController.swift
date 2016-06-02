@@ -55,14 +55,18 @@ extension StatsViewController: UICollectionViewDelegateFlowLayout, UICollectionV
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.statsCell, forIndexPath: indexPath)!
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.statsCell, forIndexPath: indexPath)!
+        
+        let progressItem = progressItems[indexPath.item]
+        let item = StatsCellItem(progressItem: progressItem)
+        cell.fillWithItem(item)
+        
+        return cell
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        let progressItem = progressItems[indexPath.item]
-        let item = StatsCellItem(progressItem: progressItem)
-        let statsCell = cell as! StatsCell
-        statsCell.fillWithItem(item)
+        // Load images in `willDisplayCell` to make animation smoother.
+        (cell as! StatsCell).loadImages()
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
