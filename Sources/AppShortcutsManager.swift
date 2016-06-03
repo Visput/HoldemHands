@@ -61,7 +61,7 @@ extension AppShortcutsManager {
             let levelShortcut = UIApplicationShortcutItem(type: String(level.identifier),
                                                           localizedTitle: R.string.localizable.shortcutTitlePlay(),
                                                           localizedSubtitle: level.name,
-                                                          icon: nil,
+                                                          icon: UIApplicationShortcutIcon(templateImageName: "icon.shortcut.play"),
                                                           userInfo: nil)
             
             let progress = playerManager.playerData.playerProgress()
@@ -71,7 +71,7 @@ extension AppShortcutsManager {
             let statsShortcut = UIApplicationShortcutItem(type: shortcutTypeStats,
                                                           localizedTitle: R.string.localizable.shortcutTitleStats(),
                                                           localizedSubtitle: winPercent,
-                                                          icon: nil,
+                                                          icon: UIApplicationShortcutIcon(templateImageName: "icon.shortcut.stats"),
                                                           userInfo: nil)
             
             UIApplication.sharedApplication().shortcutItems = [levelShortcut, statsShortcut]

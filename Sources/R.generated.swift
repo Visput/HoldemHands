@@ -75,7 +75,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 118 images.
+  /// This `R.image` struct is generated, and contains static references to 120 images.
   struct image {
     /// Image `background.blue`.
     static let backgroundBlue = ImageResource(bundle: _R.hostingBundle, name: "background.blue")
@@ -275,6 +275,10 @@ struct R: Rswift.Validatable {
     static let iconShareTwitterLarge = ImageResource(bundle: _R.hostingBundle, name: "icon.share.twitter.large")
     /// Image `icon.share.twitter.small`.
     static let iconShareTwitterSmall = ImageResource(bundle: _R.hostingBundle, name: "icon.share.twitter.small")
+    /// Image `icon.shortcut.play`.
+    static let iconShortcutPlay = ImageResource(bundle: _R.hostingBundle, name: "icon.shortcut.play")
+    /// Image `icon.shortcut.stats`.
+    static let iconShortcutStats = ImageResource(bundle: _R.hostingBundle, name: "icon.shortcut.stats")
     /// Image `icon.stats.blue`.
     static let iconStatsBlue = ImageResource(bundle: _R.hostingBundle, name: "icon.stats.blue")
     /// Image `icon.stats.green`.
@@ -807,6 +811,16 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon.share.twitter.small", bundle: ..., traitCollection: ...)`
     static func iconShareTwitterSmall(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.iconShareTwitterSmall, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon.shortcut.play", bundle: ..., traitCollection: ...)`
+    static func iconShortcutPlay(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconShortcutPlay, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon.shortcut.stats", bundle: ..., traitCollection: ...)`
+    static func iconShortcutStats(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconShortcutStats, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "icon.stats.blue", bundle: ..., traitCollection: ...)`
