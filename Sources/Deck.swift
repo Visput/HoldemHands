@@ -54,3 +54,15 @@ struct Deck {
         }
     }
 }
+
+extension Deck {
+    
+    static func deckByExcludingHands(hands: [Hand]) -> Deck {
+        var deck = Deck()
+        for hand in hands {
+            deck.removeHand(hand)
+        }
+        
+        return deck
+    }
+}

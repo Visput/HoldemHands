@@ -21,10 +21,8 @@ struct PlayerData: Mappable {
     init?(_ map: Map) {}
     
     mutating func mapping(map: Map) {
-        let transformOfInt64 = TransformOf<Int64, NSNumber>(fromJSON: { $0?.longLongValue }, toJSON: { $0.map { NSNumber(longLong: $0) } })
-        
         levelProgressItems <- map["level_progress_items"]
-        chipsCount <- (map["chips_count"], transformOfInt64)
+        chipsCount <- (map["chips_count"], Int64Transform())
         rank <- map["rank"]
         timestamp <- map["timestamp"]
         lastPlayedLevelID <- map["last_played_level_id"]

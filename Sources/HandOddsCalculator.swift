@@ -7,32 +7,35 @@
 //
 
 import Foundation
+import ObjectMapper
 
-final class HandOddsCalculator {
+final class HandOddsCalculator: Mappable {
     
-    private(set) var hands: [Hand]
-    private(set) var deck: Deck
+    private(set) var hands: [Hand]! {
+        didSet {
+            deck = Deck.deckByExcludingHands(hands)
+            deck.sortCards()
+        }
+    }
+    
+    private(set) var deck: Deck!
     private(set) var handsOdds: [HandOdds]?
     
     /// Precision used for comapring hands winning percent.
     /// If winning percent difference is less than this value than hands will be valued as equally winning.
-    private(set) var comparisonPrecision: Double
+    /// Set precision to one-hundredth of percent.
+    private let comparisonPrecision = 0.01
     
-    init(numberOfHands: Int, comparisonPrecision: Double) {
-        self.comparisonPrecision = comparisonPrecision
-        deck = Deck()
-        hands = [Hand]()
-        for _ in 0 ..< numberOfHands {
-            hands.append(deck.nextHand())
-        }
-        deck.sortCards()
+    init(hands: [Hand]) {
+        self.hands = hands
+        self.deck = Deck.deckByExcludingHands(hands)
+        self.deck.sortCards()
     }
     
-    init(hands: [Hand], deck: Deck, comparisonPrecision: Double) {
-        self.hands = hands
-        self.deck = deck
-        self.deck.sortCards()
-        self.comparisonPrecision = comparisonPrecision
+    init?(_ map: Map) {}
+    
+    func mapping(map: Map) {
+        hands <- map["hands"]
     }
     
     func calculateOdds(completion: (handsOdds: [HandOdds]) -> Void) {
@@ -123,52 +126,55 @@ final class HandOddsCalculator {
             })
         })
     }
+}
+
+extension HandOddsCalculator {
     
     @inline(__always) private func iterateDeckCards(inout deckCards: [Card],
-        inout boardCards: QuickArray<Card>,
-        inout handRankComparator: HandRankComparator,
-        inout handsOdds: [HandOdds],
-        minIndex: Int,
-        maxIndex: Int,
-        toIndex: Int) {
+                                                    inout boardCards: QuickArray<Card>,
+                                                    inout handRankComparator: HandRankComparator,
+                                                    inout handsOdds: [HandOdds],
+                                                    minIndex: Int,
+                                                    maxIndex: Int,
+                                                    toIndex: Int) {
+        
+        for index in minIndex ... maxIndex {
+            boardCards.append(deckCards[index])
             
-            for index in minIndex ... maxIndex {
-                boardCards.append(deckCards[index])
-                
-                iterateDeckCards(&deckCards,
-                    boardCards: &boardCards,
-                    handRankComparator: &handRankComparator,
-                    handsOdds: &handsOdds,
-                    fromIndex: index + 1,
-                    toIndex: toIndex + 1)
-                
-                boardCards.removeLast()
-            }
+            iterateDeckCards(&deckCards,
+                             boardCards: &boardCards,
+                             handRankComparator: &handRankComparator,
+                             handsOdds: &handsOdds,
+                             fromIndex: index + 1,
+                             toIndex: toIndex + 1)
+            
+            boardCards.removeLast()
+        }
     }
     
     @inline(__always) private func iterateDeckCards(inout deckCards: [Card],
-        inout boardCards: QuickArray<Card>,
-        inout handRankComparator: HandRankComparator,
-        inout handsOdds: [HandOdds],
-        fromIndex: Int,
-        toIndex: Int) {
-            
-            if toIndex < deckCards.count {
-                for index in fromIndex ... toIndex {
-                    boardCards.append(deckCards[index])
-                    
-                    iterateDeckCards(&deckCards,
-                        boardCards: &boardCards,
-                        handRankComparator: &handRankComparator,
-                        handsOdds: &handsOdds,
-                        fromIndex: index + 1,
-                        toIndex: toIndex + 1)
-                    
-                    boardCards.removeLast()
-                }
-            } else {
-                handRankComparator.compareHands(&handsOdds, boardCards: &boardCards)
+                                                    inout boardCards: QuickArray<Card>,
+                                                    inout handRankComparator: HandRankComparator,
+                                                    inout handsOdds: [HandOdds],
+                                                    fromIndex: Int,
+                                                    toIndex: Int) {
+        
+        if toIndex < deckCards.count {
+            for index in fromIndex ... toIndex {
+                boardCards.append(deckCards[index])
+                
+                iterateDeckCards(&deckCards,
+                                 boardCards: &boardCards,
+                                 handRankComparator: &handRankComparator,
+                                 handsOdds: &handsOdds,
+                                 fromIndex: index + 1,
+                                 toIndex: toIndex + 1)
+                
+                boardCards.removeLast()
             }
+        } else {
+            handRankComparator.compareHands(&handsOdds, boardCards: &boardCards)
+        }
     }
     
     private func numberOfBoardsWithSize(boardSize: Int, inDeckOfSize deckSize: Int) -> Int {

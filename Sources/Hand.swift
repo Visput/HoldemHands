@@ -7,11 +7,24 @@
 //
 
 import Foundation
+import ObjectMapper
 
-struct Hand: Equatable {
+struct Hand: Equatable, Mappable {
     
-    let firstCard: Card
-    let secondCard: Card
+    private(set) var firstCard: Card!
+    private(set) var secondCard: Card!
+    
+    @inline(__always) init(firstCard: Card, secondCard: Card) {
+        self.firstCard = firstCard
+        self.secondCard = secondCard
+    }
+    
+    init?(_ map: Map) {}
+    
+    mutating func mapping(map: Map) {
+        firstCard <- map["first"]
+        secondCard <- map["second"]
+    }
 }
 
 @inline(__always) func == (lhs: Hand, rhs: Hand) -> Bool {

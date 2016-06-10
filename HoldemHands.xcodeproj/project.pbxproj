@@ -144,10 +144,16 @@
 		9F6434A81CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6434A61CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift */; };
 		9F6703091CBC54EB00C85F99 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6703081CBC54EB00C85F99 /* GameKit.framework */; };
 		9F67030A1CBC559800C85F99 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6703081CBC54EB00C85F99 /* GameKit.framework */; };
+		9F6B7AFE1D07AC5F00651B91 /* GameRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6B7AFD1D07AC5F00651B91 /* GameRound.swift */; };
+		9F6B7AFF1D07AC5F00651B91 /* GameRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6B7AFD1D07AC5F00651B91 /* GameRound.swift */; };
 		9F93B4821C9750760092CBCB /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F93B4811C9750760092CBCB /* String+Path.swift */; };
 		9F95E15A1C875D0100D6F368 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1591C875D0100D6F368 /* Level.swift */; };
 		9F95E1601C879A9D00D6F368 /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15F1C879A9D00D6F368 /* PlayerData.swift */; };
 		9F95E1621C879B3100D6F368 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1611C879B3100D6F368 /* PlayerManager.swift */; };
+		9F9C02E11D0A67CD008A3765 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C02E01D0A67CD008A3765 /* GameManager.swift */; };
+		9F9C02E21D0A67CD008A3765 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C02E01D0A67CD008A3765 /* GameManager.swift */; };
+		9F9C02E51D0A6E94008A3765 /* Int64Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C02E41D0A6E94008A3765 /* Int64Transform.swift */; };
+		9F9C02E61D0A6E94008A3765 /* Int64Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C02E41D0A6E94008A3765 /* Int64Transform.swift */; };
 		9FA2090D1CA614F100E084E8 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */; };
 		9FA31FA31CB59D460010555B /* ChipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA21CB59D460010555B /* ChipsViewController.swift */; };
 		9FA31FA51CB59D840010555B /* ChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA41CB59D840010555B /* ChipsView.swift */; };
@@ -261,12 +267,15 @@
 		9F6434A21CD544FE00B3BED6 /* CustomFontLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFontLabel.swift; sourceTree = "<group>"; };
 		9F6434A61CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+SizeRatio.swift"; sourceTree = "<group>"; };
 		9F6703081CBC54EB00C85F99 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		9F6B7AFD1D07AC5F00651B91 /* GameRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRound.swift; sourceTree = "<group>"; };
 		9F73D1C91C9BA9D200EA72A7 /* HoldemHands.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HoldemHands.entitlements; sourceTree = "<group>"; };
 		9F93B4811C9750760092CBCB /* String+Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		9F95E1591C875D0100D6F368 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		9F95E15D1C8761C700D6F368 /* LevelProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelProgress.swift; sourceTree = "<group>"; };
 		9F95E15F1C879A9D00D6F368 /* PlayerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 		9F95E1611C879B3100D6F368 /* PlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
+		9F9C02E01D0A67CD008A3765 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		9F9C02E41D0A6E94008A3765 /* Int64Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int64Transform.swift; sourceTree = "<group>"; };
 		9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		9FA31FA21CB59D460010555B /* ChipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipsViewController.swift; sourceTree = "<group>"; };
 		9FA31FA41CB59D840010555B /* ChipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipsView.swift; sourceTree = "<group>"; };
@@ -559,6 +568,7 @@
 				9F6434A61CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift */,
 				9FB093C31CFB80C700A677EF /* Double+Precision.swift */,
 				9F13F3C51CFD5F2A00ED66D9 /* Array+GKSavedGame.swift */,
+				9F9C02E41D0A6E94008A3765 /* Int64Transform.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -604,6 +614,7 @@
 				9FA31FA61CB609960010555B /* DTO */,
 				9FE9F69F1CFFB18E00D5A06B /* AppShortcutsManager */,
 				9F1BD3531C936FED00020AAA /* PlayerManager */,
+				9F9C02E31D0A67D3008A3765 /* GameManager */,
 				9F46C5D41CDC287300EA06C8 /* WalkthroughManager */,
 				9F1BD3521C936FDC00020AAA /* NavigationManager */,
 				9F1BD3541C93700E00020AAA /* SharingManager */,
@@ -639,6 +650,14 @@
 			name = CustomFontLabel;
 			sourceTree = "<group>";
 		};
+		9F9C02E31D0A67D3008A3765 /* GameManager */ = {
+			isa = PBXGroup;
+			children = (
+				9F9C02E01D0A67CD008A3765 /* GameManager.swift */,
+			);
+			name = GameManager;
+			sourceTree = "<group>";
+		};
 		9FA31FA11CB59D320010555B /* ChipsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,6 +675,7 @@
 				9FE888E61C93F62700A39C2C /* PlayerProgress.swift */,
 				9FE888E81C93F76B00A39C2C /* Progress.swift */,
 				9F95E1591C875D0100D6F368 /* Level.swift */,
+				9F6B7AFD1D07AC5F00651B91 /* GameRound.swift */,
 			);
 			name = DTO;
 			sourceTree = "<group>";
@@ -1121,6 +1141,7 @@
 				9F12A8761CFBB5DC00823D6D /* LevelProgress.swift in Sources */,
 				9F259FFC1CFD1DEE00219D68 /* PlayerDataJsonLoader.swift in Sources */,
 				9F4EF2811CBC4F66002E5FEA /* BaseViewController.swift in Sources */,
+				9F9C02E21D0A67CD008A3765 /* GameManager.swift in Sources */,
 				9F4EF2821CBC4F66002E5FEA /* TextBannerView.swift in Sources */,
 				9F4EF2831CBC4F66002E5FEA /* SharingItem.swift in Sources */,
 				9FB093C51CFB80CB00A677EF /* Double+Precision.swift in Sources */,
@@ -1132,9 +1153,11 @@
 				9F13F3C11CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift in Sources */,
 				9F4EF2891CBC4F66002E5FEA /* PlayerData.swift in Sources */,
 				9F4EF28B1CBC4F66002E5FEA /* GameScreenView.swift in Sources */,
+				9F6B7AFF1D07AC5F00651B91 /* GameRound.swift in Sources */,
 				9F4EF28C1CBC4F66002E5FEA /* Hand.swift in Sources */,
 				9F4EF28D1CBC4F66002E5FEA /* UICollectionView+Utils.swift in Sources */,
 				9F4EF28E1CBC4F66002E5FEA /* MainScreenView.swift in Sources */,
+				9F9C02E61D0A6E94008A3765 /* Int64Transform.swift in Sources */,
 				9F4EF28F1CBC4F66002E5FEA /* LevelsViewController.swift in Sources */,
 				9F4EF2901CBC4F66002E5FEA /* HandOdds.swift in Sources */,
 				9F4EF2911CBC4F66002E5FEA /* GameScreen.swift in Sources */,
@@ -1199,6 +1222,7 @@
 				9F12A8771CFBB5DC00823D6D /* LevelProgress.swift in Sources */,
 				9F259FFB1CFD1DEE00219D68 /* PlayerDataJsonLoader.swift in Sources */,
 				9F44D23D1C84C61900640046 /* BaseViewController.swift in Sources */,
+				9F9C02E11D0A67CD008A3765 /* GameManager.swift in Sources */,
 				9F3C4BE21C92586800B37939 /* TextBannerView.swift in Sources */,
 				9F1BD3561C93701C00020AAA /* SharingItem.swift in Sources */,
 				9FB093C41CFB80C700A677EF /* Double+Precision.swift in Sources */,
@@ -1210,9 +1234,11 @@
 				9F13F3C01CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift in Sources */,
 				9F95E1601C879A9D00D6F368 /* PlayerData.swift in Sources */,
 				9F44D21D1C84B21A00640046 /* GameScreenView.swift in Sources */,
+				9F6B7AFE1D07AC5F00651B91 /* GameRound.swift in Sources */,
 				9F44D2151C84B21A00640046 /* Hand.swift in Sources */,
 				9FA31FA81CB74F810010555B /* UICollectionView+Utils.swift in Sources */,
 				9F44D2341C84BAC700640046 /* MainScreenView.swift in Sources */,
+				9F9C02E51D0A6E94008A3765 /* Int64Transform.swift in Sources */,
 				9F314F8B1CB8CD620063B893 /* LevelsViewController.swift in Sources */,
 				9F44D2181C84B21A00640046 /* HandOdds.swift in Sources */,
 				9F44D21C1C84B21A00640046 /* GameScreen.swift in Sources */,

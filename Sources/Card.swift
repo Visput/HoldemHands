@@ -7,11 +7,29 @@
 //
 
 import Foundation
+import ObjectMapper
 
-struct Card: Equatable {
+struct Card: Equatable, Mappable {
     
-    let rank: Rank
-    let suit: Suit
+    private(set) var rank: Rank!
+    private(set) var suit: Suit!
+    
+    @inline(__always) init(rank: Rank, suit: Suit) {
+        self.rank = rank
+        self.suit = suit
+    }
+    
+    init?(_ map: Map) {}
+    
+    mutating func mapping(map: Map) {
+        let transformOfRank = TransformOf<Rank, Int>(fromJSON: { Rank(rawValue: $0!) },
+                                                     toJSON: { $0.map { $0.rawValue } })
+        let transformOfSuit = TransformOf<Suit, Int>(fromJSON: { Suit(rawValue: $0!) },
+                                                     toJSON: { $0.map { $0.rawValue } })
+        
+        rank <- (map["rank"], transformOfRank)
+        suit <- (map["suit"], transformOfSuit)
+    }
 }
 
 @inline(__always) func == (lhs: Card, rhs: Card) -> Bool {

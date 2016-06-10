@@ -25,9 +25,6 @@ final class HandsViewController: UIViewController {
         return handOddsCalculator.handsOdds?.first?.tieProbability()
     }
     
-    /// Set precision to one-hundredth of percent.
-    private let comparisonPrecision = 0.01
-    
     private var handsView: HandsView {
         return view as! HandsView
     }
@@ -55,7 +52,12 @@ final class HandsViewController: UIViewController {
     }
     
     func generateHands(completion: (() -> Void)? = nil) {
-        handOddsCalculator = HandOddsCalculator(numberOfHands: numberOfHands, comparisonPrecision: comparisonPrecision)
+        var hands = [Hand]()
+        var deck = Deck()
+        for _ in 0 ..< numberOfHands {
+            hands.append(deck.nextHand())
+        }
+        handOddsCalculator = HandOddsCalculator(hands: hands)
         reloadHandsCollectionViewDeeply(true)
         
         handOddsCalculator.calculateOdds({ handsOdds in

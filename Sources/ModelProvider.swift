@@ -31,4 +31,8 @@ final class ModelProvider {
         
         Analytics.navigationManager = navigationManager
     }
+    
+    func newGameForLevel(level: Level) -> GameManager {
+        return GameManager(level: level, playerManager: playerManager)
+    }
 }

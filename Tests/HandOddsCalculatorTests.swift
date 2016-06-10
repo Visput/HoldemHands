@@ -95,14 +95,9 @@ class HandOddsCalculatorTests: XCTestCase {
             Hand(firstCard: Card(rank: .Jack, suit: .Hearts), secondCard: Card(rank: .Six, suit: .Diamonds))
         ]
         
-        var deck = Deck()
-        for hand in hands {
-            deck.removeHand(hand)
-        }
-        
         let calculationExpecation = expectationWithDescription("calculationExpecation")
         
-        let oddsCalculator = HandOddsCalculator(hands: hands, deck: deck, comparisonPrecision: 0.01)
+        let oddsCalculator = HandOddsCalculator(hands: hands)
         oddsCalculator.calculateOdds({ handsOdds in
             for handOdds in handsOdds {
                 if handOdds.hand == winningHand1 || handOdds.hand == winningHand2 {
@@ -124,14 +119,9 @@ extension HandOddsCalculatorTests {
     typealias OddsResult = (winProbability: Double, totalWinCount: Double)
     
     private func testOddsCalculatorWithHands(hands: [Hand], expectedOddsResults: [OddsResult]) {
-        var deck = Deck()
-        for hand in hands {
-            deck.removeHand(hand)
-        }
-        
         let calculationExpecation = expectationWithDescription("calculationExpecation")
         
-        let oddsCalculator = HandOddsCalculator(hands: hands, deck: deck, comparisonPrecision: 0.01)
+        let oddsCalculator = HandOddsCalculator(hands: hands)
         oddsCalculator.calculateOdds({ handsOdds in
             for index in 0 ..< hands.count {
                 XCTAssertEqualWithAccuracy(handsOdds[index].totalWinningProbability(),

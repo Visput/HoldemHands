@@ -22,11 +22,9 @@ struct Level: Equatable, Mappable {
     init?(_ map: Map) {}
     
     mutating func mapping(map: Map) {
-        let transformOfInt64 = TransformOf<Int64, NSNumber>(fromJSON: { $0?.longLongValue }, toJSON: { $0.map { NSNumber(longLong: $0) } })
-        
         numberOfHands <- map["hands_count"]
-        chipsToUnlock <- (map["chips_to_unlock"], transformOfInt64)
-        chipsPerWin <- (map["chips_per_win"], transformOfInt64)
+        chipsToUnlock <- (map["chips_to_unlock"], Int64Transform())
+        chipsPerWin <- (map["chips_per_win"], Int64Transform())
         winsInRowToDoubleChips <- map["wins_in_row_to_double_chips"]
         name <- map["name"]
         identifier <- map["id"]
