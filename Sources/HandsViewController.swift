@@ -11,34 +11,26 @@ import UIKit
 
 final class HandsViewController: UIViewController {
     
-    var numberOfHands: Int! {
-        didSet {
-            handsView.configureLayoutForNumberOfHands(numberOfHands)
-        }
-    }
+    var round: Round!
     
     weak var nextController: HandsViewController?
     
-    var didPlayRoundHandler: ((won: Bool, tieProbability: Double) -> Void)?
-    
-    var tieProbability: Double? {
-        return handOddsCalculator.handsOdds?.first?.tieProbability()
-    }
+    var didSelectHandHandler: ((hand: Hand) -> Void)?
     
     private var handsView: HandsView {
         return view as! HandsView
     }
     
-    private var handOddsCalculator: HandOddsCalculator!
     private var needsGenerateHandsOnViewDisappear = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        handsView.configureLayoutForNumberOfHands(round.hands.count)
         handsView.handsCollectionView.userInteractionEnabled = false
     }
     
     func viewDidChangePosition() {
-        if handsView.isPresented && handOddsCalculator.handsOdds != nil {
+        if handsView.isPresented && round.oddsCalculator.handsOdds != nil {
             let delayDuration = 0.2
             // Use delay for better usability.
             // Helps to understand better what is going on from user perspective.
@@ -47,22 +39,16 @@ final class HandsViewController: UIViewController {
         
         if !handsView.isPresented && needsGenerateHandsOnViewDisappear {
             needsGenerateHandsOnViewDisappear = false
-            generateHands()
+            calculateHandOdds()
         }
     }
     
-    func generateHands(completion: (() -> Void)? = nil) {
-        var hands = [Hand]()
-        var deck = Deck()
-        for _ in 0 ..< numberOfHands {
-            hands.append(deck.nextHand())
-        }
-        handOddsCalculator = HandOddsCalculator(hands: hands)
-        reloadHandsCollectionViewDeeply(true)
+    func calculateHandOdds(completion: (() -> Void)? = nil) {
+        reloadHandsCollectionViewDeeply(true, needsShowOdds: false)
         
-        handOddsCalculator.calculateOdds({ handsOdds in
+        round.oddsCalculator.calculateOdds({ handsOdds in
             completion?()
-            self.reloadHandsCollectionViewDeeply(true)
+            self.reloadHandsCollectionViewDeeply(true, needsShowOdds: false)
             if self.handsView.isPresented {
                 self.handsView.flipHandsWithDelay(0.0)
             }
@@ -71,18 +57,18 @@ final class HandsViewController: UIViewController {
             if self.nextController!.handsView.isPresented {
                 self.nextController!.needsGenerateHandsOnViewDisappear = true
             } else {
-                self.nextController!.generateHands()
+                self.nextController!.calculateHandOdds()
             }
         })
     }
     
-    private func reloadHandsCollectionViewDeeply(deeply: Bool) {
+    private func reloadHandsCollectionViewDeeply(deeply: Bool, needsShowOdds: Bool) {
         if deeply {
             handsView.handsCollectionView.reloadData()
         } else {  
             let cells = handsView.handsCollectionView.orderedVisibleCells() as! [HandCell]
             for (index, cell) in cells.enumerate() {
-                let item = HandCellItem(handOdds: handOddsCalculator.handsOdds?[index], needsShowOdds: false, isSuccessSate: nil)
+                let item = HandCellItem(handOdds: round.oddsCalculator.handsOdds?[index], needsShowOdds: needsShowOdds)
                 cell.fillWithItem(item)
             }
         }
@@ -92,35 +78,21 @@ final class HandsViewController: UIViewController {
 extension HandsViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return handOddsCalculator != nil ? handOddsCalculator.hands.count : 0
+        return round.hands.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.handCell, forIndexPath: indexPath)!
-        let item = HandCellItem(handOdds: handOddsCalculator.handsOdds?[indexPath.item], needsShowOdds: false, isSuccessSate: nil)
+        let item = HandCellItem(handOdds: round.oddsCalculator.handsOdds?[indexPath.item], needsShowOdds: false)
         cell.fillWithItem(item)
         
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let currentCell = collectionView.cellForItemAtIndexPath(indexPath) as! HandCell
+        didSelectHandHandler?(hand: round.hands[indexPath.item])
         
-        for cell in collectionView.visibleCells() as! [HandCell] {
-            var isSuccessState: Bool? = nil
-            if currentCell == cell {
-                isSuccessState = cell.item.handOdds!.wins
-                didPlayRoundHandler?(won: isSuccessState!, tieProbability: cell.item.handOdds!.tieProbability())
-                
-            } else {
-                if cell.item.handOdds!.wins {
-                    isSuccessState = true
-                }
-            }
-            let item = HandCellItem(handOdds: cell.item.handOdds, needsShowOdds: true, isSuccessSate: isSuccessState)
-            cell.fillWithItem(item)
-        }
-        
+        reloadHandsCollectionViewDeeply(false, needsShowOdds: true)
         handsView.handsCollectionView.userInteractionEnabled = false
     }
 }

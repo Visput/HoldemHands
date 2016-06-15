@@ -12,11 +12,9 @@ struct HandCellItem {
     
     let handOdds: HandOdds?
     let needsShowOdds: Bool!
-    let isSuccessSate: Bool?
     
-    init(handOdds: HandOdds?, needsShowOdds: Bool, isSuccessSate: Bool?) {
+    init(handOdds: HandOdds?, needsShowOdds: Bool) {
         self.handOdds = handOdds
         self.needsShowOdds = needsShowOdds
-        self.isSuccessSate = isSuccessSate
     }
 }

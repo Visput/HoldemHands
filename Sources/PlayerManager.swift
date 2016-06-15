@@ -55,6 +55,11 @@ final class PlayerManager {
 
 extension PlayerManager {
     
+    func setIncompleteRound(round: Round?, forLevel level: Level) {
+        let progressIndex = playerData.progressForLevel(level).index
+        playerData.levelProgressItems[progressIndex].incompleteRound = round
+    }
+    
     func trackNewWinInLevel(level: Level) {
         playerData.lastPlayedLevelID = level.identifier
         

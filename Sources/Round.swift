@@ -1,5 +1,5 @@
 //
-//  GameRound.swift
+//  Round.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 6/7/16.
@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-struct GameRound: Mappable {
+struct Round: Mappable {
     
     var hands: [Hand] {
         return oddsCalculator.hands

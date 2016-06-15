@@ -14,7 +14,7 @@ struct LevelProgress: Progress, Mappable {
     var rank: Int?
     var locked: Bool!
     var level: Level!
-    var incompleteRound: GameRound?
+    var incompleteRound: Round?
     
     private(set) var levelId: Int!
     private(set) var maxWinsCountInRow: Int!

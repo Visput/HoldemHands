@@ -42,34 +42,26 @@ final class HandCell: UICollectionViewCell {
     func fillWithItem(item: HandCellItem) {
         self.item = item
         
-        if item.handOdds == nil {
-            setHandVisible(false, animated: false)
-            winOddsLabel.alpha = 0.0
-            oddsBackgroundView.alpha = 0.0
-        } else {
+        if let handOdds = item.handOdds {
             let maxFontSize = CGFloat(21.0)
             let textFont = UIFont(name: winOddsLabel.font!.fontName, size: maxFontSize * currentScale)
             
             winOddsLabel.text = R.string.localizable.textWinOdds(item.handOdds!.winningProbability())
             winOddsLabel.font = textFont
-            
-            if item.isSuccessSate != nil {
-                if item.isSuccessSate! {
-                    oddsBackgroundView.image = R.image.backgroundHandOddsGreen()
-                } else {
-                    oddsBackgroundView.image = R.image.backgroundHandOddsGrey()
-                }
-            } else {
-                oddsBackgroundView.image = R.image.backgroundHandOddsGrey()
-            }
+            oddsBackgroundView.image = handOdds.wins ? R.image.backgroundHandOddsGreen() :  R.image.backgroundHandOddsGrey()
             
             UIView.animateWithDuration(0.4, animations: {
                 self.oddsBackgroundView.alpha = item.needsShowOdds! ? 1.0 : 0.0
                 self.winOddsLabel.alpha = item.needsShowOdds! ? 1.0 : 0.0
             })
+            
+        } else {
+            setHandVisible(false, animated: false)
+            winOddsLabel.alpha = 0.0
+            oddsBackgroundView.alpha = 0.0
         }
         
-        setHandSelectionVisible(selected, isSuccessState: item.isSuccessSate)
+        setHandSelectionVisible(selected, isSuccessState: item.handOdds?.wins)
     }
     
     func setHandVisible(visible: Bool, animated: Bool, completionHandler: (() -> Void)? = nil) {

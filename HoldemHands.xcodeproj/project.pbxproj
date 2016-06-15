@@ -144,8 +144,8 @@
 		9F6434A81CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6434A61CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift */; };
 		9F6703091CBC54EB00C85F99 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6703081CBC54EB00C85F99 /* GameKit.framework */; };
 		9F67030A1CBC559800C85F99 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6703081CBC54EB00C85F99 /* GameKit.framework */; };
-		9F6B7AFE1D07AC5F00651B91 /* GameRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6B7AFD1D07AC5F00651B91 /* GameRound.swift */; };
-		9F6B7AFF1D07AC5F00651B91 /* GameRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6B7AFD1D07AC5F00651B91 /* GameRound.swift */; };
+		9F6B7AFE1D07AC5F00651B91 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6B7AFD1D07AC5F00651B91 /* Round.swift */; };
+		9F6B7AFF1D07AC5F00651B91 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6B7AFD1D07AC5F00651B91 /* Round.swift */; };
 		9F93B4821C9750760092CBCB /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F93B4811C9750760092CBCB /* String+Path.swift */; };
 		9F95E15A1C875D0100D6F368 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E1591C875D0100D6F368 /* Level.swift */; };
 		9F95E1601C879A9D00D6F368 /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95E15F1C879A9D00D6F368 /* PlayerData.swift */; };
@@ -267,7 +267,7 @@
 		9F6434A21CD544FE00B3BED6 /* CustomFontLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFontLabel.swift; sourceTree = "<group>"; };
 		9F6434A61CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+SizeRatio.swift"; sourceTree = "<group>"; };
 		9F6703081CBC54EB00C85F99 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		9F6B7AFD1D07AC5F00651B91 /* GameRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRound.swift; sourceTree = "<group>"; };
+		9F6B7AFD1D07AC5F00651B91 /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		9F73D1C91C9BA9D200EA72A7 /* HoldemHands.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HoldemHands.entitlements; sourceTree = "<group>"; };
 		9F93B4811C9750760092CBCB /* String+Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		9F95E1591C875D0100D6F368 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -675,7 +675,7 @@
 				9FE888E61C93F62700A39C2C /* PlayerProgress.swift */,
 				9FE888E81C93F76B00A39C2C /* Progress.swift */,
 				9F95E1591C875D0100D6F368 /* Level.swift */,
-				9F6B7AFD1D07AC5F00651B91 /* GameRound.swift */,
+				9F6B7AFD1D07AC5F00651B91 /* Round.swift */,
 			);
 			name = DTO;
 			sourceTree = "<group>";
@@ -1153,7 +1153,7 @@
 				9F13F3C11CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift in Sources */,
 				9F4EF2891CBC4F66002E5FEA /* PlayerData.swift in Sources */,
 				9F4EF28B1CBC4F66002E5FEA /* GameScreenView.swift in Sources */,
-				9F6B7AFF1D07AC5F00651B91 /* GameRound.swift in Sources */,
+				9F6B7AFF1D07AC5F00651B91 /* Round.swift in Sources */,
 				9F4EF28C1CBC4F66002E5FEA /* Hand.swift in Sources */,
 				9F4EF28D1CBC4F66002E5FEA /* UICollectionView+Utils.swift in Sources */,
 				9F4EF28E1CBC4F66002E5FEA /* MainScreenView.swift in Sources */,
@@ -1234,7 +1234,7 @@
 				9F13F3C01CFD55FA00ED66D9 /* PlayerDataCloudStorage.swift in Sources */,
 				9F95E1601C879A9D00D6F368 /* PlayerData.swift in Sources */,
 				9F44D21D1C84B21A00640046 /* GameScreenView.swift in Sources */,
-				9F6B7AFE1D07AC5F00651B91 /* GameRound.swift in Sources */,
+				9F6B7AFE1D07AC5F00651B91 /* Round.swift in Sources */,
 				9F44D2151C84B21A00640046 /* Hand.swift in Sources */,
 				9FA31FA81CB74F810010555B /* UICollectionView+Utils.swift in Sources */,
 				9F44D2341C84BAC700640046 /* MainScreenView.swift in Sources */,

@@ -10,8 +10,8 @@ import Foundation
 
 final class GameManager {
     
-    private(set) var currentRound: GameRound!
-    private(set) var nextRound: GameRound!
+    private(set) var firstRound: Round!
+    private(set) var secondRound: Round!
     
     private let level: Level
     private let playerManager: PlayerManager
@@ -24,12 +24,13 @@ final class GameManager {
     func start() {
         stop()
         if let incompleteRound = playerManager.playerData.progressForLevel(level).instance.incompleteRound {
-            currentRound = incompleteRound
+            firstRound = incompleteRound
+            playerManager.setIncompleteRound(nil, forLevel: level)
         } else {
-            currentRound = GameRound(level: level)
+            firstRound = Round(level: level)
         }
         
-        nextRound = GameRound(level: level)
+        secondRound = Round(level: level)
     }
     
     func stop() {
