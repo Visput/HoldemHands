@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class RoundManager {
+struct RoundManager {
     
     private(set) var round: Round?
     private(set) var level: Level
@@ -19,7 +19,7 @@ final class RoundManager {
         self.playerManager = playerManager
     }
     
-    func start() {
+    mutating func start() {
         stop(saveRoundIfNeeded: false)
         if let incompleteRound = playerManager.playerData.progressForLevel(level).instance.incompleteRound {
             round = incompleteRound
@@ -39,7 +39,7 @@ final class RoundManager {
         }
     }
     
-    func selectHand(hand: Hand) {
+    mutating func selectHand(hand: Hand) {
         Analytics.gameRoundPlayed()
         
         round!.selectedHand = hand
