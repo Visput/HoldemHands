@@ -794,9 +794,9 @@
                             </mask>
                         </variation>
                         <connections>
-                            <outlet property="firstRoundView" destination="qhn-fF-xpL" id="U2O-Qf-DAg"/>
+                            <outlet property="firstRoundContainerView" destination="qhn-fF-xpL" id="U2O-Qf-DAg"/>
                             <outlet property="levelNameLabel" destination="f7B-ZW-3s1" id="OLb-dW-e17"/>
-                            <outlet property="secondRoundView" destination="zhA-HP-ihS" id="0a9-El-qhM"/>
+                            <outlet property="secondRoundContainerView" destination="zhA-HP-ihS" id="0a9-El-qhM"/>
                             <outlet property="swipeRecognizer" destination="3Ck-2q-YGx" id="RiG-3m-7pJ"/>
                             <outlet property="tapRecognizer" destination="iXx-oe-fbw" id="7kj-8U-zns"/>
                             <outlet property="tieOddsLabel" destination="aF5-zF-KQt" id="kcx-u0-vIT"/>

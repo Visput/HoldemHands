@@ -33,23 +33,25 @@ final class RoundViewController: BaseViewController {
         if let roundManager = roundManager {
             roundView.configureLayoutForNumberOfHands(roundManager.level.numberOfHands)
         }
-        roundView.handsCollectionView.userInteractionEnabled = false
+        roundView.controlsEnabled = false
     }
     
     override func viewWillDisappear(animated: Bool) {
-        roundManager.stop(saveRoundIfNeeded: roundView.isPresented)
+        roundManager.stop(saveRoundIfNeeded: roundView.visible)
         super.viewWillDisappear(animated)
     }
     
     func viewDidChangePosition() {
-        if roundView.isPresented && roundManager.round?.oddsCalculator.handsOdds != nil {
+        if roundView.visible && roundManager.round?.oddsCalculator.handsOdds != nil {
             let delayDuration = 0.2
             // Use delay for better usability.
             // Helps to understand better what is going on from user perspective.
-            roundView.flipHandsWithDelay(delayDuration)
+            roundView.flipHandsAfterDelay(delayDuration, completion: {
+                self.roundView.controlsEnabled = true
+            })
         }
         
-        if !roundView.isPresented && needsStartRoundOnViewDisappear {
+        if !roundView.visible && needsStartRoundOnViewDisappear {
             needsStartRoundOnViewDisappear = false
             startRound()
         }
@@ -64,12 +66,14 @@ final class RoundViewController: BaseViewController {
             
             completion?()
             self.reloadHandsCollectionViewDeeply(true, needsShowOdds: false)
-            if self.roundView.isPresented {
-                self.roundView.flipHandsWithDelay(0.0)
+            if self.roundView.visible {
+                self.roundView.flipHandsAfterDelay(0.0, completion: {
+                    self.roundView.controlsEnabled = true
+                })
             }
             
             guard self.nextController != nil else { return }
-            if self.nextController!.roundView.isPresented {
+            if self.nextController!.roundView.visible {
                 self.nextController!.needsStartRoundOnViewDisappear = true
             } else {
                 self.nextController!.startRound()
@@ -112,6 +116,6 @@ extension RoundViewController: UICollectionViewDelegateFlowLayout, UICollectionV
         didPlayRoundHandler?(round: roundManager.round!)
         
         reloadHandsCollectionViewDeeply(false, needsShowOdds: true)
-        roundView.handsCollectionView.userInteractionEnabled = false
+        roundView.controlsEnabled = false
     }
 }

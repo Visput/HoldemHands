@@ -36,14 +36,14 @@ final class GameScreenView: UIView {
         }
     }
     
-    @IBOutlet private(set) weak var firstRoundView: UIView! {
+    @IBOutlet private(set) weak var firstRoundContainerView: UIView! {
         didSet {
-            firstRoundView.translatesAutoresizingMaskIntoConstraints = false
+            firstRoundContainerView.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-    @IBOutlet private(set) weak var secondRoundView: UIView! {
+    @IBOutlet private(set) weak var secondRoundContainerView: UIView! {
         didSet {
-            secondRoundView.translatesAutoresizingMaskIntoConstraints = false
+            secondRoundContainerView.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
@@ -57,15 +57,23 @@ final class GameScreenView: UIView {
         }
     }
     
+    private var firstRoundView: RoundView {
+        return firstRoundContainerView.subviews.first! as! RoundView
+    }
+    
+    private var secondRoundView: RoundView {
+        return secondRoundContainerView.subviews.first! as! RoundView
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        var shownView = firstRoundView
-        var hiddenView = secondRoundView
+        var shownView = firstRoundContainerView
+        var hiddenView = secondRoundContainerView
         
-        if firstRoundView.frame.origin.x != 0.0 {
-            shownView = secondRoundView
-            hiddenView = firstRoundView
+        if firstRoundContainerView.frame.origin.x != 0.0 {
+            shownView = secondRoundContainerView
+            hiddenView = firstRoundContainerView
         }
         var initialFrame = bounds
         initialFrame.origin.y = levelNameLabel.frame.origin.y + levelNameLabel.frame.height
@@ -74,16 +82,19 @@ final class GameScreenView: UIView {
         shownView.frame = initialFrame
         hiddenView.frame = initialFrame
         hiddenView.frame.origin.x = frame.width
+        
+        firstRoundView.visible = shownView === self.firstRoundContainerView
+        secondRoundView.visible = shownView === self.secondRoundContainerView
     }
     
     func scrollToNextRoundView(completionHandler: () -> Void) {
         let animationDuration = 0.6
-        var viewToShow = firstRoundView
-        var viewToHide = secondRoundView
+        var viewToShow = firstRoundContainerView
+        var viewToHide = secondRoundContainerView
         
-        if firstRoundView.frame.origin.x == 0.0 {
-            viewToShow = secondRoundView
-            viewToHide = firstRoundView
+        if firstRoundContainerView.frame.origin.x == 0.0 {
+            viewToShow = secondRoundContainerView
+            viewToHide = firstRoundContainerView
         }
         
         UIView.animateWithDuration(animationDuration, delay: 0, options: .CurveEaseOut, animations: {
@@ -92,13 +103,17 @@ final class GameScreenView: UIView {
             
             }, completion: { _ in
                 viewToHide.frame.origin.x = self.frame.width
+                
+                self.firstRoundView.visible = viewToShow === self.firstRoundContainerView
+                self.secondRoundView.visible = viewToShow === self.secondRoundContainerView
+                
                 completionHandler()
         })
     }
     
     func setTieOddsVisible(visible: Bool, tieProbability: Double?) {
         if tieProbability != nil {
-            self.tieOddsLabel.text = R.string.localizable.textTieOdds(tieProbability!)
+            tieOddsLabel.text = R.string.localizable.textTieOdds(tieProbability!)
         }
         
         UIView.animateWithDuration(0.4, animations: {

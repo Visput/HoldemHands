@@ -12,11 +12,15 @@ final class RoundView: UIView {
     
     @IBOutlet private(set) weak var handsCollectionView: UICollectionView!
     
-    var isPresented: Bool {
-        let window = UIApplication.sharedApplication().keyWindow!
-        let windowFrame = window.frame
-        let viewFrame = convertRect(bounds, toView: window)
-        return windowFrame.contains(viewFrame)
+    var visible = false
+    
+    var controlsEnabled: Bool {
+        set {
+            handsCollectionView.userInteractionEnabled = controlsEnabled
+        }
+        get {
+            return handsCollectionView.userInteractionEnabled
+        }
     }
     
     func configureLayoutForNumberOfHands(numberOfHands: Int) {
@@ -24,7 +28,7 @@ final class RoundView: UIView {
         handsCollectionView.collectionViewLayout = layout
     }
     
-    func flipHandsWithDelay(delayDuration: Double) {
+    func flipHandsAfterDelay(delayDuration: Double, completion: () -> Void) {
         executeAfterDelay(delayDuration, task: {
             let delayCoefficient = 0.1
             let cells = self.handsCollectionView.orderedVisibleCells() as! [HandCell]
@@ -32,7 +36,7 @@ final class RoundView: UIView {
                 self.executeAfterDelay(Double(index) * delayCoefficient, task: {
                     cell.setHandVisible(true, animated: true, completionHandler: {
                         if index == cells.count - 1 {
-                            self.handsCollectionView.userInteractionEnabled = true
+                            completion()
                         }
                     })
                 })
