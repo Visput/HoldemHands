@@ -16,7 +16,6 @@ struct PlayerData: Mappable {
     var overallLeaderboardID: String!
     var rank: Int?
     var lastPlayedLevelID: Int?
-    private(set) var timestamp: Double!
     
     init?(_ map: Map) {}
     
@@ -24,11 +23,6 @@ struct PlayerData: Mappable {
         levelProgressItems <- map["level_progress_items"]
         chipsCount <- (map["chips_count"], Int64Transform())
         rank <- map["rank"]
-        timestamp <- map["timestamp"]
         lastPlayedLevelID <- map["last_played_level_id"]
-    }
-    
-    mutating func generateTimestamp() {
-        timestamp = NSDate().timeIntervalSince1970
     }
 }

@@ -221,7 +221,7 @@ extension PlayerManager {
     
     private func handleLoadedPlayerData(newPlayerData: PlayerData) {
         if playerData == nil || // Data hasn't initialized yet.
-            playerData.timestamp < newPlayerData.timestamp || // New data timestamp is newer than current data timestamp.
+            playerData.playerProgress().handsCount < newPlayerData.playerProgress().handsCount || // New hands count bigger than current hands count.
             (player.authenticated && player.playerID != keychainStorage.lastSavedPlayerId) || // New player signed in.
             (!player.authenticated && keychainStorage.lastSavedPlayerId != keychainStorage.guestPlayerId) { // Player signed out.
             
@@ -235,7 +235,6 @@ extension PlayerManager {
     }
     
     private func savePlayerData() {
-        playerData.generateTimestamp()
         keychainStorage.savePlayerData(playerData)
         cloudStorage.savePlayerData(playerData)
         
