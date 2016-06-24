@@ -12,8 +12,8 @@ final class GameScreen: BaseViewController {
     
     var level: Level!
     
-    private var firstHandsController: HandsViewController!
-    private var secondHandsController: HandsViewController!
+    private var firstRoundController: RoundViewController!
+    private var secondRoundController: RoundViewController!
     
     private var gameView: GameScreenView {
         return view as! GameScreenView
@@ -22,38 +22,30 @@ final class GameScreen: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameView.levelNameLabel.text = level.name
-        
-        firstHandsController.numberOfHands = level.numberOfHands
-        firstHandsController.didPlayRoundHandler = { [unowned self] won, tieProbability in
-            self.gameView.setTieOddsVisible(true, tieProbability: tieProbability)
-            self.didPlayRoundHandler(won)
+
+        firstRoundController.roundManager = model.newRoundForLevel(level)
+        firstRoundController.didPlayRoundHandler = { [unowned self] round in
+            self.gameView.setTieOddsVisible(true, tieProbability: round.oddsCalculator.tieProbability!)
+            self.gameView.controlsEnabled = true
         }
-        firstHandsController.nextController = secondHandsController
+        firstRoundController.nextController = secondRoundController
         
-        secondHandsController.numberOfHands = level.numberOfHands
-        secondHandsController.didPlayRoundHandler = { [unowned self] won, tieProbability in
-            self.gameView.setTieOddsVisible(true, tieProbability: tieProbability)
-            self.didPlayRoundHandler(won)
+        secondRoundController.roundManager = model.newRoundForLevel(level)
+        secondRoundController.didPlayRoundHandler = { [unowned self] round in
+            self.gameView.setTieOddsVisible(true, tieProbability: round.oddsCalculator.tieProbability!)
+            self.gameView.controlsEnabled = true
         }
-        secondHandsController.nextController = firstHandsController
+        secondRoundController.nextController = firstRoundController
         
         gameView.controlsEnabled = false
-    
         model.playerManager.observers.addObserver(self)
         
-        firstHandsController.generateHands({ [weak self] in
-            self?.model.walkthroughManager.showFirstRoundBannerIfNeeded()
-        })
+        firstRoundController.startRound()
     }
     
     override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
         model.walkthroughManager.hideBanners()
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        model.playerManager.trackFinishPlayLevel(level)
+        super.viewWillDisappear(animated)
     }
     
     override func viewDidShow() {
@@ -67,24 +59,11 @@ final class GameScreen: BaseViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let segue = R.segue.gameScreen.firstHands(segue: segue) {
-            firstHandsController = segue.destinationViewController
-        } else if let segue = R.segue.gameScreen.secondHands(segue: segue) {
-            secondHandsController = segue.destinationViewController
+        if let segue = R.segue.gameScreen.firstRound(segue: segue) {
+            firstRoundController = segue.destinationViewController
+        } else if let segue = R.segue.gameScreen.secondRound(segue: segue) {
+            secondRoundController = segue.destinationViewController
         }
-    }
-    
-    private func didPlayRoundHandler(won: Bool) {
-        if won {
-            model.playerManager.trackNewWinInLevel(level)
-        } else {
-            model.playerManager.trackNewLossInLevel(level)
-        }
-        
-        model.walkthroughManager.showNextRoundBannerIfNeeded(won: won)
-        
-        gameView.controlsEnabled = true
-        Analytics.gameRoundPlayed()
     }
 }
 
@@ -94,9 +73,9 @@ extension GameScreen {
         model.walkthroughManager.hideBanners()
         gameView.setTieOddsVisible(false, tieProbability: nil)
         gameView.controlsEnabled = false
-        gameView.scrollToNextHandsView({
-            self.firstHandsController.viewDidChangePosition()
-            self.secondHandsController.viewDidChangePosition()
+        gameView.scrollToNextRoundView({
+            self.firstRoundController.viewDidChangePosition()
+            self.secondRoundController.viewDidChangePosition()
         })
     }
     

@@ -36,14 +36,14 @@ final class GameScreenView: UIView {
         }
     }
     
-    @IBOutlet private(set) weak var firstHandsView: UIView! {
+    @IBOutlet private(set) weak var firstRoundView: UIView! {
         didSet {
-            firstHandsView.translatesAutoresizingMaskIntoConstraints = false
+            firstRoundView.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-    @IBOutlet private(set) weak var secondHandsView: UIView! {
+    @IBOutlet private(set) weak var secondRoundView: UIView! {
         didSet {
-            secondHandsView.translatesAutoresizingMaskIntoConstraints = false
+            secondRoundView.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
@@ -60,12 +60,12 @@ final class GameScreenView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        var shownView = firstHandsView
-        var hiddenView = secondHandsView
+        var shownView = firstRoundView
+        var hiddenView = secondRoundView
         
-        if firstHandsView.frame.origin.x != 0.0 {
-            shownView = secondHandsView
-            hiddenView = firstHandsView
+        if firstRoundView.frame.origin.x != 0.0 {
+            shownView = secondRoundView
+            hiddenView = firstRoundView
         }
         var initialFrame = bounds
         initialFrame.origin.y = levelNameLabel.frame.origin.y + levelNameLabel.frame.height
@@ -76,14 +76,14 @@ final class GameScreenView: UIView {
         hiddenView.frame.origin.x = frame.width
     }
     
-    func scrollToNextHandsView(completionHandler: () -> Void) {
+    func scrollToNextRoundView(completionHandler: () -> Void) {
         let animationDuration = 0.6
-        var viewToShow = firstHandsView
-        var viewToHide = secondHandsView
+        var viewToShow = firstRoundView
+        var viewToHide = secondRoundView
         
-        if firstHandsView.frame.origin.x == 0.0 {
-            viewToShow = secondHandsView
-            viewToHide = firstHandsView
+        if firstRoundView.frame.origin.x == 0.0 {
+            viewToShow = secondRoundView
+            viewToHide = firstRoundView
         }
         
         UIView.animateWithDuration(animationDuration, delay: 0, options: .CurveEaseOut, animations: {

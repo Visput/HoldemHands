@@ -1,5 +1,5 @@
 //
-//  HandsView.swift
+//  RoundView.swift
 //  HoldemHands
 //
 //  Created by Uladzimir Papko on 4/9/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class HandsView: UIView {
+final class RoundView: UIView {
     
     @IBOutlet private(set) weak var handsCollectionView: UICollectionView!
     

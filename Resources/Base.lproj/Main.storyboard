@@ -610,14 +610,14 @@
                                 <rect key="frame" x="0.0" y="55" width="736" height="319"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="IKY-Ps-knr" kind="embed" identifier="SecondHands" id="mAe-ai-Kz2"/>
+                                    <segue destination="IKY-Ps-knr" kind="embed" identifier="SecondRound" id="mAe-ai-Kz2"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhn-fF-xpL">
                                 <rect key="frame" x="0.0" y="55" width="736" height="319"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="IKY-Ps-knr" kind="embed" identifier="FirstHands" id="sWi-wi-SS3"/>
+                                    <segue destination="IKY-Ps-knr" kind="embed" identifier="FirstRound" id="sWi-wi-SS3"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qV0-7W-NHv" userLabel="Stats Transparent Button">
@@ -794,9 +794,9 @@
                             </mask>
                         </variation>
                         <connections>
-                            <outlet property="firstHandsView" destination="qhn-fF-xpL" id="U2O-Qf-DAg"/>
+                            <outlet property="firstRoundView" destination="qhn-fF-xpL" id="U2O-Qf-DAg"/>
                             <outlet property="levelNameLabel" destination="f7B-ZW-3s1" id="OLb-dW-e17"/>
-                            <outlet property="secondHandsView" destination="zhA-HP-ihS" id="0a9-El-qhM"/>
+                            <outlet property="secondRoundView" destination="zhA-HP-ihS" id="0a9-El-qhM"/>
                             <outlet property="swipeRecognizer" destination="3Ck-2q-YGx" id="RiG-3m-7pJ"/>
                             <outlet property="tapRecognizer" destination="iXx-oe-fbw" id="7kj-8U-zns"/>
                             <outlet property="tieOddsLabel" destination="aF5-zF-KQt" id="kcx-u0-vIT"/>
@@ -979,15 +979,15 @@
             </objects>
             <point key="canvasLocation" x="-276" y="1053"/>
         </scene>
-        <!--Hands View Controller-->
+        <!--Round View Controller-->
         <scene sceneID="c6X-yr-dVF">
             <objects>
-                <viewController id="IKY-Ps-knr" customClass="HandsViewController" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IKY-Ps-knr" customClass="RoundViewController" customModule="HoldemHands" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8X2-PI-tKq"/>
                         <viewControllerLayoutGuide type="bottom" id="kgZ-32-qwX"/>
                     </layoutGuides>
-                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="pRv-wy-WOc" customClass="HandsView" customModule="HoldemHands" customModuleProvider="target">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="pRv-wy-WOc" customClass="RoundView" customModule="HoldemHands" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="313"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

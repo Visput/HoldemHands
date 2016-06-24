@@ -11,11 +11,21 @@ import ObjectMapper
 
 struct Round: Mappable {
     
+    var selectedHand: Hand?
+    private(set) var oddsCalculator: HandOddsCalculator!
+    
     var hands: [Hand] {
         return oddsCalculator.hands
     }
     
-    private(set) var oddsCalculator: HandOddsCalculator!
+    var completed: Bool {
+        return selectedHand != nil
+    }
+    
+    var won: Bool? {
+        guard let selectedHand = selectedHand else { return nil }
+        return oddsCalculator.oddsForHand(selectedHand)!.wins
+    }
     
     init(level: Level) {
         var deck = Deck()
