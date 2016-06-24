@@ -16,7 +16,7 @@ final class RoundView: UIView {
     
     var controlsEnabled: Bool {
         set {
-            handsCollectionView.userInteractionEnabled = controlsEnabled
+            handsCollectionView.userInteractionEnabled = newValue
         }
         get {
             return handsCollectionView.userInteractionEnabled
