@@ -14,6 +14,7 @@ import TwitterKit
 import FBSDKCoreKit
 import AdSupport
 
+// swiftlint:disable file_length
 final class Analytics {
     
     weak static var navigationManager: NavigationManager!

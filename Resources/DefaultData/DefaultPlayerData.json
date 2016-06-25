@@ -24,7 +24,8 @@
       "wins_count" : 0,
       "wins_count_in_row" : 0,
       "rank" : null,
-      "max_wins_count_in_row" : 0
+      "max_wins_count_in_row" : 0,
+      "incomplete_round" : null
     },
     {
       "locked" : true,
@@ -35,7 +36,8 @@
       "wins_count" : 0,
       "wins_count_in_row" : 0,
       "rank" : null,
-      "max_wins_count_in_row" : 0
+      "max_wins_count_in_row" : 0,
+      "incomplete_round" : null
     },
     {
       "locked" : true,
@@ -46,7 +48,8 @@
       "wins_count" : 0,
       "wins_count_in_row" : 0,
       "rank" : null,
-      "max_wins_count_in_row" : 0
+      "max_wins_count_in_row" : 0,
+      "incomplete_round" : null
     },
     {
       "locked" : true,
@@ -57,7 +60,8 @@
       "wins_count" : 0,
       "wins_count_in_row" : 0,
       "rank" : null,
-      "max_wins_count_in_row" : 0
+      "max_wins_count_in_row" : 0,
+      "incomplete_round" : null
     },
     {
       "locked" : true,
@@ -68,7 +72,8 @@
       "wins_count" : 0,
       "wins_count_in_row" : 0,
       "rank" : null,
-      "max_wins_count_in_row" : 0
+      "max_wins_count_in_row" : 0,
+      "incomplete_round" : null
     },
     {
       "locked" : true,
@@ -79,7 +84,8 @@
       "wins_count" : 0,
       "wins_count_in_row" : 0,
       "rank" : null,
-      "max_wins_count_in_row" : 0
+      "max_wins_count_in_row" : 0,
+      "incomplete_round" : null
     }
   ]
 }

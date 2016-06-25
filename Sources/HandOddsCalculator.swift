@@ -9,6 +9,8 @@
 import Foundation
 import ObjectMapper
 
+// swiftlint:disable function_parameter_count
+
 final class HandOddsCalculator: Mappable {
     
     private(set) var hands: [Hand]! {

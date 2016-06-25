@@ -9,6 +9,8 @@
 import Foundation
 
 // swiftlint:disable cyclomatic_complexity
+// swiftlint:disable file_length
+// swiftlint:disable function_body_length
 
 struct HandRankCalculator: Equatable, Comparable {
     
@@ -512,5 +514,3 @@ struct HandRankCalculator: Equatable, Comparable {
     
     return false
 }
-
-// swiftlint:enable cyclomatic_complexity
