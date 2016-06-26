@@ -74,8 +74,7 @@
 		9F46C5DD1CDC615400EA06C8 /* DefaultPlayerData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F46C5D91CDC615400EA06C8 /* DefaultPlayerData.json */; };
 		9F46C5DE1CDC615400EA06C8 /* GameData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F46C5DA1CDC615400EA06C8 /* GameData.json */; };
 		9F46C5E11CDC615C00EA06C8 /* DefaultPlayerData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F46C5D91CDC615400EA06C8 /* DefaultPlayerData.json */; };
-		9F46C5E21CDC616200EA06C8 /* GameDataQA1.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F46C5DB1CDC615400EA06C8 /* GameDataQA1.json */; };
-		9F46C5E31CDC616500EA06C8 /* GameDataQA2.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F46C5DC1CDC615400EA06C8 /* GameDataQA2.json */; };
+		9F46C5E31CDC616500EA06C8 /* GameDataQA.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F46C5DC1CDC615400EA06C8 /* GameDataQA.json */; };
 		9F4EF2751CBC4F66002E5FEA /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44D2411C84C63900640046 /* ObserverSet.swift */; };
 		9F4EF2761CBC4F66002E5FEA /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F314F901CB8D0D00063B893 /* SharingViewController.swift */; };
 		9F4EF2771CBC4F66002E5FEA /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C4BDE1C9251E700B37939 /* BannerView.swift */; };
@@ -258,8 +257,7 @@
 		9F46C5D51CDC288E00EA06C8 /* WalkthroughManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughManager.swift; sourceTree = "<group>"; };
 		9F46C5D91CDC615400EA06C8 /* DefaultPlayerData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultPlayerData.json; sourceTree = "<group>"; };
 		9F46C5DA1CDC615400EA06C8 /* GameData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameData.json; sourceTree = "<group>"; };
-		9F46C5DB1CDC615400EA06C8 /* GameDataQA1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameDataQA1.json; sourceTree = "<group>"; };
-		9F46C5DC1CDC615400EA06C8 /* GameDataQA2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameDataQA2.json; sourceTree = "<group>"; };
+		9F46C5DC1CDC615400EA06C8 /* GameDataQA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameDataQA.json; sourceTree = "<group>"; };
 		9F4EF2C01CBC4F66002E5FEA /* HoldemHandsQA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHandsQA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4EF2C21CBC4FDF002E5FEA /* HoldemHands-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HoldemHands-Info.plist"; sourceTree = "<group>"; };
 		9F4EF2C31CBC4FDF002E5FEA /* HoldemHandsQA-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HoldemHandsQA-Info.plist"; sourceTree = "<group>"; };
@@ -636,8 +634,7 @@
 			children = (
 				9F46C5D91CDC615400EA06C8 /* DefaultPlayerData.json */,
 				9F46C5DA1CDC615400EA06C8 /* GameData.json */,
-				9F46C5DB1CDC615400EA06C8 /* GameDataQA1.json */,
-				9F46C5DC1CDC615400EA06C8 /* GameDataQA2.json */,
+				9F46C5DC1CDC615400EA06C8 /* GameDataQA.json */,
 			);
 			path = DefaultData;
 			sourceTree = "<group>";
@@ -876,7 +873,7 @@
 			files = (
 				9F4EF2B31CBC4F66002E5FEA /* Main.storyboard in Resources */,
 				9F4EF2B41CBC4F66002E5FEA /* iTunesArtwork@2x.png in Resources */,
-				9F46C5E31CDC616500EA06C8 /* GameDataQA2.json in Resources */,
+				9F46C5E31CDC616500EA06C8 /* GameDataQA.json in Resources */,
 				9F46C5E11CDC615C00EA06C8 /* DefaultPlayerData.json in Resources */,
 				9F4EF2B51CBC4F66002E5FEA /* TextBannerView.xib in Resources */,
 				9F6434A11CD51F7F00B3BED6 /* Localizable.strings in Resources */,
@@ -884,7 +881,6 @@
 				9FBC4CE51CC0C15900F38DD7 /* app_font.ttc in Resources */,
 				9F4EF2B61CBC4F66002E5FEA /* Assets.xcassets in Resources */,
 				9F4EF2B81CBC4F66002E5FEA /* LaunchScreen.storyboard in Resources */,
-				9F46C5E21CDC616200EA06C8 /* GameDataQA1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

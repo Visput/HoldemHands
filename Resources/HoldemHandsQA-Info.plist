@@ -62,7 +62,7 @@
 	<key>FlurryKey</key>
 	<string>H4SJ82CM8Z2CJFVJJD2J</string>
 	<key>GameDataFileName</key>
-	<string>GameDataQA2.json</string>
+	<string>GameDataQA.json</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram</string>
