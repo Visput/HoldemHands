@@ -8,7 +8,9 @@
       "chips_per_win" : 10,
       "chips_to_unlock" : 0,
       "hands_count" : 2,
-      "name" : "Classic Table"
+      "name" : "Classic Table",
+      "max_time_chips_bonus" : 5,
+      "chips_bonus_time" : 60
     },
     {
       "id" : 2,
@@ -17,7 +19,9 @@
       "chips_per_win" : 100,
       "chips_to_unlock" : 500,
       "hands_count" : 3,
-      "name" : "Silver Table"
+      "name" : "Silver Table",
+      "max_time_chips_bonus" : 50,
+      "chips_bonus_time" : 60
     },
     {
       "id" : 3,
@@ -26,7 +30,9 @@
       "chips_per_win" : 500,
       "chips_to_unlock" : 10000,
       "hands_count" : 4,
-      "name" : "Gold Table"
+      "name" : "Gold Table",
+      "max_time_chips_bonus" : 250,
+      "chips_bonus_time" : 60
     },
     {
       "id" : 4,
@@ -35,7 +41,9 @@
       "chips_per_win" : 2000,
       "chips_to_unlock" : 100000,
       "hands_count" : 5,
-      "name" : "Platinum Table"
+      "name" : "Platinum Table",
+      "max_time_chips_bonus" : 1000,
+      "chips_bonus_time" : 60
     },
     {
       "id" : 5,
@@ -44,7 +52,9 @@
       "chips_per_win" : 10000,
       "chips_to_unlock" : 1000000,
       "hands_count" : 6,
-      "name" : "Emerald Table"
+      "name" : "Emerald Table",
+      "max_time_chips_bonus" : 5000,
+      "chips_bonus_time" : 60
     },
     {
       "id" : 6,
@@ -53,7 +63,9 @@
       "chips_per_win" : 50000,
       "chips_to_unlock" : 10000000,
       "hands_count" : 7,
-      "name" : "Sapphire Table"
+      "name" : "Sapphire Table",
+      "max_time_chips_bonus" : 25000,
+      "chips_bonus_time" : 60
     },
     {
       "id" : 7,
@@ -62,7 +74,9 @@
       "chips_per_win" : 200000,
       "chips_to_unlock" : 100000000,
       "hands_count" : 8,
-      "name" : "Diamond Table"
+      "name" : "Diamond Table",
+      "max_time_chips_bonus" : 100000,
+      "chips_bonus_time" : 60
     }
   ]
 }

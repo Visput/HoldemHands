@@ -12,6 +12,7 @@ final class GameScreenView: UIView {
 
     @IBOutlet private(set) weak var levelNameLabel: UILabel!
     @IBOutlet private(set) weak var tieOddsLabel: UILabel!
+    @IBOutlet private(set) weak var timeBonusLabel: UILabel!
     @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
     
     @IBOutlet private(set) weak var swipeRecognizer: UISwipeGestureRecognizer! {
