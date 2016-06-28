@@ -154,6 +154,8 @@
 		9F9C02E51D0A6E94008A3765 /* Int64Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C02E41D0A6E94008A3765 /* Int64Transform.swift */; };
 		9F9C02E61D0A6E94008A3765 /* Int64Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C02E41D0A6E94008A3765 /* Int64Transform.swift */; };
 		9FA2090D1CA614F100E084E8 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */; };
+		9FA2B5661D21FC1000BAD6B7 /* ChipsBonusTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2B5651D21FC1000BAD6B7 /* ChipsBonusTimer.swift */; };
+		9FA2B5671D21FC1000BAD6B7 /* ChipsBonusTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2B5651D21FC1000BAD6B7 /* ChipsBonusTimer.swift */; };
 		9FA31FA31CB59D460010555B /* ChipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA21CB59D460010555B /* ChipsViewController.swift */; };
 		9FA31FA51CB59D840010555B /* ChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA41CB59D840010555B /* ChipsView.swift */; };
 		9FA31FA81CB74F810010555B /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */; };
@@ -275,6 +277,7 @@
 		9F9C02E01D0A67CD008A3765 /* RoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundManager.swift; sourceTree = "<group>"; };
 		9F9C02E41D0A6E94008A3765 /* Int64Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int64Transform.swift; sourceTree = "<group>"; };
 		9FA2090C1CA614F100E084E8 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		9FA2B5651D21FC1000BAD6B7 /* ChipsBonusTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipsBonusTimer.swift; sourceTree = "<group>"; };
 		9FA31FA21CB59D460010555B /* ChipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipsViewController.swift; sourceTree = "<group>"; };
 		9FA31FA41CB59D840010555B /* ChipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipsView.swift; sourceTree = "<group>"; };
 		9FA31FA71CB74F810010555B /* UICollectionView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Utils.swift"; sourceTree = "<group>"; };
@@ -651,6 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				9F9C02E01D0A67CD008A3765 /* RoundManager.swift */,
+				9FA2B5651D21FC1000BAD6B7 /* ChipsBonusTimer.swift */,
 			);
 			name = RoundManager;
 			sourceTree = "<group>";
@@ -744,7 +748,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F4EF2BD1CBC4F66002E5FEA /* Build configuration list for PBXNativeTarget "HoldemHandsQA" */;
 			buildPhases = (
-				37F386208C6EEFED149F8FF9 /* 📦 Check Pods Manifest.lock */,
+				37F386208C6EEFED149F8FF9 /* [CP] Check Pods Manifest.lock */,
 				9FBE139A1CCD676A00144E15 /* Run App Palette Generator */,
 				9FCE27661CE3EB06002E3F04 /* Run R.swift */,
 				9F4EF2741CBC4F66002E5FEA /* Sources */,
@@ -752,8 +756,8 @@
 				9F4EF2B11CBC4F66002E5FEA /* Resources */,
 				9F4EF2BB1CBC4F66002E5FEA /* Run Swift Lint */,
 				9F4EF2BC1CBC4F66002E5FEA /* Run Crashlytics */,
-				3B3A3584C03B982E18C70F91 /* 📦 Embed Pods Frameworks */,
-				E98B69638B75AD67E7D48470 /* 📦 Copy Pods Resources */,
+				3B3A3584C03B982E18C70F91 /* [CP] Embed Pods Frameworks */,
+				E98B69638B75AD67E7D48470 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -768,7 +772,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FACAAE61C72BCC20051A435 /* Build configuration list for PBXNativeTarget "HoldemHands" */;
 			buildPhases = (
-				CA1ADB500DE0188082759519 /* 📦 Check Pods Manifest.lock */,
+				CA1ADB500DE0188082759519 /* [CP] Check Pods Manifest.lock */,
 				9FBE13991CCD674400144E15 /* Run App Palette Generator */,
 				9FCE27811CE6581B002E3F04 /* Run R.swift */,
 				9FACAAC51C72BCC20051A435 /* Sources */,
@@ -776,8 +780,8 @@
 				9FACAAC71C72BCC20051A435 /* Resources */,
 				9F44D22E1C84B55B00640046 /* Run Swift Lint */,
 				9F44D2351C84C14100640046 /* Run Crashlytics */,
-				D9010C6B78A1241DF5F35BDA /* 📦 Embed Pods Frameworks */,
-				7369B7FB91654F05529CE85A /* 📦 Copy Pods Resources */,
+				D9010C6B78A1241DF5F35BDA /* [CP] Embed Pods Frameworks */,
+				7369B7FB91654F05529CE85A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -911,14 +915,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		37F386208C6EEFED149F8FF9 /* 📦 Check Pods Manifest.lock */ = {
+		37F386208C6EEFED149F8FF9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -926,14 +930,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		3B3A3584C03B982E18C70F91 /* 📦 Embed Pods Frameworks */ = {
+		3B3A3584C03B982E18C70F91 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -941,14 +945,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HoldemHandsQA/Pods-HoldemHandsQA-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7369B7FB91654F05529CE85A /* 📦 Copy Pods Resources */ = {
+		7369B7FB91654F05529CE85A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1068,14 +1072,14 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT/Sources\"";
 		};
-		CA1ADB500DE0188082759519 /* 📦 Check Pods Manifest.lock */ = {
+		CA1ADB500DE0188082759519 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1083,14 +1087,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		D9010C6B78A1241DF5F35BDA /* 📦 Embed Pods Frameworks */ = {
+		D9010C6B78A1241DF5F35BDA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1098,14 +1102,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HoldemHands/Pods-HoldemHands-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E98B69638B75AD67E7D48470 /* 📦 Copy Pods Resources */ = {
+		E98B69638B75AD67E7D48470 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1170,6 +1174,7 @@
 				9FB10CC31CDAE1950046B6C1 /* StatsScreenView.swift in Sources */,
 				9F4EF29A1CBC4F66002E5FEA /* StatsCellItem.swift in Sources */,
 				9F4EF29B1CBC4F66002E5FEA /* StatsViewController.swift in Sources */,
+				9FA2B5671D21FC1000BAD6B7 /* ChipsBonusTimer.swift in Sources */,
 				9F4EF29C1CBC4F66002E5FEA /* HandsCollectionViewLayout.swift in Sources */,
 				9F4EF29D1CBC4F66002E5FEA /* ModelProvider.swift in Sources */,
 				9F4EF29E1CBC4F66002E5FEA /* ChipsViewController.swift in Sources */,
@@ -1251,6 +1256,7 @@
 				9FB10CC21CDAE1950046B6C1 /* StatsScreenView.swift in Sources */,
 				9FE888E51C93F54F00A39C2C /* StatsCellItem.swift in Sources */,
 				9F314F891CB8CCE70063B893 /* StatsViewController.swift in Sources */,
+				9FA2B5661D21FC1000BAD6B7 /* ChipsBonusTimer.swift in Sources */,
 				9F1927091CA3260B009F7E30 /* HandsCollectionViewLayout.swift in Sources */,
 				9F44D2441C84C63900640046 /* ModelProvider.swift in Sources */,
 				9FA31FA31CB59D460010555B /* ChipsViewController.swift in Sources */,
