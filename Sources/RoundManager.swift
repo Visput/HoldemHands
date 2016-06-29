@@ -16,7 +16,7 @@ final class RoundManager: NSObject {
     
     private let playerManager: PlayerManager
     private var bonusTimer: NSTimer?
-    private let numberOfTimerIntervals = Double(10)
+    private let numberOfTimerIntervals = Double(60)
     
     var roundLoaded: Bool {
         return round?.handsOdds != nil
@@ -94,7 +94,7 @@ extension RoundManager {
     }
     
     @objc private func bonusTimerDidFire() {
-        round!.chipsTimeBonus! -= Int64(Double(level.maxChipsTimeBonus) / numberOfTimerIntervals)
+        round!.chipsTimeBonus = max(0, round!.chipsTimeBonus! - Int64(Double(level.maxChipsTimeBonus) / numberOfTimerIntervals))
         didUpdateTimeBonusHandler?(bonus: round!.chipsTimeBonus)
         
         if round!.chipsTimeBonus == 0 {
