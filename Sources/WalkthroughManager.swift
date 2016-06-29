@@ -13,44 +13,57 @@ final class WalkthroughManager {
     private var navigationManager: NavigationManager
     private var playerManager: PlayerManager
     
-    private var firstRoundBanner: BannerView?
-    private var nextRoundBanner: BannerView?
+    private var banner: BannerView?
+    
+    var playedHandsCount: Int {
+        return playerManager.playerData.playerProgress().handsCount
+    }
     
     init(navigationManager: NavigationManager, playerManager: PlayerManager) {
         self.navigationManager = navigationManager
         self.playerManager = playerManager
     }
     
-    func showFirstRoundBannerIfNeeded() {
-        guard playerManager.playerData.playerProgress().handsCount == 0 else {
-            hideBanners()
-            return
-        }
-       
-        let text = R.string.localizable.bannerWalkthroughChooseHand()
-        firstRoundBanner = navigationManager.presentBannerWithText(text, duration: 0.0)
+    func showBannerForStartedLevelIfNeeded() {
+        hideBanner({
+            var text: String? = nil
+            
+            if self.playedHandsCount == 0 {
+                text = R.string.localizable.bannerWalkthroughChooseHand()
+            }
+            
+            if self.playedHandsCount == 1 {
+                text = R.string.localizable.bannerWalkthroughTimeBonus()
+            }
+            
+            if let text = text {
+                self.banner = self.navigationManager.presentBannerWithText(text, duration: 0.0)
+            }
+        })
     }
     
-    func showNextRoundBannerIfNeeded(won won: Bool) {
-        guard playerManager.playerData.playerProgress().handsCount == 1 else {
-            hideBanners()
-            return
-        }
-        var text: String! = nil
-        if won {
-            text = R.string.localizable.bannerWalkthroughWon()
+    func showBannerForCompletedLevelIfNeeded(won won: Bool) {
+        hideBanner({
+            if self.playedHandsCount == 1 {
+                var text: String! = nil
+                if won {
+                    text = R.string.localizable.bannerWalkthroughWon()
+                } else {
+                    text = R.string.localizable.bannerWalkthroughLost()
+                }
+                self.banner = self.navigationManager.presentBannerWithText(text, duration: 0.0)
+            }
+        })
+    }
+    
+    func hideBanner(completion: (() -> Void)? = nil) {
+        if let banner = banner {
+            banner.dismiss({
+                self.banner = nil
+                completion?()
+            })
         } else {
-            text = R.string.localizable.bannerWalkthroughLost()
+            completion?()
         }
-        nextRoundBanner = navigationManager.presentBannerWithText(text, duration: 0.0)
-    }
-    
-    func hideBanners() {
-        firstRoundBanner?.dismiss({
-            self.firstRoundBanner = nil
-        })
-        nextRoundBanner?.dismiss({
-            self.nextRoundBanner = nil
-        })
     }
 }

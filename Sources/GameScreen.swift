@@ -28,7 +28,7 @@ final class GameScreen: BaseViewController {
             controller.roundManager.didUpdateTimeBonusHandler = { [unowned self] bonus in
                 self.gameView.setTimeBonusVisible(true, bonus: bonus, animated: true)
             }
-            controller.didPlayRoundHandler = { [unowned self] round in
+            controller.roundManager.didPlayRoundHandler = { [unowned self] round in
                 self.gameView.setTimeBonusVisible(false, bonus: nil, animated: true, completion: {
                     self.gameView.setTieOddsVisible(true, tieProbability: round.tieProbability!, animated: true)
                 })
@@ -42,11 +42,11 @@ final class GameScreen: BaseViewController {
         gameView.controlsEnabled = false
         model.playerManager.observers.addObserver(self)
         
-        firstRoundController.startRound()
+        firstRoundController.loadNewRound()
     }
     
     override func viewWillDisappear(animated: Bool) {
-        model.walkthroughManager.hideBanners()
+        model.walkthroughManager.hideBanner()
         super.viewWillDisappear(animated)
     }
     
@@ -72,7 +72,7 @@ final class GameScreen: BaseViewController {
 extension GameScreen {
     
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
-        model.walkthroughManager.hideBanners()
+        model.walkthroughManager.hideBanner()
         gameView.setTieOddsVisible(false, tieProbability: nil, animated: true)
         gameView.controlsEnabled = false
         gameView.scrollToNextRoundView({

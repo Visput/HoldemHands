@@ -20,13 +20,11 @@ final class RoundViewController: BaseViewController {
     
     weak var nextController: RoundViewController?
     
-    var didPlayRoundHandler: ((round: Round) -> Void)?
-    
     private var roundView: RoundView {
         return view as! RoundView
     }
     
-    private var needsStartRoundOnViewDisappear = false
+    private var needsLoadNewRoundOnViewDisappear = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,47 +41,46 @@ final class RoundViewController: BaseViewController {
     
     func viewDidChangePosition() {
         if roundView.visible && roundManager.roundLoaded {
-            let delayDuration = 0.2
             // Use delay for better usability.
             // Helps to understand better what is going on from user perspective.
-            roundView.flipHandsAfterDelay(delayDuration, completion: {
-                self.roundManager.startRound()
-                self.roundView.controlsEnabled = true
-            })
+            startRoundAfterDelay(0.2)
         }
         
-        if !roundView.visible && needsStartRoundOnViewDisappear {
-            needsStartRoundOnViewDisappear = false
-            startRound()
+        if !roundView.visible && needsLoadNewRoundOnViewDisappear {
+            needsLoadNewRoundOnViewDisappear = false
+            loadNewRound()
         }
     }
     
-    func startRound(completion: (() -> Void)? = nil) {
+    func loadNewRound(completion: (() -> Void)? = nil) {
         reloadHandsCollectionViewDeeply(true, needsShowOdds: false)
         
         roundManager.loadNewRound({
-            self.model.walkthroughManager.showFirstRoundBannerIfNeeded()
-            
             completion?()
             self.reloadHandsCollectionViewDeeply(true, needsShowOdds: false)
             if self.roundView.visible {
-                self.roundView.flipHandsAfterDelay(0.0, completion: {
-                    self.roundManager.startRound()
-                    self.roundView.controlsEnabled = true
-                })
+                self.startRoundAfterDelay(0.0)
             }
             
             guard self.nextController != nil else { return }
             if self.nextController!.roundView.visible {
-                self.nextController!.needsStartRoundOnViewDisappear = true
+                self.nextController!.needsLoadNewRoundOnViewDisappear = true
             } else {
-                self.nextController!.startRound()
+                self.nextController!.loadNewRound()
             }
         })
     }
 }
 
 extension RoundViewController {
+    
+    private func startRoundAfterDelay(delay: Double) {
+        roundView.flipHandsAfterDelay(delay, completion: {
+            self.model.walkthroughManager.showBannerForStartedLevelIfNeeded()
+            self.roundManager.startRound()
+            self.roundView.controlsEnabled = true
+        })
+    }
     
     private func reloadHandsCollectionViewDeeply(deeply: Bool, needsShowOdds: Bool) {
         if deeply {
@@ -115,9 +112,7 @@ extension RoundViewController: UICollectionViewDelegateFlowLayout, UICollectionV
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let hand = roundManager.round!.hands[indexPath.item]
         roundManager.selectHand(hand)
-        model.walkthroughManager.showNextRoundBannerIfNeeded(won: roundManager.round!.won!)
-        
-        didPlayRoundHandler?(round: roundManager.round!)
+        model.walkthroughManager.showBannerForCompletedLevelIfNeeded(won: roundManager.round!.won!)
         
         reloadHandsCollectionViewDeeply(false, needsShowOdds: true)
         roundView.controlsEnabled = false

@@ -10,6 +10,7 @@ import Foundation
 
 final class RoundManager: NSObject {
     
+    var didPlayRoundHandler: ((round: Round) -> Void)?
     var didUpdateTimeBonusHandler: ((bonus: Int64) -> Void)?
     private(set) var round: Round?
     private(set) var level: Level
@@ -70,6 +71,7 @@ final class RoundManager: NSObject {
         } else {
             playerManager.trackNewLossInLevel(level)
         }
+        didPlayRoundHandler?(round: round!)
     }
 }
 
