@@ -42,12 +42,13 @@ final class RoundManager: NSObject {
         }
     }
     
-    func start() {
-        stop(saveRoundIfNeeded: false)
+    func startRound() {
+        stopRound(saveRoundIfNeeded: false)
+        didUpdateTimeBonusHandler?(bonus: round!.chipsTimeBonus)
         startBonusTimer()
     }
     
-    func stop(saveRoundIfNeeded saveRoundIfNeeded: Bool) {
+    func stopRound(saveRoundIfNeeded saveRoundIfNeeded: Bool) {
         if saveRoundIfNeeded {
             if let round = round where !round.completed {
                 playerManager.setIncompleteRound(round, forLevel: level)

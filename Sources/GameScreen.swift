@@ -73,9 +73,7 @@ extension GameScreen {
     
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
         model.walkthroughManager.hideBanners()
-        gameView.setTieOddsVisible(false, tieProbability: nil, animated: true, completion: {
-            self.gameView.setTimeBonusVisible(true, bonus: self.level.maxChipsTimeBonus, animated: true)
-        })
+        gameView.setTieOddsVisible(false, tieProbability: nil, animated: true)
         gameView.controlsEnabled = false
         gameView.scrollToNextRoundView({
             self.firstRoundController.viewDidChangePosition()

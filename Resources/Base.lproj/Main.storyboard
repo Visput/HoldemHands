@@ -712,8 +712,8 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Bonus: $100 000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLL-Xg-YzE" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                <rect key="frame" x="249" y="374" width="237" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Bonus:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLL-Xg-YzE" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
+                                <rect key="frame" x="304" y="374" width="127.5" height="21"/>
                                 <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="21"/>
                                 <color key="textColor" red="0.094117648900000003" green="0.64313727620000005" blue="0.47058823700000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

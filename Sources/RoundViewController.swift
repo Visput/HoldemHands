@@ -37,7 +37,7 @@ final class RoundViewController: BaseViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        roundManager.stop(saveRoundIfNeeded: roundView.visible)
+        roundManager.stopRound(saveRoundIfNeeded: roundView.visible)
         super.viewWillDisappear(animated)
     }
     
@@ -47,7 +47,7 @@ final class RoundViewController: BaseViewController {
             // Use delay for better usability.
             // Helps to understand better what is going on from user perspective.
             roundView.flipHandsAfterDelay(delayDuration, completion: {
-                self.roundManager.start()
+                self.roundManager.startRound()
                 self.roundView.controlsEnabled = true
             })
         }
@@ -68,7 +68,7 @@ final class RoundViewController: BaseViewController {
             self.reloadHandsCollectionViewDeeply(true, needsShowOdds: false)
             if self.roundView.visible {
                 self.roundView.flipHandsAfterDelay(0.0, completion: {
-                    self.roundManager.start()
+                    self.roundManager.startRound()
                     self.roundView.controlsEnabled = true
                 })
             }
