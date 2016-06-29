@@ -8,25 +8,33 @@
 
 import Foundation
 
-struct RoundManager {
+final class RoundManager: NSObject {
     
+    var didUpdateTimeBonusHandler: ((bonus: Int64) -> Void)?
     private(set) var round: Round?
     private(set) var level: Level
+    
     private let playerManager: PlayerManager
+    private var bonusTimer: NSTimer?
+    private let numberOfTimerIntervals = Double(10)
     
     init(level: Level, playerManager: PlayerManager) {
         self.level = level
         self.playerManager = playerManager
     }
     
-    mutating func start() {
-        stop(saveRoundIfNeeded: false)
+    func loadNewRound() {
         if let incompleteRound = playerManager.playerData.progressForLevel(level).instance.incompleteRound {
             round = incompleteRound
             playerManager.setIncompleteRound(nil, forLevel: level)
         } else {
             round = Round(level: level)
         }
+    }
+    
+    func start() {
+        stop(saveRoundIfNeeded: false)
+        startBonusTimer()
     }
     
     func stop(saveRoundIfNeeded saveRoundIfNeeded: Bool) {
@@ -37,9 +45,10 @@ struct RoundManager {
             
             playerManager.trackFinishPlayLevel(level)
         }
+        stopBonusTimer()
     }
     
-    mutating func selectHand(hand: Hand) {
+    func selectHand(hand: Hand) {
         Analytics.gameRoundPlayed()
         
         round!.selectedHand = hand
@@ -47,6 +56,36 @@ struct RoundManager {
             playerManager.trackNewWinInLevel(level)
         } else {
             playerManager.trackNewLossInLevel(level)
+        }
+    }
+}
+
+extension RoundManager {
+    
+    private func startBonusTimer() {
+        stopBonusTimer()
+        
+        guard round!.chipsTimeBonus != 0 else { return }
+        
+        let timeInterval = Double(level.chipsBonusTime) / numberOfTimerIntervals
+        bonusTimer = NSTimer.scheduledTimerWithTimeInterval(timeInterval,
+                                                            target: self,
+                                                            selector: #selector(RoundManager.bonusTimerDidFire),
+                                                            userInfo: nil,
+                                                            repeats: true)
+    }
+    
+    private func stopBonusTimer() {
+        bonusTimer?.invalidate()
+        bonusTimer = nil
+    }
+    
+    @objc private func bonusTimerDidFire() {
+        round!.chipsTimeBonus! -= Int64(Double(level.maxChipsTimeBonus) * 2 / numberOfTimerIntervals)
+        didUpdateTimeBonusHandler?(bonus: round!.chipsTimeBonus)
+        
+        if round!.chipsTimeBonus == 0 {
+            stopBonusTimer()
         }
     }
 }

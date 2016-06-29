@@ -12,6 +12,7 @@ import ObjectMapper
 struct Round: Mappable {
     
     var selectedHand: Hand?
+    var chipsTimeBonus: Int64!
     private(set) var oddsCalculator: HandOddsCalculator!
     
     var hands: [Hand] {
@@ -33,6 +34,7 @@ struct Round: Mappable {
         for _ in 0 ..< level.numberOfHands {
             hands.append(deck.nextHand())
         }
+        self.chipsTimeBonus = level.maxChipsTimeBonus
         self.oddsCalculator = HandOddsCalculator(hands: hands)
     }
     
@@ -40,5 +42,6 @@ struct Round: Mappable {
     
     mutating func mapping(map: Map) {
         oddsCalculator <- map["calculator"]
+        chipsTimeBonus <- (map["time_bonus"], Int64Transform())
     }
 }

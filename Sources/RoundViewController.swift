@@ -47,6 +47,7 @@ final class RoundViewController: BaseViewController {
             // Use delay for better usability.
             // Helps to understand better what is going on from user perspective.
             roundView.flipHandsAfterDelay(delayDuration, completion: {
+                self.roundManager.start()
                 self.roundView.controlsEnabled = true
             })
         }
@@ -58,9 +59,9 @@ final class RoundViewController: BaseViewController {
     }
     
     func startRound(completion: (() -> Void)? = nil) {
-        roundManager.start()
         reloadHandsCollectionViewDeeply(true, needsShowOdds: false)
         
+        roundManager.loadNewRound()
         roundManager.round!.oddsCalculator.calculateOdds({ handsOdds in
             self.model.walkthroughManager.showFirstRoundBannerIfNeeded()
             
@@ -68,6 +69,7 @@ final class RoundViewController: BaseViewController {
             self.reloadHandsCollectionViewDeeply(true, needsShowOdds: false)
             if self.roundView.visible {
                 self.roundView.flipHandsAfterDelay(0.0, completion: {
+                    self.roundManager.start()
                     self.roundView.controlsEnabled = true
                 })
             }
@@ -80,11 +82,14 @@ final class RoundViewController: BaseViewController {
             }
         })
     }
+}
+
+extension RoundViewController {
     
     private func reloadHandsCollectionViewDeeply(deeply: Bool, needsShowOdds: Bool) {
         if deeply {
             roundView.handsCollectionView.reloadData()
-        } else {  
+        } else {
             let cells = roundView.handsCollectionView.orderedVisibleCells() as! [HandCell]
             for (index, cell) in cells.enumerate() {
                 let item = HandCellItem(handOdds: roundManager.round?.oddsCalculator.handsOdds?[index], needsShowOdds: needsShowOdds)

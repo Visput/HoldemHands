@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import LTMorphingLabel
 
 final class GameScreenView: UIView {
 
     @IBOutlet private(set) weak var levelNameLabel: UILabel!
     @IBOutlet private(set) weak var tieOddsLabel: UILabel!
-    @IBOutlet private(set) weak var timeBonusLabel: UILabel!
+    @IBOutlet private(set) weak var timeBonusContentView: UIView!
     @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
+    
+    @IBOutlet private(set) weak var timeBonusLabel: LTMorphingLabel! {
+        didSet {
+            timeBonusLabel.morphingEffect = .Sparkle
+        }
+    }
     
     @IBOutlet private(set) weak var swipeRecognizer: UISwipeGestureRecognizer! {
         didSet {
@@ -112,13 +119,29 @@ final class GameScreenView: UIView {
         })
     }
     
-    func setTieOddsVisible(visible: Bool, tieProbability: Double?) {
-        if tieProbability != nil {
-            tieOddsLabel.text = R.string.localizable.textTieOdds(tieProbability!)
+    func setTieOddsVisible(visible: Bool, tieProbability: Double?, animated: Bool, completion: (() -> Void)? = nil) {
+        if let tieProbability = tieProbability {
+            tieOddsLabel.text = R.string.localizable.textTieOdds(tieProbability)
         }
         
-        UIView.animateWithDuration(0.4, animations: {
+        let animationDuration = animated ? 0.4 : 0.0
+        UIView.animateWithDuration(animationDuration, animations: {
             self.tieOddsLabel.alpha = visible ? 1.0 : 0.0
+        }, completion: { _ in
+            completion?()
+        })
+    }
+    
+    func setTimeBonusVisible(visible: Bool, bonus: Int64?, animated: Bool, completion: (() -> Void)? = nil) {
+        if let bonus = bonus {
+            timeBonusLabel.text = bonus.formattedChipsCountString(needsReplaceZerosWithO: false)
+        }
+        
+        let animationDuration = animated ? 0.4 : 0.0
+        UIView.animateWithDuration(animationDuration, animations: {
+            self.timeBonusContentView.alpha = visible ? 1.0 : 0.0
+        }, completion: { _ in
+            completion?()
         })
     }
 }

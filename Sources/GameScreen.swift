@@ -23,18 +23,20 @@ final class GameScreen: BaseViewController {
         super.viewDidLoad()
         gameView.levelNameLabel.text = level.name
 
-        firstRoundController.roundManager = model.newRoundForLevel(level)
-        firstRoundController.didPlayRoundHandler = { [unowned self] round in
-            self.gameView.setTieOddsVisible(true, tieProbability: round.oddsCalculator.tieProbability!)
-            self.gameView.controlsEnabled = true
+        for controller in [firstRoundController, secondRoundController] {
+            controller.roundManager = model.newRoundForLevel(level)
+            controller.roundManager.didUpdateTimeBonusHandler = { [unowned self] bonus in
+                self.gameView.setTimeBonusVisible(true, bonus: bonus, animated: true)
+            }
+            controller.didPlayRoundHandler = { [unowned self] round in
+                self.gameView.setTimeBonusVisible(false, bonus: nil, animated: true, completion: {
+                    self.gameView.setTieOddsVisible(true, tieProbability: round.oddsCalculator.tieProbability!, animated: true)
+                })
+                self.gameView.controlsEnabled = true
+            }
         }
-        firstRoundController.nextController = secondRoundController
         
-        secondRoundController.roundManager = model.newRoundForLevel(level)
-        secondRoundController.didPlayRoundHandler = { [unowned self] round in
-            self.gameView.setTieOddsVisible(true, tieProbability: round.oddsCalculator.tieProbability!)
-            self.gameView.controlsEnabled = true
-        }
+        firstRoundController.nextController = secondRoundController
         secondRoundController.nextController = firstRoundController
         
         gameView.controlsEnabled = false
@@ -71,7 +73,9 @@ extension GameScreen {
     
     @IBAction private func nextHandGestureDidSwipe(sender: AnyObject) {
         model.walkthroughManager.hideBanners()
-        gameView.setTieOddsVisible(false, tieProbability: nil)
+        gameView.setTieOddsVisible(false, tieProbability: nil, animated: true, completion: {
+            self.gameView.setTimeBonusVisible(true, bonus: self.level.maxChipsTimeBonus, animated: true)
+        })
         gameView.controlsEnabled = false
         gameView.scrollToNextRoundView({
             self.firstRoundController.viewDidChangePosition()
