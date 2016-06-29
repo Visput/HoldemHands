@@ -62,6 +62,8 @@ final class RoundManager: NSObject {
     func selectHand(hand: Hand) {
         Analytics.gameRoundPlayed()
         
+        stopRound(saveRoundIfNeeded: false)
+        
         round!.selectedHand = hand
         if round!.won! {
             playerManager.trackNewWinInLevel(level)
@@ -92,7 +94,7 @@ extension RoundManager {
     }
     
     @objc private func bonusTimerDidFire() {
-        round!.chipsTimeBonus! -= Int64(Double(level.maxChipsTimeBonus) * 2 / numberOfTimerIntervals)
+        round!.chipsTimeBonus! -= Int64(Double(level.maxChipsTimeBonus) / numberOfTimerIntervals)
         didUpdateTimeBonusHandler?(bonus: round!.chipsTimeBonus)
         
         if round!.chipsTimeBonus == 0 {

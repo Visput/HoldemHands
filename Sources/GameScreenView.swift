@@ -133,6 +133,7 @@ final class GameScreenView: UIView {
     
     func setTimeBonusVisible(visible: Bool, bonus: Int64?, animated: Bool, completion: (() -> Void)? = nil) {
         if let bonus = bonus {
+            timeBonusLabel.morphingEnabled = timeBonusLabel.alpha != 0
             timeBonusLabel.text = R.string.localizable.textTimeBonus(bonus.formattedChipsCountString(needsReplaceZerosWithO: false))
         }
         
