@@ -18,6 +18,7 @@
 
 "text.win.odds" = "Win: %.2f%%";
 "text.tie.odds" = "Tie: %.2f%%";
+"text.time.bonus" = "Time Bonus: %@";
 
 "title.sharing.twitter" = "Play @HoldemHands - prove your mastery!";
 "title.sharing.instagram" = "Play #HoldemHands - prove your mastery!";

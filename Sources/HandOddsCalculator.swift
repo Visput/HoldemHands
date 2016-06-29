@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import ObjectMapper
 
 // swiftlint:disable function_parameter_count
 
-final class HandOddsCalculator: Mappable {
+final class HandOddsCalculator {
     
     private(set) var hands: [Hand]! {
         didSet {
@@ -23,10 +22,6 @@ final class HandOddsCalculator: Mappable {
     private(set) var deck: Deck!
     private(set) var handsOdds: [HandOdds]?
     
-    var tieProbability: Double? {
-        return handsOdds?.first?.tieProbability()
-    }
-    
     /// Precision used for comapring hands winning percent.
     /// If winning percent difference is less than this value than hands will be valued as equally winning.
     /// Set precision to one-hundredth of percent.
@@ -36,16 +31,6 @@ final class HandOddsCalculator: Mappable {
         self.hands = hands
         self.deck = Deck.deckByExcludingHands(hands)
         self.deck.sortCards()
-    }
-    
-    init?(_ map: Map) {}
-    
-    func mapping(map: Map) {
-        hands <- map["hands"]
-    }
-    
-    func oddsForHand(hand: Hand) -> HandOdds? {
-        return handsOdds?.filter { $0.hand == hand }.first
     }
     
     func calculateOdds(completion: (handsOdds: [HandOdds]) -> Void) {

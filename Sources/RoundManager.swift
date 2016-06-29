@@ -18,17 +18,27 @@ final class RoundManager: NSObject {
     private var bonusTimer: NSTimer?
     private let numberOfTimerIntervals = Double(10)
     
+    var roundLoaded: Bool {
+        return round?.handsOdds != nil
+    }
+    
     init(level: Level, playerManager: PlayerManager) {
         self.level = level
         self.playerManager = playerManager
     }
     
-    func loadNewRound() {
+    func loadNewRound(completion: (() -> Void)? = nil) {
         if let incompleteRound = playerManager.playerData.progressForLevel(level).instance.incompleteRound {
             round = incompleteRound
             playerManager.setIncompleteRound(nil, forLevel: level)
         } else {
             round = Round(level: level)
+        }
+        
+        let oddsCalculator = HandOddsCalculator(hands: round!.hands)
+        oddsCalculator.calculateOdds { handsOdds in
+            self.round!.handsOdds = handsOdds
+            completion?()
         }
     }
     
@@ -52,7 +62,7 @@ final class RoundManager: NSObject {
         Analytics.gameRoundPlayed()
         
         round!.selectedHand = hand
-        if round!.oddsCalculator.oddsForHand(hand)!.wins {
+        if round!.won! {
             playerManager.trackNewWinInLevel(level)
         } else {
             playerManager.trackNewLossInLevel(level)

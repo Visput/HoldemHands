@@ -30,7 +30,7 @@ final class GameScreen: BaseViewController {
             }
             controller.didPlayRoundHandler = { [unowned self] round in
                 self.gameView.setTimeBonusVisible(false, bonus: nil, animated: true, completion: {
-                    self.gameView.setTieOddsVisible(true, tieProbability: round.oddsCalculator.tieProbability!, animated: true)
+                    self.gameView.setTieOddsVisible(true, tieProbability: round.tieProbability!, animated: true)
                 })
                 self.gameView.controlsEnabled = true
             }

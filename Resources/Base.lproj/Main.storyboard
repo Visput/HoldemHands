@@ -20,7 +20,6 @@
             <string>HiraMaruPro-W4</string>
             <string>HiraMaruPro-W4</string>
             <string>HiraMaruPro-W4</string>
-            <string>HiraMaruPro-W4</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -695,33 +694,6 @@
                                 <color key="textColor" red="0.094117648899555206" green="0.64313727617263794" blue="0.47058823704719543" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9j-cl-uQF" userLabel="Time Bonus Content View">
-                                <rect key="frame" x="249" y="374" width="239" height="21"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Bonus: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfW-Ao-ahw">
-                                        <rect key="frame" x="0.0" y="0.0" width="134.5" height="21"/>
-                                        <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="21"/>
-                                        <color key="textColor" red="0.094117648900000003" green="0.64313727620000005" blue="0.47058823700000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100 000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLL-Xg-YzE" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                        <rect key="frame" x="136" y="0.0" width="103" height="21"/>
-                                        <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="21"/>
-                                        <color key="textColor" red="0.094117648900000003" green="0.64313727620000005" blue="0.47058823700000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="BLL-Xg-YzE" secondAttribute="trailing" id="DRn-eU-Pfk"/>
-                                    <constraint firstAttribute="bottom" secondItem="BLL-Xg-YzE" secondAttribute="bottom" id="XNW-Fn-LRF"/>
-                                    <constraint firstItem="BLL-Xg-YzE" firstAttribute="top" secondItem="L9j-cl-uQF" secondAttribute="top" id="aDq-3J-8Gf"/>
-                                    <constraint firstItem="MfW-Ao-ahw" firstAttribute="leading" secondItem="L9j-cl-uQF" secondAttribute="leading" id="aHO-KS-efG"/>
-                                    <constraint firstItem="MfW-Ao-ahw" firstAttribute="top" secondItem="L9j-cl-uQF" secondAttribute="top" id="eaR-2f-VEN"/>
-                                    <constraint firstAttribute="bottom" secondItem="MfW-Ao-ahw" secondAttribute="bottom" id="fqm-pT-2u2"/>
-                                    <constraint firstItem="BLL-Xg-YzE" firstAttribute="leading" secondItem="MfW-Ao-ahw" secondAttribute="trailing" constant="2" id="xF0-j3-pG6"/>
-                                </constraints>
-                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kL-hu-HSd" userLabel="Space">
                                 <rect key="frame" x="298" y="395" width="140" height="18.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -740,6 +712,12 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Bonus: $100 000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLL-Xg-YzE" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
+                                <rect key="frame" x="249" y="374" width="237" height="21"/>
+                                <fontDescription key="fontDescription" name="HiraMaruPro-W4" family="Hiragino Maru Gothic Pro" pointSize="21"/>
+                                <color key="textColor" red="0.094117648900000003" green="0.64313727620000005" blue="0.47058823700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.9529411792755127" green="0.96078431606292725" blue="0.9686274528503418" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -747,7 +725,6 @@
                             <constraint firstItem="qV0-7W-NHv" firstAttribute="leading" secondItem="pdo-q4-dyZ" secondAttribute="trailing" id="1AA-3L-lWS"/>
                             <constraint firstItem="pdo-q4-dyZ" firstAttribute="trailing" secondItem="SXK-jE-uUX" secondAttribute="trailing" constant="8" id="2AY-hH-ese"/>
                             <constraint firstItem="qhn-fF-xpL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" placeholder="YES" id="2p7-88-YuL"/>
-                            <constraint firstItem="L9j-cl-uQF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="36E-Bx-kXc"/>
                             <constraint firstAttribute="trailing" secondItem="WP7-Y1-2cq" secondAttribute="trailing" id="3mN-kN-am7"/>
                             <constraint firstItem="5kL-hu-HSd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="70:207" id="5bg-b1-FTi"/>
                             <constraint firstItem="qV0-7W-NHv" firstAttribute="width" secondItem="pdo-q4-dyZ" secondAttribute="width" id="5dt-UE-gGm"/>
@@ -755,13 +732,14 @@
                             <constraint firstItem="pdo-q4-dyZ" firstAttribute="bottom" secondItem="SXK-jE-uUX" secondAttribute="bottom" constant="8" id="6iB-8D-oXN"/>
                             <constraint firstItem="qV0-7W-NHv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8yp-mM-w6H"/>
                             <constraint firstItem="pdo-q4-dyZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="AZi-ZU-Ggh"/>
+                            <constraint firstItem="5kL-hu-HSd" firstAttribute="top" secondItem="BLL-Xg-YzE" secondAttribute="bottom" id="Ah5-ey-Sa0"/>
                             <constraint firstItem="5kL-hu-HSd" firstAttribute="top" secondItem="aF5-zF-KQt" secondAttribute="bottom" id="BRH-Ji-OkW"/>
                             <constraint firstItem="f7B-ZW-3s1" firstAttribute="top" secondItem="WtL-PO-Gk1" secondAttribute="top" id="CQW-PL-orR"/>
                             <constraint firstItem="1JT-vw-cgT" firstAttribute="top" secondItem="SXK-jE-uUX" secondAttribute="top" id="Ccq-b5-Jkn"/>
                             <constraint firstItem="ttb-Hj-NiI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="D9V-m3-q5r"/>
                             <constraint firstItem="SXK-jE-uUX" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="3:23" id="DiV-zf-h9F"/>
+                            <constraint firstItem="BLL-Xg-YzE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FrQ-lU-qgD"/>
                             <constraint firstItem="1JT-vw-cgT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="HnT-4K-tdh"/>
-                            <constraint firstItem="5kL-hu-HSd" firstAttribute="top" secondItem="L9j-cl-uQF" secondAttribute="bottom" id="IMt-kW-iFz"/>
                             <constraint firstItem="qhn-fF-xpL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" placeholder="YES" id="Ksd-Nf-Qgg"/>
                             <constraint firstItem="f7B-ZW-3s1" firstAttribute="top" secondItem="ttb-Hj-NiI" secondAttribute="bottom" constant="-4" id="LUP-bl-kuK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zhA-HP-ihS" secondAttribute="bottom" placeholder="YES" id="OiH-88-KDM"/>
@@ -831,7 +809,6 @@
                             <outlet property="swipeRecognizer" destination="3Ck-2q-YGx" id="RiG-3m-7pJ"/>
                             <outlet property="tapRecognizer" destination="iXx-oe-fbw" id="7kj-8U-zns"/>
                             <outlet property="tieOddsLabel" destination="aF5-zF-KQt" id="kcx-u0-vIT"/>
-                            <outlet property="timeBonusContentView" destination="L9j-cl-uQF" id="Fzo-G0-eH7"/>
                             <outlet property="timeBonusLabel" destination="BLL-Xg-YzE" id="Yyy-qx-fcn"/>
                             <outletCollection property="gestureRecognizers" destination="3Ck-2q-YGx" appends="YES" id="p9z-W8-SzU"/>
                             <outletCollection property="gestureRecognizers" destination="iXx-oe-fbw" appends="YES" id="DNt-sw-QZ2"/>

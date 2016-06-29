@@ -13,11 +13,9 @@ struct Round: Mappable {
     
     var selectedHand: Hand?
     var chipsTimeBonus: Int64!
-    private(set) var oddsCalculator: HandOddsCalculator!
+    var handsOdds: [HandOdds]?
     
-    var hands: [Hand] {
-        return oddsCalculator.hands
-    }
+    private(set) var hands: [Hand]!
     
     var completed: Bool {
         return selectedHand != nil
@@ -25,7 +23,11 @@ struct Round: Mappable {
     
     var won: Bool? {
         guard let selectedHand = selectedHand else { return nil }
-        return oddsCalculator.oddsForHand(selectedHand)!.wins
+        return handsOdds?.filter { $0.hand == selectedHand }.first!.wins
+    }
+    
+    var tieProbability: Double? {
+        return handsOdds?.first?.tieProbability()
     }
     
     init(level: Level) {
@@ -34,14 +36,14 @@ struct Round: Mappable {
         for _ in 0 ..< level.numberOfHands {
             hands.append(deck.nextHand())
         }
+        self.hands = hands
         self.chipsTimeBonus = level.maxChipsTimeBonus
-        self.oddsCalculator = HandOddsCalculator(hands: hands)
     }
     
     init?(_ map: Map) {}
     
     mutating func mapping(map: Map) {
-        oddsCalculator <- map["calculator"]
+        hands <- map["hands"]
         chipsTimeBonus <- (map["time_bonus"], Int64Transform())
     }
 }

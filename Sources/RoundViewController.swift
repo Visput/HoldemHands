@@ -42,7 +42,7 @@ final class RoundViewController: BaseViewController {
     }
     
     func viewDidChangePosition() {
-        if roundView.visible && roundManager.round?.oddsCalculator.handsOdds != nil {
+        if roundView.visible && roundManager.roundLoaded {
             let delayDuration = 0.2
             // Use delay for better usability.
             // Helps to understand better what is going on from user perspective.
@@ -61,8 +61,7 @@ final class RoundViewController: BaseViewController {
     func startRound(completion: (() -> Void)? = nil) {
         reloadHandsCollectionViewDeeply(true, needsShowOdds: false)
         
-        roundManager.loadNewRound()
-        roundManager.round!.oddsCalculator.calculateOdds({ handsOdds in
+        roundManager.loadNewRound({
             self.model.walkthroughManager.showFirstRoundBannerIfNeeded()
             
             completion?()
@@ -92,7 +91,7 @@ extension RoundViewController {
         } else {
             let cells = roundView.handsCollectionView.orderedVisibleCells() as! [HandCell]
             for (index, cell) in cells.enumerate() {
-                let item = HandCellItem(handOdds: roundManager.round?.oddsCalculator.handsOdds?[index], needsShowOdds: needsShowOdds)
+                let item = HandCellItem(handOdds: roundManager.round?.handsOdds?[index], needsShowOdds: needsShowOdds)
                 cell.fillWithItem(item)
             }
         }
@@ -107,7 +106,7 @@ extension RoundViewController: UICollectionViewDelegateFlowLayout, UICollectionV
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.handCell, forIndexPath: indexPath)!
-        let item = HandCellItem(handOdds: roundManager.round?.oddsCalculator.handsOdds?[indexPath.item], needsShowOdds: false)
+        let item = HandCellItem(handOdds: roundManager.round?.handsOdds?[indexPath.item], needsShowOdds: false)
         cell.fillWithItem(item)
         
         return cell

@@ -13,7 +13,6 @@ final class GameScreenView: UIView {
 
     @IBOutlet private(set) weak var levelNameLabel: UILabel!
     @IBOutlet private(set) weak var tieOddsLabel: UILabel!
-    @IBOutlet private(set) weak var timeBonusContentView: UIView!
     @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
     
     @IBOutlet private(set) weak var timeBonusLabel: LTMorphingLabel! {
@@ -134,12 +133,12 @@ final class GameScreenView: UIView {
     
     func setTimeBonusVisible(visible: Bool, bonus: Int64?, animated: Bool, completion: (() -> Void)? = nil) {
         if let bonus = bonus {
-            timeBonusLabel.text = bonus.formattedChipsCountString(needsReplaceZerosWithO: false)
+            timeBonusLabel.text = R.string.localizable.textTimeBonus(bonus.formattedChipsCountString(needsReplaceZerosWithO: false))
         }
         
         let animationDuration = animated ? 0.4 : 0.0
         UIView.animateWithDuration(animationDuration, animations: {
-            self.timeBonusContentView.alpha = visible ? 1.0 : 0.0
+            self.timeBonusLabel.alpha = visible ? 1.0 : 0.0
         }, completion: { _ in
             completion?()
         })
