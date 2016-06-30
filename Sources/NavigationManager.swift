@@ -32,7 +32,7 @@ final class NavigationManager: NSObject {
     }
     
     func presentScreen(screen: UIViewController, animated: Bool) -> SimpleTask {
-        return SimpleTask(initClosure: { progress, fulfill, reject, configure in
+        return SimpleTask.execute({ completion in
             let needsToManageAppearanceTransition = screen.modalPresentationStyle != .FullScreen
             let presentingScreen = self.topViewController
             
@@ -44,13 +44,13 @@ final class NavigationManager: NSObject {
                     presentingScreen.endAppearanceTransition()
                 }
                 
-                fulfill()
+                completion(succeed: true)
             })
         })
     }
     
     func dismissScreenAnimated(animated: Bool) -> SimpleTask {
-        return SimpleTask(initClosure: { progress, fulfill, reject, configure in
+        return SimpleTask.execute({ completion in
             let needsToManageAppearanceTransition = self.topViewController.modalPresentationStyle != .FullScreen
             let presentingScreen = self.topViewController.presentingViewController
             
@@ -62,7 +62,7 @@ final class NavigationManager: NSObject {
                     presentingScreen?.endAppearanceTransition()
                 }
                 
-                fulfill()
+                completion(succeed: true)
             })
         })
     }

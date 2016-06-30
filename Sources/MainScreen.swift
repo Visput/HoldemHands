@@ -84,10 +84,10 @@ final class MainScreen: BaseViewController {
 
 extension MainScreen {
     
-    func startGameAtLevel(level: Level, animated: Bool) {
-        mainView.scrollToDetailsViewAtPage(.Levels, animated: animated, completionHandler: {
-            self.levelsController.startGameAtLevel(level, animated: animated)
-        })
+    func startGameAtLevel(level: Level, animated: Bool) -> SimpleTask {
+        return mainView.scrollToDetailsViewAtPage(.Levels, animated: animated).then {
+            return self.levelsController.startGameAtLevel(level, animated: animated)
+        }
     }
 }
 
@@ -96,17 +96,17 @@ extension MainScreen {
     @IBAction private func playButtonDidPress(sender: AnyObject) {
         Analytics.playClicked()
         currentDetailsPage = .Levels
-        mainView.scrollToDetailsViewAtPage(.Levels, animated: true, completionHandler: {
-            self.statsController.scrollToOverallStatsAnimated(false)
-        })
+        mainView.scrollToDetailsViewAtPage(.Levels, animated: true).then {
+            return self.statsController.scrollToOverallStatsAnimated(false)
+        }
     }
     
     @IBAction private func statsButtonDidPress(sender: AnyObject) {
         Analytics.statsClicked()
         currentDetailsPage = .Stats
-        mainView.scrollToDetailsViewAtPage(.Stats, animated: true, completionHandler: {
+        mainView.scrollToDetailsViewAtPage(.Stats, animated: true).thenDo {
             self.statsController.reloadRanks()
-        })
+        }
     }
     
     @IBAction private func shareButtonDidPress(sender: AnyObject) {

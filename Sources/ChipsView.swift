@@ -37,7 +37,7 @@ final class ChipsView: UIView {
             return SimpleTask.empty()
         }
         
-        executeAfterDelay(0.1) {
+        SimpleTask.delay(0.1).thenDo {
             self.chipsCountLabel.countFromCurrentValueTo(CGFloat(newCount))
         }
         

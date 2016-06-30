@@ -29,10 +29,10 @@ final class StatsCell: UICollectionViewCell {
     
     override var highlighted: Bool {
         didSet {
-            UIView.animateWithDuration(0.2, animations: {
+            SimpleTask.animateWithDuration(0.2) {
                 let zoomLevel: CGFloat = self.highlighted ? 0.9 : 1.0
                 self.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
-            })
+            }
         }
     }
     
@@ -79,7 +79,7 @@ final class StatsCell: UICollectionViewCell {
         }
     }
     
-    func updateRankLabelWithItem(newItem: StatsCellItem, oldItem: StatsCellItem?) {
+    func updateRankLabelWithItem(newItem: StatsCellItem, oldItem: StatsCellItem?) -> SimpleTask {
         rankDifferenceLabel.alpha = 0.0
         
         let newRank = newItem.progressItem.rank
@@ -97,17 +97,15 @@ final class StatsCell: UICollectionViewCell {
                 rankDifferenceLabel.textColor = UIColor.gray2Color()
             }
             
-            UIView.animateWithDuration(0.2, delay: 0.0, options: .CurveLinear, animations: {
+            return SimpleTask.animateWithDuration(0.2, options: .CurveLinear) {
                 self.rankDifferenceLabel.alpha = 1.0
-                
-                }, completion: { _ in
-                    UIView.animateWithDuration(0.1, delay: 0.7, options: .CurveEaseInOut, animations: {
-                        self.rankDifferenceLabel.alpha = 0.0
-                        
-                        }, completion: { _ in
-                            self.rankLabel.countFrom(CGFloat(oldRank!), to: CGFloat(newRank!))
-                    })   
-            })
+            }.then {
+                return SimpleTask.animateWithDuration(0.1, delay: 0.7, options: .CurveEaseInOut) {
+                    self.rankDifferenceLabel.alpha = 0.0
+                }
+            }.thenDo {
+                self.rankLabel.countFrom(CGFloat(oldRank!), to: CGFloat(newRank!))
+            }
             
         } else {
             if newRank != nil {
@@ -115,6 +113,7 @@ final class StatsCell: UICollectionViewCell {
             } else {
                 rankLabel.text = "-"
             }
+            return SimpleTask.empty()
         }
     }
 }

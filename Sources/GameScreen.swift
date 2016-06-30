@@ -29,9 +29,9 @@ final class GameScreen: BaseViewController {
                 self.gameView.setTimeBonusVisible(true, bonus: bonus, animated: true)
             }
             controller.roundManager.didPlayRoundHandler = { [unowned self] round in
-                self.gameView.setTimeBonusVisible(false, bonus: nil, animated: true, completionHandler: {
+                self.gameView.setTimeBonusVisible(false, bonus: nil, animated: true).thenDo {
                     self.gameView.setTieOddsVisible(true, tieProbability: round.tieProbability!, animated: true)
-                })
+                }
                 self.gameView.controlsEnabled = true
             }
         }
@@ -75,10 +75,10 @@ extension GameScreen {
         model.walkthroughManager.hideBanner()
         gameView.setTieOddsVisible(false, tieProbability: nil, animated: true)
         gameView.controlsEnabled = false
-        gameView.scrollToNextRoundView({
+        gameView.scrollToNextRoundView().thenDo {
             self.firstRoundController.viewDidChangePosition()
             self.secondRoundController.viewDidChangePosition()
-        })
+        }
     }
     
     @IBAction private func doneButtonDidPress(sender: AnyObject) {

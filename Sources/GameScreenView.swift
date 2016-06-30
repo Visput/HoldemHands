@@ -94,7 +94,7 @@ final class GameScreenView: UIView {
         secondRoundView.visible = shownView === self.secondRoundContainerView
     }
     
-    func scrollToNextRoundView(completionHandler: () -> Void) {
+    func scrollToNextRoundView() -> SimpleTask {
         let animationDuration = 0.6
         var viewToShow = firstRoundContainerView
         var viewToHide = secondRoundContainerView
@@ -104,44 +104,37 @@ final class GameScreenView: UIView {
             viewToHide = firstRoundContainerView
         }
         
-        UIView.animateWithDuration(animationDuration, delay: 0, options: .CurveEaseOut, animations: {
+        return SimpleTask.animateWithDuration(animationDuration, options: .CurveEaseOut) {
             viewToShow.frame.origin.x = 0.0
             viewToHide.frame.origin.x = -self.frame.width
+        }.thenDo {
+            viewToHide.frame.origin.x = self.frame.width
             
-            }, completion: { _ in
-                viewToHide.frame.origin.x = self.frame.width
-                
-                self.firstRoundView.visible = viewToShow === self.firstRoundContainerView
-                self.secondRoundView.visible = viewToShow === self.secondRoundContainerView
-                
-                completionHandler()
-        })
+            self.firstRoundView.visible = viewToShow === self.firstRoundContainerView
+            self.secondRoundView.visible = viewToShow === self.secondRoundContainerView
+        }
     }
     
-    func setTieOddsVisible(visible: Bool, tieProbability: Double?, animated: Bool, completionHandler: (() -> Void)? = nil) {
+    func setTieOddsVisible(visible: Bool, tieProbability: Double?, animated: Bool) -> SimpleTask {
         if let tieProbability = tieProbability {
             tieOddsLabel.text = R.string.localizable.textTieOdds(tieProbability)
         }
         
         let animationDuration = animated ? 0.4 : 0.0
-        UIView.animateWithDuration(animationDuration, animations: {
+        return SimpleTask.animateWithDuration(animationDuration) {
             self.tieOddsLabel.alpha = visible ? 1.0 : 0.0
-        }, completion: { _ in
-            completionHandler?()
-        })
+        }
     }
     
-    func setTimeBonusVisible(visible: Bool, bonus: Int64?, animated: Bool, completionHandler: (() -> Void)? = nil) {
+    func setTimeBonusVisible(visible: Bool, bonus: Int64?, animated: Bool) -> SimpleTask {
         if let bonus = bonus {
             timeBonusLabel.morphingEnabled = timeBonusLabel.alpha != 0
             timeBonusLabel.text = R.string.localizable.textTimeBonus(bonus.formattedChipsCountString(needsReplaceZerosWithO: false))
         }
         
         let animationDuration = animated ? 0.4 : 0.0
-        UIView.animateWithDuration(animationDuration, animations: {
+        return SimpleTask.animateWithDuration(animationDuration) {
             self.timeBonusLabel.alpha = visible ? 1.0 : 0.0
-        }, completion: { _ in
-            completionHandler?()
-        })
+        }
     }
 }

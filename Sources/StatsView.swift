@@ -36,15 +36,15 @@ final class StatsView: UIView {
         flowLayout.minimumInteritemSpacing = spacing
     }
     
-    func scrollToNearestStatsAnimated(animated: Bool) {
+    func scrollToNearestStatsAnimated(animated: Bool) -> SimpleTask {
         let offset = statsCollectionView.contentOffset.x
         let statsDecimalIndex = offset / (statsCollectionView.flowLayout!.itemSize.width + statsCollectionView.flowLayout!.minimumInteritemSpacing)
         let statsIndex = Int(round(statsDecimalIndex))
         
-        scrollToStatsAtIndex(statsIndex, animated: animated)
+        return scrollToStatsAtIndex(statsIndex, animated: animated)
     }
     
-    func scrollToStatsAtIndex(index: Int, animated: Bool) {
+    func scrollToStatsAtIndex(index: Int, animated: Bool) -> SimpleTask {
         var targetOffset: CGFloat = 0.0
         if index != 0 {
             targetOffset = statsCollectionView.flowLayout!.sectionInset.left +
@@ -57,5 +57,6 @@ final class StatsView: UIView {
         }
         
         statsCollectionView.setContentOffset(CGPoint(x: targetOffset, y: 0), animated: animated)
+        return SimpleTask.empty()
     }
 }

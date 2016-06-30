@@ -44,7 +44,7 @@ final class MainScreenView: UIView {
         statsView.menuSize = menuView.frame.size
     }
     
-    func scrollToDetailsViewAtPage(page: DetailsViewPage, animated: Bool, completionHandler: (() -> Void)? = nil) {
+    func scrollToDetailsViewAtPage(page: DetailsViewPage, animated: Bool) -> SimpleTask {
         if !animated {
             // Layout if called without animation.
             // It's needed to fix layout issue when app is launched by app shortcut (3D Touch).
@@ -54,8 +54,7 @@ final class MainScreenView: UIView {
         
         let pageIndex = page.rawValue
         guard !menuButtons[pageIndex].selected else {
-            completionHandler?()
-            return
+            return SimpleTask.empty()
         }
         
         updateDetailsViewHeaderWithPage(pageIndex)
@@ -63,14 +62,12 @@ final class MainScreenView: UIView {
         
         if isDetailsViewShown {
             let animationDuration = animated ? 0.4 : 0.0
-            UIView.animateWithDuration(animationDuration, delay: 0.0, options: .CurveEaseInOut, animations: {
+            return SimpleTask.animateWithDuration(animationDuration, options: .CurveEaseInOut) {
                 self.detailsScrollView.contentOffset = CGPoint(x: 0.0, y: self.detailsScrollView.frame.height * CGFloat(pageIndex))
-            }, completion: { _ in
-                completionHandler?()
-            })
+            }
         } else {
             detailsScrollView.contentOffset = CGPoint(x: 0.0, y: detailsScrollView.frame.height * CGFloat(pageIndex))
-            scrollToDetailsViewAnimated(animated, completionHandler: completionHandler)
+            return scrollToDetailsViewAnimated(animated)
         }
     }
     
@@ -100,23 +97,20 @@ final class MainScreenView: UIView {
             }, completion: nil)
     }
     
-    private func scrollToDetailsViewAnimated(animated: Bool, completionHandler: (() -> Void)? = nil) {
+    private func scrollToDetailsViewAnimated(animated: Bool) -> SimpleTask {
         menuViewLeadingSpace.constant = -menuView.frame.width
         layoutIfNeeded()
         
         let animationDuration = animated ? 0.6 : 0.0
-        UIView.animateWithDuration(animationDuration, delay: 0.0, options: .CurveEaseInOut, animations: {
+        return SimpleTask.animateWithDuration(animationDuration, options: .CurveEaseInOut) {
             self.contentScrollView.contentOffset = CGPoint(x: self.contentScrollView.bounds.width, y: 0.0)
-            
-        }, completion: { _ in
-            completionHandler?()
-            
+        }.thenDo {
             // Show menu and gradient header.
-            UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut, animations: {
+            SimpleTask.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseOut) {
                 self.menuViewLeadingSpace.constant = 0.0
                 self.headerGradientView.alpha = 1.0
                 self.layoutIfNeeded()
-            }, completion: nil)
-        })
+            }
+        }
     }
 }

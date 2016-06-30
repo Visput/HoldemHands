@@ -32,10 +32,10 @@ final class HandCell: UICollectionViewCell {
     
     override var highlighted: Bool {
         didSet {
-            UIView.animateWithDuration(0.2, animations: {
+            SimpleTask.animateWithDuration(0.2) {
                 let zoomLevel: CGFloat = self.highlighted ? 0.9 : 1.0
                 self.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
-            })
+            }
         }
     }
     
@@ -50,10 +50,10 @@ final class HandCell: UICollectionViewCell {
             winOddsLabel.font = textFont
             oddsBackgroundView.image = handOdds.wins ? R.image.backgroundHandOddsGreen() :  R.image.backgroundHandOddsGrey()
             
-            UIView.animateWithDuration(0.4, animations: {
+            SimpleTask.animateWithDuration(0.4) {
                 self.oddsBackgroundView.alpha = item.needsShowOdds! ? 1.0 : 0.0
                 self.winOddsLabel.alpha = item.needsShowOdds! ? 1.0 : 0.0
-            })
+            }
             
         } else {
             setHandVisible(false, animated: false)
@@ -64,30 +64,26 @@ final class HandCell: UICollectionViewCell {
         setHandSelectionVisible(selected, isSuccessState: item.handOdds?.wins)
     }
     
-    func setHandVisible(visible: Bool, animated: Bool, completionHandler: (() -> Void)? = nil) {
-        let animationDuration = 0.6
-        
-        if animated {
-            UIView.transitionWithView(firstCardImageView,
-                                      duration: animationDuration,
-                                      options: [.TransitionFlipFromLeft, .CurveEaseInOut],
-                                      animations: {
-                                        self.updateFirstCard(visible)
+    func setHandVisible(visible: Bool, animated: Bool) -> SimpleTask {
+        return SimpleTask.execute({ completion in
+            let animationDuration = animated ? 0.6 : 0.0
+            
+            UIView.transitionWithView(self.firstCardImageView,
+                duration: animationDuration,
+                options: [.TransitionFlipFromLeft, .CurveEaseInOut],
+                animations: {
+                    self.updateFirstCard(visible)
                 }, completion: nil)
             
-            UIView.transitionWithView(secondCardImageView,
-                                      duration: animationDuration,
-                                      options: [.TransitionFlipFromLeft, .CurveEaseInOut],
-                                      animations: {
-                                        self.updateSecondCard(visible)
+            UIView.transitionWithView(self.secondCardImageView,
+                duration: animationDuration,
+                options: [.TransitionFlipFromLeft, .CurveEaseInOut],
+                animations: {
+                    self.updateSecondCard(visible)
                 }, completion: { _ in
-                    completionHandler?()
+                    completion(succeed: true)
             })
-        } else {
-            updateFirstCard(visible)
-            updateSecondCard(visible)
-            completionHandler?()
-        }
+        })
     }
 }
 

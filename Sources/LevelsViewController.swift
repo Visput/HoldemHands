@@ -25,21 +25,21 @@ final class LevelsViewController: BaseViewController {
         levelsView.zoomOutLevelIfNeeded(model.navigationManager.mainScreen.view, animated: animated)
     }
     
-    func startGameAtLevel(level: Level, animated: Bool) {
+    func startGameAtLevel(level: Level, animated: Bool) -> SimpleTask {
         let levelIndex = model.playerManager.playerData.indexOfLevel(level)
         if model.playerManager.playerData.isLockedLevel(level) {
             let chipsToUnlock = model.playerManager.playerData.chipsToUnlockLevel(level).formattedChipsCountString(needsReplaceZerosWithO: false)
             let text = R.string.localizable.bannerChipsToUnlockLevel(chipsToUnlock, level.name)
             model.navigationManager.presentBannerWithText(text)
             
-            levelsView.scrollToLevelAtIndex(levelIndex, animated: animated)
+            return levelsView.scrollToLevelAtIndex(levelIndex, animated: animated)
+            
         } else {
-            levelsView.zoomInLevelAtIndex(levelIndex,
+            return levelsView.zoomInLevelAtIndex(levelIndex,
                                           mainView: model.navigationManager.mainScreen.view,
-                                          animated: animated,
-                                          completionHandler: {
-                self.model.navigationManager.presentGameScreenWithLevel(level, animated: animated)
-            })
+                                          animated: animated).then {
+                return self.model.navigationManager.presentGameScreenWithLevel(level, animated: animated)
+            }
         }
     }
 }
@@ -108,7 +108,7 @@ extension LevelsViewController {
         LevelsViewController.autoScrollingEnabled = false
         
         // Execute scrolling after short delay to be sure that collection view layout is configured.
-        executeAfterDelay(0.05) {
+        SimpleTask.delay(0.05).thenDo {
             for (index, levelProgress) in self.model.playerManager.playerData.levelProgressItems.enumerate() {
                 guard levelProgress.levelId == self.model.playerManager.playerData.lastPlayedLevelID else { continue }
                 

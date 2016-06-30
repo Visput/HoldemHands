@@ -38,15 +38,15 @@ final class LevelsView: UIView {
         flowLayout.minimumInteritemSpacing = flowLayout.sectionInset.left
     }
     
-    func scrollToNearestLevelAnimated(animated: Bool) {
+    func scrollToNearestLevelAnimated(animated: Bool) -> SimpleTask {
         let offset = levelsCollectionView.contentOffset.x
         let levelDecimalIndex = offset / (levelsCollectionView.flowLayout!.itemSize.width + levelsCollectionView.flowLayout!.minimumInteritemSpacing)
         let levelIndex = Int(round(levelDecimalIndex))
         
-        scrollToLevelAtIndex(levelIndex, animated: animated)
+        return scrollToLevelAtIndex(levelIndex, animated: animated)
     }
     
-    func scrollToLevelAtIndex(index: Int, animated: Bool) {
+    func scrollToLevelAtIndex(index: Int, animated: Bool) -> SimpleTask {
         var targetOffset: CGFloat = 0.0
         if index != 0 {
             targetOffset = levelsCollectionView.flowLayout!.sectionInset.left +
@@ -58,38 +58,37 @@ final class LevelsView: UIView {
         
         // Call `layoutIfNeeded` to avoid immediate cell hiding (UICollectionView behaviour).
         self.levelsCollectionView.layoutIfNeeded()
+        
+        return SimpleTask.empty()
     }
     
-    func zoomInLevelAtIndex(index: Int, mainView: UIView, animated: Bool, completionHandler: (() -> Void)? = nil) {
+    func zoomInLevelAtIndex(index: Int, mainView: UIView, animated: Bool) -> SimpleTask {
         zoomApplied = true
         
         let animationDuration = animated ? 0.4 : 0.0
-        UIView.animateWithDuration(animationDuration, animations: {
+        return SimpleTask.animateWithDuration(animationDuration) {
             self.scrollToLevelAtIndex(index, animated: false)
+        }.then {
+            SimpleTask.animateWithDuration(0.5) {
+                mainView.transform = CGAffineTransformMakeScale(self.zoomLevel, self.zoomLevel)
+            }.then {
+                return SimpleTask.delay(0.5)
+            }.thenDo {
+                // Reset transform after delay when game screen is presented and levels are not visible.
+                // It's needed to avoid issues with constraints when app goes to background and then back
+                // to foreground while transform is applied.
+                mainView.transform = CGAffineTransformIdentity
+            }
             
-            }, completion: { _ in
-                // Call completion block before animation finished for smoother animation.
-                self.executeAfterDelay(0.2) {
-                    completionHandler?()
-                }
-                
-                UIView.animateWithDuration(0.5, animations: {
-                    mainView.transform = CGAffineTransformMakeScale(self.zoomLevel, self.zoomLevel)
-                    }, completion: { _ in
-                        // Reset transform after delay when game screen is presented and levels are not visible.
-                        // It's needed to avoid issues with constraints when app goes to background and then back
-                        // to foreground while transform is applied.
-                        self.executeAfterDelay(0.5) {
-                            mainView.transform = CGAffineTransformIdentity
-                        }
-                })
-        })
+            // Call completion block before animation finished for smoother animation.
+            return SimpleTask.delay(0.2)
+        }
     }
     
-    func zoomOutLevelIfNeeded(mainView: UIView, animated: Bool) {
+    func zoomOutLevelIfNeeded(mainView: UIView, animated: Bool) -> SimpleTask {
         guard zoomApplied else {
             mainView.transform = CGAffineTransformIdentity
-            return
+            return SimpleTask.empty()
         }
         
         if animated {
@@ -97,14 +96,15 @@ final class LevelsView: UIView {
             // It's needed because transform was reseted when `zoom in` operation completed.
             mainView.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
             
-            UIView.animateWithDuration(0.4, animations: {
+            return SimpleTask.animateWithDuration(0.4) {
                 mainView.transform = CGAffineTransformIdentity
-                
-                }, completion: { _ in
-                    self.zoomApplied = false
-            })
+            }.thenDo {
+                self.zoomApplied = false
+            }
+            
         } else {
             mainView.transform = CGAffineTransformIdentity
+            return SimpleTask.empty()
         }
     }
 }

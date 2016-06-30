@@ -17,10 +17,10 @@ final class LevelCell: UICollectionViewCell {
     
     override var highlighted: Bool {
         didSet {
-            UIView.animateWithDuration(0.2, animations: {
+            SimpleTask.animateWithDuration(0.2) {
                 let zoomLevel: CGFloat = self.highlighted ? 0.9 : 1.0
                 self.transform = CGAffineTransformMakeScale(zoomLevel, zoomLevel)
-            })
+            }
         }
     }
     

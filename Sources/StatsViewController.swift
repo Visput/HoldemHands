@@ -44,8 +44,9 @@ final class StatsViewController: BaseViewController {
         })
     }
     
-    func scrollToOverallStatsAnimated(animated: Bool) {
+    func scrollToOverallStatsAnimated(animated: Bool) -> SimpleTask {
         statsView.statsCollectionView.setContentOffset(CGPoint(x: 0.0, y: 0.0), animated: animated)
+        return SimpleTask.empty()
     }
 }
 
@@ -104,9 +105,9 @@ extension StatsViewController {
         
         guard level != nil else { return }
         // Execute scrolling after short delay to be sure that collection view layout is configured.
-        executeAfterDelay(0.05) {
+        SimpleTask.delay(0.05).then {
             let statsIndex = self.model.playerManager.playerData.progressForLevel(self.level!).index + 1 // + 1 for overall progress item.
-            self.statsView.scrollToStatsAtIndex(statsIndex, animated: false)
+            return self.statsView.scrollToStatsAtIndex(statsIndex, animated: false)
         }
     }
 }
