@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import UICountingLabel
+import SwiftTask
 
 final class ChipsView: UIView {
 
@@ -25,64 +26,61 @@ final class ChipsView: UIView {
         }
     }
     
-    func updateChipsLabelWithCount(newCount: Int64, oldCount: Int64 = 0, chipsMultiplier: Int64 = 1, animated: Bool) {
+    func updateChipsLabelWithCount(newCount: Int64,
+                                   oldCount: Int64 = 0,
+                                   chipsMultiplier: Int64 = 1,
+                                   animated: Bool) -> SimpleTask {
         chipsDifferenceLabel.alpha = 0.0
         
-        if animated {
-            let won = newCount > oldCount
-            let chipsDifference = abs(newCount - oldCount)
+        guard animated else {
+            chipsCountLabel.countFromCurrentValueTo(CGFloat(newCount), withDuration: 0.0)
+            return SimpleTask.empty()
+        }
+        
+        executeAfterDelay(0.1) {
+            self.chipsCountLabel.countFromCurrentValueTo(CGFloat(newCount))
+        }
+        
+        let won = newCount > oldCount
+        let chipsDifference = abs(newCount - oldCount)
+        
+        if won {
+            chipsDifferenceLabelTopSpace.constant = 15.0
+            layoutIfNeeded()
             
-            if won {
-                chipsDifferenceLabelTopSpace.constant = 15.0
-                layoutIfNeeded()
-                
-                var chipsDifferenceText = "+ " + (chipsDifference / chipsMultiplier).formattedChipsCountString()
-                if chipsMultiplier > 1 {
-                    chipsDifferenceText.appendContentsOf(" x \(chipsMultiplier)")
-                }
-                
-                chipsDifferenceLabel.text = chipsDifferenceText
-                chipsDifferenceLabel.textColor = UIColor.green2Color()
-                
-                UIView.animateWithDuration(0.2, delay: 0.0, options: .CurveLinear, animations: {
-                    self.chipsDifferenceLabel.alpha = 1.0
-                    
-                    }, completion: { _ in
-                        UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseInOut, animations: {
-                            self.chipsDifferenceLabelTopSpace.constant = 0.0
-                            self.layoutIfNeeded()
-                            self.chipsDifferenceLabel.alpha = 0.0
-                            
-                            }, completion: nil)
-                        
-                })
-                
-            } else {
-                chipsDifferenceLabelTopSpace.constant = 0.0
-                layoutIfNeeded()
-                chipsDifferenceLabel.text = "- " + chipsDifference.formattedChipsCountString()
-                chipsDifferenceLabel.textColor = UIColor.gray2Color()
-                
-                UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveLinear, animations: {
-                    self.chipsDifferenceLabelTopSpace.constant = 15.0
-                    self.layoutIfNeeded()
-                    self.chipsDifferenceLabel.alpha = 1.0
-                    
-                    }, completion: { _ in
-                        UIView.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseInOut, animations: {
-                            self.chipsDifferenceLabel.alpha = 0.0
-                            
-                            }, completion: nil)
-                        
-                })
+            var chipsDifferenceText = "+ " + (chipsDifference / chipsMultiplier).formattedChipsCountString()
+            if chipsMultiplier > 1 {
+                chipsDifferenceText.appendContentsOf(" x \(chipsMultiplier)")
             }
             
-            executeAfterDelay(0.1, task: {
-                self.chipsCountLabel.countFromCurrentValueTo(CGFloat(newCount))
-            })
+            chipsDifferenceLabel.text = chipsDifferenceText
+            chipsDifferenceLabel.textColor = UIColor.green2Color()
+            
+            return SimpleTask.animateWithDuration(0.2, options: .CurveLinear) {
+                self.chipsDifferenceLabel.alpha = 1.0
+            }.then {
+                return SimpleTask.animateWithDuration(0.5, options: .CurveEaseInOut) {
+                    self.chipsDifferenceLabelTopSpace.constant = 0.0
+                    self.layoutIfNeeded()
+                    self.chipsDifferenceLabel.alpha = 0.0
+                }
+            }
             
         } else {
-            chipsCountLabel.countFromCurrentValueTo(CGFloat(newCount), withDuration: 0.0)
+            chipsDifferenceLabelTopSpace.constant = 0.0
+            layoutIfNeeded()
+            chipsDifferenceLabel.text = "- " + chipsDifference.formattedChipsCountString()
+            chipsDifferenceLabel.textColor = UIColor.gray2Color()
+            
+            return SimpleTask.animateWithDuration(0.5, options: .CurveLinear) {
+                self.chipsDifferenceLabelTopSpace.constant = 15.0
+                self.layoutIfNeeded()
+                self.chipsDifferenceLabel.alpha = 1.0
+            }.then {
+                return SimpleTask.animateWithDuration(0.3, delay: 0.3, options: .CurveEaseInOut) {
+                    self.chipsDifferenceLabel.alpha = 0.0
+                }
+            }
         }
     }
 }

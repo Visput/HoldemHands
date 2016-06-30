@@ -166,6 +166,8 @@
 		9FBC4CE31CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */; };
 		9FBC4CE41CC0A34A00F38DD7 /* UIView+FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */; };
 		9FBC4CE51CC0C15900F38DD7 /* app_font.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */; };
+		9FBDD4A81D24A456009B8DE7 /* Task+Simple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBDD4A71D24A456009B8DE7 /* Task+Simple.swift */; };
+		9FBDD4A91D24A456009B8DE7 /* Task+Simple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBDD4A71D24A456009B8DE7 /* Task+Simple.swift */; };
 		9FC567EF1CA487D100FF1DE7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */; };
 		9FCE277F1CE657D7002E3F04 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCE277E1CE657D7002E3F04 /* R.generated.swift */; };
 		9FCE27801CE657DC002E3F04 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCE277E1CE657D7002E3F04 /* R.generated.swift */; };
@@ -285,6 +287,7 @@
 		9FB10CC11CDAE1950046B6C1 /* StatsScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsScreenView.swift; sourceTree = "<group>"; };
 		9FBC4CDB1CC0924F00F38DD7 /* app_font.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = app_font.ttc; sourceTree = "<group>"; };
 		9FBC4CE21CC0A34A00F38DD7 /* UIView+FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FontSize.swift"; sourceTree = "<group>"; };
+		9FBDD4A71D24A456009B8DE7 /* Task+Simple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+Simple.swift"; sourceTree = "<group>"; };
 		9FBE139B1CCD678B00144E15 /* AppPalette.clr */ = {isa = PBXFileReference; lastKnownFileType = text; name = AppPalette.clr; path = AppPalette/AppPalette.clr; sourceTree = "<group>"; };
 		9FC41FD31CBC5EF60021C91B /* HoldemHandsQA.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HoldemHandsQA.entitlements; sourceTree = "<group>"; };
 		9FC567EE1CA487D100FF1DE7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -567,6 +570,7 @@
 				9FB093C31CFB80C700A677EF /* Double+Precision.swift */,
 				9F13F3C51CFD5F2A00ED66D9 /* Array+GKSavedGame.swift */,
 				9F9C02E41D0A6E94008A3765 /* Int64Transform.swift */,
+				9FBDD4A71D24A456009B8DE7 /* Task+Simple.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1182,6 +1186,7 @@
 				9F4EF2A41CBC4F66002E5FEA /* QuickArray.swift in Sources */,
 				9F4EF2A51CBC4F66002E5FEA /* AppDelegate.swift in Sources */,
 				9F13F3CA1CFD6C3900ED66D9 /* PlayerData+Utils.swift in Sources */,
+				9FBDD4A91D24A456009B8DE7 /* Task+Simple.swift in Sources */,
 				9F4EF2A61CBC4F66002E5FEA /* HandRankCalculator.swift in Sources */,
 				9F4EF2A71CBC4F66002E5FEA /* Card.swift in Sources */,
 				9F4EF2A81CBC4F66002E5FEA /* String+Path.swift in Sources */,
@@ -1263,6 +1268,7 @@
 				9F44D2201C84B21A00640046 /* QuickArray.swift in Sources */,
 				9F44D2121C84B21A00640046 /* AppDelegate.swift in Sources */,
 				9F13F3C91CFD6C3900ED66D9 /* PlayerData+Utils.swift in Sources */,
+				9FBDD4A81D24A456009B8DE7 /* Task+Simple.swift in Sources */,
 				9F44D21A1C84B21A00640046 /* HandRankCalculator.swift in Sources */,
 				9F44D2131C84B21A00640046 /* Card.swift in Sources */,
 				9F93B4821C9750760092CBCB /* String+Path.swift in Sources */,

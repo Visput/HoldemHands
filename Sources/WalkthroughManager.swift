@@ -6,7 +6,8 @@
 //  Copyright © 2016 Visput. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import SwiftTask
 
 final class WalkthroughManager {
     
@@ -25,7 +26,7 @@ final class WalkthroughManager {
     }
     
     func showBannerForStartedLevelIfNeeded() {
-        hideBanner({
+        hideBanner().thenDo {
             var text: String? = nil
             
             if self.playedHandsCount == 0 {
@@ -39,11 +40,11 @@ final class WalkthroughManager {
             if let text = text {
                 self.banner = self.navigationManager.presentBannerWithText(text, duration: 0.0)
             }
-        })
+        }
     }
     
     func showBannerForCompletedLevelIfNeeded(won won: Bool) {
-        hideBanner({
+        hideBanner().thenDo {
             if self.playedHandsCount == 1 {
                 var text: String! = nil
                 if won {
@@ -53,17 +54,16 @@ final class WalkthroughManager {
                 }
                 self.banner = self.navigationManager.presentBannerWithText(text, duration: 0.0)
             }
-        })
+        }
     }
     
-    func hideBanner(completion: (() -> Void)? = nil) {
+    func hideBanner() -> SimpleTask {
         if let banner = banner {
-            banner.dismiss({
+            return banner.dismiss().thenDo {
                 self.banner = nil
-                completion?()
-            })
+            }
         } else {
-            completion?()
+            return SimpleTask.empty()
         }
     }
 }

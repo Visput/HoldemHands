@@ -28,19 +28,19 @@ final class RoundView: UIView {
         handsCollectionView.collectionViewLayout = layout
     }
     
-    func flipHandsAfterDelay(delayDuration: Double, completion: () -> Void) {
-        executeAfterDelay(delayDuration, task: {
+    func flipHandsAfterDelay(delayDuration: Double, completionHandler: () -> Void) {
+        executeAfterDelay(delayDuration) {
             let delayCoefficient = 0.1
             let cells = self.handsCollectionView.orderedVisibleCells() as! [HandCell]
             for (index, cell) in cells.enumerate() {
-                self.executeAfterDelay(Double(index) * delayCoefficient, task: {
+                self.executeAfterDelay(Double(index) * delayCoefficient) {
                     cell.setHandVisible(true, animated: true, completionHandler: {
                         if index == cells.count - 1 {
-                            completion()
+                            completionHandler()
                         }
                     })
-                })
+                }
             }
-        })
+        }
     }
 }

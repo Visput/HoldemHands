@@ -80,17 +80,17 @@ extension AppShortcutsManager {
     
     @available(iOS 9.0, *)
     private func performActionForLevelShortcut(shortcut: UIApplicationShortcutItem) {
-        navigationManager.dismissToMainScreenAnimated(false, completion: {
+        navigationManager.dismissToMainScreenAnimated(false).thenDo {
             let level = self.playerManager.playerData.levelWithId(Int(shortcut.type)!)
             self.navigationManager.mainScreen.startGameAtLevel(level, animated: false)
-        })
+        }
     }
     
     @available(iOS 9.0, *)
     private func performActionForStatsShortcut(shortcut: UIApplicationShortcutItem) {
-        navigationManager.dismissToMainScreenAnimated(false, completion: {
+        navigationManager.dismissToMainScreenAnimated(false).thenDo {
             self.navigationManager.mainScreen.mainView.scrollToDetailsViewAtPage(.Stats, animated: false)
-        })
+        }
     }
 }
 

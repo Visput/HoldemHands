@@ -28,7 +28,7 @@ final class RoundManager: NSObject {
         self.playerManager = playerManager
     }
     
-    func loadNewRound(completion: (() -> Void)? = nil) {
+    func loadNewRound(completionHandler: (() -> Void)? = nil) {
         if let incompleteRound = playerManager.playerData.progressForLevel(level).instance.incompleteRound {
             round = incompleteRound
             playerManager.setIncompleteRound(nil, forLevel: level)
@@ -39,7 +39,7 @@ final class RoundManager: NSObject {
         let oddsCalculator = HandOddsCalculator(hands: round!.hands)
         oddsCalculator.calculateOdds { handsOdds in
             self.round!.handsOdds = handsOdds
-            completion?()
+            completionHandler?()
         }
     }
     

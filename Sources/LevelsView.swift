@@ -69,9 +69,9 @@ final class LevelsView: UIView {
             
             }, completion: { _ in
                 // Call completion block before animation finished for smoother animation.
-                self.executeAfterDelay(0.2, task: {
+                self.executeAfterDelay(0.2) {
                     completionHandler?()
-                })
+                }
                 
                 UIView.animateWithDuration(0.5, animations: {
                     mainView.transform = CGAffineTransformMakeScale(self.zoomLevel, self.zoomLevel)
@@ -79,9 +79,9 @@ final class LevelsView: UIView {
                         // Reset transform after delay when game screen is presented and levels are not visible.
                         // It's needed to avoid issues with constraints when app goes to background and then back
                         // to foreground while transform is applied.
-                        self.executeAfterDelay(0.5, task: {
+                        self.executeAfterDelay(0.5) {
                             mainView.transform = CGAffineTransformIdentity
-                        })
+                        }
                 })
         })
     }

@@ -108,13 +108,13 @@ extension LevelsViewController {
         LevelsViewController.autoScrollingEnabled = false
         
         // Execute scrolling after short delay to be sure that collection view layout is configured.
-        executeAfterDelay(0.05, task: {
+        executeAfterDelay(0.05) {
             for (index, levelProgress) in self.model.playerManager.playerData.levelProgressItems.enumerate() {
                 guard levelProgress.levelId == self.model.playerManager.playerData.lastPlayedLevelID else { continue }
                 
                 self.levelsView.scrollToLevelAtIndex(index, animated: false)
                 break
             }
-        })
+        }
     }
 }

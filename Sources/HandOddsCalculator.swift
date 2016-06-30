@@ -33,7 +33,7 @@ final class HandOddsCalculator {
         self.deck.sortCards()
     }
     
-    func calculateOdds(completion: (handsOdds: [HandOdds]) -> Void) {
+    func calculateOdds(completionHandler: (handsOdds: [HandOdds]) -> Void) {
         let time = CFAbsoluteTimeGetCurrent()
         handsOdds = nil
         
@@ -117,7 +117,7 @@ final class HandOddsCalculator {
             
             dispatch_async(dispatch_get_main_queue(), {
                 print(CFAbsoluteTimeGetCurrent() - time)
-                completion(handsOdds: self.handsOdds!)
+                completionHandler(handsOdds: self.handsOdds!)
             })
         })
     }

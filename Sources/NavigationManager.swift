@@ -8,6 +8,7 @@
 
 import UIKit
 import GameKit
+import SwiftTask
 
 final class NavigationManager: NSObject {
     
@@ -30,45 +31,49 @@ final class NavigationManager: NSObject {
         return topViewController
     }
     
-    func presentScreen(screen: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
-        let needsToManageAppearanceTransition = screen.modalPresentationStyle != .FullScreen
-        let presentingScreen = topViewController
-        
-        if needsToManageAppearanceTransition {
-            presentingScreen.beginAppearanceTransition(false, animated: animated)
-        }
-        topViewController.presentViewController(screen, animated: animated, completion: {
-            if needsToManageAppearanceTransition {
-                presentingScreen.endAppearanceTransition()
-            }
+    func presentScreen(screen: UIViewController, animated: Bool) -> SimpleTask {
+        return SimpleTask(initClosure: { progress, fulfill, reject, configure in
+            let needsToManageAppearanceTransition = screen.modalPresentationStyle != .FullScreen
+            let presentingScreen = self.topViewController
             
-            completion?()
-        })
-    }
-    
-    func dismissScreenAnimated(animated: Bool, completion: (() -> Void)? = nil) {
-        let needsToManageAppearanceTransition = topViewController.modalPresentationStyle != .FullScreen
-        let presentingScreen = topViewController.presentingViewController
-        
-        if needsToManageAppearanceTransition {
-            presentingScreen?.beginAppearanceTransition(true, animated: animated)
-        }
-        topViewController.dismissViewControllerAnimated(animated, completion: {
             if needsToManageAppearanceTransition {
-                presentingScreen?.endAppearanceTransition()
+                presentingScreen.beginAppearanceTransition(false, animated: animated)
             }
-            
-            completion?()
-        })
-    }
-    
-    func dismissToMainScreenAnimated(animated: Bool, completion: (() -> Void)? = nil) {
-        if topViewController === navigationController {
-            completion?()
-        } else {
-            dismissScreenAnimated(animated, completion: {
-                self.dismissToMainScreenAnimated(animated, completion: completion)
+            self.topViewController.presentViewController(screen, animated: animated, completion: {
+                if needsToManageAppearanceTransition {
+                    presentingScreen.endAppearanceTransition()
+                }
+                
+                fulfill()
             })
+        })
+    }
+    
+    func dismissScreenAnimated(animated: Bool) -> SimpleTask {
+        return SimpleTask(initClosure: { progress, fulfill, reject, configure in
+            let needsToManageAppearanceTransition = self.topViewController.modalPresentationStyle != .FullScreen
+            let presentingScreen = self.topViewController.presentingViewController
+            
+            if needsToManageAppearanceTransition {
+                presentingScreen?.beginAppearanceTransition(true, animated: animated)
+            }
+            self.topViewController.dismissViewControllerAnimated(animated, completion: {
+                if needsToManageAppearanceTransition {
+                    presentingScreen?.endAppearanceTransition()
+                }
+                
+                fulfill()
+            })
+        })
+    }
+    
+    func dismissToMainScreenAnimated(animated: Bool) -> SimpleTask {
+        if topViewController === navigationController {
+            return SimpleTask.empty()
+        } else {
+            return dismissScreenAnimated(animated).then {
+                return self.dismissToMainScreenAnimated(animated)
+            }
         }
     }
     
@@ -78,27 +83,26 @@ final class NavigationManager: NSObject {
         mainScreen = screen
     }
     
-    func presentGameScreenWithLevel(level: Level, animated: Bool, completion: (() -> Void)? = nil) {
+    func presentGameScreenWithLevel(level: Level, animated: Bool) -> SimpleTask {
         let screen = R.storyboard.main.gameScreen()!
         screen.level = level
-        presentScreen(screen, animated: animated, completion: completion)
+        return presentScreen(screen, animated: animated)
     }
     
-    func presentStatsScreenWithLevel(level: Level?, animated: Bool, completion: (() -> Void)? = nil) {
+    func presentStatsScreenWithLevel(level: Level?, animated: Bool) -> SimpleTask {
         let screen = R.storyboard.main.statsScreen()!
         screen.level = level
-        presentScreen(screen, animated: animated, completion: completion)
+        return presentScreen(screen, animated: animated)
     }
     
-    func presentLeaderboardScreenWithLeaderboardID(leaderboardID: String?, animated: Bool, completion: (() -> Void)? = nil) {
+    func presentLeaderboardScreenWithLeaderboardID(leaderboardID: String?, animated: Bool) -> SimpleTask {
         let screen = GKGameCenterViewController()
         screen.leaderboardIdentifier = leaderboardID
         screen.viewState = .Leaderboards
         screen.gameCenterDelegate = self
-        presentScreen(screen, animated: animated, completion: {
+        return presentScreen(screen, animated: animated).thenDo {
             Analytics.leaderboardsScreenAppeared()
-            completion?()
-        })
+        }
     }
     
     func presentBannerWithText(text: String,
@@ -125,7 +129,7 @@ final class NavigationManager: NSObject {
         if currentTextBanner == nil || !currentTextBanner!.presented {
             showNewTextBanner()
         } else {
-            currentTextBanner!.dismiss({
+            currentTextBanner!.dismiss().then({ _ in
                 showNewTextBanner()
             })
         }
@@ -137,7 +141,7 @@ final class NavigationManager: NSObject {
 extension NavigationManager: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
-        dismissScreenAnimated(true, completion: {
+        dismissScreenAnimated(true).then({ _ in
             Analytics.leaderboardsScreenDisappeared()
         })
     }

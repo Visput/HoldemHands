@@ -118,7 +118,7 @@ final class GameScreenView: UIView {
         })
     }
     
-    func setTieOddsVisible(visible: Bool, tieProbability: Double?, animated: Bool, completion: (() -> Void)? = nil) {
+    func setTieOddsVisible(visible: Bool, tieProbability: Double?, animated: Bool, completionHandler: (() -> Void)? = nil) {
         if let tieProbability = tieProbability {
             tieOddsLabel.text = R.string.localizable.textTieOdds(tieProbability)
         }
@@ -127,11 +127,11 @@ final class GameScreenView: UIView {
         UIView.animateWithDuration(animationDuration, animations: {
             self.tieOddsLabel.alpha = visible ? 1.0 : 0.0
         }, completion: { _ in
-            completion?()
+            completionHandler?()
         })
     }
     
-    func setTimeBonusVisible(visible: Bool, bonus: Int64?, animated: Bool, completion: (() -> Void)? = nil) {
+    func setTimeBonusVisible(visible: Bool, bonus: Int64?, animated: Bool, completionHandler: (() -> Void)? = nil) {
         if let bonus = bonus {
             timeBonusLabel.morphingEnabled = timeBonusLabel.alpha != 0
             timeBonusLabel.text = R.string.localizable.textTimeBonus(bonus.formattedChipsCountString(needsReplaceZerosWithO: false))
@@ -141,7 +141,7 @@ final class GameScreenView: UIView {
         UIView.animateWithDuration(animationDuration, animations: {
             self.timeBonusLabel.alpha = visible ? 1.0 : 0.0
         }, completion: { _ in
-            completion?()
+            completionHandler?()
         })
     }
 }

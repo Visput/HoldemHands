@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftTask
 
 class BannerView: UIControl {
     
@@ -31,7 +32,7 @@ class BannerView: UIControl {
     
     func presentInView(view: UIView,
                        duration: NSTimeInterval = 0.0,
-                       tapHandler: (() -> Void)? = nil) {
+                       tapHandler: (() -> Void)? = nil) -> SimpleTask {
         
         self.tapHandler = tapHandler
         presented = true
@@ -41,40 +42,31 @@ class BannerView: UIControl {
         view.addSubview(self)
         view.addGestureRecognizer(swipeRecognizer)
         
-        UIView.animateWithDuration(animationDuration,
-                                   delay: 0.0,
-                                   options: .CurveEaseOut,
-                                   animations: { () -> Void in
-                                    self.frame.origin.y = 0.0
-                                    
-            }, completion: { _ in
-                if duration != 0.0 {
-                    self.timer = NSTimer.scheduledTimerWithTimeInterval(duration,
-                        target: self,
-                        selector: #selector(BannerView.dismissByTimer),
-                        userInfo: nil,
-                        repeats: false)
-                }
-        })
+        return SimpleTask.animateWithDuration(animationDuration, options: .CurveEaseOut) {
+            self.frame.origin.y = 0.0
+        }.thenDo {
+            if duration != 0.0 {
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(duration,
+                    target: self,
+                    selector: #selector(BannerView.dismissByTimer),
+                    userInfo: nil,
+                    repeats: false)
+            }
+        }
     }
     
-    func dismiss(completion: (() -> Void)? = nil) {
+    func dismiss() -> SimpleTask {
         timer?.invalidate()
         timer = nil
         superview?.removeGestureRecognizer(swipeRecognizer)
         tapHandler = nil
         
-        UIView.animateWithDuration(animationDuration,
-                                   delay: 0.0,
-                                   options: .CurveEaseOut,
-                                   animations: { () -> Void in
-                                    self.frame.origin.y = -self.bannerSize.height
-                                    
-            }, completion: { _ in
-                self.removeFromSuperview()
-                self.presented = false
-                completion?()
-        })
+        return SimpleTask.animateWithDuration(animationDuration, options: .CurveEaseOut) {
+            self.frame.origin.y = -self.bannerSize.height
+        }.thenDo {
+            self.removeFromSuperview()
+            self.presented = false
+        }
     }
 }
 

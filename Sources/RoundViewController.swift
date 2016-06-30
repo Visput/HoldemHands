@@ -75,7 +75,7 @@ final class RoundViewController: BaseViewController {
 extension RoundViewController {
     
     private func startRoundAfterDelay(delay: Double) {
-        roundView.flipHandsAfterDelay(delay, completion: {
+        roundView.flipHandsAfterDelay(delay, completionHandler: {
             self.model.walkthroughManager.showBannerForStartedLevelIfNeeded()
             self.roundManager.startRound()
             self.roundView.controlsEnabled = true

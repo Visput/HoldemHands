@@ -29,7 +29,7 @@ final class GameScreen: BaseViewController {
                 self.gameView.setTimeBonusVisible(true, bonus: bonus, animated: true)
             }
             controller.roundManager.didPlayRoundHandler = { [unowned self] round in
-                self.gameView.setTimeBonusVisible(false, bonus: nil, animated: true, completion: {
+                self.gameView.setTimeBonusVisible(false, bonus: nil, animated: true, completionHandler: {
                     self.gameView.setTieOddsVisible(true, tieProbability: round.tieProbability!, animated: true)
                 })
                 self.gameView.controlsEnabled = true
@@ -102,7 +102,7 @@ extension GameScreen: PlayerManagerObserving {
         Analytics.unlockedLevelBannerShownInGameScreen(levelProgress.level)
         model.navigationManager.presentBannerWithText(text, backgroundImage: backgroundImage, tapHandler: { [unowned self] in
             Analytics.unlockBannerClickedInGameScreen(levelProgress.level)
-            self.model.navigationManager.dismissScreenAnimated(true, completion: {
+            self.model.navigationManager.dismissScreenAnimated(true).then({ _ in
                 self.model.navigationManager.mainScreen.levelsController.levelsView.scrollToLevelAtIndex(levelIndex, animated: true)
             })
         })
