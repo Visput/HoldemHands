@@ -15,6 +15,7 @@ def pods
     pod 'KeychainSwift'
     pod 'UICountingLabel'
     pod 'R.swift'
+    pod 'SwiftTask'
     pod 'LTMorphingLabel'
 end
 

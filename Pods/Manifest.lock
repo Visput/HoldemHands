@@ -19,6 +19,7 @@ PODS:
   - R.swift (2.3.0):
     - R.swift.Library (~> 2.1.0)
   - R.swift.Library (2.1.0)
+  - SwiftTask (5.0.0)
   - TwitterCore (2.1.1):
     - Fabric
   - TwitterKit (2.1.1):
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - LTMorphingLabel
   - ObjectMapper
   - R.swift
+  - SwiftTask
   - TwitterCore
   - TwitterKit
   - UICountingLabel
@@ -51,10 +53,11 @@ SPEC CHECKSUMS:
   ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   R.swift: 38b2191a603c3d491a09baddfb4ccc7aa9be4d9d
   R.swift.Library: e5e077ed04f6867a95676af491650091b23518e9
+  SwiftTask: 7fcd92f8ac16876e82c0e4ced0cea7e028456b6b
   TwitterCore: abc46da2bc4b76e2c68a74cd8671a071a8e3abbf
   TwitterKit: 38232c31f622db1f26a5952436eaa88d10763fd0
   UICountingLabel: ed5ce5b6d5ef278ff40d99cfa49577a30ab0c87b
 
-PODFILE CHECKSUM: 280403129ec8399deff69294ea77517bc059661d
+PODFILE CHECKSUM: 90843361d27e1e75e2c28a692d3f84fac57c035d
 
 COCOAPODS: 1.0.1

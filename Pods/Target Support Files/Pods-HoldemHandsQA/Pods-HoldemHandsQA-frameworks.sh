@@ -92,6 +92,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/LTMorphingLabel/LTMorphingLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ObjectMapper/ObjectMapper.framework"
   install_framework "$BUILT_PRODUCTS_DIR/R.swift.Library/Rswift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftTask/SwiftTask.framework"
   install_framework "$BUILT_PRODUCTS_DIR/UICountingLabel/UICountingLabel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -103,5 +104,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/LTMorphingLabel/LTMorphingLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ObjectMapper/ObjectMapper.framework"
   install_framework "$BUILT_PRODUCTS_DIR/R.swift.Library/Rswift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftTask/SwiftTask.framework"
   install_framework "$BUILT_PRODUCTS_DIR/UICountingLabel/UICountingLabel.framework"
 fi
