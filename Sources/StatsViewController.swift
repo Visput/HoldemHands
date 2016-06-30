@@ -101,13 +101,11 @@ extension StatsViewController {
     private func fillViewsWithModel() {
         progressItems = model.playerManager.playerData.progressItems()
         
-        statsView.statsCollectionView.reloadData()
-        
-        guard level != nil else { return }
-        // Execute scrolling after short delay to be sure that collection view layout is configured.
-        SimpleTask.delay(0.05).then {
+        statsView.statsCollectionView.reloadDataTask().thenDo {
+            guard self.level != nil else { return }
+            
             let statsIndex = self.model.playerManager.playerData.progressForLevel(self.level!).index + 1 // + 1 for overall progress item.
-            return self.statsView.scrollToStatsAtIndex(statsIndex, animated: false)
+            self.statsView.scrollToStatsAtIndex(statsIndex, animated: false)
         }
     }
 }

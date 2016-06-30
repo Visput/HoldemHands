@@ -23,4 +23,11 @@ extension UICollectionView {
         
         return cells
     }
+    
+    func reloadDataTask() -> SimpleTask {
+        reloadData()
+        // Collection view doesn't provide a way to know that data reloading completed.
+        // Call completion after short delay.
+        return SimpleTask.delay(0.05)
+    }
 }

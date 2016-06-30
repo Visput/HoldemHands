@@ -52,11 +52,11 @@ final class RoundViewController: BaseViewController {
         }
     }
     
-    func loadNewRound(completion: (() -> Void)? = nil) {
+    func loadNewRound(completionHandler: (() -> Void)? = nil) {
         reloadHandsCollectionViewDeeply(true, needsShowOdds: false)
         
         roundManager.loadNewRound({
-            completion?()
+            completionHandler?()
             self.reloadHandsCollectionViewDeeply(true, needsShowOdds: false)
             if self.roundView.visible {
                 self.startRoundAfterDelay(0.0)
