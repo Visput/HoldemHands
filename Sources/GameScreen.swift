@@ -25,11 +25,11 @@ final class GameScreen: BaseViewController {
 
         for controller in [firstRoundController, secondRoundController] {
             controller.roundManager = model.newRoundForLevel(level)
-            controller.roundManager.didUpdateTimeBonusHandler = { [unowned self] bonus in
-                self.gameView.setTimeBonusVisible(true, bonus: bonus, animated: true)
+            controller.roundManager.didUpdateTimeBonusHandler = { [unowned self] bonus, bonusMultiplier in
+                self.gameView.setTimeBonusVisible(true, bonus: bonus, bonusMultiplier: bonusMultiplier, animated: true)
             }
             controller.roundManager.didPlayRoundHandler = { [unowned self] round in
-                self.gameView.setTimeBonusVisible(false, bonus: nil, animated: true).thenDo {
+                self.gameView.setTimeBonusVisible(false, bonus: nil, bonusMultiplier: nil, animated: true).thenDo {
                     self.gameView.setTieOddsVisible(true, tieProbability: round.tieProbability!, animated: true)
                 }
                 self.gameView.controlsEnabled = true

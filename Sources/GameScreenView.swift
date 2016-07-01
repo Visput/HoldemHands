@@ -126,10 +126,16 @@ final class GameScreenView: UIView {
         }
     }
     
-    func setTimeBonusVisible(visible: Bool, bonus: Int64?, animated: Bool) -> SimpleTask {
-        if let bonus = bonus {
+    func setTimeBonusVisible(visible: Bool, bonus: Int64?, bonusMultiplier: Int64?, animated: Bool) -> SimpleTask {
+        if let bonus = bonus, bonusMultiplier = bonusMultiplier {
             timeBonusLabel.morphingEnabled = timeBonusLabel.alpha != 0
-            timeBonusLabel.text = R.string.localizable.textTimeBonus(bonus.formattedChipsCountString(needsReplaceZerosWithO: false))
+            let chipsCountString = bonus.formattedChipsCountString(needsReplaceZerosWithO: false)
+            
+            if bonusMultiplier > 1 {
+                timeBonusLabel.text = R.string.localizable.textTimeBonusWithMultiplier(chipsCountString, String(bonusMultiplier))
+            } else {
+                timeBonusLabel.text = R.string.localizable.textTimeBonus(chipsCountString)
+            }
         }
         
         let animationDuration = animated ? 0.4 : 0.0

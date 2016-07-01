@@ -11,7 +11,7 @@ import Foundation
 final class RoundManager: NSObject {
     
     var didPlayRoundHandler: ((round: Round) -> Void)?
-    var didUpdateTimeBonusHandler: ((bonus: Int64) -> Void)?
+    var didUpdateTimeBonusHandler: ((bonus: Int64, bonusMultiplier: Int64) -> Void)?
     private(set) var round: Round?
     private(set) var level: Level
     
@@ -21,6 +21,10 @@ final class RoundManager: NSObject {
     
     var roundLoaded: Bool {
         return round?.handsOdds != nil
+    }
+    
+    private var chipsMultiplier: Int64 {
+        return playerManager.playerData.chipsMultiplierForLevel(level)
     }
     
     init(level: Level, playerManager: PlayerManager) {
@@ -45,7 +49,7 @@ final class RoundManager: NSObject {
     
     func startRound() {
         stopRound(saveRoundIfNeeded: false)
-        didUpdateTimeBonusHandler?(bonus: round!.chipsTimeBonus)
+        didUpdateTimeBonusHandler?(bonus: round!.chipsTimeBonus, bonusMultiplier: chipsMultiplier)
         startBonusTimer()
     }
     
@@ -66,11 +70,7 @@ final class RoundManager: NSObject {
         stopRound(saveRoundIfNeeded: false)
         
         round!.selectedHand = hand
-        if round!.won! {
-            playerManager.trackNewWinInLevel(level)
-        } else {
-            playerManager.trackNewLossInLevel(level)
-        }
+        playerManager.trackCompletedRound(round!, inLevel: level)
         didPlayRoundHandler?(round: round!)
     }
 }
@@ -97,7 +97,7 @@ extension RoundManager {
     
     @objc private func bonusTimerDidFire() {
         round!.chipsTimeBonus = max(0, round!.chipsTimeBonus! - Int64(Double(level.maxChipsTimeBonus) / numberOfTimerIntervals))
-        didUpdateTimeBonusHandler?(bonus: round!.chipsTimeBonus)
+        didUpdateTimeBonusHandler?(bonus: round!.chipsTimeBonus, bonusMultiplier: chipsMultiplier)
         
         if round!.chipsTimeBonus == 0 {
             stopBonusTimer()

@@ -60,35 +60,39 @@ extension PlayerManager {
         playerData.levelProgressItems[progressIndex].incompleteRound = round
     }
     
-    func trackNewWinInLevel(level: Level) {
-        playerData.lastPlayedLevelID = level.identifier
+    func trackCompletedRound(round: Round, inLevel level: Level) {
+        precondition(round.completed)
         
-        let oldChipsCount = playerData.chipsCount
-        let chipsMultiplier = playerData.chipsMultiplierForLevel(level)
-        let chipsWon = level.chipsPerWin * chipsMultiplier
-        playerData.chipsCount! += chipsWon
-        
-        let progressIndex = playerData.progressForLevel(level).index
-        playerData.levelProgressItems[progressIndex].trackWinWithChipsCount(chipsWon)
-        
-        notifier.notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: chipsMultiplier)
-        
-        updateLockStateForLevels()
-    }
-    
-    func trackNewLossInLevel(level: Level) {
-        playerData.lastPlayedLevelID = level.identifier
-        
-        let oldChipsCount = playerData.chipsCount
-        let chipsLost = level.chipsPerWin
-        // Total chips count can not be less than zero.
-        playerData.chipsCount = max(Int64(0), playerData.chipsCount - chipsLost)
+        func addChipsCount(chipsCount: Int64, chipsMultiplier: Int64) {
+            let oldChipsCount = playerData.chipsCount
+            
+            // Total chips count can not be less than zero.
+            playerData.chipsCount = max(Int64(0), playerData.chipsCount + chipsCount * chipsMultiplier)
+            guard playerData.chipsCount != oldChipsCount else { return }
+            
+            notifier.notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: chipsMultiplier)
+        }
         
         let progressIndex = playerData.progressForLevel(level).index
-        playerData.levelProgressItems[progressIndex].trackLostWithChipsCount(chipsLost)
         
-        guard playerData.chipsCount != oldChipsCount else { return }
-        notifier.notifyObserversDidUpdateChipsCount(playerData.chipsCount, oldChipsCount: oldChipsCount, chipsMultiplier: 1)
+        playerData.lastPlayedLevelID = level.identifier
+        
+        if round.won! {
+            let chipsMultiplier = playerData.chipsMultiplierForLevel(level)
+            let chipsWon = (level.chipsPerWin + round.chipsTimeBonus) * chipsMultiplier
+            
+            playerData.levelProgressItems[progressIndex].trackWinWithChipsCount(chipsWon)
+            addChipsCount(level.chipsPerWin, chipsMultiplier: chipsMultiplier)
+            addChipsCount(round.chipsTimeBonus, chipsMultiplier: chipsMultiplier)
+            
+            updateLockStateForLevels()
+            
+        } else {
+            let chipsLost = level.chipsPerWin
+            
+            playerData.levelProgressItems[progressIndex].trackLostWithChipsCount(chipsLost)
+            addChipsCount(-chipsLost, chipsMultiplier: 1)
+        }
     }
     
     func trackFinishPlayLevel(level: Level) {
