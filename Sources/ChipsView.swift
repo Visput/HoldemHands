@@ -31,8 +31,8 @@ final class ChipsView: UIView {
     func updateChipsLabelWithCount(newCount: Int64,
                                    oldCount: Int64 = 0,
                                    chipsMultiplier: Int64 = 1,
-                                   animated: Bool) {
-        chipsUpdatingQueue.addTask() {
+                                   animated: Bool) -> SimpleTask {
+        return chipsUpdatingQueue.addTask() {
             self.chipsDifferenceLabel.alpha = 0.0
             
             guard animated else {
