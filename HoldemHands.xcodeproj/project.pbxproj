@@ -133,6 +133,8 @@
 		9F4EF2B51CBC4F66002E5FEA /* TextBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F3C4BE31C9258F200B37939 /* TextBannerView.xib */; };
 		9F4EF2B61CBC4F66002E5FEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F51C84B21A00640046 /* Assets.xcassets */; };
 		9F4EF2B81CBC4F66002E5FEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F44D1F61C84B21A00640046 /* LaunchScreen.storyboard */; };
+		9F59DC541D2D886600FA552C /* TaskQueueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DC531D2D886600FA552C /* TaskQueueItem.swift */; };
+		9F59DC551D2D886600FA552C /* TaskQueueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DC531D2D886600FA552C /* TaskQueueItem.swift */; };
 		9F6434A01CD51F7F00B3BED6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F64349F1CD51F7F00B3BED6 /* Localizable.strings */; };
 		9F6434A11CD51F7F00B3BED6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F64349F1CD51F7F00B3BED6 /* Localizable.strings */; };
 		9F6434A31CD544FE00B3BED6 /* CustomFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6434A21CD544FE00B3BED6 /* CustomFontLabel.swift */; };
@@ -262,6 +264,7 @@
 		9F4EF2C01CBC4F66002E5FEA /* HoldemHandsQA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoldemHandsQA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4EF2C21CBC4FDF002E5FEA /* HoldemHands-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HoldemHands-Info.plist"; sourceTree = "<group>"; };
 		9F4EF2C31CBC4FDF002E5FEA /* HoldemHandsQA-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HoldemHandsQA-Info.plist"; sourceTree = "<group>"; };
+		9F59DC531D2D886600FA552C /* TaskQueueItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskQueueItem.swift; sourceTree = "<group>"; };
 		9F64349F1CD51F7F00B3BED6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		9F6434A21CD544FE00B3BED6 /* CustomFontLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFontLabel.swift; sourceTree = "<group>"; };
 		9F6434A61CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+SizeRatio.swift"; sourceTree = "<group>"; };
@@ -571,6 +574,7 @@
 				9F9C02E41D0A6E94008A3765 /* Int64Transform.swift */,
 				9FBDD4A71D24A456009B8DE7 /* Task+Simple.swift */,
 				9FEC1BDA1D26E95C008F8FC0 /* TaskQueue.swift */,
+				9F59DC531D2D886600FA552C /* TaskQueueItem.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1193,6 +1197,7 @@
 				9F4EF2A91CBC4F66002E5FEA /* HandOddsCalculator.swift in Sources */,
 				9FEE714C1CFBB29D003F4308 /* HandSelectionLayer.swift in Sources */,
 				9FE9F6A31CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift in Sources */,
+				9F59DC551D2D886600FA552C /* TaskQueueItem.swift in Sources */,
 				9F4EF2AA1CBC4F66002E5FEA /* HandCell.swift in Sources */,
 				9F4EF2AB1CBC4F66002E5FEA /* Level.swift in Sources */,
 				9F6434A81CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */,
@@ -1275,6 +1280,7 @@
 				9F44D21E1C84B21A00640046 /* HandOddsCalculator.swift in Sources */,
 				9FEE714B1CFBB299003F4308 /* HandSelectionLayer.swift in Sources */,
 				9FE9F6A21CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift in Sources */,
+				9F59DC541D2D886600FA552C /* TaskQueueItem.swift in Sources */,
 				9F44D2161C84B21A00640046 /* HandCell.swift in Sources */,
 				9F95E15A1C875D0100D6F368 /* Level.swift in Sources */,
 				9F6434A71CD54E7B00B3BED6 /* UIScreen+SizeRatio.swift in Sources */,
