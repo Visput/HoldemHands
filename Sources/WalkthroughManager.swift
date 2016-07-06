@@ -37,6 +37,10 @@ final class WalkthroughManager {
                 text = R.string.localizable.bannerWalkthroughTimeBonus()
             }
             
+            if self.playedHandsCount == 2 {
+                text = R.string.localizable.bannerWalkthroughWinsInRow()
+            }
+            
             if let text = text {
                 self.banner = self.navigationManager.presentBannerWithText(text, duration: 0.0)
             }

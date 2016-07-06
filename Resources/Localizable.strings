@@ -11,7 +11,8 @@
 "banner.walkthrough.choose.hand" = "Welcome!\nChoose better hand to win the round";
 "banner.walkthrough.won" = "Good Job!\nTap or Swipe to play next hand";
 "banner.walkthrough.lost" = "Nice Try...\nTap or Swipe to play next hand";
-"banner.walkthrough.time.bonus" = "Make decision fast to get max time bonus";
+"banner.walkthrough.time.bonus" = "Play fast\nto get bigger time bonus";
+"banner.walkthrough.wins.in.row" = "Win 10 rounds in a row\nto get double steaks";
 
 "title.details.levels" = "Play";
 "title.details.stats" = "Stats";
