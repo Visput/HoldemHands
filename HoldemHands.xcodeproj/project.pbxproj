@@ -180,6 +180,8 @@
 		9FE9F6A01CFFB42300D5A06B /* AppShortcutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9F69D1CFFB18600D5A06B /* AppShortcutsManager.swift */; };
 		9FE9F6A21CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9F6A11CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift */; };
 		9FE9F6A31CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9F6A11CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift */; };
+		9FEC1BDB1D26E95C008F8FC0 /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC1BDA1D26E95C008F8FC0 /* TaskQueue.swift */; };
+		9FEC1BDC1D26E95C008F8FC0 /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC1BDA1D26E95C008F8FC0 /* TaskQueue.swift */; };
 		9FEE714B1CFBB299003F4308 /* HandSelectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEE714A1CFBB299003F4308 /* HandSelectionLayer.swift */; };
 		9FEE714C1CFBB29D003F4308 /* HandSelectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEE714A1CFBB299003F4308 /* HandSelectionLayer.swift */; };
 		A1C48D560C8CB83E749D9BE0 /* Pods_HoldemHandsQA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 510D239E9E33B644BB279827 /* Pods_HoldemHandsQA.framework */; };
@@ -298,6 +300,7 @@
 		9FE888EA1C94F6A000A39C2C /* Int64+Chips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int64+Chips.swift"; sourceTree = "<group>"; };
 		9FE9F69D1CFFB18600D5A06B /* AppShortcutsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShortcutsManager.swift; sourceTree = "<group>"; };
 		9FE9F6A11CFFB46D00D5A06B /* PlayerManagerObserverNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerManagerObserverNotifier.swift; sourceTree = "<group>"; };
+		9FEC1BDA1D26E95C008F8FC0 /* TaskQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskQueue.swift; sourceTree = "<group>"; };
 		9FEE714A1CFBB299003F4308 /* HandSelectionLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandSelectionLayer.swift; sourceTree = "<group>"; };
 		B77C71BFF06C1B554EEEC53C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24BF151EC421552BF72BED9 /* Pods_HoldemHandsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoldemHandsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -567,6 +570,7 @@
 				9F13F3C51CFD5F2A00ED66D9 /* Array+GKSavedGame.swift */,
 				9F9C02E41D0A6E94008A3765 /* Int64Transform.swift */,
 				9FBDD4A71D24A456009B8DE7 /* Task+Simple.swift */,
+				9FEC1BDA1D26E95C008F8FC0 /* TaskQueue.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1142,6 +1146,7 @@
 				9F4EF2831CBC4F66002E5FEA /* SharingItem.swift in Sources */,
 				9FB093C51CFB80CB00A677EF /* Double+Precision.swift in Sources */,
 				9F4EF2841CBC4F66002E5FEA /* StatsView.swift in Sources */,
+				9FEC1BDC1D26E95C008F8FC0 /* TaskQueue.swift in Sources */,
 				9F4EF2861CBC4F66002E5FEA /* MainScreen.swift in Sources */,
 				9F4EF2871CBC4F66002E5FEA /* Int64+Chips.swift in Sources */,
 				9F4EF2881CBC4F66002E5FEA /* NavigationManager.swift in Sources */,
@@ -1223,6 +1228,7 @@
 				9F1BD3561C93701C00020AAA /* SharingItem.swift in Sources */,
 				9FB093C41CFB80C700A677EF /* Double+Precision.swift in Sources */,
 				9F3C4B741C91E40800B37939 /* StatsView.swift in Sources */,
+				9FEC1BDB1D26E95C008F8FC0 /* TaskQueue.swift in Sources */,
 				9F44D2321C84BAA900640046 /* MainScreen.swift in Sources */,
 				9FE888EB1C94F6A000A39C2C /* Int64+Chips.swift in Sources */,
 				9F1DDD091C89022A005F1D72 /* NavigationManager.swift in Sources */,

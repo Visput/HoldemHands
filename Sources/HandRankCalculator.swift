@@ -172,7 +172,7 @@ struct HandRankCalculator: Equatable, Comparable {
                 subLoop: for subIndex in index ..< suitedCards.count {
                     let flushCard = suitedCards[subIndex]
                     
-                    if straightOrFlashCards.count == 0 {
+                    if straightOrFlashCards.isEmpty {
                         straightOrFlashCards.append(flushCard)
                         
                     } else if straightOrFlashCards.last!.rank.rawValue == flushCard.rank.rawValue + 1 {
@@ -216,7 +216,7 @@ struct HandRankCalculator: Equatable, Comparable {
                 subLoop: for subIndex in index ..< cards.count {
                     let straightCard = cards[subIndex]
                     
-                    if straightOrFlashCards.count == 0 {
+                    if straightOrFlashCards.isEmpty {
                         straightOrFlashCards.append(straightCard)
                         
                     } else if straightOrFlashCards.last!.rank.rawValue == straightCard.rank.rawValue + 1 {

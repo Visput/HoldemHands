@@ -113,7 +113,7 @@ extension PlayerManager {
         }
         
         func handleProcessedLeaderboard(leaderboard: GKLeaderboard?, error: NSError?) {
-            guard leaderboards.count != 0 else { return }
+            guard !leaderboards.isEmpty else { return }
             if error != nil {
                 // Handle only first error.
                 leaderboards.removeAll()
@@ -121,7 +121,7 @@ extension PlayerManager {
                 completionHandler(progressItems: nil, error: error)
             } else {
                 leaderboards.removeAtIndex(leaderboards.indexOf(leaderboard!)!)
-                if leaderboards.count == 0 {
+                if leaderboards.isEmpty {
                     completionHandler(progressItems: self.playerData.progressItems(), error: nil)
                 }
             }

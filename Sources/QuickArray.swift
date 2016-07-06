@@ -20,6 +20,10 @@ struct QuickArray<ItemType: Equatable>: Equatable {
         return buffer[count - 1]
     }
     
+    var isEmpty: Bool {
+        return count == 0
+    }
+    
     private var buffer: UnsafeMutableBufferPointer<ItemType>
     
     init(_ numberOfItems: Int) {

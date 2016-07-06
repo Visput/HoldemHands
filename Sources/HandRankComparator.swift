@@ -40,7 +40,7 @@ struct HandRankComparator {
         for index in 0 ..< handsRanks.count {
             let handRank = handsRanks[index]
             
-            if winningHandsRanksIndexes.count == 0 {
+            if winningHandsRanksIndexes.isEmpty {
                 winningHandsRanksIndexes.append(index)
                 
             } else if handsRanks[winningHandsRanksIndexes.last!] == handRank {

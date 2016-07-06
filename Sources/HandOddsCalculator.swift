@@ -95,7 +95,7 @@ final class HandOddsCalculator {
             for index in 0 ..< self.handsOdds!.count {
                 let handOdds = self.handsOdds![index]
                 
-                if winningHandsOddsIndexes.count == 0 {
+                if winningHandsOddsIndexes.isEmpty {
                     winningHandsOddsIndexes.append(index)
                 } else {
                     let winningHandOdds = self.handsOdds![winningHandsOddsIndexes.last!]
