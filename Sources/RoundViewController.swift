@@ -34,9 +34,16 @@ final class RoundViewController: BaseViewController {
         roundView.controlsEnabled = false
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewDidShow() {
+        super.viewDidShow()
+        if roundView.visible && roundManager.roundLoaded {
+            roundManager.startRound()
+        }
+    }
+    
+    override func viewDidHide() {
         roundManager.stopRound(saveRoundIfNeeded: roundView.visible)
-        super.viewWillDisappear(animated)
+        super.viewDidHide()
     }
     
     func viewDidChangePosition() {

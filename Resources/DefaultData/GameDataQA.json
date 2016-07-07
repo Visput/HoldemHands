@@ -9,8 +9,8 @@
       "chips_to_unlock" : 0,
       "hands_count" : 2,
       "name" : "Classic Table",
-      "max_chips_time_bonus" : 5,
-      "chips_bonus_time" : 60
+      "max_chips_time_bonus" : 10,
+      "chips_bonus_time" : 20
     },
     {
       "id" : 2,
