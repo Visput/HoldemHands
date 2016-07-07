@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import LTMorphingLabel
+import UICountingLabel
 
 final class GameScreenView: UIView {
 
@@ -15,9 +15,20 @@ final class GameScreenView: UIView {
     @IBOutlet private(set) weak var tieOddsLabel: UILabel!
     @IBOutlet private(set) weak var tapRecognizer: UITapGestureRecognizer!
     
-    @IBOutlet private(set) weak var timeBonusLabel: LTMorphingLabel! {
+    @IBOutlet private(set) weak var timeBonusLabel: UICountingLabel! {
         didSet {
-            timeBonusLabel.morphingEffect = .Sparkle
+            timeBonusLabel.animationDuration = 2.0
+            timeBonusLabel.method = .Linear
+            timeBonusLabel.formatBlock = { chipsCount -> String in
+                let chipsCountString = Int64(chipsCount).formattedChipsCountString()
+                var text: String! = nil
+                if self.currentBonusMultiplier > 1 {
+                    text = R.string.localizable.textTimeBonusWithMultiplier(chipsCountString, String(self.currentBonusMultiplier))
+                } else {
+                    text = R.string.localizable.textTimeBonus(chipsCountString)
+                }
+                return text
+            }
         }
     }
     
@@ -71,6 +82,8 @@ final class GameScreenView: UIView {
     private var secondRoundView: RoundView {
         return secondRoundContainerView.subviews.first! as! RoundView
     }
+    
+    private var currentBonusMultiplier = Int64(0)
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -130,14 +143,9 @@ final class GameScreenView: UIView {
         var needsToShow = visible
         
         if let bonus = bonus, bonusMultiplier = bonusMultiplier {
-            timeBonusLabel.morphingEnabled = timeBonusLabel.alpha != 0
-            let chipsCountString = bonus.formattedChipsCountString(needsReplaceZerosWithO: false)
-            
-            if bonusMultiplier > 1 {
-                timeBonusLabel.text = R.string.localizable.textTimeBonusWithMultiplier(chipsCountString, String(bonusMultiplier))
-            } else {
-                timeBonusLabel.text = R.string.localizable.textTimeBonus(chipsCountString)
-            }
+            let animationDuration = timeBonusLabel.alpha != 0 ? 2.0 : 0.0
+            currentBonusMultiplier = bonusMultiplier
+            timeBonusLabel.countFromCurrentValueTo(CGFloat(bonus), withDuration: animationDuration)
             
             needsToShow = visible && bonus != 0
         }

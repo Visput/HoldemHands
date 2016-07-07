@@ -16,7 +16,6 @@ def pods
     pod 'UICountingLabel'
     pod 'R.swift'
     pod 'SwiftTask'
-    pod 'LTMorphingLabel'
 end
 
 target 'HoldemHands' do
