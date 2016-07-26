@@ -20,7 +20,6 @@ final class TaskQueue<Progress, Value, Error> {
     func addTask(task: () -> Task<Progress, Value, Error>) -> Task<Progress, Value, Error> {
         let isQueueEmpty = items.isEmpty
         
-        
         var item: TaskQueueItem<Progress, Value, Error>! = nil
         let outTask = Task<Progress, Value, Error>(promiseInitClosure: { fulfill, reject in
             item = TaskQueueItem(inTaskClosure: task, outFulfillClosure: fulfill, outRejectClosure: reject)

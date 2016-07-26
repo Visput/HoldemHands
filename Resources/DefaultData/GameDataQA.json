@@ -9,8 +9,8 @@
       "chips_to_unlock" : 0,
       "hands_count" : 2,
       "name" : "Classic Table",
-      "max_chips_time_bonus" : 10,
-      "chips_bonus_time" : 20
+      "max_chips_time_bonus" : 5,
+      "chips_bonus_time" : 10
     },
     {
       "id" : 2,
@@ -21,7 +21,7 @@
       "hands_count" : 3,
       "name" : "Silver Table",
       "max_chips_time_bonus" : 50,
-      "chips_bonus_time" : 60
+      "chips_bonus_time" : 20
     },
     {
       "id" : 3,
@@ -32,7 +32,7 @@
       "hands_count" : 4,
       "name" : "Gold Table",
       "max_chips_time_bonus" : 250,
-      "chips_bonus_time" : 60
+      "chips_bonus_time" : 30
     },
     {
       "id" : 4,
@@ -43,7 +43,7 @@
       "hands_count" : 5,
       "name" : "Platinum Table",
       "max_chips_time_bonus" : 1000,
-      "chips_bonus_time" : 60
+      "chips_bonus_time" : 40
     },
     {
       "id" : 5,
@@ -54,7 +54,7 @@
       "hands_count" : 6,
       "name" : "Emerald Table",
       "max_chips_time_bonus" : 5000,
-      "chips_bonus_time" : 60
+      "chips_bonus_time" : 50
     },
     {
       "id" : 6,
