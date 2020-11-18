@@ -1,0 +1,13 @@
+# HoldemHands
+
+Try out a new game for Texas Hold'em Poker players. Whether you’re a pro or a beginner at Poker, HoldemHands can improve your skills.
+
+This is a game-trainer based on Texas Hold'em Poker with a simple and elegant design, intuitive rules and amazing results. 
+The core of the game is to choose the hand with the best chance of winning according to the rest of cards.
+Guess the winning hand to earn chips. Read the table wrong and they are gone.
+
+Every 10 correct guesses the winning chips rise to 2x, 3x, 4x and so on, until you make a wrong guess.
+Fill the chip tray and you'll go to the next table where things get really crazy.
+The tables are going from totally beginners "Classic" table to pro "Diamond" table. Going through all 7 levels you become a real master.
+
+Play HoldemHands - prove your Poker mastery!
