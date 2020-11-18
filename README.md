@@ -11,3 +11,5 @@ Fill the chip tray and you'll go to the next table where things get really crazy
 The tables are going from totally beginners "Classic" table to pro "Diamond" table. Going through all 7 levels you become a real master.
 
 Play HoldemHands - prove your Poker mastery!
+
+![App Screenshot](https://github.com/Visput/HoldemHands/blob/master/Docs/ScreenshotAssets/4.0%22/Screenshot1.png)
